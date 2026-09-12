@@ -4,7 +4,7 @@ import { useRef, useState, type FormEvent } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-export function ResumeRequestForm() {
+export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const startedAt = useRef(Date.now());
@@ -18,14 +18,14 @@ export function ResumeRequestForm() {
     setMessage("");
 
     try {
-      const response = await fetch("/api/request-resume", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: data.get("name"),
           email: data.get("email"),
           company: data.get("company"),
-          note: data.get("note"),
+          message: data.get("message"),
           website: data.get("website"),
           startedAt: startedAt.current,
         }),
@@ -41,28 +41,27 @@ export function ResumeRequestForm() {
       form.reset();
       setStatus("sent");
       setMessage(
-        "Request sent. You should get a confirmation email. I’ll follow up with the resume if it’s a fit.",
+        "Message sent. You should get a confirmation email. I’ll reply if I can help.",
       );
     } catch {
       setStatus("error");
-      setMessage("Could not send that request. Email kristen.aing@gmail.com instead.");
+      setMessage("Could not send that message. Email kristen.aing@gmail.com instead.");
     }
   }
 
   return (
     <form
-      id="resume"
+      id="write"
       onSubmit={onSubmit}
       className="relative mt-8 flex max-w-xl flex-col gap-4 rounded-lg border border-border bg-card p-6"
     >
       <div>
         <h3 className="text-lg font-semibold tracking-tight text-foreground">
-          Request resume
+          Send a message
         </h3>
         <p className="mt-2 text-sm leading-6 text-muted">
-          I don’t post a public PDF. This form emails me the request (with the
-          resume attached for forwarding) and sends you a confirmation. I’ll
-          reply with the file if it’s a good fit.
+          This form emails me your note and sends you a confirmation. Reply to
+          that email if you want to add more.
         </p>
       </div>
       <div className="absolute -left-[10000px] h-0 w-0 overflow-hidden" aria-hidden="true">
@@ -106,13 +105,12 @@ export function ResumeRequestForm() {
         />
       </label>
       <label className="flex flex-col gap-1.5 text-sm">
-        <span className="font-medium text-foreground">
-          What you’re hiring for{" "}
-          <span className="font-normal text-muted">(optional)</span>
-        </span>
+        <span className="font-medium text-foreground">Message</span>
         <textarea
-          name="note"
-          rows={4}
+          required
+          minLength={8}
+          name="message"
+          rows={5}
           className="rounded-md border border-border bg-background px-3 py-2 text-foreground outline-none focus:border-accent"
         />
       </label>
@@ -121,7 +119,7 @@ export function ResumeRequestForm() {
         disabled={status === "sending"}
         className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
       >
-        {status === "sending" ? "Sending…" : "Request resume"}
+        {status === "sending" ? "Sending…" : "Send message"}
       </button>
       {message ? (
         <p
