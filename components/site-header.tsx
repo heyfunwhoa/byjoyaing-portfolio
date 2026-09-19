@@ -1,5 +1,6 @@
 "use client";
 
+import { Mark } from "@/components/mark";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -20,9 +21,12 @@ export function SiteHeader() {
       >
         <Link
           href="/"
-          className="font-display text-lg tracking-tight text-foreground"
+          className="flex items-center gap-2.5 text-foreground"
         >
-          Kristen Joy Aing
+          <Mark className="text-accent" />
+          <span className="font-display text-lg tracking-tight">
+            Kristen Joy Aing
+          </span>
         </Link>
         <ul className="flex flex-wrap items-center justify-end gap-x-7 gap-y-2 text-sm text-muted">
           {links.map((link) => {
@@ -35,8 +39,8 @@ export function SiteHeader() {
                 <Link
                   className={
                     active
-                      ? "font-medium text-accent"
-                      : "transition-colors hover:text-foreground"
+                      ? "link-rule font-medium text-accent"
+                      : "link-rule hover:text-foreground"
                   }
                   href={link.href}
                   aria-current={active ? "page" : undefined}
@@ -51,4 +55,3 @@ export function SiteHeader() {
     </header>
   );
 }
-

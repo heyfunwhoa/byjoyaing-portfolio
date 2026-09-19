@@ -1,11 +1,13 @@
+import { Kicker } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
+import { ProjectRow } from "@/components/project-row";
+import { Rail } from "@/components/rail";
 import {
   lifecycle,
   projectsByPhase,
-  statusCopy,
+  sequencedProjects,
 } from "@/lib/portfolio";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Projects — Kristen Joy Aing",
@@ -16,72 +18,66 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <PageMain>
-      <section className="flex flex-col gap-3 border-b border-border py-16">
-        <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
-          Projects
-        </p>
-        <h1 className="font-display max-w-2xl text-4xl leading-[1.15] tracking-tight text-foreground sm:text-5xl">
-          Organized around the product-to-market lifecycle.
-        </h1>
-        <p className="max-w-2xl text-sm leading-6 text-muted">
-          Status is explicit. Prototype means something runs here. Field system
-          means it ran with a team. Designed means the operating model exists.
-          Next means it is sequenced, not claimed.
-        </p>
+      <section className="grid gap-6 border-b border-border py-16 sm:py-20 md:grid-cols-[9.5rem_minmax(0,1fr)] md:gap-12">
+        <Kicker>Projects</Kicker>
+        <div className="flex flex-col gap-4">
+          <h1 className="font-display max-w-2xl text-4xl leading-[1.12] tracking-tight text-foreground sm:text-6xl">
+            Organized around the product-to-market lifecycle.
+          </h1>
+          <p className="max-w-2xl text-base leading-7 text-muted">
+            Status is explicit. Prototype means something runs here. Field
+            system means it ran with a team. Designed means the operating model
+            exists. Next means it is sequenced, not claimed.
+          </p>
+        </div>
       </section>
 
       {lifecycle.map((phase) => {
-        const items = projectsByPhase(phase);
+        const items = projectsByPhase(phase, [
+          "prototype",
+          "field-system",
+          "designed",
+        ]);
         if (items.length === 0) {
           return null;
         }
 
         return (
-          <section
-            id={phase.toLowerCase()}
-            key={phase}
-            className="flex flex-col gap-4 border-b border-border py-12"
-          >
-            <h2 className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
-              {phase}
-            </h2>
-            <ul className="grid gap-4 sm:grid-cols-2">
+          <Rail id={phase.toLowerCase()} label={phase} key={phase}>
+            <ul>
               {items.map((project) => (
-                <li key={project.slug}>
-                  <Link
-                    href={`/work/${project.slug}`}
-                    className="flex h-full flex-col gap-3 rounded-lg border border-border bg-card p-6 transition-colors hover:border-accent"
-                  >
-                    <p className="font-mono text-[10px] tracking-[0.14em] text-muted uppercase">
-                      {statusCopy[project.status]}
-                    </p>
-                    <h3 className="text-lg font-semibold tracking-tight text-foreground">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm leading-6 text-muted">
-                      {project.problem.summary}
-                    </p>
-                    <p className="mt-auto pt-2 text-sm font-medium text-accent">
-                      Case study
-                    </p>
-                  </Link>
+                <li key={project.slug} className="border-t border-border first:border-t-0">
+                  <ProjectRow project={project} />
                 </li>
               ))}
             </ul>
-          </section>
+          </Rail>
         );
       })}
 
-      <section id="measure" className="flex flex-col gap-3 py-12">
-        <h2 className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
-          Measure
-        </h2>
-        <p className="max-w-2xl text-sm leading-6 text-muted">
+      <Rail label="Next" tick>
+        <div>
+          <p className="mb-4 max-w-2xl text-base leading-7 text-muted">
+            These are next on the list — operating models only. They are not
+            live products.
+          </p>
+          <ul>
+            {sequencedProjects().map((project) => (
+              <li key={project.slug} className="border-t border-border">
+                <ProjectRow project={project} showPhase />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Rail>
+
+      <Rail id="measure" label="Measure" className="border-b-0">
+        <p className="max-w-2xl text-base leading-7 text-muted">
           There is no separate Measure product. Every case study has operational,
           behavioral, and business metrics — and a hypothesis until usage data
           exists.
         </p>
-      </section>
+      </Rail>
     </PageMain>
   );
 }

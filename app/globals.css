@@ -3,11 +3,11 @@
 :root {
   --background: #f3efe6;
   --foreground: #1b211d;
-  --muted: #5d635e;
+  --muted: #4a504b;
   --accent: #8a4b2a;
   --accent-foreground: #fbf8f2;
   --card: #fbf8f2;
-  --border: #e2d9cc;
+  --border: #cfc3b3;
   --ring: #8a4b2a;
 }
 
@@ -30,6 +30,7 @@ html {
 }
 
 body {
+  overflow-x: clip;
   background-color: var(--background);
   background-image: radial-gradient(
     ellipse 90% 55% at 50% -10%,
@@ -48,4 +49,18 @@ body {
 :focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 3px;
+}
+
+.link-rule {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 120ms ease;
+}
+
+.link-rule:hover,
+.link-rule[aria-current="page"],
+.group:hover .link-rule {
+  background-size: 100% 1px;
 }

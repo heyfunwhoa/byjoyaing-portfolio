@@ -19,34 +19,123 @@ export const statusCopy: Record<ProjectStatus, string> = {
   next: "Next",
 };
 
+export const avatar = {
+  line: "I turn field friction into systems technical products can run without me in the room.",
+  label: "Technical GTM systems",
+};
+
+export const strengths = [
+  {
+    title: "Field friction → operating system",
+    body: "I notice the same question, brief, or handoff breaking in every cycle, then design the workflow so the team can run it without a hero in the room. Competitive briefs, release intelligence, discovery frameworks.",
+  },
+  {
+    title: "Evidence over theater",
+    body: "I will not dress an unreviewed cell as a gap. Coverage, competitive claims, and product stories stay pinned to what was observed — gray means not evaluated.",
+  },
+  {
+    title: "Commercial judgment in technical markets",
+    body: "Ten-plus years in enterprise AppSec, cloud, data, threat intelligence, network, and developer security. I know how technical buyers actually decide, and I design GTM around that — not around slides.",
+  },
+  {
+    title: "Knowledge that other people can use",
+    body: "Playbooks, onboarding, industry training, partner matching. The strength is not that I hold the context. It is that the next person can pick it up.",
+  },
+];
+
+export const skills = [
+  "Product-to-market system design",
+  "Competitive intelligence operations",
+  "Claims that survive technical scrutiny",
+  "Enablement as a product, not a deck",
+  "Partner and account signal",
+  "Working prototypes (catalogs, parsers, field tools)",
+];
+
+export const toolGroups = [
+  {
+    id: "gtm",
+    title: "GTM & sales — I know",
+    items: [
+      { id: "salesforce", name: "Salesforce" },
+      { id: "linkedin", name: "LinkedIn / Sales Navigator" },
+      { id: "slack", name: "Slack" },
+      { id: "workspace", name: "Google Workspace" },
+      { id: "sheets", name: "Spreadsheets" },
+    ],
+  },
+  {
+    id: "build",
+    title: "Build — I ship with",
+    items: [
+      { id: "cursor", name: "Cursor" },
+      { id: "next", name: "Next.js / TypeScript" },
+      { id: "github", name: "GitHub" },
+      { id: "vercel", name: "Vercel" },
+      { id: "aws", name: "AWS (foundational)" },
+    ],
+  },
+  {
+    id: "learn",
+    title: "Learning",
+    items: [
+      { id: "attio", name: "Attio" },
+      { id: "postgres", name: "Postgres / Drizzle" },
+      { id: "ingest", name: "Ingestion & scheduled jobs" },
+      { id: "resend", name: "Resend" },
+      { id: "aisdk", name: "Vercel AI SDK" },
+      { id: "schema", name: "Structured output" },
+    ],
+  },
+] as const;
+
+export const toolsFit =
+  "Salesforce, LinkedIn, Slack, and spreadsheets are where the friction shows up in a live cycle. Cursor and Next.js turn that into a system someone else can run. GitHub and Vercel make it inspectable. Attio, Postgres, and mail persist it. AI enters the same way: schema, retrieved source, human review — labeled learning, not a chatbot.";
+
+export const aiLoop = [
+  {
+    title: "Schema first",
+    body: "JSON that matches a brief, catalog cell, or field action — not a freeform chat.",
+  },
+  {
+    title: "Grounded in source",
+    body: "Generate only from retrieved or pasted text. Missing stays not evaluated.",
+  },
+  {
+    title: "Persist",
+    body: "Postgres and ingest so the output is a system someone else can run, not a transcript.",
+  },
+  {
+    title: "Human review",
+    body: "Accepted, edited, or gray. Same rule as coverage: the model does not invent a gap.",
+  },
+];
+
 export const bio =
   "Enterprise cybersecurity GTM leader with 10+ years across application security, cloud, data security, threat intelligence, and network security. Combines enterprise revenue experience with a track record of building the frameworks, messaging, workflows, and systems that help technical products get understood, evaluated, adopted, and scaled. Experienced across complex enterprise sales cycles, product feedback, competitive strategy, enablement, partner motions, and cross-functional GTM programs, with increasing focus on product strategy, commercialization, and technical GTM systems.";
 
-export const targetRoles = [
+export const targetRolesPrimary = [
   "Product GTM",
   "Product Commercialization",
   "GTM Strategy",
   "Product Strategy & GTM",
-  "Founding GTM",
-  "Deployment Strategy",
-  "GTM Systems",
-  "Strategic Programs",
-  "Technical Product Marketing",
-  "Competitive / Market Intelligence",
 ];
 
 export const proof = [
   {
-    value: "10+ years",
-    label: "Enterprise cybersecurity GTM across AppSec, cloud, data, threat intelligence, and network",
+    value: "1 prototype",
+    label:
+      "Detector Coverage Atlas — public catalog you can inspect. Gray is not evaluated, never a confirmed gap.",
   },
   {
-    value: "50% faster ramp",
-    label: "Industry training and business-value tools adopted by new reps",
+    value: "1 field system",
+    label:
+      "Competitive briefs a team could run without the author in the room.",
   },
   {
-    value: "$1.4M quota",
-    label: "Q2 2026 on track at 125% for developer-first secrets detection",
+    value: "5 designed",
+    label:
+      "Operating models for launch, enablement, partners, account signal, and feedback — not claimed as live products.",
   },
 ];
 
@@ -1010,6 +1099,26 @@ export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
 
-export function projectsByPhase(phase: LifecyclePhase) {
-  return projects.filter((project) => project.phase === phase);
+export const featuredSlugs = [
+  "detector-coverage-atlas",
+  "competitive-intelligence-engine",
+  "product-release-intelligence",
+] as const;
+
+export function featuredProjects() {
+  return featuredSlugs
+    .map((slug) => getProject(slug))
+    .filter((project): project is Project => Boolean(project));
+}
+
+export function projectsByPhase(phase: LifecyclePhase, statuses?: ProjectStatus[]) {
+  return projects.filter((project) => {
+    if (project.phase !== phase) return false;
+    if (!statuses) return true;
+    return statuses.includes(project.status);
+  });
+}
+
+export function sequencedProjects() {
+  return projects.filter((project) => project.status === "next");
 }

@@ -1,5 +1,9 @@
+import { CoverageExplorer } from "@/components/coverage-explorer";
+import { CropFrame } from "@/components/crop-frame";
+import { Index } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
-import { getProject, projects, statusCopy } from "@/lib/portfolio";
+import { StatusBadge } from "@/components/status-badge";
+import { getProject, projects } from "@/lib/portfolio";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -28,39 +32,36 @@ export async function generateMetadata({
 }
 
 function Flow({ steps }: { steps: string[] }) {
-  return (
-    <ol className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-2">
-      {steps.map((step, index) => (
-        <li
-          key={`${step}-${index}`}
-          className="flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] text-muted uppercase"
-        >
-          {index > 0 ? (
-            <span className="hidden text-muted sm:inline" aria-hidden="true">
-              →
-            </span>
-          ) : null}
-          <span className="rounded-md border border-border bg-card px-2 py-1 text-foreground">
-            {step}
-          </span>
-        </li>
-      ))}
-    </ol>
-  );
+  return <p>{steps.join(" → ")}</p>;
 }
 
-function Section({
+function Fold({
   title,
+  index,
   children,
 }: {
   title: string;
+  index: number;
   children: ReactNode;
 }) {
   return (
-    <section className="flex flex-col gap-3 border-b border-border py-10">
-      <h2 className="text-lg font-semibold tracking-tight text-foreground">{title}</h2>
-      <div className="max-w-2xl space-y-3 text-sm leading-6 text-muted">{children}</div>
-    </section>
+    <details className="border-t border-border py-5">
+      <summary className="cursor-pointer text-base font-semibold tracking-tight text-foreground">
+        <Index n={index} /> {title}
+      </summary>
+      <div className="mt-3 max-w-2xl space-y-3 text-base leading-7 text-muted">
+        {children}
+      </div>
+    </details>
+  );
+}
+
+function Heading({ n, children }: { n: number; children: ReactNode }) {
+  return (
+    <h2 className="flex items-baseline gap-2 text-lg font-semibold tracking-tight text-foreground">
+      <Index n={n} />
+      {children}
+    </h2>
   );
 }
 
@@ -71,135 +72,173 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const pull = project.metrics.business[0] ?? project.hypothesis;
+
   return (
     <PageMain>
-        <header className="flex flex-col gap-4 border-b border-border py-16">
-          <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
-            {project.phase} · {statusCopy[project.status]}
+      <div className="grid gap-12 border-b border-border py-16 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-16">
+        <aside className="flex flex-col gap-6 md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-4 lg:sticky lg:top-24 lg:flex-col lg:flex-nowrap lg:self-start">
+          <div className="flex flex-col gap-3">
+            <StatusBadge status={project.status} />
+            <p className="text-sm text-muted">{project.phase}</p>
+          </div>
+          <div className="flex flex-col gap-2 text-sm leading-6 text-muted">
+            <p>
+              <span className="font-medium text-foreground">Primary. </span>
+              {project.users.primary}
+            </p>
+            <p>
+              <span className="font-medium text-foreground">Secondary. </span>
+              {project.users.secondary}
+            </p>
+            <p>
+              <span className="font-medium text-foreground">Job. </span>
+              {project.users.job}
+            </p>
+          </div>
+          <p className="text-sm leading-6 text-muted">
+            <span className="font-medium text-foreground">Career signal. </span>
+            {project.careerSignal}
           </p>
-          <h1 className="font-display max-w-3xl text-4xl leading-[1.12] tracking-tight text-foreground sm:text-5xl">
-            {project.title}
-          </h1>
-          <p className="max-w-2xl text-lg leading-8 text-muted">{project.problem.summary}</p>
-          <p className="text-sm text-muted">Career signal: {project.careerSignal}</p>
           <Link
             href="/projects"
-            className="text-sm font-medium text-foreground underline decoration-border underline-offset-4 hover:text-accent hover:decoration-accent"
+            className="link-rule w-fit text-sm font-medium text-accent"
           >
             All projects
           </Link>
-        </header>
+        </aside>
 
-        <Section title="1. Problem">
-          <p>{project.problem.summary}</p>
-          <p>{project.problem.why}</p>
-          <p>Without this: {project.problem.without}</p>
-        </Section>
+        <article className="flex min-w-0 flex-col">
+          <header className="flex flex-col gap-5 pb-10">
+            <h1 className="font-display max-w-3xl text-4xl leading-[1.12] tracking-tight text-foreground sm:text-6xl">
+              {project.title}
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-muted">
+              {project.problem.summary}
+            </p>
+          </header>
 
-        <Section title="2. Users">
-          <p>Primary: {project.users.primary}</p>
-          <p>Secondary: {project.users.secondary}</p>
-          <p>Job: {project.users.job}</p>
-        </Section>
+          {slug === "detector-coverage-atlas" ? (
+            <div className="pb-10">
+              <CropFrame>
+                <CoverageExplorer />
+              </CropFrame>
+            </div>
+          ) : null}
 
-        <Section title="3. Evidence">
-          <p>{project.evidence}</p>
-        </Section>
+          <blockquote className="relative mb-10 pl-10 text-lg leading-8 text-foreground">
+            <span
+              aria-hidden="true"
+              className="font-display absolute top-[-0.35em] left-0 text-5xl leading-none text-accent"
+            >
+              “
+            </span>
+            {pull}
+          </blockquote>
 
-        <Section title="4. Goals and non-goals">
-          <p className="font-medium text-foreground">Goals</p>
-          <ul className="list-disc space-y-1 pl-5">
-            {project.goals.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className="font-medium text-foreground">Non-goals</p>
-          <ul className="list-disc space-y-1 pl-5">
-            {project.nonGoals.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Section>
+          <section className="flex flex-col gap-3 border-t border-border py-8">
+            <Heading n={1}>Problem</Heading>
+            <div className="max-w-2xl space-y-3 text-base leading-7 text-muted">
+              <p>{project.problem.why}</p>
+              <p>Without this: {project.problem.without}</p>
+            </div>
+          </section>
 
-        <Section title="5. MVP">
-          <p>{project.mvp.version}</p>
-          <p>Question the MVP tests: {project.mvp.question}</p>
-        </Section>
+          <section className="flex flex-col gap-3 border-t border-border py-8">
+            <Heading n={2}>Evidence</Heading>
+            <p className="max-w-2xl text-base leading-7 text-muted">
+              {project.evidence}
+            </p>
+          </section>
 
-        <Section title="6. Workflow">
-          <Flow steps={project.workflow} />
-        </Section>
+          <section className="flex flex-col gap-3 border-t border-border py-8">
+            <Heading n={3}>System</Heading>
+            <div className="max-w-2xl space-y-3 text-base leading-7 text-muted">
+              <Flow steps={project.systemPlain} />
+              <p className="text-sm text-muted">
+                Technical: {project.systemTechnical.join(" · ")}
+              </p>
+            </div>
+          </section>
 
-        <Section title="7. System design">
-          <p className="font-medium text-foreground">Plain language</p>
-          <Flow steps={project.systemPlain} />
-          <p className="font-medium text-foreground">Technical</p>
-          <Flow steps={project.systemTechnical} />
-        </Section>
+          <section className="flex flex-col gap-3 border-t border-border py-8">
+            <Heading n={4}>Prototype</Heading>
+            <div className="max-w-2xl space-y-3 text-base leading-7 text-muted">
+              <p>{project.prototype}</p>
+              <ul className="list-disc space-y-1 pl-5">
+                {project.businessValue.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
 
-        <Section title="8. Data model">
-          <ul className="flex flex-wrap gap-2">
-            {project.dataModel.map((entity) => (
-              <li
-                key={entity}
-                className="rounded-md border border-border bg-card px-3 py-1.5 text-foreground"
-              >
-                {entity}
-              </li>
-            ))}
-          </ul>
-        </Section>
+          <Fold index={5} title="Goals and non-goals">
+            <p className="font-medium text-foreground">Goals</p>
+            <ul className="list-disc space-y-1 pl-5">
+              {project.goals.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p className="font-medium text-foreground">Non-goals</p>
+            <ul className="list-disc space-y-1 pl-5">
+              {project.nonGoals.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </Fold>
 
-        <Section title="9. Metrics">
-          <p className="font-medium text-foreground">Operational</p>
-          <ul className="list-disc space-y-1 pl-5">
-            {project.metrics.operational.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className="font-medium text-foreground">Behavioral</p>
-          <ul className="list-disc space-y-1 pl-5">
-            {project.metrics.behavioral.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <p className="font-medium text-foreground">Business</p>
-          <ul className="list-disc space-y-1 pl-5">
-            {project.metrics.business.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Section>
+          <Fold index={6} title="MVP">
+            <p>{project.mvp.version}</p>
+            <p>Question the MVP tests: {project.mvp.question}</p>
+          </Fold>
 
-        <Section title="10. Business impact hypothesis">
-          <p>{project.hypothesis}</p>
-        </Section>
+          <Fold index={7} title="Workflow">
+            <Flow steps={project.workflow} />
+          </Fold>
 
-        <Section title="11. Tradeoffs">
-          <ul className="list-disc space-y-1 pl-5">
-            {project.tradeoffs.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Section>
+          <Fold index={8} title="Data model">
+            <p>{project.dataModel.join(" · ")}</p>
+          </Fold>
 
-        <Section title="12. Prototype">
-          <p>{project.prototype}</p>
-          <p className="font-medium text-foreground">Intended value</p>
-          <ul className="list-disc space-y-1 pl-5">
-            {project.businessValue.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Section>
+          <Fold index={9} title="Metrics">
+            <p className="font-medium text-foreground">Operational</p>
+            <ul className="list-disc space-y-1 pl-5">
+              {project.metrics.operational.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p className="font-medium text-foreground">Behavioral</p>
+            <ul className="list-disc space-y-1 pl-5">
+              {project.metrics.behavioral.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p className="font-medium text-foreground">Business</p>
+            <ul className="list-disc space-y-1 pl-5">
+              {project.metrics.business.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </Fold>
 
-        <Section title="13. What I would build next">
-          <ul className="list-disc space-y-1 pl-5">
-            {project.next.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Section>
+          <Fold index={10} title="Tradeoffs">
+            <ul className="list-disc space-y-1 pl-5">
+              {project.tradeoffs.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </Fold>
+
+          <Fold index={11} title="What I would build next">
+            <ul className="list-disc space-y-1 pl-5">
+              {project.next.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </Fold>
+        </article>
+      </div>
     </PageMain>
   );
 }

@@ -1,159 +1,113 @@
+import { BrandAvatar } from "@/components/brand-avatar";
+import { ExperienceTimeline } from "@/components/experience-timeline";
+import { Kicker } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
-import { bio, lifecycle, loop, roles, targetRoles } from "@/lib/portfolio";
+import { Rail } from "@/components/rail";
+import { ToolsMap } from "@/components/tools-map";
+import {
+  avatar,
+  bio,
+  lifecycle,
+  loop,
+  skills,
+  strengths,
+  targetRolesPrimary,
+} from "@/lib/portfolio";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About — Kristen Joy Aing",
   description:
-    "Technical GTM and product-oriented operator: background, approach, and enterprise cybersecurity experience from Forcepoint through Truffle Security.",
+    "Skills, strengths, and experience: technical GTM systems across enterprise cybersecurity.",
 };
 
 export default function AboutPage() {
   return (
     <PageMain>
-      <section className="flex flex-col gap-6 border-b border-border py-16">
-        <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
-          About
-        </p>
-        <h1 className="font-display max-w-2xl text-4xl leading-[1.15] tracking-tight text-foreground sm:text-5xl">
-          Technical GTM and product-oriented operator — not an AE becoming a
-          PM.
-        </h1>
-        <div className="max-w-2xl space-y-4 leading-7 text-muted">
-          <p>{bio}</p>
-          <p>
-            My background is in enterprise cybersecurity revenue, but the work
-            sits at the intersection of Product, customers, and go-to-market. I
-            identify recurring friction in how technical products are
-            understood, evaluated, launched, adopted, and scaled, then design
-            systems, workflows, and prototypes that make those motions
-            repeatable.
-          </p>
-          <p>
-            This is not traditional sales enablement, CRM administration, or an
-            Account Executive trying to become a Product Manager. It is
-            enterprise customers, commercial outcomes, product workflows, and
-            the systems behind them.
+      <section className="grid items-center gap-10 border-b border-border py-16 sm:py-20 lg:grid-cols-[minmax(0,14rem)_minmax(0,1fr)] lg:gap-16">
+        <div className="mx-auto w-full max-w-[14rem] lg:mx-0">
+          <BrandAvatar />
+        </div>
+        <div className="flex flex-col gap-6">
+          <Kicker>About</Kicker>
+          <h1 className="font-display max-w-2xl text-4xl leading-[1.12] tracking-tight text-foreground sm:text-5xl">
+            {avatar.line}
+          </h1>
+          <p className="max-w-2xl text-base leading-7 text-muted">{bio}</p>
+          <p className="max-w-2xl text-base leading-7 text-muted">
+            Not traditional enablement or an AE becoming a PM. The work is
+            skills: system design, evidence, commercial judgment in technical
+            markets, and making knowledge usable.
           </p>
         </div>
-        <ol className="flex flex-col gap-2 rounded-lg border border-border bg-card p-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-          {loop.map((step, index) => (
-            <li
-              key={step}
-              className="flex items-center gap-3 font-mono text-[11px] tracking-[0.12em] text-muted uppercase"
-            >
-              {index > 0 ? (
-                <span className="hidden text-muted sm:inline" aria-hidden="true">
-                  →
-                </span>
-              ) : null}
-              <span className="text-foreground">{step}</span>
+      </section>
+
+      <Rail label="Strengths" tick>
+        <ul className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
+          {strengths.map((item) => (
+            <li key={item.title} className="flex flex-col gap-2">
+              <h2 className="text-base font-semibold tracking-tight text-foreground">
+                {item.title}
+              </h2>
+              <p className="text-sm leading-6 text-muted">{item.body}</p>
             </li>
           ))}
-        </ol>
-        <div>
-          <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
-            Product-to-market lifecycle
-          </p>
-          <ol className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+        </ul>
+      </Rail>
+
+      <Rail label="Skills">
+        <div className="flex flex-col gap-6">
+          <p className="text-base leading-7 text-foreground">{skills.join(" · ")}</p>
+          <p className="text-base leading-7 text-foreground">{loop.join(" → ")}</p>
+          <p className="text-base leading-7 text-muted">
             {lifecycle.map((step, index) => (
-              <li
-                key={step}
-                className="flex items-center gap-3 font-mono text-[11px] tracking-[0.12em] text-muted uppercase"
-              >
-                {index > 0 ? (
-                  <span className="hidden text-muted sm:inline" aria-hidden="true">
-                    →
-                  </span>
-                ) : null}
+              <span key={step}>
+                {index > 0 ? " → " : null}
                 <Link
                   className="text-foreground underline-offset-4 hover:underline"
                   href={`/projects#${step.toLowerCase()}`}
                 >
                   {step}
                 </Link>
-              </li>
+              </span>
             ))}
-          </ol>
-        </div>
-        <div>
-          <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
-            Where this work points
           </p>
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {targetRoles.map((role) => (
-              <li
-                key={role}
-                className="rounded-md border border-border bg-card px-3 py-1.5 text-sm text-foreground"
-              >
-                {role}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-muted">
-            Trajectory: enterprise sales → product GTM / GTM strategy → product
-            strategy → product management / product leadership.
+          <p className="text-base leading-7 text-foreground">
+            {targetRolesPrimary.join(" · ")}
           </p>
         </div>
-      </section>
+      </Rail>
 
-      <section className="flex flex-col gap-8 border-b border-border py-16">
-        <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
-          Experience
-        </p>
-        <ol className="flex flex-col gap-8">
-          {roles.map((role) => (
-            <li
-              key={role.company}
-              className="grid gap-3 border-b border-border pb-8 last:border-b-0 last:pb-0 sm:grid-cols-[10rem_1fr]"
-            >
-              <p className="font-mono text-[11px] tracking-[0.14em] text-muted uppercase">
-                {role.period}
-              </p>
-              <div>
-                <h2 className="text-lg font-semibold tracking-tight text-foreground">
-                  {role.title}
-                </h2>
-                <p className="mt-1 text-sm text-foreground">{role.company}</p>
-                <p className="mt-1 font-mono text-[11px] tracking-[0.12em] text-muted uppercase">
-                  {role.category}
-                </p>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
-                  {role.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
+      <Rail id="tools" label="Tools" tick>
+        <ToolsMap />
+      </Rail>
 
-      <section className="py-14">
-        <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
-          Education & credentials
-        </p>
-        <ul className="mt-6 space-y-3 text-sm leading-6 text-muted">
+      <Rail label="Experience" tick>
+        <ExperienceTimeline />
+      </Rail>
+
+      <Rail label="Education" className="border-b-0">
+        <ul className="grid gap-6 text-base leading-7 text-muted sm:grid-cols-3">
           <li>
             <span className="font-medium text-foreground">MBA, IT Management</span>
-            {" — "}
+            <br />
             Western Governors University (in progress)
           </li>
           <li>
             <span className="font-medium text-foreground">
               B.S. Advertising, Business Foundations
             </span>
-            {" — "}
+            <br />
             The University of Texas at Austin
           </li>
           <li>
             <span className="font-medium text-foreground">AWS</span>
-            {" — "}
+            <br />
             Cloud Practitioner and AI Practitioner (Foundational)
           </li>
         </ul>
-      </section>
+      </Rail>
     </PageMain>
   );
 }
