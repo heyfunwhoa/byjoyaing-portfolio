@@ -27,16 +27,19 @@
 
 html {
   color-scheme: light;
-}
-
-body {
-  overflow-x: clip;
   background-color: var(--background);
   background-image: radial-gradient(
     ellipse 90% 55% at 50% -10%,
     #e8dfd0 0%,
     transparent 70%
   );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+body {
+  overflow-x: clip;
+  background-color: transparent;
   color: var(--foreground);
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
