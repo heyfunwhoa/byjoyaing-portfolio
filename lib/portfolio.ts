@@ -10,18 +10,28 @@ export const lifecycle = [
 
 export type LifecyclePhase = (typeof lifecycle)[number];
 
-export type ProjectStatus = "prototype" | "field-system" | "designed" | "next";
+export type ProjectStatus = "field" | "prototype" | "designed" | "exploring";
 
 export const statusCopy: Record<ProjectStatus, string> = {
-  prototype: "Prototype",
-  "field-system": "Field system",
-  designed: "Designed",
-  next: "Next",
+  field: "Used in the field",
+  prototype: "Working prototype",
+  designed: "Designed concept",
+  exploring: "Exploring",
+};
+
+export const statusHelp: Record<ProjectStatus, string> = {
+  field:
+    "A workflow or asset a team actually used. Not a deployed software product.",
+  prototype: "A running implementation you can inspect.",
+  designed: "A documented workflow. Not shipped software.",
+  exploring: "An idea without a completed design.",
 };
 
 export const avatar = {
-  line: "I turn field friction into systems technical products can run without me in the room.",
-  label: "Technical GTM systems",
+  line: "Enterprise cybersecurity sales, built into repeatable GTM systems.",
+  support:
+    "I lead complex security deals and turn recurring field problems into account intelligence, competitive evidence, partner workflows, and enablement that other teams can use.",
+  label: "Enterprise cybersecurity sales",
 };
 
 export const strengths = [
@@ -44,12 +54,12 @@ export const strengths = [
 ];
 
 export const skills = [
-  "Product-to-market system design",
-  "Competitive intelligence operations",
-  "Claims that survive technical scrutiny",
-  "Enablement as a product, not a deck",
-  "Partner and account signal",
-  "Working prototypes (catalogs, parsers, field tools)",
+  "Complex enterprise sales cycles",
+  "Account strategy and discovery",
+  "Competitive selling with source-backed claims",
+  "Channel and partner motions",
+  "Enablement a new rep can finish without me",
+  "Working prototypes when a spreadsheet stops being enough",
 ];
 
 export const toolGroups = [
@@ -112,13 +122,13 @@ export const aiLoop = [
 ];
 
 export const bio =
-  "Enterprise cybersecurity GTM leader with 10+ years across application security, cloud, data security, threat intelligence, and network security. Combines enterprise revenue experience with a track record of building the frameworks, messaging, workflows, and systems that help technical products get understood, evaluated, adopted, and scaled. Experienced across complex enterprise sales cycles, product feedback, competitive strategy, enablement, partner motions, and cross-functional GTM programs, with increasing focus on product strategy, commercialization, and technical GTM systems.";
+  "I have sold enterprise cybersecurity for 10+ years — application security, cloud, data security, threat intelligence, network security, and now developer security and machine identity. I own complex cycles with security, engineering, and partner stakeholders, and I turn the questions that repeat into briefs, playbooks, and tools the next person can run. Some of that work is material a team already used. Some of it is a working prototype. Some of it is a design I have not shipped as software.";
 
 export const targetRolesPrimary = [
-  "Product GTM",
-  "Product Commercialization",
-  "GTM Strategy",
-  "Product Strategy & GTM",
+  "Enterprise sales",
+  "GTM systems",
+  "Competitive strategy",
+  "Partner and channel motions",
 ];
 
 export const proof = [
@@ -339,7 +349,10 @@ export const projects: Project[] = [
         "Normalization rate and evidence completeness",
         "Stale-record and parser false-negative rate",
       ],
-      behavioral: ["Review-queue resolution", "Reuse in onboarding and competitive prep"],
+      behavioral: [
+        "Review-queue resolution",
+        "Reuse in onboarding and competitive prep",
+      ],
       business: [
         "Hypothesis: fewer unsupported product claims and faster coverage answers than manual repo research",
       ],
@@ -384,8 +397,7 @@ export const projects: Project[] = [
     users: {
       primary:
         "AE, CSM, and SA who need to know whether a release matters to an account and what to do",
-      secondary:
-        "PMM / enablement, Product, partners, and RevOps",
+      secondary: "PMM / enablement, Product, partners, and RevOps",
       job: "When something ships, identify the customer problem, persona, technology, commercial moment, and next action without reconstructing it independently.",
     },
     evidence:
@@ -498,8 +510,10 @@ export const projects: Project[] = [
         "Ramp depends on ride-alongs. Terminology is memorized without a workflow. Stale internal knowledge keeps circulating.",
     },
     users: {
-      primary: "Internal TruffleHog enablement: AE, SDR, SA, CS, partner, manager, leadership",
-      secondary: "Later: developers, AppSec, customer education, external learners",
+      primary:
+        "Internal TruffleHog enablement: AE, SDR, SA, CS, partner, manager, leadership",
+      secondary:
+        "Later: developers, AppSec, customer education, external learners",
       job: "Move from discovery to a source-grounded explanation and next step — without real secrets.",
     },
     evidence:
@@ -519,7 +533,8 @@ export const projects: Project[] = [
     mvp: {
       version:
         "Playable core: expedition map, Trailhead, one Dig Site mission, synthetic evidence viewer, decision feedback, local progress, one Field Badge.",
-      question: "Can a synthetic investigation teach the lifecycle better than a slide path?",
+      question:
+        "Can a synthetic investigation teach the lifecycle better than a slide path?",
     },
     workflow: [
       "Trailhead",
@@ -596,12 +611,13 @@ export const projects: Project[] = [
     title: "Competitive Intelligence Engine",
     phase: "Discover",
     careerSignal: "Competitive Strategy, Market Intelligence, Product GTM",
-    status: "field-system",
+    status: "field",
     problem: {
       summary:
         "Competitive knowledge becomes stale quickly and is difficult to operationalize.",
       why: "Deals and product decisions need a living view of where we win, where we do not, and what changed.",
-      without: "Objection handling lives in Slack. Every deal reinvented the brief.",
+      without:
+        "Objection handling lives in Slack. Every deal reinvented the brief.",
     },
     users: {
       primary: "AEs and SAs in live cycles",
@@ -619,8 +635,10 @@ export const projects: Project[] = [
       "Automated public attack content.",
     ],
     mvp: {
-      version: "Structured battlecards and briefs the field can run without the author in the room.",
-      question: "Does a shared competitive system change win strategy more than hero decks?",
+      version:
+        "Structured battlecards and briefs the field can run without the author in the room.",
+      question:
+        "Does a shared competitive system change win strategy more than hero decks?",
     },
     workflow: [
       "Competitor sources",
@@ -646,11 +664,20 @@ export const projects: Project[] = [
       "Application API",
       "Field UI / CRM notes",
     ],
-    dataModel: ["Competitor", "Claim", "Change", "Impact", "Recommendation", "Deal context"],
+    dataModel: [
+      "Competitor",
+      "Claim",
+      "Change",
+      "Impact",
+      "Recommendation",
+      "Deal context",
+    ],
     metrics: {
       operational: ["Faster awareness", "Less duplicated research"],
       behavioral: ["Brief usage in deals"],
-      business: ["Hypothesis: more consistent competitive execution and better messaging feedback into Product"],
+      business: [
+        "Hypothesis: more consistent competitive execution and better messaging feedback into Product",
+      ],
     },
     hypothesis:
       "If competitive changes are classified and turned into recommendations, deal strategy and product messaging should stay current. Field briefs are the current proof; monitoring is next.",
@@ -659,7 +686,7 @@ export const projects: Project[] = [
       "Depth on a few competitors over shallow coverage of everyone.",
     ],
     prototype:
-      "Field system: battlecards and briefs. Monitoring, snapshots, and alerts are designed, not built.",
+      "Used in the field: battlecards and briefs. Monitoring, snapshots, and alerts are designed, not built.",
     next: [
       "Scheduled source snapshots.",
       "Change detection with human review.",
@@ -683,7 +710,8 @@ export const projects: Project[] = [
       summary:
         "Customer feedback is fragmented across Sales, CS, support, calls, and feature requests.",
       why: "Roadmap and GTM cannot see themes with account and revenue context attached.",
-      without: "Duplicate requests, lost commitments, and no closed loop from request to release.",
+      without:
+        "Duplicate requests, lost commitments, and no closed loop from request to release.",
     },
     users: {
       primary: "Product and product operations",
@@ -701,8 +729,10 @@ export const projects: Project[] = [
       "Auto-committing roadmap items from sentiment.",
     ],
     mvp: {
-      version: "A theme board sourced from field notes, with account tags and duplicates collapsed.",
-      question: "Does structured feedback change prioritization faster than a raw request list?",
+      version:
+        "A theme board sourced from field notes, with account tags and duplicates collapsed.",
+      question:
+        "Does structured feedback change prioritization faster than a raw request list?",
     },
     workflow: [
       "Feedback sources",
@@ -733,7 +763,9 @@ export const projects: Project[] = [
     metrics: {
       operational: ["Reduced duplicate work", "Faster theme identification"],
       behavioral: ["Product review of themed feedback"],
-      business: ["Hypothesis: better roadmap prioritization and closed-loop customer communication"],
+      business: [
+        "Hypothesis: better roadmap prioritization and closed-loop customer communication",
+      ],
     },
     hypothesis:
       "If feedback is themed with account context, roadmap prioritization and closed-loop communication should improve. No fake revenue attached.",
@@ -741,7 +773,8 @@ export const projects: Project[] = [
       "Human confirmation of themes before they hit roadmap reviews.",
       "Account context over volume-only scoring.",
     ],
-    prototype: "Designed system. The field loop exists; the intelligence layer is not a shipped app.",
+    prototype:
+      "Designed system. The field loop exists; the intelligence layer is not a shipped app.",
     next: [
       "CRM and call-note ingestion.",
       "Deduplicated themes.",
@@ -759,11 +792,13 @@ export const projects: Project[] = [
     title: "Product Prioritization Simulator",
     phase: "Decide",
     careerSignal: "Product Strategy, Product Operations",
-    status: "next",
+    status: "exploring",
     problem: {
-      summary: "Teams struggle to prioritize what matters when customer, competitive, and commercial signals sit in different places.",
+      summary:
+        "Teams struggle to prioritize what matters when customer, competitive, and commercial signals sit in different places.",
       why: "Decide is the gap between discovering a theme and building the wrong thing.",
-      without: "Loudest request wins. Revenue, effort, and strategic fit stay implicit.",
+      without:
+        "Loudest request wins. Revenue, effort, and strategic fit stay implicit.",
     },
     users: {
       primary: "Product and GTM leaders",
@@ -775,23 +810,37 @@ export const projects: Project[] = [
     goals: ["Score a small set of bets on impact, confidence, and effort."],
     nonGoals: ["An automated roadmap.", "A substitute for product judgment."],
     mvp: {
-      version: "A scoring sheet for a handful of bets using feedback, revenue context, and effort.",
-      question: "Does making tradeoffs visible change which bet gets resourced?",
+      version:
+        "A scoring sheet for a handful of bets using feedback, revenue context, and effort.",
+      question:
+        "Does making tradeoffs visible change which bet gets resourced?",
     },
-    workflow: ["Inputs from Discover", "Scoring", "Tradeoff view", "Decision record"],
+    workflow: [
+      "Inputs from Discover",
+      "Scoring",
+      "Tradeoff view",
+      "Decision record",
+    ],
     systemPlain: ["Inputs", "Scoring", "Comparison", "Decision record"],
-    systemTechnical: ["Manual inputs first", "Later: APIs from feedback and revenue systems"],
+    systemTechnical: [
+      "Manual inputs first",
+      "Later: APIs from feedback and revenue systems",
+    ],
     dataModel: ["Bet", "Score", "Assumption", "Decision"],
     metrics: {
       operational: ["Faster decision records"],
       behavioral: ["Use in planning"],
-      business: ["Hypothesis: fewer builds disconnected from commercial evidence"],
+      business: [
+        "Hypothesis: fewer builds disconnected from commercial evidence",
+      ],
     },
     hypothesis:
       "If prioritization is explicit, the company should waste less build time on low-confidence bets. Next — not built.",
     tradeoffs: ["Simple scoring over a model that hides the judgment."],
     prototype: "Next. Not started as software.",
-    next: ["Wire inputs from feedback and competitive systems once those MVPs exist."],
+    next: [
+      "Wire inputs from feedback and competitive systems once those MVPs exist.",
+    ],
     businessValue: ["Clearer bet selection", "Inspectable tradeoffs"],
   },
   {
@@ -804,11 +853,14 @@ export const projects: Project[] = [
       summary:
         "Partners send account lists in inconsistent formats. Domain is often missing even though it is the matching key — so ownership, whitespace, and conflicts stay invisible.",
       why: "There is no reliable view of who owns what across partners and the internal book, or which unclaimed accounts are worth pursuing.",
-      without: "Co-sell stays goodwill. Conflicts have no partner context. Whitespace is not scored.",
+      without:
+        "Co-sell stays goodwill. Conflicts have no partner context. Whitespace is not scored.",
     },
     users: {
-      primary: "AE/SDR reviewing their own territory and whitespace (v1 is a personal view, not an admin console)",
-      secondary: "Aligned partners receiving filtered exports of their own accounts only",
+      primary:
+        "AE/SDR reviewing their own territory and whitespace (v1 is a personal view, not an admin console)",
+      secondary:
+        "Aligned partners receiving filtered exports of their own accounts only",
       job: "Ingest sheets, classify ownership by domain, score whitespace, and keep partner relationship context on every conflict.",
     },
     evidence:
@@ -825,7 +877,8 @@ export const projects: Project[] = [
     mvp: {
       version:
         "Upload 2+ partner sheets with different columns; classify ownership; resolve or flag missing domains; rank whitespace; retrieve partner contacts from a conflict view.",
-      question: "Does domain-based matching plus scored whitespace beat spreadsheet co-sell?",
+      question:
+        "Does domain-based matching plus scored whitespace beat spreadsheet co-sell?",
     },
     workflow: [
       "Upload partner sheet + map columns",
@@ -861,8 +914,14 @@ export const projects: Project[] = [
       "export_logs",
     ],
     metrics: {
-      operational: ["Sheets with different schemas correctly classified", "Unresolved domains clearly flagged"],
-      behavioral: ["Whitespace ranking that survives manual review", "Conflict view used for partner contact"],
+      operational: [
+        "Sheets with different schemas correctly classified",
+        "Unresolved domains clearly flagged",
+      ],
+      behavioral: [
+        "Whitespace ranking that survives manual review",
+        "Conflict view used for partner contact",
+      ],
       business: [
         "Measured: Metadot channel growth. Hypothesis: matching and scored whitespace increase partner-sourced pipeline.",
       ],
@@ -897,11 +956,14 @@ export const projects: Project[] = [
       summary:
         "AEs and SDRs have no living view of funding, leadership, hiring, stack, or news across assigned accounts — so outreach stays generic.",
       why: "Signals get missed. Monitoring does not become an action.",
-      without: "Reps refresh the same feeds. Territory mapping and outreach stay disconnected.",
+      without:
+        "Reps refresh the same feeds. Territory mapping and outreach stay disconnected.",
     },
     users: {
-      primary: "Single rep, personal feed (v1 is not a multi-rep admin console)",
-      secondary: "Future: Nooks/Outreach as a handoff, not a live v1 integration",
+      primary:
+        "Single rep, personal feed (v1 is not a multi-rep admin console)",
+      secondary:
+        "Future: Nooks/Outreach as a handoff, not a live v1 integration",
       job: "See assigned-account signals and draft outreach that cites the specific event.",
     },
     evidence:
@@ -917,7 +979,8 @@ export const projects: Project[] = [
     mvp: {
       version:
         "Synced assignment appears in the feed; signals classified and tied to the account; a usable draft from a signal.",
-      question: "Does a personal signal feed change outreach from generic to triggered?",
+      question:
+        "Does a personal signal feed change outreach from generic to triggered?",
     },
     workflow: [
       "Sync or enter assignment",
@@ -948,9 +1011,14 @@ export const projects: Project[] = [
       "outreach_drafts",
     ],
     metrics: {
-      operational: ["Sync without manual re-entry", "Correct signal type and account"],
+      operational: [
+        "Sync without manual re-entry",
+        "Correct signal type and account",
+      ],
       behavioral: ["Drafts generated from signals", "Read/dismiss usage"],
-      business: ["Hypothesis: triggered outreach improves reply quality vs. generic sequences"],
+      business: [
+        "Hypothesis: triggered outreach improves reply quality vs. generic sequences",
+      ],
     },
     hypothesis:
       "If reps see account-specific events and can draft from them, outreach relevance should improve. No fake pipeline numbers.",
@@ -961,7 +1029,11 @@ export const projects: Project[] = [
     ],
     prototype:
       "PRD. Private repo account-signal-engine. Whitespace accounts synced from territory mapping should show existing signals immediately, not wait for the next poll.",
-    next: ["Live sequencer push", "Multi-rep view", "Salesforce IDs when available"],
+    next: [
+      "Live sequencer push",
+      "Multi-rep view",
+      "Salesforce IDs when available",
+    ],
     businessValue: [
       "Fewer missed account events",
       "Outreach tied to a real trigger",
@@ -973,7 +1045,7 @@ export const projects: Project[] = [
     title: "GTM Campaign Lab",
     phase: "Distribute",
     careerSignal: "GTM Strategy, Growth, GTM Systems",
-    status: "next",
+    status: "exploring",
     problem: {
       summary:
         "Outbound and GTM experiments are often disconnected from product and customer signals and poorly measured.",
@@ -990,8 +1062,10 @@ export const projects: Project[] = [
     goals: ["Segment from signals, run a hypothesis, track events, iterate."],
     nonGoals: ["A full marketing automation suite."],
     mvp: {
-      version: "One segment, one message hypothesis, event tracking, a read-out.",
-      question: "Does tying campaigns to product/customer signals improve pipeline efficiency?",
+      version:
+        "One segment, one message hypothesis, event tracking, a read-out.",
+      question:
+        "Does tying campaigns to product/customer signals improve pipeline efficiency?",
     },
     workflow: [
       "Signals / accounts",
@@ -1003,13 +1077,26 @@ export const projects: Project[] = [
       "Analytics",
       "Iteration",
     ],
-    systemPlain: ["Signals", "Segment", "Hypothesis", "Campaign", "Measurement"],
-    systemTechnical: ["Account signals", "Campaign tool", "Event tracking", "Analytics"],
+    systemPlain: [
+      "Signals",
+      "Segment",
+      "Hypothesis",
+      "Campaign",
+      "Measurement",
+    ],
+    systemTechnical: [
+      "Account signals",
+      "Campaign tool",
+      "Event tracking",
+      "Analytics",
+    ],
     dataModel: ["Segment", "Hypothesis", "Campaign", "Event", "Outcome"],
     metrics: {
       operational: ["Faster GTM experimentation"],
       behavioral: ["Response rate", "Iteration count"],
-      business: ["Hypothesis: higher pipeline efficiency from better segmentation"],
+      business: [
+        "Hypothesis: higher pipeline efficiency from better segmentation",
+      ],
     },
     hypothesis:
       "If campaigns start from product and customer signals, outreach should be more relevant and attribution should improve. Next — not built.",
@@ -1028,7 +1115,7 @@ export const projects: Project[] = [
     title: "Security Signal Intelligence",
     phase: "Discover",
     careerSignal: "Market Intelligence, Product GTM, Strategic Programs",
-    status: "next",
+    status: "exploring",
     problem: {
       summary:
         "Relevant security news, breaches, and market events are difficult for GTM teams to monitor and interpret consistently.",
@@ -1042,11 +1129,14 @@ export const projects: Project[] = [
     },
     evidence:
       "Threat-intelligence playbooks at Rapid7 and industry training at Darktrace existed because the field could not monitor the market consistently on its own.",
-    goals: ["Collect, deduplicate, classify, score relevance, and review before a digest goes out."],
+    goals: [
+      "Collect, deduplicate, classify, score relevance, and review before a digest goes out.",
+    ],
     nonGoals: ["A news product.", "Unreviewed alerts to customers."],
     mvp: {
       version: "A reviewed weekly digest with account/persona tags.",
-      question: "Does a shared, reviewed signal feed change conversation quality?",
+      question:
+        "Does a shared, reviewed signal feed change conversation quality?",
     },
     workflow: [
       "Sources",
@@ -1070,7 +1160,9 @@ export const projects: Project[] = [
     metrics: {
       operational: ["Faster market awareness"],
       behavioral: ["Digest usage", "Campaigns launched from signals"],
-      business: ["Hypothesis: stronger customer conversations and timely campaigns"],
+      business: [
+        "Hypothesis: stronger customer conversations and timely campaigns",
+      ],
     },
     hypothesis:
       "If market events are reviewed and tagged, GTM should respond faster and more consistently. Next — not built. Human review stays in the loop.",
@@ -1091,8 +1183,18 @@ export const projects: Project[] = [
 
 export const detectors = [
   { name: "TruffleHog", aws: "Covered", github: "Covered", slack: "Observed" },
-  { name: "Betterleaks", aws: "Not evaluated", github: "Not evaluated", slack: "Not evaluated" },
-  { name: "Kingfisher", aws: "Not evaluated", github: "Not evaluated", slack: "Not evaluated" },
+  {
+    name: "Betterleaks",
+    aws: "Not evaluated",
+    github: "Not evaluated",
+    slack: "Not evaluated",
+  },
+  {
+    name: "Kingfisher",
+    aws: "Not evaluated",
+    github: "Not evaluated",
+    slack: "Not evaluated",
+  },
 ];
 
 export function getProject(slug: string) {
@@ -1111,7 +1213,10 @@ export function featuredProjects() {
     .filter((project): project is Project => Boolean(project));
 }
 
-export function projectsByPhase(phase: LifecyclePhase, statuses?: ProjectStatus[]) {
+export function projectsByPhase(
+  phase: LifecyclePhase,
+  statuses?: ProjectStatus[],
+) {
   return projects.filter((project) => {
     if (project.phase !== phase) return false;
     if (!statuses) return true;
@@ -1120,5 +1225,5 @@ export function projectsByPhase(phase: LifecyclePhase, statuses?: ProjectStatus[
 }
 
 export function sequencedProjects() {
-  return projects.filter((project) => project.status === "next");
+  return projects.filter((project) => project.status === "exploring");
 }

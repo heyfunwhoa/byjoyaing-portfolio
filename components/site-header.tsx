@@ -5,8 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
+  { href: "/projects", label: "Use cases" },
+  { href: "/about#experience", label: "Experience" },
   { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -19,10 +20,7 @@ export function SiteHeader() {
         className="mx-auto flex w-full max-w-5xl items-center justify-between gap-6 px-5 py-4 sm:px-8"
         aria-label="Primary"
       >
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 text-foreground"
-        >
+        <Link href="/" className="flex items-center gap-2.5 text-foreground">
           <Mark className="text-accent" />
           <span className="font-display text-lg tracking-tight">
             Kristen Joy Aing
@@ -31,9 +29,11 @@ export function SiteHeader() {
         <ul className="flex flex-wrap items-center justify-end gap-x-7 gap-y-2 text-sm text-muted">
           {links.map((link) => {
             const active =
-              pathname === link.href ||
-              pathname.startsWith(`${link.href}/`) ||
-              (link.href === "/projects" && pathname.startsWith("/work"));
+              link.href === "/about#experience"
+                ? false
+                : pathname === link.href ||
+                  pathname.startsWith(`${link.href}/`) ||
+                  (link.href === "/projects" && pathname.startsWith("/work"));
             return (
               <li key={link.href}>
                 <Link

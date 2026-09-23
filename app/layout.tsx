@@ -22,13 +22,13 @@ const instrument = Instrument_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://byjoyaing-portfolio.vercel.app"),
-  title: "Kristen Joy Aing — Technical GTM & Product",
+  title: "Kristen Joy Aing — Enterprise cybersecurity sales",
   description:
-    "I build systems that help technical products reach the market — product GTM, commercialization, and technical GTM systems across enterprise cybersecurity.",
+    "I lead complex security deals and turn recurring field problems into account intelligence, competitive evidence, partner workflows, and enablement other teams can use.",
   openGraph: {
-    title: "Kristen Joy Aing — Technical GTM & Product",
+    title: "Kristen Joy Aing — Enterprise cybersecurity sales",
     description:
-      "I build systems that help technical products reach the market.",
+      "Enterprise cybersecurity sales, built into repeatable GTM systems.",
     type: "website",
     locale: "en_US",
   },

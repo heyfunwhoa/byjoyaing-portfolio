@@ -1,26 +1,15 @@
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CoverageExplorer } from "@/components/coverage-explorer";
 import { CropFrame } from "@/components/crop-frame";
-import { Index, Kicker } from "@/components/kicker";
+import { Kicker } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
-import { ProjectRow } from "@/components/project-row";
-import { Rail } from "@/components/rail";
 import { StatusBadge } from "@/components/status-badge";
-import { ToolsMap } from "@/components/tools-map";
-import {
-  avatar,
-  domains,
-  featuredProjects,
-  proof,
-  skills,
-  strengths,
-} from "@/lib/portfolio";
+import { homepageStories, salesProof, useCases } from "@/lib/sales";
+import { avatar } from "@/lib/portfolio";
 import Link from "next/link";
 
 export default function Home() {
-  const featured = featuredProjects();
-  const atlas = featured[0];
-  const rest = featured.slice(1);
+  const [competitive, partner, atlas] = homepageStories();
 
   return (
     <PageMain>
@@ -30,126 +19,226 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-6">
           <Kicker>{avatar.label}</Kicker>
-          <h1 className="font-display max-w-3xl text-4xl leading-[1.1] tracking-tight text-balance text-foreground sm:text-6xl">
+          <h1 className="max-w-3xl font-display text-4xl leading-[1.1] tracking-tight text-balance text-foreground sm:text-6xl">
             {avatar.line}
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-muted">
-            I build the systems behind how technical products get understood,
-            evaluated, launched, and adopted — from evidence-backed coverage
-            catalogs to competitive briefs a team can run without me.
+            {avatar.support}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/projects"
               className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
             >
-              View Projects
+              Explore sales use cases
             </Link>
             <Link
-              href="/about"
+              href="/about#experience"
               className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
             >
-              Skills, tools & experience
+              View enterprise sales experience
             </Link>
           </div>
         </div>
       </section>
 
-      <Rail label="Strengths" tick>
-        <ul className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
-          {strengths.map((item) => (
-            <li key={item.title} className="flex flex-col gap-2">
-              <h2 className="text-base font-semibold tracking-tight text-foreground">
-                {item.title}
-              </h2>
-              <p className="text-sm leading-6 text-muted">{item.body}</p>
-            </li>
-          ))}
-        </ul>
-      </Rail>
-
-      <Rail label="Skills">
-        <div className="grid gap-8 md:grid-cols-2">
-          <p className="text-base leading-7 text-foreground">{skills.join(" · ")}</p>
-          <p className="text-base leading-7 text-muted">{domains.join(" · ")}</p>
-        </div>
-      </Rail>
-
-      <Rail label="Tools">
-        <ToolsMap compact />
-        <p className="mt-6 text-sm leading-6 text-muted">
-          How it fits is on{" "}
-          <Link href="/about#ai" className="link-rule text-foreground">
-            About
-          </Link>
-          : sales tools surface the friction, build tools make the system, AI fills a schema from a source and a human marks the cell.
-        </p>
-      </Rail>
-
-      <Rail label="Proof">
-        <div className="grid gap-8 sm:grid-cols-3 sm:gap-0">
-          {proof.map((item, index) => (
-            <div
-              key={item.value}
-              className={
-                index === 0
-                  ? "sm:pr-8"
-                  : "border-t border-border pt-8 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-8"
-              }
-            >
+      <section
+        className="border-b border-border py-12"
+        aria-labelledby="proof-title"
+      >
+        <h2 id="proof-title" className="text-sm font-medium text-muted">
+          Sales record
+        </h2>
+        <ul className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {salesProof.map((item) => (
+            <li key={item.value} className="flex flex-col gap-2">
               <p className="text-2xl font-semibold tracking-tight text-foreground">
                 {item.value}
               </p>
-              <p className="mt-2 text-sm leading-6 text-muted">{item.label}</p>
-            </div>
+              <p className="text-sm font-medium text-foreground">
+                {item.label}
+              </p>
+              <p className="text-sm leading-6 text-muted">{item.detail}</p>
+            </li>
           ))}
+        </ul>
+        <p className="mt-6 max-w-3xl text-sm leading-6 text-muted">
+          These figures are from my role history. Truffle quota attainment is
+          not stated because I do not have a figure to publish. The full
+          timeline is on{" "}
+          <Link href="/about#experience" className="link-rule text-foreground">
+            Experience
+          </Link>
+          .
+        </p>
+      </section>
+
+      <section
+        className="border-b border-border py-12"
+        aria-labelledby="stories-title"
+      >
+        <div className="mb-8 flex max-w-2xl flex-col gap-3">
+          <h2
+            id="stories-title"
+            className="font-display text-3xl leading-tight tracking-tight text-foreground sm:text-4xl"
+          >
+            Three places to start
+          </h2>
+          <p className="text-base leading-7 text-muted">
+            Field knowledge, a channel design, and a prototype you can inspect.
+            They are not the same kind of evidence.
+          </p>
         </div>
-      </Rail>
 
-      <Rail label="Featured" tick className="border-b-0 pb-8">
-        {atlas ? (
-          <div className="flex flex-wrap items-center gap-3">
-            <Index n={1} />
-            <StatusBadge status={atlas.status} />
-            <span className="text-sm text-muted">{atlas.phase}</span>
-            <span className="text-lg font-semibold tracking-tight text-foreground">
-              {atlas.title}
-            </span>
-          </div>
-        ) : null}
-      </Rail>
+        <div className="grid gap-4 lg:grid-cols-2">
+          <article className="flex flex-col gap-4 border border-border bg-card p-5 sm:p-6">
+            <StatusBadge status={competitive.status} />
+            <h3 className="text-2xl font-semibold tracking-tight text-foreground">
+              <Link
+                href={`/work/${competitive.slug}`}
+                className="link-rule hover:text-accent"
+              >
+                {competitive.title}
+              </Link>
+            </h3>
+            <p className="text-base leading-7 text-foreground">
+              {competitive.sales.salesQuestion}
+            </p>
+            <p className="text-sm leading-6 text-muted">
+              {competitive.sales.maturityDetail}
+            </p>
+            <Link
+              href={`/work/${competitive.slug}`}
+              className="link-rule w-fit text-sm font-medium text-accent"
+            >
+              Read the case
+            </Link>
+          </article>
 
-      {atlas ? (
-        <article className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 bg-card px-5 py-10 sm:px-8">
-          <CropFrame>
-            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
-              <div className="flex flex-col gap-4">
-                <p className="text-base leading-7 text-muted">
-                  Independent research catalog — not an official Truffle
-                  product. Parser observed 910 TruffleHog detectors; 14 are
-                  enriched. Search and filter the sample. Gray means not
-                  evaluated, never a confirmed gap.
-                </p>
-                <Link
-                  href={`/work/${atlas.slug}`}
-                  className="link-rule w-fit text-sm font-medium text-accent"
-                >
-                  Full case study
-                </Link>
-              </div>
-              <CoverageExplorer />
+          <article className="flex flex-col gap-4 border border-border bg-card p-5 sm:p-6">
+            <StatusBadge status={partner.status} />
+            <h3 className="text-2xl font-semibold tracking-tight text-foreground">
+              <Link
+                href={`/work/${partner.slug}`}
+                className="link-rule hover:text-accent"
+              >
+                Account and partner strategy
+              </Link>
+            </h3>
+            <p className="text-base leading-7 text-foreground">
+              {partner.sales.salesQuestion}
+            </p>
+            <p className="text-sm leading-6 text-muted">
+              {partner.sales.maturityDetail}
+            </p>
+            <p className="text-sm leading-6 text-muted">
+              Account Intelligence is a separate design for the brief that
+              follows a signal. It is also not deployed.
+            </p>
+            <div className="flex flex-col gap-2">
+              <Link
+                href={`/work/${partner.slug}`}
+                className="link-rule w-fit text-sm font-medium text-accent"
+              >
+                Partner GTM Engine
+              </Link>
+              <Link
+                href="/work/account-intelligence"
+                className="link-rule w-fit text-sm font-medium text-accent"
+              >
+                Account Intelligence
+              </Link>
             </div>
-          </CropFrame>
-        </article>
-      ) : null}
+          </article>
+        </div>
 
-      <ul className="border-t border-border">
-        {rest.map((project, i) => (
-          <li key={project.slug} className="border-b border-border">
-            <ProjectRow project={project} showPhase index={i + 2} />
-          </li>
-        ))}
-      </ul>
+        <article
+          id="atlas"
+          className="mt-4 scroll-mt-24 border border-border bg-card p-5 sm:p-6"
+        >
+          <div className="mb-5 flex flex-col gap-3">
+            <StatusBadge status={atlas.status} />
+            <h3 className="text-2xl font-semibold tracking-tight text-foreground">
+              <Link
+                href={`/work/${atlas.slug}`}
+                className="link-rule hover:text-accent"
+              >
+                {atlas.title}
+              </Link>
+            </h3>
+            <p className="max-w-2xl text-base leading-7 text-muted">
+              {atlas.sales.maturityDetail} Independent research — not an
+              official Truffle Security product. Gray means not evaluated, never
+              a confirmed gap.
+            </p>
+          </div>
+          <CropFrame>
+            <CoverageExplorer />
+          </CropFrame>
+          <Link
+            href={`/work/${atlas.slug}`}
+            className="link-rule mt-4 inline-flex text-sm font-medium text-accent"
+          >
+            Read the case
+          </Link>
+        </article>
+      </section>
+
+      <section
+        className="border-b border-border py-12"
+        aria-labelledby="camp-title"
+      >
+        <div className="flex flex-col gap-4 border border-dashed border-foreground/30 p-5 sm:p-6">
+          <StatusBadge status="designed" />
+          <h2
+            id="camp-title"
+            className="text-2xl font-semibold tracking-tight text-foreground"
+          >
+            <Link
+              href="/work/truffle-camp"
+              className="link-rule hover:text-accent"
+            >
+              Truffle Camp and the enablement I already did
+            </Link>
+          </h2>
+          <p className="max-w-3xl text-base leading-7 text-muted">
+            Teams have used discovery frameworks, playbooks, onboarding notes,
+            and industry training I wrote. Truffle Camp is the course I designed
+            so a new AE, SDR, SA, or partner can practice that without a live
+            secret. The course is not deployed. The Darktrace ramp result
+            belongs to the training, not to Camp.
+          </p>
+          <Link
+            href="/work/truffle-camp"
+            className="link-rule w-fit text-sm font-medium text-accent"
+          >
+            See the sample module
+          </Link>
+        </div>
+      </section>
+
+      <section className="py-12" aria-labelledby="jobs-title">
+        <h2 id="jobs-title" className="text-sm font-medium text-muted">
+          Browse by the sales job
+        </h2>
+        <ul className="mt-6 divide-y divide-border border-y border-border">
+          {useCases.map((useCase) => (
+            <li key={useCase.id}>
+              <Link
+                href={`/projects#${useCase.id}`}
+                className="group grid gap-1 py-4 sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-8"
+              >
+                <span className="font-medium text-foreground group-hover:text-accent">
+                  {useCase.title}
+                </span>
+                <span className="text-sm leading-6 text-muted">
+                  {useCase.flow}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </PageMain>
   );
 }

@@ -7,19 +7,19 @@ import { ToolsMap } from "@/components/tools-map";
 import {
   avatar,
   bio,
-  lifecycle,
   loop,
   skills,
   strengths,
   targetRolesPrimary,
 } from "@/lib/portfolio";
+import { useCases } from "@/lib/sales";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About — Kristen Joy Aing",
   description:
-    "Skills, strengths, and experience: technical GTM systems across enterprise cybersecurity.",
+    "Enterprise cybersecurity sales experience, and the GTM systems I design around the deal.",
 };
 
 export default function AboutPage() {
@@ -31,14 +31,15 @@ export default function AboutPage() {
         </div>
         <div className="flex flex-col gap-6">
           <Kicker>About</Kicker>
-          <h1 className="font-display max-w-2xl text-4xl leading-[1.12] tracking-tight text-foreground sm:text-5xl">
+          <h1 className="max-w-2xl font-display text-4xl leading-[1.12] tracking-tight text-foreground sm:text-5xl">
             {avatar.line}
           </h1>
           <p className="max-w-2xl text-base leading-7 text-muted">{bio}</p>
           <p className="max-w-2xl text-base leading-7 text-muted">
-            Not traditional enablement or an AE becoming a PM. The work is
-            skills: system design, evidence, commercial judgment in technical
-            markets, and making knowledge usable.
+            A brief a team used is not a shipped product. A prototype is labeled
+            as a prototype. I design product-to-field workflows when a release
+            or a feedback loop needs one, and I do not present those designs as
+            software in production.
           </p>
         </div>
       </section>
@@ -58,21 +59,24 @@ export default function AboutPage() {
 
       <Rail label="Skills">
         <div className="flex flex-col gap-6">
-          <p className="text-base leading-7 text-foreground">{skills.join(" · ")}</p>
-          <p className="text-base leading-7 text-foreground">{loop.join(" → ")}</p>
-          <p className="text-base leading-7 text-muted">
-            {lifecycle.map((step, index) => (
-              <span key={step}>
-                {index > 0 ? " → " : null}
-                <Link
-                  className="text-foreground underline-offset-4 hover:underline"
-                  href={`/projects#${step.toLowerCase()}`}
-                >
-                  {step}
-                </Link>
-              </span>
-            ))}
+          <p className="text-base leading-7 text-foreground">
+            {skills.join(" · ")}
           </p>
+          <p className="text-base leading-7 text-foreground">
+            {loop.join(" → ")}
+          </p>
+          <ul className="flex flex-col gap-2 text-base leading-7">
+            {useCases.map((useCase) => (
+              <li key={useCase.id}>
+                <Link
+                  className="link-rule text-foreground hover:text-accent"
+                  href={`/projects#${useCase.id}`}
+                >
+                  {useCase.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <p className="text-base leading-7 text-foreground">
             {targetRolesPrimary.join(" · ")}
           </p>
@@ -83,14 +87,16 @@ export default function AboutPage() {
         <ToolsMap />
       </Rail>
 
-      <Rail label="Experience" tick>
+      <Rail id="experience" label="Experience" tick>
         <ExperienceTimeline />
       </Rail>
 
       <Rail label="Education" className="border-b-0">
         <ul className="grid gap-6 text-base leading-7 text-muted sm:grid-cols-3">
           <li>
-            <span className="font-medium text-foreground">MBA, IT Management</span>
+            <span className="font-medium text-foreground">
+              MBA, IT Management
+            </span>
             <br />
             Western Governors University (in progress)
           </li>
