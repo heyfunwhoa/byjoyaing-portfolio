@@ -7,52 +7,36 @@ import {
 
 export const useCases = [
   {
-    id: "competitive",
-    title: "Competitive selling and technical differentiation",
+    id: "account",
+    title: "Account and industry intelligence",
     promise:
-      "I use this when a rep or SA has to check a claim, compare a capability, and frame discovery without treating “not evaluated” as a competitive gap.",
-    flow: "Claim → source and date → evidence → review status → approved positioning → discovery question",
+      "Turn a company or an industry change into a brief: who is likely in the room, what is still a hypothesis, and the next action.",
+    flow: "Account or industry source → review → brief, personas, hypothesis, next action",
+    emphasis: "supporting",
+  },
+  {
+    id: "competitive",
+    title: "Competitive and product intelligence",
+    promise:
+      "Check a claim, compare a capability, and say what a release means without treating an unreviewed cell as a gap.",
+    flow: "Source → review → claim, comparison, or approved release line",
     emphasis: "lead",
   },
   {
     id: "enablement",
-    title: "Sales enablement and technical ramp",
+    title: "Sales enablement and learning systems",
     promise:
-      "I use this when a new AE, SDR, SA, or partner needs a path through the product, a practice scenario, and a readiness check a manager can score.",
-    flow: "Role → learning path → product concepts → practice scenario → manager readiness check",
+      "Give a new AE, SDR, SA, or partner a path and a practice scenario a manager can score.",
+    flow: "Role → concepts → practice scenario → readiness check",
     emphasis: "lead",
   },
   {
-    id: "channel",
-    title: "Territory and channel partnerships",
+    id: "workflow",
+    title: "GTM workflow design",
     promise:
-      "I use this when partner lists do not match the book of business: normalize the account, review overlap and conflicts, see whitespace, and pick a joint action.",
-    flow: "Partner sheet → domain match → overlap and conflict review → whitespace → joint account action",
+      "Design the handoff for a partner list, a customer request, or a campaign test. A page on this site is not a system I have deployed.",
+    flow: "Incoming list or note → human review → an action someone else can run",
     emphasis: "supporting",
-  },
-  {
-    id: "account",
-    title: "Account and industry intelligence",
-    promise:
-      "I use this when a company or industry change should become an account brief, the people likely in the room, a hypothesis, and a next action.",
-    flow: "Company and industry sources → dated change → account brief → personas → outreach hypothesis → next action",
-    emphasis: "supporting",
-  },
-  {
-    id: "release",
-    title: "Product-to-field execution",
-    promise:
-      "I use this when something ships or a customer asks for it, and AE, SA, and CSM still need one approved story and a list of accounts it touches.",
-    flow: "Source material → approved release truth → affected accounts → AE / SA / CSM guidance → customer communication",
-    emphasis: "supporting",
-  },
-  {
-    id: "campaign",
-    title: "Campaign experimentation",
-    promise:
-      "A future place to test one message on one segment and read the result. I have not built it.",
-    flow: "Segment → one message hypothesis → readout",
-    emphasis: "future",
   },
 ] as const;
 
@@ -67,6 +51,13 @@ export type SalesLink = {
 export type SalesResult = {
   kind: "measured" | "to-test";
   text: string;
+};
+
+export type CapabilityFacts = {
+  pipeline: string;
+  workingToday: string;
+  plannedNext: string;
+  implementedTech: string;
 };
 
 export type SalesProfile = {
@@ -84,9 +75,9 @@ export type SalesProfile = {
   links: SalesLink[];
   result: SalesResult;
   related: string[];
-};
+} & CapabilityFacts;
 
-const salesProfiles: SalesProfile[] = [
+const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
   {
     slug: "competitive-intelligence-engine",
     useCase: "competitive",
@@ -121,26 +112,31 @@ const salesProfiles: SalesProfile[] = [
       "Is this credential type covered, is it the same detector, and can we verify it — without calling an unreviewed cell a gap?",
     userMoment:
       "An SA or AE in a technical evaluation, when a buyer asks for a coverage comparison and the answer is usually tribal.",
-    intake: "Public detector source and provider docs, pinned to a commit.",
+    intake:
+      "Three rows I typed into this site: TruffleHog, Betterleaks, and Kingfisher.",
     produces:
-      "A comparison cell with a source, a review state, and an explicit “not evaluated” when the public material has not been read.",
+      "A filtered table: Covered, Observed, or Not evaluated. Unreviewed cells stay Not evaluated.",
     decision: "What I can claim in discovery, and what I have to leave gray.",
     myRole:
-      "I set the catalog rules and ran a parser against public TruffleHog. This is independent research. It is not an official Truffle Security product.",
+      "I built this sample and the rule that gray is not a gap. A larger parser is described in my notes and is not in this repository. This is independent research, not an official Truffle Security product.",
     maturityDetail:
-      "A sample comparison runs on this page. My notes say the parser observed 910 TruffleHog detector records and 14 are enriched (September 2026). The parser is not in this repository, so those counts are research notes, not a number you can re-run here.",
+      "What runs is the sample table on this page: 3 sources and 3 credential types. Notes mention 910 parsed TruffleHog records and 14 enriched. Those rows are not in this repository.",
     fieldAsset: null,
     proposedSoftware:
-      "The catalog is the prototype. It is not a production scanner and not a company product.",
+      "A commit-pinned catalog that ingests public detector files. Not built in this repo. This is not a production scanner and not a Truffle Security product.",
     links: [
       {
-        label: "Portfolio source on GitHub",
+        label: "Live sample",
+        href: "/#atlas",
+      },
+      {
+        label: "GitHub repository",
         href: "https://github.com/heyfunwhoa/byjoyaing-portfolio",
       },
     ],
     result: {
       kind: "measured",
-      text: "Research note, not a revenue result: 910 public TruffleHog detector records parsed, 14 enriched, as recorded in this portfolio for September 2026. No adoption or pipeline number.",
+      text: "The page you can use has 3 sources and 3 credential types. Betterleaks and Kingfisher are Not evaluated. The 910 and 14 counts are notes, not rows in the interface, and there is no revenue claim.",
     },
     related: ["competitive-intelligence-engine", "truffle-camp"],
   },
@@ -178,7 +174,7 @@ const salesProfiles: SalesProfile[] = [
   },
   {
     slug: "partner-gtm-engine",
-    useCase: "channel",
+    useCase: "workflow",
     salesQuestion:
       "Which accounts does this partner actually share with me, who owns them, and where is the whitespace — once the spreadsheets disagree?",
     userMoment:
@@ -261,7 +257,7 @@ const salesProfiles: SalesProfile[] = [
   },
   {
     slug: "product-release-intelligence",
-    useCase: "release",
+    useCase: "competitive",
     salesQuestion:
       "Something shipped. Which accounts care, and what should AE, SA, and CSM actually say?",
     userMoment:
@@ -289,7 +285,7 @@ const salesProfiles: SalesProfile[] = [
   },
   {
     slug: "customer-feedback-intelligence",
-    useCase: "release",
+    useCase: "workflow",
     salesQuestion:
       "What are customers actually asking for, which accounts are behind it, and did we close the loop when it shipped?",
     userMoment:
@@ -315,7 +311,7 @@ const salesProfiles: SalesProfile[] = [
   },
   {
     slug: "gtm-campaign-lab",
-    useCase: "campaign",
+    useCase: "workflow",
     salesQuestion:
       "If I test one message on one segment, will I know what happened?",
     userMoment:
@@ -339,7 +335,7 @@ const salesProfiles: SalesProfile[] = [
   },
   {
     slug: "product-prioritization-simulator",
-    useCase: null,
+    useCase: "workflow",
     salesQuestion:
       "Which bet gets the time, once customer, competitive, and commercial signals disagree?",
     userMoment: "A planning conversation before someone commits build time.",
@@ -351,7 +347,7 @@ const salesProfiles: SalesProfile[] = [
     myRole:
       "I keep hitting this gap in the field. I have not designed the simulator past this note.",
     maturityDetail:
-      "Exploring. Not a completed design and not software. I am not filing it under a sales use case.",
+      "Exploring. Not a completed design and not software. It sits with GTM workflow design as a note, not a tool.",
     fieldAsset: null,
     proposedSoftware: null,
     links: [],
@@ -363,24 +359,120 @@ const salesProfiles: SalesProfile[] = [
   },
 ];
 
+const capabilityFacts: Record<string, CapabilityFacts> = {
+  "account-intelligence": {
+    pipeline:
+      "An account name I type → I mark context, stakeholders, and hypotheses by hand → one brief and a next action. Nothing is collected automatically.",
+    workingToday:
+      "A fictional brief on the case study page. There is no feed, no enrichment API, and no outreach draft in this repository.",
+    plannedNext:
+      "A personal list of assigned accounts and a dated public event, with the hypothesis kept separate from the fact.",
+    implementedTech:
+      "Static copy in this Next.js site. No other repository and no live demo beyond this page.",
+  },
+  "security-signal-intelligence": {
+    pipeline:
+      "A fixed list of public sources → a person reviews the item → a note that says whether a rep should use it. That path is not built.",
+    workingToday:
+      "Nothing in this repository. Rapid7 playbooks and Darktrace industry training were field work. They are not this product.",
+    plannedNext:
+      "A reviewed weekly note. I have not turned the source list into software.",
+    implementedTech: "None. This page is the note.",
+  },
+  "competitive-intelligence-engine": {
+    pipeline:
+      "Deal notes and public pages → I write the brief and review what we will not claim → a talk track and a discovery question.",
+    workingToday:
+      "Briefs, discovery templates, and threat-intelligence playbooks used with teams. This repository does not monitor competitor sites.",
+    plannedNext:
+      "A snapshot of a public page and a reviewed change note. Not started as code.",
+    implementedTech:
+      "None in this repo. In the field I used documents, Salesforce, and Slack. No demo link.",
+  },
+  "detector-coverage-atlas": {
+    pipeline:
+      "Three hardcoded rows → a browser filter → Covered, Observed, or Not evaluated.",
+    workingToday:
+      "The comparison on this site. TruffleHog has values. Betterleaks and Kingfisher are Not evaluated. There is no parser, database, or refresh job.",
+    plannedNext:
+      "Read public detector files at a pinned commit and keep unreviewed cells gray. That code is not in this repo.",
+    implementedTech:
+      "Next.js, React, and TypeScript. Rows are in lib/portfolio.ts. The filter is components/coverage-explorer.tsx. Tailwind for layout.",
+  },
+  "product-release-intelligence": {
+    pipeline:
+      "A release note → I say what changed, who cares, and what not to promise → a field line and a next action. Account matching stays manual in the design.",
+    workingToday:
+      "The questions I use with the field. There is no release hub in this repository.",
+    plannedNext:
+      "A page that lists affected accounts only after a person confirms the match.",
+    implementedTech: "None beyond this page.",
+  },
+  "truffle-camp": {
+    pipeline:
+      "A written scenario → the reader separates detection from verification → a manager could score the explanation. On this site you read the module. You cannot complete it in software.",
+    workingToday:
+      "The First Expedition write-up on the case study. Teams have used discovery frameworks, playbooks, and Darktrace industry training. Those are not a course app.",
+    plannedNext:
+      "One playable mission with synthetic evidence and no real secret.",
+    implementedTech:
+      "Static copy in this Next.js page. No lesson player, saved progress, or model.",
+  },
+  "partner-gtm-engine": {
+    pipeline:
+      "A partner row with no website → I refuse to treat a similar name as a match → a human review state before anyone co-sells.",
+    workingToday:
+      "One fictional match on the case study. No spreadsheet upload, domain search, or CRM sync. Metadot growth numbers are from that job, not from this design.",
+    plannedNext:
+      "Upload a sheet, match on domain, and leave uncertain rows for a person.",
+    implementedTech:
+      "Static copy in this Next.js page. No live demo and no public project repo.",
+  },
+  "customer-feedback-intelligence": {
+    pipeline:
+      "Notes from a deal or a call → I group the repeat request in conversation with product → a theme to take back if it ships.",
+    workingToday:
+      "That sales-to-product loop at Truffle. This repository does not ingest notes or collapse duplicates.",
+    plannedNext:
+      "A theme list with the account attached, joined to the release note when it ships.",
+    implementedTech: "None beyond this page.",
+  },
+  "gtm-campaign-lab": {
+    pipeline:
+      "One segment → one message → a readout of what to change. Not built.",
+    workingToday:
+      "Outbound plays and ICP notes from the field. No campaign tool in this repository.",
+    plannedNext: "One measured send. Not designed past this page.",
+    implementedTech: "None.",
+  },
+  "product-prioritization-simulator": {
+    pipeline:
+      "A short list of bets → write impact, confidence, and effort → a decision record. Not built.",
+    workingToday: "This page. I have not scored a bet in software.",
+    plannedNext: "A scoring sheet. Not an automatic roadmap.",
+    implementedTech: "None.",
+  },
+};
+
 const profileBySlug = new Map(
   salesProfiles.map((profile) => [profile.slug, profile]),
 );
 
 for (const project of projects) {
-  if (!profileBySlug.has(project.slug)) {
+  if (!profileBySlug.has(project.slug) || !capabilityFacts[project.slug]) {
     throw new Error(`Missing sales profile for ${project.slug}`);
   }
 }
 
 export type SalesProject = Project & { sales: SalesProfile };
 
-export function salesFor(slug: string) {
+export function salesFor(slug: string): SalesProfile {
   const profile = profileBySlug.get(slug);
-  if (!profile) {
+  const facts = capabilityFacts[slug];
+  if (!profile || !facts) {
     throw new Error(`Missing sales profile for ${slug}`);
   }
-  return profile;
+  return { ...profile, ...facts };
 }
 
 const maturityRank: Record<ProjectStatus, number> = {
@@ -415,20 +507,43 @@ export function projectsInUseCase(id: UseCaseId) {
   return salesProjects().filter((project) => project.sales.useCase === id);
 }
 
-export const homepageStorySlugs = [
-  "competitive-intelligence-engine",
-  "partner-gtm-engine",
-  "detector-coverage-atlas",
+export const homepageFeatures = [
+  {
+    useCase: "account",
+    slug: "account-intelligence",
+    also: ["security-signal-intelligence"],
+  },
+  {
+    useCase: "competitive",
+    slug: "detector-coverage-atlas",
+    also: ["competitive-intelligence-engine", "product-release-intelligence"],
+  },
+  {
+    useCase: "enablement",
+    slug: "truffle-camp",
+    also: [],
+  },
+  {
+    useCase: "workflow",
+    slug: "partner-gtm-engine",
+    also: ["customer-feedback-intelligence", "gtm-campaign-lab"],
+  },
 ] as const;
 
-export function homepageStories() {
-  return homepageStorySlugs.map((slug) => {
-    const project = salesProject(slug);
-    if (!project) {
-      throw new Error(`Missing homepage story ${slug}`);
-    }
-    return project;
-  });
+export function densityFor(slug: string, status: ProjectStatus) {
+  if (status === "exploring") {
+    return "quiet" as const;
+  }
+  if (
+    slug === "account-intelligence" ||
+    slug === "detector-coverage-atlas" ||
+    slug === "competitive-intelligence-engine" ||
+    slug === "truffle-camp" ||
+    slug === "partner-gtm-engine"
+  ) {
+    return "full" as const;
+  }
+  return "compact" as const;
 }
 
 export const salesProof: {
@@ -628,14 +743,4 @@ export type SampleRecord = {
 
 export function sampleFor(slug: string): SampleRecord | undefined {
   return samplesBySlug[slug as keyof typeof samplesBySlug];
-}
-
-export function densityFor(status: ProjectStatus, emphasis: UseCaseEmphasis) {
-  if (emphasis === "future" || status === "exploring") {
-    return "quiet" as const;
-  }
-  if (emphasis === "lead") {
-    return "full" as const;
-  }
-  return "compact" as const;
 }

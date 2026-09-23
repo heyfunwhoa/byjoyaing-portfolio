@@ -95,10 +95,6 @@ export function UseCaseBrowser() {
         const items = projectsInUseCase(useCase.id).filter(
           (project) => maturity === "all" || project.status === maturity,
         );
-        const density = densityFor(
-          items[0]?.status ?? "exploring",
-          useCase.emphasis,
-        );
 
         return (
           <section
@@ -120,11 +116,6 @@ export function UseCaseBrowser() {
               <p className="text-sm leading-6 text-foreground">
                 {useCase.flow}
               </p>
-              {useCase.emphasis === "future" ? (
-                <p className="text-sm font-medium text-foreground">
-                  Future concept. Nothing here is built.
-                </p>
-              ) : null}
             </div>
             {items.length === 0 ? (
               <p className="text-sm leading-6 text-muted">
@@ -142,9 +133,7 @@ export function UseCaseBrowser() {
                   <li key={project.slug}>
                     <ProjectCard
                       project={project}
-                      density={
-                        project.status === "exploring" ? "quiet" : density
-                      }
+                      density={densityFor(project.slug, project.status)}
                     />
                   </li>
                 ))}

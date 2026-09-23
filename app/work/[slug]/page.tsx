@@ -84,7 +84,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             href="/projects"
             className="link-rule w-fit text-sm font-medium text-accent"
           >
-            All sales use cases
+            All four capabilities
           </Link>
         </aside>
 
@@ -100,24 +100,34 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           <dl className="grid max-w-2xl gap-5 text-base leading-7">
             <div>
-              <dt className="font-medium text-foreground">
-                Who uses it, and when
-              </dt>
+              <dt className="font-medium text-foreground">Who uses it</dt>
               <dd className="text-muted">{sales.userMoment}</dd>
             </div>
             <div>
-              <dt className="font-medium text-foreground">What it takes in</dt>
-              <dd className="text-muted">{sales.intake}</dd>
-            </div>
-            <div>
-              <dt className="font-medium text-foreground">What it produces</dt>
-              <dd className="text-muted">{sales.produces}</dd>
+              <dt className="font-medium text-foreground">
+                Inputs → review → output
+              </dt>
+              <dd className="text-muted">{sales.pipeline}</dd>
             </div>
             <div>
               <dt className="font-medium text-foreground">
                 Decision it enables
               </dt>
               <dd className="text-muted">{sales.decision}</dd>
+            </div>
+            <div>
+              <dt className="font-medium text-foreground">Working today</dt>
+              <dd className="text-muted">{sales.workingToday}</dd>
+            </div>
+            <div>
+              <dt className="font-medium text-foreground">Planned next</dt>
+              <dd className="text-muted">{sales.plannedNext}</dd>
+            </div>
+            <div>
+              <dt className="font-medium text-foreground">
+                Technologies in this repo or a linked project
+              </dt>
+              <dd className="text-muted">{sales.implementedTech}</dd>
             </div>
           </dl>
 
@@ -231,8 +241,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </section>
               <section className="flex flex-col gap-2">
                 <h3 className="font-medium text-foreground">
-                  Implementation notes
+                  Described stack — not what this repository runs
                 </h3>
+                <p>
+                  Names below are a sketch. They are not completed integrations
+                  unless the technology section says Built with.
+                </p>
                 <p>{project.systemTechnical.join(" · ")}</p>
                 <p>{project.dataModel.join(" · ")}</p>
                 <p>{project.prototype}</p>

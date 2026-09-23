@@ -83,7 +83,7 @@ export default function AboutPage() {
         </div>
       </Rail>
 
-      <Rail id="tools" label="Tools" tick>
+      <Rail id="technologies" label="Technologies" tick>
         <ToolsMap />
       </Rail>
 

@@ -23,7 +23,7 @@ export function ProjectRow({ project }: { project: Project | SalesProject }) {
         {useCase ? (
           <span className="text-xs text-muted">{useCase.title}</span>
         ) : (
-          <span className="text-xs text-muted">Outside the six sales jobs</span>
+          <span className="text-xs text-muted">Not grouped</span>
         )}
       </span>
       <span className="text-base leading-7 text-muted">

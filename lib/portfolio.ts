@@ -62,62 +62,162 @@ export const skills = [
   "Working prototypes when a spreadsheet stops being enough",
 ];
 
-export const toolGroups = [
-  {
-    id: "gtm",
-    title: "GTM & sales — I know",
-    items: [
-      { id: "salesforce", name: "Salesforce" },
-      { id: "linkedin", name: "LinkedIn / Sales Navigator" },
-      { id: "slack", name: "Slack" },
-      { id: "workspace", name: "Google Workspace" },
-      { id: "sheets", name: "Spreadsheets" },
-    ],
-  },
+export type TechStance = "built" | "professional" | "learning";
+
+export const techStanceCopy: Record<TechStance, string> = {
+  built: "Built with",
+  professional: "Used professionally",
+  learning: "Learning",
+};
+
+export const techCategories = [
   {
     id: "build",
-    title: "Build — I ship with",
+    title: "Build & Deploy",
     items: [
-      { id: "cursor", name: "Cursor" },
-      { id: "next", name: "Next.js / TypeScript" },
-      { id: "github", name: "GitHub" },
-      { id: "vercel", name: "Vercel" },
-      { id: "aws", name: "AWS (foundational)" },
+      {
+        id: "next",
+        name: "Next.js, React, TypeScript, Tailwind",
+        stance: "built",
+        note: "This portfolio, including the coverage sample.",
+      },
+      {
+        id: "github",
+        name: "GitHub",
+        stance: "built",
+        note: "heyfunwhoa/byjoyaing-portfolio. No other project repo is public.",
+      },
+      {
+        id: "vercel",
+        name: "Vercel",
+        stance: "built",
+        note: "Hosts this site. It does not host a separate intelligence app.",
+      },
+      {
+        id: "cursor",
+        name: "Cursor",
+        stance: "professional",
+        note: "Where I write. Not a feature of the site.",
+      },
+      {
+        id: "aws",
+        name: "AWS",
+        stance: "learning",
+        note: "Cloud Practitioner and AI Practitioner. This site does not call AWS.",
+      },
     ],
   },
   {
-    id: "learn",
-    title: "Learning",
+    id: "research",
+    title: "Research & Data Collection",
     items: [
-      { id: "attio", name: "Attio" },
-      { id: "postgres", name: "Postgres / Drizzle" },
-      { id: "ingest", name: "Ingestion & scheduled jobs" },
-      { id: "resend", name: "Resend" },
-      { id: "aisdk", name: "Vercel AI SDK" },
-      { id: "schema", name: "Structured output" },
+      {
+        id: "sheets",
+        name: "Spreadsheets",
+        stance: "professional",
+        note: "How partner lists and coverage notes show up in a live cycle. This repo has no sheet importer.",
+      },
+      {
+        id: "linkedin",
+        name: "LinkedIn / Sales Navigator",
+        stance: "professional",
+        note: "Account research in the field. Not connected to this site.",
+      },
+    ],
+  },
+  {
+    id: "data",
+    title: "Data & AI",
+    items: [
+      {
+        id: "postgres",
+        name: "Postgres / Drizzle",
+        stance: "learning",
+        note: "Not a dependency of this repository.",
+      },
+      {
+        id: "aisdk",
+        name: "Vercel AI SDK",
+        stance: "learning",
+        note: "No model call in this repository.",
+      },
+      {
+        id: "schema",
+        name: "Structured output",
+        stance: "learning",
+        note: "A rule I want for briefs and coverage cells. Not implemented here.",
+      },
+      {
+        id: "ingest",
+        name: "Ingestion and scheduled jobs",
+        stance: "learning",
+        note: "The coverage table is hardcoded. Nothing refreshes it.",
+      },
+      {
+        id: "attio",
+        name: "Attio",
+        stance: "learning",
+        note: "Not connected.",
+      },
+    ],
+  },
+  {
+    id: "gtm",
+    title: "GTM Systems",
+    items: [
+      {
+        id: "salesforce",
+        name: "Salesforce",
+        stance: "professional",
+        note: "Where I have run enterprise cycles. Not integrated here.",
+      },
+      {
+        id: "slack",
+        name: "Slack",
+        stance: "professional",
+        note: "Where competitive notes and handoffs actually moved. Not integrated here.",
+      },
+    ],
+  },
+  {
+    id: "comms",
+    title: "Communication",
+    items: [
+      {
+        id: "resend",
+        name: "Resend",
+        stance: "built",
+        note: "Contact form and resume request in this repo. Not an intelligence pipeline.",
+      },
+      {
+        id: "workspace",
+        name: "Google Workspace",
+        stance: "professional",
+        note: "Briefs and enablement docs in the field.",
+      },
     ],
   },
 ] as const;
 
 export const toolsFit =
-  "Salesforce, LinkedIn, Slack, and spreadsheets are where the friction shows up in a live cycle. Cursor and Next.js turn that into a system someone else can run. GitHub and Vercel make it inspectable. Attio, Postgres, and mail persist it. AI enters the same way: schema, retrieved source, human review — labeled learning, not a chatbot.";
+  "Built with means the package or host is in this repository and you can see the result on the site. Used professionally means I sold with it. Learning means I have not shipped it here. A name in a case-study sketch is not a completed integration.";
 
 export const aiLoop = [
   {
     title: "Schema first",
-    body: "JSON that matches a brief, catalog cell, or field action — not a freeform chat.",
+    body: "I would want a fixed shape for a brief or a coverage cell. This site does not call a model.",
   },
   {
     title: "Grounded in source",
-    body: "Generate only from retrieved or pasted text. Missing stays not evaluated.",
+    body: "If a line is generated, it has to come from text I retrieved. Missing stays not evaluated.",
   },
   {
-    title: "Persist",
-    body: "Postgres and ingest so the output is a system someone else can run, not a transcript.",
+    title: "Not built here",
+    body: "There is no database write and no scheduled ingest in this repository.",
   },
   {
     title: "Human review",
-    body: "Accepted, edited, or gray. Same rule as coverage: the model does not invent a gap.",
+    body: "The coverage sample follows that rule by hand. Gray means not evaluated.",
   },
 ];
 

@@ -4,12 +4,33 @@ import { CropFrame } from "@/components/crop-frame";
 import { Kicker } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
 import { StatusBadge } from "@/components/status-badge";
-import { homepageStories, salesProof, useCases } from "@/lib/sales";
+import {
+  findUseCase,
+  homepageFeatures,
+  salesProject,
+  salesProof,
+} from "@/lib/sales";
 import { avatar } from "@/lib/portfolio";
 import Link from "next/link";
 
 export default function Home() {
-  const [competitive, partner, atlas] = homepageStories();
+  const features = homepageFeatures.map((feature) => {
+    const project = salesProject(feature.slug);
+    const useCase = findUseCase(feature.useCase);
+    if (!project || !useCase) {
+      throw new Error(`Missing homepage feature ${feature.slug}`);
+    }
+    const also = feature.also.flatMap((slug) => {
+      const match = salesProject(slug);
+      return match ? [match] : [];
+    });
+    return {
+      project,
+      useCase,
+      also,
+      showTable: feature.slug === "detector-coverage-atlas",
+    };
+  });
 
   return (
     <PageMain>
@@ -30,7 +51,7 @@ export default function Home() {
               href="/projects"
               className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
             >
-              Explore sales use cases
+              Explore the four capabilities
             </Link>
             <Link
               href="/about#experience"
@@ -73,171 +94,137 @@ export default function Home() {
         </p>
       </section>
 
-      <section
-        className="border-b border-border py-12"
-        aria-labelledby="stories-title"
-      >
+      <section className="py-12" aria-labelledby="capabilities-title">
         <div className="mb-8 flex max-w-2xl flex-col gap-3">
           <h2
-            id="stories-title"
+            id="capabilities-title"
             className="font-display text-3xl leading-tight tracking-tight text-foreground sm:text-4xl"
           >
-            Three places to start
+            Four capabilities
           </h2>
           <p className="text-base leading-7 text-muted">
-            Field knowledge, a channel design, and a prototype you can inspect.
-            They are not the same kind of evidence.
+            Each one names what is working and what is only planned. The
+            coverage table is the only prototype in this repository.
           </p>
         </div>
-
-        <div className="grid gap-4 lg:grid-cols-2">
-          <article className="flex flex-col gap-4 border border-border bg-card p-5 sm:p-6">
-            <StatusBadge status={competitive.status} />
-            <h3 className="text-2xl font-semibold tracking-tight text-foreground">
-              <Link
-                href={`/work/${competitive.slug}`}
-                className="link-rule hover:text-accent"
-              >
-                {competitive.title}
-              </Link>
-            </h3>
-            <p className="text-base leading-7 text-foreground">
-              {competitive.sales.salesQuestion}
-            </p>
-            <p className="text-sm leading-6 text-muted">
-              {competitive.sales.maturityDetail}
-            </p>
-            <Link
-              href={`/work/${competitive.slug}`}
-              className="link-rule w-fit text-sm font-medium text-accent"
+        <div className="flex flex-col gap-4">
+          {features.map(({ project, useCase, also, showTable }) => (
+            <article
+              key={project.slug}
+              id={showTable ? "atlas" : undefined}
+              className={
+                project.slug === "truffle-camp"
+                  ? "scroll-mt-24 border border-dashed border-foreground/30 p-5 sm:p-6"
+                  : "scroll-mt-24 border border-border bg-card p-5 sm:p-6"
+              }
             >
-              Read the case
-            </Link>
-          </article>
-
-          <article className="flex flex-col gap-4 border border-border bg-card p-5 sm:p-6">
-            <StatusBadge status={partner.status} />
-            <h3 className="text-2xl font-semibold tracking-tight text-foreground">
-              <Link
-                href={`/work/${partner.slug}`}
-                className="link-rule hover:text-accent"
-              >
-                Account and partner strategy
-              </Link>
-            </h3>
-            <p className="text-base leading-7 text-foreground">
-              {partner.sales.salesQuestion}
-            </p>
-            <p className="text-sm leading-6 text-muted">
-              {partner.sales.maturityDetail}
-            </p>
-            <p className="text-sm leading-6 text-muted">
-              Account Intelligence is a separate design for the brief that
-              follows a signal. It is also not deployed.
-            </p>
-            <div className="flex flex-col gap-2">
-              <Link
-                href={`/work/${partner.slug}`}
-                className="link-rule w-fit text-sm font-medium text-accent"
-              >
-                Partner GTM Engine
-              </Link>
-              <Link
-                href="/work/account-intelligence"
-                className="link-rule w-fit text-sm font-medium text-accent"
-              >
-                Account Intelligence
-              </Link>
-            </div>
-          </article>
-        </div>
-
-        <article
-          id="atlas"
-          className="mt-4 scroll-mt-24 border border-border bg-card p-5 sm:p-6"
-        >
-          <div className="mb-5 flex flex-col gap-3">
-            <StatusBadge status={atlas.status} />
-            <h3 className="text-2xl font-semibold tracking-tight text-foreground">
-              <Link
-                href={`/work/${atlas.slug}`}
-                className="link-rule hover:text-accent"
-              >
-                {atlas.title}
-              </Link>
-            </h3>
-            <p className="max-w-2xl text-base leading-7 text-muted">
-              {atlas.sales.maturityDetail} Independent research — not an
-              official Truffle Security product. Gray means not evaluated, never
-              a confirmed gap.
-            </p>
-          </div>
-          <CropFrame>
-            <CoverageExplorer />
-          </CropFrame>
-          <Link
-            href={`/work/${atlas.slug}`}
-            className="link-rule mt-4 inline-flex text-sm font-medium text-accent"
-          >
-            Read the case
-          </Link>
-        </article>
-      </section>
-
-      <section
-        className="border-b border-border py-12"
-        aria-labelledby="camp-title"
-      >
-        <div className="flex flex-col gap-4 border border-dashed border-foreground/30 p-5 sm:p-6">
-          <StatusBadge status="designed" />
-          <h2
-            id="camp-title"
-            className="text-2xl font-semibold tracking-tight text-foreground"
-          >
-            <Link
-              href="/work/truffle-camp"
-              className="link-rule hover:text-accent"
-            >
-              Truffle Camp and the enablement I already did
-            </Link>
-          </h2>
-          <p className="max-w-3xl text-base leading-7 text-muted">
-            Teams have used discovery frameworks, playbooks, onboarding notes,
-            and industry training I wrote. Truffle Camp is the course I designed
-            so a new AE, SDR, SA, or partner can practice that without a live
-            secret. The course is not deployed. The Darktrace ramp result
-            belongs to the training, not to Camp.
-          </p>
-          <Link
-            href="/work/truffle-camp"
-            className="link-rule w-fit text-sm font-medium text-accent"
-          >
-            See the sample module
-          </Link>
-        </div>
-      </section>
-
-      <section className="py-12" aria-labelledby="jobs-title">
-        <h2 id="jobs-title" className="text-sm font-medium text-muted">
-          Browse by the sales job
-        </h2>
-        <ul className="mt-6 divide-y divide-border border-y border-border">
-          {useCases.map((useCase) => (
-            <li key={useCase.id}>
-              <Link
-                href={`/projects#${useCase.id}`}
-                className="group grid gap-1 py-4 sm:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] sm:gap-8"
-              >
-                <span className="font-medium text-foreground group-hover:text-accent">
+              <div className="flex flex-col gap-4">
+                <p className="text-sm font-medium text-muted">
                   {useCase.title}
-                </span>
-                <span className="text-sm leading-6 text-muted">
-                  {useCase.flow}
-                </span>
-              </Link>
-            </li>
+                </p>
+                <StatusBadge status={project.status} />
+                <h3 className="text-2xl font-semibold tracking-tight text-foreground">
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="link-rule hover:text-accent"
+                  >
+                    {project.title}
+                  </Link>
+                </h3>
+                <p className="max-w-3xl text-base leading-7 text-foreground">
+                  {project.sales.salesQuestion}
+                </p>
+                <dl className="grid max-w-3xl gap-3 text-sm leading-6 text-muted">
+                  <div>
+                    <dt className="font-medium text-foreground">Who uses it</dt>
+                    <dd>{project.sales.userMoment}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-medium text-foreground">
+                      Inputs → review → output
+                    </dt>
+                    <dd>{project.sales.pipeline}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-medium text-foreground">
+                      Working today
+                    </dt>
+                    <dd>{project.sales.workingToday}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-medium text-foreground">
+                      Planned next
+                    </dt>
+                    <dd>{project.sales.plannedNext}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-medium text-foreground">
+                      In this repo or a linked project
+                    </dt>
+                    <dd>{project.sales.implementedTech}</dd>
+                  </div>
+                </dl>
+                {showTable ? (
+                  <div>
+                    <p className="mb-3 max-w-2xl text-sm leading-6 text-muted">
+                      Independent research — not an official Truffle Security
+                      product. Not evaluated is written out. It is not a
+                      confirmed gap.
+                    </p>
+                    <CropFrame>
+                      <CoverageExplorer />
+                    </CropFrame>
+                  </div>
+                ) : null}
+                <div className="flex flex-col gap-2">
+                  {project.sales.links.map((link) =>
+                    link.href.startsWith("http") ? (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        className="link-rule w-fit text-sm font-medium text-accent"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {link.label}
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
+                    ) : (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="link-rule w-fit text-sm font-medium text-accent"
+                      >
+                        {link.label}
+                      </Link>
+                    ),
+                  )}
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="link-rule w-fit text-sm font-medium text-accent"
+                  >
+                    Read the case
+                  </Link>
+                  <Link
+                    href={`/projects#${useCase.id}`}
+                    className="link-rule w-fit text-sm font-medium text-foreground"
+                  >
+                    {useCase.title}
+                  </Link>
+                  {also.map((item) => (
+                    <Link
+                      key={item.slug}
+                      href={`/work/${item.slug}`}
+                      className="link-rule w-fit text-sm text-muted"
+                    >
+                      Also: {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </article>
           ))}
-        </ul>
+        </div>
       </section>
     </PageMain>
   );

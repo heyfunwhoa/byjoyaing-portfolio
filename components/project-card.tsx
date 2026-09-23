@@ -38,18 +38,35 @@ export function ProjectCard({
       {density === "full" ? (
         <dl className="grid gap-3 text-sm leading-6 text-muted">
           <div>
-            <dt className="font-medium text-foreground">Who and when</dt>
+            <dt className="font-medium text-foreground">Who uses it</dt>
             <dd>{project.sales.userMoment}</dd>
           </div>
           <div>
-            <dt className="font-medium text-foreground">It produces</dt>
-            <dd>{project.sales.produces}</dd>
+            <dt className="font-medium text-foreground">
+              Inputs → review → output
+            </dt>
+            <dd>{project.sales.pipeline}</dd>
+          </div>
+          <div>
+            <dt className="font-medium text-foreground">Working today</dt>
+            <dd>{project.sales.workingToday}</dd>
+          </div>
+          <div>
+            <dt className="font-medium text-foreground">Planned next</dt>
+            <dd>{project.sales.plannedNext}</dd>
+          </div>
+          <div>
+            <dt className="font-medium text-foreground">
+              In this repo or a linked project
+            </dt>
+            <dd>{project.sales.implementedTech}</dd>
           </div>
         </dl>
-      ) : null}
-      <p className="text-sm leading-6 text-muted">
-        {project.sales.maturityDetail}
-      </p>
+      ) : (
+        <p className="text-sm leading-6 text-muted">
+          {project.sales.workingToday}
+        </p>
+      )}
       {density === "full" ? (
         <p className="text-sm leading-6 text-muted">
           <span className="font-medium text-foreground">
