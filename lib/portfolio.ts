@@ -366,7 +366,7 @@ export const projects: Project[] = [
       "Computed comparison views vs. stored matrix rows.",
     ],
     prototype:
-      "Phase 1 in progress: parser tested on the real public TruffleHog repo; 14 enriched detectors ready for the Next.js table. Independent/unofficial. Separate from Truffle Camp (secretsafari) and from any company-owned Atlas.",
+      "Phase 1 in progress: parser tested on the real public TruffleHog repo; 14 enriched detectors ready for the Next.js table. Independent/unofficial. Separate from Truffle Camp and from any company-owned Atlas. The parser is not in this repository.",
     next: [
       "Detector detail with verification profiles and conditional risk language.",
       "Betterleaks and Kingfisher only after rule-file review; GitGuardian and GitHub Secret Scanning stay manual-doc.",
@@ -517,7 +517,7 @@ export const projects: Project[] = [
       job: "Move from discovery to a source-grounded explanation and next step — without real secrets.",
     },
     evidence:
-      "Darktrace industry training cut new-rep ramp 50%. At Truffle, self-serve onboarding and a sales–product loop showed the same gap. The productized version is Truffle Camp (curriculum: The Secret Life Cycle; interactive layer: Secret Expedition; repo: secretsafari). Atlas stays a separate source of truth; Camp consumes a learner-safe export.",
+      "Darktrace industry training cut new-rep ramp 50%. At Truffle, self-serve onboarding and a sales–product loop showed the same gap. The productized version is Truffle Camp (curriculum: The Secret Life Cycle; interactive layer: Secret Expedition). No public repository. Atlas stays a separate source of truth; Camp would consume a learner-safe export.",
     goals: [
       "Teach the secret lifecycle with synthetic missions: Discover → Classify → Verify → Prioritize → Route → Explain → Advance.",
       "Role-based paths and behavior-based badges, not a speed leaderboard.",
@@ -591,7 +591,7 @@ export const projects: Project[] = [
       "Local fixtures so Camp stays playable if Notion is down.",
     ],
     prototype:
-      "PRD complete. Repo: heyfunwhoa/secretsafari. Independent training product — not live verification, not customer data. Atlas integration is a curated export, not a merge.",
+      "PRD complete. No public repository. Independent training product — not live verification, not customer data. Atlas integration would be a curated export, not a merge.",
     next: [
       "One Dig Site mission end to end, then Verification Lab and Handoff Desk.",
       "Import one curated Atlas detector record via schema.",
@@ -864,7 +864,7 @@ export const projects: Project[] = [
       job: "Ingest sheets, classify ownership by domain, score whitespace, and keep partner relationship context on every conflict.",
     },
     evidence:
-      "Metadot channel program: distribution sales +25% to $3.4M (2017) and +33% to $4.5M (2018). The v1 product is Channel Territory Mapping (secretsafari): column mapping per partner, domain as sole source of truth, Exa + human review when domain is missing — never an LLM guessing a domain from memory.",
+      "Metadot channel program: distribution sales +25% to $3.4M (2017) and +33% to $4.5M (2018). The v1 design is Channel Territory Mapping: column mapping per partner, domain as sole source of truth, search plus human review when domain is missing — never a model guessing a domain from memory. No public repository.",
     goals: [
       "Ownership classes: internal_only, single_partner, multi_partner_conflict, unclaimed.",
       "Score unclaimed/internal-only accounts (100 pts: tech 30, employees 25, ICP 25, funding 20).",
@@ -934,7 +934,7 @@ export const projects: Project[] = [
       "Search-backed domain deduction vs. model recall.",
     ],
     prototype:
-      "PRD for Channel Territory Mapping. Companion: Account Intelligence (account-signal-engine), independently deployable — no shared database.",
+      "PRD for Channel Territory Mapping. Companion: Account Intelligence, independently deployable — no shared database. Neither has a public repository.",
     next: [
       "Partner-auth’d enablement packs (battlecards + per-account messaging) in v2.",
       "Keep Clay out of this build.",
@@ -967,7 +967,7 @@ export const projects: Project[] = [
       job: "See assigned-account signals and draft outreach that cites the specific event.",
     },
     evidence:
-      "Companion to Channel Territory Mapping. Private repo account-signal-engine. Assignments arrive via webhook from secretsafari, or manually. Own copy of accounts — no shared database — so either app can stay up if the other is down.",
+      "Companion to Channel Territory Mapping. Assignments would arrive by webhook from the partner app, or manually. Own copy of accounts — no shared database — so either app could stay up if the other is down. No public repository.",
     goals: [
       "Classify signals: funding, leadership_change, hiring_surge, tech_change, news_mention.",
       "Mark read/dismissed.",
@@ -1001,7 +1001,7 @@ export const projects: Project[] = [
       "Supabase (own instance)",
       "Sumble + Exa",
       "Claude API for drafts",
-      "Webhook from secretsafari",
+      "Webhook from the partner app",
     ],
     dataModel: [
       "accounts",
@@ -1028,7 +1028,7 @@ export const projects: Project[] = [
       "Personal feed vs. team admin.",
     ],
     prototype:
-      "PRD. Private repo account-signal-engine. Whitespace accounts synced from territory mapping should show existing signals immediately, not wait for the next poll.",
+      "PRD. No public repository. Whitespace accounts synced from territory mapping should show existing signals immediately, not wait for the next poll.",
     next: [
       "Live sequencer push",
       "Multi-rep view",
