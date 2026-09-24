@@ -39,7 +39,7 @@ export default function ExperiencePage() {
       <section className="border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">How the work connects</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          These links are portfolio evidence for motions I have done in the field. They are not employer deployments. A forecasting simulator and a POC tracker are not in this portfolio.
+          These links are portfolio evidence. They are not employer deployments. Revenue Planning, Revenue Intelligence, and the GTM Operating Plan run in gtm-revenue-os on a fictional book. A POC tracker is not in this portfolio.
         </p>
         <ul className="mt-6 divide-y divide-border border-y border-border text-sm">
           {[
@@ -49,6 +49,8 @@ export default function ExperiencePage() {
             ["Onboarding and mentoring", "Truffle Camp", "/work/truffle-camp"],
             ["Customer and product feedback", "Customer Feedback Intelligence", "/work/customer-feedback-intelligence"],
             ["Partner strategy", "Partner GTM Engine", "/work/partner-gtm-engine"],
+            ["Planning and capacity", "Revenue Planning Simulator", "/work/revenue-planning-simulator"],
+            ["Pipeline review", "Revenue Intelligence", "/work/revenue-intelligence"],
           ].map(([motion, project, href]) => (
             <li key={motion} className="grid gap-1 py-3 sm:grid-cols-2">
               <span>{motion}</span>

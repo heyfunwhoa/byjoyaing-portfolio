@@ -11,6 +11,9 @@ const relatedBySlug: Record<string, string[]> = {
   "partner-gtm-engine": ["account-intelligence", "customer-feedback-intelligence"],
   "product-release-intelligence": ["customer-feedback-intelligence", "truffle-camp"],
   "security-signal-intelligence": ["account-intelligence", "competitive-intelligence-engine"],
+  "revenue-planning-simulator": ["gtm-operating-plan", "revenue-intelligence", "account-intelligence"],
+  "revenue-intelligence": ["revenue-planning-simulator", "gtm-operating-plan", "account-intelligence"],
+  "gtm-operating-plan": ["revenue-planning-simulator", "revenue-intelligence", "account-intelligence"],
   "gtm-campaign-lab": ["account-intelligence", "product-release-intelligence"],
   "product-prioritization-simulator": ["customer-feedback-intelligence", "product-release-intelligence"],
 };

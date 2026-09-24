@@ -150,6 +150,42 @@ const sources: DirectorySource[] = [
     githubUrl: null,
   },
   {
+    slug: "revenue-planning-simulator",
+    summary:
+      "An editable planning year for a fictional company. Retention, expansion, and the new-ARR residual are formulas. The dollars are fixtures.",
+    categories: ["Revenue Strategy & Operations"],
+    role: "I built the planner in gtm-revenue-os. It is not embedded here, and it is not an employer plan.",
+    technologies: "Next.js, TypeScript, and Postgres. No language model in the calculation.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "revenue-intelligence",
+    summary:
+      "Pipeline health from stage history, then planned new ARR against bookings and what is still required. The book is synthetic.",
+    categories: ["Revenue Strategy & Operations"],
+    role: "I wrote the SQL. Win rate comes from the close, not the current stage.",
+    technologies: "Next.js and PostgreSQL in gtm-revenue-os. Not embedded on this site.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "gtm-operating-plan",
+    summary:
+      "Territory coverage and AE capacity for the same fictional company. Potential is an estimate. Headcount does not create bookings.",
+    categories: ["Revenue Strategy & Operations"],
+    role: "I built the operating plan in gtm-revenue-os. The $25M view is capacity math, not a result.",
+    technologies: "Next.js and PostgreSQL. Same capacity formulas as the revenue planner.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
     slug: "gtm-campaign-lab",
     summary: "One segment, one message, and a readout of what to change. Not built.",
     categories: ["Revenue Strategy & Operations"],

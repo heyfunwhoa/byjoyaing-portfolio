@@ -33,8 +33,8 @@ export const capabilityViews = [
     slug: "revenue-strategy",
     title: "Revenue Strategy",
     summary:
-      "Territory, partner, and campaign decisions I have made in the field, and the operating models I have designed around them. A forecasting simulator is not in this portfolio.",
-    slugs: ["partner-gtm-engine", "gtm-campaign-lab", "account-intelligence"],
+      "Planning, coverage, and pipeline history for a fictional company in gtm-revenue-os, plus the partner design already on this site. The dollars are fixtures. The app is not embedded here.",
+    slugs: ["revenue-planning-simulator", "gtm-operating-plan", "revenue-intelligence", "partner-gtm-engine"],
   },
   {
     slug: "gtm-engineering",

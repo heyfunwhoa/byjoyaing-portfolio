@@ -97,7 +97,7 @@ export default async function ProjectsPage({
       <section id="directory" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Explore all projects</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Lifecycle stages are a second filter. A project can sit in more than one functional category. Measure has no project yet.
+          Lifecycle stages are a second filter. A project can sit in more than one functional category. Revenue Intelligence is the Measure prototype. The other case studies still carry their own metrics. A hypothesis is not a measured outcome.
         </p>
         <div className="mt-6">
           <ProjectsDirectory key={category ?? "all"} initialCategory={categoryFromSlug(category)} />

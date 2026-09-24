@@ -310,6 +310,84 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     related: ["product-release-intelligence"],
   },
   {
+    slug: "revenue-planning-simulator",
+    useCase: "workflow",
+    salesQuestion:
+      "Is this ending ARR a retention plan, an expansion plan, or a new-logo capacity plan?",
+    userMoment:
+      "A CRO or RevOps lead editing one planning year for the fictional company Northline Security.",
+    intake:
+      "Opening ARR, gross retention, expansion dollars, an ending target, quota, attainment, ramp, and a hiring calendar. Every dollar is a synthetic fixture.",
+    produces:
+      "Required new ARR after retention and expansion, productive ARR per ramped AE, and pipeline dollars shifted back by the sales cycle.",
+    decision:
+      "Whether the residual is already covered, or the plan still needs capacity and pipeline.",
+    myRole:
+      "I built the planner in gtm-revenue-os. It is not a plan I ran at Truffle, Rapid7, Forcepoint, or Darktrace.",
+    maturityDetail:
+      "Prototype. The software runs and the formula tests pass. It is not embedded on this site.",
+    fieldAsset: null,
+    proposedSoftware: null,
+    links: [],
+    result: {
+      kind: "to-test",
+      text: "On the default fixture, GRR retains $9.5M and the residual new-business requirement is $9.5M. That is a planning assumption, not a result.",
+    },
+    related: ["gtm-operating-plan", "revenue-intelligence"],
+  },
+  {
+    slug: "revenue-intelligence",
+    useCase: "workflow",
+    salesQuestion:
+      "Does the pipeline we still need change when win rate comes from the close, not the current stage?",
+    userMoment:
+      "A pipeline review on the same fictional book. One seeded loss still shows Negotiation on the opportunity row.",
+    intake:
+      "Accounts, contacts, reps, territories, opportunities, stage history, activities, targets, and forecast submissions. All synthetic.",
+    produces:
+      "Pipeline by stage, territory, and rep. Win rate and cycle from the history row that closed the deal. Planned new ARR, bookings, forecast commit, and pipeline still required.",
+    decision:
+      "What is still required after bookings, without treating a stale stage as open pipeline.",
+    myRole:
+      "I built the queries in gtm-revenue-os. The seeded attainment is a fixture, not a measured result.",
+    maturityDetail:
+      "Prototype. The software runs and the SQL tests pass. It is not embedded on this site.",
+    fieldAsset: null,
+    proposedSoftware: null,
+    links: [],
+    result: {
+      kind: "to-test",
+      text: "A win rate taken from the current stage would be wrong on the seeded loss. No claim that a team booked this pipeline.",
+    },
+    related: ["revenue-planning-simulator", "gtm-operating-plan"],
+  },
+  {
+    slug: "gtm-operating-plan",
+    useCase: "workflow",
+    salesQuestion:
+      "When headcount changes, does planned capacity move while bookings stay still?",
+    userMoment:
+      "A GTM lead comparing the current synthetic roster with an illustrative path from $10M to $25M ARR.",
+    intake:
+      "ICP criteria, territories, accounts, and a roster. The $25M view is capacity math.",
+    produces:
+      "Coverage, unassigned potential, and a roster copy into the planner. Potential is not pipeline. Headcount is not bookings.",
+    decision:
+      "Whether the plan is a coverage plan or a capacity plan.",
+    myRole:
+      "I built the operating plan in gtm-revenue-os. It is not an employer deployment.",
+    maturityDetail:
+      "Prototype. The software runs. It is not embedded on this site. Accepting a synthetic review creates an unassigned account and no opportunity.",
+    fieldAsset: null,
+    proposedSoftware: null,
+    links: [],
+    result: {
+      kind: "to-test",
+      text: "The $25M case is capacity math, not an outcome. Account potential stays an estimate.",
+    },
+    related: ["revenue-planning-simulator", "account-intelligence", "revenue-intelligence"],
+  },
+  {
     slug: "gtm-campaign-lab",
     useCase: "workflow",
     salesQuestion:
@@ -369,6 +447,36 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
       "A personal list of real assignments and a dated public event, with Supabase, Exa, Sumble, and Claude still outside this repo.",
     implementedTech:
       "Next.js walkthrough in this portfolio. Supabase, Exa, Sumble, and Claude are planned, not dependencies here.",
+  },
+  "revenue-planning-simulator": {
+    pipeline:
+      "Assumptions → validation → ARR bridge → ramped capacity → pipeline shifted by the sales cycle. Formulas only. No model.",
+    workingToday:
+      "A Next.js and Postgres app in gtm-revenue-os. Not embedded here. No public demo URL.",
+    plannedNext:
+      "The operating plan can copy AE count, quota, attainment, ramp, and ending target. That copy changes planned capacity only.",
+    implementedTech:
+      "Next.js, TypeScript, and Postgres in gtm-revenue-os. Deterministic formulas with unit tests.",
+  },
+  "revenue-intelligence": {
+    pipeline:
+      "Filters → stage as of a date from history → win rate and cycle from the close → plan versus bookings versus still required.",
+    workingToday:
+      "A Next.js and Postgres app in gtm-revenue-os. Not embedded here. SQL lives in lib/intelligence/sql.ts. No public demo URL.",
+    plannedNext:
+      "If a CRM sync arrives, keep stage history as the source of truth. Do not backfill win rate from the latest stage.",
+    implementedTech:
+      "Next.js and PostgreSQL in gtm-revenue-os. A language model does not calculate the results.",
+  },
+  "gtm-operating-plan": {
+    pipeline:
+      "ICP criteria → territory assignment → coverage and ratios → roster copied into the revenue plan. Bookings stay still.",
+    workingToday:
+      "A Next.js and Postgres app in gtm-revenue-os. Not embedded here. No public demo URL.",
+    plannedNext:
+      "Reviewed accounts with a source note. Live signal polling stays on the Account Intelligence design.",
+    implementedTech:
+      "Next.js and PostgreSQL in gtm-revenue-os. Same capacity formulas as the revenue planner.",
   },
   "security-signal-intelligence": {
     pipeline:

@@ -1132,11 +1132,285 @@ export const projects: Project[] = [
       "Live sequencer push",
       "Multi-rep view",
       "Salesforce IDs when available",
+      "Reviewed accounts can be accepted into the GTM operating plan as unassigned coverage. Potential stays an estimate. The research feed and the revenue database stay separate.",
     ],
     businessValue: [
       "Fewer missed account events",
       "Outreach tied to a real trigger",
       "Territory mapping connected to action",
+    ],
+  },
+  {
+    slug: "revenue-planning-simulator",
+    title: "Revenue Planning Simulator",
+    phase: "Decide",
+    careerSignal: "Revenue Operations, GTM Systems",
+    status: "prototype",
+    problem: {
+      summary:
+        "An ending ARR target does not say whether the company gets there by keeping the book, expanding it, or hiring.",
+      why: "Hiring dates and pipeline targets never meet the bridge when retention, expansion, and new business stay in separate plans.",
+      without:
+        "The team debates a single ending number and cannot see which lever is supposed to produce it.",
+    },
+    users: {
+      primary: "CRO or RevOps leader editing the plan",
+      secondary: "Finance partner checking that December matches the annual bridge",
+      job: "Tell whether a target is a retention plan, an expansion plan, or a new-logo capacity plan.",
+    },
+    evidence:
+      "Synthetic default book: $10M opening ARR, 95% GRR, $1M expansion, $20M ending target. Required new ARR is what remains after retention and expansion. On that fixture, GRR retains $9.5M and the residual new-business requirement is $9.5M. These are planning assumptions, not a result.",
+    goals: [
+      "Show required new ARR after retention and expansion.",
+      "Convert quota and attainment into productive ARR per ramped AE.",
+      "Turn the new-ARR residual into pipeline dollars from win rate, shifted back by the sales cycle.",
+    ],
+    nonGoals: [
+      "A forecast of a real company.",
+      "Letting capacity or hiring rewrite GRR or expansion.",
+      "Using a language model to calculate the outputs.",
+    ],
+    mvp: {
+      version:
+        "One editable planning year. Assumptions, ARR bridge, capacity, ramp, pipeline, monthly and quarterly views, saved scenarios, and export to Markdown, CSV, or JSON.",
+      question: "If required new ARR is already zero, does the plan stop recommending more AEs?",
+    },
+    workflow: [
+      "Enter assumptions",
+      "Read the bridge",
+      "See ramped capacity and the hiring calendar",
+      "Shift pipeline creation back by the sales cycle",
+      "Save or compare a scenario",
+    ],
+    systemPlain: [
+      "Assumptions",
+      "Validation",
+      "ARR bridge",
+      "Capacity and ramp",
+      "Pipeline",
+      "Monthly plan",
+    ],
+    systemTechnical: [
+      "Next.js",
+      "TypeScript",
+      "Deterministic formulas with unit tests",
+      "Scenario rows in Postgres",
+    ],
+    dataModel: [
+      "Planning assumptions",
+      "Hiring plan",
+      "Monthly projection",
+      "Saved scenario",
+    ],
+    metrics: {
+      operational: ["Every major output recomputes from a named formula"],
+      behavioral: ["Scenarios saved and compared"],
+      business: [
+        "Hypothesis: the hiring date and the pipeline number come from the same bridge",
+      ],
+    },
+    hypothesis:
+      "A plan a person can recompute changes the hiring date and the pipeline number together. No claim that a team performed.",
+    tradeoffs: [
+      "Straight-line monthly churn, so the year reconciles and seasonality is ignored.",
+      "Linear ramp. Real ramps are lumpy.",
+      "Expansion is a dollar input, so the model does not loop.",
+      "Win rate is the rate on opportunities created, not coverage on a live open-pipeline snapshot.",
+    ],
+    prototype:
+      "Separate app in gtm-revenue-os. Not embedded on this site. In-year new logos do not churn inside the planning year, so December matches the annual bridge. Gross retention above 100% is rejected.",
+    next: [
+      "The operating plan can already copy AE count, quota, attainment, ramp, and ending target into this model. That copy changes planned capacity only.",
+    ],
+    businessValue: [
+      "The residual is visible: retention, expansion, or new business",
+      "A late hire cannot be treated as a full year of capacity",
+      "Export a plan someone else can recompute",
+    ],
+  },
+  {
+    slug: "revenue-intelligence",
+    title: "Revenue Intelligence",
+    phase: "Measure",
+    careerSignal: "Revenue Operations, Analytics",
+    status: "prototype",
+    problem: {
+      summary:
+        "Pipeline reviews read the current stage, so win rate and sales cycle describe the snapshot instead of the history.",
+      why: "The current stage column is a convenience. Historical win rate and cycle have to come from the stage transition that closed the deal.",
+      without:
+        "A lost deal whose current stage was edited still counts as open, and the pipeline requirement moves with it.",
+    },
+    users: {
+      primary: "CRO or sales director in a pipeline review",
+      secondary: "RevOps checking a forecast submission against bookings",
+      job: "Read pipeline health from stage history, then compare the plan with bookings and what is still required.",
+    },
+    evidence:
+      "Synthetic book for the same fictional company: accounts, contacts, reps, territories, opportunities, stage history, activities, targets, and forecast submissions. One seeded loss still shows Negotiation on the opportunity row, so a win rate taken from the current stage would be wrong.",
+    goals: [
+      "Report pipeline by stage, territory, and rep from Postgres.",
+      "Calculate win rate and sales cycle from the history row that closed the deal.",
+      "Compare planned new ARR, actual bookings, the latest forecast commit, and pipeline still required.",
+    ],
+    nonGoals: [
+      "Treating account potential as pipeline or bookings.",
+      "Calculating history from opportunities.stage.",
+      "Presenting the seeded attainment as a measured result.",
+    ],
+    mvp: {
+      version:
+        "Dashboard with date, territory, rep, segment, and stage filters. The stage filter does not rewrite historical win rate. Moving an open stage leaves the historical win rate unchanged.",
+      question:
+        "Does the required-pipeline number change when win rate is taken from closes instead of the current stage?",
+    },
+    workflow: [
+      "Choose the window and the cut",
+      "Resolve each opportunity's stage as of that date",
+      "Read coverage, win rate, cycle, aging, slippage, and attainment",
+      "Compare the plan with bookings and the forecast commit",
+    ],
+    systemPlain: [
+      "Filters",
+      "Stage as of a date",
+      "Metric queries",
+      "Plan versus execution",
+    ],
+    systemTechnical: [
+      "Next.js",
+      "PostgreSQL",
+      "SQL in lib/intelligence/sql.ts",
+      "Stage history as the source of truth",
+    ],
+    dataModel: [
+      "Territory",
+      "Rep",
+      "Account",
+      "Contact",
+      "Opportunity",
+      "Stage history",
+      "Activity",
+      "Revenue target",
+      "Forecast submission",
+    ],
+    metrics: {
+      operational: [
+        "Win rate and cycle cite the close event",
+        "Queries are explained on the SQL lesson in the app",
+      ],
+      behavioral: ["Filters used in a review"],
+      business: [
+        "Hypothesis: the gap that matters is planned versus booked versus still required",
+      ],
+    },
+    hypothesis:
+      "A win rate taken from the close event changes the pipeline a team thinks it still needs. The seeded book is a fixture.",
+    tradeoffs: [
+      "A stage-history table costs writes on every move. Reporting off the current stage would be shorter and wrong.",
+    ],
+    prototype:
+      "Separate app in gtm-revenue-os. Not embedded on this site. Account potential is excluded from the plan-versus-execution comparison.",
+    next: [
+      "When a CRM sync arrives, keep stage history as the source of truth. Do not backfill win rate from the latest stage.",
+    ],
+    businessValue: [
+      "Open pipeline, historical win rate, and cycle can be read from the same book",
+      "Forecast commit sits next to bookings and the remaining pipeline requirement",
+      "A stale current stage cannot quietly rewrite history",
+    ],
+  },
+  {
+    slug: "gtm-operating-plan",
+    title: "GTM Operating Plan",
+    phase: "Enable",
+    careerSignal: "GTM Systems, Revenue Operations",
+    status: "prototype",
+    problem: {
+      summary:
+        "Territory potential and AE headcount get narrated as revenue before anyone has booked it.",
+      why: "The operating model and the revenue model live in different files, so coverage math and capacity math never meet.",
+      without:
+        "Unassigned potential gets added to the forecast, and a hiring scenario is read as bookings.",
+    },
+    users: {
+      primary: "CRO or GTM strategy lead scaling a plan from $10M to $25M ARR",
+      secondary: "A manager assigning accounts to territories",
+      job: "See whether the plan is a coverage plan or a capacity plan, and keep potential out of bookings.",
+    },
+    evidence:
+      "Same fictional company. Seeded ICP criteria, territories, accounts, and two scenarios: the current synthetic roster, and an illustrative scale case toward $25M ARR. The $25M view is capacity math, not an outcome the company achieved.",
+    goals: [
+      "Suggest ICP fit from stored criteria.",
+      "Show territory coverage, unassigned accounts, and potential as an estimate.",
+      "Push AE count, quota, attainment, ramp, and ending target into the revenue planner without creating bookings.",
+    ],
+    nonGoals: [
+      "Assuming territory potential converts to ARR.",
+      "Claiming this company reached $25M.",
+      "CRM writeback.",
+    ],
+    mvp: {
+      version:
+        "Create a territory, assign an account, read unassigned potential, compare headcount scenarios, and apply the roster to the planner. SDR:AE and SE:AE ratios and partner-sourced pipeline are coverage, not revenue.",
+      question:
+        "When AE headcount changes, does planned capacity change while bookings stay still?",
+    },
+    workflow: [
+      "Set ICP criteria",
+      "Assign territory and owner",
+      "Read coverage and ratios",
+      "Push the roster into the revenue plan",
+      "Review the $10M to $25M case",
+    ],
+    systemPlain: [
+      "ICP",
+      "Territory assignment",
+      "Capacity",
+      "Coverage ratios",
+      "Planning bridge",
+    ],
+    systemTechnical: [
+      "Next.js",
+      "PostgreSQL",
+      "Same capacity formulas as the revenue planner",
+      "Reviewed-account intake at /data",
+    ],
+    dataModel: [
+      "ICP criteria",
+      "Territory",
+      "Account",
+      "Rep",
+      "GTM scenario",
+      "Planning bridge",
+      "Reviewed account submission",
+    ],
+    metrics: {
+      operational: [
+        "An accepted review creates an unassigned account and no opportunity",
+        "A rejected review leaves the account book unchanged",
+      ],
+      behavioral: ["Territories assigned", "Roster applied to the planner"],
+      business: [
+        "Hypothesis: separating capacity, coverage, and potential stops a hiring plan from being read as a bookings result",
+      ],
+    },
+    hypothesis:
+      "Headcount changes capacity. It does not create bookings. Potential on an account stays an estimate.",
+    tradeoffs: [
+      "Suggested ICP fit is a rule on stored criteria, not a model score.",
+      "Human assignment stays separate from intake.",
+      "The research feed and this revenue database stay separate so either can be down.",
+    ],
+    prototype:
+      "Separate app in gtm-revenue-os. Not embedded on this site. Accepting Larkspur Regional Health, a synthetic review, creates an unassigned account with $380,000 potential and does not insert an opportunity.",
+    next: [
+      "Receive only reviewed accounts that include a source note.",
+      "Leave live signal polling and sequencer push on the Account Intelligence design.",
+    ],
+    businessValue: [
+      "Unassigned potential stays visible and unlabeled as pipeline",
+      "The same AE math runs in the operating plan and the revenue plan",
+      "A $10M to $25M case can be inspected without being presented as a result",
     ],
   },
   {
