@@ -34,7 +34,7 @@ function Label({ index, children }: { index: string; children: string }) {
 }
 
 function Node({ title, detail, state }: { title: string; detail: string; state: "field" | "demo" | "planned" }) {
-  const copy = state === "field" ? "Field system" : state === "demo" ? "In this demo" : "Planned";
+  const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this demo" : "Planned";
   const style =
     state === "planned"
       ? "rounded-full border border-dashed border-foreground/40 px-2 py-0.5 text-[11px] font-medium"
@@ -185,7 +185,7 @@ export function CompetitiveIntelligenceCase() {
             <path d="M4 60h40M32 48l12 12-12 12" fill="none" stroke="currentColor" strokeWidth="1.25" />
           </svg>
           <div className="rounded-2xl border border-border bg-card p-5">
-            <h3 className="text-sm font-medium text-accent">Designed system</h3>
+            <h3 className="text-sm font-medium text-accent">Designed</h3>
             <ul className="mt-4 space-y-3 text-sm leading-6">
               <li>A profile per provider, with what is not evaluated left blank</li>
               <li>A short list of public sources, not the whole web</li>
@@ -308,7 +308,7 @@ export function CompetitiveIntelligenceCase() {
         </div>
         <ol className="mt-8 grid gap-4 md:grid-cols-3">
           {[
-            ["Field system now", ["Structured competitor profiles", "Source-backed battlecards", "Reusable field briefs"]],
+            ["Professional field system", ["Structured competitor profiles", "Source-backed battlecards", "Reusable field briefs"]],
             ["Next", ["Scheduled source snapshots", "Change detection", "Human-reviewed updates"]],
             ["Later", ["Field alerts", "CRM opportunity context", "Product feedback integration", "Historical change analytics"]],
           ].map(([when, items]) => (

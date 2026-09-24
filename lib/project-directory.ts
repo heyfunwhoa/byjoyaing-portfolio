@@ -8,10 +8,11 @@ import {
 
 export const directoryCategories = [
   "All work",
-  "Sales & GTM",
-  "Product & Customer",
-  "Security & Technical",
-  "Enablement",
+  "Revenue Strategy & Operations",
+  "Account & Market Intelligence",
+  "Sales Enablement & Productivity",
+  "Customer & Product Intelligence",
+  "Technical Systems & AI",
 ] as const;
 
 export type DirectoryCategory = (typeof directoryCategories)[number];
@@ -44,10 +45,10 @@ const sources: DirectorySource[] = [
     slug: "detector-coverage-atlas",
     summary:
       "Compare secret-detection coverage in a source-backed sample. A larger catalog and live monitoring are not in this repository.",
-    categories: ["Security & Technical", "Sales & GTM"],
+    categories: ["Technical Systems & AI"],
     role: "I built the 3-by-3 sample and the rule that an unreviewed cell stays gray.",
     technologies: "Next.js, React, and TypeScript. The rows live in this repository.",
-    featuredOrder: 1,
+    featuredOrder: 3,
     preview: "atlas",
     demoUrl: "/#atlas",
     githubUrl: "https://github.com/heyfunwhoa/byjoyaing-portfolio",
@@ -56,7 +57,7 @@ const sources: DirectorySource[] = [
     slug: "competitive-intelligence-engine",
     summary:
       "Turn competitor research into a source-backed brief and field guidance. Monitoring and automatic updates are designed, not running.",
-    categories: ["Sales & GTM", "Security & Technical"],
+    categories: ["Account & Market Intelligence", "Sales Enablement & Productivity"],
     role: "I wrote the briefs and taught them. The monitor on the case study is a sample.",
     technologies: "Field documents, Salesforce, and Slack. This page is a Next.js sample, not a crawler.",
     featuredOrder: 2,
@@ -68,10 +69,10 @@ const sources: DirectorySource[] = [
     slug: "account-intelligence",
     summary:
       "Watch assigned accounts, separate a business change from a hypothesis, and draft outreach a person still has to send.",
-    categories: ["Sales & GTM"],
+    categories: ["Account & Market Intelligence"],
     role: "I designed the personal feed. The walkthrough uses fictional accounts and does not call a data source.",
     technologies: "Next.js sample. Supabase, Exa, Sumble, and Claude are planned, not installed.",
-    featuredOrder: 3,
+    featuredOrder: 1,
     preview: "account",
     demoUrl: null,
     githubUrl: null,
@@ -80,10 +81,10 @@ const sources: DirectorySource[] = [
     slug: "customer-feedback-intelligence",
     summary:
       "Group customer requests into themes with the account still attached. Intake from CRM and tickets is not connected.",
-    categories: ["Product & Customer", "Sales & GTM"],
+    categories: ["Customer & Product Intelligence"],
     role: "I run the sales-to-product loop in the field. The workspace is a browser sample.",
     technologies: "Next.js sample. No CRM, ticket system, or model.",
-    featuredOrder: null,
+    featuredOrder: 4,
     preview: "note",
     demoUrl: null,
     githubUrl: null,
@@ -92,7 +93,7 @@ const sources: DirectorySource[] = [
     slug: "product-release-intelligence",
     summary:
       "Turn a release into reviewed lines for Sales, Customer Success, and customers. The hub itself is not built.",
-    categories: ["Product & Customer", "Sales & GTM"],
+    categories: ["Customer & Product Intelligence", "Sales Enablement & Productivity"],
     role: "I designed the question set I use with the field. There is no release application.",
     technologies: "The questions. No release hub in this repository.",
     featuredOrder: null,
@@ -104,7 +105,7 @@ const sources: DirectorySource[] = [
     slug: "truffle-camp",
     summary:
       "A designed path for secrets-security onboarding and practice. The case study is a written module, not a course app.",
-    categories: ["Enablement", "Security & Technical"],
+    categories: ["Sales Enablement & Productivity"],
     role: "I designed the curriculum on top of enablement I have already done with teams.",
     technologies: "Static copy in this Next.js page. No lesson player.",
     featuredOrder: null,
@@ -116,7 +117,7 @@ const sources: DirectorySource[] = [
     slug: "partner-gtm-engine",
     summary:
       "Match partner account lists on domain, leave uncertain rows for a person, and show whitespace. Not deployed.",
-    categories: ["Sales & GTM"],
+    categories: ["Revenue Strategy & Operations", "Account & Market Intelligence"],
     role: "I designed this from channel work. The page shows one fictional match.",
     technologies: "A written design. No spreadsheet upload or CRM sync.",
     featuredOrder: null,
@@ -127,7 +128,7 @@ const sources: DirectorySource[] = [
   {
     slug: "product-prioritization-simulator",
     summary: "A scoring sheet for a short list of bets. Not designed past this note, and not software.",
-    categories: ["Product & Customer"],
+    categories: ["Customer & Product Intelligence"],
     role: "I have not scored a bet in software.",
     technologies: "None.",
     featuredOrder: null,
@@ -138,7 +139,7 @@ const sources: DirectorySource[] = [
   {
     slug: "gtm-campaign-lab",
     summary: "One segment, one message, and a readout of what to change. Not built.",
-    categories: ["Sales & GTM"],
+    categories: ["Revenue Strategy & Operations"],
     role: "I have written outbound plays. I have not built a system that measures them.",
     technologies: "None.",
     featuredOrder: null,
@@ -149,7 +150,7 @@ const sources: DirectorySource[] = [
   {
     slug: "security-signal-intelligence",
     summary: "A reviewed weekly note from a fixed list of public sources. The product is still an idea.",
-    categories: ["Security & Technical", "Sales & GTM"],
+    categories: ["Account & Market Intelligence", "Technical Systems & AI"],
     role: "Playbooks and industry training were field work. They are not this product.",
     technologies: "None in this repository.",
     featuredOrder: null,

@@ -10,7 +10,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Projects — Kristen Joy Aing",
   description:
-    "Working prototypes, field-tested processes, and designed GTM systems across cybersecurity sales, product, and enablement.",
+    "Revenue, account, enablement, customer, and technical GTM systems, labeled as prototype, field practice, design, or concept.",
 };
 
 export default function ProjectsPage() {

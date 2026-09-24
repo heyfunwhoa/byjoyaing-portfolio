@@ -25,7 +25,7 @@ export function AtlasCase() {
             </div>
             <div>
               <dt className="font-medium">Stage</dt>
-              <dd className="mt-1 leading-6 text-muted">Working prototype. Not a production scanner and not a Truffle Security product.</dd>
+              <dd className="mt-1 leading-6 text-muted">Prototype. Not a production scanner and not a Truffle Security product.</dd>
             </div>
           </dl>
           <a href="#comparison" className="inline-flex h-11 w-fit items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">

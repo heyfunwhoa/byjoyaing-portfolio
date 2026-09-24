@@ -13,10 +13,10 @@ export type LifecyclePhase = (typeof lifecycle)[number];
 export type ProjectStatus = "field" | "prototype" | "designed" | "exploring";
 
 export const statusCopy: Record<ProjectStatus, string> = {
-  field: "Field system",
-  prototype: "Working prototype",
-  designed: "Designed system",
-  exploring: "Future concept",
+  field: "Professional field system",
+  prototype: "Prototype",
+  designed: "Designed",
+  exploring: "Concept",
 };
 
 export const statusHelp: Record<ProjectStatus, string> = {

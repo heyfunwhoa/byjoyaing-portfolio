@@ -36,6 +36,27 @@ export default function ExperiencePage() {
           Request resume
         </Link>
       </section>
+      <section className="border-b border-border py-12">
+        <h2 className="font-display text-3xl tracking-tight">How the work connects</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          These links are portfolio evidence for motions I have done in the field. They are not employer deployments. A forecasting simulator and a POC tracker are not in this portfolio.
+        </p>
+        <ul className="mt-6 divide-y divide-border border-y border-border text-sm">
+          {[
+            ["Enterprise account strategy", "Account Intelligence", "/work/account-intelligence"],
+            ["Competitive positioning", "Competitive Intelligence Engine", "/work/competitive-intelligence-engine"],
+            ["Technical evaluations", "Detector Coverage Atlas", "/work/detector-coverage-atlas"],
+            ["Onboarding and mentoring", "Truffle Camp", "/work/truffle-camp"],
+            ["Customer and product feedback", "Customer Feedback Intelligence", "/work/customer-feedback-intelligence"],
+            ["Partner strategy", "Partner GTM Engine", "/work/partner-gtm-engine"],
+          ].map(([motion, project, href]) => (
+            <li key={motion} className="grid gap-1 py-3 sm:grid-cols-2">
+              <span>{motion}</span>
+              <Link href={href} className="font-medium text-accent">{project}</Link>
+            </li>
+          ))}
+        </ul>
+      </section>
       <ol>
         {roles.map((role) => (
           <li key={`${role.company}-${role.period}`} className="grid gap-3 border-b border-border py-10 md:grid-cols-[12rem_minmax(0,1fr)]">

@@ -69,7 +69,7 @@ export function ProjectsDirectory() {
       </div>
       {projects.length === 0 ? (
         <p className="mt-8 rounded-2xl border border-dashed border-foreground/30 p-5 text-sm leading-6 text-muted">
-          No active project is tagged {stage === "All" ? category : stage}. Future concepts stay in the roadmap below.
+          No active project is tagged {stage === "All" ? category : stage}. Concepts stay in the roadmap below.
         </p>
       ) : (
         <ul className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
