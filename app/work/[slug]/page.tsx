@@ -3,6 +3,7 @@ import { AtlasCase } from "@/components/atlas-case";
 import { CompetitiveIntelligenceCase } from "@/components/competitive-intelligence-case";
 import { CustomerFeedbackCase } from "@/components/customer-feedback-case";
 import { FieldAssetCase } from "@/components/field-asset-case";
+import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { SampleRecordView } from "@/components/sample-record";
 import { StatusBadge } from "@/components/status-badge";
@@ -82,10 +83,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const { sales } = project;
   const useCase = sales.useCase ? findUseCase(sales.useCase) : undefined;
   const sample = sampleFor(slug);
-  const related = sales.related.flatMap((relatedSlug) => {
-    const match = salesProject(relatedSlug);
-    return match ? [match] : [];
-  });
 
   return (
     <PageMain>
@@ -333,42 +330,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </details>
 
-          {related.length > 0 ? (
-            <nav
-              aria-label="Related work"
-              className="border-t border-border py-8"
-            >
-              <h2 className="text-lg font-semibold tracking-tight text-foreground">
-                Related
-              </h2>
-              <ul className="mt-4 grid gap-4">
-                {related.map((item) => {
-                  const relatedUseCase = item.sales.useCase
-                    ? findUseCase(item.sales.useCase)
-                    : undefined;
-                  return (
-                    <li
-                      key={item.slug}
-                      className="flex flex-col gap-2 border border-border p-4"
-                    >
-                      <StatusBadge status={item.status} />
-                      <Link
-                        href={`/work/${item.slug}`}
-                        className="link-rule w-fit font-medium text-foreground hover:text-accent"
-                      >
-                        {item.title}
-                      </Link>
-                      {relatedUseCase ? (
-                        <p className="text-sm text-muted">
-                          {relatedUseCase.title}
-                        </p>
-                      ) : null}
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-          ) : null}
+          <RelatedWork slug={slug} />
         </article>
       </div>
     </PageMain>

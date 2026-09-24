@@ -1,8 +1,8 @@
 import { PageMain } from "@/components/page-main";
+import { RelatedWork } from "@/components/related-work";
 import { SampleRecordView } from "@/components/sample-record";
 import { StatusBadge } from "@/components/status-badge";
 import { salesProject, sampleFor } from "@/lib/sales";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export function FieldAssetCase({
@@ -55,11 +55,7 @@ export function FieldAssetCase({
 
       <section className="py-12">
         <p className="max-w-2xl text-sm leading-6 text-muted">{project.sales.result.text}</p>
-        <p className="mt-8">
-          <Link href="/projects" className="link-rule text-sm font-medium text-accent">
-            Back to projects
-          </Link>
-        </p>
+        <RelatedWork slug={slug} />
       </section>
     </PageMain>
   );

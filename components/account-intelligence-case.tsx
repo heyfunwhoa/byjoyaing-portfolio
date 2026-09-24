@@ -1,4 +1,5 @@
 import { AccountIntelligenceWorkflow } from "@/components/account-intelligence-workflow";
+import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { StatusBadge } from "@/components/status-badge";
 import { demoAccounts, demoSignals } from "@/lib/account-intelligence-demo";
@@ -380,11 +381,7 @@ export function AccountIntelligenceCase() {
             </p>
           </a>
         </div>
-        <p className="mt-8">
-          <Link href="/projects#account" className="link-rule text-sm font-medium text-accent">
-            Back to account and industry intelligence
-          </Link>
-        </p>
+        <RelatedWork slug="account-intelligence" />
       </section>
     </PageMain>
   );

@@ -1,7 +1,7 @@
 import { CoverageExplorer } from "@/components/coverage-explorer";
+import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { StatusBadge } from "@/components/status-badge";
-import Link from "next/link";
 
 export function AtlasCase() {
   return (
@@ -78,11 +78,7 @@ export function AtlasCase() {
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
           A later version would read public detector files at a pinned commit and leave unreviewed cells gray. That code is not here. This page does not call GitHub, and it does not refresh itself.
         </p>
-        <p className="mt-8">
-          <Link href="/projects" className="link-rule text-sm font-medium text-accent">
-            Back to projects
-          </Link>
-        </p>
+        <RelatedWork slug="detector-coverage-atlas" />
       </section>
     </PageMain>
   );

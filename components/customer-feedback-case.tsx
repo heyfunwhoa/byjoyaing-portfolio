@@ -1,7 +1,7 @@
 import { CustomerFeedbackWorkflow } from "@/components/customer-feedback-workflow";
+import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { StatusBadge } from "@/components/status-badge";
-import Link from "next/link";
 
 function Arrow({ direction }: { direction: "right" | "down" }) {
   const horizontal = direction === "right";
@@ -315,26 +315,7 @@ export function CustomerFeedbackCase() {
         </ol>
       </section>
 
-      <section className="py-16">
-        <h2 className="text-lg font-semibold">Connected GTM systems</h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <Link href="/work/product-release-intelligence" className="rounded-2xl border border-border bg-card p-5 hover:border-accent">
-            <p className="text-xs text-muted">When a theme ships</p>
-            <p className="mt-2 font-semibold">Product Release Intelligence</p>
-            <p className="mt-2 text-sm leading-6 text-muted">The design for telling the field what changed. Not a live join, and not a promise that every request is done.</p>
-          </Link>
-          <a href="#workflow" className="rounded-2xl border border-border p-5 hover:border-accent">
-            <p className="text-xs text-muted">What customers asked</p>
-            <p className="mt-2 font-semibold">Customer Feedback Intelligence</p>
-            <p className="mt-2 text-sm leading-6 text-muted">This page. The field loop is real. The workspace is a sample.</p>
-          </a>
-        </div>
-        <p className="mt-8">
-          <Link href="/projects#workflow" className="link-rule text-sm font-medium text-accent">
-            Back to GTM workflow design
-          </Link>
-        </p>
-      </section>
+      <RelatedWork slug="customer-feedback-intelligence" />
     </PageMain>
   );
 }

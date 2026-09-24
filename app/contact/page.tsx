@@ -1,12 +1,11 @@
 import { InquiryForm } from "@/app/inquiry-form";
-import { Kicker } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact — Kristen Joy Aing",
   description:
-    "Email, LinkedIn, GitHub, contact form, and resume request for enterprise cybersecurity sales and GTM systems.",
+    "Email, LinkedIn, GitHub, and a resume request for enterprise sales, GTM, and technical systems.",
 };
 
 const links = [
@@ -28,14 +27,11 @@ export default function ContactPage() {
     <PageMain>
       <section className="grid gap-12 py-16 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start lg:gap-16">
         <div className="flex flex-col gap-6">
-          <Kicker>Contact</Kicker>
-          <h1 className="max-w-xl font-display text-4xl leading-[1.12] tracking-tight text-foreground sm:text-6xl">
-            Let’s talk about enterprise security deals and the systems around
-            them.
+          <h1 className="max-w-xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
+            Let&apos;s connect.
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted">
-            Email is the fastest way to reach me. LinkedIn is best if you want
-            the sales work and the GTM systems in one conversation.
+            I&apos;m interested in conversations around enterprise sales, GTM programs, product commercialization, and technical systems.
           </p>
           <p className="flex flex-wrap items-center gap-x-3 gap-y-2 text-base">
             {links.map((link, index) => (

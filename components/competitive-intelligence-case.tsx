@@ -1,8 +1,8 @@
 import { CompetitiveIntelligenceWorkflow } from "@/components/competitive-intelligence-workflow";
+import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { StatusBadge } from "@/components/status-badge";
 import { providers } from "@/lib/competitive-intelligence-demo";
-import Link from "next/link";
 
 function Arrow({ direction }: { direction: "right" | "down" }) {
   const horizontal = direction === "right";
@@ -324,26 +324,7 @@ export function CompetitiveIntelligenceCase() {
         </ol>
       </section>
 
-      <section className="py-16">
-        <h2 className="text-lg font-semibold">Related work</h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <Link href="/work/detector-coverage-atlas" className="rounded-2xl border border-border bg-card p-5 hover:border-accent">
-            <p className="text-xs text-muted">What this repo actually runs</p>
-            <p className="mt-2 font-semibold">Detector Coverage Atlas</p>
-            <p className="mt-2 text-sm leading-6 text-muted">A 3-by-3 sample. Unreviewed cells stay Not evaluated. Not a live join to this page.</p>
-          </Link>
-          <Link href="/work/product-release-intelligence" className="rounded-2xl border border-border p-5 hover:border-accent">
-            <p className="text-xs text-muted">Later loop</p>
-            <p className="mt-2 font-semibold">Product Release Intelligence</p>
-            <p className="mt-2 text-sm leading-6 text-muted">The design for telling the field what shipped. Not connected here.</p>
-          </Link>
-        </div>
-        <p className="mt-8">
-          <Link href="/projects#competitive" className="link-rule text-sm font-medium text-accent">
-            Back to competitive and product intelligence
-          </Link>
-        </p>
-      </section>
+      <RelatedWork slug="competitive-intelligence-engine" />
     </PageMain>
   );
 }
