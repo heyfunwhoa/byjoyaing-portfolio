@@ -1,0 +1,90 @@
+import { PageMain } from "@/components/page-main";
+import { roles } from "@/lib/portfolio";
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Experience — Kristen Joy Aing",
+  description:
+    "Enterprise cybersecurity sales roles, field enablement, and the difference between individual results and team programs.",
+};
+
+const related: Record<string, { href: string; label: string }[]> = {
+  "Truffle Security": [
+    { href: "/work/competitive-intelligence-engine", label: "Competitive briefs" },
+    { href: "/work/customer-feedback-intelligence", label: "Sales-to-product loop" },
+    { href: "/work/product-release-intelligence", label: "Release questions" },
+  ],
+  Rapid7: [{ href: "/work/security-signal-intelligence", label: "Signal idea, not the playbooks" }],
+  Darktrace: [{ href: "/work/truffle-camp", label: "Camp is a later design, not this training" }],
+  Forcepoint: [{ href: "/work/competitive-intelligence-engine", label: "Discovery templates" }],
+  Metadot: [{ href: "/work/partner-gtm-engine", label: "Partner design, not the Metadot program" }],
+};
+
+export default function ExperiencePage() {
+  return (
+    <PageMain>
+      <section className="border-b border-border py-16">
+        <p className="text-sm font-medium text-muted">Experience</p>
+        <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
+          A decade of enterprise cybersecurity sales.
+        </h1>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
+          Each role describes the work: the market, the motion, and what I built for the team. Portfolio projects are not employer deployments unless the note says a team used a document or a training.
+        </p>
+        <Link href="/contact#resume" className="mt-6 inline-flex text-sm font-medium text-accent">
+          Request resume
+        </Link>
+      </section>
+      <section className="border-b border-border py-12">
+        <h2 className="font-display text-3xl tracking-tight">How the work connects</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          These links are portfolio evidence. They are not employer deployments. Revenue Planning, Revenue Intelligence, and the GTM Operating Plan run in gtm-revenue-os on a fictional book. A POC tracker is not in this portfolio.
+        </p>
+        <ul className="mt-6 divide-y divide-border border-y border-border text-sm">
+          {[
+            ["Enterprise account strategy", "Account Intelligence", "/work/account-intelligence"],
+            ["Competitive positioning", "Competitive Intelligence Engine", "/work/competitive-intelligence-engine"],
+            ["Technical evaluations", "Detector Coverage Atlas", "/work/detector-coverage-atlas"],
+            ["Onboarding and mentoring", "Truffle Camp", "/work/truffle-camp"],
+            ["Customer and product feedback", "Customer Feedback Intelligence", "/work/customer-feedback-intelligence"],
+            ["Partner strategy", "Partner GTM Engine", "/work/partner-gtm-engine"],
+            ["Planning and capacity", "Revenue Planning Simulator", "/work/revenue-planning-simulator"],
+            ["Pipeline review", "Revenue Intelligence", "/work/revenue-intelligence"],
+          ].map(([motion, project, href]) => (
+            <li key={motion} className="grid gap-1 py-3 sm:grid-cols-2">
+              <span>{motion}</span>
+              <Link href={href} className="font-medium text-accent">{project}</Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <ol>
+        {roles.map((role) => (
+          <li key={`${role.company}-${role.period}`} className="grid gap-3 border-b border-border py-10 md:grid-cols-[12rem_minmax(0,1fr)]">
+            <p className="text-sm text-muted">{role.period}</p>
+            <div>
+              <h2 className="text-xl font-semibold tracking-tight">{role.title}</h2>
+              <p className="mt-1">{role.company}</p>
+              <p className="mt-1 text-sm text-muted">{role.category}</p>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
+                {role.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+              {related[role.company] ? (
+                <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                  {related[role.company].map((item) => (
+                    <Link key={item.href} href={item.href} className="font-medium text-accent">
+                      {item.label}
+                    </Link>
+                  ))}
+                </p>
+              ) : null}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </PageMain>
+  );
+}

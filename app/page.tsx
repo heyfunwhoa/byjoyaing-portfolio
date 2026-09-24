@@ -1,155 +1,181 @@
-import { BrandAvatar } from "@/components/brand-avatar";
 import { CoverageExplorer } from "@/components/coverage-explorer";
-import { CropFrame } from "@/components/crop-frame";
-import { Index, Kicker } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
-import { ProjectRow } from "@/components/project-row";
-import { Rail } from "@/components/rail";
-import { StatusBadge } from "@/components/status-badge";
-import { ToolsMap } from "@/components/tools-map";
-import {
-  avatar,
-  domains,
-  featuredProjects,
-  proof,
-  skills,
-  strengths,
-} from "@/lib/portfolio";
+import { ProjectPreview } from "@/components/project-previews";
+import { ProjectStatusPill } from "@/components/project-status-pill";
+import { workAreas } from "@/lib/capabilities";
+import { featuredProjects } from "@/lib/project-directory";
+import { roles } from "@/lib/portfolio";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Kristen Joy Aing — Enterprise sales, GTM strategy, and AI systems",
+  description:
+    "Enterprise cybersecurity sales professional designing practical GTM systems for account research, pipeline, customer understanding, enablement, and go-to-market execution.",
+};
+
+const previewRoles = ["Truffle Security", "Rapid7", "Darktrace", "Forcepoint"];
+
+const buildSteps = [
+  { index: "01", title: "Identify friction", example: "The same coverage question, feedback thread, or partner list shows up in different notebooks." },
+  { index: "02", title: "Define the problem", example: "Account Intelligence is one rep’s book and a draft they still have to send." },
+  { index: "03", title: "Design the workflow", example: "Competitive claims stay attached to a source. A hypothesis stays labeled as a hypothesis." },
+  { index: "04", title: "Validate the data", example: "Unreviewed Atlas cells stay gray. A missing partner domain stays in human review." },
+  { index: "05", title: "Build the application", example: "The coverage table is the sample you can use in this repository." },
+  { index: "06", title: "Add automation carefully", example: "No model runs here. Planned tools stay planned until the evidence is trustworthy." },
+  { index: "07", title: "Measure and improve", example: "Proposed metrics stay proposed until they are measured." },
+];
 
 export default function Home() {
   const featured = featuredProjects();
-  const atlas = featured[0];
-  const rest = featured.slice(1);
+  const timeline = roles.filter((role) => previewRoles.includes(role.company));
 
   return (
     <PageMain>
-      <section className="grid items-center gap-10 border-b border-border py-16 sm:py-24 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-16">
-        <div className="mx-auto w-full max-w-[16rem] lg:mx-0">
-          <BrandAvatar />
-        </div>
-        <div className="flex flex-col gap-6">
-          <Kicker>{avatar.label}</Kicker>
-          <h1 className="font-display max-w-3xl text-4xl leading-[1.1] tracking-tight text-balance text-foreground sm:text-6xl">
-            {avatar.line}
+      <section className="grid items-start gap-10 border-b border-border py-12 lg:grid-cols-2 lg:py-16">
+        <div className="flex flex-col gap-5">
+          <p className="text-sm font-medium text-muted">Enterprise cybersecurity · 10+ years</p>
+          <h1 className="font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
+            Enterprise Sales. GTM Strategy. AI-Powered Systems.
           </h1>
-          <p className="max-w-2xl text-lg leading-8 text-muted">
-            I build the systems behind how technical products get understood,
-            evaluated, launched, and adopted — from evidence-backed coverage
-            catalogs to competitive briefs a team can run without me.
+          <p className="max-w-xl text-base leading-7 text-muted">
+            I&apos;m Kristen Joy Aing, an enterprise cybersecurity sales professional and GTM systems builder. I combine frontline revenue work with hands-on systems development so teams can research accounts, manage pipeline, understand customers, enable sellers, and execute go-to-market strategy.
           </p>
+          <p className="max-w-xl text-base leading-7 text-muted">
+            The work connects commercial strategy, structured data, and automation to operational problems I have seen in the field. A model is added only when the underlying record is trustworthy.
+          </p>
+          <ul className="flex flex-wrap gap-2 text-sm">
+            {["Enterprise sales", "GTM strategy", "Hands-on systems"].map((item) => (
+              <li key={item} className="rounded-full border border-border px-3 py-1">{item}</li>
+            ))}
+          </ul>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/projects"
-              className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
-            >
-              View Projects
+            <Link href="/projects" className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
+              Explore my work
             </Link>
-            <Link
-              href="/about"
-              className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              Skills, tools & experience
+            <Link href="/experience" className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium">
+              View my experience
             </Link>
           </div>
+        </div>
+        <div className="grid min-w-0 gap-3">
+          {featured.map((project) => (
+            <Link key={project.slug} href={project.caseStudyUrl} className="min-w-0 rounded-2xl border border-border bg-card p-3 hover:border-accent">
+              <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <p className="text-sm font-medium">{project.title}</p>
+                <ProjectStatusPill status={project.status} />
+              </div>
+              <ProjectPreview kind={project.preview} compact />
+            </Link>
+          ))}
         </div>
       </section>
 
-      <Rail label="Strengths" tick>
-        <ul className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
-          {strengths.map((item) => (
-            <li key={item.title} className="flex flex-col gap-2">
-              <h2 className="text-base font-semibold tracking-tight text-foreground">
-                {item.title}
-              </h2>
-              <p className="text-sm leading-6 text-muted">{item.body}</p>
+      <section className="border-b border-border py-12">
+        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">Enterprise experience informs everything I build.</h2>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
+          The commercial work is the foundation: enterprise security buyers, long sales cycles, technical evaluations, account strategy, forecasting, and the operational gaps that slow a revenue team. The systems on this site start from those problems.
+        </p>
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          {[
+            ["Enterprise sales", "Full-cycle work in AppSec, cloud, data, threat intelligence, network, and developer security.", "Forcepoint, Rapid7, Darktrace, and Truffle Security.", "/experience", "See the roles"],
+            ["GTM knowledge", "Discovery, competitive positioning, partner motion, enablement, and the handoff between sales and product.", "Briefs and training used with teams. The software around them is still a design.", "/capabilities/sales-enablement", "Enablement view"],
+            ["Technical building", "A coverage sample you can filter, plus designed workflows for accounts, feedback, and competitive claims.", "Next.js and TypeScript in this repository. No model is installed.", "/work/detector-coverage-atlas", "Open the Atlas"],
+          ].map(([title, body, proof, href, label]) => (
+            <article key={title} className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-5">
+              <h3 className="text-lg font-semibold">{title}</h3>
+              <p className="text-sm leading-6 text-muted">{body}</p>
+              <p className="text-sm leading-6">{proof}</p>
+              <Link href={href} className="mt-auto text-sm font-medium text-accent">{label}</Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-b border-border py-12">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">What I work on</h2>
+          <Link href="/capabilities" className="text-sm font-medium text-accent">All capabilities</Link>
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {workAreas.map((area) => (
+            <article key={area.title} className="rounded-2xl border border-border p-5">
+              <h3 className="text-lg font-semibold">{area.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{area.problem}</p>
+              <Link href={area.href} className="mt-4 inline-flex text-sm font-medium text-accent">Browse projects</Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-b border-border py-12">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Selected work</h2>
+          <Link href="/projects" className="text-sm font-medium text-accent">Explore all projects</Link>
+        </div>
+        <div className="mt-8 flex flex-col gap-6">
+          {featured.map((project, index) => (
+            <article key={project.slug} id={project.slug === "detector-coverage-atlas" ? "atlas" : undefined} className="grid min-w-0 grid-cols-1 items-center gap-6 rounded-2xl border border-border p-4 sm:p-5 lg:grid-cols-2">
+              <div className={index % 2 === 1 ? "lg:order-2" : undefined}>
+                <div className="flex flex-wrap items-center gap-2">
+                  <ProjectStatusPill status={project.status} />
+                  <span className="text-xs text-muted">{project.categories[0]}</span>
+                </div>
+                <h3 className="mt-3 text-2xl font-semibold tracking-tight">{project.title}</h3>
+                <p className="mt-3 text-base leading-7 text-muted">{project.summary}</p>
+                <p className="mt-3 text-sm leading-6">{project.role}</p>
+                <Link href={project.caseStudyUrl} className="mt-4 inline-flex text-sm font-medium text-accent">View case study</Link>
+              </div>
+              <div className={index % 2 === 1 ? "min-w-0 lg:order-1" : "min-w-0"}>
+                {project.slug === "detector-coverage-atlas" ? <CoverageExplorer /> : <ProjectPreview kind={project.preview} />}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-b border-border py-12">
+        <h2 className="font-display text-3xl tracking-tight sm:text-4xl">How I build</h2>
+        <ol className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2">
+          {buildSteps.map((step) => (
+            <li key={step.index} className="rounded-2xl border border-border p-4">
+              <p className="text-xs font-medium text-muted">{step.index}</p>
+              <h3 className="mt-2 font-semibold">{step.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{step.example}</p>
             </li>
           ))}
-        </ul>
-      </Rail>
+        </ol>
+      </section>
 
-      <Rail label="Skills">
-        <div className="grid gap-8 md:grid-cols-2">
-          <p className="text-base leading-7 text-foreground">{skills.join(" · ")}</p>
-          <p className="text-base leading-7 text-muted">{domains.join(" · ")}</p>
+      <section className="border-b border-border py-12">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="max-w-xl font-display text-3xl tracking-tight sm:text-4xl">Built on a decade of enterprise cybersecurity sales.</h2>
+          <Link href="/experience" className="text-sm font-medium text-accent">View my experience</Link>
         </div>
-      </Rail>
-
-      <Rail label="Tools">
-        <ToolsMap compact />
-        <p className="mt-6 text-sm leading-6 text-muted">
-          How it fits is on{" "}
-          <Link href="/about#ai" className="link-rule text-foreground">
-            About
-          </Link>
-          : sales tools surface the friction, build tools make the system, AI fills a schema from a source and a human marks the cell.
-        </p>
-      </Rail>
-
-      <Rail label="Proof">
-        <div className="grid gap-8 sm:grid-cols-3 sm:gap-0">
-          {proof.map((item, index) => (
-            <div
-              key={item.value}
-              className={
-                index === 0
-                  ? "sm:pr-8"
-                  : "border-t border-border pt-8 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-8"
-              }
-            >
-              <p className="text-2xl font-semibold tracking-tight text-foreground">
-                {item.value}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-muted">{item.label}</p>
-            </div>
+        <ol className="mt-8 grid gap-4 md:grid-cols-2">
+          {timeline.map((role) => (
+            <li key={role.company} className="rounded-xl border border-border bg-card p-4">
+              <p className="text-xs text-muted">{role.period}</p>
+              <h3 className="mt-1 font-semibold">{role.company}</h3>
+              <p className="text-sm">{role.title}</p>
+              <p className="mt-1 text-sm text-muted">{role.category}</p>
+              <p className="mt-3 text-sm leading-6 text-muted">{role.points[0]}</p>
+            </li>
           ))}
+        </ol>
+      </section>
+
+      <section className="py-12">
+        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">Interested in building better ways to bring technical products to market?</h2>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
+          I work at the intersection of enterprise sales, GTM strategy, and the systems a revenue team actually runs. If you are hiring a sales leader, a GTM operator, or someone who can design the workflow, I welcome a conversation.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-4 text-sm font-medium">
+          <Link href="/contact" className="inline-flex h-11 items-center rounded-md bg-accent px-5 text-accent-foreground">Get in touch</Link>
+          <a href="https://www.linkedin.com/in/kristenaing" className="inline-flex h-11 items-center rounded-md border border-border px-5" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/heyfunwhoa" className="inline-flex h-11 items-center rounded-md border border-border px-5" target="_blank" rel="noreferrer">GitHub</a>
         </div>
-      </Rail>
-
-      <Rail label="Featured" tick className="border-b-0 pb-8">
-        {atlas ? (
-          <div className="flex flex-wrap items-center gap-3">
-            <Index n={1} />
-            <StatusBadge status={atlas.status} />
-            <span className="text-sm text-muted">{atlas.phase}</span>
-            <span className="text-lg font-semibold tracking-tight text-foreground">
-              {atlas.title}
-            </span>
-          </div>
-        ) : null}
-      </Rail>
-
-      {atlas ? (
-        <article className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 bg-card px-5 py-10 sm:px-8">
-          <CropFrame>
-            <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
-              <div className="flex flex-col gap-4">
-                <p className="text-base leading-7 text-muted">
-                  Independent research catalog — not an official Truffle
-                  product. Parser observed 910 TruffleHog detectors; 14 are
-                  enriched. Search and filter the sample. Gray means not
-                  evaluated, never a confirmed gap.
-                </p>
-                <Link
-                  href={`/work/${atlas.slug}`}
-                  className="link-rule w-fit text-sm font-medium text-accent"
-                >
-                  Full case study
-                </Link>
-              </div>
-              <CoverageExplorer />
-            </div>
-          </CropFrame>
-        </article>
-      ) : null}
-
-      <ul className="border-t border-border">
-        {rest.map((project, i) => (
-          <li key={project.slug} className="border-b border-border">
-            <ProjectRow project={project} showPhase index={i + 2} />
-          </li>
-        ))}
-      </ul>
+      </section>
     </PageMain>
   );
 }

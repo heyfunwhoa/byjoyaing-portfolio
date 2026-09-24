@@ -5,7 +5,9 @@ export function AiLoop() {
   return (
     <div id="ai" className="flex scroll-mt-24 flex-col gap-5">
       <div className="flex flex-wrap items-baseline gap-3">
-        <h2 className="text-sm font-medium text-muted">AI in the system</h2>
+        <h2 className="text-sm font-medium text-muted">
+          AI, as a rule I have not shipped
+        </h2>
         <p className="text-sm text-muted">Learning — not a product</p>
       </div>
       <ol className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
