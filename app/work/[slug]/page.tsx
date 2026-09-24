@@ -1,4 +1,5 @@
 import { AccountIntelligenceCase } from "@/components/account-intelligence-case";
+import { CompetitiveIntelligenceCase } from "@/components/competitive-intelligence-case";
 import { CustomerFeedbackCase } from "@/components/customer-feedback-case";
 import { CoverageExplorer } from "@/components/coverage-explorer";
 import { CropFrame } from "@/components/crop-frame";
@@ -60,6 +61,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (slug === "customer-feedback-intelligence") {
     return <CustomerFeedbackCase />;
+  }
+
+  if (slug === "competitive-intelligence-engine") {
+    return <CompetitiveIntelligenceCase />;
   }
 
   const { sales } = project;

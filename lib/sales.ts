@@ -381,13 +381,13 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "competitive-intelligence-engine": {
     pipeline:
-      "Deal notes and public pages → I write the brief and review what we will not claim → a talk track and a discovery question.",
+      "A cited public page → a claim that keeps the source and date → a hypothesis a person can mark reviewed → a brief. Field notes stay in the browser until approved.",
     workingToday:
-      "Briefs, discovery templates, and threat-intelligence playbooks used with teams. This repository does not monitor competitor sites.",
+      "Battlecards, discovery templates, and threat-intelligence playbooks used with teams. This page is a sample walkthrough. It does not monitor sites, store snapshots, or call a model.",
     plannedNext:
-      "A snapshot of a public page and a reviewed change note. Not started as code.",
+      "Scheduled snapshots of a few public sources, a real diff, and a review queue before any field alert.",
     implementedTech:
-      "None in this repo. In the field I used documents, Salesforce, and Slack. No demo link.",
+      "Next.js walkthrough in this portfolio. One cited GitHub URL. No Firecrawl, Exa, GitHub API, or model.",
   },
   "detector-coverage-atlas": {
     pipeline:
