@@ -4,7 +4,7 @@ import type { DirectoryPreview } from "@/lib/project-directory";
 export function ProjectPreview({ kind, compact = false }: { kind: DirectoryPreview; compact?: boolean }) {
   if (kind === "atlas") {
     return (
-      <div className="overflow-hidden rounded-xl border border-border bg-card">
+      <div className="overflow-x-auto rounded-xl border border-border bg-card">
         <div className="flex items-center justify-between gap-3 border-b border-border px-3 py-2">
           <p className="text-xs font-medium">Coverage sample</p>
           <p className="text-[11px] text-muted">Live rows on this site</p>
@@ -16,6 +16,8 @@ export function ProjectPreview({ kind, compact = false }: { kind: DirectoryPrevi
               <th className="px-3 py-2 font-medium">AWS</th>
               <th className="px-3 py-2 font-medium">GitHub</th>
               <th className="px-3 py-2 font-medium">Slack</th>
+              <th className="px-3 py-2 font-medium">GitLab</th>
+              <th className="px-3 py-2 font-medium">GCP</th>
             </tr>
           </thead>
           <tbody>
@@ -25,6 +27,8 @@ export function ProjectPreview({ kind, compact = false }: { kind: DirectoryPrevi
                 <td className="px-3 py-2 text-muted">{row.aws}</td>
                 <td className="px-3 py-2 text-muted">{row.github}</td>
                 <td className="px-3 py-2 text-muted">{row.slack}</td>
+                <td className="px-3 py-2 text-muted">{row.gitlab}</td>
+                <td className="px-3 py-2 text-muted">{row.gcp}</td>
               </tr>
             ))}
           </tbody>

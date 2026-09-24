@@ -13,18 +13,17 @@ export type LifecyclePhase = (typeof lifecycle)[number];
 export type ProjectStatus = "field" | "prototype" | "designed" | "exploring";
 
 export const statusCopy: Record<ProjectStatus, string> = {
-  field: "Used in the field",
+  field: "Field system",
   prototype: "Working prototype",
-  designed: "Designed concept",
-  exploring: "Exploring",
+  designed: "Designed system",
+  exploring: "Future concept",
 };
 
 export const statusHelp: Record<ProjectStatus, string> = {
-  field:
-    "A workflow or asset a team actually used. Not a deployed software product.",
-  prototype: "A running implementation you can inspect.",
-  designed: "A documented workflow. Not shipped software.",
-  exploring: "An idea without a completed design.",
+  field: "Used in real work as documents and practice. Not this software.",
+  prototype: "A sample you can inspect. Not a production application.",
+  designed: "A documented product. An interactive page is still a sample.",
+  exploring: "No completed design and no field deployment.",
 };
 
 export const avatar = {
@@ -1282,18 +1281,29 @@ export const projects: Project[] = [
 ];
 
 export const detectors = [
-  { name: "TruffleHog", aws: "Covered", github: "Covered", slack: "Observed" },
+  {
+    name: "TruffleHog",
+    aws: "Covered",
+    github: "Covered",
+    slack: "Observed",
+    gitlab: "Observed",
+    gcp: "Observed",
+  },
   {
     name: "Betterleaks",
     aws: "Not evaluated",
     github: "Not evaluated",
     slack: "Not evaluated",
+    gitlab: "Not evaluated",
+    gcp: "Not evaluated",
   },
   {
     name: "Kingfisher",
     aws: "Not evaluated",
     github: "Not evaluated",
     slack: "Not evaluated",
+    gitlab: "Not evaluated",
+    gcp: "Not evaluated",
   },
 ];
 

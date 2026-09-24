@@ -18,7 +18,7 @@ export function CoverageExplorer() {
       const matchesQuery = needle ? row.name.toLowerCase().includes(needle) : true;
       const matchesFilter =
         filter === "All" ||
-        [row.aws, row.github, row.slack].includes(filter);
+        [row.aws, row.github, row.slack, row.gitlab, row.gcp].includes(filter);
       return matchesQuery && matchesFilter;
     });
   }, [filter, query]);
@@ -59,33 +59,27 @@ export function CoverageExplorer() {
           ))}
         </div>
       </div>
-      <div className="relative max-h-[min(28rem,70vh)] overflow-auto">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 grid grid-cols-3 sm:grid-cols-4"
-        >
-          <span className="border-r border-border/70" />
-          <span className="border-r border-border/70" />
-          <span className="border-r border-border/70 sm:border-r" />
-          <span className="hidden sm:block" />
-        </div>
-        <table className="relative w-full text-left text-sm">
+      <div className="max-h-[min(28rem,70vh)] overflow-auto">
+        <table className="w-full min-w-[40rem] text-left text-sm">
           <caption className="sr-only">
             Sample comparison. Not evaluated means the public source has not
-            been reviewed yet.
+            been reviewed yet. Observed means a public detector folder exists
+            and verification was not fully reviewed.
           </caption>
           <thead className="bg-card text-[11px] font-medium text-muted">
             <tr>
               <th className="px-3 py-2">Source</th>
               <th className="px-3 py-2">AWS keys</th>
               <th className="px-3 py-2">GitHub PATs</th>
-              <th className="hidden px-3 py-2 sm:table-cell">Slack</th>
+              <th className="px-3 py-2">Slack</th>
+              <th className="px-3 py-2">GitLab</th>
+              <th className="px-3 py-2">GCP</th>
             </tr>
           </thead>
           <tbody>
             {rows.length === 0 ? (
               <tr>
-                <td colSpan={4} className="px-3 py-6 text-muted">
+                <td colSpan={6} className="px-3 py-6 text-muted">
                   No sources match that filter.
                 </td>
               </tr>
@@ -101,8 +95,14 @@ export function CoverageExplorer() {
                   <td className="px-3 py-2">
                     <Coverage value={row.github} />
                   </td>
-                  <td className="hidden px-3 py-2 sm:table-cell">
+                  <td className="px-3 py-2">
                     <Coverage value={row.slack} />
+                  </td>
+                  <td className="px-3 py-2">
+                    <Coverage value={row.gitlab} />
+                  </td>
+                  <td className="px-3 py-2">
+                    <Coverage value={row.gcp} />
                   </td>
                 </tr>
               ))
@@ -111,8 +111,7 @@ export function CoverageExplorer() {
         </table>
       </div>
       <p className="border-t border-border px-3 py-2 text-xs leading-5 text-muted">
-        Independent research — not an official Truffle product. Gray is not
-        evaluated, never a confirmed gap.
+        Independent research — not an official Truffle product. Covered is only AWS keys and GitHub PATs for TruffleHog. Observed means the public detector folder exists. Gray is not a confirmed gap. The 910 and 14 counts are notes, not rows here.
       </p>
     </div>
   );

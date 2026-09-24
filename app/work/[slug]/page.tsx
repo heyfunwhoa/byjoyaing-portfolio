@@ -1,8 +1,8 @@
 import { AccountIntelligenceCase } from "@/components/account-intelligence-case";
+import { AtlasCase } from "@/components/atlas-case";
 import { CompetitiveIntelligenceCase } from "@/components/competitive-intelligence-case";
 import { CustomerFeedbackCase } from "@/components/customer-feedback-case";
-import { CoverageExplorer } from "@/components/coverage-explorer";
-import { CropFrame } from "@/components/crop-frame";
+import { FieldAssetCase } from "@/components/field-asset-case";
 import { PageMain } from "@/components/page-main";
 import { SampleRecordView } from "@/components/sample-record";
 import { StatusBadge } from "@/components/status-badge";
@@ -65,6 +65,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (slug === "competitive-intelligence-engine") {
     return <CompetitiveIntelligenceCase />;
+  }
+
+  if (slug === "detector-coverage-atlas") {
+    return <AtlasCase />;
+  }
+
+  if (
+    slug === "product-release-intelligence" ||
+    slug === "truffle-camp" ||
+    slug === "partner-gtm-engine"
+  ) {
+    return <FieldAssetCase slug={slug} />;
   }
 
   const { sales } = project;
@@ -145,14 +157,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <dd className="text-muted">{sales.implementedTech}</dd>
             </div>
           </dl>
-
-          {slug === "detector-coverage-atlas" ? (
-            <div id="comparison">
-              <CropFrame>
-                <CoverageExplorer />
-              </CropFrame>
-            </div>
-          ) : null}
 
           <div className="grid gap-4">
             {sales.fieldAsset ? (

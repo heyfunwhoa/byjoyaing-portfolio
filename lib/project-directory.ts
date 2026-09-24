@@ -1,4 +1,10 @@
-import { getProject, type LifecyclePhase, type ProjectStatus } from "@/lib/portfolio";
+import {
+  getProject,
+  statusCopy,
+  statusHelp,
+  type LifecyclePhase,
+  type ProjectStatus,
+} from "@/lib/portfolio";
 
 export const directoryCategories = [
   "All work",
@@ -206,14 +212,5 @@ export const systemLayers = [
 ] as const;
 
 export function directoryStatus(status: ProjectStatus) {
-  if (status === "prototype") {
-    return { label: "Working prototype", detail: "A sample you can inspect. Not a production application." };
-  }
-  if (status === "field") {
-    return { label: "Field system", detail: "Used in real work as documents and practice. Not this software." };
-  }
-  if (status === "designed") {
-    return { label: "Designed system", detail: "A documented product. An interactive page is still a sample." };
-  }
-  return { label: "Future concept", detail: "No completed design and no field deployment." };
+  return { label: statusCopy[status], detail: statusHelp[status] };
 }

@@ -33,7 +33,7 @@ function Label({ index, children }: { index: string; children: string }) {
 }
 
 function Node({ title, detail, state }: { title: string; detail: string; state: "field" | "demo" | "planned" }) {
-  const copy = state === "field" ? "Used in the field" : state === "demo" ? "In this demo" : "Planned";
+  const copy = state === "field" ? "Field system" : state === "demo" ? "In this demo" : "Planned";
   const style =
     state === "planned"
       ? "rounded-full border border-dashed border-foreground/40 px-2 py-0.5 text-[11px] font-medium"
