@@ -362,13 +362,13 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
 const capabilityFacts: Record<string, CapabilityFacts> = {
   "account-intelligence": {
     pipeline:
-      "An account name I type → I mark context, stakeholders, and hypotheses by hand → one brief and a next action. Nothing is collected automatically.",
+      "Sample assigned accounts → a classified event, with the hypothesis marked as a hypothesis → a draft the reader can edit and copy.",
     workingToday:
-      "A fictional brief on the case study page. There is no feed, no enrichment API, and no outreach draft in this repository.",
+      "A browser walkthrough on the case study. Sample companies only. No live feed, enrichment API, or model call.",
     plannedNext:
-      "A personal list of assigned accounts and a dated public event, with the hypothesis kept separate from the fact.",
+      "A personal list of real assignments and a dated public event, with Supabase, Exa, Sumble, and Claude still outside this repo.",
     implementedTech:
-      "Static copy in this Next.js site. No other repository and no live demo beyond this page.",
+      "Next.js walkthrough in this portfolio. Supabase, Exa, Sumble, and Claude are planned, not dependencies here.",
   },
   "security-signal-intelligence": {
     pipeline:

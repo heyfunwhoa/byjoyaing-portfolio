@@ -1,3 +1,4 @@
+import { AccountIntelligenceCase } from "@/components/account-intelligence-case";
 import { CoverageExplorer } from "@/components/coverage-explorer";
 import { CropFrame } from "@/components/crop-frame";
 import { PageMain } from "@/components/page-main";
@@ -50,6 +51,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const project = salesProject(slug);
   if (!project) {
     notFound();
+  }
+
+  if (slug === "account-intelligence") {
+    return <AccountIntelligenceCase />;
   }
 
   const { sales } = project;
