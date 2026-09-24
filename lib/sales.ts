@@ -156,7 +156,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "I have already done the field version of this work: discovery frameworks and a self-serve onboarding resource at Truffle, industry training at Darktrace, discovery templates at Forcepoint, threat-intelligence playbooks at Rapid7, and ramp resources at Websense. Truffle Camp is the product I designed on top of that pattern. It is not those assets, and it is not deployed.",
     maturityDetail:
-      "Designed system, with a sample module on this page. The Darktrace ramp result belongs to the training I created there, not to Camp.",
+      "Designed, with a sample module on this page. The Darktrace ramp result belongs to the training I created there, not to Camp.",
     fieldAsset:
       "Discovery frameworks, onboarding material, industry training, and playbooks that teams used.",
     proposedSoftware:
@@ -188,7 +188,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "At Metadot I was the global channel account manager and helped stand up a channel program. This engine is the system I would want for that motion. I have not deployed it.",
     maturityDetail:
-      "Designed system. The Metadot channel program is history from that job. It is not usage of this design.",
+      "Designed. The Metadot channel program is history from that job. It is not usage of this design.",
     fieldAsset:
       "The Metadot channel motion, and the judgment that came from matching partner lists by hand.",
     proposedSoftware:
@@ -215,7 +215,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "I designed a personal signal feed that stays separate from the partner app, so either one can exist if the other is down. I have not shipped it.",
     maturityDetail:
-      "Designed system. No public demo. The sample brief on this page is fictional.",
+      "Designed. No public demo. The sample brief on this page is fictional.",
     fieldAsset: null,
     proposedSoftware:
       "Assignment sync, classified signals, and a draft that cites the event. Designed, not running.",
@@ -244,7 +244,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "At Rapid7 I was the threat-intelligence resource across 500+ accounts, partners, and customers, and I wrote playbooks the portfolio team used. At Darktrace I built industry-knowledge training. A shared signal product is still an idea.",
     maturityDetail:
-      "Future concept. The playbooks and the training were real. I have not completed a design for this product, and I have not built it.",
+      "Concept. The playbooks and the training were real. I have not completed a design for this product, and I have not built it.",
     fieldAsset:
       "Rapid7 threat-intelligence playbooks and Darktrace industry training.",
     proposedSoftware: "Not designed as a product yet.",
@@ -271,7 +271,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "At Truffle I designed the operating model: what shipped, who cares, which accounts it applies to, and what the field should do next. That design is not a deployed product.",
     maturityDetail:
-      "Designed system. There is no release hub running. The field asset is the question set, not an application.",
+      "Designed. There is no release hub running. The field asset is the question set, not an application.",
     fieldAsset:
       "The questions I use with the field: what changed, why we built it, who cares, why it matters, how to use it, and what not to overpromise.",
     proposedSoftware:
@@ -298,7 +298,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "At Truffle I run a sales-to-product feedback loop. That loop is a working habit. The layer that would theme and deduplicate it is a design, not an app.",
     maturityDetail:
-      "Designed system for the software. The feedback loop with product is in use. I am not calling that loop a shipped product.",
+      "Designed for the software. The feedback loop with product is in use. I am not calling that loop a shipped product.",
     fieldAsset: "The sales-to-product feedback loop at Truffle.",
     proposedSoftware:
       "Ingestion, themes, account context, and a join to the release note when a theme ships. Not built.",
@@ -323,7 +323,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "I have written outbound plays and ICP profiles at Truffle, and a new-market playbook at Quantcast. I have not built a system that measures those experiments.",
     maturityDetail:
-      "Future concept. There is no implementation in this repository.",
+      "Concept. There is no implementation in this repository.",
     fieldAsset: "Outbound plays and ICP profiles. Not a campaign product.",
     proposedSoftware: "Not designed beyond this sketch.",
     links: [],
@@ -347,7 +347,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "I keep hitting this gap in the field. I have not designed the simulator past this note.",
     maturityDetail:
-      "Future concept. Not a completed design and not software. It sits with GTM workflow design as a note, not a tool.",
+      "Concept. Not a completed design and not software. It sits with GTM workflow design as a note, not a tool.",
     fieldAsset: null,
     proposedSoftware: null,
     links: [],

@@ -79,7 +79,7 @@ export function ProjectCard({
       ) : null}
       {density === "quiet" ? (
         <p className="text-sm font-medium text-foreground">
-          Future concept. Not built.
+          Concept. Not built.
         </p>
       ) : null}
     </article>

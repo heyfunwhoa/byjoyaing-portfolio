@@ -873,7 +873,7 @@ export const projects: Project[] = [
       "Account context over volume-only scoring.",
     ],
     prototype:
-      "Designed system. The field loop exists; the intelligence layer is not a shipped app.",
+      "Designed. The field loop exists; the intelligence layer is not a shipped app.",
     next: [
       "CRM and call-note ingestion.",
       "Deduplicated themes.",

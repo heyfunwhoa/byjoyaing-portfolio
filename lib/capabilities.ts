@@ -4,27 +4,27 @@ export const workAreas = [
   {
     title: "Revenue Strategy & Operations",
     problem: "How a team plans coverage, partner motion, and which accounts are worth the next conversation.",
-    href: "/projects#directory",
+    href: "/projects?category=revenue#directory",
   },
   {
     title: "Account & Market Intelligence",
     problem: "How sellers separate a real account change from a guess, and keep competitive claims tied to a source.",
-    href: "/projects#directory",
+    href: "/projects?category=accounts#directory",
   },
   {
     title: "Sales Enablement & Productivity",
     problem: "How a new seller learns the product, and how a release becomes something the field can say.",
-    href: "/projects#directory",
+    href: "/projects?category=enablement#directory",
   },
   {
     title: "Customer & Product Intelligence",
     problem: "How customer requests stay attached to the account, and how product decisions stay inspectable.",
-    href: "/projects#directory",
+    href: "/projects?category=customer#directory",
   },
   {
     title: "Technical Systems & AI",
     problem: "How a repeatable workflow keeps evidence visible. Automation and models stay out until the data is trustworthy.",
-    href: "/projects#directory",
+    href: "/projects?category=technical#directory",
   },
 ] as const;
 

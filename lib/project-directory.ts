@@ -17,6 +17,19 @@ export const directoryCategories = [
 
 export type DirectoryCategory = (typeof directoryCategories)[number];
 
+export const categorySlugs = {
+  revenue: "Revenue Strategy & Operations",
+  accounts: "Account & Market Intelligence",
+  enablement: "Sales Enablement & Productivity",
+  customer: "Customer & Product Intelligence",
+  technical: "Technical Systems & AI",
+} as const;
+
+export function categoryFromSlug(slug: string | undefined): DirectoryCategory {
+  if (!slug) return "All work";
+  return categorySlugs[slug as keyof typeof categorySlugs] ?? "All work";
+}
+
 export const lifecycleStages = [
   "Discover",
   "Build",

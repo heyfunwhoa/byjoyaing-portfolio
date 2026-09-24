@@ -12,8 +12,8 @@ import type { LifecyclePhase } from "@/lib/portfolio";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-export function ProjectsDirectory() {
-  const [category, setCategory] = useState<DirectoryCategory>("All work");
+export function ProjectsDirectory({ initialCategory = "All work" }: { initialCategory?: DirectoryCategory }) {
+  const [category, setCategory] = useState<DirectoryCategory>(initialCategory);
   const [stage, setStage] = useState<LifecyclePhase | "All">("All");
   const projects = useMemo(() => {
     return activeProjects().filter((project) => {

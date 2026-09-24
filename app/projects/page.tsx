@@ -3,7 +3,7 @@ import { ProjectPreview } from "@/components/project-previews";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { ProjectsDirectory } from "@/components/projects-directory";
 import { ProjectsSystems } from "@/components/projects-systems";
-import { featuredProjects, roadmapProjects } from "@/lib/project-directory";
+import { categoryFromSlug, featuredProjects, roadmapProjects } from "@/lib/project-directory";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -13,7 +13,12 @@ export const metadata: Metadata = {
     "Revenue, account, enablement, customer, and technical GTM systems, labeled as prototype, field practice, design, or concept.",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  const { category } = await searchParams;
   const featured = featuredProjects();
   const roadmap = roadmapProjects();
 
@@ -22,7 +27,7 @@ export default function ProjectsPage() {
       <section className="border-b border-border py-10 sm:py-12">
         <p className="text-sm font-medium text-muted">Projects / Selected work</p>
         <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
-          Building systems that connect product, sales, and execution.
+          Systems for how a revenue team plans, sells, and learns.
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
           I design and build GTM systems that turn fragmented information into structured intelligence, actionable workflows, and measurable business outcomes. The work joins enterprise sales, product thinking, and technical implementation, from competitive intelligence and customer feedback to security research, enablement, and account-based GTM.
@@ -35,7 +40,7 @@ export default function ProjectsPage() {
           ))}
         </ul>
         <p className="mt-5 max-w-2xl text-sm leading-6 text-muted">
-          A collection of working prototypes, field-tested processes, and designed systems. Each project documents the problem, my contribution, implementation status, and intended business impact.
+          Each project is a prototype, professional field system, design, or concept. The label is the implementation status, not a production claim.
         </p>
       </section>
 
@@ -95,7 +100,7 @@ export default function ProjectsPage() {
           Lifecycle stages are a second filter. A project can sit in more than one functional category. Measure has no project yet.
         </p>
         <div className="mt-6">
-          <ProjectsDirectory />
+          <ProjectsDirectory key={category ?? "all"} initialCategory={categoryFromSlug(category)} />
         </div>
       </section>
 

@@ -42,8 +42,11 @@ export default function AboutPage() {
             </li>
           ))}
         </ol>
-        <Link href="/experience" className="mt-4 inline-flex text-sm font-medium text-accent">
+          <Link href="/experience" className="mt-4 inline-flex text-sm font-medium text-accent">
           Read the experience timeline
+        </Link>
+        <Link href="/capabilities" className="mt-4 ml-4 inline-flex text-sm font-medium text-accent">
+          See capabilities
         </Link>
       </section>
 

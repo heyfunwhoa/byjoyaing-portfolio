@@ -31,7 +31,7 @@ export default function ContactPage() {
             Let&apos;s connect.
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted">
-            I&apos;m interested in conversations around enterprise sales, GTM programs, product commercialization, and technical systems.
+            I&apos;m interested in conversations around enterprise sales leadership, GTM strategy, revenue operations, and the systems a team uses to execute.
           </p>
           <p className="flex flex-wrap items-center gap-x-3 gap-y-2 text-base">
             {links.map((link, index) => (
