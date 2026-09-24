@@ -273,7 +273,7 @@ export const roles = [
     period: "Dec 2024 – Present",
     category: "Developer security, secrets, machine identity",
     points: [
-      "Own a $1.4M quota across developer-first secrets detection and AppSec accounts — security, engineering, DevSecOps, and cloud in the same cycle.",
+      "Sell developer-first secrets detection and AppSec into accounts where security, engineering, DevSecOps, and cloud share the same buying cycle.",
       "Created discovery frameworks, ICP profiles, outbound plays, and competitive messaging adopted across the sales org.",
       "Led a sales–product feedback loop and built a self-serve onboarding resource for product, process, and technical fundamentals.",
       "Designed product-release intelligence: what shipped, who cares, which accounts it applies to, and what the field should do next.",
@@ -285,8 +285,8 @@ export const roles = [
     period: "Dec 2023 – May 2024",
     category: "Threat intelligence and network / AI security",
     points: [
-      "Greenfield territory: net-new pipeline and regional growth. Ranked top 2 of 9 for pipeline growth and activity.",
-      "Created industry-knowledge training and business-value tools that cut new-rep ramp time by 50%.",
+      "Greenfield territory: net-new pipeline and regional growth.",
+      "Created industry-knowledge training and business-value tools for new-rep ramp.",
     ],
   },
   {
@@ -295,7 +295,7 @@ export const roles = [
     period: "Oct 2021 – Aug 2023",
     category: "Threat intelligence, cloud, and application security",
     points: [
-      "Full-cycle net-new and growth in 1,500-employee to F100 accounts. Closed the team’s largest threat-intelligence deal in 2022 (97% of $1M quota).",
+      "Full-cycle net-new and growth in 1,500-employee to F100 accounts, including the team’s largest threat-intelligence deal in 2022.",
       "Wrote threat-intelligence playbooks for the broader portfolio team and served as the TI resource across 500+ accounts, partners, and customers.",
     ],
   },
@@ -305,7 +305,7 @@ export const roles = [
     period: "Sep 2018 – Oct 2021",
     category: "Web security and data protection",
     points: [
-      "Mid-Atlantic and Southeast enterprise (1,500+ employees), new logo and expansion. 108% of $1.3M in 2020; top 2 of 10 in the region.",
+      "Mid-Atlantic and Southeast enterprise (1,500+ employees), new logo and expansion.",
       "Co-created discovery templates and sales presentations used by the team. Closed the team’s largest web-security deal in 2021.",
     ],
   },
@@ -315,7 +315,7 @@ export const roles = [
     period: "Sep 2016 – Sep 2018",
     category: "Channel, partners, and new-category GTM",
     points: [
-      "Helped stand up a channel program and grow distribution sales 25% to $3.4M (2017) and 33% to $4.5M (2018).",
+      "Helped stand up a channel program for distribution sales.",
     ],
   },
   {
@@ -333,7 +333,7 @@ export const roles = [
     period: "May 2014 – Dec 2015",
     category: "Web, email, and data security",
     points: [
-      "Northeast accounts up to 2,000 employees. Built cybersecurity ramp resources for new team members and contributed to ~30% YoY net-new growth.",
+      "Northeast accounts up to 2,000 employees. Built cybersecurity ramp resources for new team members.",
     ],
   },
 ];
@@ -616,7 +616,7 @@ export const projects: Project[] = [
       job: "Move from discovery to a source-grounded explanation and next step — without real secrets.",
     },
     evidence:
-      "Darktrace industry training cut new-rep ramp 50%. At Truffle, self-serve onboarding and a sales–product loop showed the same gap. The productized version is Truffle Camp (curriculum: The Secret Life Cycle; interactive layer: Secret Expedition). No public repository. Atlas stays a separate source of truth; Camp would consume a learner-safe export.",
+      "At Darktrace I created industry-knowledge training. At Truffle, self-serve onboarding and a sales–product loop showed the same gap. The productized version is Truffle Camp (curriculum: The Secret Life Cycle; interactive layer: Secret Expedition). No public repository. Atlas stays a separate source of truth; Camp would consume a learner-safe export.",
     goals: [
       "Teach the secret lifecycle with synthetic missions: Discover → Classify → Verify → Prioritize → Route → Explain → Advance.",
       "Role-based paths and behavior-based badges, not a speed leaderboard.",
@@ -678,7 +678,7 @@ export const projects: Project[] = [
         "Audience-specific field briefs",
       ],
       business: [
-        "Measured: 50% faster ramp at Darktrace for the enablement motion. Hypothesis: Camp reduces time-to-useful-conversation without overclaiming product coverage.",
+        "Hypothesis: Camp reduces time-to-useful-conversation without overclaiming product coverage.",
       ],
     },
     hypothesis:
@@ -963,7 +963,7 @@ export const projects: Project[] = [
       job: "Ingest sheets, classify ownership by domain, score whitespace, and keep partner relationship context on every conflict.",
     },
     evidence:
-      "Metadot channel program: distribution sales +25% to $3.4M (2017) and +33% to $4.5M (2018). The v1 design is Channel Territory Mapping: column mapping per partner, domain as sole source of truth, search plus human review when domain is missing — never a model guessing a domain from memory. No public repository.",
+      "Metadot channel program: I helped stand up distribution sales. The v1 design is Channel Territory Mapping: column mapping per partner, domain as sole source of truth, search plus human review when domain is missing — never a model guessing a domain from memory. No public repository.",
     goals: [
       "Ownership classes: internal_only, single_partner, multi_partner_conflict, unclaimed.",
       "Score unclaimed/internal-only accounts (100 pts: tech 30, employees 25, ICP 25, funding 20).",
@@ -1022,7 +1022,7 @@ export const projects: Project[] = [
         "Conflict view used for partner contact",
       ],
       business: [
-        "Measured: Metadot channel growth. Hypothesis: matching and scored whitespace increase partner-sourced pipeline.",
+        "Hypothesis: matching and scored whitespace increase partner-sourced pipeline.",
       ],
     },
     hypothesis:

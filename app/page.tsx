@@ -58,7 +58,7 @@ export default function Home() {
             I&apos;m Kristen Joy Aing, an enterprise cybersecurity sales professional with 10+ years in complex technical sales cycles, GTM programs, and helping teams communicate product value. I combine that commercial work with product thinking and hands-on technical work on account research, competitive intelligence, product feedback, and field enablement.
           </p>
           <ul className="flex flex-wrap gap-2 text-sm">
-            {["10+ years", "Cybersecurity", "$1.4M quota owned"].map((item) => (
+            {["10+ years", "Cybersecurity", "GTM systems"].map((item) => (
               <li key={item} className="rounded-full border border-border px-3 py-1">
                 {item}
               </li>

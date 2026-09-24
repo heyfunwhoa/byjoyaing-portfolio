@@ -18,7 +18,7 @@ const related: Record<string, { href: string; label: string }[]> = {
   Rapid7: [{ href: "/work/security-signal-intelligence", label: "Signal idea, not the playbooks" }],
   Darktrace: [{ href: "/work/truffle-camp", label: "Camp is a later design, not this training" }],
   Forcepoint: [{ href: "/work/competitive-intelligence-engine", label: "Discovery templates" }],
-  Metadot: [{ href: "/work/partner-gtm-engine", label: "Partner design, not those results" }],
+  Metadot: [{ href: "/work/partner-gtm-engine", label: "Partner design, not the Metadot program" }],
 };
 
 export default function ExperiencePage() {
@@ -30,7 +30,7 @@ export default function ExperiencePage() {
           A decade of enterprise cybersecurity sales.
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Individual quota figures are labeled as mine. Program results, such as a channel number or a ramp change, are team or enablement outcomes. Portfolio projects are not employer deployments unless the note says a team used a document or a training.
+          Each role describes the work: the market, the motion, and what I built for the team. Portfolio projects are not employer deployments unless the note says a team used a document or a training.
         </p>
         <Link href="/contact#resume" className="mt-6 inline-flex text-sm font-medium text-accent">
           Request resume

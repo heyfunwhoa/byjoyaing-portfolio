@@ -164,7 +164,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     links: [],
     result: {
       kind: "measured",
-      text: "Field result, not a Camp result: at Darktrace, industry-knowledge training and business-value tools I created cut new-rep ramp time by 50%. This portfolio does not include how that was measured. Camp has no learner data.",
+      text: "The Darktrace training and the Truffle onboarding resource are field work. Truffle Camp is the later design. Camp has no learner data.",
     },
     related: [
       "detector-coverage-atlas",
@@ -188,7 +188,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "At Metadot I was the global channel account manager and helped stand up a channel program. This engine is the system I would want for that motion. I have not deployed it.",
     maturityDetail:
-      "Designed system. The Metadot figures are channel results from that job: distribution sales grew 25% to $3.4M in 2017 and 33% to $4.5M in 2018. They are not usage of this design.",
+      "Designed system. The Metadot channel program is history from that job. It is not usage of this design.",
     fieldAsset:
       "The Metadot channel motion, and the judgment that came from matching partner lists by hand.",
     proposedSoftware:
@@ -196,7 +196,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     links: [],
     result: {
       kind: "to-test",
-      text: "Metric to test: a partner sheet with a missing domain is either matched to a cited source or left in human review, and a conflict view names who to call. Do not read the Metadot growth numbers as a result of this design.",
+      text: "Metric to test: a partner sheet with a missing domain is either matched to a cited source or left in human review, and a conflict view names who to call.",
     },
     related: ["account-intelligence"],
   },
@@ -546,36 +546,6 @@ export function densityFor(slug: string, status: ProjectStatus) {
   }
   return "compact" as const;
 }
-
-export const salesProof: {
-  value: string;
-  label: string;
-  detail: string;
-}[] = [
-  {
-    value: "108%",
-    label: "of a $1.3M quota",
-    detail: "Forcepoint, 2020. Top 2 of 10 in the region.",
-  },
-  {
-    value: "97%",
-    label: "of a $1M quota",
-    detail:
-      "Rapid7. Closed the team’s largest threat-intelligence deal in 2022.",
-  },
-  {
-    value: "Top 2 of 9",
-    label: "pipeline growth",
-    detail:
-      "Darktrace, greenfield territory. Industry training I created cut new-rep ramp by 50%.",
-  },
-  {
-    value: "$1.4M",
-    label: "quota I own now",
-    detail:
-      "Truffle Security. I am not stating attainment. Discovery frameworks and competitive messaging I wrote were adopted across the sales org.",
-  },
-];
 
 export const accountBriefSample = {
   kicker: "Illustrative account brief",
