@@ -430,12 +430,13 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "customer-feedback-intelligence": {
     pipeline:
-      "Notes from a deal or a call → I group the repeat request in conversation with product → a theme to take back if it ships.",
+      "A sample note → a suggested theme you can correct → a decision a person confirms → a follow-up draft that does not send.",
     workingToday:
-      "That sales-to-product loop at Truffle. This repository does not ingest notes or collapse duplicates.",
+      "A browser walkthrough with fictional accounts. The sales-to-product loop at Truffle is the field habit. This page does not ingest CRM notes, call a model, or write a roadmap.",
     plannedNext:
-      "A theme list with the account attached, joined to the release note when it ships.",
-    implementedTech: "None beyond this page.",
+      "CRM and call-note intake, tighter duplicate detection, and a decision log. A join to release notes comes after that.",
+    implementedTech:
+      "Next.js walkthrough in this portfolio. Sample rows are in the page. No CRM, ticket system, or model.",
   },
   "gtm-campaign-lab": {
     pipeline:
