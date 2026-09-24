@@ -1,0 +1,219 @@
+import { getProject, type LifecyclePhase, type ProjectStatus } from "@/lib/portfolio";
+
+export const directoryCategories = [
+  "All work",
+  "Sales & GTM",
+  "Product & Customer",
+  "Security & Technical",
+  "Enablement",
+] as const;
+
+export type DirectoryCategory = (typeof directoryCategories)[number];
+
+export const lifecycleStages = [
+  "Discover",
+  "Build",
+  "Launch",
+  "Enable",
+  "Distribute",
+  "Measure",
+] as const satisfies readonly LifecyclePhase[];
+
+export type DirectoryPreview = "atlas" | "competitive" | "account" | "note";
+
+type DirectorySource = {
+  slug: string;
+  summary: string;
+  categories: Exclude<DirectoryCategory, "All work">[];
+  role: string;
+  technologies: string;
+  featuredOrder: number | null;
+  preview: DirectoryPreview;
+  demoUrl: string | null;
+  githubUrl: string | null;
+};
+
+const sources: DirectorySource[] = [
+  {
+    slug: "detector-coverage-atlas",
+    summary:
+      "Compare secret-detection coverage in a source-backed sample. A larger catalog and live monitoring are not in this repository.",
+    categories: ["Security & Technical", "Sales & GTM"],
+    role: "I built the 3-by-3 sample and the rule that an unreviewed cell stays gray.",
+    technologies: "Next.js, React, and TypeScript. The rows live in this repository.",
+    featuredOrder: 1,
+    preview: "atlas",
+    demoUrl: "/#atlas",
+    githubUrl: "https://github.com/heyfunwhoa/byjoyaing-portfolio",
+  },
+  {
+    slug: "competitive-intelligence-engine",
+    summary:
+      "Turn competitor research into a source-backed brief and field guidance. Monitoring and automatic updates are designed, not running.",
+    categories: ["Sales & GTM", "Security & Technical"],
+    role: "I wrote the briefs and taught them. The monitor on the case study is a sample.",
+    technologies: "Field documents, Salesforce, and Slack. This page is a Next.js sample, not a crawler.",
+    featuredOrder: 2,
+    preview: "competitive",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "account-intelligence",
+    summary:
+      "Watch assigned accounts, separate a business change from a hypothesis, and draft outreach a person still has to send.",
+    categories: ["Sales & GTM"],
+    role: "I designed the personal feed. The walkthrough uses fictional accounts and does not call a data source.",
+    technologies: "Next.js sample. Supabase, Exa, Sumble, and Claude are planned, not installed.",
+    featuredOrder: 3,
+    preview: "account",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "customer-feedback-intelligence",
+    summary:
+      "Group customer requests into themes with the account still attached. Intake from CRM and tickets is not connected.",
+    categories: ["Product & Customer", "Sales & GTM"],
+    role: "I run the sales-to-product loop in the field. The workspace is a browser sample.",
+    technologies: "Next.js sample. No CRM, ticket system, or model.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "product-release-intelligence",
+    summary:
+      "Turn a release into reviewed lines for Sales, Customer Success, and customers. The hub itself is not built.",
+    categories: ["Product & Customer", "Sales & GTM"],
+    role: "I designed the question set I use with the field. There is no release application.",
+    technologies: "The questions. No release hub in this repository.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "truffle-camp",
+    summary:
+      "A designed path for secrets-security onboarding and practice. The case study is a written module, not a course app.",
+    categories: ["Enablement", "Security & Technical"],
+    role: "I designed the curriculum on top of enablement I have already done with teams.",
+    technologies: "Static copy in this Next.js page. No lesson player.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "partner-gtm-engine",
+    summary:
+      "Match partner account lists on domain, leave uncertain rows for a person, and show whitespace. Not deployed.",
+    categories: ["Sales & GTM"],
+    role: "I designed this from channel work. The page shows one fictional match.",
+    technologies: "A written design. No spreadsheet upload or CRM sync.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "product-prioritization-simulator",
+    summary: "A scoring sheet for a short list of bets. Not designed past this note, and not software.",
+    categories: ["Product & Customer"],
+    role: "I have not scored a bet in software.",
+    technologies: "None.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "gtm-campaign-lab",
+    summary: "One segment, one message, and a readout of what to change. Not built.",
+    categories: ["Sales & GTM"],
+    role: "I have written outbound plays. I have not built a system that measures them.",
+    technologies: "None.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
+    slug: "security-signal-intelligence",
+    summary: "A reviewed weekly note from a fixed list of public sources. The product is still an idea.",
+    categories: ["Security & Technical", "Sales & GTM"],
+    role: "Playbooks and industry training were field work. They are not this product.",
+    technologies: "None in this repository.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+];
+
+export type DirectoryProject = DirectorySource & {
+  title: string;
+  phase: LifecyclePhase;
+  status: ProjectStatus;
+  caseStudyUrl: string;
+};
+
+function hydrate(source: DirectorySource): DirectoryProject {
+  const project = getProject(source.slug);
+  if (!project) {
+    throw new Error(`Missing project ${source.slug}`);
+  }
+  return {
+    ...source,
+    title: project.title,
+    phase: project.phase,
+    status: project.status,
+    caseStudyUrl: `/work/${project.slug}`,
+  };
+}
+
+export const directoryProjects: DirectoryProject[] = sources.map(hydrate);
+
+export function featuredProjects() {
+  return directoryProjects
+    .filter((project) => project.featuredOrder !== null)
+    .sort((a, b) => (a.featuredOrder ?? 0) - (b.featuredOrder ?? 0));
+}
+
+export function activeProjects() {
+  return directoryProjects.filter((project) => project.status !== "exploring");
+}
+
+export function roadmapProjects() {
+  return directoryProjects.filter((project) => project.status === "exploring");
+}
+
+export const systemLayers = [
+  {
+    title: "Market and customer intelligence",
+    slugs: ["competitive-intelligence-engine", "customer-feedback-intelligence", "detector-coverage-atlas"],
+  },
+  {
+    title: "GTM and product execution",
+    slugs: ["account-intelligence", "partner-gtm-engine", "product-release-intelligence"],
+  },
+  {
+    title: "Field enablement",
+    slugs: ["truffle-camp"],
+  },
+] as const;
+
+export function directoryStatus(status: ProjectStatus) {
+  if (status === "prototype") {
+    return { label: "Working prototype", detail: "A sample you can inspect. Not a production application." };
+  }
+  if (status === "field") {
+    return { label: "Field system", detail: "Used in real work as documents and practice. Not this software." };
+  }
+  if (status === "designed") {
+    return { label: "Designed system", detail: "A documented product. An interactive page is still a sample." };
+  }
+  return { label: "Future concept", detail: "No completed design and no field deployment." };
+}
