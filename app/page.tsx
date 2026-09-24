@@ -73,9 +73,9 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="grid gap-3">
+        <div className="grid min-w-0 gap-3">
           {featured.map((project) => (
-            <Link key={project.slug} href={project.caseStudyUrl} className="rounded-2xl border border-border bg-card p-3 hover:border-accent">
+            <Link key={project.slug} href={project.caseStudyUrl} className="min-w-0 rounded-2xl border border-border bg-card p-3 hover:border-accent">
               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                 <p className="text-sm font-medium">{project.title}</p>
                 <ProjectStatusPill status={project.status} />
@@ -136,7 +136,7 @@ export default function Home() {
         </div>
         <div className="mt-8 flex flex-col gap-6">
           {featured.map((project, index) => (
-            <article key={project.slug} id={project.slug === "detector-coverage-atlas" ? "atlas" : undefined} className="grid items-center gap-6 rounded-2xl border border-border p-4 sm:p-5 lg:grid-cols-2">
+            <article key={project.slug} id={project.slug === "detector-coverage-atlas" ? "atlas" : undefined} className="grid min-w-0 grid-cols-1 items-center gap-6 rounded-2xl border border-border p-4 sm:p-5 lg:grid-cols-2">
               <div className={index % 2 === 1 ? "lg:order-2" : undefined}>
                 <div className="flex flex-wrap items-center gap-2">
                   <ProjectStatusPill status={project.status} />
@@ -149,7 +149,7 @@ export default function Home() {
                   View case study
                 </Link>
               </div>
-              <div className={index % 2 === 1 ? "lg:order-1" : undefined}>
+              <div className={index % 2 === 1 ? "min-w-0 lg:order-1" : "min-w-0"}>
                 {project.slug === "detector-coverage-atlas" ? <CoverageExplorer /> : <ProjectPreview kind={project.preview} />}
               </div>
             </article>
@@ -159,7 +159,7 @@ export default function Home() {
 
       <section className="border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight sm:text-4xl">From field problem to working system.</h2>
-        <ol className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <ol className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           {stages.map((stage, index) => (
             <li key={stage.index} className="rounded-2xl border border-border p-4">
               <p className="text-xs font-medium text-muted">{stage.index}</p>

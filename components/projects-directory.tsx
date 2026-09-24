@@ -25,8 +25,8 @@ export function ProjectsDirectory() {
 
   return (
     <div>
-      <div className="flex flex-col gap-4">
-        <div role="group" aria-label="Project categories" className="flex gap-2 overflow-x-auto pb-1">
+      <div className="flex min-w-0 flex-col gap-4">
+        <div role="group" aria-label="Project categories" className="flex min-w-0 gap-2 overflow-x-auto pb-1">
           {directoryCategories.map((item) => {
             const selected = category === item;
             return (
@@ -46,7 +46,7 @@ export function ProjectsDirectory() {
             );
           })}
         </div>
-        <div role="group" aria-label="Lifecycle stage" className="flex gap-2 overflow-x-auto pb-1">
+        <div role="group" aria-label="Lifecycle stage" className="flex min-w-0 gap-2 overflow-x-auto pb-1">
           {(["All", ...lifecycleStages] as const).map((item) => {
             const selected = stage === item;
             return (
@@ -72,10 +72,10 @@ export function ProjectsDirectory() {
           No active project is tagged {stage === "All" ? category : stage}. Future concepts stay in the roadmap below.
         </p>
       ) : (
-        <ul className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <ul className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
-            <li key={project.slug} className="flex">
-              <article className="flex w-full flex-col gap-4 rounded-2xl border border-border bg-card p-4">
+            <li key={project.slug} className="flex min-w-0">
+              <article className="flex w-full min-w-0 flex-col gap-4 rounded-2xl border border-border bg-card p-4">
                 <ProjectPreview kind={project.preview} compact />
                 <div className="flex flex-wrap items-center gap-2">
                   <ProjectStatusPill status={project.status} />

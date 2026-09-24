@@ -48,7 +48,7 @@ export default function ProjectsPage() {
           {featured.map((project, index) => {
             const flipped = index % 2 === 1;
             return (
-              <article key={project.slug} className="grid items-center gap-6 rounded-2xl border border-border p-4 sm:p-6 lg:grid-cols-2">
+              <article key={project.slug} className="grid min-w-0 grid-cols-1 items-center gap-6 rounded-2xl border border-border p-4 sm:p-6 lg:grid-cols-2">
                 <div className={flipped ? "lg:order-2" : undefined}>
                   <div className="flex flex-wrap items-center gap-2">
                     <ProjectStatusPill status={project.status} />
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
                     ) : null}
                   </div>
                 </div>
-                <div className={flipped ? "lg:order-1" : undefined}>
+                <div className={flipped ? "min-w-0 lg:order-1" : "min-w-0"}>
                   <ProjectPreview kind={project.preview} />
                 </div>
               </article>

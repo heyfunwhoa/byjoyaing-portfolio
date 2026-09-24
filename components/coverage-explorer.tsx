@@ -24,7 +24,7 @@ export function CoverageExplorer() {
   }, [filter, query]);
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg border border-border bg-card">
+    <div className="flex min-w-0 max-w-full flex-col overflow-hidden rounded-lg border border-border bg-card">
       <div className="flex flex-col gap-3 border-b border-border px-3 py-3 sm:flex-row sm:items-center sm:justify-between">
         <label className="flex min-w-0 flex-1 items-center">
           <span className="sr-only">Search sources</span>

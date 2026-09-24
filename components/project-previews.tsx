@@ -4,12 +4,12 @@ import type { DirectoryPreview } from "@/lib/project-directory";
 export function ProjectPreview({ kind, compact = false }: { kind: DirectoryPreview; compact?: boolean }) {
   if (kind === "atlas") {
     return (
-      <div className="overflow-x-auto rounded-xl border border-border bg-card">
+      <div className="w-full min-w-0 max-w-full overflow-x-auto rounded-xl border border-border bg-card">
         <div className="flex items-center justify-between gap-3 border-b border-border px-3 py-2">
           <p className="text-xs font-medium">Coverage sample</p>
           <p className="text-[11px] text-muted">Live rows on this site</p>
         </div>
-        <table className="w-full text-left text-xs">
+        <table className="w-full min-w-[36rem] text-left text-xs">
           <thead>
             <tr className="border-b border-border text-muted">
               <th className="px-3 py-2 font-medium">Source</th>
