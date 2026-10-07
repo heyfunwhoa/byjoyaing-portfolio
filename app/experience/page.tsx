@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Experience — Kristen Joy Aing",
   description:
-    "Enterprise cybersecurity sales roles, field enablement, and the difference between individual results and team programs.",
+    "Technical enterprise sales, sales-lead coaching, and the product narrative behind the field.",
 };
 
 const related: Record<string, { href: string; label: string }[]> = {
@@ -27,10 +27,10 @@ export default function ExperiencePage() {
       <section className="border-b border-border py-16">
         <p className="text-sm font-medium text-muted">Experience</p>
         <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
-          A decade of enterprise cybersecurity sales.
+          A decade selling technical security, and teaching the story.
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Enterprise cybersecurity sales, player-coach work, and the systems the next seller can run. Portfolio projects are not employer deployments unless a note says a team used a document or a training.
+          Enterprise cycles, the coaching a sales leader does from the field, and the positioning a product marketer owes the team. Portfolio projects are not employer deployments unless a note says a team used a document or a training.
         </p>
         <Link href="/contact#resume" className="mt-6 inline-flex text-sm font-medium text-accent">
           Request resume

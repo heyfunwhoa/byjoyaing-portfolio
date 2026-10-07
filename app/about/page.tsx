@@ -8,7 +8,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About — Kristen Joy Aing",
   description:
-    "How a decade of enterprise cybersecurity sales shapes the GTM systems and technical work on this site.",
+    "A technical cybersecurity seller with an advertising degree from UT Austin, building the narrative and the systems a sales team can run.",
 };
 
 export default function AboutPage() {
@@ -21,10 +21,13 @@ export default function AboutPage() {
         <div>
           <p className="text-sm font-medium text-muted">About</p>
           <h1 className="mt-3 max-w-2xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
-            A seller who builds the system the next person can run.
+            A technical seller who writes the story the field can use.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-            I have spent 10+ years in enterprise cybersecurity sales, from established companies to early-stage teams, across application, cloud, data, threat intelligence, network, and developer security. I sell the cycle, coach newer sellers, and write the brief or the tool so the next person can run it.
+            I studied advertising and business foundations at The University of Texas at Austin. That training is how I explain a technical product: one claim, a buyer who can repeat it, and a field that does not invent the rest.
+          </p>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
+            The career is enterprise cybersecurity sales, from established companies to early-stage teams. I run the cycle, coach newer sellers, and build the brief or the system the next person can run.
           </p>
         </div>
       </section>
@@ -32,7 +35,7 @@ export default function AboutPage() {
       <section className="border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">Career progression</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Websense and Quantcast were the early enterprise and new-market years. Metadot was channel. Forcepoint, Rapid7, Darktrace, and Truffle Security are the cybersecurity book. The full record, with dates and what was individual versus team, is on Experience.
+          Quantcast was advertising sales in a new market. Websense was the first cybersecurity book. Metadot was channel. Forcepoint, Rapid7, Darktrace, and Truffle Security are the enterprise security years. Dates and what was individual versus team are on Experience.
         </p>
         <ol className="mt-6 flex flex-col gap-3">
           {roles.slice(0, 4).map((role) => (
@@ -51,9 +54,9 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">Enterprise sales</h2>
+        <h2 className="font-display text-3xl tracking-tight">Technical sales and the lead around it</h2>
         <p className="mt-3 max-w-2xl text-base leading-7 text-muted">
-          I run complex cycles with security, engineering, and business stakeholders in the same room. Discovery, competitive positioning, and the close are the job. The portfolio projects are separate from employer systems unless a case study says a team used a document or a training.
+          Security, engineering, and executives in the same room. Discovery, a competitive story, and the close. Alongside the deal I coach sellers, support hiring, and build the ramp a sales lead owes the team.
         </p>
       </section>
 
@@ -87,10 +90,10 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">Study</h2>
+        <h2 className="font-display text-3xl tracking-tight">Advertising, then the technical market</h2>
         <ul className="mt-4 grid gap-4 text-sm leading-6 text-muted sm:grid-cols-3">
-          <li>MBA, IT Management. Western Governors University, in progress.</li>
           <li>B.S. Advertising, Business Foundations. The University of Texas at Austin.</li>
+          <li>MBA, IT Management. Western Governors University, in progress.</li>
           <li>AWS Cloud Practitioner and AI Practitioner, foundational.</li>
         </ul>
       </section>

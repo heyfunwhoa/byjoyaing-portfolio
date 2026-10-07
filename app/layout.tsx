@@ -23,15 +23,15 @@ const instrument = Instrument_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.byjoyaing.com"),
   title: {
-    default: "Kristen Joy Aing — Enterprise sales, GTM strategy, and AI systems",
+    default: "Kristen Joy Aing — Technical sales, product narrative, and GTM systems",
     template: "%s",
   },
   description:
-    "Enterprise cybersecurity sales and GTM systems for account research, pipeline, customer understanding, enablement, and go-to-market execution.",
+    "Technical cybersecurity seller. Sales leadership, product marketing grounded in advertising at UT Austin, and GTM systems for the field.",
   openGraph: {
-    title: "Kristen Joy Aing — Enterprise cybersecurity sales",
+    title: "Kristen Joy Aing — Technical sales and product narrative",
     description:
-      "Enterprise cybersecurity sales, built into repeatable GTM systems.",
+      "Enterprise cybersecurity sales, product marketing, and the systems a field team can run.",
     type: "website",
     locale: "en_US",
   },
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <Mark className="text-accent" />
                 Kristen Joy Aing
               </span>
-              <p className="text-xs leading-5">Enterprise sales, GTM strategy, and AI systems · 2026</p>
+              <p className="text-xs leading-5">Technical sales, product narrative, and GTM systems · 2026</p>
             </div>
             <a
               className="link-rule w-fit text-foreground"

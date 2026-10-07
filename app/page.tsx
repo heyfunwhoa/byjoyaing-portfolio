@@ -11,7 +11,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Kristen Joy Aing — Enterprise sales, GTM strategy, and AI systems",
   description:
-    "Enterprise cybersecurity sales professional designing practical GTM systems for account research, pipeline, customer understanding, enablement, and go-to-market execution.",
+    "Technical cybersecurity seller and GTM builder. Sales leadership, product narrative, and systems for how a team takes a technical product to market.",
 };
 
 const previewRoles = ["Truffle Security", "Rapid7", "Darktrace", "Forcepoint"];
@@ -34,18 +34,18 @@ export default function Home() {
     <PageMain>
       <section className="grid items-start gap-10 border-b border-border py-12 lg:grid-cols-2 lg:py-16">
         <div className="flex flex-col gap-5">
-          <p className="text-sm font-medium text-muted">Enterprise cybersecurity · 10+ years</p>
+          <p className="text-sm font-medium text-muted">Technical seller · Sales leadership · Product narrative</p>
           <h1 className="font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
             Enterprise Sales. GTM Strategy. AI-Powered Systems.
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted">
-            I&apos;m Kristen Joy Aing, an enterprise cybersecurity sales professional and GTM systems builder. I combine frontline revenue work with hands-on systems development so teams can research accounts, manage pipeline, understand customers, enable sellers, and execute go-to-market strategy.
+            I&apos;m Kristen Joy Aing. I sell technical cybersecurity products into the enterprise, coach the people beside me, and shape the story the field can repeat.
           </p>
           <p className="max-w-xl text-base leading-7 text-muted">
-            The work connects commercial strategy, structured data, and automation to operational problems I have seen in the field. A model is added only when the underlying record is trustworthy.
+            Advertising at UT Austin is where that started. The degree is how I treat positioning: what a technical buyer needs to hear, what a seller can say, and what product should hear back.
           </p>
           <ul className="flex flex-wrap gap-2 text-sm">
-            {["Enterprise sales", "GTM strategy", "Hands-on systems"].map((item) => (
+            {["Technical sales", "Sales leadership", "Product marketing"].map((item) => (
               <li key={item} className="rounded-full border border-border px-3 py-1">{item}</li>
             ))}
           </ul>
@@ -72,15 +72,15 @@ export default function Home() {
       </section>
 
       <section className="border-b border-border py-12">
-        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">Enterprise experience informs everything I build.</h2>
+        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">The commercial work comes first.</h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          The commercial work is the foundation: enterprise security buyers, long sales cycles, technical evaluations, account strategy, forecasting, and the operational gaps that slow a revenue team. The systems on this site start from those problems.
+          A technical sale, the leadership around it, and the narrative that makes the product legible. The systems on this site start there.
         </p>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {[
-            ["Enterprise sales", "Full-cycle work in AppSec, cloud, data, threat intelligence, network, and developer security.", "Forcepoint, Rapid7, Darktrace, and Truffle Security.", "/experience", "See the roles"],
-            ["GTM knowledge", "Discovery, competitive positioning, partner motion, enablement, and the handoff between sales and product.", "Briefs and training used with teams. The software around them is still a design.", "/capabilities/sales-enablement", "Enablement view"],
-            ["Technical building", "A coverage sample you can filter, plus designed workflows for accounts, feedback, and competitive claims.", "Next.js and TypeScript in this repository. No model is installed.", "/work/detector-coverage-atlas", "Open the Atlas"],
+            ["Technical seller", "Full-cycle enterprise work with security, engineering, and executive buyers in the same cycle.", "Forcepoint, Rapid7, Darktrace, and Truffle Security.", "/experience", "See the roles"],
+            ["Sales leadership", "Coaching, hiring support, ramp, and a method the next seller can use. Team-lead work, not a title I have held above the field.", "Two SDRs into closing roles. Seven GTM hires onboarded at Truffle.", "/experience", "Read the timeline"],
+            ["Product marketing", "Positioning, competitive narrative, and launch language, grounded in an advertising degree from UT Austin.", "Briefs the field used. The monitor around them is still a design.", "/work/competitive-intelligence-engine", "Competitive narrative"],
           ].map(([title, body, proof, href, label]) => (
             <article key={title} className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-5">
               <h3 className="text-lg font-semibold">{title}</h3>
@@ -166,9 +166,9 @@ export default function Home() {
       </section>
 
       <section className="py-12">
-        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">Interested in building better ways to bring technical products to market?</h2>
+        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">Hiring a sales leader, or someone to shape how a technical product is told?</h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          I work at the intersection of enterprise sales, GTM strategy, and the systems a revenue team actually runs. If you are hiring a sales leader, a GTM operator, or someone who can design the workflow, I welcome a conversation.
+          I am interested in head-of-sales and product-marketing conversations where the product is technical and the story has to hold up in the room.
         </p>
         <div className="mt-6 flex flex-wrap gap-4 text-sm font-medium">
           <Link href="/contact" className="inline-flex h-11 items-center rounded-md bg-accent px-5 text-accent-foreground">Get in touch</Link>
