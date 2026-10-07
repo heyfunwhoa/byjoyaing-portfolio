@@ -30,7 +30,7 @@ export default function ExperiencePage() {
           A decade of enterprise cybersecurity sales.
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Each role describes the work: the market, the motion, and what I built for the team. Portfolio projects are not employer deployments unless the note says a team used a document or a training.
+          Enterprise cybersecurity sales, player-coach work, and the systems the next seller can run. Portfolio projects are not employer deployments unless a note says a team used a document or a training.
         </p>
         <Link href="/contact#resume" className="mt-6 inline-flex text-sm font-medium text-accent">
           Request resume

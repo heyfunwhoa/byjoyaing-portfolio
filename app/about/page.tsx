@@ -24,7 +24,7 @@ export default function AboutPage() {
             A seller who builds the system the next person can run.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-            I have spent 10+ years in enterprise cybersecurity sales: application security, cloud, data protection, threat intelligence, network security, and developer security. The pattern is the same. A technical buyer asks a precise question, and the useful answer is stuck in one person&apos;s notes. I write the brief, the framework, or the small tool so the team can answer it again.
+            I have spent 10+ years in enterprise cybersecurity sales, from established companies to early-stage teams, across application, cloud, data, threat intelligence, network, and developer security. I sell the cycle, coach newer sellers, and write the brief or the tool so the next person can run it.
           </p>
         </div>
       </section>

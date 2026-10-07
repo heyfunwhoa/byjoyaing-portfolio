@@ -273,10 +273,9 @@ export const roles = [
     period: "Dec 2024 – Present",
     category: "Developer security, secrets, machine identity",
     points: [
-      "Sell developer-first secrets detection and AppSec into accounts where security, engineering, DevSecOps, and cloud share the same buying cycle.",
-      "Created discovery frameworks, ICP profiles, outbound plays, and competitive messaging adopted across the sales org.",
-      "Led a sales–product feedback loop and built a self-serve onboarding resource for product, process, and technical fundamentals.",
-      "Designed product-release intelligence: what shipped, who cares, which accounts it applies to, and what the field should do next.",
+      "Full-cycle enterprise sales for developer-first secrets detection, across security, engineering, and executive buyers.",
+      "Coach SDRs and newer sellers. Two SDRs moved into closing roles. Onboarded seven GTM hires across sales, solutions architecture, and customer success.",
+      "Built shared discovery, ICP, competitive, and POC resources the sales team adopted, and carried field feedback into product and marketing.",
     ],
   },
   {
@@ -285,8 +284,8 @@ export const roles = [
     period: "Dec 2023 – May 2024",
     category: "Threat intelligence and network / AI security",
     points: [
-      "Greenfield territory: net-new pipeline and regional growth.",
-      "Created industry-knowledge training and business-value tools for new-rep ramp.",
+      "Greenfield territory, and a coach for newer sellers on discovery, competitive positioning, and value-based selling.",
+      "Built industry training and onboarding resources that shortened new-rep ramp.",
     ],
   },
   {
@@ -295,8 +294,8 @@ export const roles = [
     period: "Oct 2021 – Aug 2023",
     category: "Threat intelligence, cloud, and application security",
     points: [
-      "Full-cycle net-new and growth in 1,500-employee to F100 accounts, including the team’s largest threat-intelligence deal in 2022.",
-      "Wrote threat-intelligence playbooks for the broader portfolio team and served as the TI resource across 500+ accounts, partners, and customers.",
+      "Full-cycle strategic sales from mid-market enterprise through Fortune 100, including one of the team’s largest threat-intelligence agreements in 2022.",
+      "Wrote threat-intelligence playbooks the portfolio team used, and served as the field resource for that motion.",
     ],
   },
   {
@@ -305,8 +304,8 @@ export const roles = [
     period: "Sep 2018 – Oct 2021",
     category: "Web security and data protection",
     points: [
-      "Mid-Atlantic and Southeast enterprise (1,500+ employees), new logo and expansion.",
-      "Co-created discovery templates and sales presentations used by the team. Closed the team’s largest web-security deal in 2021.",
+      "Mid-Atlantic and Southeast enterprise: new logo, expansion, and a field lead for discovery and account strategy.",
+      "Closed the team’s largest web-security agreement in 2021.",
     ],
   },
   {
@@ -315,7 +314,7 @@ export const roles = [
     period: "Sep 2016 – Sep 2018",
     category: "Channel, partners, and new-category GTM",
     points: [
-      "Helped stand up a channel program for distribution sales.",
+      "Helped stand up a global channel program with executive leadership, including national distributors.",
     ],
   },
   {
@@ -333,7 +332,7 @@ export const roles = [
     period: "May 2014 – Dec 2015",
     category: "Web, email, and data security",
     points: [
-      "Northeast accounts up to 2,000 employees. Built cybersecurity ramp resources for new team members.",
+      "Northeast accounts. Built cybersecurity ramp resources for new hires, then moved into a strategic account territory.",
     ],
   },
 ];
