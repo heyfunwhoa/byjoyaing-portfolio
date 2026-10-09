@@ -1,4 +1,4 @@
-import { BrandAvatar } from "@/components/brand-avatar";
+import { SystemsGraphic } from "@/components/systems-graphic";
 import { CoverageExplorer } from "@/components/coverage-explorer";
 import { CropFrame } from "@/components/crop-frame";
 import { Index, Kicker } from "@/components/kicker";
@@ -24,9 +24,9 @@ export default function Home() {
 
   return (
     <PageMain>
-      <section className="grid items-center gap-10 border-b border-border py-16 sm:py-24 lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:gap-16">
-        <div className="mx-auto w-full max-w-[16rem] lg:mx-0">
-          <BrandAvatar />
+      <section className="grid items-center gap-10 border-b border-border py-16 sm:py-24 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:gap-16">
+        <div className="mx-auto w-full max-w-[19rem] lg:mx-0">
+          <SystemsGraphic />
         </div>
         <div className="flex flex-col gap-6">
           <Kicker>{avatar.label}</Kicker>
