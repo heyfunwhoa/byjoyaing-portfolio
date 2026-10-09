@@ -73,7 +73,7 @@ Alternative considered: close #2 and #3 with no follow-up. Rejected, because the
 - One project record per case study, with an honest status. Do not mark a design as a production system.
 - The contact form, the resume request, and the rule that API keys stay in server environment variables.
 - Redirects that already exist. Add new redirects when a URL moves. Do not delete a public URL in the same change that invents its replacement.
-- Tailwind v4 tokens in `app/globals.css`. A visual redesign is a later phase.
+- Tailwind v4 tokens in `app/globals.css`. A visual redesign is a later phase, and it follows [design-process.md](design-process.md) before code.
 
 ## What needs refactoring later
 

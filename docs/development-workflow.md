@@ -85,6 +85,8 @@ Open the pull request against `main`. The description should say:
 - what you ran (`npm run lint`, `npm run build`) and whether it passed
 - what a reviewer should click
 
+If the pull request redesigns a page or adds a significant feature, put the design note from [design-process.md](design-process.md) in the description before the implementation. A lint fix or a docs change does not need one.
+
 Keep the pull request draft if you are still exploring. Mark it ready when the checks are green and the description matches the diff.
 
 ## Vercel previews

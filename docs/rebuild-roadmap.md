@@ -37,9 +37,9 @@ Each row is one review. Do not start the next by stacking commits onto an unmerg
 3. **Content records.** One TypeScript type for a public project, with `kind: "work" | "side-quest"`. Move entries onto it without changing how pages look. Test that slugs are unique.
 4. **Work index.** Add `/work` for professional experience, using the roles already written. Redirect `/experience` to `/work` if #1 had made `/experience` canonical. Keep `/work/[slug]` as case studies.
 5. **Side Quests index.** Add `/side-quests` listing independent projects. Redirect `/projects` to it. Cards link to the existing `/work/[slug]` pages.
-6. **About story.** Bring back the intent of #3, edited to the positioning line and the UT Austin advertising degree. One page.
-7. **Visual foundation.** Bring back the intent of #2: diagrams and covers, using real project status. No decorative gradient system.
-8. **Only then, page-level redesign.** Home first, then Work, then Side Quests. One page per pull request.
+6. **About story.** Bring back the intent of #3, edited to the positioning line and the UT Austin advertising degree. One page. Follow [design-process.md](design-process.md) before changing the layout.
+7. **Visual foundation.** Bring back the intent of #2: diagrams and covers, using real project status. No decorative gradient system. Token changes (type, color, spacing) are the point of this pull request, and they still get two approaches before code.
+8. **Only then, page-level redesign.** Home first, then Work, then Side Quests. One page per pull request. Each page walks the design process first. The design note goes in the pull request before the implementation.
 
 ## What I should learn from this split
 

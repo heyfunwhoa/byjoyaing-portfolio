@@ -39,6 +39,7 @@ There is no separate test runner yet. The reason, and the first tests worth addi
 - [docs/development-workflow.md](docs/development-workflow.md) — branches, commits, pull requests, Vercel, merging
 - [docs/content-model.md](docs/content-model.md) — where words live, and what must stay unpublished
 - [docs/rebuild-roadmap.md](docs/rebuild-roadmap.md) — the rebuild as small pull requests
+- [docs/design-process.md](docs/design-process.md) — how a page redesign is decided before it is coded
 
 ## Stack
 
