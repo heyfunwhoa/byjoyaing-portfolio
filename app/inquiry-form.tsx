@@ -12,16 +12,20 @@ export function InquiryForm() {
   const [mode, setMode] = useState<Mode>("message");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
-  const startedAt = useRef(Date.now());
+  const startedAt = useRef<number>(0);
 
   useEffect(() => {
-    if (window.location.hash === "#resume") {
-      setMode("resume");
-    }
+    const onHashChange = () => {
+      if (window.location.hash === "#resume") setMode("resume");
+    };
+    window.addEventListener("hashchange", onHashChange);
+    onHashChange();
+    return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (startedAt.current === 0) startedAt.current = Date.now();
     const form = event.currentTarget;
     const data = new FormData(form);
 
