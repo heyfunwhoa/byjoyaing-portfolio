@@ -18,7 +18,7 @@ const personalValues = [
   { title: "Curiosity", body: "Keep asking questions, exploring, and learning." },
   { title: "Inclusion", body: "Value different experiences, perspectives, and ways of thinking." },
   { title: "Connection", body: "Build meaningful relationships and community." },
-  { title: "Growth", body: "Stay open to feedback, change, and new possibilities." },
+  { title: "Growth", body: "Seek feedback, stretch beyond what I know, and turn new challenges into opportunities to grow." },
   { title: "Independence", body: "Make room to explore ideas and define success on my own terms." },
 ];
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
         <div className="flex flex-col gap-5">
           <Kicker>About Kristen Aing</Kicker>
           <h1 className="font-display max-w-2xl text-4xl leading-[1.12] tracking-tight text-foreground sm:text-5xl">
-            Commercial leader. Curious builder.
+            Curious by nature. Builder by instinct.
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-foreground">
             People first. Problem-driven. Systems-minded.
@@ -86,7 +86,9 @@ export default function AboutPage() {
             AI, and software projects alongside my commercial work.
           </p>
           <p>
-            I&apos;m still learning, and I hope I always will. My goal is to leave
+            I&apos;m growth-oriented by choice: I seek feedback, welcome unfamiliar challenges,
+            and put new skills into practice rather than stopping at theory. I hope
+            I&apos;ll always be learning. My goal is to leave
             people and places a little better than I found them.
           </p>
         </div>
@@ -142,7 +144,8 @@ export default function AboutPage() {
               I believe strong teams are built on trust, clarity, accountability,
               and different perspectives. Good leadership means listening,
               asking thoughtful questions, making decisions, and giving people
-              the support and ownership to do their best work.
+              the support and ownership to do their best work. I want to create
+              a team environment where learning, feedback, and growth are ongoing.
             </p>
           </div>
         </div>
