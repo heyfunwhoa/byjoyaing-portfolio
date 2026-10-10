@@ -22,6 +22,7 @@ export default function IdentityJourneyPage() {
         </p>
         <div className="mt-8"><IdentityJourneyLab /></div>
         <div className="mt-8 flex flex-wrap gap-4 text-sm">
+          <Link className="text-accent underline underline-offset-4" href="/builder-academy/credential-risk">Credential-to-identity risk lab</Link>
           <Link className="text-accent underline underline-offset-4" href="/projects">Explore independent projects</Link>
           <Link className="text-accent underline underline-offset-4" href="/about">About the Curious Builder</Link>
         </div>
