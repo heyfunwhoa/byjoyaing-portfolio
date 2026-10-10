@@ -10,6 +10,8 @@ Related lessons: [Identity Across Channels](identity-across-channels.md) explain
 
 **Interactive prototype:** [Identity Journey Lab](/builder-academy/identity-journey) explores humans, services, CI/CD workloads and AI agents. It is a fictional demonstration; not an active IAM integration.
 
+**New lab:** [Credential-to-Identity Risk Explorer](/builder-academy/credential-risk) connects exposed secrets, workload identity, effective access, audit evidence and remediation.
+
 ## Learning path
 
 | Unit | Topics | Practical outcome |
