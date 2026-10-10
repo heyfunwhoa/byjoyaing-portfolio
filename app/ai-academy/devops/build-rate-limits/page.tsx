@@ -75,7 +75,7 @@ export default function BuildRateLimitsLesson() {
           <li>Retain automatic production builds on the correct branch, and re-enable or selectively permit preview builds for visual, accessibility, and integration review before merging.</li>
           <li>After capacity returns, verify required GitHub checks, trigger one intended deployment, inspect the deployed application, and check links and contact flows.</li>
         </ol>
-        <p className="rounded-xl border border-border bg-card p-4 text-sm text-muted"><strong className="text-foreground">Important:</strong> Reducing future builds does not reset an existing rate limit. Avoid upgrading a plan until the actual quota and usage have been verified. If Vercel returns HTTP 403 when reading settings, that's an authorization/scope problem, not a build-rate-limit diagnosis.</p>
+        <p className="rounded-xl border border-border bg-card p-4 text-sm text-muted"><strong className="text-foreground">Important:</strong> Reducing future builds does not reset an existing rate limit. Avoid upgrading a plan until the actual quota and usage have been verified. If Vercel returns HTTP 403 when reading settings, that is an authorization/scope problem, not a build-rate-limit diagnosis.</p>
       </section>
       <section className="mt-10 rounded-2xl border border-border bg-card p-6">
         <h2 className="text-2xl font-semibold">Practice: choose the right first step</h2>
