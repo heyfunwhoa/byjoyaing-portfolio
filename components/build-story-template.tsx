@@ -17,7 +17,7 @@ export function BuildStoryTemplate({ story, children }: { story: BuildStory; chi
       <section><h3 className="font-display text-3xl">Limitations</h3><ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-7">{story.limitations.map(x=><li key={x}>{x}</li>)}</ul></section>
     </div>
     {children}
-    <div className="mt-8 border-t border-foreground/20 pt-5"><h3 className="font-semibold">What's next</h3><ul className="mt-2 list-disc space-y-2 pl-5 text-sm">{story.next.map(x=><li key={x}>{x}</li>)}</ul></div>
+    <div className="mt-8 border-t border-foreground/20 pt-5"><h3 className="font-semibold">What&apos;s next</h3><ul className="mt-2 list-disc space-y-2 pl-5 text-sm">{story.next.map(x=><li key={x}>{x}</li>)}</ul></div>
     <Link href="/projects" className="editorial-link mt-6 inline-block text-sm font-semibold underline">See more builds →</Link>
   </article>;
 }
