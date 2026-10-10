@@ -12,6 +12,39 @@ export const lessons: Lesson[] = [
   {slug:"privacy",title:"Privacy, security and human oversight",track:"Responsible AI",minutes:10,level:"Beginner",summary:"Classify data, minimize access, use approved workspaces and retain human review for meaningful actions.",analogy:"Give an AI agent a visitor badge, not the master key.",takeaways:["Do not paste credentials or unapproved confidential data.","Views are not permission systems.","Require authorization for consequential tool actions."],exercise:"Classify sample data as public/internal/restricted and choose a safe AI workflow.",check:{question:"What is the safest default for sensitive company data?",choices:["Paste it into any personal AI account","Verify approved tools, access and data controls first","Remove the file extension"],answer:1,explanation:"Workspace policies and actual data terms determine what is allowed."},sources:[{label:"OWASP LLM risks",url:"https://genai.owasp.org/llm-top-10/"}]},
   {slug:"gtm-research",title:"GTM: account intelligence workflow",track:"GTM",minutes:15,level:"Intermediate",summary:"Convert public company signals into a sourced, human-reviewed account brief.",analogy:"A research pipeline is a newsroom: gather, verify, edit, publish.",takeaways:["Resolve company identity before attaching a signal.","Record date and source for each claim.","Do not confuse a signal with buying intent."],exercise:"Research one public company announcement and draft a 3-part account hypothesis with citations.",check:{question:"A funding announcement necessarily proves intent to purchase your product.",choices:["Yes","No, it is a signal requiring relevance assessment"],answer:1,explanation:"Signals require ICP and product relevance validation."},sources:[{label:"Notion source-backed research hub",url:"https://app.notion.com/p/3f3cdefaec758139a149ef6b77d14f03"}]},
   {slug:"skills",title:"From prompts to reusable skills",track:"Builder",minutes:15,level:"Intermediate",summary:"Turn repeated prompts into testable procedures with inputs, outputs, safeguards and Git versioning.",analogy:"A prompt is one assignment; a skill is a reusable operating procedure.",takeaways:["Make skill triggers precise.","Keep one canonical SKILL.md in Git.","Test normal and edge cases."],exercise:"Outline a source-verification skill with steps and a pass/fail checklist.",check:{question:"Where should canonical version-controlled skill instructions live?",choices:["Duplicated in every Notion page","In GitHub, linked from Notion","Only in an untracked chat"],answer:1,explanation:"Git history makes skill changes auditable, while Notion aids discovery."},sources:[{label:"Skills handbook",url:"https://app.notion.com/p/3f3cdefaec758176be84e740fac358f7"}]},
+  {
+    slug: "package-registries",
+    title: "Package registries, npm and lockfiles",
+    track: "Builder",
+    minutes: 15,
+    level: "Beginner",
+    summary: "Learn where reusable code comes from, why a package registry differs from a package manager, and how dependencies and lockfiles support reproducible, safer builds.",
+    analogy: "A registry is a parts catalog and warehouse; npm is the purchasing and installation tool; package.json is the shopping list; package-lock.json is the exact itemized receipt.",
+    takeaways: [
+      "A package registry (such as npmjs.com) hosts versions of libraries; npm, pnpm and Yarn are tools that resolve and install them.",
+      "Direct dependencies are chosen by your app; transitive dependencies are pulled in by other packages. npm ci installs from the lockfile in CI.",
+      "Version ranges and lockfiles are different: package.json states acceptable versions, while package-lock.json captures the resolved dependency tree and integrity metadata.",
+      "A registry is a supply-chain trust boundary. Audit advisories, check package ownership and provenance, review install scripts, and never publish secrets.",
+      "Security scans are complementary: npm audit checks known dependency advisories; TruffleHog checks for secrets; Trivy can check vulnerabilities and configuration. Review whether each tool blocks a merge.",
+    ],
+    exercise: "Open your portfolio's package.json and package-lock.json. Find Next.js, sharp and source-map-js; classify each as direct or transitive, inspect pinned versions, then read the results of npm audit --omit=dev --audit-level=high. Explain why updating package.json alone does not update the locked dependency tree. Do not run npm audit fix --force without reviewing the changes.",
+    check: {
+      question: "Which statement correctly describes npm registry, npm and package-lock.json?",
+      choices: [
+        "The registry installs dependencies locally, npm stores exact versions, and the lockfile publishes packages.",
+        "The registry hosts packages; npm installs them; the lockfile records resolved versions and integrity data.",
+        "GitHub Actions is the package registry and TruffleHog is the package manager.",
+      ],
+      answer: 1,
+      explanation: "Registry = package source, manager = install/resolve tool, lockfile = reproducible resolved dependency graph. Security requires checks beyond a successful install.",
+    },
+    sources: [
+      { label: "npm docs: About the public npm registry", url: "https://docs.npmjs.com/about-the-public-npm-registry/" },
+      { label: "npm docs: package-lock.json", url: "https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json/" },
+      { label: "npm docs: npm ci", url: "https://docs.npmjs.com/cli/v11/commands/npm-ci/" },
+      { label: "npm docs: npm audit", url: "https://docs.npmjs.com/cli/v11/commands/npm-audit/" },
+    ],
+  },
 ];
 export type Workflow = {title:string;category:"GTM"|"Research"|"Coding"|"Productivity";difficulty:"Beginner"|"Intermediate";tool:string;asset:string;summary:string;why:string;prompt:string;next:string};
 export const workflows: Workflow[]=[
