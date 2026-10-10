@@ -24,6 +24,8 @@ Words on the site are data with a job. This document defines **content fields an
 
 **Audience proof:** Hands-on enterprise selling examples belong in Work even when a Field Notes playbook references them. Coaching/management examples distinguish formal authority from informal influence. Field Notes entries carry a provenance state: Used in practice, Illustrative model, or Exploring.
 
+**Connected Field Notes:** `/field-notes/enterprise-deal` and `/field-notes/multithreading` use a public-safe editorial source registry in `lib/field-notes.ts`. This registry is descriptive; it does not import code or access live data from Account Signal Engine, Channel Territory Mapping, or Security Market Map. Private source repository URLs, internal account records, and customer relationship data must not be published. Future live cross-repo integration requires a server-side permissioned interface, tenant/access checks, source provenance, and a reviewed data-sharing contract.
+
 ## Where content lives now
 
 | Content | File | Public? |
