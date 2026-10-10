@@ -9,9 +9,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Kristen Joy Aing — Enterprise sales, GTM strategy, and AI systems",
+  title: "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder",
   description:
-    "Technical cybersecurity seller and GTM builder. Sales leadership, product narrative, and systems for how a team takes a technical product to market.",
+    "Revenue and GTM leadership, enterprise cybersecurity, people development, and practical systems for growth.",
 };
 
 const previewRoles = ["Truffle Security", "Rapid7", "Darktrace", "Forcepoint"];
@@ -34,12 +34,12 @@ export default function Home() {
     <PageMain>
       <section className="grid items-start gap-10 border-b border-border py-12 lg:grid-cols-2 lg:py-16">
         <div className="flex flex-col gap-5">
-          <p className="text-sm font-medium text-muted">Technical seller · Sales leadership · Product narrative</p>
+          <p className="text-sm font-medium text-muted">Revenue & GTM Leader · Curious Builder</p>
           <h1 className="font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
-            Enterprise Sales. GTM Strategy. AI-Powered Systems.
+            Curious by nature. Builder by instinct.
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted">
-            I&apos;m Kristen Joy Aing. I sell technical cybersecurity products into the enterprise, coach the people beside me, and shape the story the field can repeat.
+            I&apos;m Kristen Joy Aing. I bring together enterprise cybersecurity selling, GTM strategy, people development, and practical systems that help teams execute.
           </p>
           <p className="max-w-xl text-base leading-7 text-muted">
             Advertising at UT Austin is where that started. The degree is how I treat positioning: what a technical buyer needs to hear, what a seller can say, and what product should hear back.
@@ -72,7 +72,7 @@ export default function Home() {
       </section>
 
       <section className="border-b border-border py-12">
-        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">The commercial work comes first.</h2>
+        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">The revenue work comes first.</h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
           A technical sale, the leadership around it, and the narrative that makes the product legible. The systems on this site start there.
         </p>
@@ -132,6 +132,16 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="border-b border-border py-12">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Field Notes</h2>
+          <Link href="/field-notes" className="text-sm font-medium text-accent">Explore Field Notes</Link>
+        </div>
+        <p className="mt-3 max-w-2xl text-base leading-7 text-muted">
+          The thinking and practical methods behind the work: playbooks, frameworks, lessons learned, and operating systems for relationships, revenue, and teams.
+        </p>
       </section>
 
       <section className="border-b border-border py-12">
