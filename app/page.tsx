@@ -102,6 +102,26 @@ export default function Home() {
         </div>
       </section>
 
+      <section aria-labelledby="selected-work-title" className="border-b border-border py-12 sm:py-16">
+        <p className="editorial-eyebrow text-accent">01 / Professional evidence</p>
+        <h2 id="selected-work-title" className="editorial-section-title mt-3 max-w-3xl">The decisions behind the outcomes.</h2>
+        <p className="editorial-intro mt-4 text-muted">I stay close to the customer and the deal while helping people, teams, and systems work better. Explore both enterprise execution and the leadership practices surrounding it.</p>
+        <div className="mt-7 grid gap-4 md:grid-cols-2">
+          <Link href="/experience" className="group editorial-panel flex min-w-0 flex-col bg-card p-5 transition-colors hover:border-accent sm:p-7">
+            <p className="editorial-eyebrow text-accent">Strategic enterprise seller</p>
+            <h3 className="mt-4 font-display text-3xl">The work of earning a complex decision.</h3>
+            <p className="mt-3 flex-1 text-sm leading-7 text-muted">Buyer alignment, multithreading, technical evaluation, commercial judgment, and ownership of enterprise execution.</p>
+            <span className="editorial-link mt-5 text-sm font-semibold text-accent underline">Explore experience →</span>
+          </Link>
+          <Link href="/field-notes" className="group editorial-panel flex min-w-0 flex-col bg-surface-sage p-5 transition-colors hover:border-accent sm:p-7">
+            <p className="editorial-eyebrow">Revenue & people leadership</p>
+            <h3 className="mt-4 font-display text-3xl">Building the conditions for better execution.</h3>
+            <p className="mt-3 flex-1 text-sm leading-7">Coaching, operating cadence, territory and pipeline decisions, and turning field lessons into repeatable systems.</p>
+            <span className="editorial-link mt-5 text-sm font-semibold underline">Explore Field Notes →</span>
+          </Link>
+        </div>
+      </section>
+
       <section aria-labelledby="paths-title" className="border-b border-border py-12 sm:py-16">
         <p className="text-xs font-semibold uppercase tracking-widest text-accent">Two sides of my work</p>
         <h2 id="paths-title" className="editorial-section-title mt-2">Explore the work, or explore the curiosity.</h2>
