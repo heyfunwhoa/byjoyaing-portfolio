@@ -3,7 +3,7 @@
 import { Mark } from "@/components/mark";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -24,6 +24,19 @@ function isActive(pathname: string, href: string) {
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  function closeMenu() {
+    setOpen(false);
+  }
+
+  function handleMenuKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "Escape" && open) {
+      event.stopPropagation();
+      closeMenu();
+      menuButtonRef.current?.focus();
+    }
+  }
 
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-background">
@@ -33,6 +46,7 @@ export function SiteHeader() {
           <span className="font-display text-lg tracking-tight">Kristen Joy Aing</span>
         </Link>
         <button
+          ref={menuButtonRef}
           type="button"
           className="min-h-11 min-w-11 rounded-md border border-border px-3 py-2 text-sm font-medium md:hidden"
           aria-expanded={open}
@@ -42,7 +56,7 @@ export function SiteHeader() {
         >
           {open ? "Close" : "Menu"}
         </button>
-        <div id="primary-menu" className={open ? "absolute inset-x-0 top-full border-b border-border bg-background px-5 py-4 md:static md:border-0 md:bg-transparent md:p-0" : "hidden md:block"}>
+        <div id="primary-menu" onKeyDown={handleMenuKeyDown} className={open ? "absolute inset-x-0 top-full border-b border-border bg-background px-5 py-4 md:static md:border-0 md:bg-transparent md:p-0" : "hidden md:block"}>
           <ul className="flex flex-col gap-3 text-sm md:flex-row md:items-center md:gap-6">
             {links.map((link) => {
               const active = isActive(pathname, link.href);
@@ -50,7 +64,7 @@ export function SiteHeader() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    onClick={() => setOpen(false)}
+                    onClick={closeMenu}
                     aria-current={active ? "page" : undefined}
                     className={`inline-flex min-h-11 items-center rounded-md px-1 underline-offset-4 hover:underline md:min-h-0 ${active ? "font-semibold text-accent underline decoration-2" : "text-muted hover:text-foreground"}`}
                   >
