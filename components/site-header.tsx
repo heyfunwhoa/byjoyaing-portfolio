@@ -16,8 +16,9 @@ const links = [
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
-  if (href === "/projects") return pathname === "/projects" || pathname.startsWith("/work/");
-  if (href === "/capabilities") return pathname === "/capabilities" || pathname.startsWith("/capabilities/");
+  // Legacy /work/[slug] contains both professional and independent projects.
+  // Do not guess the collection from the URL alone.
+  if (href === "/projects") return pathname === "/projects";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
