@@ -38,6 +38,23 @@ Prerequisites: [Authentication vs Authorization](authentication-vs-authorization
 7. **Investigate:** Analyze the exposure timeline and audit evidence to determine whether misuse occurred; account for telemetry gaps.
 8. **Remediate:** Revoke/rotate, reduce privilege, repair insecure workflows, validate service recovery and deprovision unused identities.
 
+## Evidence sources and methods for every investigation stage
+
+The interactive [Credential-to-Identity Risk Explorer](/builder-academy/credential-risk) now presents a source registry for all six stages: Detect, Identify, Verify, Assess blast radius, Investigate, and Remediate.
+
+A **method** is a technique (regex, provider signatures, entropy, context, correlation, policy analysis). A **source** is where evidence comes from (Git history, build logs, service inventories, provider metadata, IAM policies, cloud logs, secrets managers). Multiple sources may corroborate or contradict each other. Every source has a stated limitation and external reference.
+
+The registry uses fictional examples; it does not connect to live GitHub secrets, cloud logs, identity providers, or third-party validation APIs. For a future ingestion service, record source URL or object ID, timestamp, observed method, subject identity, claim, confidence and permission to use the data. Never export raw secrets to an analytics or LLM system.
+
+| Stage | Possible inputs | Guardrail |
+| --- | --- | --- |
+| Detect | Git and commit history, CI logs, containers, configuration, SaaS exposure monitoring | Match is a candidate, not a valid secret |
+| Identify | Provider formats, code context, service catalog, cloud IAM inventory | Do not infer ownership from prefix alone |
+| Verify | Official provider-safe check, issuer revocation and lifecycle status | No unapproved probes using exposed credentials |
+| Assess blast radius | Effective IAM permissions, resource relationships, data classification | Potential reach does not prove actual access |
+| Investigate | API/cloud logs, SIEM, IdP events, change history | Partial telemetry cannot rule out misuse |
+| Remediate | Provider revocation, vault rotation, IAM changes, tickets, deployment checks | Revocation alone is not complete recovery |
+
 ## What the different security categories solve
 
 | Category | Main job | Limitations to remember |
