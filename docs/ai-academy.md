@@ -6,7 +6,7 @@ Route: `/ai-academy` on the portfolio. Built on a feature branch to avoid change
 Start with core AI literacy, practice on realistic exercises, then recommend a workflow and graduate repeatable activities into version-controlled skills. Notion stays the human-facing knowledge layer; GitHub is canonical for code and skills.
 
 ## Current acceptance criteria
-- Seven guided lessons with analogies, exercises, a knowledge check and external references.
+- Eight guided lessons with analogies, exercises, a knowledge check and external references, including package registries and npm supply-chain basics.
 - Lesson completion is intentionally **session-only**, clearly disclosed.
 - Workflow finder searches five task-to-tool recommendations and offers copyable starter prompts.
 - Accessible labeled controls, visible keyboard focus, mobile-responsive layout, meaningful empty states.
@@ -30,3 +30,7 @@ P3: secure agent execution and private workspaces after threat modeling and RBAC
 
 ## Content hygiene
 Every externally sourced claim: primary URL + checked date. Every recommended workflow: owner, validation status, test case and review trigger. Prefer canonical GitHub skills linked from Notion; do not duplicate executable instructions.
+
+## Builder learning: packages and dependencies
+
+See [package registries, package managers, lockfiles and supply-chain security](learning/package-registries.md). The in-app Builder lesson is a concise guided version; this reference provides a deeper technical explanation and a no-secrets exercise drawn from the portfolio's dependency audit.

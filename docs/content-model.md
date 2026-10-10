@@ -8,13 +8,23 @@ Words on the site are data with a job. This document defines **content fields an
 
 **Kristen Joy Aing** is the professional name. Use it in the title, the header, and metadata.
 
-**Commercial Leader. Curious Builder.** is the positioning line. It is the sentence a visitor should be able to repeat. It does not replace the longer story on About.
+**Revenue & GTM Leader · Curious Builder** is the positioning line. It is the sentence a visitor should be able to repeat. It does not replace the longer story on About.
+
+**Field Notes** is the editorial home for playbooks, frameworks, lessons learned, and an **Operating Systems** collection. The public `/field-notes` route contains examples and concepts that must be distinguished from verified professional practice.
+
+**People · Strategy · Systems** remain the foundational themes of the brand. These are distinct from identity pillars and content lenses.
+
+**Relationships**, **Revenue Systems**, and **People & Teams** are signature content lenses; **Strategist**, **Leader**, and **Builder** are brand pillars. Neither list is a set of alternate job titles.
 
 **Work** is professional experience and business impact: employers, the sales motion, coaching, and field systems that a team actually used. Impact is described without invented revenue, quota, or adoption numbers.
 
-**Side Quests** are independent software and creative projects. They include portfolio case studies and apps in other repositories. A side quest can be a prototype. Say so.
+**Builds / Side Quests** are independent software and creative projects. They include portfolio case studies and apps in other repositories. A side quest can be a prototype. Say so.
 
 **The Joy Index** is a private workspace. It is not a route, not a folder in this repository, and not a section on the site. Do not paste its notes into a page, a commit, or a pull request. If a future tool needs to read it, that tool runs locally or in a separate private project. This portfolio never imports it.
+
+**Audience proof:** Hands-on enterprise selling examples belong in Work even when a Field Notes playbook references them. Coaching/management examples distinguish formal authority from informal influence. Field Notes entries carry a provenance state: Used in practice, Illustrative model, or Exploring.
+
+**Connected Field Notes:** `/field-notes/enterprise-deal` and `/field-notes/multithreading` use a public-safe editorial source registry in `lib/field-notes.ts`. This registry is descriptive; it does not import code or access live data from Account Signal Engine, Channel Territory Mapping, or Security Market Map. Private source repository URLs, internal account records, and customer relationship data must not be published. Future live cross-repo integration requires a server-side permissioned interface, tenant/access checks, source provenance, and a reviewed data-sharing contract.
 
 ## Where content lives now
 

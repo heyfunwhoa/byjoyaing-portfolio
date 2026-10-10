@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/account-signal/pipeline.test.ts lib/portfolio-registry.test.ts lib/version-control.test.ts lib/academy/programming.test.ts lib/academy/guided-lessons.test.ts",
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/account-signal/pipeline.test.ts lib/portfolio-registry.test.ts lib/version-control.test.ts lib/selected-work/access-policy.test.ts lib/academy/programming.test.ts lib/academy/guided-lessons.test.ts",
     "format": "prettier --write ."
   },
   "dependencies": {
