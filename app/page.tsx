@@ -39,7 +39,7 @@ export default function Home() {
             Commercial Leader. Curious Builder.
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted">
-            I&apos;m Kristen Joy Aing. I sell technical cybersecurity products into the enterprise, coach the people beside me, and shape the story the field can repeat.
+            I&apos;m Kristen Joy Aing. I bring enterprise cybersecurity experience to commercial strategy, team development, and the practical systems that help technical teams work better.
           </p>
           <p className="max-w-xl text-base leading-7 text-muted">
             Advertising at UT Austin is where that started. The degree is how I treat positioning: what a technical buyer needs to hear, what a seller can say, and what product should hear back.
@@ -58,17 +58,19 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="grid min-w-0 gap-3">
-          {featured.map((project) => (
-            <Link key={project.slug} href={project.caseStudyUrl} className="min-w-0 rounded-2xl border border-border bg-card p-3 hover:border-accent">
-              <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                <p className="text-sm font-medium">{project.title}</p>
-                <ProjectStatusPill status={project.status} />
-              </div>
-              <ProjectPreview kind={project.preview} compact />
-            </Link>
+        <aside className="grid content-start gap-3" aria-label="Professional focus">
+          {[
+            ["People", "Coaching, hiring support and repeatable enablement."],
+            ["Strategy", "Enterprise security sales, discovery and competitive positioning."],
+            ["Systems", "Turning field friction into useful workflows and independent tools."],
+          ].map(([title, description]) => (
+            <div key={title} className="rounded-2xl border border-border bg-card p-5">
+              <p className="text-xs font-semibold uppercase tracking-widest text-accent">{title}</p>
+              <p className="mt-2 text-base leading-7">{description}</p>
+            </div>
           ))}
-        </div>
+          <Link href="/work" className="mt-2 text-sm font-medium text-accent underline">Explore professional experience →</Link>
+        </aside>
       </section>
 
       <section className="border-b border-border py-12">
@@ -110,8 +112,8 @@ export default function Home() {
 
       <section className="border-b border-border py-12">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Selected work</h2>
-          <Link href="/projects" className="text-sm font-medium text-accent">Explore all projects</Link>
+          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Selected Side Quests</h2>
+          <Link href="/side-quests" className="text-sm font-medium text-accent">Explore independent projects</Link>
         </div>
         <div className="mt-8 flex flex-col gap-6">
           {featured.map((project, index) => (
@@ -150,7 +152,7 @@ export default function Home() {
       <section className="border-b border-border py-12">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="max-w-xl font-display text-3xl tracking-tight sm:text-4xl">Built on a decade of enterprise cybersecurity sales.</h2>
-          <Link href="/experience" className="text-sm font-medium text-accent">View my experience</Link>
+          <Link href="/work" className="text-sm font-medium text-accent">Explore Work</Link>
         </div>
         <ol className="mt-8 grid gap-4 md:grid-cols-2">
           {timeline.map((role) => (
