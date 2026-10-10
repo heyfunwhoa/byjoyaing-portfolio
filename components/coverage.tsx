@@ -1,9 +1,12 @@
 export function Coverage({ value }: { value: string }) {
   if (value === "Not evaluated") {
     return (
-      <span className="inline-flex items-center" title="Not evaluated">
-        <span className="inline-block h-2.5 w-2.5 bg-border" aria-hidden="true" />
-        <span className="sr-only">Not evaluated</span>
+      <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-wide text-muted">
+        <span
+          className="inline-block h-2.5 w-2.5 shrink-0 bg-border"
+          aria-hidden="true"
+        />
+        Not evaluated
       </span>
     );
   }

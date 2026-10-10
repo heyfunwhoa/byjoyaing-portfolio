@@ -21,14 +21,17 @@ const instrument = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://byjoyaing-portfolio.vercel.app"),
-  title: "Kristen Joy Aing — Technical GTM & Product",
+  metadataBase: new URL("https://www.byjoyaing.com"),
+  title: {
+    default: "Kristen Joy Aing — Technical sales, product narrative, and GTM systems",
+    template: "%s",
+  },
   description:
-    "I build systems that help technical products reach the market — product GTM, commercialization, and technical GTM systems across enterprise cybersecurity.",
+    "Technical cybersecurity seller. Sales leadership, product marketing grounded in advertising at UT Austin, and GTM systems for the field.",
   openGraph: {
-    title: "Kristen Joy Aing — Technical GTM & Product",
+    title: "Kristen Joy Aing — Technical sales and product narrative",
     description:
-      "I build systems that help technical products reach the market.",
+      "Enterprise cybersecurity sales, product marketing, and the systems a field team can run.",
     type: "website",
     locale: "en_US",
   },
@@ -53,9 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <Mark className="text-accent" />
                 Kristen Joy Aing
               </span>
-              <p className="text-xs leading-5">
-                Geist / Instrument Serif · Independent research · 2026
-              </p>
+              <p className="text-xs leading-5">Technical sales, product narrative, and GTM systems · 2026</p>
             </div>
             <a
               className="link-rule w-fit text-foreground"
