@@ -1,3 +1,4 @@
+import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -33,16 +34,24 @@ const collections = [
 export default function FieldNotesPage() {
   return (
     <PageMain>
-      <header className="border-b border-border py-16">
+      <header className="grid items-center gap-8 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
+        <div className="min-w-0">
         <p className="text-sm font-medium text-muted">How I think · How I operate</p>
-        <h1 className="mt-3 max-w-3xl font-display text-5xl leading-tight tracking-tight sm:text-6xl">Thinking out loud. Building in practice.</h1>
+        <h1 className="editorial-title mt-3 max-w-3xl">Thinking out loud. Building in practice.</h1>
         <p className="mt-4 text-lg font-medium">Field Notes</p>
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted">
           Playbooks, frameworks, operating systems, and lessons from the intersection of revenue,
           go-to-market strategy, people, and technology. A place to show the thinking behind the work,
           not just the finished output.
         </p>
-        <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-3 text-sm font-medium"><a className="text-accent underline underline-offset-4" href="#featured">Featured guides</a><a className="text-accent underline underline-offset-4" href="#approach">Approach</a><a className="text-accent underline underline-offset-4" href="#collections">Collections</a><a className="text-accent underline underline-offset-4" href="#private">Private work</a></nav>
+        <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#featured">Featured guides</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#approach">Approach</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#collections">Collections</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#private">Private work</a>
+        </nav>
+        </div>
+        <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="explorer" /><p className="editorial-eyebrow mt-3 text-center text-muted">Explorer / Field Notes</p></div>
       </header>
       <section id="featured" className="scroll-mt-24 border-b border-border py-12">
         <div className="flex flex-wrap items-end justify-between gap-4"><h2 className="font-display text-3xl tracking-tight">Start with the work</h2><span className="text-xs text-muted">Two interactive field guides · Synthetic demonstrations</span></div>
@@ -61,7 +70,7 @@ export default function FieldNotesPage() {
               label: "Interactive playbook",
             },
           ].map((note) => (
-            <Link key={note.href} href={note.href} className="group block rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+            <Link key={note.href} href={note.href} className="group block rounded-2xl border border-border bg-surface-clay p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
               <p className="text-xs font-medium text-muted">{note.label}</p>
               <h3 className="mt-3 font-display text-2xl tracking-tight">{note.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted">{note.description}</p>
@@ -72,18 +81,19 @@ export default function FieldNotesPage() {
       </section>
       <section id="approach" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">A way of working, not a set of job titles</h2>
-        <div className="mt-7 grid gap-4 md:grid-cols-3">
+        <ol className="mt-7 divide-y divide-border border-y border-border">
           {[
             ["Strategist", "Look for patterns, understand buyers, and ask better questions."],
             ["Leader", "Build trust, create alignment, and develop people."],
             ["Builder", "Translate ideas into useful and repeatable systems."],
-          ].map(([title, description]) => (
-            <article key={title} className="rounded-2xl border border-border bg-card p-5">
-              <h3 className="font-semibold">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{description}</p>
-            </article>
+          ].map(([title, description], index) => (
+            <li key={title} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 py-4 sm:grid-cols-[3rem_12rem_minmax(0,1fr)] sm:items-baseline">
+              <span className="editorial-eyebrow pt-1 text-accent">{String(index + 1).padStart(2, "0")}</span>
+              <h3 className="font-display text-2xl sm:col-start-2">{title}</h3>
+              <p className="col-start-2 text-sm leading-6 text-muted sm:col-start-3">{description}</p>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
       <section id="collections" className="scroll-mt-24 py-12">
         <h2 className="font-display text-3xl tracking-tight">Browse the collections</h2>
@@ -93,7 +103,7 @@ export default function FieldNotesPage() {
         </p>
         <div className="mt-7 grid gap-4 md:grid-cols-2">
           {collections.map((collection) => (
-            <article key={collection.title} className="rounded-2xl border border-border p-6">
+            <article key={collection.title} className="rounded-2xl border border-border bg-card p-6">
               <h3 className="text-xl font-semibold">{collection.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted">{collection.description}</p>
               <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">Topics to develop</p>
@@ -106,7 +116,7 @@ export default function FieldNotesPage() {
       </section>
       <section id="private" className="scroll-mt-24 border-t border-border py-12">
         <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>
-        <Link href="/private-work" className="mb-8 block rounded-2xl border border-border bg-card p-5 hover:border-accent">
+        <Link href="/private-work" className="mb-8 block rounded-2xl border border-border bg-surface-mist p-5 hover:border-accent">
           <h2 className="text-xl font-semibold">Private case studies</h2>
           <p className="mt-2 text-sm leading-6 text-muted">Some detailed deal and operating artifacts require approval. See what can be requested and how access will work.</p>
           <span className="mt-3 inline-block text-sm font-medium text-accent">About private access →</span>
@@ -116,8 +126,8 @@ export default function FieldNotesPage() {
           Professional experience and independently built projects have different evidence and confidentiality boundaries. Frameworks demonstrate an approach; real selling and leadership outcomes belong in Work.
         </p>
         <div className="mt-5 flex flex-wrap gap-5 text-sm font-medium">
-          <Link href="/experience" className="text-accent">Professional experience</Link>
-          <Link href="/projects" className="text-accent">Explore builds and projects</Link>
+          <Link href="/work" className="text-accent">Professional work</Link>
+          <Link href="/side-quests" className="text-accent">Explore Side Quests</Link>
           <Link href="/contact" className="text-accent">Get in touch</Link>
         </div>
       </section>

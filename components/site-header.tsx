@@ -41,8 +41,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-20 border-b border-border bg-background">
       <nav className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-5 py-4 sm:px-8" aria-label="Primary">
         <Link href="/" className="flex min-w-0 items-center gap-2.5 rounded-md text-foreground">
-          <Mark className="text-accent" />
-          <span className="font-display text-lg tracking-tight">Kristen Joy Aing</span>
+          <Mark className="shrink-0 text-accent" />
+          <span className="min-w-0 font-display text-base tracking-tight sm:text-lg">Kristen Joy Aing</span>
         </Link>
         <button
           ref={menuButtonRef}
@@ -56,7 +56,7 @@ export function SiteHeader() {
           {open ? "Close" : "Menu"}
         </button>
         <div id="primary-menu" onKeyDown={handleMenuKeyDown} className={open ? "absolute inset-x-0 top-full border-b border-border bg-background px-5 py-4 lg:static lg:border-0 lg:bg-transparent lg:p-0" : "hidden lg:block"}>
-          <ul className="flex flex-col gap-3 text-sm lg:flex-row lg:items-center lg:gap-6">
+          <ul className="flex flex-col gap-1 text-sm lg:flex-row lg:flex-wrap lg:items-center lg:justify-end lg:gap-x-4 lg:gap-y-1">
             {links.map((link) => {
               const active = isActive(pathname, link.href);
               return (

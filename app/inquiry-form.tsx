@@ -9,7 +9,7 @@ import {
 } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
-type Mode = "message" | "resume";
+type Mode = "message" | "resume" | "access";
 
 const fieldClass =
   "h-11 rounded-md border border-border bg-background px-3 text-base text-foreground outline-none focus:border-accent";
@@ -20,7 +20,7 @@ function subscribeToHash(onStoreChange: () => void) {
 }
 
 function modeFromHash(): Mode {
-  return window.location.hash === "#resume" ? "resume" : "message";
+  return window.location.hash === "#resume" ? "resume" : window.location.hash === "#access" ? "access" : "message";
 }
 
 export function InquiryForm() {
@@ -69,7 +69,7 @@ export function InquiryForm() {
                   name: data.get("name"),
                   email: data.get("email"),
                   company: data.get("company"),
-                  message: data.get("message"),
+                  message: mode === "access" ? `Selected Work inquiry: ${String(data.get("message") ?? "")}` : data.get("message"),
                   website: data.get("website"),
                   startedAt: startedAt.current,
                 },
@@ -89,7 +89,9 @@ export function InquiryForm() {
       setMessage(
         isResume
           ? "Request sent. You should get a confirmation email. I’ll follow up with the resume if it’s a fit."
-          : "Message sent. You should get a confirmation email. I’ll reply if I can help.",
+          : mode === "access"
+            ? "Inquiry sent. This is not an access approval; I’ll follow up about any appropriate materials."
+            : "Message sent. You should get a confirmation email. I’ll reply if I can help.",
       );
     } catch {
       setStatus("error");
@@ -112,6 +114,7 @@ export function InquiryForm() {
           [
             ["message", "Message"],
             ["resume", "Resume"],
+            ["access", "Selected Work"],
           ] as const
         ).map(([value, label]) => (
           <button
@@ -137,7 +140,9 @@ export function InquiryForm() {
       <p className="text-base leading-7 text-muted">
         {mode === "resume"
           ? "I don’t post a public PDF. This emails me the request and sends you a confirmation. I’ll reply with the file if it’s a good fit."
-          : "This emails me your note and sends you a confirmation. Reply to that email if you want to add more."}
+          : mode === "access"
+            ? "Ask about deeper, sanitized case-study materials. This sends an inquiry, not an access grant or login. Never include confidential company or customer details."
+            : "This emails me your note and sends you a confirmation. Reply to that email if you want to add more."}
       </p>
       <div className="hidden" aria-hidden="true">
         <label>
@@ -177,9 +182,9 @@ export function InquiryForm() {
           className={fieldClass}
         />
       </label>
-      {mode === "message" ? (
+      {mode !== "resume" ? (
         <label className="flex flex-col gap-1.5 text-sm">
-          <span className="font-medium text-foreground">Message</span>
+          <span className="font-medium text-foreground">{mode === "access" ? "What would you like to explore?" : "Message"}</span>
           <textarea
             required
             minLength={8}
@@ -210,7 +215,9 @@ export function InquiryForm() {
           ? "Sending…"
           : mode === "resume"
             ? "Request resume"
-            : "Send message"}
+            : mode === "access"
+              ? "Send access inquiry"
+              : "Send message"}
       </button>
       {message ? (
         <p

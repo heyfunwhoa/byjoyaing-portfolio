@@ -1,3 +1,4 @@
+import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import { ProjectPreview } from "@/components/project-previews";
 import { ProjectStatusPill } from "@/components/project-status-pill";
@@ -24,24 +25,20 @@ export default async function ProjectsPage({
 
   return (
     <PageMain>
-      <section className="border-b border-border py-10 sm:py-12">
-        <p className="text-sm font-medium text-muted">Projects / Selected work</p>
-        <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
+      <section className="grid items-center gap-7 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
+        <div className="min-w-0">
+        <p className="editorial-eyebrow text-accent">Builds · Side Quests</p>
+        <h1 className="editorial-title mt-3 max-w-3xl">
           Systems for how a revenue team plans, sells, and learns.
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          I design and build GTM systems that turn fragmented information into structured intelligence, actionable workflows, and measurable business outcomes. The work joins enterprise sales, product thinking, and technical implementation, from competitive intelligence and customer feedback to security research, enablement, and account-based GTM.
+          I design and build GTM systems that turn fragmented information into structured intelligence and workflows a person can use. The work joins enterprise sales, product thinking, and technical implementation, from competitive intelligence and customer feedback to security research, enablement, and account-based GTM.
         </p>
-        <ul className="mt-5 flex flex-wrap gap-2 text-sm">
-          {["Enterprise sales", "GTM systems", "Product and technical execution"].map((item) => (
-            <li key={item} className="rounded-full border border-border px-3 py-1">
-              {item}
-            </li>
-          ))}
-        </ul>
         <p className="mt-5 max-w-2xl text-sm leading-6 text-muted">
           Each project is a prototype, professional field system, design, or concept. The label is the implementation status, not a production claim.
         </p>
+        </div>
+        <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="builder" /><p className="editorial-eyebrow mt-3 text-center text-muted">Builder / Side Quests</p></div>
       </section>
 
       <section id="featured" className="scroll-mt-24 border-b border-border py-12">
@@ -53,7 +50,7 @@ export default async function ProjectsPage({
           {featured.map((project, index) => {
             const flipped = index % 2 === 1;
             return (
-              <article key={project.slug} className="grid min-w-0 grid-cols-1 items-center gap-6 rounded-2xl border border-border p-4 sm:p-6 lg:grid-cols-2">
+              <article key={project.slug} className="grid min-w-0 grid-cols-1 items-center gap-6 rounded-2xl border border-border bg-surface-mist p-4 sm:p-6 lg:grid-cols-2">
                 <div className={flipped ? "lg:order-2" : undefined}>
                   <div className="flex flex-wrap items-center gap-2">
                     <ProjectStatusPill status={project.status} />
