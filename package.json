@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/account-signal/pipeline.test.ts lib/portfolio-registry.test.ts lib/version-control.test.ts lib/builder-academy/identity-journey.test.ts lib/builder-academy/credential-risk.test.ts",
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/account-signal/pipeline.test.ts lib/portfolio-registry.test.ts lib/version-control.test.ts lib/builder-academy/identity-journey.test.ts lib/builder-academy/credential-risk.test.ts lib/builder-academy/credential-evidence-sources.test.ts",
     "format": "prettier --write ."
   },
   "dependencies": {
