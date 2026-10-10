@@ -24,7 +24,7 @@ export function EditorialBento() {
       <div className="mt-8 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[minmax(12rem,auto)] lg:gap-4">
         <Link href="/work" className="group editorial-panel relative flex min-w-0 flex-col overflow-hidden bg-foreground p-6 text-background transition-colors hover:bg-[#303A32] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:col-span-2 sm:p-8 lg:col-span-7 lg:row-span-2 lg:min-h-[28rem]">
           <p className="editorial-eyebrow text-[#D6C8B6]">01 / Work · Revenue &amp; GTM</p>
-          <h3 className="mt-8 max-w-[14ch] font-display text-[clamp(2.15rem,4vw,3.35rem)] leading-[1.14] tracking-tight">
+          <h3 className="mt-8 max-w-[16ch] font-display text-[clamp(1.9rem,3.4vw,2.85rem)] font-semibold leading-[1.12] tracking-tight">
             The work behind <em className="font-normal text-[#E6B59A]">the outcomes.</em>
           </h3>
           <p className="mt-5 max-w-md text-sm leading-7 text-[#E4DED4] sm:text-base">
