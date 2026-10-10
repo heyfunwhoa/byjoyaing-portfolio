@@ -2,6 +2,8 @@
 
 **Status:** Curriculum draft. Start with [Authentication vs Authorization](authentication-vs-authorization.md), then continue to [Identity Lifecycle Lab](identity-lifecycle-lab.md).
 
+**Try the [Identity Journey Lab](/builder-academy/identity-journey):** switch channels and simulate verification, resource access and revocation. This is a public education prototype, not a production security decision engine.
+
 ## A common model
 
 Across applications, first identify the principal (human or workload), then authentication method, session or token, authorization policy, and the account lifecycle. A valid sign-in or token is not permission for every resource.
