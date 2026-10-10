@@ -1,8 +1,8 @@
 # Content model
 
-Words on the site are data with a job. This file is the contract for that data. The pages do not move in this phase.
+Words on the site are data with a job. This document defines **content fields and publishing boundaries**, not the authoritative visual brand. See [canonical brand guidelines](brand/brand-guidelines.md) for positioning, copy hierarchy and visual identity. The pages do not move in this phase.
 
-## The brand layers
+## Content categories (brand authority lives in the canonical guide)
 
 **joy.** is the personal mark. It can appear as a logo or a short signature. It is not a second website.
 
@@ -52,3 +52,7 @@ The GTM Revenue OS case studies on the redesign branch use a fictional company a
 ## Links that must keep working
 
 See [rebuild-roadmap.md](rebuild-roadmap.md) for the redirect table. The rule: a URL that has been public keeps resolving. A new name is an addition plus a redirect, not a rename that 404s.
+
+## Next implementation gate (P0)
+
+Create a typed registry defining `kind: "work" | "side-quest"` with stable `slug`, title, short description, verified status and evidence provenance. Preserve the existing public route map; do not make up missing URLs or outcomes. Add tests for unique slugs, required metadata, allowed status values and working internal destinations. Prefer adapters that preserve current rendering while migrating content, and do not copy the same project into two competing collections.

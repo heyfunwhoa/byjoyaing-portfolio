@@ -19,7 +19,7 @@ Nothing from The Joy Index belongs in git, in a page, or in a commit message.
 
 `main` is the deployed baseline. It has Home, About, Projects, Contact, and case studies at `/work/[slug]`. `/approach` and `/experience` both redirect to `/about`.
 
-A larger redesign is open as pull request [#1](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/1). It is not merged. Two smaller pull requests, [#2](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/2) and [#3](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/3), were opened from the old `main` and currently fail lint. Do not merge those until they are rebased onto the branch you actually want to keep. See [docs/architecture.md](docs/architecture.md).
+The [canonical brand guide](docs/brand/brand-guidelines.md) defines messaging. The [rebuild roadmap](docs/rebuild-roadmap.md) is the forward-looking sequence; [architecture](docs/architecture.md) is a dated historical snapshot and may describe earlier PR states. GitHub is the authority for current PR/CI status. Do not use old PR notes as merge instructions.
 
 ## Commands
 
@@ -27,18 +27,19 @@ A larger redesign is open as pull request [#1](https://github.com/heyfunwhoa/byj
 npm ci          # install the exact versions in package-lock.json
 npm run dev     # local site at http://localhost:3000
 npm run lint    # ESLint
-npm run build   # production build, which also typechecks
+npm run build   # production build
+npm test        # currently Account Signal pipeline tests
 npm run start   # serve the production build
 ```
 
-There is no separate test runner yet. The reason, and the first tests worth adding, are in [docs/development-workflow.md](docs/development-workflow.md).
+`npm test` currently runs the Account Signal pipeline tests only. Other pages, content links, and API endpoints still need appropriate automated coverage; see the [rebuild roadmap](docs/rebuild-roadmap.md).
 
 ## Read next
 
-- [docs/architecture.md](docs/architecture.md) — how the app is put together, and what to keep
+- [docs/architecture.md](docs/architecture.md) — architecture and historical observations (not live PR status)
 - [docs/development-workflow.md](docs/development-workflow.md) — branches, commits, pull requests, Vercel, merging
 - [docs/content-model.md](docs/content-model.md) — where words live, and what must stay unpublished
-- [docs/rebuild-roadmap.md](docs/rebuild-roadmap.md) — the rebuild as small pull requests
+- [docs/rebuild-roadmap.md](docs/rebuild-roadmap.md) — active plan and priority order for small pull requests
 - [docs/design-process.md](docs/design-process.md) — how a page redesign is decided before it is coded
 
 ## Stack
