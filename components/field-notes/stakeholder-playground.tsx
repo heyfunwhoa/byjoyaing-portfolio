@@ -25,7 +25,7 @@ export function StakeholderPlayground() {
           <h2 className="font-display text-2xl">Buying-group coverage lab</h2>
           <p className="mt-1 text-sm text-muted">Synthetic scenario. Your changes stay in this browser session and are not saved.</p>
         </div>
-        <button type="button" className="rounded-md border border-border px-3 py-2 text-sm hover:border-accent" onClick={() => setPeople(demoStakeholders.map((person) => ({ ...person }))}>Reset example</button>
+        <button type="button" className="rounded-md border border-border px-3 py-2 text-sm hover:border-accent" onClick={() => { setPeople(demoStakeholders.map((person) => ({ ...person }))); setSelectedRole(0); }}>Reset example</button>
       </div>
       <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="Choose perspective">
         {(["seller", "leader"] as const).map((value) => (
