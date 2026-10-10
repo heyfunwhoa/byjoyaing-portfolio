@@ -1,4 +1,4 @@
-# Builder Academy Version Control Playground — release validation
+# Builder Academy Git Workflow Essentials — release validation
 
 **Route:** `/ai-academy/version-control`
 **PR:** [#16](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/16)
@@ -39,7 +39,7 @@ Without coaching, ask a beginner to:
 
 Capture device, task success, observed confusion and notes. Do not fabricate test sessions.
 
-The legacy `/ai-academy/git-lab` URL permanently redirects to the new, unambiguous route. Avoid using “Version Control Playground” as a user-facing title because GitLab is an established DevOps product.
+The legacy `/ai-academy/git-lab` URL permanently redirects to the new, unambiguous route. Avoid the ambiguous “Git Lab” name because GitLab is an established DevOps product.
 
 ## Release gate
 
@@ -57,8 +57,8 @@ A dedicated Playwright smoke test for this route, with deterministic tests for s
 ## Follow-up on 2026-10-10
 
 - Confirmed that deployment `dpl_9KxcfX4Zw3SV8FQ3V86F8hy6vjos` was READY and matched commit `52ff677`.
-- Attempted direct browser access to its Version Control Playground route. Vercel redirected to **Log in to Vercel**, so actual page interactions, screen-reader behavior and responsive screenshots were **not** verified. Do not treat login-page inspection as application QA or change deployment protection to bypass access controls.
-- Extracted scenario/quiz logic to `lib/git-lab.ts` and added `lib/git-lab.test.ts` for diagnostic answer validation, completeness and scoring. Updated `npm test` to run the existing account-signal tests and new Version Control Playground tests.
+- Attempted direct browser access to its Git Workflow Essentials route. Vercel redirected to **Log in to Vercel**, so actual page interactions, screen-reader behavior and responsive screenshots were **not** verified. Do not treat login-page inspection as application QA or change deployment protection to bypass access controls.
+- Extracted scenario/quiz logic to `lib/version-control.ts` and added `lib/version-control.test.ts` for diagnostic answer validation, completeness and scoring. Updated `npm test` to run the existing account-signal tests and new Git Workflow Essentials tests.
 - Recheck CI/security/Vercel against the latest PR head. Automated logic tests do **not** substitute for browser testing.
 
 **Browser-access next step:** Open the Vercel preview while authenticated as an authorized project member, complete the checklist above, then record real observed results before merging.
