@@ -26,6 +26,7 @@ export default async function ProjectsPage({
   return (
     <PageMain>
       <section className="grid items-center gap-7 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
+        <div className="min-w-0">
         <p className="text-sm font-medium text-muted">Projects / Selected work</p>
         <h1 className="editorial-title mt-3 max-w-3xl">
           Systems for how a revenue team plans, sells, and learns.
@@ -43,6 +44,7 @@ export default async function ProjectsPage({
         <p className="mt-5 max-w-2xl text-sm leading-6 text-muted">
           Each project is a prototype, professional field system, design, or concept. The label is the implementation status, not a production claim.
         </p>
+        </div>
         <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="builder" /><p className="editorial-eyebrow mt-3 text-center text-muted">Builder / Side Quests</p></div>
       </section>
 
