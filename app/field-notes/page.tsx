@@ -44,7 +44,12 @@ export default function FieldNotesPage() {
           go-to-market strategy, people, and technology. A place to show the thinking behind the work,
           not just the finished output.
         </p>
-        <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-3 text-sm font-medium"><a className="text-accent underline underline-offset-4" href="#featured">Featured guides</a><a className="text-accent underline underline-offset-4" href="#approach">Approach</a><a className="text-accent underline underline-offset-4" href="#collections">Collections</a><a className="text-accent underline underline-offset-4" href="#private">Private work</a></nav>
+        <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#featured">Featured guides</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#approach">Approach</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#collections">Collections</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#private">Private work</a>
+        </nav>
         </div>
         <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="explorer" /><p className="editorial-eyebrow mt-3 text-center text-muted">Explorer / Field Notes</p></div>
       </header>
@@ -76,18 +81,19 @@ export default function FieldNotesPage() {
       </section>
       <section id="approach" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">A way of working, not a set of job titles</h2>
-        <div className="mt-7 grid gap-4 md:grid-cols-3">
+        <ol className="mt-7 divide-y divide-border border-y border-border">
           {[
             ["Strategist", "Look for patterns, understand buyers, and ask better questions."],
             ["Leader", "Build trust, create alignment, and develop people."],
             ["Builder", "Translate ideas into useful and repeatable systems."],
-          ].map(([title, description]) => (
-            <article key={title} className="rounded-2xl border border-border bg-card p-5">
-              <h3 className="font-semibold">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{description}</p>
-            </article>
+          ].map(([title, description], index) => (
+            <li key={title} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 py-4 sm:grid-cols-[3rem_12rem_minmax(0,1fr)] sm:items-baseline">
+              <span className="editorial-eyebrow pt-1 text-accent">{String(index + 1).padStart(2, "0")}</span>
+              <h3 className="font-display text-2xl sm:col-start-2">{title}</h3>
+              <p className="col-start-2 text-sm leading-6 text-muted sm:col-start-3">{description}</p>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
       <section id="collections" className="scroll-mt-24 py-12">
         <h2 className="font-display text-3xl tracking-tight">Browse the collections</h2>

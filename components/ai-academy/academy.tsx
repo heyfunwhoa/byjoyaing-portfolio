@@ -1,5 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
+import { BrandAvatar } from "@/components/brand-avatar";
 import { lessons, workflows } from "@/lib/ai-academy";
 const tracks=["All","Foundations","Prompting","Responsible AI","GTM","Builder"] as const;
 const button="rounded-lg border border-border px-3 py-2 text-sm transition hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
@@ -19,10 +20,16 @@ export function Academy(){
   function complete(){setCompleted(s=>s.includes(lesson.slug)?s:[...s,lesson.slug]);}
   async function copy(s:string){await navigator.clipboard.writeText(s);}
   return <main className="mx-auto w-full max-w-6xl px-5 pb-24 pt-12 sm:px-8">
-    <div className="mb-10 max-w-3xl">
-      <p className="mb-3 text-xs font-semibold uppercase tracking-[.2em] text-accent">AI / Enablement / Field guide</p>
-      <h1 className="font-display text-5xl leading-tight sm:text-6xl">Learn the basics. Apply with purpose.</h1>
-      <p className="mt-4 text-lg leading-8 text-muted">A practical path from understanding AI to using better prompts, choosing workflows and building reusable skills. Start small. Verify what matters.</p>
+    <div className="mb-10 grid min-w-0 items-end gap-6 md:grid-cols-[minmax(0,1fr)_9rem]">
+      <div className="max-w-3xl min-w-0">
+        <p className="editorial-eyebrow mb-3 text-accent">Builder Academy</p>
+        <h1 className="editorial-section-title">Learn the basics. Apply with purpose.</h1>
+        <p className="mt-4 text-lg leading-8 text-muted">A practical path from understanding AI to using better prompts, choosing workflows and building reusable skills. Start small. Verify what matters.</p>
+      </div>
+      <div className="mx-auto w-full max-w-[9rem] md:mx-0">
+        <BrandAvatar variant="builder" />
+        <p className="editorial-eyebrow mt-3 text-center text-muted">Builder</p>
+      </div>
     </div>
     <div className="mb-8 grid gap-3 sm:grid-cols-3">
       <div className="rounded-xl border border-border bg-card p-5"><p className="text-xs uppercase tracking-widest text-muted">Curriculum</p><p className="mt-2 text-3xl font-semibold">{lessons.length} lessons</p><p className="mt-1 text-sm text-muted">From fundamentals to building</p></div>

@@ -5,7 +5,7 @@ Describe the user-facing problem, what changed, and why. Link relevant issue/roa
 ## Brand alignment (portfolio-specific)
 
 - [ ] Read [canonical brand guidelines](../docs/brand/brand-guidelines.md).
-- [ ] Primary positioning remains **Commercial Leader. Curious Builder.**; signature is **joy.**
+- [ ] Primary positioning remains **Revenue & GTM Leader. Curious Builder.**; signature is **joy.**
 - [ ] People / Strategy / Systems underpin the story; professional **Work** precedes independent **Side Quests** where both appear.
 - [ ] No conflicting hero positioning or competing brand definition. Explain any intentional proposal to change the canonical brand below.
 - [ ] Claims and metrics are verified; work ownership and project status are accurate; no proprietary/private Joy Index material.

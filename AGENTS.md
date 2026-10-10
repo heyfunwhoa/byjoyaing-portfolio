@@ -1,6 +1,6 @@
 <!-- BEGIN:nextjs-agent-rules -->
 
-# This is NOT the Next.js you know
+## This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
@@ -12,7 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Before editing branding, copy, layout, navigation, portfolio examples or public project descriptions, read [docs/brand/brand-guidelines.md](docs/brand/brand-guidelines.md).
 
-- Canonical identity: **joy.** — Kristen Joy Aing, **Commercial Leader. Curious Builder.**
+- Canonical identity: **joy.** — Kristen Joy Aing, **Revenue & GTM Leader. Curious Builder.**
 - Guiding philosophy: **People first. Problem-driven. Systems-minded.**
 - Lead with commercial and cybersecurity leadership; organize evidence around People, Strategy and Systems. Professional **Work** comes before independent **Side Quests**.
 - The alternative “Curious by nature. Builder by instinct.” is supporting copy, not a replacement headline unless explicitly approved.

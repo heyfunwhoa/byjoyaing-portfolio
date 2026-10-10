@@ -104,7 +104,7 @@ body {
 /* Reusable editorial language: type, rhythm, paper-like panels. */
 .editorial-eyebrow { font-family: var(--font-geist-mono), monospace; font-size: .7rem; letter-spacing: .12em; line-height: 1.6; text-transform: uppercase; font-weight: 600; }
 .editorial-title { font-family: var(--font-instrument), Georgia, serif; font-size: clamp(2.65rem, 7.2vw, 5.75rem); line-height: 1.04; letter-spacing: -.025em; text-wrap: balance; }
-.editorial-section-title { font-family: var(--font-instrument), Georgia, serif; font-size: clamp(2rem, 4.3vw, 3.75rem); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.editorial-section-title { font-family: var(--font-instrument), Georgia, serif; font-size: clamp(2rem, 4.3vw, 3.75rem); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; overflow-wrap: break-word; }
 .editorial-intro { max-width: 44rem; font-size: clamp(1.03rem, 1.8vw, 1.22rem); line-height: 1.65; }
 .editorial-prose { max-width: 68ch; line-height: 1.78; }
 .editorial-rule { border-top: 1px solid var(--border); }

@@ -1,3 +1,4 @@
+import { MaterialsInvitation } from "@/components/materials-invitation";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { directoryProjects } from "@/lib/project-directory";
 import Link from "next/link";
@@ -26,27 +27,30 @@ export function RelatedWork({ slug }: { slug: string }) {
     })
     .slice(0, 3);
 
-  if (items.length === 0) return null;
-
   return (
     <section className="border-t border-border py-16">
-      <h2 className="text-lg font-semibold">Explore related work</h2>
-      <ul className="mt-4 grid gap-4 md:grid-cols-3">
-        {items.map((project) => (
-          <li key={project.slug}>
-            <Link href={project.caseStudyUrl} className="flex h-full flex-col gap-2 rounded-xl border border-border bg-card p-4 hover:border-accent">
-              <ProjectStatusPill status={project.status} />
-              <p className="font-semibold">{project.title}</p>
-              <p className="text-sm leading-6 text-muted">{project.summary}</p>
+      <MaterialsInvitation tone="build" />
+      {items.length === 0 ? null : (
+        <>
+          <h2 className="mt-8 text-lg font-semibold">Explore related work</h2>
+          <ul className="mt-4 grid min-w-0 gap-4 md:grid-cols-3">
+            {items.map((project) => (
+              <li key={project.slug} className="min-w-0">
+                <Link href={project.caseStudyUrl} className="flex h-full min-w-0 flex-col gap-2 rounded-xl border border-border bg-card p-4 hover:border-accent">
+                  <ProjectStatusPill status={project.status} />
+                  <p className="font-semibold">{project.title}</p>
+                  <p className="text-sm leading-6 text-muted">{project.summary}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6">
+            <Link href="/projects" className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">
+              Back to all projects
             </Link>
-          </li>
-        ))}
-      </ul>
-      <p className="mt-6">
-        <Link href="/projects" className="link-rule text-sm font-medium text-accent">
-          Back to all projects
-        </Link>
-      </p>
+          </p>
+        </>
+      )}
     </section>
   );
 }

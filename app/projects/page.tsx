@@ -27,20 +27,13 @@ export default async function ProjectsPage({
     <PageMain>
       <section className="grid items-center gap-7 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
         <div className="min-w-0">
-        <p className="text-sm font-medium text-muted">Projects / Selected work</p>
+        <p className="editorial-eyebrow text-accent">Builds · Side Quests</p>
         <h1 className="editorial-title mt-3 max-w-3xl">
           Systems for how a revenue team plans, sells, and learns.
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          I design and build GTM systems that turn fragmented information into structured intelligence, actionable workflows, and measurable business outcomes. The work joins enterprise sales, product thinking, and technical implementation, from competitive intelligence and customer feedback to security research, enablement, and account-based GTM.
+          I design and build GTM systems that turn fragmented information into structured intelligence and workflows a person can use. The work joins enterprise sales, product thinking, and technical implementation, from competitive intelligence and customer feedback to security research, enablement, and account-based GTM.
         </p>
-        <ul className="mt-5 flex flex-wrap gap-2 text-sm">
-          {["Enterprise sales", "GTM systems", "Product and technical execution"].map((item) => (
-            <li key={item} className="rounded-full border border-border px-3 py-1">
-              {item}
-            </li>
-          ))}
-        </ul>
         <p className="mt-5 max-w-2xl text-sm leading-6 text-muted">
           Each project is a prototype, professional field system, design, or concept. The label is the implementation status, not a production claim.
         </p>

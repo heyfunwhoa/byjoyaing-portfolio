@@ -23,13 +23,15 @@ export default function StorytellingGuide() {
         challenge:"A buying committee needs to reconcile technical requirements, risk, change management and a commercial timeline.",
         decisions:["Map distinct decision makers and outcomes","Define a transparent technical evaluation","Create an executive-ready decision narrative"],
         evidence:["Illustrative stakeholder map","Synthetic evaluation milestones","Example decision criteria"],
-        outcomes:["A clear decision framework, not a claimed closed deal","Reflection on tradeoffs and team alignment"],
+        outcomes:["A clear decision framework, not a claimed closed deal"],
+        lessons:["Separate individual ownership from team results before publishing a number.","A framework is not a substitute for the deal."],
         caveat:"Demonstration only; no actual customer information or invented revenue figures.",
       }} />
       <BuildStoryTemplate story={{
         title:"An evidence-backed research prototype",
         stage:"Illustrative concept",
         problem:"How might an analyst connect security detector facts to market categories without treating marketing as verification?",
+        motivation:"The useful question showed up in real selling. The prototype exists to learn the shape of an answer, not to claim a product.",
         architecture:"A public-safe data registry maps source IDs, dates, technical methods and limitations to each concept.",
         sources:["Fictional source metadata","Public standards and repository documentation only"],
         implementation:["A typed model for claims and provenance","A small educational interface"],

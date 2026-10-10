@@ -1,3 +1,5 @@
+import { BrandAvatar } from "@/components/brand-avatar";
+import { MaterialsInvitation } from "@/components/materials-invitation";
 import { PageMain } from "@/components/page-main";
 import { roles } from "@/lib/portfolio";
 import type { Metadata } from "next";
@@ -24,17 +26,23 @@ const related: Record<string, { href: string; label: string }[]> = {
 export default function ExperiencePage() {
   return (
     <PageMain>
-      <section className="border-b border-border py-16">
-        <p className="text-sm font-medium text-muted">Experience</p>
-        <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
-          A decade selling technical security, and teaching the story.
-        </h1>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Enterprise cycles, the coaching a sales leader does from the field, and the positioning a product marketer owes the team. Portfolio projects are not employer deployments unless a note says a team used a document or a training.
-        </p>
-        <Link href="/contact#resume" className="mt-6 inline-flex text-sm font-medium text-accent">
-          Request resume
-        </Link>
+      <section className="grid items-center gap-8 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
+        <div className="min-w-0">
+          <p className="editorial-eyebrow text-accent">Work · Revenue & GTM</p>
+          <h1 className="editorial-title mt-3 max-w-[16ch]">
+            A decade selling technical security, and teaching the story.
+          </h1>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
+            Enterprise cycles, the coaching a sales leader does from the field, and the positioning a product marketer owes the team. Portfolio projects are not employer deployments unless a note says a team used a document or a training.
+          </p>
+          <Link href="/contact#resume" className="editorial-link mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline">
+            Request resume
+          </Link>
+        </div>
+        <div className="mx-auto w-full max-w-[12rem]">
+          <BrandAvatar variant="leader" />
+          <p className="editorial-eyebrow mt-3 text-center text-muted">Leader / Work</p>
+        </div>
       </section>
       <section className="border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">How the work connects</h2>
@@ -85,6 +93,7 @@ export default function ExperiencePage() {
           </li>
         ))}
       </ol>
+      <MaterialsInvitation tone="work" />
     </PageMain>
   );
 }

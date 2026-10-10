@@ -27,8 +27,8 @@ The [v0 Bento Grid template](https://v0.app/templates/bento-grid-8QW53cSzCxp) in
 
 - `EditorialSection`: visual chapter intro and surface selection.
 - `EditorialBento`: Work-first asymmetrical editorial navigation across Field Notes, Builds and approved deeper work.
-- `WorkStoryTemplate`: commercial leadership and enterprise sales case study (my role, collaborators, challenge, decisions, evidence, outcomes, caveats).
-- `BuildStoryTemplate`: independent prototype/research (problem, architecture, source provenance, implementation, limitations, next).
+- `WorkStoryTemplate`: commercial leadership and enterprise sales case study (context, challenge, contribution, collaborators, decisions, evidence, outcomes, lessons, caveats) plus a request for approved materials. No authentication.
+- `BuildStoryTemplate`: independent prototype/research (problem, motivation, architecture, sources, implementation, limitations, next steps) plus a request for working notes.
 - `/work/storytelling-guide`: clearly fictional demonstration of both patterns, not an actual employer case study.
 
 ## Avatars
