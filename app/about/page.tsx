@@ -8,7 +8,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About — Kristen Joy Aing",
   description:
-    "A technical cybersecurity seller with an advertising degree from UT Austin, building the narrative and the systems a sales team can run.",
+    "Revenue & GTM Leader · Curious Builder. Enterprise cybersecurity, relationships, people development, and repeatable systems.",
 };
 
 export default function AboutPage() {
@@ -21,10 +21,10 @@ export default function AboutPage() {
         <div>
           <p className="text-sm font-medium text-muted">About</p>
           <h1 className="mt-3 max-w-2xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
-            A technical seller who writes the story the field can use.
+            Strategist. Leader. Builder.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-            I studied advertising and business foundations at The University of Texas at Austin. That training is how I explain a technical product: one claim, a buyer who can repeat it, and a field that does not invent the rest.
+            Curious by nature. Builder by instinct. I studied advertising and business foundations at The University of Texas at Austin. That training is how I explain a technical product: one claim, a buyer who can repeat it, and a field that does not invent the rest.
           </p>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
             The career is enterprise cybersecurity sales, from established companies to early-stage teams. I run the cycle, coach newer sellers, and build the brief or the system the next person can run.
