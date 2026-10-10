@@ -8,9 +8,9 @@ import { useRef, useState } from "react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/experience", label: "Work" },
+  { href: "/work", label: "Work" },
   { href: "/field-notes", label: "Field Notes" },
-  { href: "/projects", label: "Builds" },
+  { href: "/side-quests", label: "Side Quests" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -18,7 +18,8 @@ function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   // Legacy /work/[slug] contains both professional and independent projects.
   // Do not guess the collection from the URL alone.
-  if (href === "/projects") return pathname === "/projects";
+  if (href === "/work") return pathname === "/work";
+  if (href === "/side-quests") return pathname === "/side-quests";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

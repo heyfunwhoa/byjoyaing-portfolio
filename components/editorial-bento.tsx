@@ -22,7 +22,7 @@ export function EditorialBento() {
       </p>
 
       <div className="mt-8 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[minmax(12rem,auto)] lg:gap-4">
-        <Link href="/experience" className="group editorial-panel relative flex min-w-0 flex-col overflow-hidden bg-foreground p-6 text-background transition-colors hover:bg-[#303A32] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:col-span-2 sm:p-8 lg:col-span-7 lg:row-span-2 lg:min-h-[28rem]">
+        <Link href="/work" className="group editorial-panel relative flex min-w-0 flex-col overflow-hidden bg-foreground p-6 text-background transition-colors hover:bg-[#303A32] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:col-span-2 sm:p-8 lg:col-span-7 lg:row-span-2 lg:min-h-[28rem]">
           <p className="editorial-eyebrow text-[#D6C8B6]">01 / Work · Revenue &amp; GTM</p>
           <h3 className="mt-8 max-w-[13ch] font-display text-[clamp(2.5rem,5vw,4.25rem)] leading-[1.05] tracking-tight">
             The work behind <em className="font-normal text-[#E6B59A]">the outcomes.</em>
@@ -42,8 +42,8 @@ export function EditorialBento() {
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold text-accent underline">Read Field Notes →</span>
         </Link>
 
-        <Link href="/projects" className="group editorial-panel flex min-w-0 flex-col bg-surface-sage p-6 transition-colors hover:border-accent sm:p-7 lg:col-span-5 lg:row-span-1">
-          <p className="editorial-eyebrow">03 / Side Quests · Builds</p>
+        <Link href="/side-quests" className="group editorial-panel flex min-w-0 flex-col bg-surface-sage p-6 transition-colors hover:border-accent sm:p-7 lg:col-span-5 lg:row-span-1">
+          <p className="editorial-eyebrow">03 / Side Quests</p>
           <h3 className="mt-4 font-display text-3xl leading-tight sm:text-4xl">Curiosity, made useful.</h3>
           <p className="mt-3 max-w-sm text-sm leading-6">Research tools and software experiments exploring cybersecurity, GTM, and emerging technology.</p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold underline">Explore independent builds →</span>

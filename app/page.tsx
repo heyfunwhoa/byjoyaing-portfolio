@@ -63,13 +63,13 @@ export default function Home() {
           </p>
           <div className="mt-7 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap">
             <Link
-              href="/experience"
+              href="/work"
               className="inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground hover:bg-foreground"
             >
               Explore Work <span aria-hidden="true" className="ml-2">→</span>
             </Link>
             <Link
-              href="/projects"
+              href="/side-quests"
               className="inline-flex min-h-12 items-center justify-center rounded-lg border border-[#D4CEC4] px-5 py-3 text-center text-sm font-semibold text-[#F3EFE6] hover:bg-[#4A504B]"
             >
               Explore Side Quests <span aria-hidden="true" className="ml-2">→</span>
@@ -187,7 +187,7 @@ export default function Home() {
         <p className="editorial-eyebrow text-accent">04 / Independent systems</p>
         <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
           <h2 id="builds-title" className="editorial-section-title max-w-[16ch]">Selected experiments, with the limits visible.</h2>
-          <Link href="/projects" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">
+          <Link href="/side-quests" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">
             All Side Quests <span aria-hidden="true" className="ml-2">→</span>
           </Link>
         </div>
