@@ -57,6 +57,32 @@ export default function FieldNotesPage() {
           ))}
         </div>
       </section>
+      <section className="border-b border-border py-12">
+        <h2 className="font-display text-3xl tracking-tight">Start with two connected field guides</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {[
+            {
+              title: "Strategic Enterprise Deal Anatomy",
+              description: "A transparent walkthrough of the account hypothesis, buying group, technical evaluation, and commercial decision—with seller and leader views.",
+              href: "/field-notes/enterprise-deal",
+              label: "Illustrative framework",
+            },
+            {
+              title: "Multithreading & Stakeholder Mapping",
+              description: "An interactive buying-committee coverage exercise plus a coaching playbook, connected conceptually to other portfolio research projects.",
+              href: "/field-notes/multithreading",
+              label: "Interactive playbook",
+            },
+          ].map((note) => (
+            <Link key={note.href} href={note.href} className="block rounded-2xl border border-border bg-card p-6 hover:border-accent">
+              <p className="text-xs font-medium text-muted">{note.label}</p>
+              <h3 className="mt-2 text-xl font-semibold">{note.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-muted">{note.description}</p>
+              <span className="mt-4 inline-block text-sm font-medium text-accent">Explore the guide →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
       <section className="py-12">
         <h2 className="font-display text-3xl tracking-tight">Explore the collections</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
