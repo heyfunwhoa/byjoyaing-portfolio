@@ -45,10 +45,10 @@ export default function HomepagePrototype() {
             Enterprise Cybersecurity · GTM Strategy · Leadership
           </p>
           <h1 id="prototype-title" className="font-display max-w-3xl text-5xl leading-[1.03] tracking-tight text-balance text-foreground sm:text-6xl lg:text-7xl">
-            Curious by nature. <span className="italic">Builder by instinct.</span>
+            Commercial Leader. <span className="italic">Curious Builder.</span>
           </h1>
           <p className="max-w-xl text-lg leading-8 text-muted">
-            I lead with people, approach challenges with curiosity, and build better ways for teams and businesses to grow.
+            I lead in enterprise cybersecurity and GTM, develop people, and build practical systems that help teams learn and grow.
           </p>
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <a href="#selected-work" className="inline-flex min-h-11 items-center justify-center rounded-md bg-foreground px-6 py-3 text-sm font-semibold text-background outline-offset-4 transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-accent">
@@ -118,8 +118,8 @@ export default function HomepagePrototype() {
       </section>
 
       <section aria-labelledby="contact-title" className="py-12 sm:py-20">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">Let's connect</p>
-        <h2 id="contact-title" className="font-display mt-3 text-4xl text-foreground">Building what's next.</h2>
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">Let&apos;s connect</p>
+        <h2 id="contact-title" className="font-display mt-3 text-4xl text-foreground">Building what&apos;s next.</h2>
         <p className="mt-3 max-w-xl leading-7 text-muted">
           Interested in people leadership, cybersecurity, GTM strategy or collaborative problem-solving?
         </p>
