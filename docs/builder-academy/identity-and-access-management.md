@@ -4,6 +4,8 @@
 
 **Learning goal:** Explain how an identity is created, authenticated, authorized, maintained and revoked across an application and enterprise environment. Connect technical fundamentals to real security buying decisions.
 
+Start here: [Authentication vs. Authorization](authentication-vs-authorization.md) — a beginner-friendly lesson with the portfolio example, authorization failure cases, and a knowledge check.
+
 ## Learning path
 
 | Unit | Topics | Practical outcome |
