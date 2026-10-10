@@ -72,8 +72,24 @@ export function AtlasCase() {
         </div>
       </section>
 
+      <section className="border-b border-border py-12">
+        <p className="text-sm font-medium text-muted">04 / Open-source attribution and original contribution</p>
+        <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">Independent catalog, credited upstream source.</h2>
+        <p className="mt-4 max-w-2xl leading-7 text-muted">
+          Detector Coverage Atlas is my independent research and visualization project. Its detector facts are derived from public TruffleHog source code at pinned revisions; the TruffleHog detector engine and its implementations belong to their upstream project and contributors. This portfolio's comparison is a small static sample, not the full Atlas ingestion application.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          The upstream TruffleHog v3 repository identifies AGPL-3.0 as its license. Reading and attributing source is different from copying or modifying covered code. A future fork to experiment with Go detectors is planned, not implemented.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-5 text-sm">
+          <a href="https://github.com/trufflesecurity/trufflehog" target="_blank" rel="noopener noreferrer" className="text-accent underline">Original TruffleHog project ↗</a>
+          <a href="https://github.com/trufflesecurity/trufflehog/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="text-accent underline">Upstream license ↗</a>
+          <a href="https://github.com/heyfunwhoa/detector-coverage-atlas" target="_blank" rel="noopener noreferrer" className="text-accent underline">Independent Atlas repository ↗</a>
+        </div>
+      </section>
+
       <section className="py-16">
-        <p className="text-sm font-medium text-muted">04 / Not in this repository</p>
+        <p className="text-sm font-medium text-muted">05 / Not in this repository</p>
         <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-5xl">The parser is a note, not a job.</h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
           A later version would read public detector files at a pinned commit and leave unreviewed cells gray. That code is not here. This page does not call GitHub, and it does not refresh itself.
