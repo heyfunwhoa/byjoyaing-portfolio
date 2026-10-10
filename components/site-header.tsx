@@ -46,7 +46,7 @@ export function SiteHeader() {
         <button
           ref={menuButtonRef}
           type="button"
-          className="min-h-11 min-w-11 shrink-0 rounded-md border border-border px-3 py-2 text-sm font-medium md:hidden"
+          className="min-h-11 min-w-11 shrink-0 rounded-md border border-border px-3 py-2 text-sm font-medium lg:hidden"
           aria-expanded={open}
           aria-controls="primary-menu"
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
@@ -54,8 +54,8 @@ export function SiteHeader() {
         >
           {open ? "Close" : "Menu"}
         </button>
-        <div id="primary-menu" onKeyDown={handleMenuKeyDown} className={open ? "absolute inset-x-0 top-full border-b border-border bg-background px-5 py-4 md:static md:border-0 md:bg-transparent md:p-0" : "hidden md:block"}>
-          <ul className="flex flex-col gap-3 text-sm md:flex-row md:items-center md:gap-6">
+        <div id="primary-menu" onKeyDown={handleMenuKeyDown} className={open ? "absolute inset-x-0 top-full border-b border-border bg-background px-5 py-4 lg:static lg:border-0 lg:bg-transparent lg:p-0" : "hidden lg:block"}>
+          <ul className="flex flex-col gap-3 text-sm lg:flex-row lg:items-center lg:gap-6">
             {links.map((link) => {
               const active = isActive(pathname, link.href);
               return (
@@ -64,7 +64,7 @@ export function SiteHeader() {
                     href={link.href}
                     onClick={closeMenu}
                     aria-current={active ? "page" : undefined}
-                    className={`inline-flex min-h-11 items-center rounded-md px-1 underline-offset-4 hover:underline md:min-h-0 ${active ? "font-semibold text-accent underline decoration-2" : "text-muted hover:text-foreground"}`}
+                    className={`inline-flex min-h-11 items-center rounded-md px-1 underline-offset-4 hover:underline lg:min-h-0 ${active ? "font-semibold text-accent underline decoration-2" : "text-muted hover:text-foreground"}`}
                   >
                     {link.label}
                   </Link>
