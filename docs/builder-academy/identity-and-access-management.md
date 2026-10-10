@@ -6,6 +6,8 @@
 
 Start here: [Authentication vs. Authorization](authentication-vs-authorization.md) — a beginner-friendly lesson with the portfolio example, authorization failure cases, and a knowledge check.
 
+Related lessons: [Identity Across Channels](identity-across-channels.md) explains MFA/SSO/SCIM across web, mobile, CLI, API, cloud, integrations, and agents. [Secrets, Non-Human Identities & IAM](secrets-non-human-identity.md) connects credential exposure, workload identities, resource permissions, and the Detector Coverage Atlas / Security Market Map.
+
 ## Learning path
 
 | Unit | Topics | Practical outcome |
