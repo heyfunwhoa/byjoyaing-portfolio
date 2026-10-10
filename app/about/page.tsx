@@ -95,16 +95,11 @@ export default function AboutPage() {
 
       <section className="border-b border-border py-12">
         <p className="text-sm font-medium text-muted">Beyond work</p>
-        <h2 className="font-display mt-3 text-3xl">The things that keep me curious.</h2>
-        <p className="mt-4 max-w-2xl leading-7 text-muted">I enjoy the process of discovering, making, and learning—whether I&apos;m exploring a new sound, figuring out how something works, or trying a creative project for the first time. Those interests are part of my story, not just a list of hobbies.</p>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {personalInterests.map(interest=><article key={interest.id} className="rounded-xl border border-border bg-card p-5">
-          <h3 className="text-lg font-semibold">{interest.title}</h3>
-          <p className="mt-2 text-sm leading-6 text-muted">{interest.detail}</p>
-          <p className="mt-3 text-xs leading-5 text-muted">{interest.connection}</p>
-          </article>)}
-        </div>
-        <p className="mt-6 text-sm font-medium">What matters to me</p>
+        <h2 className="font-display mt-3 text-3xl">Curiosity isn't just a work thing.</h2>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
+          Outside of work, I enjoy good music, exploring new places, and occasionally taking on a hands-on project just to see if I can figure it out. Some of the best learning happens away from a screen.
+        </p>
+        <p className="mt-5 text-sm font-medium">What matters to me</p>
         <ul className="mt-3 flex flex-wrap gap-2">{personalValues.map(value=><li key={value} className="rounded-full border border-border px-3 py-1 text-sm">{value}</li>)}</ul>
       </section>
 
