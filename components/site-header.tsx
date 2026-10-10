@@ -72,11 +72,6 @@ export function SiteHeader() {
                 </li>
               );
             })}
-            <li>
-              <Link href="/contact#resume" onClick={() => setOpen(false)} className="inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-sm font-medium hover:border-accent">
-                View resume
-              </Link>
-            </li>
           </ul>
         </div>
       </nav>

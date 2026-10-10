@@ -131,7 +131,6 @@ export default function AboutPage() {
         <h2 className="text-lg font-semibold">Contact</h2>
         <div className="mt-4 flex flex-wrap gap-4 text-sm font-medium">
           <Link href="/contact" className="text-accent">Get in touch</Link>
-          <Link href="/contact#resume" className="text-accent">Request resume</Link>
           <a href="https://www.linkedin.com/in/kristenaing" className="text-accent" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </section>

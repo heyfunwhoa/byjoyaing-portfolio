@@ -35,9 +35,6 @@ export default function ExperiencePage() {
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
             Enterprise cycles, the coaching a sales leader does from the field, and the positioning a product marketer owes the team. Portfolio projects are not employer deployments unless a note says a team used a document or a training.
           </p>
-          <Link href="/contact#resume" className="editorial-link mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline">
-            Request resume
-          </Link>
         </div>
         <div className="mx-auto w-full max-w-[12rem]">
           <BrandAvatar variant="leader" />
