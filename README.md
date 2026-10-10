@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# byjoyaing.com
 
-## Getting Started
+Personal portfolio for Kristen Joy Aing. The public site is a Next.js app. This repository is the place where the site, its content, and its quality checks live.
 
-First, run the development server:
+The brand has three public layers and one private boundary:
+
+| Name | What it is | Where it lives |
+| --- | --- | --- |
+| joy. | Personal brand mark | Visual system, later |
+| Kristen Joy Aing | Professional identity | Already on public pages |
+| Commercial Leader. Curious Builder. | Positioning line to use when copy changes | Not the live homepage headline yet |
+| Work | Professional experience and business impact | Planned public section |
+| Side Quests | Independent software and creative projects | Planned public section |
+| The Joy Index | Private workspace | Never this repository |
+
+Nothing from The Joy Index belongs in git, in a page, or in a commit message.
+
+## What is true today
+
+`main` is the deployed baseline. It has Home, About, Projects, Contact, and case studies at `/work/[slug]`. `/approach` and `/experience` both redirect to `/about`.
+
+A larger redesign is open as pull request [#1](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/1). It is not merged. Two smaller pull requests, [#2](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/2) and [#3](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/3), were opened from the old `main` and currently fail lint. Do not merge those until they are rebased onto the branch you actually want to keep. See [docs/architecture.md](docs/architecture.md).
+
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm ci          # install the exact versions in package-lock.json
+npm run dev     # local site at http://localhost:3000
+npm run lint    # ESLint
+npm run build   # production build, which also typechecks
+npm run start   # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+There is no separate test runner yet. The reason, and the first tests worth adding, are in [docs/development-workflow.md](docs/development-workflow.md).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Read next
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [docs/architecture.md](docs/architecture.md) — how the app is put together, and what to keep
+- [docs/development-workflow.md](docs/development-workflow.md) — branches, commits, pull requests, Vercel, merging
+- [docs/content-model.md](docs/content-model.md) — where words live, and what must stay unpublished
+- [docs/rebuild-roadmap.md](docs/rebuild-roadmap.md) — the rebuild as small pull requests
+- [docs/design-process.md](docs/design-process.md) — how a page redesign is decided before it is coded
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, and Resend for the contact and resume-request emails. Those are the only runtime dependencies. Do not add a package for something the standard library or the framework already does.
