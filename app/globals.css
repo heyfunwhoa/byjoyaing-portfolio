@@ -68,8 +68,25 @@ body {
   background-size: 100% 1px;
 }
 
-/* Editorial heading rhythm: reserve tight tracking for deliberate exceptions. */
-.font-display { font-kerning: normal; text-wrap: balance; }
+/* Visible on keyboard focus, visually hidden otherwise. */
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  transform: translateY(-180%);
+  border-radius: 0.375rem;
+  background: var(--foreground);
+  color: var(--card);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  html:focus-within { scroll-behavior: auto; }
+  .link-rule { transition: none; }
 }

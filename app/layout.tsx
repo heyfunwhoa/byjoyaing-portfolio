@@ -23,15 +23,15 @@ const instrument = Instrument_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.byjoyaing.com"),
   title: {
-    default: "Kristen Joy Aing — Commercial Leader. Curious Builder.",
+    default: "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder",
     template: "%s",
   },
   description:
-    "Enterprise cybersecurity commercial leadership, people development, GTM strategy, and independent technical projects.",
+    "Revenue & GTM leadership in enterprise cybersecurity, people development, and practical systems that help teams grow.",
   openGraph: {
-    title: "Kristen Joy Aing — Commercial Leader. Curious Builder.",
+    title: "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder",
     description:
-      "People first. Problem-driven. Systems-minded. Enterprise cybersecurity leadership and thoughtful independent builds.",
+      "Curious by nature. Builder by instinct. Revenue, relationships, teams and repeatable GTM systems.",
     type: "website",
     locale: "en_US",
   },
@@ -47,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${instrument.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <SiteHeader />
         {children}
         <footer className="mt-auto border-t border-border">
@@ -56,7 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <Mark className="text-accent" />
                 Kristen Joy Aing
               </span>
-              <p className="text-xs leading-5">Technical sales, product narrative, and GTM systems · 2026</p>
+              <p className="text-xs leading-5">Revenue & GTM Leader · Curious Builder · 2026</p>
             </div>
             <a
               className="link-rule w-fit text-foreground"

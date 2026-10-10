@@ -3,7 +3,7 @@ import Link from "next/link";
 import {PageMain} from "@/components/page-main";
 import {portfolioEntries} from "@/lib/portfolio-registry";
 import {publicStories} from "@/lib/public-stories";
-export const metadata:Metadata={title:"Work | Commercial Leadership & GTM",description:"Enterprise cybersecurity sales, commercial leadership, coaching and source-backed GTM work."};
+export const metadata:Metadata={title:"Work | Revenue & GTM Leadership",description:"Enterprise cybersecurity sales, commercial leadership, coaching and source-backed GTM work."};
 export default function WorkPage(){
  const work=portfolioEntries.filter(entry=>entry.kind==="work");
  return <PageMain><section className="border-b border-border py-12 sm:py-16">

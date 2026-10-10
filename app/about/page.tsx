@@ -2,14 +2,14 @@ import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
 import { roles } from "@/lib/portfolio";
-import {personalInterests,personalValues} from "@/lib/public-personal";
+import { personalInterests, personalValues } from "@/lib/public-personal";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About — Kristen Joy Aing",
   description:
-    "A technical cybersecurity seller with an advertising degree from UT Austin, building the narrative and the systems a sales team can run.",
+    "Revenue & GTM Leader · Curious Builder. Enterprise cybersecurity, relationships, people development, and repeatable systems.",
 };
 
 export default function AboutPage() {
@@ -21,14 +21,14 @@ export default function AboutPage() {
         </div>
         <div>
           <p className="text-sm font-medium text-muted">About</p>
-          <h1 className="mt-3 max-w-2xl font-display text-4xl leading-[1.16] tracking-normal sm:text-5xl">
-            A technical seller who writes the story the field can use.
+          <h1 className="mt-3 max-w-2xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
+            Strategist. Leader. Builder.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-            I studied advertising and business foundations at The University of Texas at Austin. That training is how I explain a technical product: one claim, a buyer who can repeat it, and a field that does not invent the rest.
+            Curious by nature. Builder by instinct. I studied advertising and business foundations at The University of Texas at Austin. That training is how I explain a technical product: one claim, a buyer who can repeat it, and a field that does not invent the rest.
           </p>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-            The career is enterprise cybersecurity sales, from established companies to early-stage teams. I run the cycle, coach newer sellers, and build the brief or the system the next person can run.
+            My career is grounded in hands-on enterprise cybersecurity selling—from complex buyer conversations and technical evaluations to deal execution. I also coach newer sellers and build practical tools and processes that teams can reuse.
           </p>
         </div>
       </section>
@@ -47,7 +47,7 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-normal">Career progression</h2>
+        <h2 className="font-display text-3xl tracking-tight">Career progression</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Quantcast was advertising sales in a new market. Websense was the first cybersecurity book. Metadot was channel. Forcepoint, Rapid7, Darktrace, and Truffle Security are the enterprise security years. Dates and what was individual versus team are on Experience.
         </p>
@@ -68,7 +68,7 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">Technical sales and the lead around it</h2>
+        <h2 className="font-display text-3xl tracking-tight">Enterprise selling and the leadership around it</h2>
         <p className="mt-3 max-w-2xl text-base leading-7 text-muted">
           Security, engineering, and executives in the same room. Discovery, a competitive story, and the close. Alongside the deal I coach sellers, support hiring, and build the ramp a sales lead owes the team.
         </p>
