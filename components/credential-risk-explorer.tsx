@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { evidenceForStage } from "@/lib/builder-academy/credential-evidence-sources";
 import { detectionMethods, investigationStages, evaluateCredentialRisk, initialRiskInput, type RiskInput } from "@/lib/builder-academy/credential-risk";
 
 export function CredentialRiskExplorer() {
@@ -10,6 +11,8 @@ export function CredentialRiskExplorer() {
   const update = <K extends keyof RiskInput>(key: K, value: RiskInput[K]) => setInput((old) => ({ ...old, [key]: value }));
   const stages = investigationStages.map((stage) => stage.label);
   const active = result.findings[step];
+  const [showSources, setShowSources] = useState(true);
+  const sources = evidenceForStage(active.category);
   return (
     <section className="rounded-2xl border border-border bg-card p-5 sm:p-7" aria-labelledby="risk-title">
       <h2 id="risk-title" className="font-display text-2xl sm:text-3xl">From leaked secret to identity risk</h2>
@@ -25,6 +28,22 @@ export function CredentialRiskExplorer() {
       <div className="mt-4 rounded-xl border border-border bg-background p-5" aria-live="polite">
         <h3 className="font-semibold">{active.category}</h3>
         <p className="mt-2 leading-6 text-muted">{active.message}</p>
+      </div>
+      <div className="mt-5 rounded-xl border border-border p-4">
+        <button type="button" className="flex min-h-11 w-full items-center justify-between gap-3 text-left font-semibold" aria-expanded={showSources} aria-controls="investigation-sources" onClick={() => setShowSources(!showSources)}>
+          <span>Evidence sources & methods ({sources.length})</span><span aria-hidden="true">{showSources ? "−" : "+"}</span>
+        </button>
+        {showSources && <div id="investigation-sources" className="mt-3 grid gap-3">
+          {sources.map((source) => <article key={source.id} className="rounded-lg border border-border bg-background p-4">
+            <h4 className="font-semibold">{source.name}</h4>
+            <p className="mt-2 text-sm"><strong>Method:</strong> {source.method}</p>
+            <p className="mt-1 text-sm"><strong>Evidence:</strong> {source.establishes}</p>
+            <p className="mt-1 text-sm text-muted"><strong>Limitation:</strong> {source.limitation}</p>
+            <p className="mt-1 text-xs text-muted">Example: {source.example}</p>
+            <a className="mt-2 inline-block text-sm text-accent underline underline-offset-4" href={source.reference} target="_blank" rel="noopener noreferrer">Read reference</a>
+          </article>)}
+          <p className="text-xs text-muted">Illustrative sources, not live connectors. No credential data is sent to external services.</p>
+        </div>}
       </div>
       <fieldset className="mt-6 grid gap-4 sm:grid-cols-2">
         <legend className="mb-4 text-sm font-semibold">Change the fictional evidence</legend>
