@@ -47,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${instrument.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <SiteHeader />
         {children}
         <footer className="mt-auto border-t border-border">
