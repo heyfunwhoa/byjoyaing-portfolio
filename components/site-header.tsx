@@ -15,9 +15,10 @@ const links = [
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
-  if (href === "/work") return pathname === "/work" || pathname.startsWith("/work/") || pathname === "/experience";
+  if (href === "/work") return pathname === "/work" || pathname === "/experience" || pathname.startsWith("/capabilities");
+  if (href === "/side-quests" && pathname.startsWith("/work/")) return pathname !== "/work/competitive-intelligence-engine";
   if (href === "/side-quests") return pathname === "/side-quests" || pathname === "/projects";
-  if (href === "/capabilities") return pathname === "/capabilities" || pathname.startsWith("/capabilities/");
+  
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
