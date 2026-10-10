@@ -96,7 +96,7 @@ export default function AboutPage() {
       <section className="border-b border-border py-12">
         <p className="text-sm font-medium text-muted">Beyond work</p>
         <h2 className="font-display mt-3 text-3xl">The things that keep me curious.</h2>
-        <p className="mt-4 max-w-2xl leading-7 text-muted">I enjoy the process of discovering, making, and learning—whether I'm exploring a new sound, figuring out how something works, or trying a creative project for the first time. Those interests are part of my story, not just a list of hobbies.</p>
+        <p className="mt-4 max-w-2xl leading-7 text-muted">I enjoy the process of discovering, making, and learning—whether I&apos;m exploring a new sound, figuring out how something works, or trying a creative project for the first time. Those interests are part of my story, not just a list of hobbies.</p>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {personalInterests.map(interest=><article key={interest.id} className="rounded-xl border border-border bg-card p-5">
           <h3 className="text-lg font-semibold">{interest.title}</h3>
