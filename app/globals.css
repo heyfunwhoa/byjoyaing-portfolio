@@ -67,3 +67,26 @@ body {
 .group:hover .link-rule {
   background-size: 100% 1px;
 }
+
+/* Keyboard navigation: visible only when focused. */
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  transform: translateY(-180%);
+  border-radius: 0.375rem;
+  background: var(--foreground);
+  color: var(--card);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within { scroll-behavior: auto; }
+  .link-rule { transition: none; }
+}
