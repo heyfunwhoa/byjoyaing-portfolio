@@ -8,16 +8,15 @@ import { useState } from "react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/experience", label: "Experience" },
-  { href: "/projects", label: "Projects" },
-  { href: "/capabilities", label: "Capabilities" },
+  { href: "/experience", label: "Work" },
   { href: "/field-notes", label: "Field Notes" },
+  { href: "/projects", label: "Builds" },
   { href: "/contact", label: "Contact" },
 ];
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
-  if (href === "/projects") return pathname === "/projects" || pathname.startsWith("/work");
+  if (href === "/projects") return pathname === "/projects" || pathname.startsWith("/work/");
   if (href === "/capabilities") return pathname === "/capabilities" || pathname.startsWith("/capabilities/");
   return pathname === href || pathname.startsWith(`${href}/`);
 }
