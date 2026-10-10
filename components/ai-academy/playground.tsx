@@ -17,6 +17,7 @@ export function Playground(){
  <p className="text-xs font-semibold uppercase tracking-[.2em] text-accent">AI Academy / Practice</p>
  <h1 className="font-display mt-3 text-5xl">AI Playground</h1>
  <p className="mt-3 max-w-2xl text-muted">Practice a skill with fictional scenarios and transparent feedback. No AI provider calls, tracking, saved answers or accounts required.</p>
+ <section className="mt-7 rounded-xl border border-accent bg-card p-5"><p className="text-xs font-semibold uppercase tracking-widest text-accent">Recommended first journey</p><h2 className="mt-2 text-xl font-semibold">Learn → Practice → Feedback → Apply</h2><p className="mt-2 text-sm leading-6 text-muted">Follow a guided source-verification lesson, test your reasoning, and connect it to Account Intelligence using fictional evidence.</p><Link href="/ai-academy/journeys/source-verification" className="mt-3 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground">Start source verification journey →</Link></section>
  <nav aria-label="Playground labs" className="mt-8 flex flex-wrap gap-2">
  {([["detective","Source Detective"],["prompt","Prompt Studio"],["selector","Tool Selector"]] as const).map(([id,label])=><button type="button" key={id} aria-pressed={lab===id} onClick={()=>setLab(id)} className={`${outline} ${lab===id?"border-accent bg-foreground text-background":""}`}>{label}</button>)}
  </nav>
