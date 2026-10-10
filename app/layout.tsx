@@ -23,15 +23,15 @@ const instrument = Instrument_Serif({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.byjoyaing.com"),
   title: {
-    default: "Kristen Joy Aing — Technical sales, product narrative, and GTM systems",
+    default: "Kristen Joy Aing — Commercial Leader. Curious Builder.",
     template: "%s",
   },
   description:
-    "Technical cybersecurity seller. Sales leadership, product marketing grounded in advertising at UT Austin, and GTM systems for the field.",
+    "Enterprise cybersecurity commercial leadership, people development, GTM strategy, and independent technical projects.",
   openGraph: {
-    title: "Kristen Joy Aing — Technical sales and product narrative",
+    title: "Kristen Joy Aing — Commercial Leader. Curious Builder.",
     description:
-      "Enterprise cybersecurity sales, product marketing, and the systems a field team can run.",
+      "People first. Problem-driven. Systems-minded. Enterprise cybersecurity leadership and thoughtful independent builds.",
     type: "website",
     locale: "en_US",
   },
