@@ -4,6 +4,8 @@
 
 Prerequisites: [Authentication vs Authorization](authentication-vs-authorization.md) and [Identity Across Channels](identity-across-channels.md).
 
+**Try it:** [Identity Journey Lab](/builder-academy/identity-journey) shows how service accounts, deployment workloads and agents differ from a human using a login link.
+
 ## Start with three different objects
 
 - **Identity / principal:** A human, service account, CI/CD job, cloud workload, device, or agent that performs an action.
