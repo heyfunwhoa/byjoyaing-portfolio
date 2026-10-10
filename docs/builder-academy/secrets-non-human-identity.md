@@ -6,6 +6,8 @@ Prerequisites: [Authentication vs Authorization](authentication-vs-authorization
 
 **Try it:** [Identity Journey Lab](/builder-academy/identity-journey) shows how service accounts, deployment workloads and agents differ from a human using a login link.
 
+**Hands-on lab:** [Credential-to-Identity Risk Explorer](/builder-academy/credential-risk) traces a fictional token from exposure through identity ownership, permissions, evidence and remediation. It links to [Detector Coverage Atlas](https://github.com/heyfunwhoa/detector-coverage-atlas) and [Security Market Map](https://github.com/heyfunwhoa/security-market-map) without ingesting real credentials.
+
 ## Start with three different objects
 
 - **Identity / principal:** A human, service account, CI/CD job, cloud workload, device, or agent that performs an action.
