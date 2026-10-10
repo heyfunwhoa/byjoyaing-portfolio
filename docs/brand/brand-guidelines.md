@@ -8,23 +8,25 @@
 
 - **Signature:** `joy.`
 - **Name:** Kristen Joy Aing
-- **Primary positioning:** **Commercial Leader. Curious Builder.**
+- **Primary positioning:** **Revenue & GTM Leader · Curious Builder**
+- **Brand expression:** *Curious by nature. Builder by instinct.*
 - **Guiding philosophy:** **People first. Problem-driven. Systems-minded.**
-- **Supporting expression (optional, not competing main positioning):** *Curious by nature. Builder by instinct.*
 - **Core domains:** Enterprise cybersecurity, technical sales and GTM strategy, people development, product thinking, AI-assisted research and practical systems.
 
 **Brand promise:** Show how commercial judgment, curiosity, and practical building make complex technical markets easier to understand, and help people and teams grow.
 
-**Three pillars:**
-1. **People:** coaching, mentorship, enablement, collaboration and developing talent.
-2. **Strategy:** security-market understanding, commercial leadership, customer insights and GTM decisions.
-3. **Systems:** repeatable workflows, useful tools, research, product experiments and thoughtful automation.
+**Three identity pillars (how I operate):**
+1. **Strategist:** understand markets and buyers, identify patterns and opportunities, ask better questions.
+2. **Leader:** create alignment, own commercial execution, coach and develop people, move complex decisions forward.
+3. **Builder:** turn ideas into practical tools, experiments and repeatable systems.
 
-**Important boundary:** This is a commercial leader who builds, not a software engineer persona with sales appended. Do not claim an unheld Head of Sales title, exaggerate engineering ownership, or obscure individual versus team contributions.
+**Signature capabilities (what I demonstrate):** **Relationships** (trust, multithreading, partnerships and stakeholder alignment); **Revenue Systems** (account planning, pipeline, forecasting, GTM process and operating cadence); **People & Teams** (coaching, onboarding, enablement and team development). These are content lenses, not additional job titles.
+
+**Important boundary:** This is a revenue and GTM leader who builds, not a software engineer persona with sales appended. Do not claim an unheld Head of Sales title, exaggerate engineering ownership, or obscure individual versus team contributions.
 
 ## 2. Audience and tasks
 
-- **Founder / hiring leader:** understand commercial leadership strengths → find a credible Work example → make contact.
+- **Founder / hiring leader:** understand revenue and GTM leadership strengths → find a credible Work example → make contact.
 - **Recruiter:** identify role and relevant experience → review About and career context → contact.
 - **Technical / product collaborator:** understand problem-solving approach → inspect a Side Quest's evidence and limitations → connect.
 - **General visitor:** discover the story, values and areas of curiosity.
@@ -36,7 +38,7 @@ These paths are **design hypotheses**, not measured visitor behavior. Verify thr
 Sound confident but not corporate, curious but grounded, warm but concise, credible rather than grandiose. Use plain language and active verbs. Favor concrete decisions and evidence over buzzwords. The professional story comes first; playful touches can follow.
 
 **Message hierarchy:**
-1. Who: commercial leader in enterprise cybersecurity.
+1. Who: Revenue & GTM Leader · Curious Builder, grounded in enterprise cybersecurity.
 2. How: people, strategy and systems.
 3. Proof: professional outcomes and transparent project artifacts.
 4. Personality: joy., thoughtful curiosity and experimentation.
@@ -45,9 +47,9 @@ Sound confident but not corporate, curious but grounded, warm but concise, credi
 **Do:** “I developed onboarding resources to help teammates ramp,” if supported.
 **Avoid:** unverified metrics, invented customer use, claiming independent demos are production products, or conflating proprietary employer work with personal projects.
 
-**Hero copy baseline:** Eyebrow: “Cybersecurity & GTM leadership”; headline: “Commercial Leader. Curious Builder.”; body: one or two sentences linking people development, complex commercial problems and the systems built to solve them. CTAs: “Explore Work” and “Explore Side Quests.”
+**Hero copy baseline:** Eyebrow: “Revenue & GTM Leader · Curious Builder”; headline: “Curious by nature. Builder by instinct.”; body: one or two sentences linking revenue execution, complex buying journeys, people development and useful systems. CTAs should lead to verified Work and Field Notes or Builds.
 
-The alternate prototype headline “Curious by nature. Builder by instinct.” is suitable as secondary personality copy; adopting it as the final H1 requires an explicit design decision.
+The brand expression “Curious by nature. Builder by instinct.” is the approved homepage headline direction. Use the professional positioning adjacent to it for immediate role clarity.
 
 ## 4. Visual identity
 
@@ -82,15 +84,18 @@ Colors above describe the **existing implementation**, not guaranteed accessibil
 
 ## 5. Information architecture (proposed, not yet deployed)
 
-Primary destinations: **Home / About / Work / Side Quests / Contact**.
+Target primary destinations: **Home / About / Work / Field Notes / Builds / Contact** (stage the migration; do not break live URLs).
 
 - **Home:** professional positioning → credible proof → Selected Work → Side Quests preview → personal story → contact.
 - **About:** short origin story including advertising background → values (personal and professional) → leadership philosophy → career timeline → education.
 - **Work:** professional outcomes, team development, sales/GTM strategy, enablement, collaboration and relevant impact.
-- **Side Quests:** independent builds, software learning, AI workflows and cybersecurity research, with honest stages and linked artifacts.
+- **Field Notes:** editorial home for how I operate. Content types: Playbooks (practical repeatable methods), Frameworks (decision tools), Lessons Learned (grounded reflections), and **Operating Systems** (revenue/team cadences and processes that make practices repeatable). Never present planned methods as proven practice.
+- **Builds:** independent builds and Side Quests, software learning, AI workflows and cybersecurity research, with honest stages and linked artifacts.
 - **Contact:** straightforward email/social/contact path.
 
 **Routing rule:** Current `/projects` and `/work/[slug]` are live legacy routes. Do not change or redirect them until corresponding destination pages exist; maintain durable old links and metadata. A personal technical project is not “Work” merely because its present URL starts with `/work/`.
+
+**Navigation migration:** Add `/field-notes` as a real destination before linking it in navigation. Work and Builds may initially link to existing `/experience`, `/projects`, and `/work/[slug]` destinations; establish new destination routes before renaming links. Keep the private Joy Index entirely outside the public portfolio.
 
 **Homepage direction:** Leadership-first arrangement (provisional preferred option), with Work preceding Side Quests. PR #9 holds an exploratory `/prototype` page, not an approved replacement for `/`.
 
@@ -137,7 +142,7 @@ When a proposed change contradicts this guide, describe the tradeoff in the PR a
 
 ## 10. Review before launch
 
-- [ ] Hero clearly communicates cybersecurity commercial leadership.
+- [ ] Hero clearly communicates Revenue & GTM Leader · Curious Builder.
 - [ ] `joy.` and full name are legible and consistent.
 - [ ] Work and Side Quests are clearly distinct.
 - [ ] Two or more professional examples contain supported evidence.
