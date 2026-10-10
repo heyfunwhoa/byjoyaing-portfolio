@@ -11,7 +11,7 @@ const collections = [
   {
     title: "Playbooks",
     description: "Practical approaches to strategic account planning, buying-committee alignment, deal execution, and coaching.",
-    examples: ["Multithreading & stakeholder mapping", "Strategic account planning", "Deal inspection"],
+    examples: ["Multithreading & stakeholder mapping (seller + coach perspectives)", "Strategic account planning", "Deal inspection"],
   },
   {
     title: "Frameworks",
@@ -61,7 +61,7 @@ export default function FieldNotesPage() {
         <h2 className="font-display text-3xl tracking-tight">Explore the collections</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Collection outlines are starting points, not published case studies or claims of measured results.
-          Specific examples will be added with sources and clear evidence labels.
+          Specific examples will be added with sources and clear evidence labels: Used in practice, Illustrative model, or Exploring.
         </p>
         <div className="mt-7 grid gap-4 md:grid-cols-2">
           {collections.map((collection) => (
@@ -79,7 +79,7 @@ export default function FieldNotesPage() {
       <section className="border-t border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">See the work behind the ideas</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Professional experience and independently built projects have different evidence and confidentiality boundaries.
+          Professional experience and independently built projects have different evidence and confidentiality boundaries. Frameworks demonstrate an approach; real selling and leadership outcomes belong in Work.
         </p>
         <div className="mt-5 flex flex-wrap gap-5 text-sm font-medium">
           <Link href="/experience" className="text-accent">Professional experience</Link>
