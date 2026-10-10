@@ -53,9 +53,9 @@ Sound confident but not corporate, curious but grounded, warm but concise, credi
 
 **Dual-audience requirement:** Never imply a Head of Sales title already held, and never bury evidence of individual enterprise selling beneath team-building claims. Each professional case study should identify scope of ownership, decision makers, sales-cycle complexity, collaborators, and verified personal outcomes. Leadership case studies should differentiate direct management from informal coaching or team-lead contributions.
 
-**Hero copy baseline:** Eyebrow: “Revenue & GTM Leader · Curious Builder”; headline: “Curious by nature. Builder by instinct.”; body: one or two sentences linking revenue execution, complex buying journeys, people development and useful systems. CTAs should lead to verified Work and Field Notes or Builds.
+**Hero copy baseline:** Eyebrow: “Enterprise cybersecurity · Revenue & GTM”; headline: “Revenue & GTM Leader. Curious Builder.”; philosophy below: “People first. Problem-driven. Systems-minded.”; body links revenue execution, complex buying journeys, people development and useful systems. Primary CTAs lead to Work and Side Quests.
 
-The brand expression “Curious by nature. Builder by instinct.” is the approved homepage headline direction. Use the professional positioning adjacent to it for immediate role clarity.
+The brand expression “Curious by nature. Builder by instinct.” remains approved secondary personality copy, including the avatar caption. The homepage now leads directly with professional positioning; this is an intentional hierarchy refinement rather than replacement of the expression.
 
 ## 4. Visual identity
 
@@ -80,6 +80,10 @@ Colors above describe the **existing implementation**, not guaranteed accessibil
 - Technical labels/metadata: **Geist Mono**, sparingly.
 - Preserve accessible font fallbacks, line lengths, logical hierarchy and mobile wrapping. Avoid gratuitous all-caps paragraphs.
 
+### Character and avatar system
+
+Maintain one consistent illustrated personal identity across three treatments: Leader (default professional portrait), Explorer (research and Field Notes), and Builder (Side Quests and Builder Academy). The existing `/avatar.png` is the fallback for all variants until master art and derivative exports are approved. Follow [avatar-system.md](./avatar-system.md) for sizing, naming, likeness approval, accessible alt text, reduced motion and asset review. The variants must not imply real-world work or titles that cannot be substantiated.
+
 ### Logo, shapes and imagery
 
 - Use `joy.` as a recognizable **personal signature**, paired with readable “Kristen Joy Aing” where identity clarity matters.
@@ -103,7 +107,7 @@ Target primary destinations: **Home / About / Work / Field Notes / Builds / Cont
 
 **Navigation migration:** Add `/field-notes` as a real destination before linking it in navigation. Work and Builds may initially link to existing `/experience`, `/projects`, and `/work/[slug]` destinations; establish new destination routes before renaming links. Keep the private Joy Index entirely outside the public portfolio.
 
-**Homepage direction:** Lead with professional positioning and hands-on enterprise selling proof; follow with leadership/team impact, Work, Field Notes, and independent Builds. PR #9 holds an exploratory `/prototype` page, not an approved replacement for `/`.
+**Homepage direction:** Lead with professional positioning, then People / Strategy / Systems, Work and Side Quests audience pathways, selected builds, Field Notes, personal context and contact. This layout is proposed on PR #33 and remains subject to browser review. PR #9 is an earlier exploratory `/prototype` page, not an approved replacement for `/`.
 
 ## 6. Case study patterns
 
