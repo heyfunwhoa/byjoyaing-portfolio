@@ -4,6 +4,8 @@
 
 **Canonical sources of truth:** [Brand fundamentals](brand/brand-guidelines.md) govern identity, messaging and Work/Side Quests hierarchy; [content model](content-model.md) governs content field definitions and privacy; [development workflow](development-workflow.md) and [AGENTS.md](../AGENTS.md) govern development; the PR checklist governs review. GitHub Actions and the repository workflows define actual automated checks; documentation alone does not enforce them.
 
+**Joy Index relationship:** The Joy Index is the private planning, reflection, learning-progress and prioritization companion to this public portfolio. It can inform what to work on and what to learn next, including Builder Academy lessons, but no private Joy Index records, exports, URLs, unpublished personal notes or credentials belong in this repository. Public case studies must be independently reviewed and approved for publication. Coordination is a workflow boundary, **not an implemented data sync or integration**.
+
 **P0 now:**
 1. Consolidate documentation/links and treat older PR snapshots as historical (this PR).
 2. Introduce a single, typed Work/Side Quests project registry and tests for slug uniqueness, required fields and route/link integrity, without redesigning production pages.
