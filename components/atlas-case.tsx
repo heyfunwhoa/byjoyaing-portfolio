@@ -76,7 +76,7 @@ export function AtlasCase() {
         <p className="text-sm font-medium text-muted">04 / Open-source attribution and original contribution</p>
         <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">Independent catalog, credited upstream source.</h2>
         <p className="mt-4 max-w-2xl leading-7 text-muted">
-          Detector Coverage Atlas is my independent research and visualization project. Its detector facts are derived from public TruffleHog source code at pinned revisions; the TruffleHog detector engine and its implementations belong to their upstream project and contributors. This portfolio's comparison is a small static sample, not the full Atlas ingestion application.
+          Detector Coverage Atlas is my independent research and visualization project. Its detector facts are derived from public TruffleHog source code at pinned revisions; the TruffleHog detector engine and its implementations belong to their upstream project and contributors. This portfolio&apos;s comparison is a small static sample, not the full Atlas ingestion application.
         </p>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           The upstream TruffleHog v3 repository identifies AGPL-3.0 as its license. Reading and attributing source is different from copying or modifying covered code. A future fork to experiment with Go detectors is planned, not implemented.
