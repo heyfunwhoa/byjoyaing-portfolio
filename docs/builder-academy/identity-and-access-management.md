@@ -8,6 +8,8 @@ Start here: [Authentication vs. Authorization](authentication-vs-authorization.m
 
 Related lessons: [Identity Across Channels](identity-across-channels.md) explains MFA/SSO/SCIM across web, mobile, CLI, API, cloud, integrations, and agents. [Secrets, Non-Human Identities & IAM](secrets-non-human-identity.md) connects credential exposure, workload identities, resource permissions, and the Detector Coverage Atlas / Security Market Map.
 
+**Interactive prototype:** [Identity Journey Lab](/builder-academy/identity-journey) explores humans, services, CI/CD workloads and AI agents. It is a fictional demonstration; not an active IAM integration.
+
 ## Learning path
 
 | Unit | Topics | Practical outcome |
