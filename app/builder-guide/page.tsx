@@ -16,7 +16,7 @@ export default function BuilderGuidePage() {
           A little curiosity goes a long way.
         </h1>
         <p className="mt-4 max-w-2xl leading-7 text-muted">
-          I'm Kristen Joy Aing: a commercial leader in enterprise cybersecurity who likes building useful things.
+          I&apos;m Kristen Joy Aing: a commercial leader in enterprise cybersecurity who likes building useful things.
           Pick a direction to explore my work, approach, and independent projects.
         </p>
         <div className="mt-8">
