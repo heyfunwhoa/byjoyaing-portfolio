@@ -4,7 +4,7 @@
 
 ## Brand contract
 
-- Canonical: [brand guidelines](brand/brand-guidelines.md). Public hierarchy: **Commercial Leader. Curious Builder.** and **People first. Problem-driven. Systems-minded.**
+- Canonical: [brand guidelines](brand/brand-guidelines.md). Public hierarchy: **Revenue & GTM Leader. Curious Builder.** and **People first. Problem-driven. Systems-minded.**
 - Lead with commercial credibility and verified outcomes; the character supports orientation, never replaces real identity or proof.
 - Use existing CSS tokens and typography; warm, grounded, concise copy. Preserve legacy routes while the IA migration is pending.
 - The Joy Index is private. Never ingest its records or notes, directly or indirectly. No employee/customer-confidential material.
