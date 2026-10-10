@@ -1,3 +1,13 @@
+# Kristen Joy Aing — joy. portfolio
+
+Personal portfolio for Kristen Joy Aing: **Commercial Leader. Curious Builder.** The site connects enterprise cybersecurity and GTM leadership with independent technical projects.
+
+**Brand source of truth:** [Portfolio brand guidelines](docs/brand/brand-guidelines.md). Read these before altering positioning, page structure, visual tokens, site copy, project status labels or navigation. The design direction remains under review; don't treat the draft prototype as the production homepage.
+
+**Current vs proposed:** `main` is the shipped codebase; brand documentation establishes editorial foundations. The proposed Home / About / Work / Side Quests / Contact architecture has not yet replaced the legacy routes. Preserve existing links until new destinations and redirects are ready.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
