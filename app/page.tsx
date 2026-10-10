@@ -1,190 +1,199 @@
-import { CoverageExplorer } from "@/components/coverage-explorer";
+import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import { ProjectPreview } from "@/components/project-previews";
 import { ProjectStatusPill } from "@/components/project-status-pill";
-import { workAreas } from "@/lib/capabilities";
 import { featuredProjects } from "@/lib/project-directory";
-import { roles } from "@/lib/portfolio";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder",
   description:
-    "Revenue and GTM leadership, enterprise cybersecurity, people development, and practical systems for growth.",
+    "Strategic enterprise cybersecurity selling, people development, go-to-market leadership, and curious independent builds.",
 };
 
-const previewRoles = ["Truffle Security", "Rapid7", "Darktrace", "Forcepoint"];
+const strengths = [
+  {
+    number: "01",
+    title: "People",
+    text: "Coaching, building trust, developing talent, and helping teams do their best work.",
+  },
+  {
+    number: "02",
+    title: "Strategy",
+    text: "Navigating complex enterprise deals and connecting buyer insights to revenue decisions.",
+  },
+  {
+    number: "03",
+    title: "Systems",
+    text: "Turning recurring friction into practical workflows, enablement, and useful tools.",
+  },
+];
 
-const buildSteps = [
-  { index: "01", title: "Identify friction", example: "The same coverage question, feedback thread, or partner list shows up in different notebooks." },
-  { index: "02", title: "Define the problem", example: "Account Intelligence is one rep’s book and a draft they still have to send." },
-  { index: "03", title: "Design the workflow", example: "Competitive claims stay attached to a source. A hypothesis stays labeled as a hypothesis." },
-  { index: "04", title: "Validate the data", example: "Unreviewed Atlas cells stay gray. A missing partner domain stays in human review." },
-  { index: "05", title: "Build the application", example: "The coverage table is the sample you can use in this repository." },
-  { index: "06", title: "Add automation carefully", example: "No model runs here. Planned tools stay planned until the evidence is trustworthy." },
-  { index: "07", title: "Measure and improve", example: "Proposed metrics stay proposed until they are measured." },
+const audiences = [
+  {
+    eyebrow: "Professional work",
+    title: "Enterprise selling & leadership",
+    description:
+      "How I approach large, technical opportunities, mentor sellers, support team growth, and turn field lessons into repeatable execution.",
+    href: "/experience",
+    action: "Explore experience",
+  },
+  {
+    eyebrow: "Independent experiments",
+    title: "Side Quests & systems",
+    description:
+      "Explore the tools I build to understand cybersecurity, competitive intelligence, product ideas, and GTM workflows. Each project shows its real stage.",
+    href: "/projects",
+    action: "Explore independent builds",
+  },
 ];
 
 export default function Home() {
-  const featured = featuredProjects();
-  const timeline = roles.filter((role) => previewRoles.includes(role.company));
+  const featured = featuredProjects().slice(0, 3);
 
   return (
     <PageMain>
-      <section className="grid items-start gap-10 border-b border-border py-12 lg:grid-cols-2 lg:py-16">
-        <div className="flex flex-col gap-5">
-          <p className="text-sm font-medium text-muted">Revenue & GTM Leader · Curious Builder</p>
-          <h1 className="font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
-            Curious by nature. Builder by instinct.
+      <section aria-labelledby="home-title" className="grid min-w-0 items-center gap-8 border-b border-border py-10 sm:py-14 lg:grid-cols-[minmax(0,1.45fr)_minmax(13rem,0.55fr)] lg:gap-12 lg:py-20">
+        <div className="min-w-0">
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent sm:text-sm">
+            Enterprise cybersecurity · Revenue & GTM
+          </p>
+          <h1 id="home-title" className="mt-4 max-w-[15ch] font-display text-[clamp(2.45rem,7.4vw,4.75rem)] leading-[1.08] tracking-[-0.02em]">
+            Revenue & GTM Leader.
+            <span className="mt-1 block italic text-accent">Curious Builder.</span>
           </h1>
-          <p className="max-w-xl text-base leading-7 text-muted">
-            I&apos;m Kristen Joy Aing. I navigate complex enterprise cybersecurity deals, build relationships across buying committees, coach sellers, and create repeatable GTM systems.
+          <p className="mt-5 max-w-[38rem] text-base font-medium leading-7 sm:text-lg sm:leading-8">
+            People first. Problem-driven. Systems-minded.
           </p>
-          <p className="max-w-xl text-base leading-7 text-muted">
-            Advertising at UT Austin is where that started. The degree is how I treat positioning: what a technical buyer needs to hear, what a seller can say, and what product should hear back.
+          <p className="mt-3 max-w-[38rem] text-base leading-7 text-muted">
+            I&apos;m Kristen Joy Aing. I navigate complex enterprise security deals, coach people around me, and build practical systems that help teams move forward.
           </p>
-          <ul className="flex flex-wrap gap-2 text-sm">
-            {["Strategic enterprise selling", "Revenue & GTM strategy", "People & teams"].map((item) => (
-              <li key={item} className="rounded-full border border-border px-3 py-1">{item}</li>
-            ))}
-          </ul>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Link href="/experience" className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
-              Explore my work
+          <div className="mt-7 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap">
+            <Link href="/experience" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-foreground">
+              Explore Work <span aria-hidden="true" className="ml-2">→</span>
             </Link>
-            <Link href="/field-notes" className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium">
-              Explore Field Notes
+            <Link href="/projects" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-border bg-card px-5 py-3 text-center text-sm font-semibold transition-colors hover:border-accent">
+              Explore Side Quests <span aria-hidden="true" className="ml-2">→</span>
             </Link>
           </div>
+          <p className="mt-4 text-xs leading-5 text-muted">Strategic enterprise seller · People developer · GTM systems thinker</p>
         </div>
-        <div className="grid min-w-0 gap-3">
+        <div className="mx-auto w-full max-w-[15rem] sm:max-w-[18rem] lg:max-w-[19rem]">
+          <BrandAvatar />
+          <p className="mt-3 text-center text-xs leading-5 text-muted">Curious by nature. Builder by instinct.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="approach-title" className="border-b border-border py-10 sm:py-14">
+        <p className="text-xs font-semibold uppercase tracking-widest text-accent">How I work</p>
+        <h2 id="approach-title" className="mt-2 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-4xl">
+          A way of working that connects people, strategy, and systems.
+        </h2>
+        <div className="mt-7 grid gap-3 sm:grid-cols-3 sm:gap-4">
+          {strengths.map((strength) => (
+            <article key={strength.number} className="min-w-0 rounded-2xl border border-border bg-card p-5 sm:p-6">
+              <p className="text-xs font-medium text-accent">{strength.number} / {strength.title}</p>
+              <h3 className="mt-3 font-display text-2xl">{strength.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{strength.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="paths-title" className="border-b border-border py-10 sm:py-14">
+        <p className="text-xs font-semibold uppercase tracking-widest text-accent">Two sides of my work</p>
+        <h2 id="paths-title" className="mt-2 font-display text-3xl tracking-tight sm:text-4xl">Explore the work, or explore the curiosity.</h2>
+        <div className="mt-7 grid gap-4 md:grid-cols-2">
+          {audiences.map((item) => (
+            <article key={item.href} className="flex min-w-0 flex-col rounded-2xl border border-border bg-card p-5 sm:p-7">
+              <p className="text-xs font-semibold uppercase tracking-wider text-accent">{item.eyebrow}</p>
+              <h3 className="mt-3 font-display text-2xl leading-tight sm:text-3xl">{item.title}</h3>
+              <p className="mt-3 flex-1 text-sm leading-7 text-muted">{item.description}</p>
+              <Link href={item.href} className="mt-5 inline-flex min-h-11 w-fit items-center rounded-md font-semibold text-accent underline-offset-4 hover:underline">
+                {item.action} <span aria-hidden="true" className="ml-2">→</span>
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="builds-title" className="border-b border-border py-10 sm:py-14">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-accent">Selected Side Quests</p>
+            <h2 id="builds-title" className="mt-2 font-display text-3xl tracking-tight sm:text-4xl">Ideas made tangible.</h2>
+          </div>
+          <Link href="/projects" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline-offset-4 hover:underline">
+            All projects <span aria-hidden="true" className="ml-2">→</span>
+          </Link>
+        </div>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
+          Independent experiments, not employer deployments. Every case study distinguishes live work from sample interfaces and planned capabilities.
+        </p>
+        <div className="mt-7 grid min-w-0 gap-4 lg:grid-cols-3">
           {featured.map((project) => (
-            <Link key={project.slug} href={project.caseStudyUrl} className="min-w-0 rounded-2xl border border-border bg-card p-3 hover:border-accent">
-              <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                <p className="text-sm font-medium">{project.title}</p>
+            <article key={project.slug} className="flex min-w-0 flex-col rounded-2xl border border-border bg-card p-4 sm:p-5">
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <h3 className="max-w-[19rem] text-lg font-semibold leading-snug">{project.title}</h3>
                 <ProjectStatusPill status={project.status} />
               </div>
-              <ProjectPreview kind={project.preview} compact />
+              <p className="mt-3 text-sm leading-6 text-muted">{project.summary}</p>
+              <div className="mt-4 min-w-0 overflow-hidden"><ProjectPreview kind={project.preview} compact /></div>
+              <Link href={project.caseStudyUrl} className="mt-auto inline-flex min-h-11 items-center pt-3 text-sm font-semibold text-accent underline-offset-4 hover:underline">
+                View case study <span aria-hidden="true" className="ml-2">→</span>
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="notes-title" className="border-b border-border py-10 sm:py-14">
+        <div className="grid items-center gap-6 rounded-2xl border border-border bg-card p-5 sm:p-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)]">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-widest text-accent">Field Notes</p>
+            <h2 id="notes-title" className="mt-2 font-display text-3xl tracking-tight sm:text-4xl">The thinking behind the work.</h2>
+            <p className="mt-3 max-w-xl text-sm leading-7 text-muted">
+              Playbooks, operating systems, frameworks, and lessons learned—grounded in practical enterprise selling and team development.
+            </p>
+            <Link href="/field-notes" className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline-offset-4 hover:underline">
+              Explore Field Notes <span aria-hidden="true" className="ml-2">→</span>
             </Link>
-          ))}
+          </div>
+          <div className="grid gap-2 text-sm" aria-label="Field Notes collections">
+            {["Playbooks", "Operating Systems", "Frameworks", "Lessons Learned"].map((label) => (
+              <div key={label} className="rounded-lg border border-border px-3 py-2.5">{label}</div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="border-b border-border py-12">
-        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">Proven in the field. Built to scale.</h2>
+      <section aria-labelledby="about-title" className="grid gap-6 border-b border-border py-10 sm:py-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent">Beyond the title</p>
+          <h2 id="about-title" className="mt-2 font-display text-3xl tracking-tight sm:text-4xl">Curiosity doesn&apos;t stop at work.</h2>
+        </div>
+        <div>
+          <p className="text-base leading-7 text-muted">
+            My background in advertising influences how I tell stories, and building things is how I learn. I bring that curiosity to technology, creative projects, and the people I work alongside.
+          </p>
+          <Link href="/about" className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline-offset-4 hover:underline">
+            More about me <span aria-hidden="true" className="ml-2">→</span>
+          </Link>
+        </div>
+      </section>
+
+      <section aria-labelledby="contact-title" className="py-12 sm:py-16">
+        <p className="text-xs font-semibold uppercase tracking-widest text-accent">Let&apos;s connect</p>
+        <h2 id="contact-title" className="mt-2 max-w-3xl font-display text-3xl leading-tight tracking-tight sm:text-4xl">
+          Building a team, navigating an enterprise market, or exploring something new?
+        </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Hands-on enterprise sales execution comes first. I use those lessons to develop people, shape GTM strategy, and build systems other teams can apply.
+          I&apos;m interested in strategic enterprise selling and revenue leadership conversations where customer understanding and team development matter.
         </p>
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {[
-            ["Strategic enterprise selling", "Personally navigate complex cybersecurity deals across security, engineering, executive stakeholders and procurement.", "Experience across Forcepoint, Rapid7, Darktrace, and Truffle Security. Review the experience timeline for specific contributions.", "/experience", "Explore selling experience"],
-            ["Sales leadership", "Coaching, hiring support, ramp, and repeatable team practices. Leadership contributions are distinguished from formal management titles.", "Examples include supporting SDR development into closing roles and GTM onboarding.", "/experience", "Explore leadership experience"],
-            ["Product marketing", "Positioning, competitive narrative, and launch language, grounded in an advertising degree from UT Austin.", "Briefs the field used. The monitor around them is still a design.", "/work/competitive-intelligence-engine", "Competitive narrative"],
-          ].map(([title, body, proof, href, label]) => (
-            <article key={title} className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-5">
-              <h3 className="text-lg font-semibold">{title}</h3>
-              <p className="text-sm leading-6 text-muted">{body}</p>
-              <p className="text-sm leading-6">{proof}</p>
-              <Link href={href} className="mt-auto text-sm font-medium text-accent">{label}</Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-b border-border py-12">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">What I work on</h2>
-          <Link href="/capabilities" className="text-sm font-medium text-accent">All capabilities</Link>
-        </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {workAreas.map((area) => (
-            <article key={area.title} className="rounded-2xl border border-border p-5">
-              <h3 className="text-lg font-semibold">{area.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{area.problem}</p>
-              <Link href={area.href} className="mt-4 inline-flex text-sm font-medium text-accent">Browse projects</Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-b border-border py-12">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Selected work</h2>
-          <Link href="/projects" className="text-sm font-medium text-accent">Explore all projects</Link>
-        </div>
-        <div className="mt-8 flex flex-col gap-6">
-          {featured.map((project, index) => (
-            <article key={project.slug} id={project.slug === "detector-coverage-atlas" ? "atlas" : undefined} className="grid min-w-0 grid-cols-1 items-center gap-6 rounded-2xl border border-border p-4 sm:p-5 lg:grid-cols-2">
-              <div className={index % 2 === 1 ? "lg:order-2" : undefined}>
-                <div className="flex flex-wrap items-center gap-2">
-                  <ProjectStatusPill status={project.status} />
-                  <span className="text-xs text-muted">{project.categories[0]}</span>
-                </div>
-                <h3 className="mt-3 text-2xl font-semibold tracking-tight">{project.title}</h3>
-                <p className="mt-3 text-base leading-7 text-muted">{project.summary}</p>
-                <p className="mt-3 text-sm leading-6">{project.role}</p>
-                <Link href={project.caseStudyUrl} className="mt-4 inline-flex text-sm font-medium text-accent">View case study</Link>
-              </div>
-              <div className={index % 2 === 1 ? "min-w-0 lg:order-1" : "min-w-0"}>
-                {project.slug === "detector-coverage-atlas" ? <CoverageExplorer /> : <ProjectPreview kind={project.preview} />}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-b border-border py-12">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Field Notes</h2>
-          <Link href="/field-notes" className="text-sm font-medium text-accent">Explore Field Notes</Link>
-        </div>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-muted">
-          The thinking and practical methods behind the work: playbooks, frameworks, lessons learned, and operating systems for relationships, revenue, and teams.
-        </p>
-      </section>
-
-      <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight sm:text-4xl">How I build</h2>
-        <ol className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2">
-          {buildSteps.map((step) => (
-            <li key={step.index} className="rounded-2xl border border-border p-4">
-              <p className="text-xs font-medium text-muted">{step.index}</p>
-              <h3 className="mt-2 font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{step.example}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="border-b border-border py-12">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="max-w-xl font-display text-3xl tracking-tight sm:text-4xl">Built on a decade of enterprise cybersecurity sales.</h2>
-          <Link href="/experience" className="text-sm font-medium text-accent">View my experience</Link>
-        </div>
-        <ol className="mt-8 grid gap-4 md:grid-cols-2">
-          {timeline.map((role) => (
-            <li key={role.company} className="rounded-xl border border-border bg-card p-4">
-              <p className="text-xs text-muted">{role.period}</p>
-              <h3 className="mt-1 font-semibold">{role.company}</h3>
-              <p className="text-sm">{role.title}</p>
-              <p className="mt-1 text-sm text-muted">{role.category}</p>
-              <p className="mt-3 text-sm leading-6 text-muted">{role.points[0]}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="py-12">
-        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">Hiring a sales leader, or someone to shape how a technical product is told?</h2>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          I am interested in Head of Sales and strategic enterprise selling opportunities where customer understanding, revenue execution, and developing teams matter.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-4 text-sm font-medium">
-          <Link href="/contact" className="inline-flex h-11 items-center rounded-md bg-accent px-5 text-accent-foreground">Get in touch</Link>
-          <a href="https://www.linkedin.com/in/kristenaing" className="inline-flex h-11 items-center rounded-md border border-border px-5" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="https://github.com/heyfunwhoa" className="inline-flex h-11 items-center rounded-md border border-border px-5" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
+        <Link href="/contact" className="mt-6 inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground hover:bg-foreground">
+          Get in touch <span aria-hidden="true" className="ml-2">→</span>
+        </Link>
       </section>
     </PageMain>
   );
