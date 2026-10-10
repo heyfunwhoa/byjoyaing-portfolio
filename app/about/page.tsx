@@ -2,6 +2,7 @@ import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
 import { roles } from "@/lib/portfolio";
+import { personalInterests, personalValues } from "@/lib/public-personal";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -30,6 +31,19 @@ export default function AboutPage() {
             My career is grounded in hands-on enterprise cybersecurity selling—from complex buyer conversations and technical evaluations to deal execution. I also coach newer sellers and build practical tools and processes that teams can reuse.
           </p>
         </div>
+      </section>
+
+      <section className="border-b border-border py-12">
+        <p className="text-sm font-medium text-muted">My guiding philosophy</p>
+        <h2 className="font-display mt-3 text-3xl">People first. Problem-driven. Systems-minded.</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {[
+            ["People first", "I listen, coach and share context so a teammate can succeed without depending on one person for every answer."],
+            ["Problem-driven", "I begin with customer or team friction, test assumptions and identify what would actually help before suggesting a tool."],
+            ["Systems-minded", "I document repeatable processes, define ownership and build small workflows that others can improve."],
+          ].map(([name,body])=> <article key={name} className="rounded-xl border border-border bg-card p-5"><h3 className="text-lg font-semibold">{name}</h3><p className="mt-2 text-sm leading-6 text-muted">{body}</p></article>)}
+        </div>
+        <p className="mt-5 max-w-2xl text-sm leading-6 text-muted">My approach to leadership combines accountability with curiosity: clear expectations, thoughtful feedback, evidence-based decisions and room for people to develop their own strengths.</p>
       </section>
 
       <section className="border-b border-border py-12">
@@ -77,6 +91,21 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="border-b border-border py-12">
+        <p className="text-sm font-medium text-muted">Beyond work</p>
+        <h2 className="font-display mt-3 text-3xl">The things that keep me curious.</h2>
+        <p className="mt-4 max-w-2xl leading-7 text-muted">I enjoy the process of discovering, making, and learning—whether I&apos;m exploring a new sound, figuring out how something works, or trying a creative project for the first time. Those interests are part of my story, not just a list of hobbies.</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {personalInterests.map(interest=><article key={interest.id} className="rounded-xl border border-border bg-card p-5">
+          <h3 className="text-lg font-semibold">{interest.title}</h3>
+          <p className="mt-2 text-sm leading-6 text-muted">{interest.detail}</p>
+          <p className="mt-3 text-xs leading-5 text-muted">{interest.connection}</p>
+          </article>)}
+        </div>
+        <p className="mt-6 text-sm font-medium">What matters to me</p>
+        <ul className="mt-3 flex flex-wrap gap-2">{personalValues.map(value=><li key={value} className="rounded-full border border-border px-3 py-1 text-sm">{value}</li>)}</ul>
       </section>
 
       <section id="technologies" className="scroll-mt-24 border-b border-border py-12">

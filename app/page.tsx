@@ -70,10 +70,10 @@ export default function Home() {
             I&apos;m Kristen Joy Aing. I navigate complex enterprise security deals, coach people around me, and build practical systems that help teams move forward.
           </p>
           <div className="mt-7 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap">
-            <Link href="/experience" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-foreground">
+            <Link href="/work" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-foreground">
               Explore Work <span aria-hidden="true" className="ml-2">→</span>
             </Link>
-            <Link href="/projects" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-border bg-card px-5 py-3 text-center text-sm font-semibold transition-colors hover:border-accent">
+            <Link href="/side-quests" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-border bg-card px-5 py-3 text-center text-sm font-semibold transition-colors hover:border-accent">
               Explore Side Quests <span aria-hidden="true" className="ml-2">→</span>
             </Link>
           </div>
@@ -124,7 +124,7 @@ export default function Home() {
             <p className="text-xs font-semibold uppercase tracking-widest text-accent">Selected Side Quests</p>
             <h2 id="builds-title" className="mt-2 font-display text-3xl tracking-tight sm:text-4xl">Ideas made tangible.</h2>
           </div>
-          <Link href="/projects" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline-offset-4 hover:underline">
+          <Link href="/side-quests" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline-offset-4 hover:underline">
             All projects <span aria-hidden="true" className="ml-2">→</span>
           </Link>
         </div>
