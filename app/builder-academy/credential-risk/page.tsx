@@ -21,7 +21,7 @@ export default function CredentialRiskPage() {
           <a href="https://github.com/heyfunwhoa/detector-coverage-atlas" className="text-accent underline underline-offset-4">Detector Coverage Atlas</a>
           <a href="https://github.com/heyfunwhoa/security-market-map" className="text-accent underline underline-offset-4">Security Market Map</a>
         </div>
-        <p className="mt-6 max-w-3xl text-sm leading-6 text-muted">The Atlas explores detector capabilities and limitations. The Market Map documents market categories, vendors and evidence. This lab uses neither project's live data; its findings are fictional.</p>
+        <p className="mt-6 max-w-3xl text-sm leading-6 text-muted">The Atlas explores detector capabilities and limitations. The Market Map documents market categories, vendors and evidence. This lab uses neither project&apos;s live data; its findings are fictional.</p>
       </section>
     </PageMain>
   );
