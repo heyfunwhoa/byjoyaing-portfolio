@@ -43,21 +43,6 @@ export default function FieldNotesPage() {
         </p>
       </header>
       <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">Three ways I approach the work</h2>
-        <div className="mt-7 grid gap-4 md:grid-cols-3">
-          {[
-            ["Strategist", "Look for patterns, understand buyers, and ask better questions."],
-            ["Leader", "Build trust, create alignment, and develop people."],
-            ["Builder", "Translate ideas into useful and repeatable systems."],
-          ].map(([title, description]) => (
-            <article key={title} className="rounded-2xl border border-border bg-card p-5">
-              <h3 className="font-semibold">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section className="border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">Start with two connected field guides</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {[
@@ -83,6 +68,21 @@ export default function FieldNotesPage() {
           ))}
         </div>
       </section>
+      <section className="border-b border-border py-12">
+        <h2 className="font-display text-3xl tracking-tight">Three ways I approach the work</h2>
+        <div className="mt-7 grid gap-4 md:grid-cols-3">
+          {[
+            ["Strategist", "Look for patterns, understand buyers, and ask better questions."],
+            ["Leader", "Build trust, create alignment, and develop people."],
+            ["Builder", "Translate ideas into useful and repeatable systems."],
+          ].map(([title, description]) => (
+            <article key={title} className="rounded-2xl border border-border bg-card p-5">
+              <h3 className="font-semibold">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="py-12">
         <h2 className="font-display text-3xl tracking-tight">Explore the collections</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
@@ -103,6 +103,12 @@ export default function FieldNotesPage() {
         </div>
       </section>
       <section className="border-t border-border py-12">
+        <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>
+        <Link href="/private-work" className="mb-8 block rounded-2xl border border-border bg-card p-5 hover:border-accent">
+          <h2 className="text-xl font-semibold">Private case studies</h2>
+          <p className="mt-2 text-sm leading-6 text-muted">Some detailed deal and operating artifacts require approval. See what can be requested and how access will work.</p>
+          <span className="mt-3 inline-block text-sm font-medium text-accent">About private access →</span>
+        </Link>
         <h2 className="font-display text-3xl tracking-tight">See the work behind the ideas</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Professional experience and independently built projects have different evidence and confidentiality boundaries. Frameworks demonstrate an approach; real selling and leadership outcomes belong in Work.
