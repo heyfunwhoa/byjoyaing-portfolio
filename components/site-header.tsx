@@ -11,6 +11,7 @@ const links = [
   { href: "/experience", label: "Experience" },
   { href: "/projects", label: "Projects" },
   { href: "/capabilities", label: "Capabilities" },
+  { href: "/field-notes", label: "Field Notes" },
   { href: "/contact", label: "Contact" },
 ];
 
