@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type FormEvent,
+} from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 type Mode = "message" | "resume";
@@ -8,16 +14,29 @@ type Mode = "message" | "resume";
 const fieldClass =
   "h-11 rounded-md border border-border bg-background px-3 text-base text-foreground outline-none focus:border-accent";
 
+function subscribeToHash(onStoreChange: () => void) {
+  window.addEventListener("hashchange", onStoreChange);
+  return () => window.removeEventListener("hashchange", onStoreChange);
+}
+
+function modeFromHash(): Mode {
+  return window.location.hash === "#resume" ? "resume" : "message";
+}
+
 export function InquiryForm() {
-  const [mode, setMode] = useState<Mode>("message");
+  const hashMode = useSyncExternalStore(
+    subscribeToHash,
+    modeFromHash,
+    () => "message" as const,
+  );
+  const [chosen, setChosen] = useState<Mode | null>(null);
+  const mode = chosen ?? hashMode;
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
-  const startedAt = useRef(Date.now());
+  const startedAt = useRef(0);
 
   useEffect(() => {
-    if (window.location.hash === "#resume") {
-      setMode("resume");
-    }
+    startedAt.current = Date.now();
   }, []);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -101,7 +120,7 @@ export function InquiryForm() {
             role="tab"
             aria-selected={mode === value}
             onClick={() => {
-              setMode(value);
+              setChosen(value);
               setStatus("idle");
               setMessage("");
             }}
@@ -127,26 +146,36 @@ export function InquiryForm() {
         </label>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
-      <label className="flex flex-col gap-1.5 text-sm">
-        <span className="font-medium text-foreground">Name</span>
-        <input required name="name" autoComplete="name" className={fieldClass} />
-      </label>
-      <label className="flex flex-col gap-1.5 text-sm">
-        <span className="font-medium text-foreground">Work email</span>
-        <input
-          required
-          name="email"
-          type="email"
-          autoComplete="email"
-          className={fieldClass}
-        />
-      </label>
+        <label className="flex flex-col gap-1.5 text-sm">
+          <span className="font-medium text-foreground">Name</span>
+          <input
+            required
+            name="name"
+            autoComplete="name"
+            className={fieldClass}
+          />
+        </label>
+        <label className="flex flex-col gap-1.5 text-sm">
+          <span className="font-medium text-foreground">Work email</span>
+          <input
+            required
+            name="email"
+            type="email"
+            autoComplete="email"
+            className={fieldClass}
+          />
+        </label>
       </div>
       <label className="flex flex-col gap-1.5 text-sm">
         <span className="font-medium text-foreground">
-          Company or team <span className="font-normal text-muted">(optional)</span>
+          Company or team{" "}
+          <span className="font-normal text-muted">(optional)</span>
         </span>
-        <input name="company" autoComplete="organization" className={fieldClass} />
+        <input
+          name="company"
+          autoComplete="organization"
+          className={fieldClass}
+        />
       </label>
       {mode === "message" ? (
         <label className="flex flex-col gap-1.5 text-sm">
