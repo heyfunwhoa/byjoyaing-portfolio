@@ -45,7 +45,7 @@ export default function PrivateWorkInfoPage() {
           a time-limited invitation and sign in through a verified email flow. Until then,
           please contact me to discuss the right materials for the conversation.
         </p>
-        <Link href="/contact" className="mt-6 inline-flex min-h-11 items-center rounded-md bg-accent px-5 py-2 text-sm font-medium text-accent-foreground">
+        <Link href="/contact#access" className="mt-6 inline-flex min-h-11 items-center rounded-md bg-accent px-5 py-2 text-sm font-medium text-accent-foreground">
           Contact me about access →
         </Link>
       </section>
