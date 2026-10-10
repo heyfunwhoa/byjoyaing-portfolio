@@ -67,3 +67,9 @@ body {
 .group:hover .link-rule {
   background-size: 100% 1px;
 }
+
+/* Editorial heading rhythm: reserve tight tracking for deliberate exceptions. */
+.font-display { font-kerning: normal; text-wrap: balance; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
