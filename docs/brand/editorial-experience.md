@@ -19,9 +19,14 @@
 - Dark-charcoal sections emphasize chapter breaks and visual rhythm, not every button and card.
 - Do not use color as the only signifier of meaning. Confirm AA contrast across actual text and control combinations before releasing.
 
+## Bento composition rule
+
+The [v0 Bento Grid template](https://v0.app/templates/bento-grid-8QW53cSzCxp) informed the use of varied tile spans and scale, **not** a wholesale style import. Its public listing does not expose dependable component source, so the portfolio uses its own semantic Next.js/Tailwind implementation. This is editorial navigation, not a dashboard: Work dominates; Field Notes and Builds are next; private access and brand philosophy are secondary. Typography and selective surface colors create hierarchy instead of gradients, product-style widgets, or crowded identical cards. In `components/editorial-bento.tsx`, preserve DOM reading order at 320/375px, enlarge asymmetric spans only at desktop, make the whole link focusable with visible focus, and keep all text legible without hover. Do not add fabricated proof or capability badges.
+
 ## Reusable templates
 
 - `EditorialSection`: visual chapter intro and surface selection.
+- `EditorialBento`: Work-first asymmetrical editorial navigation across Field Notes, Builds and approved deeper work.
 - `WorkStoryTemplate`: commercial leadership and enterprise sales case study (my role, collaborators, challenge, decisions, evidence, outcomes, caveats).
 - `BuildStoryTemplate`: independent prototype/research (problem, architecture, source provenance, implementation, limitations, next).
 - `/work/storytelling-guide`: clearly fictional demonstration of both patterns, not an actual employer case study.
