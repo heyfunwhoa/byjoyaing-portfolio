@@ -1,5 +1,5 @@
 import { PageMain } from "@/components/page-main";
-import { dealStages } from "@/lib/field-notes";
+import { DealJourney } from "@/components/field-notes/deal-journey";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -24,28 +24,7 @@ export default function EnterpriseDealPage() {
           Explore the multithreading playbook →
         </Link>
       </header>
-      <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl">Six decisions to navigate</h2>
-        <ol className="mt-6 space-y-4">
-          {dealStages.map((stage, index) => (
-            <li key={stage.name} className="rounded-2xl border border-border bg-card p-5">
-              <p className="text-xs font-medium text-muted">Decision {index + 1}</p>
-              <h3 className="mt-2 text-xl font-semibold">{stage.name}</h3>
-              <div className="mt-4 grid gap-4 md:grid-cols-2">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">Seller lens</p>
-                  <p className="mt-2 text-sm leading-6">{stage.question}</p>
-                  <p className="mt-2 text-sm leading-6 text-muted">Evidence: {stage.evidence}</p>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">Leader lens</p>
-                  <p className="mt-2 text-sm leading-6">{stage.leader}</p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
+      <section className="border-b border-border py-12"><DealJourney /></section>
       <section className="py-12">
         <h2 className="font-display text-3xl">From deal execution to team learning</h2>
         <p className="mt-3 max-w-3xl text-base leading-7 text-muted">
