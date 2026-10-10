@@ -9,6 +9,12 @@
   --card: #fbf8f2;
   --border: #cfc3b3;
   --ring: #8a4b2a;
+  /* Editorial surfaces extend, rather than replace, the foundation palette. */
+  --surface-sage: #dde3d7;
+  --surface-mist: #dce6ed;
+  --surface-clay: #ead5c7;
+  --surface-dark: #1b211d;
+  --surface-dark-ink: #f3efe6;
 }
 
 @theme inline {
@@ -20,6 +26,10 @@
   --color-card: var(--card);
   --color-border: var(--border);
   --color-ring: var(--ring);
+  --color-surface-sage: var(--surface-sage);
+  --color-surface-mist: var(--surface-mist);
+  --color-surface-clay: var(--surface-clay);
+  --color-surface-dark: var(--surface-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-instrument);
@@ -90,3 +100,19 @@ body {
   html:focus-within { scroll-behavior: auto; }
   .link-rule { transition: none; }
 }
+
+/* Reusable editorial language: type, rhythm, paper-like panels. */
+.editorial-eyebrow { font-family: var(--font-geist-mono), monospace; font-size: .7rem; letter-spacing: .12em; line-height: 1.6; text-transform: uppercase; font-weight: 600; }
+.editorial-title { font-family: var(--font-instrument), Georgia, serif; font-size: clamp(2.65rem, 7.2vw, 5.75rem); line-height: 1.04; letter-spacing: -.025em; text-wrap: balance; }
+.editorial-section-title { font-family: var(--font-instrument), Georgia, serif; font-size: clamp(2rem, 4.3vw, 3.75rem); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.editorial-intro { max-width: 44rem; font-size: clamp(1.03rem, 1.8vw, 1.22rem); line-height: 1.65; }
+.editorial-prose { max-width: 68ch; line-height: 1.78; }
+.editorial-rule { border-top: 1px solid var(--border); }
+.editorial-link { text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.editorial-link:hover { text-decoration-thickness: 2px; }
+.editorial-panel { border: 1px solid var(--border); border-radius: 1.125rem; }
+.editorial-dark { background: var(--surface-dark); color: var(--surface-dark-ink); }
+.editorial-dark .editorial-subtle { color: #d4cec4; }
+.editorial-quotation { font-family: var(--font-instrument), Georgia, serif; font-style: italic; font-size: clamp(1.7rem, 4vw, 3rem); line-height: 1.2; }
+@media (max-width: 375px) { .editorial-title { font-size: clamp(2.3rem, 11vw, 3rem); overflow-wrap: break-word; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }

@@ -1,4 +1,5 @@
 import { BrandAvatar } from "@/components/brand-avatar";
+import { EditorialSection } from "@/components/editorial-section";
 import { PageMain } from "@/components/page-main";
 import { ProjectPreview } from "@/components/project-previews";
 import { ProjectStatusPill } from "@/components/project-status-pill";
@@ -54,40 +55,40 @@ export default function Home() {
 
   return (
     <PageMain>
-      <section aria-labelledby="home-title" className="grid min-w-0 items-center gap-8 border-b border-border py-10 sm:py-14 lg:grid-cols-[minmax(0,1.45fr)_minmax(13rem,0.55fr)] lg:gap-12 lg:py-20">
+      <section aria-labelledby="home-title" className="editorial-dark -mx-5 grid min-w-0 items-center gap-8 px-5 py-12 sm:-mx-8 sm:px-8 sm:py-16 lg:grid-cols-[minmax(0,1.45fr)_minmax(13rem,0.55fr)] lg:gap-12 lg:py-20">
         <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-accent sm:text-sm">
+          <p className="editorial-eyebrow text-[#DFC1A9]">
             Enterprise cybersecurity · Revenue & GTM
           </p>
-          <h1 id="home-title" className="mt-4 max-w-[15ch] font-display text-[clamp(2.45rem,7.4vw,4.75rem)] leading-[1.08] tracking-[-0.02em]">
+          <h1 id="home-title" className="editorial-title mt-5 max-w-[15ch]">
             Revenue & GTM Leader.
-            <span className="mt-1 block italic text-accent">Curious Builder.</span>
+            <span className="mt-2 block italic text-[#E6B59A]">Curious Builder.</span>
           </h1>
           <p className="mt-5 max-w-[38rem] text-base font-medium leading-7 sm:text-lg sm:leading-8">
             People first. Problem-driven. Systems-minded.
           </p>
-          <p className="mt-3 max-w-[38rem] text-base leading-7 text-muted">
+          <p className="editorial-subtle mt-3 max-w-[38rem] text-base leading-7">
             I&apos;m Kristen Joy Aing. I navigate complex enterprise security deals, coach people around me, and build practical systems that help teams move forward.
           </p>
           <div className="mt-7 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap">
             <Link href="/experience" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground transition-colors hover:bg-foreground">
               Explore Work <span aria-hidden="true" className="ml-2">→</span>
             </Link>
-            <Link href="/projects" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-border bg-card px-5 py-3 text-center text-sm font-semibold transition-colors hover:border-accent">
+            <Link href="/projects" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-[#D4CEC4] px-5 py-3 text-center text-sm font-semibold text-[#F3EFE6] transition-colors hover:bg-[#4A504B]">
               Explore Side Quests <span aria-hidden="true" className="ml-2">→</span>
             </Link>
           </div>
-          <p className="mt-4 text-xs leading-5 text-muted">Strategic enterprise seller · People developer · GTM systems thinker</p>
+          <p className="editorial-subtle mt-4 text-xs leading-5">Strategic enterprise seller · People developer · GTM systems thinker</p>
         </div>
         <div className="mx-auto w-full max-w-[15rem] sm:max-w-[18rem] lg:max-w-[19rem]">
           <BrandAvatar />
-          <p className="mt-3 text-center text-xs leading-5 text-muted">Curious by nature. Builder by instinct.</p>
+          <p className="editorial-subtle mt-3 text-center text-xs leading-5">Curious by nature. Builder by instinct.</p>
         </div>
       </section>
 
-      <section aria-labelledby="approach-title" className="border-b border-border py-10 sm:py-14">
+      <section aria-labelledby="approach-title" className="border-b border-border py-12 sm:py-16">
         <p className="text-xs font-semibold uppercase tracking-widest text-accent">How I work</p>
-        <h2 id="approach-title" className="mt-2 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-4xl">
+        <h2 id="approach-title" className="editorial-section-title mt-2 max-w-2xl">
           A way of working that connects people, strategy, and systems.
         </h2>
         <div className="mt-7 grid gap-3 sm:grid-cols-3 sm:gap-4">
@@ -101,9 +102,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="paths-title" className="border-b border-border py-10 sm:py-14">
+      <section aria-labelledby="paths-title" className="border-b border-border py-12 sm:py-16">
         <p className="text-xs font-semibold uppercase tracking-widest text-accent">Two sides of my work</p>
-        <h2 id="paths-title" className="mt-2 font-display text-3xl tracking-tight sm:text-4xl">Explore the work, or explore the curiosity.</h2>
+        <h2 id="paths-title" className="editorial-section-title mt-2">Explore the work, or explore the curiosity.</h2>
         <div className="mt-7 grid gap-4 md:grid-cols-2">
           {audiences.map((item) => (
             <article key={item.href} className="flex min-w-0 flex-col rounded-2xl border border-border bg-card p-5 sm:p-7">
@@ -118,7 +119,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="builds-title" className="border-b border-border py-10 sm:py-14">
+      <section aria-labelledby="builds-title" className="border-b border-border py-12 sm:py-16">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-accent">Selected Side Quests</p>
@@ -148,8 +149,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="notes-title" className="border-b border-border py-10 sm:py-14">
-        <div className="grid items-center gap-6 rounded-2xl border border-border bg-card p-5 sm:p-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)]">
+      <section aria-labelledby="notes-title" className="border-b border-border py-12 sm:py-16">
+        <div className="grid items-center gap-6 rounded-2xl border border-border bg-surface-clay p-5 sm:p-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)]">
           <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-widest text-accent">Field Notes</p>
             <h2 id="notes-title" className="mt-2 font-display text-3xl tracking-tight sm:text-4xl">The thinking behind the work.</h2>
@@ -168,7 +169,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="about-title" className="grid gap-6 border-b border-border py-10 sm:py-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
+      <section aria-labelledby="about-title" className="grid gap-6 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-accent">Beyond the title</p>
           <h2 id="about-title" className="mt-2 font-display text-3xl tracking-tight sm:text-4xl">Curiosity doesn&apos;t stop at work.</h2>
@@ -182,6 +183,13 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <EditorialSection chapter="04" eyebrow="Selected Work" title="The story is public. The deeper artifacts are by invitation." intro="Explore the approach and real scope of my work openly. Some extended, sanitized case studies may become available to approved reviewers—without placing confidential material on the public site." surface="mist">
+        <div className="flex flex-wrap items-center gap-4">
+          <Link href="/private-work" className="inline-flex min-h-11 items-center rounded-lg border border-foreground px-5 py-2 text-sm font-semibold hover:bg-card">How private access will work →</Link>
+          <span className="text-xs text-muted">The reviewer portal is not enabled yet.</span>
+        </div>
+      </EditorialSection>
 
       <section aria-labelledby="contact-title" className="py-12 sm:py-16">
         <p className="text-xs font-semibold uppercase tracking-widest text-accent">Let&apos;s connect</p>
