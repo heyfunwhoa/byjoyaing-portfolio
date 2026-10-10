@@ -27,12 +27,13 @@ export default function MultithreadingPage() {
       <p className="mt-5 max-w-3xl text-base leading-7 text-muted">A practical framework for navigating a complex enterprise buying group—from champion development to executive alignment—with a separate coaching lens for sales leaders.</p>
       <div className="mt-5 flex flex-wrap gap-4 text-sm"><Link href="/field-notes/enterprise-deal" className="font-medium text-accent">See the deal anatomy →</Link><a href="#coverage-lab" className="font-medium text-accent">Try the coverage lab ↓</a></div>
     </header>
-    <section className="border-b border-border py-12">
+    <nav aria-label="Playbook sections" className="flex flex-wrap gap-4 border-b border-border py-5 text-sm font-medium"><a href="#coverage-lab" className="text-accent underline underline-offset-4">Explore the map</a><a href="#method" className="text-accent underline underline-offset-4">Six moves</a><a href="#coaching" className="text-accent underline underline-offset-4">Coaching</a><a href="#research" className="text-accent underline underline-offset-4">Research connections</a></nav>
+    <section id="coverage-lab" className="scroll-mt-24 border-b border-border py-12"><StakeholderPlayground /></section>
+    <section id="method" className="scroll-mt-24 border-b border-border py-12">
       <h2 className="font-display text-3xl">The six moves</h2>
       <ol className="mt-6 grid gap-4 md:grid-cols-2">{moves.map(([number, title, description]) => <li key={number} className="rounded-2xl border border-border p-5"><p className="text-xs text-muted">{number}</p><h3 className="mt-2 font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{description}</p></li>)}</ol>
     </section>
-    <section id="coverage-lab" className="scroll-mt-24 border-b border-border py-12"><StakeholderPlayground /></section>
-    <section className="border-b border-border py-12">
+    <section id="coaching" className="scroll-mt-24 border-b border-border py-12">
       <h2 className="font-display text-3xl">How I would coach this across a sales team</h2>
       <div className="mt-5 grid gap-4 md:grid-cols-3">{[
         ["Inspect evidence", "Ask who holds budget and decision rights, what validates champion influence, and where access is missing."],
@@ -40,8 +41,11 @@ export default function MultithreadingPage() {
         ["Build the operating cadence", "Review coverage at stage changes and before forecast commits; track next steps and owners without turning coverage into an arbitrary probability."],
       ].map(([title, body]) => <article key={title} className="rounded-2xl border border-border p-5"><h3 className="font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{body}</p></article>)}</div>
     </section>
-    <section className="py-12">
-      <h2 className="font-display text-3xl">Connected research and tools</h2>
+    <section id="research" className="scroll-mt-24 py-12">
+      <h2 className="font-display text-3xl">From research to a decision</h2>
+      <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">Research is an input, not a substitute for customer conversations. This conceptual workflow joins three separate projects without copying private account data.</p>
+      <div className="mt-6 grid gap-3 md:grid-cols-4">{[["01 · Why now?","Validate an account signal and its source."],["02 · Who matters?","Map buyer roles and possible partner introductions."],["03 · What matters?","Prepare security-category context and buyer-specific hypotheses."],["04 · Next best conversation","Review evidence with a human before taking action."]].map(([title,body])=><div key={title} className="rounded-xl border border-border bg-card p-4"><h3 className="font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{body}</p></div>)}</div>
+      <h3 className="mt-10 text-xl font-semibold">Connected research and tools</h3>
       <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">These connections describe how the playbook could draw on projects in my portfolio. This page does not read other repositories at runtime or ingest live account data.</p>
       <div className="mt-6 grid gap-4 md:grid-cols-3">{connectedSources.map((source) => <article key={source.name} className="rounded-2xl border border-border p-5">
         <h3 className="font-semibold">{source.name}</h3>
