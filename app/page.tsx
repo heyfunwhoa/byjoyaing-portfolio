@@ -39,22 +39,22 @@ export default function Home() {
             Curious by nature. Builder by instinct.
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted">
-            I&apos;m Kristen Joy Aing. I bring together enterprise cybersecurity selling, GTM strategy, people development, and practical systems that help teams execute.
+            I&apos;m Kristen Joy Aing. I navigate complex enterprise cybersecurity deals, build relationships across buying committees, coach sellers, and create repeatable GTM systems.
           </p>
           <p className="max-w-xl text-base leading-7 text-muted">
             Advertising at UT Austin is where that started. The degree is how I treat positioning: what a technical buyer needs to hear, what a seller can say, and what product should hear back.
           </p>
           <ul className="flex flex-wrap gap-2 text-sm">
-            {["Technical sales", "Sales leadership", "Product marketing"].map((item) => (
+            {["Strategic enterprise selling", "Revenue & GTM strategy", "People & teams"].map((item) => (
               <li key={item} className="rounded-full border border-border px-3 py-1">{item}</li>
             ))}
           </ul>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Link href="/projects" className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
-              Explore my work
+            <Link href="/experience" className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
+              Explore my builds
             </Link>
-            <Link href="/experience" className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium">
-              View my experience
+            <Link href="/field-notes" className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium">
+              Explore Field Notes
             </Link>
           </div>
         </div>
@@ -72,14 +72,14 @@ export default function Home() {
       </section>
 
       <section className="border-b border-border py-12">
-        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">The revenue work comes first.</h2>
+        <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">Proven in the field. Built to scale.</h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          A technical sale, the leadership around it, and the narrative that makes the product legible. The systems on this site start there.
+          Hands-on enterprise sales execution comes first. I use those lessons to develop people, shape GTM strategy, and build systems other teams can apply.
         </p>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {[
-            ["Technical seller", "Full-cycle enterprise work with security, engineering, and executive buyers in the same cycle.", "Forcepoint, Rapid7, Darktrace, and Truffle Security.", "/experience", "See the roles"],
-            ["Sales leadership", "Coaching, hiring support, ramp, and a method the next seller can use. Team-lead work, not a title I have held above the field.", "Two SDRs into closing roles. Seven GTM hires onboarded at Truffle.", "/experience", "Read the timeline"],
+            ["Strategic enterprise selling", "Personally navigate complex cybersecurity deals across security, engineering, executive stakeholders and procurement.", "Experience across Forcepoint, Rapid7, Darktrace, and Truffle Security. Review the experience timeline for specific contributions.", "/experience", "Explore selling experience"],
+            ["Sales leadership", "Coaching, hiring support, ramp, and repeatable team practices. Leadership contributions are distinguished from formal management titles.", "Examples include supporting SDR development into closing roles and GTM onboarding.", "/experience", "Explore leadership experience"],
             ["Product marketing", "Positioning, competitive narrative, and launch language, grounded in an advertising degree from UT Austin.", "Briefs the field used. The monitor around them is still a design.", "/work/competitive-intelligence-engine", "Competitive narrative"],
           ].map(([title, body, proof, href, label]) => (
             <article key={title} className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-5">
@@ -178,7 +178,7 @@ export default function Home() {
       <section className="py-12">
         <h2 className="max-w-2xl font-display text-3xl tracking-tight sm:text-4xl">Hiring a sales leader, or someone to shape how a technical product is told?</h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          I am interested in head-of-sales and product-marketing conversations where the product is technical and the story has to hold up in the room.
+          I am interested in Head of Sales and strategic enterprise selling opportunities where customer understanding, revenue execution, and developing teams matter.
         </p>
         <div className="mt-6 flex flex-wrap gap-4 text-sm font-medium">
           <Link href="/contact" className="inline-flex h-11 items-center rounded-md bg-accent px-5 text-accent-foreground">Get in touch</Link>
