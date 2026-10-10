@@ -4,7 +4,7 @@ import {PageMain} from "@/components/page-main";
 import {portfolioEntries} from "@/lib/portfolio-registry";
 import {statusCopy,statusHelp} from "@/lib/portfolio";
 export const metadata:Metadata={title:"Side Quests | Independent Projects",description:"Independent cybersecurity, AI, enablement, and GTM software experiments, with transparent build stages."};
-const selected=["account-intelligence","detector-coverage-atlas","truffle-camp","security-signal-intelligence"];
+const selected=["account-intelligence","detector-coverage-atlas","truffle-camp","customer-feedback-intelligence"];
 export default function SideQuestsPage(){
  const items=portfolioEntries.filter(entry=>entry.kind==="side-quest");
  const featured=selected.flatMap(slug=>items.filter(entry=>entry.slug===slug));
