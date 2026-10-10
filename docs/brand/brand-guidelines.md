@@ -15,6 +15,8 @@
 
 **Brand promise:** Show how commercial judgment, curiosity, and practical building make complex technical markets easier to understand, and help people and teams grow.
 
+**Foundational themes (preserved):** **People** (mentorship, collaboration and development), **Strategy** (buyers, market understanding and decisions), and **Systems** (repeatable workflows, useful tools and thoughtful automation). These are the enduring substance of the original brand, not superseded by the identity framing below.
+
 **Three identity pillars (how I operate):**
 1. **Strategist:** understand markets and buyers, identify patterns and opportunities, ask better questions.
 2. **Leader:** create alignment, own commercial execution, coach and develop people, move complex decisions forward.
@@ -26,7 +28,9 @@
 
 ## 2. Audience and tasks
 
-- **Founder / hiring leader:** understand revenue and GTM leadership strengths → find a credible Work example → make contact.
+- **Founder / Head of Sales hiring leader:** evaluate potential to own a number and build an early sales organization: personal pipeline and closing work, team coaching, forecasting, hiring support, account/partner strategy and operating cadence → inspect evidence → connect.
+- **Strategic Enterprise AE hiring leader:** confirm the user remains a hands-on seller: complex cybersecurity deals, multithreading, technical evaluation, executive alignment, competitive strategy, commercial negotiation and measurable individual outcomes → inspect deal evidence → connect.
+- **Broader GTM leadership hiring leader:** evaluate segmentation, positioning, partner motions, cross-functional alignment and repeatable growth execution → inspect field practices and results → connect.
 - **Recruiter:** identify role and relevant experience → review About and career context → contact.
 - **Technical / product collaborator:** understand problem-solving approach → inspect a Side Quest's evidence and limitations → connect.
 - **General visitor:** discover the story, values and areas of curiosity.
@@ -42,10 +46,12 @@ Sound confident but not corporate, curious but grounded, warm but concise, credi
 2. How: people, strategy and systems.
 3. Proof: professional outcomes and transparent project artifacts.
 4. Personality: joy., thoughtful curiosity and experimentation.
-5. Invitation: explore Work or Side Quests, then connect.
+5. Invitation: explore Work, Field Notes or Builds, then connect.
 
 **Do:** “I developed onboarding resources to help teammates ramp,” if supported.
 **Avoid:** unverified metrics, invented customer use, claiming independent demos are production products, or conflating proprietary employer work with personal projects.
+
+**Dual-audience requirement:** Never imply a Head of Sales title already held, and never bury evidence of individual enterprise selling beneath team-building claims. Each professional case study should identify scope of ownership, decision makers, sales-cycle complexity, collaborators, and verified personal outcomes. Leadership case studies should differentiate direct management from informal coaching or team-lead contributions.
 
 **Hero copy baseline:** Eyebrow: “Revenue & GTM Leader · Curious Builder”; headline: “Curious by nature. Builder by instinct.”; body: one or two sentences linking revenue execution, complex buying journeys, people development and useful systems. CTAs should lead to verified Work and Field Notes or Builds.
 
@@ -97,7 +103,7 @@ Target primary destinations: **Home / About / Work / Field Notes / Builds / Cont
 
 **Navigation migration:** Add `/field-notes` as a real destination before linking it in navigation. Work and Builds may initially link to existing `/experience`, `/projects`, and `/work/[slug]` destinations; establish new destination routes before renaming links. Keep the private Joy Index entirely outside the public portfolio.
 
-**Homepage direction:** Leadership-first arrangement (provisional preferred option), with Work preceding Side Quests. PR #9 holds an exploratory `/prototype` page, not an approved replacement for `/`.
+**Homepage direction:** Lead with professional positioning and hands-on enterprise selling proof; follow with leadership/team impact, Work, Field Notes, and independent Builds. PR #9 holds an exploratory `/prototype` page, not an approved replacement for `/`.
 
 ## 6. Case study patterns
 
@@ -108,6 +114,21 @@ Context → specific problem → your role and collaborators → decision/approa
 Motivation → intended user → problem → design and architecture decisions → current implementation → real demonstration/source → known limitations → lessons and next iteration. Label **idea / prototype / in progress / live** based on observable evidence. Clearly distinguish synthetic/demo data from real customer data.
 
 Show what a tool genuinely does **today**, not simply its planned architecture. Distinguish hypotheses from sourced facts and link research sources or footnotes where appropriate.
+
+### Field Notes publication rules
+
+- **Playbooks:** repeatable steps and decisions, including hands-on seller and coach/leader perspectives where relevant.
+- **Frameworks:** clear criteria, tradeoffs and evidence sources.
+- **Operating Systems:** related cadences, handoffs, inputs, owners and measures; a process is not automatically a running software application.
+- **Lessons Learned:** firsthand reflections, with observable context and limitations.
+- Label each entry as **Used in practice**, **Illustrative model**, or **Exploring**; only use *Used in practice* for supported experience. Keep confidential deal/customer details out of public examples, and never present synthetic accounts as real.
+- Anchor at least one early Field Note to a Work case study and optionally a Build. A framework must not replace deal execution proof.
+
+### Audience paths and navigation migration
+
+- **Work** navigation currently maps to the existing `/experience` route; **Builds** maps to `/projects`; **Field Notes** maps to `/field-notes`. These labels are navigational, not claims that all destination migrations are complete.
+- Preserve direct legacy routes `/experience`, `/projects`, `/capabilities` and `/work/[slug]`. Keep capabilities accessible from Work/About until a proper taxonomy is ready.
+- Do not add public Joy Index navigation. Revisit route changes separately after link, SEO and responsive checks.
 
 ## 7. UX and accessibility standards
 
@@ -145,6 +166,7 @@ When a proposed change contradicts this guide, describe the tradeoff in the PR a
 - [ ] Hero clearly communicates Revenue & GTM Leader · Curious Builder.
 - [ ] `joy.` and full name are legible and consistent.
 - [ ] Work and Side Quests are clearly distinct.
+- [ ] Both Head of Sales and Strategic Enterprise AE audiences can find relevant evidence without scrolling through only frameworks.
 - [ ] Two or more professional examples contain supported evidence.
 - [ ] Project statuses and source links are accurate.
 - [ ] Header/footer, page headings, mobile layout and links are reviewed.
