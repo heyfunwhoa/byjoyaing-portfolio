@@ -16,7 +16,7 @@ const links = [
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
-  if (href === "/projects") return pathname === "/projects" || pathname.startsWith("/work");
+  if (href === "/projects") return pathname === "/projects" || pathname.startsWith("/projects/") || pathname.startsWith("/work/");
   if (href === "/capabilities") return pathname === "/capabilities" || pathname.startsWith("/capabilities/");
   return pathname === href || pathname.startsWith(`${href}/`);
 }
@@ -28,15 +28,16 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-background">
       <nav className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-5 py-4 sm:px-8" aria-label="Primary">
-        <Link href="/" className="flex items-center gap-2.5 text-foreground">
+        <Link href="/" className="flex min-w-0 items-center gap-2.5 rounded-md text-foreground">
           <Mark className="text-accent" />
           <span className="font-display text-lg tracking-tight">Kristen Joy Aing</span>
         </Link>
         <button
           type="button"
-          className="rounded-md border border-border px-3 py-2 text-sm font-medium md:hidden"
+          className="min-h-11 min-w-11 rounded-md border border-border px-3 py-2 text-sm font-medium md:hidden"
           aria-expanded={open}
           aria-controls="primary-menu"
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           onClick={() => setOpen((value) => !value)}
         >
           {open ? "Close" : "Menu"}
@@ -51,7 +52,7 @@ export function SiteHeader() {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
-                    className={active ? "font-medium text-accent" : "text-muted hover:text-foreground"}
+                    className={`inline-flex min-h-11 items-center rounded-md px-1 underline-offset-4 hover:underline md:min-h-0 ${active ? "font-semibold text-accent underline decoration-2" : "text-muted hover:text-foreground"}`}
                   >
                     {link.label}
                   </Link>
@@ -59,7 +60,7 @@ export function SiteHeader() {
               );
             })}
             <li>
-              <Link href="/contact#resume" onClick={() => setOpen(false)} className="inline-flex rounded-md border border-border px-3 py-2 text-sm font-medium hover:border-accent">
+              <Link href="/contact#resume" onClick={() => setOpen(false)} className="inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-sm font-medium hover:border-accent">
                 View resume
               </Link>
             </li>
