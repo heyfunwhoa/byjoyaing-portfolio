@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Kristen Joy Aing — Enterprise sales, GTM strategy, and AI systems",
+  title: "Kristen Joy Aing — Commercial Leader. Curious Builder.",
   description:
     "Technical cybersecurity seller and GTM builder. Sales leadership, product narrative, and systems for how a team takes a technical product to market.",
 };
@@ -34,9 +34,9 @@ export default function Home() {
     <PageMain>
       <section className="grid items-start gap-10 border-b border-border py-12 lg:grid-cols-2 lg:py-16">
         <div className="flex flex-col gap-5">
-          <p className="text-sm font-medium text-muted">Technical seller · Sales leadership · Product narrative</p>
+          <p className="text-sm font-medium text-muted">Cybersecurity & GTM leadership</p>
           <h1 className="font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
-            Enterprise Sales. GTM Strategy. AI-Powered Systems.
+            Commercial Leader. Curious Builder.
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted">
             I&apos;m Kristen Joy Aing. I sell technical cybersecurity products into the enterprise, coach the people beside me, and shape the story the field can repeat.
@@ -50,11 +50,11 @@ export default function Home() {
             ))}
           </ul>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Link href="/projects" className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
-              Explore my work
+            <Link href="/work" className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
+              Explore Work
             </Link>
-            <Link href="/experience" className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium">
-              View my experience
+            <Link href="/side-quests" className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium">
+              Explore Side Quests
             </Link>
           </div>
         </div>
