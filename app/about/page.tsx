@@ -20,7 +20,7 @@ export default function AboutPage() {
         </div>
         <div>
           <p className="text-sm font-medium text-muted">About</p>
-          <h1 className="mt-3 max-w-2xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
+          <h1 className="mt-3 max-w-2xl font-display text-4xl leading-[1.16] tracking-normal sm:text-5xl">
             A technical seller who writes the story the field can use.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
@@ -33,7 +33,20 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">Career progression</h2>
+        <p className="text-sm font-medium text-muted">My guiding philosophy</p>
+        <h2 className="font-display mt-3 text-3xl">People first. Problem-driven. Systems-minded.</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {[
+            ["People first", "I listen, coach and share context so a teammate can succeed without depending on one person for every answer."],
+            ["Problem-driven", "I begin with customer or team friction, test assumptions and identify what would actually help before suggesting a tool."],
+            ["Systems-minded", "I document repeatable processes, define ownership and build small workflows that others can improve."],
+          ].map(([name,body])=> <article key={name} className="rounded-xl border border-border bg-card p-5"><h3 className="text-lg font-semibold">{name}</h3><p className="mt-2 text-sm leading-6 text-muted">{body}</p></article>)}
+        </div>
+        <p className="mt-5 max-w-2xl text-sm leading-6 text-muted">My approach to leadership combines accountability with curiosity: clear expectations, thoughtful feedback, evidence-based decisions and room for people to develop their own strengths.</p>
+      </section>
+
+      <section className="border-b border-border py-12">
+        <h2 className="font-display text-3xl tracking-normal">Career progression</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Quantcast was advertising sales in a new market. Websense was the first cybersecurity book. Metadot was channel. Forcepoint, Rapid7, Darktrace, and Truffle Security are the enterprise security years. Dates and what was individual versus team are on Experience.
         </p>
