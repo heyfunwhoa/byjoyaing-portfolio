@@ -11,9 +11,8 @@
 
 ## Typography and surfaces
 
-- Instrument Serif: emotive hero, chapters, essays and editorial pull quotes.
-- Geist Sans: body, navigation, actionable UI and readable long-form explanatory text.
-- Geist Mono: short chapter labels, references, provenance, technical metadata; not paragraph body.
+- Geist Sans: headlines, body, navigation, chapter labels, and pull quotes. Hierarchy comes from size and weight. The copper line may be italic.
+- Geist Mono: technical metadata only, such as hashes.
 - Core: ivory #F3EFE6, charcoal #1B211D, copper #8A4B2A, warm card #FBF8F2.
 - Proposed support: sage #DDE3D7 (learning/systems), mist #DCE6ED (research), clay #EAD5C7 (Field Notes/personal).
 - Dark-charcoal sections emphasize chapter breaks and visual rhythm, not every button and card.

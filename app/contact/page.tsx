@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact — Kristen Joy Aing",
   description:
-    "Email, LinkedIn, GitHub, and a resume request for enterprise sales, GTM, and technical systems.",
+    "Email, LinkedIn, and GitHub for enterprise sales, GTM, and technical systems.",
 };
 
 const links = [

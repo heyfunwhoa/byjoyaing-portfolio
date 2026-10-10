@@ -75,9 +75,8 @@ Colors above describe the **existing implementation**, not guaranteed accessibil
 
 ### Typography
 
-- Display: **Instrument Serif** (or existing configured display face), expressive for big editorial headlines.
-- Interface and body: **Geist Sans**, readable and restrained.
-- Technical labels/metadata: **Geist Mono**, sparingly.
+- Display and interface: **Geist Sans**. Headlines use weight and size. Pull quotes use italic. Chapter labels stay sentence case.
+- Technical metadata only: **Geist Mono**.
 - Preserve accessible font fallbacks, line lengths, logical hierarchy and mobile wrapping. Avoid gratuitous all-caps paragraphs.
 
 ### Character and avatar system
