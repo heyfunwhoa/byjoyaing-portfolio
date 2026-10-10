@@ -51,7 +51,7 @@ export default function Home() {
           </ul>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link href="/experience" className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
-              Explore my builds
+              Explore my work
             </Link>
             <Link href="/field-notes" className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium">
               Explore Field Notes
