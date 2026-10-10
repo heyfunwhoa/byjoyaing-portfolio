@@ -31,16 +31,16 @@ export function VersionControlPlayground() {
   return <main id="main-content" className="mx-auto w-full max-w-5xl px-5 pb-24 pt-12 sm:px-8">
     <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted">
       <Link className="underline underline-offset-4 hover:text-foreground" href="/ai-academy">AI Academy</Link>
-      <span aria-hidden="true"> / </span> Version Control Playground
+      <span aria-hidden="true"> / </span> Git Workflow Essentials
     </nav>
     <header className="max-w-3xl">
       <p className="text-xs font-semibold uppercase tracking-widest text-accent">Builder Academy · Beginner · Interactive practice</p>
-      <h1 className="font-display mt-3 text-4xl leading-tight sm:text-6xl">Version Control Playground</h1>
+      <h1 className="font-display mt-3 text-4xl leading-tight sm:text-6xl">Git Workflow Essentials</h1>
       <p className="mt-4 text-lg leading-8 text-muted">Practice Git branching, rebasing, merging, pull requests, and CI troubleshooting. This is a safe simulation: it does not run Git commands, change repositories or send your answers anywhere.</p>
     </header>
 
     <section aria-labelledby="timeline-title" className="mt-12 rounded-xl border border-border bg-card p-5 sm:p-8">
-      <h2 id="timeline-title" className="font-display text-3xl">1. See what changes in Git</h2>
+      <h2 id="timeline-title" className="font-display text-3xl">1. Rebase vs. Merge Simulator</h2>
       <p className="mt-2 text-sm leading-6 text-muted">Your feature branch began before main received a form-code fix. Choose a Git operation and compare the resulting history.</p>
       <fieldset className="mt-5">
         <legend className="mb-2 text-sm font-semibold">Choose an operation</legend>
@@ -70,7 +70,7 @@ export function VersionControlPlayground() {
     </section>
 
     <section aria-labelledby="ci-title" className="mt-7 rounded-xl border border-border bg-card p-5 sm:p-8">
-      <h2 id="ci-title" className="font-display text-3xl">2. Diagnose a CI failure</h2>
+      <h2 id="ci-title" className="font-display text-3xl">2. CI Troubleshooting Challenge</h2>
       <label htmlFor="ci-scenario" className="mt-4 block text-sm font-semibold">Pick a simulated CI result</label>
       <select id="ci-scenario" className="mt-2 w-full rounded-lg border border-border bg-background p-3" value={caseId} onChange={e => { setCaseId(e.target.value as CaseId); setCaseAnswer(null); }}>
         {(Object.keys(scenarios) as CaseId[]).map(k => <option value={k} key={k}>{scenarios[k].name}</option>)}
@@ -97,7 +97,7 @@ export function VersionControlPlayground() {
     </section>
 
     <section aria-labelledby="practice-title" className="mt-7 rounded-xl border border-border bg-card p-5 sm:p-8">
-      <h2 id="practice-title" className="font-display text-3xl">4. Practice in a real repository</h2>
+      <h2 id="practice-title" className="font-display text-3xl">4. Your First Pull Request: Guided Practice</h2>
       <p className="mt-2 text-sm leading-6 text-muted">Use a disposable branch. The toggles below are personal session notes, not proof of Git activity or persisted progress.</p>
       <button type="button" className="mt-4 rounded-lg border border-border px-4 py-2 text-sm font-medium hover:border-accent focus-visible:outline-2 focus-visible:outline-accent" onClick={() => setRevealCommands(s => !s)} aria-expanded={revealCommands} aria-controls="git-commands">{revealCommands ? "Hide" : "Show"} safe practice commands</button>
       {revealCommands && <pre id="git-commands" className="mt-4 overflow-x-auto rounded-lg bg-background p-4 text-xs leading-6"><code>{`git status
