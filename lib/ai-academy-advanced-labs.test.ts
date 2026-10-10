@@ -1,0 +1,4 @@
+import {test} from "node:test";import assert from "node:assert/strict";
+import {pipelineScenarios,skillMarkdown,validateSkill,type SkillDraft} from "./ai-academy-advanced-labs.ts";
+test("skill template requires complete valid metadata",()=>{const d:SkillDraft={name:"source-verification",description:"Verify sources",trigger:"When reviewing research",inputs:"URL",steps:"Inspect original",output:"Cited result",validation:"Check quote",safety:"No secrets"};assert.equal(validateSkill(d).ready,true);assert.match(skillMarkdown(d),/name: source-verification/);assert.equal(validateSkill({...d,name:"Bad Name"}).nameValid,false);assert.equal(validateSkill({...d,validation:""}).ready,false)});
+test("research simulation has a four-stage path for each edge case",()=>{assert.equal(Object.keys(pipelineScenarios).length,5);for(const entry of Object.values(pipelineScenarios)){assert.equal(entry.stages.length,4);assert.ok(entry.decision.length>20)}});
