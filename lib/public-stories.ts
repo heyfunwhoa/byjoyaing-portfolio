@@ -31,7 +31,8 @@ export function validatePublicStories() {
  for(const story of publicStories){
   if(ids.has(story.id))errors.push("Duplicate story: "+story.id);
   ids.add(story.id);
-  if(!story.title||!story.context||!story.contribution||!story.evidence||!story.takeaway)errors.push("Incomplete story: "+story.id);
+  const requiredFields: readonly string[] = [story.title, story.context, story.contribution, story.evidence, story.takeaway];
+  if (requiredFields.some(value => value.trim().length === 0)) errors.push("Incomplete story: " + story.id);
   if(!story.related.length||story.related.some(link=>!link.href.startsWith("/")))errors.push("Invalid internal reference: "+story.id);
  }
  return errors;
