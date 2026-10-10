@@ -16,6 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/experience`, lastModified: new Date() },
     { url: `${base}/projects`, lastModified: new Date() },
     { url: `${base}/capabilities`, lastModified: new Date() },
+    { url: `${base}/field-notes`, lastModified: new Date() },
+    { url: `${base}/field-notes/enterprise-deal`, lastModified: new Date() },
+    { url: `${base}/field-notes/multithreading`, lastModified: new Date() },
     ...capabilityViews.map((view) => ({
       url: `${base}/capabilities/${view.slug}`,
       lastModified: new Date(),
