@@ -5,6 +5,7 @@ import { ProjectStatusPill } from "@/components/project-status-pill";
 import { workAreas } from "@/lib/capabilities";
 import { featuredProjects } from "@/lib/project-directory";
 import { roles } from "@/lib/portfolio";
+import { kindBySlug } from "@/lib/portfolio-registry";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -27,7 +28,7 @@ const buildSteps = [
 ];
 
 export default function Home() {
-  const featured = featuredProjects();
+  const featured = featuredProjects().filter((project) => kindBySlug[project.slug] === "side-quest");
   const timeline = roles.filter((role) => previewRoles.includes(role.company));
 
   return (
