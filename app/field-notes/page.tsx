@@ -35,6 +35,7 @@ export default function FieldNotesPage() {
   return (
     <PageMain>
       <header className="grid items-center gap-8 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
+        <div className="min-w-0">
         <p className="text-sm font-medium text-muted">How I think · How I operate</p>
         <h1 className="editorial-title mt-3 max-w-3xl">Thinking out loud. Building in practice.</h1>
         <p className="mt-4 text-lg font-medium">Field Notes</p>
@@ -44,6 +45,7 @@ export default function FieldNotesPage() {
           not just the finished output.
         </p>
         <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-3 text-sm font-medium"><a className="text-accent underline underline-offset-4" href="#featured">Featured guides</a><a className="text-accent underline underline-offset-4" href="#approach">Approach</a><a className="text-accent underline underline-offset-4" href="#collections">Collections</a><a className="text-accent underline underline-offset-4" href="#private">Private work</a></nav>
+        </div>
         <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="explorer" /><p className="editorial-eyebrow mt-3 text-center text-muted">Explorer / Field Notes</p></div>
       </header>
       <section id="featured" className="scroll-mt-24 border-b border-border py-12">
