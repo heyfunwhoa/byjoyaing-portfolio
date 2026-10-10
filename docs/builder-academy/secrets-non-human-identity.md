@@ -6,7 +6,7 @@ Prerequisites: [Authentication vs Authorization](authentication-vs-authorization
 
 **Try it:** [Identity Journey Lab](/builder-academy/identity-journey) shows how service accounts, deployment workloads and agents differ from a human using a login link.
 
-**Hands-on lab:** [Credential-to-Identity Risk Explorer](/builder-academy/credential-risk) traces a fictional token from exposure through identity ownership, permissions, evidence and remediation. It links to [Detector Coverage Atlas](https://github.com/heyfunwhoa/detector-coverage-atlas) and [Security Market Map](https://github.com/heyfunwhoa/security-market-map) without ingesting real credentials.
+**Hands-on lab:** [Credential-to-Identity Risk Explorer](/builder-academy/credential-risk) uses provider signatures, regex patterns, entropy, structural and contextual analysis to detect a candidate; then identifies its type and workload, verifies status safely, assesses blast radius, investigates activity and remediates. It links to [Detector Coverage Atlas](https://github.com/heyfunwhoa/detector-coverage-atlas) and [Security Market Map](https://github.com/heyfunwhoa/security-market-map) without ingesting real credentials.
 
 ## Start with three different objects
 
@@ -31,10 +31,12 @@ Prerequisites: [Authentication vs Authorization](authentication-vs-authorization
 
 1. **Inventory and ownership:** Know the workload identity and responsible human/team.
 2. **Provision:** Issue short-lived identity credentials where possible. Assign least-privilege permissions.
-3. **Detect:** Identify credentials exposed in repositories, logs, build artifacts, or other inappropriate locations.
-4. **Verify and prioritize:** Determine whether a credential is valid and assess actual privilege, exposure context and usage evidence. Exposure does not prove exploitation.
-5. **Respond:** Revoke/rotate exposed credentials, investigate activity, reduce access and fix the underlying workflow.
-6. **Deprovision:** Disable unused service accounts, integrations, sessions and entitlements as workloads change.
+3. **Detect:** Identify candidates using provider-specific signatures, regex patterns, entropy, structured formats and surrounding context. These approaches have different false-positive and coverage limitations.
+4. **Identify:** Classify secret type and provider; correlate the credential with a machine identity, workload, owner and exposure location before verification.
+5. **Verify:** Establish validity or leave it unknown using supported, authorized, non-destructive methods.
+6. **Assess blast radius:** Examine effective permissions, reachable environments, sensitive resources, downstream trust and potential impact, without assuming exploitation.
+7. **Investigate:** Analyze the exposure timeline and audit evidence to determine whether misuse occurred; account for telemetry gaps.
+8. **Remediate:** Revoke/rotate, reduce privilege, repair insecure workflows, validate service recovery and deprovision unused identities.
 
 ## What the different security categories solve
 
