@@ -51,7 +51,7 @@ export function evaluateCredentialRisk(input: RiskInput): {
     { category: "Investigate", message: input.unusualActivity === "yes"
       ? "Unusual activity is reported; correlate audit logs, timestamps, source and access patterns. Attribution or malicious use is not proven by the signal alone."
       : input.unusualActivity === "no" ? "No unusual activity observed in available logs; incomplete telemetry cannot rule out misuse."
-      : "Activity remains unknown. Investigate source history, exposure duration, logs and other authorized evidence." },
+      : "Activity remains unknown. Investigate source history, exposure duration, logs and other authorized evidence. A detected secret does not prove misuse." },
     { category: "Remediate", message: input.revoked
       ? "Credential revoked in this simulation. Confirm replacement, workload function, least privilege, removal from exposed surfaces and closure of any incident."
       : "Coordinate rapid revocation or rotation, preserve evidence appropriately, remove exposed material, restrict permissions and verify service recovery." },
@@ -64,6 +64,9 @@ export function evaluateCredentialRisk(input: RiskInput): {
     "Correlate exposure timeline and authoritative audit logs; do not equate exposure with confirmed compromise.",
     "Revoke or rotate, reduce privilege, eliminate insecure storage, investigate impact and validate service recovery.",
   ];
+  if (input.revoked) {
+    actions.push("Reduce privilege and check for prior misuse even after credential revocation.");
+  }
   return {
     status: input.revoked ? "contained"
       : input.exposed && (input.valid === "yes" || input.privilege === "broad" ||
