@@ -1,6 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
-import { lessons, workflows, type Track } from "@/lib/ai-academy";
+import { lessons, workflows } from "@/lib/ai-academy";
 const tracks=["All","Foundations","Prompting","Responsible AI","GTM","Builder"] as const;
 const button="rounded-lg border border-border px-3 py-2 text-sm transition hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 export function Academy(){
