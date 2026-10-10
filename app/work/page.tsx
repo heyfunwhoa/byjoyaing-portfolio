@@ -7,7 +7,7 @@ export default function WorkPage(){
  const work=portfolioEntries.filter(entry=>entry.kind==="work");
  return <PageMain><section className="border-b border-border py-12 sm:py-16">
  <p className="text-sm font-medium text-muted">Work / Professional experience</p>
- <h1 className="font-display mt-3 max-w-3xl text-4xl sm:text-5xl">People. Strategy. Systems.</h1>
+ <h1 className="font-display mt-3 max-w-3xl text-4xl leading-[1.16] tracking-normal sm:text-5xl">People. Strategy. Systems.</h1>
  <p className="mt-4 max-w-2xl leading-7 text-muted">Enterprise cybersecurity sales, team development, competitive positioning and GTM operations. My professional experience comes first; independent product experiments live under Side Quests.</p>
  <div className="mt-6 flex flex-wrap gap-4 text-sm"><Link href="/experience" className="font-medium text-accent underline">Experience and career history</Link><Link href="/about" className="font-medium text-accent underline">Leadership philosophy</Link></div>
  </section><section className="py-12"><h2 className="font-display text-3xl">Selected professional evidence</h2>
