@@ -68,10 +68,10 @@ export default function BuildRateLimitsLesson() {
       <section className="mt-10 space-y-4">
         <h2 className="text-2xl font-semibold">Safer recovery playbook</h2>
         <ol className="list-decimal space-y-3 pl-5 text-muted">
-          <li>Check the latest deployment and whether production is still READY. A failed preview doesn't automatically take down production.</li>
+          <li>Check the latest deployment and whether production is still READY. A failed preview does not automatically take down production.</li>
           <li>Inspect GitHub Actions separately. Keep lint, TypeScript, unit tests, build validation, and secret scanning enabled.</li>
           <li>Pause rapid repeated pushes and retries while diagnosing the rate limit.</li>
-          <li>In Vercel project settings, consider an <strong className="text-foreground">Ignored Build Step</strong> or other Git deployment controls to skip unnecessary feature-branch builds. Configure only-production builds as a temporary option if previews aren't currently needed. Confirm the current setting names in Vercel.</li>
+          <li>In Vercel project settings, consider an <strong className="text-foreground">Ignored Build Step</strong> or other Git deployment controls to skip unnecessary feature-branch builds. Configure only-production builds as a temporary option if previews are not currently needed. Confirm the current setting names in Vercel.</li>
           <li>Retain automatic production builds on the correct branch, and re-enable or selectively permit preview builds for visual, accessibility, and integration review before merging.</li>
           <li>After capacity returns, verify required GitHub checks, trigger one intended deployment, inspect the deployed application, and check links and contact flows.</li>
         </ol>
