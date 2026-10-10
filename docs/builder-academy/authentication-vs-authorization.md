@@ -2,7 +2,7 @@
 
 **Track:** Identity & Access Management · **Level:** Beginner · **Estimated time:** 10–15 minutes  
 **Status:** Draft educational content. Not a live application route or proof of deployed portfolio authentication.  
-**Prerequisite:** None. Next: [Identity lifecycle lab](identity-lifecycle-lab.md).
+**Prerequisite:** None. Next: [Identity Across Channels](identity-across-channels.md) → [Secrets, Non-Human Identities & IAM](secrets-non-human-identity.md) → [Identity Lifecycle Lab](identity-lifecycle-lab.md).
 
 ## Learning objectives
 
