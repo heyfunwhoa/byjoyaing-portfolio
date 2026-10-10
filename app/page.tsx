@@ -36,9 +36,10 @@ export default function Home() {
       <section className="grid items-start gap-10 border-b border-border py-12 lg:grid-cols-2 lg:py-16">
         <div className="flex flex-col gap-5">
           <p className="text-sm font-medium text-muted">Cybersecurity & GTM leadership</p>
-          <h1 className="font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
+          <h1 className="font-display text-4xl leading-[1.16] tracking-normal sm:text-5xl">
             Commercial Leader. Curious Builder.
           </h1>
+          <p className="text-lg font-medium text-foreground">People first. Problem-driven. Systems-minded.</p>
           <p className="max-w-xl text-base leading-7 text-muted">
             I&apos;m Kristen Joy Aing. I bring enterprise cybersecurity experience to commercial strategy, team development, and the practical systems that help technical teams work better.
           </p>
