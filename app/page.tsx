@@ -1,5 +1,6 @@
 import { BrandAvatar } from "@/components/brand-avatar";
 import { EditorialSection } from "@/components/editorial-section";
+import { EditorialBento } from "@/components/editorial-bento";
 import { PageMain } from "@/components/page-main";
 import { ProjectPreview } from "@/components/project-previews";
 import { ProjectStatusPill } from "@/components/project-status-pill";
@@ -28,25 +29,6 @@ const strengths = [
     number: "03",
     title: "Systems",
     text: "Turning recurring friction into practical workflows, enablement, and useful tools.",
-  },
-];
-
-const audiences = [
-  {
-    eyebrow: "Professional work",
-    title: "Enterprise selling & leadership",
-    description:
-      "How I approach large, technical opportunities, mentor sellers, support team growth, and turn field lessons into repeatable execution.",
-    href: "/experience",
-    action: "Explore experience",
-  },
-  {
-    eyebrow: "Independent experiments",
-    title: "Side Quests & systems",
-    description:
-      "Explore the tools I build to understand cybersecurity, competitive intelligence, product ideas, and GTM workflows. Each project shows its real stage.",
-    href: "/projects",
-    action: "Explore independent builds",
   },
 ];
 
@@ -122,22 +104,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="paths-title" className="border-b border-border py-12 sm:py-16">
-        <p className="text-xs font-semibold uppercase tracking-widest text-accent">Two sides of my work</p>
-        <h2 id="paths-title" className="editorial-section-title mt-2">Explore the work, or explore the curiosity.</h2>
-        <div className="mt-7 grid gap-4 md:grid-cols-2">
-          {audiences.map((item) => (
-            <article key={item.href} className="flex min-w-0 flex-col rounded-2xl border border-border bg-card p-5 sm:p-7">
-              <p className="text-xs font-semibold uppercase tracking-wider text-accent">{item.eyebrow}</p>
-              <h3 className="mt-3 font-display text-2xl leading-tight sm:text-3xl">{item.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-7 text-muted">{item.description}</p>
-              <Link href={item.href} className="mt-5 inline-flex min-h-11 w-fit items-center rounded-md font-semibold text-accent underline-offset-4 hover:underline">
-                {item.action} <span aria-hidden="true" className="ml-2">→</span>
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
+      <EditorialBento />
 
       <section aria-labelledby="builds-title" className="border-b border-border py-12 sm:py-16">
         <div className="flex flex-wrap items-end justify-between gap-3">
