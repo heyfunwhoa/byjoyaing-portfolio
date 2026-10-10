@@ -1,19 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { evaluateCredentialRisk, initialRiskInput, type RiskInput } from "@/lib/builder-academy/credential-risk";
+import { detectionMethods, investigationStages, evaluateCredentialRisk, initialRiskInput, type RiskInput } from "@/lib/builder-academy/credential-risk";
 
 export function CredentialRiskExplorer() {
   const [input, setInput] = useState<RiskInput>(initialRiskInput);
   const [step, setStep] = useState(0);
   const result = evaluateCredentialRisk(input);
   const update = <K extends keyof RiskInput>(key: K, value: RiskInput[K]) => setInput((old) => ({ ...old, [key]: value }));
-  const stages = ["Detect", "Verify", "Associate identity", "Assess permissions", "Investigate activity", "Remediate"];
+  const stages = investigationStages.map((stage) => stage.label);
   const active = result.findings[step];
   return (
     <section className="rounded-2xl border border-border bg-card p-5 sm:p-7" aria-labelledby="risk-title">
       <h2 id="risk-title" className="font-display text-2xl sm:text-3xl">From leaked secret to identity risk</h2>
-      <p className="mt-2 text-sm leading-6 text-muted">Synthetic example: an API token was included in a fictional repository commit. No real credentials are used or verified.</p>
+      <p className="mt-2 text-sm leading-6 text-muted">Synthetic example: a possible API credential is detected in a fictional repository commit. Explore how distinct detection methods, identification, verification, blast radius, investigation and remediation differ. No real credentials are used or verified.</p>
       <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label="Investigation stages">
         {stages.map((name, index) => (
           <button type="button" key={name} aria-pressed={step === index} onClick={() => setStep(index)}
@@ -28,6 +28,11 @@ export function CredentialRiskExplorer() {
       </div>
       <fieldset className="mt-6 grid gap-4 sm:grid-cols-2">
         <legend className="mb-4 text-sm font-semibold">Change the fictional evidence</legend>
+        <label className="flex flex-col gap-2 text-sm">Detection technique
+          <select value={input.detectionMethod} onChange={(event) => update("detectionMethod", event.target.value as RiskInput["detectionMethod"])} className="min-h-11 rounded-md border border-border bg-background p-2">
+            {(Object.keys(detectionMethods) as RiskInput["detectionMethod"][]).map((method) => <option key={method} value={method}>{detectionMethods[method].label}</option>)}
+          </select>
+        </label>
         <label className="flex flex-col gap-2 text-sm">Credential validity
           <select value={input.valid} onChange={(event) => update("valid", event.target.value as RiskInput["valid"])} className="min-h-11 rounded-md border border-border bg-background p-2">
             <option value="unknown">Unknown</option><option value="yes">Reported valid</option><option value="no">Reported invalid</option>
@@ -38,6 +43,16 @@ export function CredentialRiskExplorer() {
             <option value="unknown">Unknown</option><option value="limited">Limited</option><option value="broad">Broad</option>
           </select>
         </label>
+        <label className="flex flex-col gap-2 text-sm">Reachable environment
+          <select value={input.resourceReach} onChange={(event) => update("resourceReach", event.target.value as RiskInput["resourceReach"])} className="min-h-11 rounded-md border border-border bg-background p-2">
+            <option value="unknown">Unknown</option><option value="development">Development</option><option value="production">Production</option>
+          </select>
+        </label>
+        <label className="flex flex-col gap-2 text-sm">Sensitive data reachability
+          <select value={input.sensitiveDataReachable} onChange={(event) => update("sensitiveDataReachable", event.target.value as RiskInput["sensitiveDataReachable"])} className="min-h-11 rounded-md border border-border bg-background p-2">
+            <option value="unknown">Unknown</option><option value="yes">Potentially reachable</option><option value="no">No identified path</option>
+          </select>
+        </label>
         <label className="flex flex-col gap-2 text-sm">Observed activity
           <select value={input.unusualActivity} onChange={(event) => update("unusualActivity", event.target.value as RiskInput["unusualActivity"])} className="min-h-11 rounded-md border border-border bg-background p-2">
             <option value="unknown">Unknown</option><option value="no">No unusual activity observed</option><option value="yes">Unusual activity observed</option>
@@ -45,6 +60,7 @@ export function CredentialRiskExplorer() {
         </label>
         <div className="flex flex-col justify-center gap-3 text-sm">
           <label className="flex items-center gap-3"><input type="checkbox" checked={input.exposed} onChange={(event) => update("exposed", event.target.checked)} /> Exposure confirmed</label>
+          <label className="flex items-center gap-3"><input type="checkbox" checked={input.credentialTypeKnown} onChange={(event) => update("credentialTypeKnown", event.target.checked)} /> Credential type identified</label>
           <label className="flex items-center gap-3"><input type="checkbox" checked={input.identityOwnerKnown} onChange={(event) => update("identityOwnerKnown", event.target.checked)} /> Workload owner known</label>
           <label className="flex items-center gap-3"><input type="checkbox" checked={input.revoked} onChange={(event) => update("revoked", event.target.checked)} /> Credential revoked</label>
         </div>
