@@ -8,7 +8,7 @@
 
 - **Signature:** `joy.`
 - **Name:** Kristen Joy Aing
-- **Primary positioning:** **Commercial Leader. Curious Builder.**
+- **Primary positioning:** **Revenue & GTM Leader. Curious Builder.** (approved editorial direction; page rollout tracked separately in PR #33). This signals aspiration and demonstrated capabilities; it is not a claim to currently hold a Head of Sales title.
 - **Guiding philosophy:** **People first. Problem-driven. Systems-minded.**
 - **Supporting expression (optional, not competing main positioning):** *Curious by nature. Builder by instinct.*
 - **Core domains:** Enterprise cybersecurity, technical sales and GTM strategy, people development, product thinking, AI-assisted research and practical systems.
@@ -45,7 +45,7 @@ Sound confident but not corporate, curious but grounded, warm but concise, credi
 **Do:** “I developed onboarding resources to help teammates ramp,” if supported.
 **Avoid:** unverified metrics, invented customer use, claiming independent demos are production products, or conflating proprietary employer work with personal projects.
 
-**Hero copy baseline:** Eyebrow: “Cybersecurity & GTM leadership”; headline: “Commercial Leader. Curious Builder.”; body: one or two sentences linking people development, complex commercial problems and the systems built to solve them. CTAs: “Explore Work” and “Explore Side Quests.”
+**Hero copy baseline:** Eyebrow: “Cybersecurity & GTM leadership”; headline: “Revenue & GTM Leader. Curious Builder.”; body: one or two sentences linking people development, complex commercial problems and the systems built to solve them. CTAs: “Explore Work” and “Explore Side Quests.”
 
 The alternate prototype headline “Curious by nature. Builder by instinct.” is suitable as secondary personality copy; adopting it as the final H1 requires an explicit design decision.
 
@@ -71,6 +71,10 @@ Colors above describe the **existing implementation**, not guaranteed accessibil
 - Interface and body: **Geist Sans**, readable and restrained.
 - Technical labels/metadata: **Geist Mono**, sparingly.
 - Preserve accessible font fallbacks, line lengths, logical hierarchy and mobile wrapping. Avoid gratuitous all-caps paragraphs.
+
+### Avatar system
+
+Use a single identifiable editorial illustrated character with three contextual treatments: Leader (professional Work/About, default), Explorer (Field Notes/research), Builder (Side Quests/Builder Academy). Keep core facial identity, proportions, palette and vector technique identical. Variation comes from composition, pose and props; never turn these into separate mascots. Current `/avatar.png` remains the approved-in-code fallback until master artwork and its derivatives are reviewed. See [`avatar-system.md`](./avatar-system.md) for asset acceptance criteria, file naming and accessibility.
 
 ### Logo, shapes and imagery
 
@@ -126,7 +130,7 @@ Follow least-privilege workflows, dependency and secret checks, no credentials o
 
 ## 9. Source of truth and change control
 
-- **This file:** canonical cross-page brand foundations and guardrails once its PR is approved.
+- **This file:** canonical cross-page brand foundations and guardrails. The newer positioning is a reviewed design direction; final copy and rollout coordinate with PR #33.
 - **`app/globals.css`:** actual shipped color and font tokens; synchronize intentionally when changed.
 - **PR #3:** proposed About story, values and leadership philosophy.
 - **PR #8:** proposed research, UX audit, information architecture, wireframes and roadmap.
