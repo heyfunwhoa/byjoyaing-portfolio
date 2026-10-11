@@ -69,3 +69,35 @@ test("privacy-first product measurement lesson has synthetic no-side-effect lab"
   assert.ok(lesson.sources.some((source) => source.url.startsWith("https://posthog.com/")));
   assert.equal(/kristen\.aing@gmail\.com|joy\s*index/i.test(JSON.stringify(lesson)), false);
 });
+
+
+test("MCP versus REST lesson teaches protocol boundaries and safe synthetic practice", () => {
+  const lesson = lessons.find((item) => item.slug === "mcp-vs-rest-api");
+  assert.ok(lesson);
+  assert.equal(lesson.track, "Builder");
+  assert.match(lesson.exercise, /docs\/builder-academy\/mcp-vs-rest-api\.md/);
+  assert.match(lesson.exercise, /synthetic/i);
+  assert.match(lesson.summary, /REST APIs, MCP tools, webhooks/i);
+  assert.match(lesson.check.choices[lesson.check.answer], /subject to permissions/i);
+  assert.ok(lesson.sources.some((source) => source.url.includes("modelcontextprotocol.io")));
+});
+
+test("enterprise contracts lesson distinguishes AE and Head of Sales review duties", () => {
+  const lesson = lessons.find((item) => item.slug === "enterprise-contracts-sales-cycle");
+  assert.ok(lesson);
+  assert.equal(lesson.track, "GTM");
+  assert.match(lesson.exercise, /docs\/builder-academy\/enterprise-contracts-sales-cycle\.md/);
+  assert.match(lesson.exercise, /Head of Sales/i);
+  assert.ok(lesson.takeaways.some((point) => /DPA/i.test(point)));
+  assert.ok(lesson.takeaways.some((point) => /MNDA/i.test(point)));
+  assert.match(lesson.check.choices[lesson.check.answer], /reviewed separately/i);
+  assert.ok(lesson.sources.some((source) => source.url.includes("ico.org.uk")));
+});
+
+test("new lessons are public-safe and do not require Sumble integration", () => {
+  const added = lessons.filter((item) => ["mcp-vs-rest-api", "enterprise-contracts-sales-cycle"].includes(item.slug));
+  assert.equal(added.length, 2);
+  const body = JSON.stringify(added);
+  assert.doesNotMatch(body, /kristen\.aing@gmail\.com|joy\s*index|\bAPI_KEY\s*=|real account export/i);
+  assert.match(body, /permissions/i);
+});
