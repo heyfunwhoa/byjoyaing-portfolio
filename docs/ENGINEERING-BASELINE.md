@@ -4,7 +4,7 @@
 
 ## Definition of Done
 1. Work on a feature branch, explain intent and acceptance criteria, use focused commits and a PR; inspect the diff for accidental secrets, unrelated files and sensitive data.
-2. Run the checks appropriate for the change. Suggested local command sequence: `npm ci; npm run lint; npx tsc --noEmit; npm run build`. Investigate failures rather than bypassing gates; only enforce commands in CI after confirming project compatibility.
+2. Run the checks appropriate for the change. The command that typechecks this repository is `npm run build`. Do not add a separate `tsc --noEmit` script; a bare `tsc` fails until Next.js has generated `.next/types`. Suggested local sequence: `npm ci`, `npm run lint`, `npm test`, `npm run build`. Investigate failures rather than bypassing gates. Documentation does not enforce CI; the workflows in `.github/workflows/` do.
 3. Check dependency changes, lockfiles, relevant CodeQL/SAST, secret scanning and dependency alerts where supported. Validate that required GitHub checks actually execute; a mergeable PR alone is not evidence of a passed check.
 4. Document behavior, test evidence, risk/security review, any migrations, configuration changes, and deployment/rollback plan when applicable.
 5. Review, approve and merge after required checks. Verify deployed behavior and logs, capture lessons learned.

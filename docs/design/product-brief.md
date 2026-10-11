@@ -1,5 +1,7 @@
 # Portfolio product brief (working draft)
 
+> **Superseded for product planning.** Use [portfolio-experience-v2-prd.md](../product/portfolio-experience-v2-prd.md). The positioning line below ("Commercial Leader") is historical and is not the live headline.
+
 ## Problem
 Current portfolio foregrounds independent technical systems and doesn't immediately establish Kristen's commercial leadership, team development, and GTM strategy experience. Visitors need clearer pathways to evaluate demonstrated professional results versus independently built projects.
 
