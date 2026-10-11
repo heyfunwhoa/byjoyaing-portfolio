@@ -39,7 +39,7 @@ No new runtime dependency. Geist Sans and Geist Mono stay loaded through `next/f
 | Source | License checked | Why it stays out |
 | --- | --- | --- |
 | Instrument Serif | Font license is not the blocker | [ADR 0001](../decisions/0001-preserve-geist-typography.md) forbids a new family. A prompt that names Instrument Serif does not override that decision. |
-| shadcn/ui | MIT | Accessible primitives are useful later. This pass does not need a dialog, form, or Radix dependency. The menu uses `inert` and a button. |
+| shadcn/ui | MIT | Accessible primitives are useful later. This pass does not need a dialog, form, or Radix dependency. The menu uses `inert` and a button. A later setup installs the primitives without replacing this menu. See the shadcn section of [component-inventory.md](component-inventory.md). |
 | Magic UI Orbiting Circles | Free library is MIT. Pro sections are paid. | The component animates continuously and pulls in Motion. A spinning ring reads as astronomy and costs paint on every frame. |
 | Motion Primitives | MIT (`ibelick/motion-primitives`) | Components depend on the `motion` package. The site already has the one entrance it needs. |
 | React Bits | Do not paste. Public indexes describe an MIT grant plus a Commons Clause rider. Confirm that file before any future copy. | Wholesale import would add a second visual language and a motion dependency. |
