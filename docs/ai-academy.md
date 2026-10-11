@@ -6,7 +6,7 @@ Route: `/ai-academy` on the portfolio. Built on a feature branch to avoid change
 Start with core AI literacy, practice on realistic exercises, then recommend a workflow and graduate repeatable activities into version-controlled skills. Notion stays the human-facing knowledge layer; GitHub is canonical for code and skills.
 
 ## Current acceptance criteria
-- Eight guided lessons with analogies, exercises, a knowledge check and external references, including package registries and npm supply-chain basics.
+- Guided lessons live in `lib/ai-academy.ts`. Each one includes an analogy, an exercise, a knowledge check, and external references. The in-app count follows that list, including package registries and npm supply-chain basics.
 - Lesson completion is intentionally **session-only**, clearly disclosed.
 - Workflow finder searches five task-to-tool recommendations and offers copyable starter prompts.
 - Accessible labeled controls, visible keyboard focus, mobile-responsive layout, meaningful empty states.
@@ -34,3 +34,7 @@ Every externally sourced claim: primary URL + checked date. Every recommended wo
 ## Builder learning: packages and dependencies
 
 See [package registries, package managers, lockfiles and supply-chain security](learning/package-registries.md). The in-app Builder lesson is a concise guided version; this reference provides a deeper technical explanation and a no-secrets exercise drawn from the portfolio's dependency audit.
+
+## Builder learning: Cursor workflows
+
+The in-app lesson `cursor-workflows` is the concise card. The longer source is [Cursor: from first prompt to verified pull request](builder-academy/cursor-agent-workflows.md). Publishing that Markdown file does not by itself add the card; the card is the `Lesson` record in `lib/ai-academy.ts`.
