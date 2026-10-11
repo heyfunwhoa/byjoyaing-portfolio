@@ -3,7 +3,7 @@ import Link from "next/link";
 import {PageMain} from "@/components/page-main";
 import {ProjectStatusPill} from "@/components/project-status-pill";
 import {portfolioEntries} from "@/lib/portfolio-registry";
-import {statusCopy,statusHelp} from "@/lib/portfolio";
+import {statusHelp} from "@/lib/portfolio";
 export const metadata:Metadata={alternates:{canonical:"/side-quests"},openGraph:{url:"/side-quests"},title:"Side Quests | Independent Projects",description:"Independent cybersecurity, AI, enablement, and GTM software experiments, with transparent build stages."};
 const selected=["account-intelligence","detector-coverage-atlas","truffle-camp","customer-feedback-intelligence"];
 export default function SideQuestsPage(){
