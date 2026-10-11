@@ -15,7 +15,7 @@ test("the design lab is available outside production", () => {
 test("the design lab page returns 404 before rendering a preview", () => {
   const page = readFileSync(path.join(root, "app/design-lab/page.tsx"), "utf8");
   const notFoundAt = page.indexOf("notFound()");
-  const suspenseAt = page.indexOf("Suspense");
+  const suspenseAt = page.indexOf("<Suspense");
   assert.ok(notFoundAt > -1);
   assert.ok(page.indexOf("designLabAvailable()") < notFoundAt);
   if (suspenseAt !== -1) assert.ok(notFoundAt < suspenseAt);

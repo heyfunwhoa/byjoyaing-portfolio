@@ -1,3 +1,5 @@
+import { ArrowRight } from "@/components/icons/arrow-right";
+import { ArrowUpRight } from "@/components/icons/arrow-up-right";
 import { GeometricMotif } from "@/components/geometric-motif";
 import Link from "next/link";
 
@@ -29,7 +31,7 @@ export function EditorialBento() {
             Professional experience, enterprise selling, people development, and GTM execution.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-8 text-sm font-semibold underline">
-            Explore Work <span aria-hidden="true" className="nudge-link ml-2 inline-block">↗</span>
+            Explore Work <ArrowUpRight size={16} className="nudge-link ml-2 inline-block size-4" />
           </span>
           <GeometricMotif />
         </Link>
@@ -44,7 +46,7 @@ export function EditorialBento() {
             Playbooks, frameworks, operating systems, and lessons learned.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold text-accent underline">
-            Read Field Notes <span aria-hidden="true" className="nudge-link ml-2 inline-block">→</span>
+            Read Field Notes <ArrowRight size={16} className="nudge-link ml-2 inline-block size-4" />
           </span>
         </Link>
 
@@ -58,7 +60,7 @@ export function EditorialBento() {
             Independent cybersecurity, GTM, research, and developer tools.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold underline">
-            See Side Quests <span aria-hidden="true" className="nudge-link ml-2 inline-block">→</span>
+            See Side Quests <ArrowRight size={16} className="nudge-link ml-2 inline-block size-4" />
           </span>
         </Link>
       </div>

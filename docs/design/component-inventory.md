@@ -33,7 +33,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `mark.tsx` | `joy.` signature | Keep | Implemented |
 | `editorial-section.tsx` | Section framing | Editorial section header | Partial. Prefer this over a new header component. |
 | `editorial-bento.tsx` | Three links: Work, Field Notes, Side Quests | Editorial bento | Implemented. Work stays the large tile. Do not wrap every section in a bento. |
-| `geometric-motif.tsx` | Decorative orbits and three nodes, `aria-hidden` | Geometric decoration | Use on the Work tile only. Static. Do not spin it. |
+| `geometric-motif.tsx` | Decorative orbits and three nodes, `aria-hidden` | Geometric decoration | Public use is the Work tile. The design lab may preview it. Static. Do not spin it. |
 | `marginalia.tsx` | One short aside | Annotation | One per section at most. |
 | `crop-frame.tsx` | Crop marks around the portrait | Avatar frame | Marks may ease outward. The portrait file stays `/avatar.png`. |
 | `kicker.tsx` | Small label | Eyebrow | Exists. Editorial pages often use `.editorial-eyebrow` instead. |
@@ -51,14 +51,17 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `project-status-pill.tsx`, `status-badge.tsx` | Status display | Project status, evidence label | Partial. Two status widgets exist. A later PR should pick one for public labels rather than add a third. |
 | `projects-directory.tsx`, `projects-systems.tsx` | Filterable directory | Category filter | Implemented on `/projects`. Side Quests links here. |
 | `experience-timeline.tsx` | Career timeline, first two roles visible, earlier roles behind a button | Career timeline | Implemented on `/experience`. Visible roles keep every point and their related links. |
+| `editorial-project-card.tsx` | Directory facts, status pill, one destination. Featured variant for the field practice. | Lab preview | On `/design-lab` only. Does not replace `project-card.tsx`. |
+| `project-bento.tsx` | Responsive project gallery and empty state | Lab preview | Not the homepage `EditorialBento`. |
+| `project-filter.tsx` | Kind and existing-category filters with `aria-pressed` | Lab preview | URL state stays on `/design-lab`. |
 
 ## Identity and image
 
 | Component | What it does now | Action |
 | --- | --- | --- |
 | `brand-avatar.tsx` | `leader`, `explorer`, `builder`. All render `/avatar.png`. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. |
-| `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Homepage hero only. `aria-hidden` geometry. No spin, no face motion. |
-| `project-constellation.tsx` | Three linked projects plus a sentence for each edge | `/experience` only. Not a live integration diagram. |
+| `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Public use is the homepage hero. The design lab may preview it. `aria-hidden` geometry. No spin, no face motion. |
+| `project-constellation.tsx` | Three linked projects plus a sentence for each edge | Public use is `/experience`. The design lab previews the same component. Not a live integration diagram. |
 | `crop-frame.tsx` | Corner crop frame | Keep |
 | `tool-mark.tsx` | Small tool mark | Keep where already used |
 
@@ -112,7 +115,7 @@ Tailwind v4, Next.js, and React are the UI stack. Do not add an animation packag
 
 ### Custom components that stay
 
-The editorial shell, story templates, status pills, brand avatar, celestial frame, and case-specific learning UI in the tables above are unchanged. Public pages do not import `components/ui`. `/design-lab` is the only route that demonstrates them.
+The editorial shell, story templates, status pills, brand avatar, celestial frame, and case-specific learning UI in the tables above are unchanged. Public pages do not import `components/ui`. Do not point a public page at `components/ui` until a reviewed change names the page and the primitive. The shipped `/design-lab` page is the editorial workshop and does not import these primitives.
 
 ### Recommended later, not installed
 
@@ -121,17 +124,17 @@ The editorial shell, story templates, status pills, brand avatar, celestial fram
 | Case-study breadcrumb | Official shadcn breadcrumb, or a small local component | Home / Work or Side Quests / title, using `kind`. Specify before building. |
 | One status widget | Existing `StatusBadge` or `ProjectStatusPill` | Two widgets already exist. Do not add shadcn Badge as a third. |
 | Separator | Official shadcn separator | `.editorial-rule` already draws the divider. |
-| Community registries | [Directory](https://ui.shadcn.com/docs/directory) | `@magicui` is configured for Bento Grid only. |
+| Community registries | [Directory](https://ui.shadcn.com/docs/directory) | `@keyline` and `@magicui` are both configured. `@magicui` is Bento Grid only. |
 
 ### Magic UI and Lifeline
 
-**Status:** Lab only. Public pages do not import them.  
+**Status:** Installed for the lab. Public pages do not import them. The primitive preview is not mounted on the shipped `/design-lab` page.
 **Date:** 2026-10-11
 
 | Piece | Where it lives | How it was added | Where it renders |
 | --- | --- | --- | --- |
-| Bento Grid | `components/ui/bento-grid.tsx` | `npx shadcn@latest add @magicui/bento-grid`. The existing button was not overwritten. `@radix-ui/react-icons` is the registry dependency. | `/design-lab` only |
-| Lifeline | `components/lifeline/` and `lib/lifeline-data.ts` | `npx shadcn@latest add https://evilrabbit.com/r/lifeline.json`. No `app/lifeline/page.tsx`. | `/design-lab` only, `mode="embed"` |
+| Bento Grid | `components/ui/bento-grid.tsx` | `npx shadcn@latest add @magicui/bento-grid`. The existing button was not overwritten. `@radix-ui/react-icons` is the registry dependency. | `components/design-lab/demos.tsx` only |
+| Lifeline | `components/lifeline/` and `lib/lifeline-data.ts` | `npx shadcn@latest add https://evilrabbit.com/r/lifeline.json`. No `app/lifeline/page.tsx`. | `components/design-lab/demos.tsx` only, `mode="embed"` |
 
 `defineLifeline` fills every year from a birth year. The prototype does not call it. Markers come from the published `roles` list. The sticky column reads Co. and Year. `birthYear` is `0` and is not displayed, because every marker sets `age` to a company abbreviation. `experience-timeline.tsx` is unchanged.
 
@@ -141,11 +144,11 @@ React Bits is not installed. It is not required for this prototype.
 
 ### Community registries reviewed
 
-The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 unavailable, 2 observing). `@magicui` is the only registry in `components.json`, and only Bento Grid was copied.
+The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 unavailable, 2 observing). `@keyline` stays from main. `@magicui` is configured for Bento Grid only.
 
 | Registry | Directory status | Review | Decision |
 | --- | --- | --- | --- |
-| `@magicui` | Healthy, 250 items | Orbiting Circles and the Motion-based set stay out. Bento Grid has no `motion` dependency. | Bento Grid only, on `/design-lab`. |
+| `@magicui` | Healthy, 250 items | Orbiting Circles and the Motion-based set stay out. Bento Grid has no `motion` dependency. | Bento Grid only, inside the lab demo component. |
 | `@motion-primitives` | Healthy, 33 items | `text-effect` depends on `motion` and includes fade presets. | Do not install. |
 | `@aceternity` | Degraded, score 84 | Motion for React, marketing effects. | Do not install. |
 | `@animate-ui` | Healthy, 580 items | Animated primitives. A second motion system. | Do not install. |
@@ -154,7 +157,7 @@ The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 
 | `@diceui` | Healthy, 246 items | Sample item depends on `@base-ui/react`. This project uses Radix. | Do not install. |
 | `@ai-elements` | Degraded, score 94 | Chat and message UI. This site has no assistant surface. | Do not install. |
 | `@kibo-ui` | Healthy, 41 items | Composable extras. The index URL returned an error during this review, so the files were not read. | Do not install until a named component is reviewed. |
-| `@keyline` | Healthy, MIT icons | Stroke icons are a separate pull request. | Do not install on this branch. |
+| `@keyline` | Healthy, MIT icons | Stroke icons shipped on main in #57 and live in `components/icons`. | Keep the registry. Do not add more Keyline components here. |
 | `@logoforge` | Healthy | Logo artwork. Trademarks stay with their owners. Registry registration is a separate pull request. | Do not install logo components. |
 | `@spectrumui` | Healthy, 315 items | Another visual language, with its own motion. The MCP server is a separate pull request. | Do not install components. |
 | Block and theme registries (`@shadcnblocks`, `@shadcn-studio`, and similar) | Mixed, several degraded | Full pages and themes would restyle the editorial site. | Do not install. |

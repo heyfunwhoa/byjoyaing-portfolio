@@ -1,5 +1,6 @@
 "use client";
 
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { ProjectEvidence } from "@/components/project-evidence";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import {
@@ -89,6 +90,7 @@ export function ProjectsDirectory({ initialCategory = "All work" }: { initialCat
                   </h3>
                   <p className="text-sm leading-6 text-muted">{project.summary}</p>
                   <p className="text-sm leading-6">{project.role}</p>
+                  <ProjectTechnologyStack slug={project.slug} presentation="compact" />
                 </div>
                 <Link href={project.caseStudyUrl} className="text-sm font-medium text-accent">
                   View case study

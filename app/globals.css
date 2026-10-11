@@ -195,10 +195,17 @@ body {
 .avatar-frame:focus-within .crop-corner-bl { transform: translate(-3px, 3px); }
 .avatar-frame:hover .crop-corner-br,
 .avatar-frame:focus-within .crop-corner-br { transform: translate(3px, 3px); }
+.editorial-panel h3 a:focus-visible { outline: none; }
 .nudge-link { transition: transform 160ms ease; }
 .group:hover .nudge-link,
-.group:focus-visible .nudge-link { transform: translateX(0.2rem); }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-name: none !important; transition-duration: .01ms !important; } }
+.group:focus-visible .nudge-link,
+.group:focus-within .nudge-link { transform: translateX(0.2rem); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-name: none !important; transition-duration: .01ms !important; }
+  .group:hover .nudge-link,
+  .group:focus-visible .nudge-link,
+  .group:focus-within .nudge-link { transform: none; }
+}
   .lifeline-rail-intro {
     transform: scaleX(var(--lifeline-intro-progress, 0));
     transform-origin: left center;

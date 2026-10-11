@@ -1,28 +1,171 @@
-import { DesignLabDemos } from "@/components/design-lab/demos"
-import { PageMain } from "@/components/page-main"
-import { designLabAvailable } from "@/lib/design-lab-gate"
-import type { Metadata } from "next"
-import { notFound } from "next/navigation"
+import { BrandAvatar } from "@/components/brand-avatar";
+import { CelestialFrame } from "@/components/celestial-frame";
+import { DesignLabGallery } from "@/components/design-lab-gallery";
+import { GeometricMotif } from "@/components/geometric-motif";
+import { PageMain } from "@/components/page-main";
+import { ProjectConstellation } from "@/components/project-constellation";
+import { ProjectStatusPill } from "@/components/project-status-pill";
+import { designLabAvailable } from "@/lib/design-lab";
+import type { ProjectStatus } from "@/lib/portfolio";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Design lab — Kristen Joy Aing",
   robots: { index: false, follow: false },
-}
+};
+
+const statuses: ProjectStatus[] = ["field", "prototype", "designed", "exploring"];
+
+const swatches = [
+  ["Ivory", "bg-background", "Main canvas"],
+  ["Charcoal", "bg-foreground", "Headlines and the featured card"],
+  ["Copper", "bg-accent", "Links and the selected filter"],
+  ["Card", "bg-card", "Inset surfaces"],
+  ["Sage", "bg-surface-sage", "Side Quests surface"],
+  ["Mist", "bg-surface-mist", "Research surface"],
+  ["Clay", "bg-surface-clay", "Field Notes surface"],
+] as const;
 
 export default function DesignLabPage() {
-  if (!designLabAvailable()) notFound()
+  if (!designLabAvailable()) notFound();
 
   return (
     <PageMain>
-      <header className="border-b border-border py-12 sm:py-16">
-        <p className="editorial-eyebrow text-accent">Development only</p>
-        <h1 className="editorial-title mt-3">Design lab</h1>
-        <p className="editorial-intro mt-4 text-muted">
-          Installed primitives for review. Public pages, navigation, and the
-          career list are unchanged. This route is absent from the sitemap.
-        </p>
-      </header>
-      <DesignLabDemos />
+      <article className="flex flex-col gap-14 py-12 sm:py-16">
+        <header className="max-w-2xl">
+          <p className="editorial-eyebrow text-accent">Internal · local development</p>
+          <h1 className="editorial-section-title mt-3">Portfolio design lab</h1>
+          <p className="mt-4 text-base leading-7 text-muted">
+            This page previews reusable pieces before they move onto the public site. A production build returns 404. The public navigation does not link here.
+          </p>
+        </header>
+
+        <section aria-labelledby="foundations-title">
+          <h2 id="foundations-title" className="font-display text-2xl tracking-tight">Foundations</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            Tokens live in <code className="font-mono text-xs">app/globals.css</code>. Geist Sans is display and body. Geist Mono is for technical metadata, not sentences.
+          </p>
+          <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {swatches.map(([name, tone, use]) => (
+              <li key={name} className="min-w-0">
+                <div className={`h-14 rounded-xl border border-border ${tone}`} />
+                <p className="mt-2 text-sm font-semibold">{name}</p>
+                <p className="text-xs leading-5 text-muted">{use}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="editorial-eyebrow mt-8 text-accent">Eyebrow sample</p>
+          <p className="mt-2 max-w-xl text-base leading-7">People first. Problem-driven. Systems-minded.</p>
+        </section>
+
+        <section aria-labelledby="layouts-title">
+          <h2 id="layouts-title" className="font-display text-2xl tracking-tight">Layouts</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            <code className="font-mono text-xs">PageMain</code> keeps pages at <code className="font-mono text-xs">max-w-5xl</code> with <code className="font-mono text-xs">px-5</code>, and <code className="font-mono text-xs">sm:px-8</code> from 640px. <code className="font-mono text-xs">ProjectBento</code> is the project gallery below. <code className="font-mono text-xs">EditorialBento</code> is the homepage map of Work, Field Notes, and Side Quests. Do not swap them.
+          </p>
+          <ul className="mt-5 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-6">
+            <li className="rounded-xl bg-foreground px-4 py-6 text-sm text-background md:col-span-2 lg:col-span-4">Featured · four of six tracks from 1024px</li>
+            <li className="rounded-xl border border-border bg-card px-4 py-6 text-sm lg:col-span-2">Standard · two tracks</li>
+            <li className="rounded-xl border border-border bg-card px-4 py-6 text-sm lg:col-span-2">Standard · two tracks</li>
+            <li className="rounded-xl border border-border bg-card px-4 py-6 text-sm lg:col-span-2">Standard · two tracks</li>
+          </ul>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+            Below 768px the cells stack. From 768px they sit in two columns and the featured cell spans both. Gap is <code className="font-mono text-xs">gap-4</code> (1rem) in the live gallery.
+          </p>
+        </section>
+
+        <section aria-labelledby="navigation-title">
+          <h2 id="navigation-title" className="font-display text-2xl tracking-tight">Navigation</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            The header on this page is the public <code className="font-mono text-xs">SiteHeader</code>. Home, About, Work, Field Notes, Side Quests, and Contact stay in that order. Below 1024px the links sit in a panel with <code className="font-mono text-xs">absolute top-full</code>. Escape and the scrim return focus to the menu button. This lab does not render a second header.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+            A case-study breadcrumb is the next component, not this one. For kind work it would read Home / Work / title. For kind side-quest it would read Home / Side Quests / title. Filters on this page are pressed buttons, not tabs.
+          </p>
+        </section>
+
+        <section aria-labelledby="cards-title">
+          <h2 id="cards-title" className="font-display text-2xl tracking-tight">Cards, gallery, and filters</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            <code className="font-mono text-xs">EditorialProjectCard</code> is a prototype. The live sales card remains <code className="font-mono text-xs">components/project-card.tsx</code>. Filters use kind and the directory categories that already exist. The address bar keeps the selection, for example <code className="font-mono text-xs">?collection=work</code>.
+          </p>
+          <Suspense fallback={<p className="mt-6 text-sm text-muted">Loading the directory…</p>}>
+            <DesignLabGallery />
+          </Suspense>
+        </section>
+
+        <section aria-labelledby="motion-title">
+          <h2 id="motion-title" className="font-display text-2xl tracking-tight">Motion</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            No motion library is installed. The card border changes color on hover. The arrow uses the existing nudge, which collapses when reduced motion is requested. Sections on the public site still use the short rise in <code className="font-mono text-xs">.section-enter</code>. That rise does not fade to invisible.
+          </p>
+        </section>
+
+        <section aria-labelledby="identity-title">
+          <h2 id="identity-title" className="font-display text-2xl tracking-tight">Visual identity</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            Geometry is a line language. Public pages keep the orbit on the homepage hero and the motif on the Work tile. Every avatar variant still uses <code className="font-mono text-xs">/avatar.png</code>. Rings do not spin, and the face does not animate.
+          </p>
+          <div className="relative mt-5 overflow-hidden rounded-2xl bg-foreground p-6 text-background sm:p-8">
+            <GeometricMotif className="inset-0" />
+            <div className="relative z-10 grid items-center gap-6 sm:grid-cols-[11rem_minmax(0,1fr)]">
+              <div className="mx-auto w-36 sm:mx-0">
+                <CelestialFrame>
+                  <BrandAvatar decorative />
+                </CelestialFrame>
+              </div>
+              <p className="max-w-md text-sm leading-6 text-[#F3EFE6]">
+                Ivory strokes on charcoal. Crop marks may ease outward on hover or focus. Customize placement by wrapping the same portrait. Do not add a second illustration file here.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="data-title">
+          <h2 id="data-title" className="font-display text-2xl tracking-tight">Data visualization</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            The card uses <code className="font-mono text-xs">ProjectStatusPill</code>. <code className="font-mono text-xs">StatusBadge</code> still serves the sales card and case studies. A later pass should pick one. This lab does not add a third label. The timeline on <code className="font-mono text-xs">/experience</code> is the career diagram. The constellation below is that page’s relationship diagram, repeated here so the pattern is visible. The dots are decoration. The links say the same thing.
+          </p>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {statuses.map((status) => (
+              <li key={status}>
+                <ProjectStatusPill status={status} />
+              </li>
+            ))}
+          </ul>
+          <ProjectConstellation />
+        </section>
+
+        <section aria-labelledby="interactions-title">
+          <h2 id="interactions-title" className="font-display text-2xl tracking-tight">Interactions</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            The filter row in Cards is the interaction sample. It writes <code className="font-mono text-xs">?collection=</code> and does not load a new page. Use it when a reader is narrowing a list they can already see.
+          </p>
+          <details className="mt-4 max-w-2xl rounded-xl border border-border bg-card p-4">
+            <summary className="min-h-11 cursor-pointer font-semibold">Accordions, dialogs, and tooltips already in the site</summary>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
+              <li>The experience timeline uses a button with <code className="font-mono text-xs">aria-expanded</code>. It is not a component library accordion.</li>
+              <li>The header signature reveals “joy.” on hover and keyboard focus. It is a tooltip, not a dialog.</li>
+              <li>This lab has no modal. Do not add one until a public page needs a focused task that cannot stay on the page.</li>
+            </ul>
+          </details>
+        </section>
+
+        <section aria-labelledby="a11y-title">
+          <h2 id="a11y-title" className="font-display text-2xl tracking-tight">Accessibility</h2>
+          <ul className="mt-3 max-w-2xl list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
+            <li>Filter buttons expose <code className="font-mono text-xs">aria-pressed</code> and are at least 44px tall.</li>
+            <li>Each card is one link. The accessible name includes the destination.</li>
+            <li>Focus uses the copper ring. An empty filter result is a status message, not a blank grid.</li>
+            <li>Imagery on the card is a sentence from the existing preview, not a second interactive table inside the link.</li>
+          </ul>
+          <p className="mt-4 text-sm leading-6">
+            <a className="font-semibold text-accent underline" href="#cards-title">Back to the cards</a>
+          </p>
+        </section>
+      </article>
     </PageMain>
-  )
+  );
 }

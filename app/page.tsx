@@ -1,8 +1,10 @@
 import { BrandAvatar } from "@/components/brand-avatar";
+import { ArrowRight } from "@/components/icons/arrow-right";
 import { CelestialFrame } from "@/components/celestial-frame";
 import { EditorialBento } from "@/components/editorial-bento";
 import { Marginalia } from "@/components/marginalia";
 import { PageMain } from "@/components/page-main";
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { directoryProjects } from "@/lib/project-directory";
 import { roles, statusCopy, statusHelp } from "@/lib/portfolio";
 import { publicStories } from "@/lib/public-stories";
@@ -74,13 +76,13 @@ export default function Home() {
               href="/work"
               className="inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground hover:bg-foreground"
             >
-              Explore Work <span aria-hidden="true" className="ml-2">→</span>
+              Explore Work <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
             </Link>
             <Link
               href="/about"
               className="inline-flex min-h-12 items-center justify-center rounded-lg border border-[#D4CEC4] px-5 py-3 text-center text-sm font-semibold text-[#F3EFE6] hover:bg-[#4A504B]"
             >
-              About Me <span aria-hidden="true" className="ml-2">→</span>
+              About Me <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
             </Link>
           </div>
         </div>
@@ -122,7 +124,7 @@ export default function Home() {
               href="/experience"
               className="editorial-link mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
             >
-              Read the experience timeline <span aria-hidden="true" className="ml-2">→</span>
+              Read the experience timeline <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
             </Link>
           </div>
         </div>
@@ -152,7 +154,7 @@ export default function Home() {
               href="/work/competitive-intelligence-engine"
               className="editorial-link mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
             >
-              Read the field approach <span aria-hidden="true" className="ml-2">→</span>
+              Read the field approach <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
             </Link>
           </div>
         </div>
@@ -171,18 +173,19 @@ export default function Home() {
           <div className="min-w-0">
             <p className="max-w-xl text-base leading-7">{sideQuest.summary}</p>
             <p className="mt-3 max-w-xl text-sm leading-6 text-muted">{statusHelp[sideQuest.status]}</p>
+            <ProjectTechnologyStack slug={sideQuest.slug} presentation="compact" className="mt-4" />
             <div className="mt-5 flex flex-col gap-1">
               <Link
                 href={sideQuest.caseStudyUrl}
                 className="editorial-link inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
               >
-                Read the sample <span aria-hidden="true" className="ml-2">→</span>
+                Read the sample <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
               </Link>
               <Link
                 href="/side-quests"
                 className="editorial-link inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
               >
-                All Side Quests <span aria-hidden="true" className="ml-2">→</span>
+                All Side Quests <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
               </Link>
             </div>
           </div>
@@ -202,7 +205,7 @@ export default function Home() {
             href="/contact"
             className="inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground hover:bg-foreground"
           >
-            Get in touch <span aria-hidden="true" className="ml-2">→</span>
+            Get in touch <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
           </Link>
           <Link
             href="/about"

@@ -25,6 +25,23 @@ function sourceFiles(directory: string): string[] {
   return found;
 }
 
+function isDesignLab(file: string) {
+  return (
+    file.startsWith("app/design-lab/") ||
+    file.startsWith("components/design-lab/")
+  );
+}
+
+test("shadcn config keeps radix-nova and the configured registries", () => {
+  const config = JSON.parse(read("components.json")) as {
+    style: string;
+    registries: Record<string, string>;
+  };
+  assert.equal(config.style, "radix-nova");
+  assert.equal(config.registries["@keyline"], "https://keylineicons.com/r/{name}.json");
+  assert.equal(config.registries["@magicui"], "https://magicui.design/r/{name}");
+});
+
 test("brand tokens stay ivory, charcoal, and copper", () => {
   const css = read("app/globals.css");
   for (const token of [
@@ -49,13 +66,6 @@ test("brand tokens stay ivory, charcoal, and copper", () => {
   assert.equal(css.includes('@import "shadcn/tailwind.css"'), true);
   assert.match(css, /color:\s*var\(--foreground\)/);
 });
-
-function isDesignLab(file: string) {
-  return (
-    file.startsWith("app/design-lab/") ||
-    file.startsWith("components/design-lab/")
-  );
-}
 
 test("installed primitives are present and public pages do not adopt them", () => {
   for (const file of [
