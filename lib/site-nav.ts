@@ -16,10 +16,13 @@ export function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-/** Closed menu is display:none, so it leaves no layout space and no focusable links. */
+/**
+ * Closed menu is display:none, so it leaves no layout space and no focusable links.
+ * Open menu hangs from the header (`top-full`) instead of a fixed offset.
+ */
 export function menuPanelClass(open: boolean) {
   if (open) {
-    return "fixed inset-x-0 top-[4.75rem] z-30 max-h-[calc(100dvh-4.75rem)] overflow-y-auto border-b border-border bg-background px-5 py-5 shadow-lg lg:static lg:max-h-none lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none";
+    return "absolute inset-x-0 top-full z-30 max-h-[70dvh] overflow-y-auto border-b border-border bg-background px-5 py-5 shadow-lg lg:static lg:z-auto lg:max-h-none lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none";
   }
   return "hidden lg:block";
 }

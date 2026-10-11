@@ -20,12 +20,16 @@ test("active state does not treat a case-study URL as the Work index", () => {
   assert.equal(isActive("/contact", "/contact"), true);
 });
 
-test("a closed mobile menu is hidden and does not stay fixed in the layout", () => {
+test("a closed mobile menu is hidden and an open menu hangs from the header", () => {
   const closed = menuPanelClass(false);
   assert.match(closed, /\bhidden\b/);
   assert.equal(closed.includes("fixed"), false);
+  assert.equal(closed.includes("absolute"), false);
   const open = menuPanelClass(true);
-  assert.match(open, /\bfixed\b/);
+  assert.match(open, /\babsolute\b/);
+  assert.match(open, /\btop-full\b/);
+  assert.equal(open.includes("fixed"), false);
   assert.equal(open.includes("hidden"), false);
+  assert.equal(open.includes("4.75rem"), false);
   assert.match(open, /\blg:static\b/);
 });
