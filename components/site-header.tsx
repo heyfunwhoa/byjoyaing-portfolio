@@ -3,7 +3,7 @@
 import { Mark } from "@/components/mark";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -25,10 +25,18 @@ function isActive(pathname: string, href: string) {
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [openOnPath, setOpenOnPath] = useState<string | null>(null);
+  const open = openOnPath === pathname;
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  function closeMenu() { setOpen(false); }
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previousOverflow; };
+  }, [open]);
+
+  function closeMenu() { setOpenOnPath(null); }
   function handleMenuKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     if (event.key === "Escape" && open) {
       event.stopPropagation();
@@ -51,11 +59,12 @@ export function SiteHeader() {
           aria-expanded={open}
           aria-controls="primary-menu"
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => setOpenOnPath(open ? null : pathname)}
         >
           {open ? "Close" : "Menu"}
         </button>
-        <div id="primary-menu" onKeyDown={handleMenuKeyDown} className={open ? "absolute inset-x-0 top-full border-b border-border bg-background px-5 py-4 lg:static lg:border-0 lg:bg-transparent lg:p-0" : "hidden lg:block"}>
+        {open && <button type="button" aria-label="Close navigation" onClick={closeMenu} className="fixed inset-0 top-[4.75rem] z-20 bg-foreground/30 lg:hidden" />}
+        <div id="primary-menu" onKeyDown={handleMenuKeyDown} className={open ? "fixed inset-x-0 top-[4.75rem] z-30 max-h-[calc(100dvh-4.75rem)] overflow-y-auto border-b border-border bg-background px-5 py-5 shadow-lg lg:static lg:max-h-none lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none" : "hidden lg:block"}>
           <ul className="flex flex-col gap-1 text-sm lg:flex-row lg:flex-wrap lg:items-center lg:justify-end lg:gap-x-4 lg:gap-y-1">
             {links.map((link) => {
               const active = isActive(pathname, link.href);

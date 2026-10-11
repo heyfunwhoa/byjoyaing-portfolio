@@ -1,6 +1,6 @@
 # Portfolio rebuild roadmap — current priorities
 
-> **Status (October 2026):** This is the forward-looking plan, not a record of which GitHub PRs are currently open. Verify the latest state in GitHub before acting. Earlier PR history below is retained for context; do not treat it as a current instruction to merge old branches.
+> **Status (October 2026):** Historical sequencing notes. The active product roadmap is [portfolio-experience-v2-roadmap.md](product/portfolio-experience-v2-roadmap.md). Do not redirect `/experience` to `/work` or `/projects` to `/side-quests` from this file; [ADR 0003](decisions/0003-retain-experience-and-projects-routes.md) keeps both routes. Earlier PR history below is not a merge instruction.
 
 **Canonical sources of truth:** [Brand fundamentals](brand/brand-guidelines.md) govern identity, messaging and Work/Side Quests hierarchy; [content model](content-model.md) governs content field definitions and privacy; [development workflow](development-workflow.md) and [AGENTS.md](../AGENTS.md) govern development; the PR checklist governs review. GitHub Actions and the repository workflows define actual automated checks; documentation alone does not enforce them.
 

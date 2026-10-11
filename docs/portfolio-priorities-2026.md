@@ -4,7 +4,7 @@
 **Main decision:** ship byjoyaing.com first. Project development is separately sequenced and only resumes after a public-site release.
 
 ## Public story
-**Commercial Leader. Curious Builder.** People first. Problem-driven. Systems-minded.
+**Revenue & GTM Leader · Curious Builder.** People first. Problem-driven. Systems-minded. The older "Commercial Leader" line is retired. Product sequencing for the site now follows [portfolio-experience-v2-roadmap.md](product/portfolio-experience-v2-roadmap.md).
 1. Home: commercial identity, evidence, selected Work, Side Quests, contact.
 2. Work: actual enterprise selling, coaching, GTM systems and outcomes; avoid implying software experiments were used by employers.
 3. Side Quests: personally developed software, exploratory research, honest stage and useful artifacts.

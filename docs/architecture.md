@@ -1,5 +1,7 @@
 # Architecture — historical repo snapshot
 
+> **Planning status (2026-10-11):** This file is a historical snapshot. Current routes, navigation, and product requirements are in [portfolio-experience-v2-prd.md](product/portfolio-experience-v2-prd.md) and the live `app/` tree. Do not treat the route table below as the current site.
+
 > This document records observations from an earlier stage of the portfolio. Route and PR status notes below may be outdated. For current priorities consult [rebuild roadmap](rebuild-roadmap.md); for brand decisions use [canonical guidelines](brand/brand-guidelines.md). Verify live code and GitHub PR status before taking action. Do not merge branches because an older snapshot recommends it.
 
 This document describes the repository as it exists, what the open pull requests change, and what should be preserved. It does not change the pages.

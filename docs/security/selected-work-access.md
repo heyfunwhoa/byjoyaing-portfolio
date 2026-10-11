@@ -4,7 +4,7 @@
 
 ## Purpose and brand contract
 
-Support selective sharing of **approved** extended work samples without hiding the strongest public evidence. This feature follows `docs/brand/brand-guidelines.md`: **Commercial Leader. Curious Builder.** with the **People / Strategy / Systems** philosophy and the `joy.` signature. Work comes before Side Quests. Use existing typography and design tokens; visitors should always be able to explore public pages without signing in.
+Support selective sharing of **approved** extended work samples without hiding the strongest public evidence. This feature follows `docs/brand/brand-guidelines.md`: **Revenue & GTM Leader · Curious Builder** with the **People / Strategy / Systems** philosophy and the `joy.` signature. Work comes before Side Quests. Use existing typography and design tokens; visitors should always be able to explore public pages without signing in.
 
 **Publishing boundary:** The private Joy Index is NEVER part of this portfolio, its datasets, RAG index or its protected collection. Likewise, customer/employer confidential information and secrets must not be copied into this public GitHub repository, Vercel builds, preview deployments, logs, email, or the protected storage system without explicit authorization. Password protection does not substitute for permission to disclose. Public metadata should not reveal sensitive titles or summaries.
 

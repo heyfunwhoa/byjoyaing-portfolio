@@ -8,16 +8,16 @@ The brand has three public layers and one private boundary:
 | --- | --- | --- |
 | joy. | Personal brand mark | Visual system, later |
 | Kristen Joy Aing | Professional identity | Already on public pages |
-| Commercial Leader. Curious Builder. | Positioning line to use when copy changes | Not the live homepage headline yet |
-| Work | Professional experience and business impact | Planned public section |
-| Side Quests | Independent software and creative projects | Planned public section |
+| Revenue & GTM Leader · Curious Builder | Positioning line | Live homepage headline |
+| Work | Professional experience and business impact | `/work`, with `/experience` as the career timeline |
+| Side Quests | Independent software and creative projects | `/side-quests`, with `/projects` as the filterable directory |
 | The Joy Index | Private workspace | Never this repository |
 
 Nothing from The Joy Index belongs in git, in a page, or in a commit message.
 
 ## What is true today
 
-`main` is the deployed baseline. It has Home, About, Projects, Contact, and case studies at `/work/[slug]`. `/approach` and `/experience` both redirect to `/about`.
+`main` is the deployed baseline. Public navigation is Home, About, Work, Field Notes, Side Quests, and Contact. Case studies remain at `/work/[slug]`. `/experience` is the career timeline. `/projects` is the filterable project directory. `/approach` redirects to `/about`. The Portfolio Experience 2.0 plan is in [docs/product/portfolio-experience-v2-prd.md](docs/product/portfolio-experience-v2-prd.md).
 
 The [canonical brand guide](docs/brand/brand-guidelines.md) defines messaging. The [rebuild roadmap](docs/rebuild-roadmap.md) is the forward-looking sequence; [architecture](docs/architecture.md) is a dated historical snapshot and may describe earlier PR states. GitHub is the authority for current PR/CI status. Do not use old PR notes as merge instructions.
 
@@ -39,15 +39,17 @@ npm run start   # serve the production build
 - [docs/architecture.md](docs/architecture.md) — architecture and historical observations (not live PR status)
 - [docs/development-workflow.md](docs/development-workflow.md) — branches, commits, pull requests, Vercel, merging
 - [docs/content-model.md](docs/content-model.md) — where words live, and what must stay unpublished
-- [docs/rebuild-roadmap.md](docs/rebuild-roadmap.md) — active plan and priority order for small pull requests
+- [docs/product/portfolio-experience-v2-prd.md](docs/product/portfolio-experience-v2-prd.md) — current product requirements
+- [docs/product/portfolio-experience-v2-roadmap.md](docs/product/portfolio-experience-v2-roadmap.md) — epic sequence
+- [docs/rebuild-roadmap.md](docs/rebuild-roadmap.md) — historical route notes, not the active plan
 - [docs/design-process.md](docs/design-process.md) — how a page redesign is decided before it is coded
 
 ## Stack
 
-Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, and Resend for the contact and resume-request emails. Those are the only runtime dependencies. Do not add a package for something the standard library or the framework already does.
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, and Resend for contact email. Those are the only runtime dependencies. The public contact form no longer offers a resume request. `/api/request-resume` remains in the codebase and is not linked from the interface. Do not add a package for something the standard library or the framework already does.
 
 ## Canonical portfolio brand and changes
 
-The source of truth for messaging, voice and design boundaries is [docs/brand/brand-guidelines.md](docs/brand/brand-guidelines.md). **Commercial Leader. Curious Builder.** is the primary positioning, and **joy.** is the personal signature. The philosophy is **People first. Problem-driven. Systems-minded.** Design experiments must not silently override these decisions.
+The source of truth for messaging, voice and design boundaries is [docs/brand/brand-guidelines.md](docs/brand/brand-guidelines.md). **Revenue & GTM Leader · Curious Builder** is the primary positioning, and **joy.** is the personal signature. The philosophy is **People first. Problem-driven. Systems-minded.** Design experiments must not silently override these decisions.
 
 Coding agents should follow [AGENTS.md](AGENTS.md). All proposed portfolio changes should use the [PR review checklist](.github/pull_request_template.md), including verified claims, accessibility, security and CI evidence. Brand identity is specific to this portfolio; risk-based software engineering standards are reusable across other projects.
