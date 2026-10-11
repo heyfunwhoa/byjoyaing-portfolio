@@ -69,7 +69,7 @@ The card does not store state. The gallery does.
 
 Filter buttons call `onChange`. They do not navigate by themselves. The URL is the source of truth, so refresh keeps the filter.
 
-Hover and focus change color. They do not fetch data. The article has the `group` class, so the existing `.nudge-link` rule moves the arrow on hover and when focus is inside the card. Reduced motion collapses that move.
+Hover and focus change color. They do not fetch data. The article has the `group` class, so the existing `.nudge-link` rule moves the arrow on hover and when focus is inside the card. When reduced motion is requested, that transform is cleared, so the arrow stays put. The card animates background and border only, so the copper focus ring appears immediately instead of fading in from the text color.
 
 ## 7. Accessibility
 

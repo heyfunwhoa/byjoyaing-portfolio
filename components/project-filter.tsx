@@ -15,7 +15,7 @@ export function ProjectFilter({
 
   return (
     <div>
-      <div role="group" aria-label="Filter projects" className="flex min-w-0 gap-2 overflow-x-auto pb-1">
+      <div role="group" aria-label="Filter projects" className="flex min-w-0 flex-wrap gap-2">
         {labFilters.map((filter) => {
           const pressed = value === filter.id;
           return (

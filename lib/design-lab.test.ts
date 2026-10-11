@@ -119,4 +119,7 @@ test("the editorial card keeps one link and the existing arrow nudge", () => {
   assert.equal(source.includes("nudge-link"), true);
   assert.equal(source.includes("motion/react"), false);
   assert.equal((source.match(/<Link/g) ?? []).length, 1);
+  const motion = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+  const reduced = motion.slice(motion.indexOf("prefers-reduced-motion"));
+  assert.equal(reduced.includes("transform: none"), true);
 });
