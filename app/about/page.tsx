@@ -75,17 +75,21 @@ export default function AboutPage() {
       </section>
 
       <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">GTM and product work</h2>
+        <h2 className="font-display text-3xl tracking-tight">Where the work lives</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Professional field practice stays in Work. Independent designs and prototypes stay in Side Quests, with the stage named on the card.
+        </p>
         <ul className="mt-6 grid gap-4 md:grid-cols-2">
           {[
-            ["Competitive evidence", "Briefs and playbooks used with teams. The monitor is a design.", "/work/competitive-intelligence-engine"],
-            ["Coverage you can inspect", "A 3-source table. Gray means not evaluated.", "/work/detector-coverage-atlas"],
-            ["Account and partner workflows", "Designed systems for assigned accounts and partner lists.", "/projects"],
-            ["Enablement", "Training and frameworks used in the field. Truffle Camp is the curriculum design, not that training.", "/work/truffle-camp"],
-          ].map(([title, body, href]) => (
+            ["Competitive evidence", "Work", "Professional field system", "Briefs and playbooks used with teams. The monitor is a design.", "/work/competitive-intelligence-engine"],
+            ["Coverage you can inspect", "Side Quest", "Prototype", "A 3-source table. Gray means not evaluated.", "/work/detector-coverage-atlas"],
+            ["Account and partner workflows", "Side Quest", "Stages vary", "Designed systems for assigned accounts and partner lists. Not employer deployments.", "/side-quests"],
+            ["Enablement", "Side Quest", "Designed", "Truffle Camp is the curriculum design, not the training a team ran.", "/work/truffle-camp"],
+          ].map(([title, place, status, body, href]) => (
             <li key={title} className="list-none">
               <Link href={href} className="block rounded-2xl border border-border p-5 hover:border-accent">
-                <h3 className="font-semibold">{title}</h3>
+                <p className="text-xs font-semibold text-accent">{place} · {status}</p>
+                <h3 className="mt-2 font-semibold">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
               </Link>
             </li>

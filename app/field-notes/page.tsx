@@ -12,22 +12,39 @@ const collections = [
   {
     title: "Playbooks",
     description: "Practical approaches to strategic account planning, buying-committee alignment, deal execution, and coaching.",
-    examples: ["Multithreading & stakeholder mapping (seller + coach perspectives)", "Strategic account planning", "Deal inspection"],
+    items: [
+      { title: "Multithreading & Stakeholder Mapping", href: "/field-notes/multithreading", label: "Interactive playbook" },
+      { title: "Strategic account planning" },
+      { title: "Deal inspection" },
+    ],
   },
   {
     title: "Frameworks",
     description: "Decision tools for exploring markets, evaluating tradeoffs, and finding the right problems to solve.",
-    examples: ["ICP and segmentation", "Opportunity qualification", "Prioritization"],
+    items: [
+      { title: "Strategic Enterprise Deal Anatomy", href: "/field-notes/enterprise-deal", label: "Illustrative framework" },
+      { title: "ICP and segmentation" },
+      { title: "Opportunity qualification" },
+      { title: "Prioritization" },
+    ],
   },
   {
     title: "Operating Systems",
     description: "Repeatable rhythms and processes that connect strategy to execution. These are operating models, not claims of deployed software.",
-    examples: ["Pipeline and forecast cadence", "GTM account planning", "Coaching and onboarding rhythms"],
+    items: [
+      { title: "Pipeline and forecast cadence" },
+      { title: "GTM account planning" },
+      { title: "Coaching and onboarding rhythms" },
+    ],
   },
   {
     title: "Lessons Learned",
     description: "Reflections on field experience, collaboration, experiments, and what I would do differently.",
-    examples: ["Building trust across teams", "Making technical complexity useful", "Learning through iteration"],
+    items: [
+      { title: "Building trust across teams" },
+      { title: "Making technical complexity useful" },
+      { title: "Learning through iteration" },
+    ],
   },
 ] as const;
 
@@ -98,17 +115,26 @@ export default function FieldNotesPage() {
       <section id="collections" className="scroll-mt-24 py-12">
         <h2 className="font-display text-3xl tracking-tight">Browse the collections</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Collection outlines are starting points, not published case studies or claims of measured results.
-          Specific examples will be added with sources and clear evidence labels: Used in practice, Illustrative model, or Exploring.
+          A title is a published guide only when it is a link. Everything else is not yet published. Published guides stay labeled as models, not as customer records.
         </p>
         <div className="mt-7 grid gap-4 md:grid-cols-2">
           {collections.map((collection) => (
             <article key={collection.title} className="rounded-2xl border border-border bg-card p-6">
               <h3 className="text-xl font-semibold">{collection.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted">{collection.description}</p>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">Topics to develop</p>
-              <ul className="mt-2 list-inside list-disc space-y-2 text-sm">
-                {collection.examples.map((example) => <li key={example}>{example}</li>)}
+              <ul className="mt-5 space-y-3 text-sm">
+                {collection.items.map((item) => (
+                  <li key={item.title}>
+                    {"href" in item ? (
+                      <Link href={item.href} className="font-medium text-accent underline underline-offset-4">
+                        {item.title}
+                      </Link>
+                    ) : (
+                      <span>{item.title}</span>
+                    )}
+                    <span className="mt-1 block text-xs text-muted">{"href" in item ? item.label : "Not yet published"}</span>
+                  </li>
+                ))}
               </ul>
             </article>
           ))}
