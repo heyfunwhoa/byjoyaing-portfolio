@@ -12,9 +12,9 @@ export default function SideQuestsPage(){
  return <PageMain><section className="border-b border-border py-12 sm:py-16"><p className="text-sm font-medium text-muted">Side Quests / Independent builds</p><h1 className="font-display mt-3 text-4xl leading-[1.16] tracking-normal sm:text-5xl">Curiosity, put to work.</h1><p className="mt-4 max-w-2xl leading-7 text-muted">Exploring the problems I encounter in cybersecurity and go-to-market work, then turning them into research systems, learning tools, and software experiments. Different projects are at different stages; none should be mistaken for employer deployments.</p></section>
  <nav aria-label="Explore independent projects by focus" className="grid gap-3 border-b border-border py-8 sm:grid-cols-2 lg:grid-cols-4">
  {[
-  {label:"GTM & Revenue Systems",detail:"Account, partner, and revenue workflows",href:"/projects"},
-  {label:"Security Research",detail:"Detection, coverage, and market intelligence",href:"/projects"},
-  {label:"Learning & Tools",detail:"Developer education and technical foundations",href:"/projects"},
+  {label:"GTM & Revenue Systems",detail:"Revenue planning, partner, and operating workflows",href:"/projects?category=revenue"},
+  {label:"Security & Market Intelligence",detail:"Account signals and security research",href:"/projects?category=accounts"},
+  {label:"Technical Systems & AI",detail:"Detection and developer-focused experiments",href:"/projects?category=technical"},
   {label:"All projects",detail:"Browse by topic and build status",href:"/projects"}
  ].map(item=><Link key={item.label} href={item.href} className="rounded-xl border border-border bg-card p-4 hover:border-accent"><span className="block font-display text-xl">{item.label}</span><span className="mt-2 block text-sm leading-6 text-muted">{item.detail}</span><span className="mt-3 block text-sm font-medium text-accent">Explore →</span></Link>)}
  </nav>
