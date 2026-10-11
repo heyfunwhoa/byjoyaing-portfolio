@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/field-notes" },
+  openGraph: { url: "/field-notes" },
   title: "Field Notes — Kristen Joy Aing",
   description: "Playbooks, frameworks, lessons learned, and operating systems for relationships, revenue, and teams.",
 };
