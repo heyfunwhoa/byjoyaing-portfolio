@@ -4,6 +4,7 @@ import { CelestialFrame } from "@/components/celestial-frame";
 import { EditorialBento } from "@/components/editorial-bento";
 import { Marginalia } from "@/components/marginalia";
 import { PageMain } from "@/components/page-main";
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { directoryProjects } from "@/lib/project-directory";
 import { roles, statusCopy, statusHelp } from "@/lib/portfolio";
 import { publicStories } from "@/lib/public-stories";
@@ -172,6 +173,7 @@ export default function Home() {
           <div className="min-w-0">
             <p className="max-w-xl text-base leading-7">{sideQuest.summary}</p>
             <p className="mt-3 max-w-xl text-sm leading-6 text-muted">{statusHelp[sideQuest.status]}</p>
+            <ProjectTechnologyStack slug={sideQuest.slug} presentation="compact" className="mt-4" />
             <div className="mt-5 flex flex-col gap-1">
               <Link
                 href={sideQuest.caseStudyUrl}

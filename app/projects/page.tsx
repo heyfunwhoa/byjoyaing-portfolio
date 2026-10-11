@@ -1,4 +1,5 @@
 import { BrandAvatar } from "@/components/brand-avatar";
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { PageMain } from "@/components/page-main";
 import { ProjectEvidence } from "@/components/project-evidence";
 import { ProjectStatusPill } from "@/components/project-status-pill";
@@ -66,6 +67,7 @@ export default async function ProjectsPage({
                     <span className="font-medium text-foreground">Technology. </span>
                     {project.technologies}
                   </p>
+                  <ProjectTechnologyStack slug={project.slug} presentation="compact" className="mt-3" />
                   <div className="mt-4 flex flex-wrap gap-4 text-sm font-medium">
                     <Link href={project.caseStudyUrl} className="text-accent">
                       View case study

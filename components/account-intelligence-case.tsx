@@ -1,3 +1,4 @@
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { AccountIntelligenceWorkflow } from "@/components/account-intelligence-workflow";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
@@ -173,6 +174,8 @@ export function AccountIntelligenceCase() {
           </div>
         </div>
       </section>
+
+      <ProjectTechnologyStack slug="account-intelligence" />
 
       <section className="border-b border-border py-16" aria-labelledby="problem-title">
         <SectionLabel index="02">The problem</SectionLabel>
