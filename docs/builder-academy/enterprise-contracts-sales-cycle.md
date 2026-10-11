@@ -42,7 +42,7 @@ No single paper automatically gives permission to scrape a provider's data, rese
 
 **AE:** clarify who will disclose what, identify whether existing master terms cover confidentiality, route the proposed paper for Legal review, and track who is authorized to sign. **Head of Sales:** agree on standard forms, a routing/approval matrix, turnaround goals, template escalation rules and an exception log with Legal—without assuming commercial urgency overrides confidentiality terms.
 
-For actual vendor-security requirements, see [Security assessments by buyer size and risk](security-assessments-by-buyer-size.md).
+For actual vendor-security requirements, including **SOC 2 Type I/II, penetration-test summaries and findings, ISO 27001, security questionnaires and subprocessors**, see [Security assessments by buyer size and risk](security-assessments-by-buyer-size.md).
 
 ## What each review actually asks
 
@@ -133,7 +133,7 @@ C. Yes, if the salesperson used a paid Pro subscription.
 - [UK ICO — controller/processor contracts, minimum terms and liabilities](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/what-needs-to-be-included-in-the-contract/).
 - [European Commission — SCCs and international transfers](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_sw).
 - [NIST glossary — Non-disclosure agreement](https://csrc.nist.gov/glossary/term/non_disclosure_agreement).
-- [UpCounsel — MNDA compared with unilateral NDA](https://www.upcounsel.com/mutual-nda-vs-nda/) — secondary educational explainer; counsel should review actual language.
+- [Rocket Lawyer — Whether an NDA protects one or both parties](https://www.rocketlawyer.com/q-and-a/answer/does-an-nda-protect-both-parties-or-just-one-side) — secondary educational explainer; counsel should review actual language.
 - [Builder Academy — Security assessments by buyer size and risk](security-assessments-by-buyer-size.md) — synthetic practice and primary references.
 - [NIST SP 800-47 — Managing Security of Information Exchanges](https://www.nist.gov/publications/managing-security-information-exchanges).
 
