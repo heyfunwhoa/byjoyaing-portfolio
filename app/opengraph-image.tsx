@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Kristen Joy Aing — Enterprise cybersecurity sales";
+export const alt = "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,7 +40,7 @@ export default function OpenGraphImage() {
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
         <div style={{ fontSize: 56, lineHeight: 1.1, maxWidth: 980 }}>
-          Enterprise cybersecurity sales, built into repeatable GTM systems.
+          Revenue & GTM Leader. Curious Builder.
         </div>
         <div style={{ fontSize: 28, color: "#4a504b" }}>Kristen Joy Aing</div>
       </div>
