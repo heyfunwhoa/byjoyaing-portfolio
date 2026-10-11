@@ -1,6 +1,6 @@
 # Content model
 
-Words on the site are data with a job. This document defines **content fields and publishing boundaries**, not the authoritative visual brand. See [canonical brand guidelines](brand/brand-guidelines.md) for positioning, copy hierarchy and visual identity. The pages do not move in this phase.
+Words on the site are data with a job. This document defines **content fields and publishing boundaries**, not the authoritative visual brand. See [canonical brand guidelines](brand/brand-guidelines.md) for positioning, copy hierarchy and visual identity. Product scope for the next pass is [portfolio-experience-v2-prd.md](product/portfolio-experience-v2-prd.md). Notes below that wait on an unmerged pull request #1, or that describe a public resume request, are historical: the resume request is no longer linked in the interface, and `/api/request-resume` still exists in the codebase.
 
 ## Content categories (brand authority lives in the canonical guide)
 
