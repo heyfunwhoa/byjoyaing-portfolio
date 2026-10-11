@@ -25,6 +25,15 @@ function sourceFiles(directory: string): string[] {
   return found;
 }
 
+test("shadcn config keeps radix-nova and the keyline registry from main", () => {
+  const config = JSON.parse(read("components.json")) as {
+    style: string;
+    registries: Record<string, string>;
+  };
+  assert.equal(config.style, "radix-nova");
+  assert.equal(config.registries["@keyline"], "https://keylineicons.com/r/{name}.json");
+});
+
 test("brand tokens stay ivory, charcoal, and copper", () => {
   const css = read("app/globals.css");
   for (const token of [

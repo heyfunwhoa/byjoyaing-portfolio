@@ -121,11 +121,11 @@ The editorial shell, story templates, status pills, brand avatar, celestial fram
 | Case-study breadcrumb | Official shadcn breadcrumb, or a small local component | Home / Work or Side Quests / title, using `kind`. Specify before building. |
 | One status widget | Existing `StatusBadge` or `ProjectStatusPill` | Two widgets already exist. Do not add shadcn Badge as a third. |
 | Separator | Official shadcn separator | `.editorial-rule` already draws the divider. |
-| Community registries | [Directory](https://ui.shadcn.com/docs/directory) | Reviewed below. None are configured in `components.json`. |
+| Community registries | [Directory](https://ui.shadcn.com/docs/directory) | Reviewed below. Only `@keyline` is configured, because that registry is already on main. |
 
 ### Community registries reviewed, not installed
 
-The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 unavailable, 2 observing). None were added to `components.json`.
+The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 unavailable, 2 observing). This branch did not add them. `@keyline` is the exception kept from main.
 
 | Registry | Directory status | Review | Decision |
 | --- | --- | --- | --- |
@@ -138,7 +138,7 @@ The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 
 | `@diceui` | Healthy, 246 items | Sample item depends on `@base-ui/react`. This project uses Radix. | Do not install. |
 | `@ai-elements` | Degraded, score 94 | Chat and message UI. This site has no assistant surface. | Do not install. |
 | `@kibo-ui` | Healthy, 41 items | Composable extras. The index URL returned an error during this review, so the files were not read. | Do not install until a named component is reviewed. |
-| `@keyline` | Healthy, MIT icons | Stroke icons are a separate pull request. | Do not install on this branch. |
+| `@keyline` | Healthy, MIT icons | Stroke icons shipped on main in #57 and live in `components/icons`. | Keep the registry. Do not add more Keyline components here. |
 | `@logoforge` | Healthy | Logo artwork. Trademarks stay with their owners. Registry registration is a separate pull request. | Do not install logo components. |
 | `@spectrumui` | Healthy, 315 items | Another visual language, with its own motion. The MCP server is a separate pull request. | Do not install components. |
 | Block and theme registries (`@shadcnblocks`, `@shadcn-studio`, and similar) | Mixed, several degraded | Full pages and themes would restyle the editorial site. | Do not install. |
