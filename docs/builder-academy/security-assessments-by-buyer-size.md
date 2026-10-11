@@ -61,6 +61,89 @@ NIST CSF 2.0 is designed to be tailored to organizational mission, threat landsc
 | **Trust center / security overview / policies** | Repeatable answers on practices, controls, subprocessor list and incident contacts | Published summary is not equivalent to a current independent audit. Never invent exceptions or claim "compliant" without defined scope. |
 | **DPA / SCC / BAA (if applicable)** | Legal requirements for specified personal/health data processing or transfers | Separate from security review; compliance/privacy counsel determines applicability. |
 
+## Deep dive — Penetration-testing reports and vulnerability evidence
+
+**Pen test, in plain language:** an authorized, scoped team actively tries to exploit weaknesses in an application, API, cloud configuration or network to find realistic attack paths. A **vulnerability scan** is generally more automated and broad; a pen test involves human analysis/exploitation within its agreed scope. Neither proves the product is free of vulnerabilities.
+
+| Evidence | Buyer asks | What a good seller should verify | Sharing policy |
+| --- | --- | --- | --- |
+| Pen-test **attestation or executive summary** | "Was relevant testing done recently, and what was the result?" | Testing firm or qualified team, date, product/environment and API scope, test method, material findings, remediation status and whether retesting occurred | Approved restricted document, normally suitable before requesting full technical findings |
+| Full **technical pen-test report** | "Can our AppSec team evaluate technical impact and unresolved issues?" | Scope exclusions, test accounts, attack surface, severity ratings, proof-of-concept impacts, affected assets, findings and remediation plan | Highly sensitive; share through restricted trust center/approved secure channel only after Security and Legal authorization |
+| Remediation and **retest letter** | "Were the serious findings actually fixed?" | Finding IDs, fix date, retest coverage, still-open issues, compensating controls and owner | Approved, sanitized evidence with date and known limitations |
+| **Vulnerability scan** summary | "Are common weaknesses being routinely detected and patched?" | Scanner scope/frequency, patch SLAs, triage, false positives and outstanding material findings | Aggregate approved metrics, never raw exploitable details by default |
+| Secure SDLC / vulnerability policy | "How do fixes happen between assessments?" | Code review, dependency scanning, incident escalation, SLAs, security testing and responsible disclosure | Current policy / controlled trust-center artifact |
+
+**Five questions to ask when reading a pen test:** *What was tested? When? Who tested? What material findings are still unresolved? What changed and was retested?* A pen test of last year's marketing site cannot validate this year's production API or new AI connector. Reports are point-in-time inputs, not ongoing guarantees. See [OWASP WSTG reporting](https://wstg.owasp.org/v4.2/5-Reporting/) and [NIST SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final).
+
+**AE:** never forward an unredacted exploit chain or full internal finding from your personal email; request the approved executive summary or secure trust-center access. **Head of Sales:** agree on standard disclosure tiers, a current-test calendar, material-issue escalation and a safe answer for "we do not have that artifact yet" with Security. No invented remediation dates.
+
+## Deep dive — SOC 2, ISO 27001 and other assurance artifacts
+
+**SOC 2 is an independent attestation report, not a blanket certification of security.** The scope and criteria can include Security and, depending on the engagement, Availability, Processing Integrity, Confidentiality and Privacy. It examines the controls in a described system.
+
+| Document | What it means | Buyer should check |
+| --- | --- | --- |
+| **SOC 2 Type I** | An examination of the *design* of controls as of a specified date | Which entity, system, subservices and trust criteria are included; auditor opinion; date and scope. Not evidence of months of operating effectiveness. |
+| **SOC 2 Type II** | An examination of control design and *operating effectiveness over a period* | Covered period, auditor opinion, tests, exceptions, system boundary, complementary user entity controls (CUECs) and any carve-outs for subservice organizations. |
+| **Bridge letter** | Management's update for a gap after the report period | It is *not an audit*. Review dates, changes and whether the buyer accepts it as supplemental evidence. |
+| **SOC 3** | More general-use report based on SOC 2-type controls | Not a substitute for restricted details that a serious risk reviewer may need. |
+| **ISO/IEC 27001 certificate** | External certification of the in-scope information security management system (ISMS) | Certification body/accreditation, entity, geography/sites, covered business activities, validity and scope; separate Statement of Applicability or further evidence may be needed. |
+| **SIG Lite/Core, CSA CAIQ** | Standardized risk questionnaires that help buyers assess vendors | These are *assessment tools*, not audit opinions; use authorized templates and answer only verified current controls. |
+
+**Buyer question:** "Are you SOC 2 compliant?"  
+**Precise answer:** "Our current report is [Type and covered period, if independently verified] and covers [in-scope services]; our Security team can provide the permitted report and explain exceptions and controls." If none exists, say so and offer the approved alternative packet. **Do not claim future audit success or misuse the word certified.**
+
+**Seller caution:** A clean auditor opinion does not cover an unrelated product module or prove an untested API authorization design. A buyer must still inspect data flows and their own required user controls. See [AICPA SOC 2 guidance](https://www.aicpa.com/cpe-learning/publication/soc-2-reporting-on-an-examination-of-controls-at-a-service-organization-relevant-to-security-availability-processing-integrity-confidentiality-or-privacy) and [AICPA illustrative Type II report](https://www.aicpa.com/resources/download/illustrative-soc-2-r-report-with-description-and-assertion).
+
+## Deep dive — Subprocessors, fourth parties and data flow
+
+**Subprocessor:** when a processor hires another organization to process personal data *on its customer's behalf*. Example: fictional Northstar Shield (processor) uses a cloud hosting company or analytics vendor to store/process its customer's data. Whether a specific service is a subprocessor depends on its actual data access and legal role; **not every vendor, SaaS tool or subcontractor is necessarily a subprocessor**.
+
+**Fourth-party risk:** the buyer's vendor relies on its own vendors. This may involve subprocessors, critical infrastructure, support providers or other dependencies. Ask which third parties could affect availability, confidentiality or data control.
+
+### Read a subprocessor list like a buyer
+
+For each relevant subprocessor, request and review:
+
+| Field | Why it matters |
+| --- | --- |
+| Legal entity and service performed | Distinguishes cloud hosting, email delivery, customer support, analytics or AI processing |
+| Data categories and whether the provider can access content | Separates telemetry, account metadata, credentials, personal data, restricted source code and encrypted-only storage |
+| Purpose and processing instructions | Confirms which activities are authorized and whether the provider uses data for other purposes |
+| Geographic storage and **access/transfer** locations | Data residency and international access/transfers aren't answered by a single "EU region" claim |
+| Onward subprocessors and subcontractors | Determines who else can receive or affect the data |
+| Security controls and assurance evidence | Encryptions, privileged access, logging, breach notification, audit and certification scope |
+| DPA flow-down terms, transfer safeguards and BAA (where applicable) | Ensures obligations travel through the processor chain |
+| Retention, deletion and data return | Answers offboarding, backup, support-data and lifecycle questions |
+| Change notification, objection right and effective date | Tells customer how they learn of a new subprocessor and how to raise an objection if the contract allows |
+| Service or product applicability | Ensures the listed vendor actually serves the product, deployment region and customer plan being sold |
+
+For UK/EU GDPR **controller → processor → subprocessor** arrangements, authorization to engage subprocessors is required (specific or general, as applicable). When general authorization applies, proposed changes must be disclosed and the controller given an opportunity to object; the processor must contractually flow relevant Article 28 protections down to the subprocessor. These are **legal obligations conditioned on the data role and applicable law**, not universal rules for every vendor. <Reference: [ICO processor obligations](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-processor/) and [ICO Article 28 contract terms](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/what-needs-to-be-included-in-the-contract/).>
+
+For HIPAA-regulated processing, a cloud provider or other subcontractor that creates, receives, maintains or transmits PHI on behalf of a business associate may itself be a business associate and require appropriate downstream BAA obligations. Encryption without the provider holding the key does not automatically remove business-associate status. <Reference: [HHS guidance](https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/business-associates/index.html).>
+
+### Synthetic negotiation: "Can you promise EU-only data access?"
+
+A large buyer asks the AE to guarantee its data never leaves the EU. The product's primary database is in Frankfurt, but an unverified support provider may access tickets from outside the EU.
+
+**Wrong response:** "The database is in Frankfurt, so we guarantee everything stays in the EU."
+
+**AE response:** "I'll confirm storage and access locations, subprocessors, transfer safeguards and contractual commitments with our Security and Privacy teams, then provide approved language." Track exact requirement and owner.
+
+**Head of Sales response:** standardize a region-specific data-flow answer with Engineering/Privacy/Legal, track approved residency SKUs and exceptions, and prevent future sellers from promising unvalidated residency claims.
+
+### Confidential information handling
+
+Use a layered trust-center packet:
+
+1. **Public:** security overview, broad product/data-flow descriptions, contact point and published subprocessor list when approved.
+2. **Gated/restricted:** in-scope SOC 2 Type II report, ISO certificate, approved pen-test attestation/executive summary, selected policies and security questionnaires—per applicable document-sharing controls and agreements.
+3. **Highly restricted:** full technical pen-test findings, sensitive architecture diagrams, exploit details and internal remediation trackers; share only if authorized and necessary with a designated reviewer.
+4. **Never transfer into personal spaces:** real customer questionnaire answers, restricted reports, secrets, live issue details or employee contact data from an employer's diligence process.
+
+**An NDA/MNDA may be a condition for access to restricted evidence but does not itself grant processing rights, satisfy a DPA, or override subprocessor or transfer requirements.**
+
+
 ## Sales-cycle timeline and decision gates
 
 Security reviews can run **in parallel** with commercial and technical validation; exact timelines differ and should never be promised without the buyer's actual process.
@@ -153,6 +236,9 @@ C. Neither needs an assessment if an NDA is signed.
 - [Shared Assessments — SIG Questionnaire overview](https://sharedassessments.org/about-sig/) — risk-based SIG Lite/Core and licensing limitations.
 - [Cloud Security Alliance — CCM/CAIQ v4.1](https://cloudsecurityalliance.org/artifacts/cloud-controls-matrix-v4-1) — 2026 cloud-control questionnaire reference.
 - [AICPA — SOC 2 reporting on controls](https://www.aicpa.com/cpe-learning/publication/soc-2-reporting-on-an-examination-of-controls-at-a-service-organization-relevant-to-security-availability-processing-integrity-confidentiality-or-privacy) — independent controls examination.
+- [OWASP WSTG — penetration test report structure](https://wstg.owasp.org/v4.2/5-Reporting/) and [NIST SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final) — testing scope, findings, remediation and limitations.
+- [ICO — controller/processor contracts and subprocessors](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/what-needs-to-be-included-in-the-contract/) and [processor obligations](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-processor/) — authorisation, contractual flow-down and change notices.
+- [HHS — business associates and downstream subcontractors](https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/business-associates/index.html) — role-specific HIPAA obligations.
 - [HHS — HIPAA cloud providers and business associate agreements](https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html) — BAA conditions, data-use roles and cloud security.
 
 **Important:** The size-based rows are *illustrative GTM patterns*, not fixed standards, verified deal-duration benchmarks or guaranteed requirements. No actual customer, employer, or restricted vendor documents are used.
