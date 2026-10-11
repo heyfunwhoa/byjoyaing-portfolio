@@ -14,7 +14,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: { url: "/" },
-  title: "Revenue & GTM Leader · Curious Builder",
+  title: {
+    absolute: "Revenue & GTM Leader · Curious Builder — Kristen Joy Aing",
+  },
   description:
     "Strategic enterprise cybersecurity selling, people development, go-to-market leadership, and curious independent builds.",
 };

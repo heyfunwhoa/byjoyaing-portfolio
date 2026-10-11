@@ -18,7 +18,10 @@ function pageFiles(dir: string): string[] {
 test("page titles are topics so the layout template can add the name once", () => {
   const layout = readFileSync(path.join(root, "app/layout.tsx"), "utf8");
   assert.match(layout, /template: "%s — Kristen Joy Aing"/);
+  const home = readFileSync(path.join(root, "app/page.tsx"), "utf8");
+  assert.match(home, /absolute: "Revenue & GTM Leader · Curious Builder — Kristen Joy Aing"/);
   for (const file of pageFiles(path.join(root, "app"))) {
+    if (file.endsWith(`${path.sep}app${path.sep}page.tsx`)) continue;
     const titleLines = readFileSync(file, "utf8")
       .split("\n")
       .filter((line) => /^\s*title\s*:/.test(line));

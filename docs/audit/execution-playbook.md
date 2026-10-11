@@ -72,7 +72,7 @@ Not indexed, because they are practice labs, a design demonstration, or a protot
 
 **Product.** Browser tabs and search results read `Topic — Kristen Joy Aing`. The homepage topic is `Revenue & GTM Leader · Curious Builder`. Article titles drop the extra "Field Notes" or "Builder Academy" suffix. Those words stay in the description.
 
-**Engineering.** Root layout `title.template` is `%s — Kristen Joy Aing`. Each `page.tsx` sets only the topic. `title.default` is the full homepage string, because the template does not apply to the default in the same metadata object. A test fails if a `title:` line in a page file contains the name or a pipe, which would double the suffix or reintroduce mixed separators. Unknown URLs use `app/not-found.tsx` with the topic "Page not found".
+**Engineering.** Root layout `title.template` is `%s — Kristen Joy Aing`. Child pages set only the topic. The root page does not receive that template in this Next.js version, so `app/page.tsx` sets an absolute title: `Revenue & GTM Leader · Curious Builder — Kristen Joy Aing`. `title.default` is the same full string. A test fails if another page's `title:` line contains the name or a pipe. Unknown URLs use `app/not-found.tsx` with the topic "Page not found".
 
 **This branch.** Applied across page metadata.
 
@@ -88,7 +88,9 @@ Not indexed, because they are practice labs, a design demonstration, or a protot
 
 **Engineering.** Record results against the running app. Fix defects that the new footer, kind label, or menu introduce. Do not treat this playbook as a certificate.
 
-**This branch.** Results go in the pull request after the local server is exercised. The closed menu class remains `hidden`, covered by the existing nav test.
+**This branch.** Against the production build on a local server, Chrome checked Home, About, Work, Contact, the atlas page, and the competitive study at 320, 375, 390, 768, 1024, 1280, and 1440. No page grew wider than the viewport. At 375 the closed menu is `display: none` with a 0×0 box. Opening it shows the six links. Escape closes it and returns focus to "Open navigation menu". The first Tab stop is "Skip to main content" with a 2px solid outline. On the atlas page, Side Quests carries `aria-current="true"` and Work does not. With reduced motion, the measured transform is `none`. A CSS zoom of 200% on Work did not create horizontal overflow. That is not a full browser-zoom or screen-reader pass.
+
+Calculated contrast for the brand pairs, not sampled from pixels: copper `#8A4B2A` on ivory is 5.86:1, muted `#4A504B` on ivory is 7.20:1, warm copper `#E6B59A` on charcoal is 8.92:1, ivory on charcoal is 14.28:1. Those clear WCAG 2.2 AA for normal text. This is not a conformance certificate.
 
 ## 10. Security Market Map, after copy approval
 
