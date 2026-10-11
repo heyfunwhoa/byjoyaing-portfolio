@@ -25,13 +25,21 @@ function sourceFiles(directory: string): string[] {
   return found;
 }
 
-test("shadcn config keeps radix-nova and the keyline registry from main", () => {
+function isDesignLab(file: string) {
+  return (
+    file.startsWith("app/design-lab/") ||
+    file.startsWith("components/design-lab/")
+  );
+}
+
+test("shadcn config keeps radix-nova and the configured registries", () => {
   const config = JSON.parse(read("components.json")) as {
     style: string;
     registries: Record<string, string>;
   };
   assert.equal(config.style, "radix-nova");
   assert.equal(config.registries["@keyline"], "https://keylineicons.com/r/{name}.json");
+  assert.equal(config.registries["@magicui"], "https://magicui.design/r/{name}");
 });
 
 test("brand tokens stay ivory, charcoal, and copper", () => {
@@ -59,7 +67,7 @@ test("brand tokens stay ivory, charcoal, and copper", () => {
   assert.match(css, /color:\s*var\(--foreground\)/);
 });
 
-test("installed primitives are present and pages do not adopt them", () => {
+test("installed primitives are present and public pages do not adopt them", () => {
   for (const file of [
     "components/ui/card.tsx",
     "components/ui/tabs.tsx",
@@ -71,6 +79,7 @@ test("installed primitives are present and pages do not adopt them", () => {
     "components/ui/accordion.tsx",
     "components/ui/carousel.tsx",
     "components/ui/button.tsx",
+    "components/ui/bento-grid.tsx",
   ]) {
     assert.equal(read(file).length > 0, true, file);
   }
@@ -79,14 +88,55 @@ test("installed primitives are present and pages do not adopt them", () => {
   assert.match(layout, /TooltipProvider/);
   assert.match(layout, /Geist,/);
   assert.equal(layout.includes("Instrument_Serif"), false);
+  assert.equal(layout.includes('from "geist"'), false);
+  assert.equal(layout.includes("ThemeProvider"), false);
 
   const offenders: string[] = [];
   for (const file of [...sourceFiles("app"), ...sourceFiles("components")]) {
-    if (file === "app/layout.tsx") continue;
+    if (file === "app/layout.tsx" || isDesignLab(file)) continue;
     const source = read(file);
     if (source.includes("@/components/ui/") || source.includes("components/ui/")) {
       offenders.push(file);
     }
   }
   assert.deepEqual(offenders, []);
+});
+
+test("bento grid and lifeline stay inside the design lab", () => {
+  assert.equal(read("components/lifeline/lifeline.tsx").includes("export function Lifeline"), true);
+  assert.equal(read("components/lifeline/lifeline-labels.tsx").includes("Age"), false);
+  assert.match(read("components/lifeline/lifeline-labels.tsx"), /Co\./);
+  assert.equal(read("components/experience-timeline.tsx").includes("lifeline"), false);
+
+  const packageJson = read("package.json");
+  assert.equal(packageJson.includes('"geist"'), false);
+  assert.equal(packageJson.includes("react-bits"), false);
+  assert.equal(packageJson.includes('"motion"'), false);
+
+  const css = read("app/globals.css");
+  assert.match(css, /\.lifeline-marker-intro,\s*\.lifeline-labels-intro \{\s*opacity: 1;/);
+
+  let lifelinePage = false;
+  try {
+    read("app/lifeline/page.tsx");
+    lifelinePage = true;
+  } catch {
+    lifelinePage = false;
+  }
+  assert.equal(lifelinePage, false);
+
+  const labUsers: string[] = [];
+  const publicUsers: string[] = [];
+  for (const file of [...sourceFiles("app"), ...sourceFiles("components")]) {
+    if (file.startsWith("components/lifeline/") || file.startsWith("components/ui/")) continue;
+    const source = read(file);
+    const usesLibrary =
+      source.includes("@/components/ui/bento-grid") ||
+      source.includes("@/components/lifeline");
+    if (!usesLibrary) continue;
+    if (isDesignLab(file)) labUsers.push(file);
+    else publicUsers.push(file);
+  }
+  assert.deepEqual(publicUsers, []);
+  assert.ok(labUsers.includes("components/design-lab/demos.tsx"));
 });

@@ -115,7 +115,7 @@ Tailwind v4, Next.js, and React are the UI stack. Do not add an animation packag
 
 ### Custom components that stay
 
-The editorial shell, story templates, status pills, brand avatar, celestial frame, and case-specific learning UI in the tables above are unchanged. Do not point a page at `components/ui` until a reviewed change names the page and the primitive.
+The editorial shell, story templates, status pills, brand avatar, celestial frame, and case-specific learning UI in the tables above are unchanged. Public pages do not import `components/ui`. Do not point a public page at `components/ui` until a reviewed change names the page and the primitive. The shipped `/design-lab` page is the editorial workshop and does not import these primitives.
 
 ### Recommended later, not installed
 
@@ -124,15 +124,31 @@ The editorial shell, story templates, status pills, brand avatar, celestial fram
 | Case-study breadcrumb | Official shadcn breadcrumb, or a small local component | Home / Work or Side Quests / title, using `kind`. Specify before building. |
 | One status widget | Existing `StatusBadge` or `ProjectStatusPill` | Two widgets already exist. Do not add shadcn Badge as a third. |
 | Separator | Official shadcn separator | `.editorial-rule` already draws the divider. |
-| Community registries | [Directory](https://ui.shadcn.com/docs/directory) | Reviewed below. Only `@keyline` is configured, because that registry is already on main. |
+| Community registries | [Directory](https://ui.shadcn.com/docs/directory) | `@keyline` and `@magicui` are both configured. `@magicui` is Bento Grid only. |
 
-### Community registries reviewed, not installed
+### Magic UI and Lifeline
 
-The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 unavailable, 2 observing). This branch did not add them. `@keyline` is the exception kept from main.
+**Status:** Installed for the lab. Public pages do not import them. The primitive preview is not mounted on the shipped `/design-lab` page.
+**Date:** 2026-10-11
+
+| Piece | Where it lives | How it was added | Where it renders |
+| --- | --- | --- | --- |
+| Bento Grid | `components/ui/bento-grid.tsx` | `npx shadcn@latest add @magicui/bento-grid`. The existing button was not overwritten. `@radix-ui/react-icons` is the registry dependency. | `components/design-lab/demos.tsx` only |
+| Lifeline | `components/lifeline/` and `lib/lifeline-data.ts` | `npx shadcn@latest add https://evilrabbit.com/r/lifeline.json`. No `app/lifeline/page.tsx`. | `components/design-lab/demos.tsx` only, `mode="embed"` |
+
+`defineLifeline` fills every year from a birth year. The prototype does not call it. Markers come from the published `roles` list. The sticky column reads Co. and Year. `birthYear` is `0` and is not displayed, because every marker sets `age` to a company abbreviation. `experience-timeline.tsx` is unchanged.
+
+`components/lifeline` is the copied registry. ESLint turns off the React hook rules that this upstream code does not satisfy, and only in that folder. The `geist` package was removed after install. The timeline uses `--font-geist-sans` from `next/font/google`. `next-themes` stays because the fireworks provider imports `useTheme`. The lab does not mount `ThemeProvider`, so the document theme is unchanged, and the prototype includes no fireworks effect. Reduced motion sets marker and label opacity to 1 and clears the rail scale, so a cleared animation cannot leave the timeline invisible.
+
+React Bits is not installed. It is not required for this prototype.
+
+### Community registries reviewed
+
+The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 unavailable, 2 observing). `@keyline` stays from main. `@magicui` is configured for Bento Grid only.
 
 | Registry | Directory status | Review | Decision |
 | --- | --- | --- | --- |
-| `@magicui` | Healthy, 250 items | Orbiting Circles is a CSS animation. The broader library is built with Motion. Continuous orbit was already rejected. | Do not install. |
+| `@magicui` | Healthy, 250 items | Orbiting Circles and the Motion-based set stay out. Bento Grid has no `motion` dependency. | Bento Grid only, inside the lab demo component. |
 | `@motion-primitives` | Healthy, 33 items | `text-effect` depends on `motion` and includes fade presets. | Do not install. |
 | `@aceternity` | Degraded, score 84 | Motion for React, marketing effects. | Do not install. |
 | `@animate-ui` | Healthy, 580 items | Animated primitives. A second motion system. | Do not install. |

@@ -7,15 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/account-signal/pipeline.test.ts lib/portfolio-registry.test.ts lib/version-control.test.ts lib/selected-work/access-policy.test.ts lib/academy/programming.test.ts lib/academy/guided-lessons.test.ts lib/public-stories.test.ts lib/public-personal.test.ts lib/builder-academy/identity-journey.test.ts lib/builder-academy/credential-risk.test.ts lib/builder-academy/credential-evidence-sources.test.ts lib/site-nav.test.ts lib/constellation.test.ts lib/portfolio/verified-stacks.test.ts lib/design-lab.test.ts lib/shadcn-setup.test.ts",
+    "test": "node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test lib/account-signal/pipeline.test.ts lib/portfolio-registry.test.ts lib/version-control.test.ts lib/selected-work/access-policy.test.ts lib/academy/programming.test.ts lib/academy/guided-lessons.test.ts lib/public-stories.test.ts lib/public-personal.test.ts lib/builder-academy/identity-journey.test.ts lib/builder-academy/credential-risk.test.ts lib/builder-academy/credential-evidence-sources.test.ts lib/site-nav.test.ts lib/constellation.test.ts lib/portfolio/verified-stacks.test.ts lib/design-lab.test.ts lib/shadcn-setup.test.ts lib/design-lab-gate.test.ts",
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@radix-ui/react-icons": "^1.3.2",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^1.55.0",
     "next": "16.4.0",
+    "next-themes": "^0.4.6",
     "radix-ui": "^1.7.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
