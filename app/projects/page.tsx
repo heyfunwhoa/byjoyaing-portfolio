@@ -1,6 +1,6 @@
 import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
-import { ProjectPreview } from "@/components/project-previews";
+import { ProjectEvidence } from "@/components/project-evidence";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { ProjectsDirectory } from "@/components/projects-directory";
 import { ProjectsSystems } from "@/components/projects-systems";
@@ -72,7 +72,7 @@ export default async function ProjectsPage({
                     </Link>
                     {project.demoUrl ? (
                       <Link href={project.demoUrl} className="text-accent">
-                        Open the live sample
+                        See the on-site sample
                       </Link>
                     ) : null}
                     {project.githubUrl ? (
@@ -83,7 +83,7 @@ export default async function ProjectsPage({
                   </div>
                 </div>
                 <div className={flipped ? "min-w-0 lg:order-1" : "min-w-0"}>
-                  <ProjectPreview kind={project.preview} />
+                  <ProjectEvidence kind={project.preview} />
                 </div>
               </article>
             );
