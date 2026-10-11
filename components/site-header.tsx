@@ -104,7 +104,7 @@ export function SiteHeader() {
         <div
           aria-hidden="true"
           onClick={closeMenu}
-          className="fixed inset-0 z-30 bg-foreground/30 lg:hidden"
+          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
         />
       ) : null}
     </>

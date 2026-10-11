@@ -22,6 +22,21 @@ Instrument Serif is named in the request and rejected. [ADR 0001](../decisions/0
 | 4. Learning | Proposal only. Deal journey and the stakeholder playground remain the patterns. Academy pages are not rewritten. |
 | 5. System | Adoption guide records licenses, rejections, and the spacing, focus, motion, and reduced-motion rules. No package was added. |
 
+## Validation
+
+Checked against a production build on 2026-10-11.
+
+| Check | Result |
+| --- | --- |
+| `npm test` | 41 passed, including the closed-menu class and the three constellation slugs |
+| `npm run lint` | Clean |
+| `npm run build` | Next.js 16.4.0, TypeScript finished, 57 pages |
+| 320, 375, 768, 1280 | Home and `/experience` have no horizontal overflow |
+| 640 CSS pixels | This is the layout width of a 1280 window at 200% zoom. The Menu button shows. The closed panel is `display: none`. |
+| Open menu | Sits on the header edge. Focus moves to Home. Main is `inert`. Page scroll is locked. A black scrim covers the page under the panel. |
+| Escape | Panel returns to `display: none`. `inert` and the scroll lock clear. |
+| 1280 nav | The menu is in the bar. The Menu button is hidden. |
+
 ## Left alone
 
 - Employment metrics stay off the site.
