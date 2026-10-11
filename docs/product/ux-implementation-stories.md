@@ -42,8 +42,8 @@ Stories assume the fonts, palette, and avatar asset stay. Each story is one pull
 **Story.** As a returning reader, I do not read the same paragraph twice.  
 **Pages.** `/`.  
 **Depends on.** UX-01, so Home does not delete the only selling summary before Work has it.  
-**Work.** Shorten Rapid7 and Forcepoint to one line each. Shorten the philosophy list to one line each. Keep one field-guide link and one Side Quest lead.  
-**Acceptance.** Professional evidence still precedes Side Quests. The advertising paragraph's long form remains on About.  
+**Work.** Done as the five-section cover in [homepage-simplification.md](../design/homepage-simplification.md). Rapid7 and Forcepoint are one sentence each. The philosophy list leaves Home. Field guides and the project grid leave Home too. Side Quests stays a bento tile, not a lead feature.  
+**Acceptance.** Professional evidence still precedes Side Quests. The advertising paragraph's long form remains on About. The competitive field practice is the only featured story.  
 **Test.** Read Home then About. 375 and 1280. Reduced motion unchanged.
 
 ### UX-05 — Side Quest subjects match the taxonomy

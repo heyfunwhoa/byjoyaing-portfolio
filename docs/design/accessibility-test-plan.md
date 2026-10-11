@@ -14,7 +14,7 @@ This specification pull request changes documents only. Viewport and keyboard pa
 | UX-01 Work | 375, 768, 1280 | In-page collection links and case-study links | 200% on `/work` | Confirm no new motion |
 | UX-02 Field Notes | 375, 1280 | Featured guides and any real collection links | 200% if a guide layout changes | Existing guides only if their CSS changes |
 | UX-03 About | 375, 768, 1280 | The four corrected links | 200% on the hero | No |
-| UX-04 Home | 375, 768, 1280 | Hero actions, bento, timeline link, contact | 200% | Bento and dark section |
+| UX-04 Home | 375, 390, 768, 1280 | Hero actions, credibility links, three-tile bento, field-practice link, contact | 200% | Bento and dark hero |
 | UX-05 Side Quests | 375, 1280 | Subject links and case studies | 200% | No |
 | UX-06 Contact | 375, 1280 | Tabs, fields, submit, external links | 200% on the form | No |
 | UX-07 labels | 375, 1280 | Timeline related links, directory filters | 200% if a row wraps | No |

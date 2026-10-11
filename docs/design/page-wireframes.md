@@ -18,24 +18,22 @@ Calls to action are text links or the existing accent button. One primary action
 
 ## Home — Why explore
 
-**Purpose.** Say who she is, show enterprise selling first, then leadership, then independent building, then a way to write.  
+**Status:** The five-section cover in [homepage-simplification.md](homepage-simplification.md) replaces the longer Home sequence. Implement that file. Do not add the philosophy list, the private tile, the field-guide list, or the project grid back onto `/`.
+
+**Purpose.** Say who she is, show enterprise selling first, then offer three ways to go deeper.  
 **Primary audience.** Enterprise AE hiring manager. A revenue-leadership reader is the second pass.  
-**Owns.** The positioning sentence and the current-role excerpt.  
-**Does not own.** The full timeline, the essays, or the project directory.
+**Owns.** The positioning sentence, a condensed current-role paragraph, and one field practice.  
+**Does not own.** The full timeline, the essays, the guides, or the project directory.
 
 **Section order**
 
-1. Hero. Eyebrow: Enterprise cybersecurity · Revenue & GTM. Headline: Revenue & GTM Leader. Curious Builder. Philosophy. Two actions: Explore Work, Explore Side Quests. Leader portrait. Caption: Curious by nature. Builder by instinct.
-2. Credibility. One line each for People, problem-driven, systems-minded. Beside or under that, the Truffle Security record from `roles`. Link: Read the experience timeline.
-3. Bento. Work is the large tile. Then Field Notes, Side Quests, the private invitation, the pull quote. Existing `EditorialBento`.
-4. Selected selling. One line for Rapid7 and one line for Forcepoint, each linking to `/experience`. Not the full bullet list.
-5. Leadership glimpse. One sentence and a link to Work → People & Leadership. No second copy of the enablement story.
-6. One Field Note link, labeled illustrative.
-7. One Side Quest lead with its status, plus a link to all Side Quests.
-8. One sentence of personal story and a link to About.
-9. Connect. Get in touch. Optional text link to `/private-work`.
+1. Hero. Eyebrow: Enterprise cybersecurity · Revenue & GTM. Headline: Revenue & GTM Leader. Curious Builder. One philosophy line. Short description. Actions: Explore Work, About Me. Leader portrait. Caption: Curious by nature. Builder by instinct.
+2. Credibility. Truffle Security as one paragraph from `roles`. Rapid7 and Forcepoint as one existing sentence each, linking to `/experience`. Link: Read the experience timeline.
+3. Bento. Three tiles. Work is the large tile. Then Field Notes, then Side Quests.
+4. One field practice. Competitive guidance, status Professional field system, link `/work/competitive-intelligence-engine`. Not a project grid.
+5. Close. One short note. Get in touch. About.
 
-**Visual hierarchy.** The headline is the only `h1`. The Truffle record is the largest proof block. The bento is navigation, smaller than the proof. Side Quests are a single lead, not a gallery.
+**Visual hierarchy.** The headline is the only `h1`. The Truffle record is the largest proof block. The bento is navigation. Side Quests are a tile, not a gallery.
 
 **Mobile (375)**
 
@@ -45,34 +43,31 @@ Enterprise cybersecurity · Revenue & GTM
 Revenue & GTM Leader.
 Curious Builder.
 People first. Problem-driven. Systems-minded.
+short description
 [ Explore Work ]
-[ Explore Side Quests ]
+[ About Me ]
 [ Leader portrait ]
 Curious by nature. Builder by instinct.
 01  Credibility
-The selling comes first.
-People / Problem-driven / Systems   (one line each)
+Enterprise selling, with the people and the motion around it.
 Truffle Security
-Senior Enterprise Account Executive
-three existing points
-Read the experience timeline
-[Bento stacks: Work, Field Notes, Side Quests, private, quote]
-Selected selling
+one paragraph from the existing points
 Rapid7          one line → Experience
 Forcepoint      one line → Experience
-People & Leadership
-one sentence → Work
-Field Notes
-one illustrative guide →
-Side Quests
-one project, status, limits →
-About
-one sentence →
-Connect
+Read the experience timeline
+02  Explore my work
+[Bento stacks: Work, Field Notes, Side Quests]
+03  A field practice
+Turning competitive context into usable field guidance
+Professional field system
+Read the field approach
+04  A note
+The useful next step is a conversation.
 [ Get in touch ]
+About me
 ```
 
-**Desktop (1280).** Hero is type left, portrait right. Credibility is principles left, Truffle record right. Later sections are full width, one story each. The bento may use the existing asymmetric spans from `lg` up.
+**Desktop (1280).** Hero is type left, portrait right. Credibility is the headline left and the Truffle composition right. The bento uses asymmetric spans from `lg` up: Work is the tall tile. The field practice is title left, paragraph right. The close stays on the paper background.
 
 ## About — Who I am
 

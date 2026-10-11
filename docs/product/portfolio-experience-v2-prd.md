@@ -27,7 +27,7 @@ Kristen Joy Aing is an experienced enterprise cybersecurity seller developing to
 
 A visitor who needs to evaluate commercial judgment can still miss it.
 
-**Verified:** The homepage leads with revenue and GTM positioning, then credibility, then a Work-led bento, then professional examples, then independent projects. That order is correct.
+**Verified at the EPIC-01 baseline:** The homepage led with revenue and GTM positioning, then credibility, then a Work-led bento, then professional examples, then independent projects. That order was professional-first. The current requirement is shorter: [homepage-simplification.md](../design/homepage-simplification.md). Independent projects are a bento destination, not a homepage grid.
 
 **Verified gap:** The Work index names Enterprise Sales, People & Leadership, and GTM Strategy, but Enterprise Sales is only two links. The narrative stories render under People & Leadership. The only registry item classified `kind: "work"` is `competitive-intelligence-engine`, and it renders under GTM Strategy. Selling evidence a hiring manager needs is easier to find on Home and `/experience` than inside the collection that claims to hold it.
 
@@ -95,7 +95,8 @@ Inspected in the repository. The live site was previously confirmed on productio
 - Positioning on the homepage and in metadata: Revenue & GTM Leader · Curious Builder. Philosophy underneath.
 - Fonts: Geist Sans and Geist Mono only. See [ADR 0001](../decisions/0001-preserve-geist-typography.md).
 - Palette and editorial surfaces in `app/globals.css`.
-- Homepage sequence in `app/page.tsx`: hero with Leader avatar, principles, current role, bento, Rapid7 and Forcepoint rows, illustrative field guides, featured independent projects, personal story, contact.
+- Homepage sequence in `app/page.tsx`, as verified at the EPIC-01 baseline: hero with Leader avatar, principles, current role, bento, Rapid7 and Forcepoint rows, illustrative field guides, featured independent projects, personal story, contact.
+- **Superseded for Home:** [homepage-simplification.md](../design/homepage-simplification.md) replaces that sequence with five sections: hero, condensed credibility, a three-tile bento, one competitive field practice, and a short close. Full role bullets stay on `/experience`. Guides stay on Field Notes. Project grids stay on Side Quests. Do not treat the longer sequence above as the current requirement.
 - Work/Side Quest classification in `lib/portfolio-registry.ts` with tests via `validatePortfolioEntries`.
 - Two public narrative stories in `lib/public-stories.ts`.
 - Field Notes index plus `/field-notes/enterprise-deal` and `/field-notes/multithreading`, labeled as demonstrations.
@@ -167,7 +168,7 @@ Preserve the top-level navigation. Page-level purpose, wireframes, the migration
 
 | Destination | Job | Verified today | Proposed next |
 | --- | --- | --- | --- |
-| Home | Why explore | Editorial sequence above | Reduce repeated sentences after Work is clearer. Do not lengthen the page. |
+| Home | Why explore | Five-section cover in [homepage-simplification.md](../design/homepage-simplification.md) | Keep it a cover. Do not lengthen it with timelines, guide lists, or project grids. |
 | About | Who I am | Page exists: origin, philosophy, milestones | Editorial pass only. No Joy Index. Public interests only. |
 | Work | What I have done | Index plus timeline at `/experience` | Three collections with distinct evidence. Enterprise Sales first. |
 | Field Notes | How I think | Index and two guides | Real inventories. Unpublished titles labeled. |

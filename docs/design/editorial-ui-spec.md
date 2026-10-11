@@ -51,7 +51,7 @@ Utility only: focus, disclosure, and the existing reduced-motion handling. Defer
 
 ## Layout patterns
 
-Use a bento when several related entry points need unequal emphasis. The homepage bento is the reference: Work is the large tile; Field Notes, Side Quests, private invitation, and the pull quote follow in DOM order.
+Use a bento when several related entry points need unequal emphasis. The homepage bento is the reference: three tiles, DOM order Work, then Field Notes, then Side Quests. Work is the large tile from `lg` up. Private access and the philosophy line are not bento tiles. See [homepage-simplification.md](homepage-simplification.md).
 
 Also use, and prefer when a bento would flatten the story:
 
@@ -67,7 +67,7 @@ Do not give every item the same card size.
 
 | Destination | Primary story | Supporting |
 | --- | --- | --- |
-| Home | Who she is and why the commercial work is credible | One bento, selected evidence, then independent work, then a personal note, then contact |
+| Home | Who she is and why the commercial work is credible | Three-tile bento, one field practice, then a short close to About and Contact |
 | Work | Enterprise sales evidence | People & Leadership, then GTM Strategy |
 | Field Notes | How a method is used, and whether it is evidenced | Collection navigation, metadata, related links |
 | Side Quests | What is actually built, and how mature it is | Subject groups |
