@@ -8,6 +8,8 @@ Start here: [Authentication vs. Authorization](authentication-vs-authorization.m
 
 Related lessons: [Identity Across Channels](identity-across-channels.md) explains MFA/SSO/SCIM across web, mobile, CLI, API, cloud, integrations, and agents. [Secrets, Non-Human Identities & IAM](secrets-non-human-identity.md) connects credential exposure, workload identities, resource permissions, and the Detector Coverage Atlas / Security Market Map.
 
+**Applied builder case study:** [Better Auth for a private GTM workspace](better-auth-gtm-workspace.md) connects authenticated sessions to server-side account ownership and a step-by-step learning journal, using fictional data. It supplements rather than replaces the foundational [AuthN vs. AuthZ lesson](authentication-vs-authorization.md).
+
 **Interactive prototype:** [Identity Journey Lab](/builder-academy/identity-journey) explores humans, services, CI/CD workloads and AI agents. It is a fictional demonstration; not an active IAM integration.
 
 **New lab:** [Credential-to-Identity Risk Explorer](/builder-academy/credential-risk) connects exposed secrets, workload identity, effective access, audit evidence and remediation.

@@ -42,3 +42,17 @@ test("cursor workflows is a Builder lesson without private personal data", () =>
   assert.equal(/joy\s*index/i.test(blob), false);
   assert.equal(/kristen\.aing@gmail\.com/i.test(blob), false);
 });
+
+test("Better Auth GTM learning card has a real access-control exercise", () => {
+  const lesson = lessons.find((item) => item.slug === "better-auth-gtm-workspace");
+  assert.ok(lesson);
+  assert.equal(lesson.track, "Builder");
+  assert.equal(lesson.level, "Intermediate");
+  assert.match(lesson.exercise, /docs\/builder-academy\/better-auth-gtm-workspace\.md/);
+  assert.match(lesson.exercise, /synthetic/i);
+  assert.match(lesson.check.question, /account URL ID/i);
+  assert.match(lesson.check.choices[lesson.check.answer], /server-side account-permission/);
+  assert.match(lesson.check.explanation, /valid session establishes identity only/i);
+  const content = JSON.stringify(lesson);
+  assert.equal(/real customer|production secret|private account data/i.test(content), false);
+});
