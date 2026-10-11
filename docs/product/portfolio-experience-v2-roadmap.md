@@ -176,3 +176,14 @@ The existing epics above remain historical sequencing. **New ordered work** (see
 - **E / P2 — Design and measurement:** approved character artwork, respectful analytics and Search Console / Core Web Vitals baseline.
 
 Status conventions: proposed / implemented in branch / automated checks passing / browser verified / deployed. No invented launch metrics.
+
+## Professional proof increment — Work stories
+
+**Status:** Implemented in branch; publication and claim review still required.
+
+- Three editorial stories appear in /work ordered Enterprise Selling → People & Leadership → GTM Strategy, and reuse `ProfessionalCaseStudy`.
+- Data authority: `lib/public-stories.ts` and existing public `lib/portfolio.ts` career descriptions. No private customer notes, account names or new deal metrics added.
+- **Evidence gate:** Review personal versus team contribution and exact wording of notable historic agreements before using figures or names in external promotion. Public role points are not a substitute for a primary deal record.
+- **Design acceptance:** Sections must remain clearly distinct on mobile, no accidental jump-link duplication, related destinations should work and links should be keyboard-accessible.
+- **Release acceptance:** CI/security passing, content signoff, and a production deployment matching the merge commit. A passing build alone does not verify small-screen visuals.
+- **Next:** Gather original, publishable artifacts for more detailed sales and leadership stories; add screenshots/diagrams only with provenance and consent.
