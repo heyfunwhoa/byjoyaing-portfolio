@@ -11,7 +11,7 @@ Templates are compositions of the components below. Do not add a template compon
 
 | Template | Used by | Composition | Build note |
 | --- | --- | --- | --- |
-| T1 Preview | Home | Hero, short proof, `EditorialBento`, one-line previews, contact close | Keep the sequence in `app/page.tsx` until UX-04 |
+| T1 Preview | Home | Hero, condensed proof, three-tile `EditorialBento`, one field practice, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
 | T2 Collection index | Work, Field Notes, Side Quests | Hero with the matching avatar, in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
 | T3 Profile | About | Leader portrait, origin, philosophy, arc link, interests | Toolkit stays last |
 | T4 Utility | Contact | Headline, links, `InquiryForm` | No new fields |
@@ -32,7 +32,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `site-header.tsx` | Six-item nav, mobile menu, Escape restores focus | Keep | Implemented. `/work/[slug]` is not marked active, because Work matches the index path only. |
 | `mark.tsx` | `joy.` signature | Keep | Implemented |
 | `editorial-section.tsx` | Section framing | Editorial section header | Partial. Prefer this over a new header component. |
-| `editorial-bento.tsx` | Work-first asymmetric links | Editorial bento | Implemented. Do not wrap every section in a bento. |
+| `editorial-bento.tsx` | Three links: Work, Field Notes, Side Quests | Editorial bento | Implemented. Work stays the large tile. Do not wrap every section in a bento. |
 | `kicker.tsx` | Small label | Eyebrow | Exists. Editorial pages often use `.editorial-eyebrow` instead. |
 | `rail.tsx` | Supporting rail | Section divider or margin note | Exists. Confirm before a new divider. |
 

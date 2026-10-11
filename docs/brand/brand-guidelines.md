@@ -97,7 +97,7 @@ Maintain one consistent illustrated personal identity across three treatments: L
 
 Target primary destinations: **Home / About / Work / Field Notes / Side Quests / Contact**. Do not break live URLs.
 
-- **Home:** professional positioning → credible proof → Selected Work → Side Quests preview → personal story → contact.
+- **Home:** professional positioning → condensed credibility → three destinations (Work, Field Notes, Side Quests) → one field practice → About and Contact. See [homepage-simplification.md](../design/homepage-simplification.md).
 - **About:** short origin story including advertising background → values (personal and professional) → leadership philosophy → career timeline → education.
 - **Work:** professional outcomes, team development, sales/GTM strategy, enablement, collaboration and relevant impact.
 - **Field Notes:** editorial home for how I operate. Content types: Playbooks (practical repeatable methods), Frameworks (decision tools), Lessons Learned (grounded reflections), and **Operating Systems** (revenue/team cadences and processes that make practices repeatable). Never present planned methods as proven practice.
@@ -108,7 +108,7 @@ Target primary destinations: **Home / About / Work / Field Notes / Side Quests /
 
 **Navigation (verified):** Home, About, Work (`/work`), Field Notes (`/field-notes`), Side Quests (`/side-quests`), and Contact are in the header. Keep the private Joy Index entirely outside the public portfolio. Do not redirect `/experience` or `/projects` until a reviewed change adds tests for every inbound link.
 
-**Homepage direction:** The shipped homepage leads with professional positioning, then credibility, one Work-led bento, selected professional evidence, independent experiments, a personal note, and contact. Further hierarchy changes follow [portfolio-experience-v2-prd.md](../product/portfolio-experience-v2-prd.md). `/prototype` is an exploratory page, not an approved replacement for `/`.
+**Homepage direction:** The homepage is a five-section cover: positioning, condensed enterprise credibility, a Work-led bento with Field Notes and Side Quests, one field practice, and a short close. Detail lives on Work, Experience, Field Notes, Side Quests, and About. See [homepage-simplification.md](../design/homepage-simplification.md). `/prototype` is an exploratory page, not an approved replacement for `/`.
 
 ## 6. Case study patterns
 

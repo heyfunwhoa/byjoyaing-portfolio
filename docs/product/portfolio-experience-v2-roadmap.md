@@ -64,8 +64,8 @@ EPIC-08  P0  Quality gate on every implementation PR, not a final batch
 - **Priority:** P1. **Phase:** Design. **Milestone:** M1.
 - **Objective:** Remove repeated explanation once Work carries the selling story.
 - **User value:** A shorter page with the same credibility.
-- **Existing implementation:** Hero, credibility, bento, employment rows, field guides, independent projects, personal note, contact. Order is already professional-first.
-- **Scope:** Copy and composition in `app/page.tsx` only, after EPIC-04.
+- **Existing implementation:** Five-section cover in [homepage-simplification.md](../design/homepage-simplification.md): hero, condensed credibility, three-tile bento, one field practice, short close. Full role text stays on `/experience` so this page does not depend on the unmerged Work-index branch.
+- **Scope:** Copy and composition in `app/page.tsx` and `components/editorial-bento.tsx`. Header menu is out of scope (PR #45).
 - **Out of scope:** New sections, new fonts, moving Side Quests above Work.
 - **Dependencies:** EPIC-01, and EPIC-04 so the page does not delete the only selling summary.
 - **Stories:** As a returning reader, I do not read the same paragraph on Home and Work.

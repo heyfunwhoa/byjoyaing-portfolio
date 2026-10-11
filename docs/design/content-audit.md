@@ -52,7 +52,7 @@ Severity is editorial, not a bug score. P0 means a hiring reader can take the wr
 
 ## What is in the right place
 
-- Homepage order: hero, credibility, bento, professional rows, then experiments, then person, then contact.
+- Homepage order after the cover simplification: hero, credibility, three-tile bento, one field practice, close. See [homepage-simplification.md](homepage-simplification.md).
 - Kind map in `lib/portfolio-registry.ts`.
 - Avatar variants all using `/avatar.png`.
 - Contact form without a résumé request.

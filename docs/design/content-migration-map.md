@@ -22,13 +22,16 @@ Actions:
 
 | Current | Owner today | Proposed owner | Action |
 | --- | --- | --- | --- |
-| `/` hero, philosophy, Truffle record | Home | Home | Keep. This is the selling-first screen. |
-| `/` People / Problem-driven / Systems list | Home | Home, short | Point the long version at About. Home keeps one line each. |
-| `/` Rapid7 and Forcepoint rows | Home | Work → Enterprise Sales, with Home keeping one line and a link | Point. The full points already live in `lib/portfolio.ts` `roles` and render again on `/experience`. |
-| `/` field-guide links | Home | Field Notes | Keep one link each. Do not retell the guides. |
-| `/` featured experiments | Home | Side Quests | Keep one lead and two links. |
-| `/` advertising paragraph and pull quote | Home and About | About | Point. Home keeps the quote as a caption, not a second essay. |
-| `/` connect | Home | Contact | Keep the button. The form stays on `/contact`. |
+| `/` hero, one-line philosophy, Leader avatar | Home | Home | Keep. The second hero action is About, not Side Quests. See [homepage-simplification.md](homepage-simplification.md). |
+| `/` People / Problem-driven / Systems list | Home | About | Point. Home keeps the single philosophy line. The three-item list leaves the homepage. |
+| `/` Truffle record | Home | Home, condensed; full points on `/experience` | Condense to one paragraph made from the existing points. |
+| `/` Rapid7 and Forcepoint rows | Home | `/experience` | Point. Home keeps one existing sentence each. Full bullets stay on the timeline. |
+| `/` field-guide links | Home | Field Notes | Move. Home does not list the guides. |
+| `/` featured experiments | Home | Side Quests | Move. Home does not show a project grid. Side Quests remains a bento tile. |
+| `/` advertising paragraph and pull quote | Home and About | About | Point. Home keeps the avatar caption, not the essay. |
+| `/` private-work tile and second private button | Home | `/private-work` | Remove from Home. The route stays. |
+| `/` one competitive field practice | Home | `/work/competitive-intelligence-engine` | Keep one story. The case study owns the detail. The monitor stays a design. |
+| `/` connect | Home | Contact | Keep one contact action in the close, plus About. The form stays on `/contact`. |
 | `/about` origin, philosophy, values, interests | About | About | Keep. Interests stay the curated set in `lib/public-personal.ts`. |
 | `/about` four-company title list | About | `/experience` | Point. About names the arc in one paragraph. |
 | `/about` "GTM and product work" cards | About | Split by kind | Relabel. Competitive evidence stays Work. Atlas, account workflows, and Truffle Camp stay Side Quests. |
