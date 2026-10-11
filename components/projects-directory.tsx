@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectPreview } from "@/components/project-previews";
+import { ProjectEvidence } from "@/components/project-evidence";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import {
   activeProjects,
@@ -76,7 +76,7 @@ export function ProjectsDirectory({ initialCategory = "All work" }: { initialCat
           {projects.map((project) => (
             <li key={project.slug} className="flex min-w-0">
               <article className="flex w-full min-w-0 flex-col gap-4 rounded-2xl border border-border bg-card p-4">
-                <ProjectPreview kind={project.preview} compact />
+                <ProjectEvidence kind={project.preview} compact />
                 <div className="flex flex-wrap items-center gap-2">
                   <ProjectStatusPill status={project.status} />
                   <span className="text-xs text-muted">{project.categories[0]}</span>
