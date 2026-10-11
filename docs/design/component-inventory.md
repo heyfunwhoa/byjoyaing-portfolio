@@ -1,8 +1,26 @@
 # Component inventory
 
-**Status:** Audit of `components/` on `main` at `94495d9`.  
+**Status:** Audit of `components/` on `main` at `e8880b3`, plus proposed page templates. Templates are not built by this note.  
 **Date:** 2026-10-11  
+**Wireframes:** [page-wireframes.md](page-wireframes.md)  
 **Rule:** Reuse a component in this list before adding one. New components need a product reason and no new dependency by default.
+
+## Page templates
+
+Templates are compositions of the components below. Do not add a template component until two pages need the same structure.
+
+| Template | Used by | Composition | Build note |
+| --- | --- | --- | --- |
+| T1 Preview | Home | Hero, short proof, `EditorialBento`, one-line previews, contact close | Keep the sequence in `app/page.tsx` until UX-04 |
+| T2 Collection index | Work, Field Notes, Side Quests | Hero with the matching avatar, in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
+| T3 Profile | About | Leader portrait, origin, philosophy, arc link, interests | Toolkit stays last |
+| T4 Utility | Contact | Headline, links, `InquiryForm` | No new fields |
+| T5 Article | Field Notes guides | Evidence label, title, body, related links | Optional contents only when the guide is long |
+| T6 Case study | `/work/[slug]` | `work-story-template` or `build-story-template` by kind | Do not invent a third template |
+| T7 Timeline | `/experience` | Role rows from `roles` | Not a primary nav template |
+| T8 Directory | `/projects` | Filters plus `projects-directory` | Supporting. Side Quests is the introduction |
+
+Avatar by template: T1, T3, and Work use Leader. Field Notes uses Explorer. Side Quests and the directory use Builder. All of them render `/avatar.png`.
 
 This inventory does not prescribe a rebuild. Names in the "Possible later role" column are the shared pieces the product plan may need. If an existing component already does the job, extend it.
 

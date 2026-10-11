@@ -2,7 +2,8 @@
 
 **Status:** Acceptance checklist for implementation pull requests. Completing it is not a WCAG conformance claim.  
 **Target:** WCAG 2.2 AA.  
-**Date:** 2026-10-11
+**Date:** 2026-10-11  
+**Which story tests which page:** [accessibility-test-plan.md](accessibility-test-plan.md)
 
 Automated lint does not cover this list. A planning-only pull request records "not run" for viewport checks.
 
