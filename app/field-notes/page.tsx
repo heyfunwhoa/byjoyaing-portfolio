@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/field-notes" },
+  openGraph: { url: "/field-notes" },
   title: "Field Notes — Kristen Joy Aing",
   description: "Playbooks, frameworks, lessons learned, and operating systems for relationships, revenue, and teams.",
 };
@@ -99,14 +101,14 @@ export default function FieldNotesPage() {
         <h2 className="font-display text-3xl tracking-tight">Browse the collections</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Collection outlines are starting points, not published case studies or claims of measured results.
-          Specific examples will be added with sources and clear evidence labels: Used in practice, Illustrative model, or Exploring.
+          Two interactive guides are published above. The topics below are planned outlines, not clickable or published articles. New entries will include sources and labels: Used in practice, Illustrative model, or Exploring.
         </p>
         <div className="mt-7 grid gap-4 md:grid-cols-2">
           {collections.map((collection) => (
             <article key={collection.title} className="rounded-2xl border border-border bg-card p-6">
               <h3 className="text-xl font-semibold">{collection.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted">{collection.description}</p>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">Topics to develop</p>
+              <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">Planned topics — not published</p>
               <ul className="mt-2 list-inside list-disc space-y-2 text-sm">
                 {collection.examples.map((example) => <li key={example}>{example}</li>)}
               </ul>

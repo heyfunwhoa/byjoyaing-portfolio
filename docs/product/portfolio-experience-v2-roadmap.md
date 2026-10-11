@@ -165,3 +165,14 @@ EPIC-08  P0  Quality gate on every implementation PR, not a final batch
 6. Art direction only when a specific story needs it (EPIC-07, P2).
 
 EPIC-08 applies to items 2 through 6.
+
+
+## 2026-10-10 audit-driven next increment
+The existing epics above remain historical sequencing. **New ordered work** (see canonical PRD section 31):
+- **A / P0 — SEO and reusable reading foundation:** sitemap/canonicals/social preview/Person metadata, article/evidence/case-study components. PR can be merged after automated checks but requires browser evidence for release.
+- **B / P0 — Professional proof:** 2–3 anonymized, employer-safe case studies supported by documented personal contribution and authentic corroboration. No claimed results inferred from sample projects.
+- **C / P1 — Field Notes publication and Side Quest visuals:** publish source-linked entries with status and reading paths; diagrams must say illustration when not live.
+- **D / P1 — Responsive/accessibility QA:** 320, 375, 390, 768, 1280 and 200% zoom; keyboard and menu; no overflow, working contact flows. Record issues and re-test.
+- **E / P2 — Design and measurement:** approved character artwork, respectful analytics and Search Console / Core Web Vitals baseline.
+
+Status conventions: proposed / implemented in branch / automated checks passing / browser verified / deployed. No invented launch metrics.

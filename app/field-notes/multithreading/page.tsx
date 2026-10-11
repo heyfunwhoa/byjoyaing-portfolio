@@ -1,3 +1,5 @@
+import { SourceAndEvidencePanel } from "@/components/editorial/source-and-evidence-panel";
+import { RelatedWork } from "@/components/editorial/related-work";
 import { PageMain } from "@/components/page-main";
 import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
 import { connectedSources } from "@/lib/field-notes";
@@ -5,6 +7,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/field-notes/multithreading" },
   title: "Multithreading & Stakeholder Mapping — Field Notes",
   description: "A seller and sales leader playbook for mapping complex buying groups, validating champions, and inspecting relationship gaps.",
 };
@@ -56,5 +59,7 @@ export default function MultithreadingPage() {
       </article>)}</div>
       <p className="mt-5 text-sm text-muted">Future integrations should use explicit consent, source provenance, least-privilege access, review before CRM writes, redaction and tenant isolation. Private repository data is not part of this public demonstration.</p>
     </section>
+    <SourceAndEvidencePanel status="illustrative" limitations="Stakeholders, relationships and access states are synthetic. Mapping access is not proof of decision power, budget approval, purchase intent or successful deals. This demonstration does not call connected account systems." />
+    <RelatedWork items={[{href:"/field-notes/enterprise-deal",title:"Enterprise deal anatomy",category:"Field Notes"},{href:"/work",title:"Enterprise sales and team leadership",category:"Work"},{href:"/side-quests",title:"Independent GTM experiments",category:"Side Quests"}]} />
   </PageMain>;
 }
