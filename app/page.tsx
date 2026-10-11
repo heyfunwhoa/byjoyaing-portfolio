@@ -121,7 +121,7 @@ export default function Home() {
 
       <section aria-labelledby="featured-title" className="border-b border-border py-12 sm:py-16">
         <p className="editorial-eyebrow text-accent">03 / A field practice</p>
-        <div className="mt-4 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-end lg:gap-14">
+        <div className="mt-4 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-14">
           <div className="min-w-0">
             <p className="editorial-eyebrow text-muted">{statusCopy.field}</p>
             <h2 id="featured-title" className="editorial-section-title mt-3 max-w-[18ch]">
