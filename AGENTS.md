@@ -24,6 +24,7 @@ Before editing branding, copy, layout, navigation, portfolio examples or public 
 - Change brand fundamentals only through an explicit reviewed update to the canonical guide; do not create competing brand guidelines in other files.
 
 These portfolio-specific rules supplement the Next.js agent block above. Other repositories may share engineering standards without adopting this site's branding.
+
 ## Shared engineering and agent operating standards (cross-repository pointer)
 
 For **meaningful changes** to product requirements, architecture, security, integrations, CI, releases or AI-agent workflows, consult the **current** canonical [Technical Docs Platform](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/README.md) guidance as applicable:
