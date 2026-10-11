@@ -101,3 +101,37 @@ test("new lessons are public-safe and do not require Sumble integration", () => 
   assert.doesNotMatch(body, /kristen\.aing@gmail\.com|joy\s*index|\bAPI_KEY\s*=|real account export/i);
   assert.match(body, /permissions/i);
 });
+
+
+test("security assessment lesson distinguishes buyer sizes, reports and subprocessor review", () => {
+  const lesson = lessons.find((item) => item.slug === "security-assessments-buyer-size");
+  assert.ok(lesson);
+  assert.equal(lesson.track, "GTM");
+  assert.equal(lesson.level, "Intermediate");
+  assert.match(lesson.exercise, /security-assessments-by-buyer-size\.md/);
+  assert.match(lesson.exercise, /synthetic/i);
+  assert.match(lesson.exercise, /Head of Sales/i);
+  assert.match(lesson.summary, /SOC 2 reports, penetration tests, subprocessors/i);
+  assert.ok(lesson.takeaways.some((value) => /Type I/.test(value) && /Type II/.test(value)));
+  assert.ok(lesson.takeaways.some((value) => /penetration test/i.test(value)));
+  assert.ok(lesson.takeaways.some((value) => /subprocessor/i.test(value)));
+  assert.match(lesson.check.choices[lesson.check.answer], /Actual data risk/i);
+  assert.ok(lesson.sources.some((item) => item.url.includes("wstg.owasp.org")));
+  assert.ok(lesson.sources.some((item) => item.url.includes("ico.org.uk")));
+});
+
+test("enterprise contracts lesson now explains NDA versus MNDA", () => {
+  const lesson = lessons.find((item) => item.slug === "enterprise-contracts-sales-cycle");
+  assert.ok(lesson);
+  assert.match(lesson.title, /NDA vs MNDA/);
+  assert.match(lesson.exercise, /unilateral NDA/);
+  assert.match(lesson.exercise, /MNDA/);
+  assert.ok(lesson.takeaways.some((value) => /NDA can be unilateral or mutual/.test(value)));
+});
+
+test("security assessment training uses public fictional scenarios and no personal records", () => {
+  const lesson = lessons.find((item) => item.slug === "security-assessments-buyer-size");
+  assert.ok(lesson);
+  const content = JSON.stringify(lesson);
+  assert.doesNotMatch(content, /kristen\.aing@gmail\.com|real customer agreement|private client data|API_KEY\s*=/i);
+});
