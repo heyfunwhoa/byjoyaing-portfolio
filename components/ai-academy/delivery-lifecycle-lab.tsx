@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 const stages = [
+  {label:"Intake",heading:"Qualify an incoming request",situation:"A fictional Sales rep reports that audit exports require manual work. They ask for a new button but have one anecdote and no estimate of frequency.",decision:"What should happen before committing to a feature?",options:["Promise delivery immediately","Record the user problem, source, current workaround and impact hypothesis; send for discovery","Create a duplicate engineering backlog"],correct:1,why:"Request intake is upstream of product discovery; not every request becomes a roadmap commitment.",evidence:"Dated feedback and an explicit triage decision"},
   {
     label: "Define",
     heading: "Find the actual problem",
@@ -66,8 +67,8 @@ export function DeliveryLifecycleLab() {
     <section aria-label="Interactive delivery lifecycle lab" className="mt-7 rounded-xl border border-border bg-background p-4 sm:p-6">
       <p className="text-xs font-semibold uppercase tracking-widest text-accent">Practice lab · Fictional example</p>
       <h3 className="mt-2 font-display text-2xl">Decide what happens next</h3>
-      <p className="mt-2 text-sm leading-6 text-muted">Work through five stages. Choose the best action, see why, and learn what evidence belongs in each system. Nothing is saved or sent to an external service.</p>
-      <div className="mt-5 grid grid-cols-5 gap-1" aria-label="Lifecycle stages">
+      <p className="mt-2 text-sm leading-6 text-muted">Work through six stages. Choose the best action, see why, and learn what evidence belongs in each system. Nothing is saved or sent to an external service.</p>
+      <div className="mt-5 grid grid-cols-3 gap-1 sm:grid-cols-6" aria-label="Lifecycle stages">
         {stages.map((item, index) => (
           <button key={item.label} type="button" aria-current={index === step ? "step" : undefined} onClick={() => setStep(index)} className={`min-w-0 rounded-md border px-1 py-3 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${step === index ? "border-accent bg-card" : "border-border hover:bg-card"}`}>
             <span className="block">{index + 1}</span><span className="mt-1 block break-words">{item.label}</span>
