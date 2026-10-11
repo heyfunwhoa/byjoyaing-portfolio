@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/ai-academy/systems` },
     ...capabilityViews.map((view) => ({
       url: `${base}/capabilities/${view.slug}`,
-      })),
+    }))
     { url: `${base}/contact` },
     ...projectRoutes,
   ];
