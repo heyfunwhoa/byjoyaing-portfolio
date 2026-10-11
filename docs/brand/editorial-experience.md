@@ -20,12 +20,12 @@
 
 ## Bento composition rule
 
-The [v0 Bento Grid template](https://v0.app/templates/bento-grid-8QW53cSzCxp) informed the use of varied tile spans and scale, **not** a wholesale style import. Its public listing does not expose dependable component source, so the portfolio uses its own semantic Next.js/Tailwind implementation. This is editorial navigation, not a dashboard: Work dominates; Field Notes and Builds are next; private access and brand philosophy are secondary. Typography and selective surface colors create hierarchy instead of gradients, product-style widgets, or crowded identical cards. In `components/editorial-bento.tsx`, preserve DOM reading order at 320/375px, enlarge asymmetric spans only at desktop, make the whole link focusable with visible focus, and keep all text legible without hover. Do not add fabricated proof or capability badges.
+The [v0 Bento Grid template](https://v0.app/templates/bento-grid-8QW53cSzCxp) informed the use of varied tile spans and scale, **not** a wholesale style import. Its public listing does not expose dependable component source, so the portfolio uses its own semantic Next.js/Tailwind implementation. This is editorial navigation, not a dashboard. The homepage bento has three destinations: Work dominates; Field Notes and Side Quests are next. Private access stays a route, not a homepage tile. The philosophy line lives in the hero, not in a second bento card. Typography and selective surface colors create hierarchy instead of gradients, product-style widgets, or crowded identical cards. In `components/editorial-bento.tsx`, preserve DOM reading order at 320/375px, enlarge asymmetric spans only at desktop, make the whole link focusable with visible focus, and keep all text legible without hover. Do not add fabricated proof or capability badges. See [homepage-simplification.md](../design/homepage-simplification.md).
 
 ## Reusable templates
 
 - `EditorialSection`: visual chapter intro and surface selection.
-- `EditorialBento`: Work-first asymmetrical editorial navigation across Field Notes, Builds and approved deeper work.
+- `EditorialBento`: Work-first asymmetrical navigation to Field Notes and Side Quests. Three tiles. Private access is not one of them.
 - `WorkStoryTemplate`: commercial leadership and enterprise sales case study (context, challenge, contribution, collaborators, decisions, evidence, outcomes, lessons, caveats) plus a request for approved materials. No authentication.
 - `BuildStoryTemplate`: independent prototype/research (problem, motivation, architecture, sources, implementation, limitations, next steps) plus a request for working notes.
 - `/work/storytelling-guide`: clearly fictional demonstration of both patterns, not an actual employer case study.

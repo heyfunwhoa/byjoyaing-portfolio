@@ -1,5 +1,7 @@
 # Information architecture and wireframes (low fidelity)
 
+> **Historical workshop.** Current wireframes are in [page-wireframes.md](page-wireframes.md). The migration map, taxonomy, and content audit sit beside it. Wireframes below still say "Commercial Leader," which is not the approved positioning.
+
 ## Sitemap
 / (Home)
 /about (story, values, experience)
