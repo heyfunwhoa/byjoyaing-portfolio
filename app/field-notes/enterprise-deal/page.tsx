@@ -1,9 +1,12 @@
+import { SourceAndEvidencePanel } from "@/components/editorial/source-and-evidence-panel";
+import { RelatedWork } from "@/components/editorial/related-work";
 import { PageMain } from "@/components/page-main";
 import { DealJourney } from "@/components/field-notes/deal-journey";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/field-notes/enterprise-deal" },
   title: "Strategic Enterprise Deal Anatomy — Field Notes",
   description: "A structured approach to enterprise deal execution and sales-leader coaching.",
 };
@@ -37,6 +40,8 @@ export default function EnterpriseDealPage() {
           <Link href="/experience" className="font-medium text-accent">Professional experience →</Link>
         </div>
       </section>
+      <SourceAndEvidencePanel status="illustrative" limitations="Synthetic method and buying journey; no live customer deal, completed procurement, or numerical outcome is represented. No external research sources are claimed for this original exercise." />
+      <RelatedWork items={[{href:"/field-notes/multithreading",title:"Stakeholder mapping playbook",category:"Field Notes"},{href:"/work",title:"Professional Work",category:"Work"}]} />
     </PageMain>
   );
 }
