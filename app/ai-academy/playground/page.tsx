@@ -1,4 +1,5 @@
-import type {Metadata} from "next";
 import {Playground} from "@/components/ai-academy/playground";
-export const metadata:Metadata={title:"AI Playground | AI Foundations",description:"Practice source verification, prompting and tool selection using safe fictional exercises.",robots:{index:false,follow:false}};
+import {robotsNoindex} from "@/lib/indexing";
+import type {Metadata} from "next";
+export const metadata:Metadata={title:"AI Playground",description:"Practice source verification, prompting and tool selection using safe fictional exercises.",robots:robotsNoindex};
 export default function Page(){return <Playground/>;}

@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/field-notes/multithreading" },
-  title: "Multithreading & Stakeholder Mapping — Field Notes",
+  title: "Multithreading & Stakeholder Mapping",
   description: "A seller and sales leader playbook for mapping complex buying groups, validating champions, and inspecting relationship gaps.",
 };
 

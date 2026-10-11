@@ -1,10 +1,13 @@
-import Link from "next/link";
+import { designLabAvailable } from "@/lib/design-lab-gate";
+import { robotsNoindex } from "@/lib/indexing";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Homepage prototype | Kristen Joy Aing",
+  title: "Homepage prototype",
   description: "Exploratory homepage layout for design review.",
-  robots: { index: false, follow: false },
+  robots: robotsNoindex,
 };
 
 const principles = [
@@ -31,6 +34,8 @@ const workExamples = [
 ];
 
 export default function HomepagePrototype() {
+  if (!designLabAvailable()) notFound();
+
   return (
     <main id="main-content" className="mx-auto w-full max-w-6xl px-5 pb-20 sm:px-8">
       <div className="border-b border-border py-4 text-xs text-muted">

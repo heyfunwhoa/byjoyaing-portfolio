@@ -7,6 +7,7 @@ import { FieldAssetCase } from "@/components/field-asset-case";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { SampleRecordView } from "@/components/sample-record";
+import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { projects } from "@/lib/portfolio";
 import { findUseCase, salesProject, sampleFor } from "@/lib/sales";
@@ -32,7 +33,7 @@ export async function generateMetadata({
     return { title: "Project" };
   }
   return {
-    title: `${project.title} — Kristen Joy Aing`,
+    title: project.title,
     description: project.sales.salesQuestion,
   };
 }
@@ -115,6 +116,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         <article className="flex min-w-0 flex-col gap-8">
           <header className="flex flex-col gap-5">
+            <ProjectKindLabel slug={slug} />
             <h1 className="max-w-3xl font-display text-4xl leading-[1.12] tracking-tight text-foreground sm:text-6xl">
               {project.title}
             </h1>

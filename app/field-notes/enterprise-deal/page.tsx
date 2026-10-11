@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/field-notes/enterprise-deal" },
-  title: "Strategic Enterprise Deal Anatomy — Field Notes",
+  title: "Strategic Enterprise Deal Anatomy",
   description: "A structured illustrative approach to enterprise deal execution and sales-leader coaching.",
 };
 

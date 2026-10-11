@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { ProgrammingFoundations } from "@/components/ai-academy/programming-foundations";
+import { robotsNoindex } from "@/lib/indexing";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Programming Foundations | Builder Academy",
+  title: "Programming Foundations",
   description: "Learn JavaScript, TypeScript, Python, SQL, HTML, CSS and the difference between languages, frameworks and runtimes.",
-  robots: { index: false, follow: false },
+  robots: robotsNoindex,
 };
 
 export default function ProgrammingPage() {

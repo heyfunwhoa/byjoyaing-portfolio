@@ -7,7 +7,7 @@ import {directoryProjects} from "@/lib/project-directory";
 import {portfolioEntries} from "@/lib/portfolio-registry";
 import {statusHelp} from "@/lib/portfolio";
 import {ProjectTechnologyStack} from "@/components/portfolio/technology-stack";
-export const metadata:Metadata={alternates:{canonical:"/side-quests"},openGraph:{url:"/side-quests"},title:"Side Quests | Independent Projects",description:"Independent cybersecurity, AI, enablement, and GTM software experiments, with transparent build stages."};
+export const metadata:Metadata={alternates:{canonical:"/side-quests"},openGraph:{url:"/side-quests"},title:"Side Quests",description:"Independent cybersecurity, AI, enablement, and GTM software experiments, with transparent build stages."};
 const selected=["account-intelligence","detector-coverage-atlas","truffle-camp","customer-feedback-intelligence"];
 export default function SideQuestsPage(){
  const items=portfolioEntries.filter(entry=>entry.kind==="side-quest");

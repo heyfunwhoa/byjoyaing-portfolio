@@ -3,7 +3,7 @@ import { PageMain } from "@/components/page-main";
 import { BuilderGuide } from "@/components/builder-guide";
 
 export const metadata: Metadata = {
-  title: "Builder Guide — Kristen Joy Aing",
+  title: "Builder Guide",
   description: "Find the commercial leadership work, practical builds, and story behind joy.",
 };
 

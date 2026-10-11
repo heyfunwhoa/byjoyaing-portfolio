@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Systems Engineering | Builder Academy", description: "Learn systems architecture, research pipelines, evidence and operations through applied exercises." };
+export const metadata: Metadata = { title: "Systems Engineering", description: "Learn systems architecture, research pipelines, evidence and operations through applied exercises." };
 
 const modules = [
   ["Web research infrastructure","Search indexes, crawling, extraction, RAG, provider selection and citations.","Draw a research request from browser to verified evidence."],

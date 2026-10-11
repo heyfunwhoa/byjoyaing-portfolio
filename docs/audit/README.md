@@ -2,7 +2,7 @@
 
 Audit of https://www.byjoyaing.com/ against `heyfunwhoa/byjoyaing-portfolio` at `a76e5e9` (`Add a development design lab for Bento Grid and Lifeline (#61)`).
 
-This folder records findings. It does not replace the canonical brand guide, ADRs, or [Portfolio Experience 2.0 PRD](../product/portfolio-experience-v2-prd.md). Implementation waits until this audit is reviewed.
+This folder records findings. It does not replace the canonical brand guide, ADRs, or [Portfolio Experience 2.0 PRD](../product/portfolio-experience-v2-prd.md). The first execution slice is described in [execution-playbook.md](execution-playbook.md).
 
 ## How to read the labels
 
@@ -28,6 +28,7 @@ This folder records findings. It does not replace the canonical brand guide, ADR
 | Portfolio improvement PRD | [portfolio-improvement-prd.md](portfolio-improvement-prd.md) |
 | Implementation roadmap | [implementation-roadmap.md](implementation-roadmap.md) |
 | Validation and acceptance checklist | [validation-checklist.md](validation-checklist.md) |
+| How product and engineering execute the top 10 | [execution-playbook.md](execution-playbook.md) |
 
 ## Inspection limits
 

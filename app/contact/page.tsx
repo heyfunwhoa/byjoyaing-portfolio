@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   openGraph: { url: "/contact" },
-  title: "Contact — Kristen Joy Aing",
+  title: "Contact",
   description:
     "Email, LinkedIn, and GitHub for enterprise sales, GTM, and technical systems.",
 };
