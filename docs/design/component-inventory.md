@@ -80,4 +80,65 @@ These are page-local systems, not the editorial design system. Do not generalize
 
 ## Dependency rule
 
-Tailwind v4, Next.js, and React are the UI stack. Do not add an animation, slider, or carousel package for editorial layout.
+Tailwind v4, Next.js, and React are the UI stack. Do not add an animation package for editorial layout. The shadcn carousel primitive depends on `embla-carousel-react`. That package is installed with the primitive and is not used on a page. See the shadcn section below.
+
+## shadcn/ui primitives
+
+**Status:** Installed, not adopted on public pages.  
+**Date:** 2026-10-11  
+**Config:** `components.json` (`style: radix-nova`, Tailwind v4, CSS variables).  
+**Base:** Radix, through the `radix-ui` package. Base UI was not selected.
+
+`npx shadcn@latest init` rewrote `app/globals.css` to a neutral preset, a circular `--font-sans: var(--font-sans)`, a radius scale, and a base layer that painted the body with a flat background. Those edits were reverted. Ivory, charcoal, copper, sage, mist, and clay stay as they were. Geist Sans and Geist Mono stay on `next/font/google`. The radius scale was not adopted, because it would resize every existing `rounded-*` corner. There is no dark theme.
+
+`--muted` remains the secondary text color `#4A504B`. shadcn's muted fill is sage (`bg-surface-sage`) inside the new primitives only. Primary maps to copper. Destructive maps to charcoal, because the brand guide has no error red. Focus stays the existing unlayered copper outline. Button, tab, accordion, dialog, and carousel controls use at least `min-h-11`. Enter and exit fades were removed so a later use does not start at opacity 0. `tw-animate-css` is not a dependency. Accordion height animation remains, and `prefers-reduced-motion` still clears animation names.
+
+`TooltipProvider` wraps the root layout so a tooltip can be added later. It does not change page copy, navigation, or layout.
+
+### Installed
+
+| Primitive | File | Why it is here | Not a replacement for |
+| --- | --- | --- | --- |
+| Card | `components/ui/card.tsx` | Shared surface for a later composition | `project-card.tsx`, `editorial-bento.tsx` |
+| Tabs | `components/ui/tabs.tsx` | Keyboard-selectable sections | In-page collection links |
+| Tooltip | `components/ui/tooltip.tsx` | Short label on hover and focus | The CSS brand tooltip in the header |
+| Hover Card | `components/ui/hover-card.tsx` | Preview on pointer and keyboard | Case-study pages |
+| Avatar | `components/ui/avatar.tsx` | Generic image with a fallback | `brand-avatar.tsx`. The portrait stays `/avatar.png` |
+| Sheet | `components/ui/sheet.tsx` | Focus-trapped side panel | The header menu |
+| Dialog | `components/ui/dialog.tsx` | Focus-trapped modal | No public modal exists |
+| Accordion | `components/ui/accordion.tsx` | Disclosure with a heading button | `experience-timeline.tsx` |
+| Carousel | `components/ui/carousel.tsx` | One slide group with previous and next buttons | Editorial layout. Not used |
+| Button | `components/ui/button.tsx` | Required by Dialog, Sheet, and Carousel | Page links and the header button |
+
+### Custom components that stay
+
+The editorial shell, story templates, status pills, brand avatar, celestial frame, and case-specific learning UI in the tables above are unchanged. Do not point a page at `components/ui` until a reviewed change names the page and the primitive.
+
+### Recommended later, not installed
+
+| Piece | Source | Why it waits |
+| --- | --- | --- |
+| Case-study breadcrumb | Official shadcn breadcrumb, or a small local component | Home / Work or Side Quests / title, using `kind`. Specify before building. |
+| One status widget | Existing `StatusBadge` or `ProjectStatusPill` | Two widgets already exist. Do not add shadcn Badge as a third. |
+| Separator | Official shadcn separator | `.editorial-rule` already draws the divider. |
+| Community registries | [Directory](https://ui.shadcn.com/docs/directory) | Reviewed below. Only `@keyline` is configured, because that registry is already on main. |
+
+### Community registries reviewed, not installed
+
+The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 unavailable, 2 observing). This branch did not add them. `@keyline` is the exception kept from main.
+
+| Registry | Directory status | Review | Decision |
+| --- | --- | --- | --- |
+| `@magicui` | Healthy, 250 items | Orbiting Circles is a CSS animation. The broader library is built with Motion. Continuous orbit was already rejected. | Do not install. |
+| `@motion-primitives` | Healthy, 33 items | `text-effect` depends on `motion` and includes fade presets. | Do not install. |
+| `@aceternity` | Degraded, score 84 | Motion for React, marketing effects. | Do not install. |
+| `@animate-ui` | Healthy, 580 items | Animated primitives. A second motion system. | Do not install. |
+| `@cult-ui` | Healthy, score 89 | Framer Motion. | Do not install. |
+| `@react-bits` | Healthy, 860 items | Animated set. Confirm the Commons Clause rider on the file before any future copy. | Do not install. |
+| `@diceui` | Healthy, 246 items | Sample item depends on `@base-ui/react`. This project uses Radix. | Do not install. |
+| `@ai-elements` | Degraded, score 94 | Chat and message UI. This site has no assistant surface. | Do not install. |
+| `@kibo-ui` | Healthy, 41 items | Composable extras. The index URL returned an error during this review, so the files were not read. | Do not install until a named component is reviewed. |
+| `@keyline` | Healthy, MIT icons | Stroke icons shipped on main in #57 and live in `components/icons`. | Keep the registry. Do not add more Keyline components here. |
+| `@logoforge` | Healthy | Logo artwork. Trademarks stay with their owners. Registry registration is a separate pull request. | Do not install logo components. |
+| `@spectrumui` | Healthy, 315 items | Another visual language, with its own motion. The MCP server is a separate pull request. | Do not install components. |
+| Block and theme registries (`@shadcnblocks`, `@shadcn-studio`, and similar) | Mixed, several degraded | Full pages and themes would restyle the editorial site. | Do not install. |
