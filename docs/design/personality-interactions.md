@@ -15,7 +15,7 @@ The site should feel editorial, geometric, and a little playful. It should still
 | About, Work, Projects, Field Notes | Pages already own the long copy | Do not retell them. Field Notes featured guides use the same entrance motion as the cover. |
 | Joy Index | Private. Not readable from this repository. ADR 0002 forbids a public route or a paste. | No index content, no public mention of the index. The public easter egg is the approved signature `joy.` |
 | Avatars | One file, `/avatar.png`, for Leader, Explorer, and Builder | Do not draw a new face. Crop marks ease outward on hover and focus. No facial animation. |
-| Navigation | #45 merged. Closed panel uses `hidden`. Open panel is `fixed` with a backdrop. Escape returns focus. | Behavior preserved in `lib/site-nav.ts` and tested. Closed state still occupies no space and exposes no links. |
+| Navigation | #45 merged the closed `hidden` state. A later pass removed the `4.75rem` offset. | Open panel uses `absolute top-full` on a relative header. Backdrop is `fixed inset-0` under the header. Escape and `inert` are in `site-header.tsx`. |
 | Status UI | `ProjectStatusPill` and `StatusBadge` both print `statusCopy` | Keep both. The pill moves from 11px to 12px. Do not add a third widget. |
 | Motion | A global reduced-motion rule already shortens transitions | New motion uses that rule and also sets `animation-name: none` when reduced motion is requested. |
 

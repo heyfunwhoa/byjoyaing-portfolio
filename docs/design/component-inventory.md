@@ -29,11 +29,11 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | Component | What it does now | Possible later role | Action |
 | --- | --- | --- | --- |
 | `page-main.tsx` | Page width and padding | Keep | Implemented |
-| `site-header.tsx` | Six-item nav, mobile menu, Escape restores focus | Keep | Implemented. `/work/[slug]` is not marked active, because Work matches the index path only. |
+| `site-header.tsx` | Six-item nav, mobile menu, Escape restores focus | Keep | Implemented. Closed panel is `hidden`. Open panel hangs from the header with `top-full`. While open, main, footer, and the skip link are `inert`. `/work/[slug]` is not marked active. |
 | `mark.tsx` | `joy.` signature | Keep | Implemented |
 | `editorial-section.tsx` | Section framing | Editorial section header | Partial. Prefer this over a new header component. |
 | `editorial-bento.tsx` | Three links: Work, Field Notes, Side Quests | Editorial bento | Implemented. Work stays the large tile. Do not wrap every section in a bento. |
-| `geometric-motif.tsx` | Decorative orbits, `aria-hidden` | Geometric decoration | Use on one dominant tile. Do not scatter it. |
+| `geometric-motif.tsx` | Decorative orbits and three nodes, `aria-hidden` | Geometric decoration | Use on the Work tile only. Static. Do not spin it. |
 | `marginalia.tsx` | One short aside | Annotation | One per section at most. |
 | `crop-frame.tsx` | Crop marks around the portrait | Avatar frame | Marks may ease outward. The portrait file stays `/avatar.png`. |
 | `kicker.tsx` | Small label | Eyebrow | Exists. Editorial pages often use `.editorial-eyebrow` instead. |
@@ -50,13 +50,15 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `project-card.tsx`, `project-row.tsx`, `project-previews.tsx` | Directory and homepage previews | Story card, project preview | Implemented. Do not add a second card system. |
 | `project-status-pill.tsx`, `status-badge.tsx` | Status display | Project status, evidence label | Partial. Two status widgets exist. A later PR should pick one for public labels rather than add a third. |
 | `projects-directory.tsx`, `projects-systems.tsx` | Filterable directory | Category filter | Implemented on `/projects`. Side Quests links here. |
-| `experience-timeline.tsx` | Career timeline | Career timeline | Implemented on `/experience` |
+| `experience-timeline.tsx` | Career timeline, first two roles visible, earlier roles behind a button | Career timeline | Implemented on `/experience`. Visible roles keep every point and their related links. |
 
 ## Identity and image
 
 | Component | What it does now | Action |
 | --- | --- | --- |
 | `brand-avatar.tsx` | `leader`, `explorer`, `builder`. All render `/avatar.png`. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. |
+| `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Homepage hero only. `aria-hidden` geometry. No spin, no face motion. |
+| `project-constellation.tsx` | Three linked projects plus a sentence for each edge | `/experience` only. Not a live integration diagram. |
 | `crop-frame.tsx` | Corner crop frame | Keep |
 | `tool-mark.tsx` | Small tool mark | Keep where already used |
 
