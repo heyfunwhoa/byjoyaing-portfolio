@@ -1,5 +1,7 @@
 "use client";
 
+import { Menu } from "@/components/icons/menu";
+import { X } from "@/components/icons/x";
 import { Mark } from "@/components/mark";
 import { isActive, menuPanelClass, primaryNav } from "@/lib/site-nav";
 import Link from "next/link";
@@ -81,7 +83,10 @@ export function SiteHeader() {
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             onClick={() => setOpenOnPath(open ? null : pathname)}
           >
-            {open ? "Close" : "Menu"}
+            <span className="inline-flex items-center gap-2">
+              {open ? <X size={16} className="size-4" /> : <Menu size={16} className="size-4" />}
+              {open ? "Close" : "Menu"}
+            </span>
           </button>
           <div id="primary-menu" ref={menuRef} className={menuPanelClass(open)}>
             <ul className="flex flex-col gap-1 text-sm lg:flex-row lg:flex-wrap lg:items-center lg:justify-end lg:gap-x-4 lg:gap-y-1">
