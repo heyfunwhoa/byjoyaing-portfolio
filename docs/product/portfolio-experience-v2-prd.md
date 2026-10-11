@@ -163,7 +163,7 @@ Canonical scenarios: [portfolio-user-journeys.md](portfolio-user-journeys.md). T
 
 ## 10. Information architecture
 
-Preserve the top-level navigation.
+Preserve the top-level navigation. Page-level purpose, wireframes, the migration map, taxonomy, and UX stories are specified in [page-wireframes.md](../design/page-wireframes.md), [content-migration-map.md](../design/content-migration-map.md), [content-taxonomy.md](../design/content-taxonomy.md), and [ux-implementation-stories.md](ux-implementation-stories.md). Those files propose structure. They do not authorize a visual rebuild until reviewed.
 
 | Destination | Job | Verified today | Proposed next |
 | --- | --- | --- | --- |

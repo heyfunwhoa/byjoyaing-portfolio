@@ -1,6 +1,6 @@
 # Information architecture and wireframes (low fidelity)
 
-> **Historical workshop.** The live navigation and the Portfolio Experience 2.0 information architecture are in [portfolio-experience-v2-prd.md](../product/portfolio-experience-v2-prd.md) and [portfolio-user-journeys.md](../product/portfolio-user-journeys.md). Wireframes below still say "Commercial Leader," which is not the approved positioning.
+> **Historical workshop.** Current wireframes are in [page-wireframes.md](page-wireframes.md). The migration map, taxonomy, and content audit sit beside it. Wireframes below still say "Commercial Leader," which is not the approved positioning.
 
 ## Sitemap
 / (Home)
