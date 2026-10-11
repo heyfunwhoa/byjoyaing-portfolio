@@ -7,6 +7,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about" },
   title: "About — Kristen Joy Aing",
   description:
     "Revenue & GTM Leader · Curious Builder. Enterprise cybersecurity, relationships, people development, and repeatable systems.",
