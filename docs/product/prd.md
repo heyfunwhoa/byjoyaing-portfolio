@@ -1,3 +1,5 @@
+> **Canonical requirements:** [Portfolio Experience 2.0 PRD](portfolio-experience-v2-prd.md) (including the UX/SEO increment in section 31). This document is a historical summary, not a separate competing PRD.
+
 # Portfolio Experience 2.0 — Product Requirements Document
 
 > Draft for review — 2026-10-10. Source: current repository description/README and shared PRD structure from technical-docs-platform. Confirm actual code and existing docs before implementation. 
