@@ -1,3 +1,4 @@
+import { ProfessionalCaseStudy } from "@/components/editorial/professional-case-study";
 import type {Metadata} from "next";
 import Link from "next/link";
 import {PageMain} from "@/components/page-main";
@@ -21,17 +22,17 @@ export default function WorkPage(){
  </section><section id="people-leadership" className="scroll-mt-24 border-b border-border py-12">
  <h2 className="font-display text-3xl">People & leadership in practice</h2>
  <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">Professional examples, with the boundaries of public evidence kept clear. Independent software projects linked below are not employer deployments.</p>
- <div className="mt-6 grid gap-5">{publicStories.map(story=><article key={story.id} className="rounded-xl border border-border bg-card p-6">
- <p className="text-xs font-semibold uppercase tracking-wider text-accent">{story.area}</p>
- <h3 className="mt-2 text-2xl font-semibold">{story.title}</h3>
- <dl className="mt-5 grid gap-4 text-sm leading-6 sm:grid-cols-2">
- <div><dt className="font-semibold">Context</dt><dd className="mt-1 text-muted">{story.context}</dd></div>
- <div><dt className="font-semibold">My contribution</dt><dd className="mt-1 text-muted">{story.contribution}</dd></div>
- <div><dt className="font-semibold">Evidence and limitations</dt><dd className="mt-1 text-muted">{story.evidence}</dd></div>
- <div><dt className="font-semibold">What I learned</dt><dd className="mt-1 text-muted">{story.takeaway}</dd></div>
- </dl>
- <div className="mt-5 flex flex-wrap gap-5">{story.related.map(link=><Link key={link.href} href={link.href} className="text-sm text-accent underline">{link.label} →</Link>)}</div>
- </article>)}</div>
+ <div className="mt-6 grid gap-5">{publicStories.map(story=><ProfessionalCaseStudy
+    key={story.id}
+    title={story.title}
+    context={story.context}
+    role={story.contribution}
+    execution="The public account describes the method and individual contributions; detailed employer artifacts are not reproduced here."
+    evidence={story.evidence}
+    reflection={story.takeaway}
+    relatedHref={story.related[0]?.href}
+    relatedLabel={story.related[0]?.label}
+  />)}</div>
  </section>
  <section id="gtm-strategy" className="scroll-mt-24 py-12"><h2 className="font-display text-3xl">GTM strategy & professional evidence</h2>
  <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">These examples describe professional methods or field artifacts where supported. A related software prototype is not proof of employer deployment.</p>
