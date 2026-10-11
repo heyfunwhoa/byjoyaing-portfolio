@@ -1,6 +1,8 @@
 import { BrandAvatar } from "@/components/brand-avatar";
 import { EditorialBento } from "@/components/editorial-bento";
+import { Marginalia } from "@/components/marginalia";
 import { PageMain } from "@/components/page-main";
+import { directoryProjects } from "@/lib/project-directory";
 import { roles, statusCopy, statusHelp } from "@/lib/portfolio";
 import { publicStories } from "@/lib/public-stories";
 import type { Metadata } from "next";
@@ -41,6 +43,10 @@ export default function Home() {
   const current = roleByCompany("Truffle Security");
   const earlier = [roleByCompany("Rapid7"), roleByCompany("Forcepoint")];
   const fieldPractice = storyById("competitive-evidence");
+  const sideQuest = directoryProjects.find((project) => project.slug === "detector-coverage-atlas");
+  if (!sideQuest) {
+    throw new Error("Missing detector-coverage-atlas");
+  }
 
   return (
     <PageMain>
@@ -81,7 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="credibility-title" className="border-b border-border py-12 sm:py-16">
+      <section aria-labelledby="credibility-title" className="section-enter border-b border-border py-12 sm:py-16">
         <p className="editorial-eyebrow text-accent">01 / Credibility</p>
         <div className="mt-3 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-start lg:gap-14">
           <h2 id="credibility-title" className="editorial-section-title max-w-[16ch]">
@@ -119,7 +125,7 @@ export default function Home() {
 
       <EditorialBento />
 
-      <section aria-labelledby="featured-title" className="border-b border-border py-12 sm:py-16">
+      <section aria-labelledby="featured-title" className="section-enter border-b border-border py-12 sm:py-16">
         <p className="editorial-eyebrow text-accent">03 / A field practice</p>
         <div className="mt-4 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-14">
           <div className="min-w-0">
@@ -147,8 +153,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="close-title" className="py-14 sm:py-20">
-        <p className="editorial-eyebrow text-accent">04 / A note</p>
+      <section aria-labelledby="build-title" className="section-enter border-b border-border py-12 sm:py-16">
+        <p className="editorial-eyebrow text-accent">04 / A side quest</p>
+        <div className="mt-4 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-14">
+          <div className="min-w-0">
+            <p className="editorial-eyebrow text-muted">{statusCopy[sideQuest.status]}</p>
+            <h2 id="build-title" className="editorial-section-title mt-3 max-w-[16ch]">
+              {sideQuest.title}
+            </h2>
+            <Marginalia>Independent of the roles above. The label is the limit of what runs.</Marginalia>
+          </div>
+          <div className="min-w-0">
+            <p className="max-w-xl text-base leading-7">{sideQuest.summary}</p>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-muted">{statusHelp[sideQuest.status]}</p>
+            <div className="mt-5 flex flex-col gap-1">
+              <Link
+                href={sideQuest.caseStudyUrl}
+                className="editorial-link inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
+              >
+                Read the sample <span aria-hidden="true" className="ml-2">→</span>
+              </Link>
+              <Link
+                href="/side-quests"
+                className="editorial-link inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
+              >
+                All Side Quests <span aria-hidden="true" className="ml-2">→</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="close-title" className="section-enter py-14 sm:py-20">
+        <p className="editorial-eyebrow text-accent">05 / A note</p>
         <h2 id="close-title" className="editorial-quotation mt-4 max-w-[24ch]">
           The useful next step is a conversation.
         </h2>

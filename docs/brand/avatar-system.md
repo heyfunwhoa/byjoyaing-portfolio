@@ -26,7 +26,7 @@ The illustrated character supports a real person's professional identity; it mus
 - Until approved assets exist, **all component variants render the existing `/avatar.png`**. Never point production markup at hypothetical assets.
 - Do not embed scripts, remote resources, event handlers, or untrusted markup in SVG. Review SVG before inclusion.
 - Preserve natural aspect ratio; avoid face clipping at 375, 768 and 1280px and at 200% zoom. Ensure optimized image dimensions and no layout shift.
-- Simple static illustration by default. Do not animate facial movement; respect `prefers-reduced-motion` for any subsequent motion.
+- Simple static illustration by default. Do not animate facial movement. A hover or focus state may move the crop marks around the existing `/avatar.png`. It may not swap the face, tilt the portrait, or point at an unapproved file. Respect `prefers-reduced-motion`.
 
 ## Component rules
 `<BrandAvatar variant="leader" />`, `variant="explorer"`, `variant="builder"` are valid. The default is Leader.

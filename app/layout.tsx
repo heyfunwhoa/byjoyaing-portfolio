@@ -49,7 +49,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <div className="flex flex-col gap-2">
               <span className="flex items-center gap-2 font-medium text-foreground">
                 <Mark className="text-accent" />
-                Kristen Joy Aing
+                <span className="font-display text-accent">joy.</span>
+                <span>Kristen Joy Aing</span>
               </span>
               <p className="text-xs leading-5">Revenue & GTM Leader · Curious Builder · 2026</p>
             </div>
