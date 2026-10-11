@@ -27,5 +27,8 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "registries": {
+    "@logoforge": "https://logoforge.terravidhal.me/r/{name}.json"
   }
 }
