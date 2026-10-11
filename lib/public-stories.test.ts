@@ -4,9 +4,24 @@ import {publicStories,validatePublicStories} from "./public-stories.ts";
 
 test("public professional stories have unique ids, evidence boundaries and local references",()=>{
  assert.deepEqual(validatePublicStories(),[]);
- assert.ok(publicStories.length>=2);
+ assert.equal(publicStories.length, 3);
  for(const story of publicStories){
   assert.ok(story.evidence.length>20);
-  assert.ok(story.related.every(link=>link.href.startsWith("/")));
+  assert.ok(story.related.every(link=>link.href.startsWith("/") && ["Work","Field Notes","Side Quests","Builder Academy"].includes(link.category)));
+  assert.equal(new Set(story.related.map(link=>link.href)).size, story.related.length);
  }
+});
+
+
+test("the enterprise seller story links to illustrative deal and stakeholder guides", () => {
+ const enterprise = publicStories.find(story => story.id === "enterprise-selling");
+ assert.ok(enterprise);
+ assert.ok(enterprise.related.some(link => link.href === "/field-notes/enterprise-deal" && link.category === "Field Notes"));
+ assert.ok(enterprise.related.some(link => link.href === "/field-notes/multithreading" && link.category === "Field Notes"));
+});
+
+test("independent curricula are labeled Side Quests, not employer deployments", () => {
+ const coaching = publicStories.find(story => story.id === "team-enablement");
+ assert.ok(coaching);
+ assert.ok(coaching.related.some(link => link.href === "/work/truffle-camp" && link.category === "Side Quests"));
 });
