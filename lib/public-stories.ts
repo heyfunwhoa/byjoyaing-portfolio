@@ -12,7 +12,7 @@ export const publicStories = [
     execution: "Built account strategy around discovery and technical stakeholder requirements, coordinated commercial conversations and translated technical value for different buyers.",
     evidence: "Public experience timeline describes strategic sales through Fortune 100 accounts, a major 2022 threat-intelligence agreement at Rapid7, and Forcepoint\u2019s largest team web-security agreement in 2021. Specific deal amounts, customers and contractual details are intentionally withheld; company-level figures and personal attribution require independent approval before expansion.",
     takeaway: "Enterprise execution depends on aligning technical validity, the business case and stakeholder decisions without assuming a uniform procurement sequence.",
-    related: [{label:"Experience and career history",href:"/experience"},{label:"Deal anatomy illustration",href:"/field-notes/enterprise-deal"}]
+    related: [{label:"Experience and career history",href:"/experience",category:"Work"},{label:"Deal anatomy illustration",href:"/field-notes/enterprise-deal",category:"Field Notes"},{label:"Stakeholder mapping exercise",href:"/field-notes/multithreading",category:"Field Notes"}]
   },
   {
     id: "team-enablement",
@@ -23,7 +23,7 @@ export const publicStories = [
     execution: "Converted recurring discovery and evaluation questions into shared resources, and supported cross-functional onboarding across sales, solutions architecture and customer success.",
     evidence: "The experience timeline records two SDRs moving into closing roles and seven GTM hires onboarded; independently verify and approve those figures before publishing further detail.",
     takeaway: "Good enablement reduces dependence on one person holding all the context.",
-    related: [{label:"Career timeline",href:"/experience"},{label:"Enablement side quest",href:"/work/truffle-camp"}]
+    related: [{label:"Career timeline",href:"/experience",category:"Work"},{label:"Truffle Camp — independent curriculum design",href:"/work/truffle-camp",category:"Side Quests"}]
   },
   {
     id:"competitive-evidence",
@@ -34,7 +34,7 @@ export const publicStories = [
     execution:"Collected relevant evidence, separated validated observations from assumptions, and packaged comparisons into repeatable guidance for sellers.",
     evidence:"Professional artifacts are summarized in the competitive-intelligence case study; underlying employer documents aren't reproduced publicly.",
     takeaway:"Useful GTM narratives distinguish confirmed findings from hypotheses.",
-    related:[{label:"Field approach",href:"/work/competitive-intelligence-engine"},{label:"Career timeline",href:"/experience"}]
+    related:[{label:"Competitive evidence field approach",href:"/work/competitive-intelligence-engine",category:"Work"},{label:"Career timeline",href:"/experience",category:"Work"},{label:"Explore independent research systems",href:"/side-quests",category:"Side Quests"}]
   }
 ] as const;
 
@@ -46,7 +46,7 @@ export function validatePublicStories() {
   ids.add(story.id);
   const requiredFields: readonly string[] = [story.title, story.context, story.contribution, story.execution, story.evidence, story.takeaway];
   if (requiredFields.some(value => value.trim().length === 0)) errors.push("Incomplete story: " + story.id);
-  if(!story.related.length||story.related.some(link=>!link.href.startsWith("/")))errors.push("Invalid internal reference: "+story.id);
+  if(!story.related.length||story.related.some(link=>!link.href.startsWith("/") || !["Work", "Field Notes", "Side Quests", "Builder Academy"].includes(link.category)))errors.push("Invalid internal reference: "+story.id);
  }
  return errors;
 }

@@ -187,3 +187,18 @@ Status conventions: proposed / implemented in branch / automated checks passing 
 - **Design acceptance:** Sections must remain clearly distinct on mobile, no accidental jump-link duplication, related destinations should work and links should be keyboard-accessible.
 - **Release acceptance:** CI/security passing, content signoff, and a production deployment matching the merge commit. A passing build alone does not verify small-screen visuals.
 - **Next:** Gather original, publishable artifacts for more detailed sales and leadership stories; add screenshots/diagrams only with provenance and consent.
+
+
+## Editorial navigation and project connections
+
+**Status:** Implemented on feature branch; browser verification pending.
+
+- Connect each public Work story to the relevant experience, illustrated Field Note, or independent build using explicit categories stored in `lib/public-stories.ts`.
+- Reuse `ProfessionalCaseStudy` to show multiple relevant links with keyboard-friendly targets rather than only one first link.
+- Add a Field Notes pathway back to the corresponding /work anchor so reading an illustrated method doesn't masquerade as an employer outcome.
+- Preserve existing `/work/[slug]` routes for legacy Side Quests and label their relationship explicitly in UI; route location alone does not determine content status.
+- Unit test category labels, uniqueness and representative links.
+
+**Next implementation phase:** Genuine project evidence (real screenshots and source-controlled architecture views, with provenance/alt) and a published-versus-planned Field Notes taxonomy. This increment does not introduce new integrations or claim live project data flows.
+
+**Acceptance:** CI tests/lint/build/security passing; keyboard, mobile (320/375/768/1280) and zoom navigation checked; production merge commit READY.
