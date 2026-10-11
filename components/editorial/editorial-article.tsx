@@ -38,7 +38,7 @@ export function EditorialArticle({
           {updatedAt ? <span>Updated <time dateTime={updatedAt}>{updatedAt}</time></span> : null}
         </div>
       </header>
-      <div className="editorial-prose py-8 sm:py-12">{children}</div>
+      <div className="min-w-0 py-8 sm:py-12">{children}</div>
     </article>
   );
 }
