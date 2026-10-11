@@ -1,7 +1,8 @@
 import { BrandAvatar } from "@/components/brand-avatar";
+import { ExperienceTimeline } from "@/components/experience-timeline";
 import { MaterialsInvitation } from "@/components/materials-invitation";
 import { PageMain } from "@/components/page-main";
-import { roles } from "@/lib/portfolio";
+import { ProjectConstellation } from "@/components/project-constellation";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -63,33 +64,9 @@ export default function ExperiencePage() {
             </li>
           ))}
         </ul>
+        <ProjectConstellation />
       </section>
-      <ol>
-        {roles.map((role) => (
-          <li key={`${role.company}-${role.period}`} className="grid gap-3 border-b border-border py-10 md:grid-cols-[12rem_minmax(0,1fr)]">
-            <p className="text-sm text-muted">{role.period}</p>
-            <div>
-              <h2 className="text-xl font-semibold tracking-tight">{role.title}</h2>
-              <p className="mt-1">{role.company}</p>
-              <p className="mt-1 text-sm text-muted">{role.category}</p>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
-                {role.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-              {related[role.company] ? (
-                <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-                  {related[role.company].map((item) => (
-                    <Link key={item.href} href={item.href} className="font-medium text-accent">
-                      {item.label}
-                    </Link>
-                  ))}
-                </p>
-              ) : null}
-            </div>
-          </li>
-        ))}
-      </ol>
+      <ExperienceTimeline related={related} />
       <MaterialsInvitation tone="work" />
     </PageMain>
   );
