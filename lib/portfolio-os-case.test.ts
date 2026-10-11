@@ -17,6 +17,8 @@ test("the Portfolio OS case study has six ordered checkpoints and one scored dec
   assert.deepEqual(pass, { passed: true, message: portfolioOsDecision.pass });
   assert.equal(fail?.passed, false);
   assert.match(fail?.message ?? "", /#67/);
+  assert.match(pass?.message ?? "", /deployed Academy/);
+  assert.match(fail?.message ?? "", /deployed Academy/);
   assert.equal(portfolioOsFeedback(2)?.passed, false);
   assert.equal(portfolioOsFeedback(-1), null);
   assert.equal(portfolioOsFeedback(1.5), null);
@@ -38,7 +40,8 @@ test("the case study cites dated public pull requests and skips private personal
   assert.equal(/joy\s*index/i.test(blob), false);
 });
 
-test("KRU-17 and KRU-19 surfaces stay mounted and the lifecycle lab keeps six stages", () => {
+// Source-text guard only: rendered behavior is checked in a browser, not here.
+test("source guard: Academy source keeps the lab, case study, and product-request mounts in order", () => {
   const academy = readFileSync(join(root, "components/ai-academy/academy.tsx"), "utf8");
   const lab = readFileSync(join(root, "components/ai-academy/delivery-lifecycle-lab.tsx"), "utf8");
   const caseStudy = readFileSync(join(root, "components/ai-academy/portfolio-os-case-study.tsx"), "utf8");

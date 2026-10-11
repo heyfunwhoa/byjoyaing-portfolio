@@ -29,11 +29,13 @@ export function PortfolioOsCaseStudy() {
           </label>
         ))}
       </fieldset>
-      {feedback && (
-        <p role="status" className="mt-4 rounded-lg border border-border bg-card p-4 text-sm leading-6">
-          <strong>{feedback.passed ? "Passing evidence." : "Not passing evidence."}</strong> {feedback.message}
-        </p>
-      )}
+      <div role="status">
+        {feedback && (
+          <p className="mt-4 rounded-lg border border-border bg-card p-4 text-sm leading-6">
+            <strong>{feedback.passed ? "Passing evidence." : "Not passing evidence."}</strong> {feedback.message}
+          </p>
+        )}
+      </div>
       <div className="mt-5">
         <label htmlFor="portfolio-os-reflection" className="font-semibold">Reflection for this session</label>
         <textarea id="portfolio-os-reflection" value={reflection} onChange={(event) => setReflection(event.target.value)} rows={3} className="mt-2 w-full rounded-lg border border-border bg-card p-3 text-sm leading-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" placeholder="What would you verify before calling the next issue done?" />
