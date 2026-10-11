@@ -1,3 +1,4 @@
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { CustomerFeedbackWorkflow } from "@/components/customer-feedback-workflow";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
@@ -152,6 +153,8 @@ export function CustomerFeedbackCase() {
           </div>
         </div>
       </section>
+
+      <ProjectTechnologyStack slug="customer-feedback-intelligence" />
 
       <section className="border-b border-border py-16">
         <Label index="02">The feedback problem</Label>

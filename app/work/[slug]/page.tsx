@@ -1,3 +1,4 @@
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { AccountIntelligenceCase } from "@/components/account-intelligence-case";
 import { AtlasCase } from "@/components/atlas-case";
 import { CompetitiveIntelligenceCase } from "@/components/competitive-intelligence-case";
@@ -154,6 +155,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <dd className="text-muted">{sales.implementedTech}</dd>
             </div>
           </dl>
+
+          <ProjectTechnologyStack slug={project.slug} />
 
           <div className="grid gap-4">
             {sales.fieldAsset ? (

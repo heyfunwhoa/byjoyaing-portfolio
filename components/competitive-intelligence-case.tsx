@@ -1,3 +1,4 @@
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { CompetitiveIntelligenceWorkflow } from "@/components/competitive-intelligence-workflow";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
@@ -164,6 +165,8 @@ export function CompetitiveIntelligenceCase() {
           </div>
         </div>
       </section>
+
+      <ProjectTechnologyStack slug="competitive-intelligence-engine" />
 
       <section className="border-b border-border py-16">
         <Label index="02">The intelligence problem</Label>

@@ -1,35 +1,66 @@
-# Portfolio technology-logo system (initial rollout)
+# Portfolio technology-logo system
 
 ## Intent
-Differentiate **project identities** (original Joy Aing artwork) from **technology logos** (third-party trademarks identifying tools actually used).
-Keep the editorial brand, typography and page layouts intact.
+Differentiate **project identities** (original Joy Aing artwork, evidence previews, and status marks) from **technology logos** (third-party trademarks for tools a repository actually uses).
+Keep the editorial brand, typography, and page layouts intact.
 
 ## Current assets
-- GitHub, Vercel, Next.js: local SVGs in `public/logos/technology/`, sourced from [Logoforge](https://github.com/terravidhal/logoforge).
-- Shared, server-rendered display component: `components/portfolio/technology-stack.tsx`.
-- Typed source registry: `lib/portfolio/technology-registry.ts`.
+Local SVGs in `public/logos/technology/`, sourced from [Logoforge](https://github.com/terravidhal/logoforge):
+
+| Id | Name | Wired |
+| --- | --- | --- |
+| `nextjs` | Next.js | Yes, for pages implemented in this repository |
+| `react` | React | Yes |
+| `typescript` | TypeScript | Yes |
+| `tailwindcss` | Tailwind CSS | Yes |
+| `github` | GitHub | Detector Coverage Atlas detail only. That project publishes `heyfunwhoa/byjoyaing-portfolio` |
+| `vercel` | Vercel | Registered, not shown. This repo has no Vercel config or dependency |
+
+Shared display: `components/portfolio/technology-stack.tsx`.
+Typed registry: `lib/portfolio/technology-registry.ts`.
+Per-project ids: `lib/portfolio/verified-stacks.ts`.
+
+## What is verified
+`package.json` in this repository depends on Next.js, React, TypeScript, and Tailwind CSS. These pages are that app:
+
+- Detector Coverage Atlas
+- Account Intelligence
+- Competitive Intelligence Engine
+- Customer Feedback Intelligence
+- Truffle Camp
+- Partner GTM Engine
+
+Side Quest cards and the project directory show at most four compact marks, with the name in screen-reader text. Detail pages show the same stack with visible labels. Atlas also shows GitHub on the detail page.
+
+These studies do **not** get logos. Their copy names tools that are planned, absent, or living in a repository that is not public (`gtm-revenue-os` returned 404):
+
+- Product Release Intelligence, Product Prioritization, GTM Campaign Lab, Security Signal Intelligence
+- Revenue Planning Simulator, Revenue Intelligence, GTM Operating Plan
+
+Supabase, Exa, Sumble, Claude, Salesforce, Slack, Postgres, Drizzle, and Octokit are not installed here and are not in the registry.
 
 ## Usage
 
 ```tsx
-import { TechnologyStack } from "@/components/portfolio/technology-stack";
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 
-<TechnologyStack ids={["nextjs", "github", "vercel"]} />
+<ProjectTechnologyStack slug="detector-coverage-atlas" />
+<ProjectTechnologyStack slug="detector-coverage-atlas" presentation="compact" />
 ```
 
-This is an **illustrative** stack, not a claim that any particular project uses all three. Check each project's repository/dependencies before wiring the component into project cards.
+`ProjectTechnologyStack` renders nothing when a project has no verified ids. Do not pass a hand-written id list from a case study.
 
 ## Adding another logo
-1. Verify a technology is used by the target project.
-2. Look for an official SVG, [Logoforge](https://logoforge.terravidhal.me/), then [SVGL](https://svgl.app/). Check provenance and trademark/asset licensing.
-3. Review SVG for scripts, event attributes, foreignObject, remote references and unsafe embedded content before committing it.
-4. Save an approved SVG locally in `public/logos/technology/`.
-5. Register it in `lib/portfolio/technology-registry.ts`, update attribution here.
-6. Check light/dark appearance, 375px mobile width, accessibility and reduced-motion behavior.
+1. Verify the technology in the implementing repository (`package.json`, lockfile, or source imports). Documentation that says "planned" or "next" is not verification.
+2. Look for an official SVG, [Logoforge](https://logoforge.terravidhal.me/), then [SVGL](https://svgl.app/). Check provenance and trademark guidance.
+3. Review the SVG for scripts, event attributes, `foreignObject`, and remote references before committing it.
+4. Save it in `public/logos/technology/`.
+5. Register it in `lib/portfolio/technology-registry.ts` and add the id only to verified project stacks. Update this file.
+6. Keep the white chip so dark marks stay visible on ivory and on charcoal sections. Check 375px width. Names stay visible or in `sr-only` text.
 7. Run `npm run lint`, `npm test`, and `npm run build`.
 
 ## Scope
-No homepage edits or brand redesign in this PR. Icons should identify technology only; they do not imply any vendor sponsorship or endorsement. Follow each company's trademark guidelines.
+No homepage redesign and no new animation or dependencies. Logos identify a technology. They do not imply vendor sponsorship. Custom project icons stay separate from these marks.
 
 ## Asset credit
-Logoforge aggregates sources; individual brand artworks remain subject to their own trademarks and provenance. Logoforge credits: https://github.com/terravidhal/logoforge/blob/main/CREDITS.md
+Logoforge aggregates sources; individual brand artworks remain subject to their own trademarks. Credits: https://github.com/terravidhal/logoforge/blob/main/CREDITS.md

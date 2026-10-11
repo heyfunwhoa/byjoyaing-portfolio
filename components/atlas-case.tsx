@@ -1,3 +1,4 @@
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { CoverageExplorer } from "@/components/coverage-explorer";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
@@ -43,6 +44,8 @@ export function AtlasCase() {
           <p className="mt-4 text-xs text-muted">Notes mention 910 parsed TruffleHog records and 14 enriched. Those rows are not in this table.</p>
         </div>
       </section>
+
+      <ProjectTechnologyStack slug="detector-coverage-atlas" />
 
       <section id="comparison" className="scroll-mt-24 border-b border-border py-16">
         <p className="text-sm font-medium text-muted">02 / The sample</p>

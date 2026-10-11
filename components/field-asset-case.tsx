@@ -1,3 +1,4 @@
+import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { PageMain } from "@/components/page-main";
 import { RelatedWork } from "@/components/related-work";
 import { SampleRecordView } from "@/components/sample-record";
@@ -26,6 +27,7 @@ export function FieldAssetCase({
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">{project.sales.salesQuestion}</p>
       </section>
+      <ProjectTechnologyStack slug={slug} />
 
       <section className="grid gap-4 border-b border-border py-12 md:grid-cols-2">
         <article className="rounded-2xl border border-border bg-card p-5">
