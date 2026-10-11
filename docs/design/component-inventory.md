@@ -135,7 +135,7 @@ The editorial shell, story templates, status pills, brand avatar, celestial fram
 
 `defineLifeline` fills every year from a birth year. The prototype does not call it. Markers come from the published `roles` list. The sticky column reads Co. and Year. `birthYear` is `0` and is not displayed, because every marker sets `age` to a company abbreviation. `experience-timeline.tsx` is unchanged.
 
-`components/lifeline` is the copied registry. ESLint turns off the React hook rules that this upstream code does not satisfy, and only in that folder. The `geist` package was removed after install. The timeline uses `--font-geist-sans` from `next/font/google`. `next-themes` stays because the fireworks provider calls `useTheme`. The lab wraps only that prototype in `ThemeProvider` with `forcedTheme="light"`. No fireworks effect is in the marker data. Reduced motion sets marker and label opacity to 1 and clears the rail scale, so a cleared animation cannot leave the timeline invisible.
+`components/lifeline` is the copied registry. ESLint turns off the React hook rules that this upstream code does not satisfy, and only in that folder. The `geist` package was removed after install. The timeline uses `--font-geist-sans` from `next/font/google`. `next-themes` stays because the fireworks provider imports `useTheme`. The lab does not mount `ThemeProvider`, so the document theme is unchanged, and the prototype includes no fireworks effect. Reduced motion sets marker and label opacity to 1 and clears the rail scale, so a cleared animation cannot leave the timeline invisible.
 
 React Bits is not installed. It is not required for this prototype.
 

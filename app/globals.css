@@ -225,6 +225,11 @@ body {
 .lifeline-typeset .lifeline-labels {
   background-color: var(--background);
 }
+/* Embed mode hides the rail until an intro observer arms. The lab box is the
+   timeline, so the rail stays readable instead of waiting on that cue. */
+.design-lab-lifeline .invisible {
+  visibility: visible;
+}
 .lifeline-typeset .text-zinc-500 {
   color: var(--muted);
 }

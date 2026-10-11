@@ -58,7 +58,6 @@ import {
 import { roles } from "@/lib/portfolio"
 import type { LifelineMarker } from "@/components/lifeline/types"
 import { BookOpen, Briefcase, Compass } from "lucide-react"
-import { ThemeProvider } from "next-themes"
 
 const surfaces = [
   {
@@ -244,8 +243,8 @@ export function DesignLabDemos() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="left-2" />
+            <CarouselNext className="right-2" />
           </Carousel>
         </div>
       </section>
@@ -293,20 +292,14 @@ export function DesignLabDemos() {
             View the public experience timeline
           </a>
         </p>
-        <ThemeProvider
-          attribute="data-theme"
-          forcedTheme="light"
-          enableSystem={false}
-        >
-          <div className="mt-6 h-[32rem] min-h-0 overflow-hidden rounded-xl border border-border bg-background">
-            <Lifeline
-              markers={markers}
-              birthYear={0}
-              mode="embed"
-              title="Career timeline prototype"
-            />
-          </div>
-        </ThemeProvider>
+        <div className="design-lab-lifeline mt-6 h-[32rem] min-h-0 overflow-hidden rounded-xl border border-border bg-background">
+          <Lifeline
+            markers={markers}
+            birthYear={0}
+            mode="embed"
+            title="Career timeline prototype"
+          />
+        </div>
       </section>
     </div>
   )
