@@ -1,3 +1,4 @@
+import { GeometricMotif } from "@/components/geometric-motif";
 import Link from "next/link";
 
 /**
@@ -8,7 +9,7 @@ import Link from "next/link";
  */
 export function EditorialBento() {
   return (
-    <section aria-labelledby="explore-bento-title" className="border-b border-border py-12 sm:py-16">
+    <section aria-labelledby="explore-bento-title" className="section-enter border-b border-border py-12 sm:py-16">
       <p className="editorial-eyebrow text-accent">02 / Explore</p>
       <h2 id="explore-bento-title" className="editorial-section-title mt-3 max-w-[14ch]">
         Explore my work.
@@ -27,10 +28,9 @@ export function EditorialBento() {
             Professional experience, enterprise selling, people development, and GTM execution.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-8 text-sm font-semibold underline">
-            Explore Work <span aria-hidden="true" className="ml-2">↗</span>
+            Explore Work <span aria-hidden="true" className="nudge-link ml-2 inline-block">↗</span>
           </span>
-          <span aria-hidden="true" className="pointer-events-none absolute -bottom-14 -right-14 h-52 w-52 rounded-full border border-[#8B9387] opacity-30 sm:h-72 sm:w-72" />
-          <span aria-hidden="true" className="pointer-events-none absolute -bottom-7 -right-7 h-36 w-36 rounded-full border border-[#8B9387] opacity-25 sm:h-56 sm:w-56" />
+          <GeometricMotif />
         </Link>
 
         <Link
@@ -43,7 +43,7 @@ export function EditorialBento() {
             Playbooks, frameworks, operating systems, and lessons learned.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold text-accent underline">
-            Read Field Notes <span aria-hidden="true" className="ml-2">→</span>
+            Read Field Notes <span aria-hidden="true" className="nudge-link ml-2 inline-block">→</span>
           </span>
         </Link>
 
@@ -57,7 +57,7 @@ export function EditorialBento() {
             Independent cybersecurity, GTM, research, and developer tools.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold underline">
-            See Side Quests <span aria-hidden="true" className="ml-2">→</span>
+            See Side Quests <span aria-hidden="true" className="nudge-link ml-2 inline-block">→</span>
           </span>
         </Link>
       </div>

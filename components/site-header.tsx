@@ -1,27 +1,10 @@
 "use client";
 
 import { Mark } from "@/components/mark";
+import { isActive, menuPanelClass, primaryNav } from "@/lib/site-nav";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/work", label: "Work" },
-  { href: "/field-notes", label: "Field Notes" },
-  { href: "/side-quests", label: "Side Quests" },
-  { href: "/contact", label: "Contact" },
-];
-
-function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
-  // Legacy /work/[slug] contains both professional and independent projects.
-  // Do not guess the collection from the URL alone.
-  if (href === "/work") return pathname === "/work";
-  if (href === "/side-quests") return pathname === "/side-quests";
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -48,8 +31,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-background">
       <nav className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-5 py-4 sm:px-8" aria-label="Primary">
-        <Link href="/" className="flex min-w-0 items-center gap-2.5 rounded-md text-foreground">
-          <Mark className="shrink-0 text-accent" />
+        <Link href="/" className="group/brand relative flex min-w-0 items-center gap-2.5 rounded-md text-foreground">
+          <span className="relative shrink-0">
+            <Mark className="text-accent" />
+            <span className="pointer-events-none absolute top-[calc(100%+0.4rem)] left-0 z-40 hidden w-max rounded-md border border-border bg-card px-2 py-1 text-xs font-medium text-foreground group-hover/brand:block group-focus-visible/brand:block">
+              joy.
+            </span>
+          </span>
           <span className="min-w-0 font-display text-base tracking-tight sm:text-lg">Kristen Joy Aing</span>
         </Link>
         <button
@@ -64,9 +52,9 @@ export function SiteHeader() {
           {open ? "Close" : "Menu"}
         </button>
         {open && <button type="button" aria-label="Close navigation" onClick={closeMenu} className="fixed inset-0 top-[4.75rem] z-20 bg-foreground/30 lg:hidden" />}
-        <div id="primary-menu" onKeyDown={handleMenuKeyDown} className={open ? "fixed inset-x-0 top-[4.75rem] z-30 max-h-[calc(100dvh-4.75rem)] overflow-y-auto border-b border-border bg-background px-5 py-5 shadow-lg lg:static lg:max-h-none lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none" : "hidden lg:block"}>
+        <div id="primary-menu" onKeyDown={handleMenuKeyDown} className={menuPanelClass(open)}>
           <ul className="flex flex-col gap-1 text-sm lg:flex-row lg:flex-wrap lg:items-center lg:justify-end lg:gap-x-4 lg:gap-y-1">
-            {links.map((link) => {
+            {primaryNav.map((link) => {
               const active = isActive(pathname, link.href);
               return (
                 <li key={link.href}>

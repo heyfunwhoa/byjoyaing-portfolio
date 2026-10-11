@@ -33,6 +33,9 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `mark.tsx` | `joy.` signature | Keep | Implemented |
 | `editorial-section.tsx` | Section framing | Editorial section header | Partial. Prefer this over a new header component. |
 | `editorial-bento.tsx` | Three links: Work, Field Notes, Side Quests | Editorial bento | Implemented. Work stays the large tile. Do not wrap every section in a bento. |
+| `geometric-motif.tsx` | Decorative orbits, `aria-hidden` | Geometric decoration | Use on one dominant tile. Do not scatter it. |
+| `marginalia.tsx` | One short aside | Annotation | One per section at most. |
+| `crop-frame.tsx` | Crop marks around the portrait | Avatar frame | Marks may ease outward. The portrait file stays `/avatar.png`. |
 | `kicker.tsx` | Small label | Eyebrow | Exists. Editorial pages often use `.editorial-eyebrow` instead. |
 | `rail.tsx` | Supporting rail | Section divider or margin note | Exists. Confirm before a new divider. |
 

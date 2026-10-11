@@ -53,7 +53,7 @@ export default function FieldNotesPage() {
         </div>
         <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="explorer" /><p className="editorial-eyebrow mt-3 text-center text-muted">Explorer / Field Notes</p></div>
       </header>
-      <section id="featured" className="scroll-mt-24 border-b border-border py-12">
+      <section id="featured" className="section-enter scroll-mt-24 border-b border-border py-12">
         <div className="flex flex-wrap items-end justify-between gap-4"><h2 className="font-display text-3xl tracking-tight">Start with the work</h2><span className="text-xs text-muted">Two interactive field guides · Synthetic demonstrations</span></div>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {[
