@@ -1,4 +1,5 @@
 import { BrandAvatar } from "@/components/brand-avatar";
+import { CelestialFrame } from "@/components/celestial-frame";
 import { EditorialBento } from "@/components/editorial-bento";
 import { Marginalia } from "@/components/marginalia";
 import { PageMain } from "@/components/page-main";
@@ -82,7 +83,9 @@ export default function Home() {
           </div>
         </div>
         <div className="mx-auto w-full max-w-[15rem] sm:max-w-[18rem] lg:max-w-[19rem]">
-          <BrandAvatar variant="leader" />
+          <CelestialFrame>
+            <BrandAvatar variant="leader" />
+          </CelestialFrame>
           <p className="editorial-subtle mt-3 text-center text-xs leading-5">Curious by nature. Builder by instinct.</p>
         </div>
       </section>

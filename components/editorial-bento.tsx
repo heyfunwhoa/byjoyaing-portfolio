@@ -21,7 +21,8 @@ export function EditorialBento() {
           className="group editorial-panel relative flex min-h-72 min-w-0 flex-col overflow-hidden bg-foreground p-6 text-background transition-colors hover:bg-[#303A32] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:col-span-2 sm:min-h-80 sm:p-8 lg:col-span-7 lg:row-span-2 lg:min-h-[28rem]"
         >
           <p className="editorial-eyebrow text-[#D6C8B6]">Work</p>
-          <h3 className="mt-8 max-w-[12ch] font-display text-[clamp(1.9rem,3.4vw,2.85rem)] font-semibold leading-[1.12] tracking-tight">
+          <span aria-hidden="true" className="mt-4 block h-px w-12 bg-[#E6B59A]" />
+          <h3 className="mt-6 max-w-[12ch] font-display text-[clamp(1.9rem,3.4vw,2.85rem)] font-semibold leading-[1.12] tracking-tight">
             What I&apos;ve done.
           </h3>
           <p className="mt-4 max-w-sm text-sm leading-7 text-[#E4DED4] sm:text-base">
