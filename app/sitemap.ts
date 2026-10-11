@@ -7,23 +7,27 @@ const base = "https://www.byjoyaing.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const projectRoutes = projects.map((project) => ({
     url: `${base}/work/${project.slug}`,
-    lastModified: new Date(),
   }));
 
   return [
-    { url: base, lastModified: new Date() },
-    { url: `${base}/about`, lastModified: new Date() },
-    { url: `${base}/experience`, lastModified: new Date() },
-    { url: `${base}/projects`, lastModified: new Date() },
-    { url: `${base}/capabilities`, lastModified: new Date() },
-    { url: `${base}/field-notes`, lastModified: new Date() },
-    { url: `${base}/field-notes/enterprise-deal`, lastModified: new Date() },
-    { url: `${base}/field-notes/multithreading`, lastModified: new Date() },
+    { url: base },
+    { url: `${base}/about` },
+    { url: `${base}/experience` },
+    { url: `${base}/work` },
+    { url: `${base}/side-quests` },
+    { url: `${base}/builder-guide` },
+    { url: `${base}/ai-academy` },
+    { url: `${base}/projects` },
+    { url: `${base}/capabilities` },
+    { url: `${base}/field-notes` },
+    { url: `${base}/field-notes/enterprise-deal` },
+    { url: `${base}/field-notes/multithreading` },
+    { url: `${base}/ai-academy/programming` },
+    { url: `${base}/ai-academy/systems` },
     ...capabilityViews.map((view) => ({
       url: `${base}/capabilities/${view.slug}`,
-      lastModified: new Date(),
-    })),
-    { url: `${base}/contact`, lastModified: new Date() },
+      })),
+    { url: `${base}/contact` },
     ...projectRoutes,
   ];
 }
