@@ -2,6 +2,7 @@ import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack"
 import { CoverageExplorer } from "@/components/coverage-explorer";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
+import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 
 export function AtlasCase() {
@@ -10,6 +11,7 @@ export function AtlasCase() {
       <section className="grid items-start gap-10 border-b border-border py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:py-20">
         <div className="flex flex-col gap-6">
           <div className="flex flex-wrap items-center gap-3">
+            <ProjectKindLabel slug="detector-coverage-atlas" />
             <p className="text-sm font-medium text-muted">Project 01</p>
             <StatusBadge status="prototype" />
           </div>

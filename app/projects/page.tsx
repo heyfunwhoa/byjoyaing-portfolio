@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Projects — Kristen Joy Aing",
+  title: "Projects",
   description:
     "Revenue, account, enablement, customer, and technical GTM systems, labeled as prototype, field practice, design, or concept.",
 };

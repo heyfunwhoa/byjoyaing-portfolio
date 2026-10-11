@@ -14,7 +14,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: { url: "/" },
-  title: "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder",
+  title: "Revenue & GTM Leader · Curious Builder",
   description:
     "Strategic enterprise cybersecurity selling, people development, go-to-market leadership, and curious independent builds.",
 };
@@ -142,14 +142,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="min-w-0">
-            <p className="max-w-xl text-base leading-7">{fieldPractice.context}</p>
-            <p className="mt-3 max-w-xl text-base leading-7">
-              <span className="font-medium">Contribution. </span>
-              {fieldPractice.contribution}
-            </p>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-muted">
-              {statusHelp.field} {fieldPractice.evidence}
-            </p>
+            <p className="max-w-xl text-base leading-7">{fieldPractice.takeaway}</p>
             <Link
               href="/work/competitive-intelligence-engine"
               className="editorial-link mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"

@@ -9,7 +9,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   alternates: { canonical: "/experience" },
   openGraph: { url: "/experience" },
-  title: "Experience — Kristen Joy Aing",
+  title: "Experience",
   description:
     "Technical enterprise sales, sales-lead coaching, and the product narrative behind the field.",
 };

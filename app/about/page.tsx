@@ -9,7 +9,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   openGraph: { url: "/about" },
-  title: "About — Kristen Joy Aing",
+  title: "About",
   description:
     "Revenue & GTM Leader · Curious Builder. Enterprise cybersecurity, relationships, people development, and repeatable systems.",
 };
@@ -61,12 +61,14 @@ export default function AboutPage() {
             </li>
           ))}
         </ol>
-          <Link href="/experience" className="mt-4 inline-flex text-sm font-medium text-accent">
-          Read the experience timeline
-        </Link>
-        <Link href="/capabilities" className="mt-4 ml-4 inline-flex text-sm font-medium text-accent">
-          See capabilities
-        </Link>
+          <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:gap-6">
+            <Link href="/experience" className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">
+              Read the experience timeline
+            </Link>
+            <Link href="/capabilities" className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">
+              See capabilities
+            </Link>
+          </div>
       </section>
 
       <section className="border-b border-border py-12">

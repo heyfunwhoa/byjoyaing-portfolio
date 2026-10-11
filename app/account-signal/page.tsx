@@ -2,14 +2,15 @@ import { Kicker } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
 import { loadLimaCharlieSnapshot } from "@/lib/account-signal/limacharlie";
 import { ingestPublicSnapshot } from "@/lib/account-signal/pipeline";
+import { robotsNoindex } from "@/lib/indexing";
 import { MemoryResearchStore } from "@/lib/account-signal/store";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "LimaCharlie research brief — prototype",
+  title: "LimaCharlie research brief",
   description:
     "A source-grounded brief from one public LimaCharlie documentation page. Prototype, not a live account feed.",
-  robots: { index: false, follow: false },
+  robots: robotsNoindex,
 };
 
 export default function AccountSignalPage() {

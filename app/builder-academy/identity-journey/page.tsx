@@ -4,7 +4,7 @@ import { IdentityJourneyLab } from "@/components/identity-journey-lab";
 import { PageMain } from "@/components/page-main";
 
 export const metadata: Metadata = {
-  title: "Identity Journey Lab — Builder Academy",
+  title: "Identity Journey Lab",
   description: "Learn how humans, service accounts, deployment pipelines and AI agents authenticate and receive permissions.",
 };
 

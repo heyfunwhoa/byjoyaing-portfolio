@@ -1,11 +1,12 @@
 import { PageMain } from "@/components/page-main";
-import Link from "next/link";
+import { robotsNoindex } from "@/lib/indexing";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Private case studies — Kristen Joy Aing",
+  title: "Private case studies",
   description: "Learn about invitation-based access to selected portfolio case studies.",
-  robots: { index: false, follow: false },
+  robots: robotsNoindex,
 };
 
 export default function PrivateWorkInfoPage() {

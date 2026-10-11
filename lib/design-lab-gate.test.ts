@@ -25,3 +25,13 @@ test("the design lab page returns 404 before rendering a preview", () => {
   const nav = readFileSync(path.join(root, "lib/site-nav.ts"), "utf8");
   assert.equal(nav.includes("design-lab"), false);
 });
+
+test("the homepage prototype 404s in production before the retired headline", () => {
+  const page = readFileSync(path.join(root, "app/prototype/page.tsx"), "utf8");
+  const notFoundAt = page.indexOf("notFound()");
+  const headlineAt = page.indexOf("Commercial Leader");
+  assert.ok(notFoundAt > -1);
+  assert.ok(headlineAt > notFoundAt);
+  assert.ok(page.indexOf("designLabAvailable()") < notFoundAt);
+  assert.match(page, /robotsNoindex/);
+});

@@ -14,9 +14,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const view = capabilityBySlug(slug);
-  if (!view) return { title: "Capabilities — Kristen Joy Aing" };
+  if (!view) return { title: "Capabilities" };
   return {
-    title: `${view.title} — Kristen Joy Aing`,
+    title: view.title,
     description: view.summary,
   };
 }

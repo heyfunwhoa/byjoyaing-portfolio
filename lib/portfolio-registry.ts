@@ -5,9 +5,10 @@
  *
  * No private Joy Index content or cross-repository data access is used here.
  */
+import { kindBySlug, type PortfolioKind } from "./portfolio-kind.ts";
 import { projects, type Project, type ProjectStatus } from "./portfolio.ts";
 
-export type PortfolioKind = "work" | "side-quest";
+export { kindBySlug, type PortfolioKind };
 export type PublicationEvidence = "requires-review" | "approved-public";
 
 export type PortfolioEntry = {
@@ -19,23 +20,6 @@ export type PortfolioEntry = {
   summary: string;
   evidenceNote: string;
   evidenceReview: PublicationEvidence;
-};
-
-/** Explicit editorial decision per project, not a guess based on its route. */
-export const kindBySlug: Record<string, PortfolioKind> = {
-  "detector-coverage-atlas": "side-quest",
-  "product-release-intelligence": "side-quest",
-  "truffle-camp": "side-quest",
-  "competitive-intelligence-engine": "work",
-  "customer-feedback-intelligence": "side-quest",
-  "product-prioritization-simulator": "side-quest",
-  "partner-gtm-engine": "side-quest",
-  "account-intelligence": "side-quest",
-  "revenue-planning-simulator": "side-quest",
-  "revenue-intelligence": "side-quest",
-  "gtm-operating-plan": "side-quest",
-  "gtm-campaign-lab": "side-quest",
-  "security-signal-intelligence": "side-quest",
 };
 
 /** Existing case study paths are retained while a future IA migration is planned. */

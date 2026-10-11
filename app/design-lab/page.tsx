@@ -6,14 +6,15 @@ import { PageMain } from "@/components/page-main";
 import { ProjectConstellation } from "@/components/project-constellation";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { designLabAvailable } from "@/lib/design-lab";
+import { robotsNoindex } from "@/lib/indexing";
 import type { ProjectStatus } from "@/lib/portfolio";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Design lab — Kristen Joy Aing",
-  robots: { index: false, follow: false },
+  title: "Design lab",
+  robots: robotsNoindex,
 };
 
 const statuses: ProjectStatus[] = ["field", "prototype", "designed", "exploring"];

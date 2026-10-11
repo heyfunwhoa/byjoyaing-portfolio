@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Capabilities — Kristen Joy Aing",
+  title: "Capabilities",
   description:
     "Revenue strategy, GTM engineering, revenue operations, AI product systems, and sales enablement, shown through existing portfolio work.",
 };

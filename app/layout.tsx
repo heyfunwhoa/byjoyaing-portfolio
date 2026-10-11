@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site-header";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,14 +19,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.byjoyaing.com"),
   title: {
-    default: "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder",
-    template: "%s",
+    default: "Revenue & GTM Leader · Curious Builder — Kristen Joy Aing",
+    template: "%s — Kristen Joy Aing",
   },
   description:
     "Enterprise cybersecurity sales, GTM leadership, coaching and independent technical systems — the work and thinking of Kristen Joy Aing.",
   openGraph: {
     siteName: "joy. — Kristen Joy Aing",
-    title: "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder",
+    title: "Revenue & GTM Leader · Curious Builder — Kristen Joy Aing",
     description:
       "Curious by nature. Builder by instinct. Revenue, relationships, teams and repeatable GTM systems.",
     type: "website",
@@ -78,12 +79,30 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                   Revenue & GTM Leader · Curious Builder · 2026
                 </p>
               </div>
-              <a
-                className="link-rule w-fit text-foreground"
-                href="mailto:kristen.aing@gmail.com"
-              >
-                kristen.aing@gmail.com
-              </a>
+              <nav aria-label="Footer" className="flex max-w-sm flex-wrap gap-x-4 sm:justify-end">
+                {[
+                  ["/about", "About"],
+                  ["/work", "Work"],
+                  ["/experience", "Experience"],
+                  ["/field-notes", "Field Notes"],
+                  ["/side-quests", "Side Quests"],
+                  ["/contact", "Contact"],
+                ].map(([href, label]) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="inline-flex min-h-11 items-center text-foreground underline-offset-4 hover:underline"
+                  >
+                    {label}
+                  </Link>
+                ))}
+                <a
+                  className="inline-flex min-h-11 items-center text-foreground underline-offset-4 hover:underline"
+                  href="mailto:kristen.aing@gmail.com"
+                >
+                  kristen.aing@gmail.com
+                </a>
+              </nav>
             </div>
           </footer>
         </TooltipProvider>
