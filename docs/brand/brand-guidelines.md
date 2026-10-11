@@ -53,7 +53,7 @@ Sound confident but not corporate, curious but grounded, warm but concise, credi
 
 **Dual-audience requirement:** Never imply a Head of Sales title already held, and never bury evidence of individual enterprise selling beneath team-building claims. Each professional case study should identify scope of ownership, decision makers, sales-cycle complexity, collaborators, and verified personal outcomes. Leadership case studies should differentiate direct management from informal coaching or team-lead contributions.
 
-**Hero copy baseline:** Eyebrow: “Enterprise cybersecurity · Revenue & GTM”; headline: “Revenue & GTM Leader. Curious Builder.”; philosophy below: “People first. Problem-driven. Systems-minded.”; body links revenue execution, complex buying journeys, people development and useful systems. Primary CTAs lead to Work and Side Quests.
+**Hero copy baseline:** Eyebrow: “Enterprise cybersecurity · Revenue & GTM”; headline: “Revenue & GTM Leader. Curious Builder.”; philosophy below: “People first. Problem-driven. Systems-minded.”; body links revenue execution, complex buying journeys, people development and useful systems. The hero’s primary action is Work. About is the secondary hero action. Side Quests stays in the bento, after Work and Field Notes.
 
 The brand expression “Curious by nature. Builder by instinct.” remains approved secondary personality copy, including the avatar caption. The homepage now leads directly with professional positioning; this is an intentional hierarchy refinement rather than replacement of the expression.
 
@@ -90,6 +90,15 @@ Maintain one consistent illustrated personal identity across three treatments: L
 - Favor original diagrams, product screenshots, source artifacts, systems maps, and intentional editorial compositions over stock photos or fabricated app mockups.
 - Keep shape language simple: measured rounded panels, fine borders, aligned grids and generous whitespace. Avoid decorative clutter, gratuitous shadows and over-animated transitions.
 - Motion must aid understanding and honor `prefers-reduced-motion`.
+
+### Celestial geometry
+
+Celestial geometry is a supporting line language. It is not a space theme, a game, or a second brand.
+
+- Use a few static orbital lines, nodes, and simple connectors. They may frame the homepage portrait, sit on the Work tile, or connect projects on `/experience`. They do not replace headlines, evidence, or the bento.
+- Draw them in ivory `#F3EFE6`, charcoal `#1B211D`, copper `#8A4B2A`, or the border `#CFC3B3`. On a charcoal surface, a line may use the same warm copper highlight as the “Curious Builder.” italic. Do not introduce a green, star field, or planet palette for these marks.
+- Rings do not spin. Nodes do not encode data. If a drawing shows a relationship, a visible sentence and a keyboard link say the same thing.
+- One portrait file, `/avatar.png`, remains the Leader, Explorer, and Builder image until approved variants exist. Geometry around that file does not change the face. Portrait rules stay in [avatar-system.md](./avatar-system.md).
 
 ## 5. Information architecture
 

@@ -54,6 +54,10 @@ export function SiteHeader() {
   function closeMenu() {
     setOpenOnPath(null);
   }
+  function dismissMenu() {
+    setOpenOnPath(null);
+    menuButtonRef.current?.focus();
+  }
 
   return (
     <>
@@ -103,7 +107,7 @@ export function SiteHeader() {
       {open ? (
         <div
           aria-hidden="true"
-          onClick={closeMenu}
+          onClick={dismissMenu}
           className="fixed inset-0 z-30 bg-black/50 lg:hidden"
         />
       ) : null}

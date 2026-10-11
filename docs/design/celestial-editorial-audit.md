@@ -10,6 +10,8 @@
 
 The editorial cover stays a cover. Work stays the large bento tile. The portrait stays `/avatar.png`. Geometry is a supporting line: rings, a few nodes, and a three-project map on `/experience`.
 
+A review against the brand guide replaced the gray-green stroke `#8B9387` with ivory, charcoal, copper, and the border token. Dismissing the mobile menu from the scrim returns focus to the Menu button. The canonical description of the line language lives in [brand-guidelines.md](../brand/brand-guidelines.md). Portrait behavior stays in [avatar-system.md](../brand/avatar-system.md).
+
 Instrument Serif is named in the request and rejected. [ADR 0001](../decisions/0001-preserve-geist-typography.md) keeps Geist Sans for display and body, and Geist Mono for technical metadata.
 
 ## Stage results

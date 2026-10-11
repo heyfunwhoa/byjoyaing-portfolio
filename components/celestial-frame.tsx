@@ -10,7 +10,7 @@ export function CelestialFrame({ children }: { children: ReactNode }) {
       <svg
         aria-hidden="true"
         viewBox="0 0 200 200"
-        className="pointer-events-none absolute inset-0 h-full w-full text-[#D6C8B6]"
+        className="pointer-events-none absolute inset-0 h-full w-full text-[#F3EFE6]"
       >
         <circle cx="100" cy="96" r="90" fill="none" stroke="currentColor" strokeWidth="0.7" opacity="0.55" />
         <circle cx="100" cy="96" r="76" fill="none" stroke="currentColor" strokeWidth="0.45" strokeDasharray="1.4 3.2" opacity="0.4" />

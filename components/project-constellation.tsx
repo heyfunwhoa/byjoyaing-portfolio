@@ -33,13 +33,13 @@ export function ProjectConstellation() {
         The marks show a relationship a reader can also follow as a link. Nothing in this diagram is a live integration, a shared database, or an employer deployment.
       </p>
       <ul className="mt-6 grid gap-3 md:grid-cols-2 md:gap-4">
-        <li className="relative border-l border-[#8B9387]/70 pl-4 md:col-span-2 md:mx-auto md:w-full md:max-w-md md:border-l-0 md:border-b md:pb-4 md:pl-0">
-          <span aria-hidden="true" className="absolute top-5 -left-1 h-2 w-2 rounded-full bg-[#8A4B2A] md:top-auto md:-bottom-1 md:left-1/2 md:-translate-x-1/2" />
+        <li className="relative border-l border-border pl-4 md:col-span-2 md:mx-auto md:w-full md:max-w-md md:border-l-0 md:border-b md:pb-4 md:pl-0">
+          <span aria-hidden="true" className="absolute top-5 -left-1 h-2 w-2 rounded-full bg-accent md:top-auto md:-bottom-1 md:left-1/2 md:-translate-x-1/2" />
           <ConstellationLink project={primary} />
         </li>
         {supporting.map((project) => (
-          <li key={project.slug} className="relative border-l border-[#8B9387]/70 pl-4 md:border-l-0 md:pl-0 md:pt-3">
-            <span aria-hidden="true" className="absolute top-5 -left-1 h-1.5 w-1.5 rounded-full bg-[#8B9387] md:top-1 md:left-0" />
+          <li key={project.slug} className="relative border-l border-border pl-4 md:border-l-0 md:pl-0 md:pt-3">
+            <span aria-hidden="true" className="absolute top-5 -left-1 h-1.5 w-1.5 rounded-full bg-foreground md:top-1 md:left-0" />
             <ConstellationLink project={project} />
           </li>
         ))}
