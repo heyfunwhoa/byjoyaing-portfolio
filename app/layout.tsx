@@ -1,5 +1,6 @@
 import { Mark } from "@/components/mark";
 import { SiteHeader } from "@/components/site-header";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -55,28 +56,37 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
-        <a href="#main-content" className="skip-link">Skip to main content</a>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(publicIdentity) }} />
-        <SiteHeader />
-        {children}
-        <footer className="mt-auto border-t border-border">
-          <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-5 py-8 text-sm text-muted sm:flex-row sm:items-end sm:justify-between sm:px-8">
-            <div className="flex flex-col gap-2">
-              <span className="flex items-center gap-2 font-medium text-foreground">
-                <Mark className="text-accent" />
-                <span className="font-display text-accent">joy.</span>
-                <span>Kristen Joy Aing</span>
-              </span>
-              <p className="text-xs leading-5">Revenue & GTM Leader · Curious Builder · 2026</p>
+        <TooltipProvider>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(publicIdentity) }}
+          />
+          <SiteHeader />
+          {children}
+          <footer className="mt-auto border-t border-border">
+            <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-5 py-8 text-sm text-muted sm:flex-row sm:items-end sm:justify-between sm:px-8">
+              <div className="flex flex-col gap-2">
+                <span className="flex items-center gap-2 font-medium text-foreground">
+                  <Mark className="text-accent" />
+                  <span className="font-display text-accent">joy.</span>
+                  <span>Kristen Joy Aing</span>
+                </span>
+                <p className="text-xs leading-5">
+                  Revenue & GTM Leader · Curious Builder · 2026
+                </p>
+              </div>
+              <a
+                className="link-rule w-fit text-foreground"
+                href="mailto:kristen.aing@gmail.com"
+              >
+                kristen.aing@gmail.com
+              </a>
             </div>
-            <a
-              className="link-rule w-fit text-foreground"
-              href="mailto:kristen.aing@gmail.com"
-            >
-              kristen.aing@gmail.com
-            </a>
-          </div>
-        </footer>
+          </footer>
+        </TooltipProvider>
       </body>
     </html>
   );

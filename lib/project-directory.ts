@@ -63,7 +63,7 @@ const sources: DirectorySource[] = [
     technologies: "Next.js, React, and TypeScript. The rows live in this repository.",
     featuredOrder: 3,
     preview: "atlas",
-    demoUrl: "/#atlas",
+    demoUrl: "/projects#featured",
     githubUrl: "https://github.com/heyfunwhoa/byjoyaing-portfolio",
   },
   {
