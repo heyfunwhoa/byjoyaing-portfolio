@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Build Rate Limits | Builder Academy",
+  title: "Build Rate Limits",
   description: "Learn the difference between GitHub CI and Vercel deployments, diagnose rate limits, and reduce unnecessary preview builds safely.",
 };
 

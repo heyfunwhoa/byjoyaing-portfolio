@@ -3,7 +3,7 @@
 import { Menu } from "@/components/icons/menu";
 import { X } from "@/components/icons/x";
 import { Mark } from "@/components/mark";
-import { isActive, menuPanelClass, primaryNav } from "@/lib/site-nav";
+import { menuPanelClass, navCurrent, primaryNav } from "@/lib/site-nav";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -91,14 +91,14 @@ export function SiteHeader() {
           <div id="primary-menu" ref={menuRef} className={menuPanelClass(open)}>
             <ul className="flex flex-col gap-1 text-sm lg:flex-row lg:flex-wrap lg:items-center lg:justify-end lg:gap-x-4 lg:gap-y-1">
               {primaryNav.map((link) => {
-                const active = isActive(pathname, link.href);
+                const current = navCurrent(pathname, link.href);
                 return (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       onClick={closeMenu}
-                      aria-current={active ? "page" : undefined}
-                      className={`inline-flex min-h-11 items-center rounded-md px-1 underline-offset-4 hover:underline lg:min-h-0 ${active ? "font-semibold text-accent underline decoration-2" : "text-muted hover:text-foreground"}`}
+                      aria-current={current}
+                      className={`inline-flex min-h-11 items-center rounded-md px-1 underline-offset-4 hover:underline lg:min-h-0 ${current ? "font-semibold text-accent underline decoration-2" : "text-muted hover:text-foreground"}`}
                     >
                       {link.label}
                     </Link>

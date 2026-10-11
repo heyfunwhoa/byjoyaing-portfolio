@@ -4,7 +4,7 @@ import Link from "next/link";
 import {PageMain} from "@/components/page-main";
 import {portfolioEntries} from "@/lib/portfolio-registry";
 import {publicStories} from "@/lib/public-stories";
-export const metadata:Metadata={alternates:{canonical:"/work"},openGraph:{url:"/work"},title:"Work | Revenue & GTM Leadership",description:"Enterprise cybersecurity sales, revenue leadership, coaching and evidence-led GTM work."};
+export const metadata:Metadata={alternates:{canonical:"/work"},openGraph:{url:"/work"},title:"Work",description:"Enterprise cybersecurity sales, revenue leadership, coaching and evidence-led GTM work."};
 export default function WorkPage(){
  const work=portfolioEntries.filter(entry=>entry.kind==="work");
  return <PageMain><section className="border-b border-border py-12 sm:py-16">

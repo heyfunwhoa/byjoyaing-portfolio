@@ -7,7 +7,7 @@ import { publicStories } from "@/lib/public-stories";
 export const metadata: Metadata = {
   alternates: { canonical: "/field-notes" },
   openGraph: { url: "/field-notes" },
-  title: "Field Notes — Kristen Joy Aing",
+  title: "Field Notes",
   description: "Playbooks, frameworks, lessons learned, and operating systems for relationships, revenue, and teams.",
 };
 

@@ -20,6 +20,20 @@ test("the enterprise seller story links to illustrative deal and stakeholder gui
  assert.ok(enterprise.related.some(link => link.href === "/field-notes/multithreading" && link.category === "Field Notes"));
 });
 
+test("the three commercial stories stay qualitative", () => {
+  assert.deepEqual(
+    publicStories.map((story) => story.id),
+    ["enterprise-selling", "team-enablement", "competitive-evidence"],
+  );
+  const blob = JSON.stringify(publicStories);
+  assert.equal(blob.includes("$"), false);
+  assert.equal(/head of sales/i.test(blob), false);
+  assert.equal(blob.includes("281"), false);
+  const enterprise = publicStories.find((story) => story.id === "enterprise-selling");
+  assert.ok(enterprise);
+  assert.match(enterprise.evidence, /intentionally withheld/);
+});
+
 test("independent curricula are labeled Side Quests, not employer deployments", () => {
  const coaching = publicStories.find(story => story.id === "team-enablement");
  assert.ok(coaching);

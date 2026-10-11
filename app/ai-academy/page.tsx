@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Academy } from "@/components/ai-academy/academy";
 
 export const metadata: Metadata = {
-  title: "AI Enablement Academy | Learn, Apply, Build",
+  title: "AI Enablement Academy",
   description: "An approachable AI learning path and task-based workflow library with responsible-use guidance.",
 };
 

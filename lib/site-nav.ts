@@ -1,3 +1,5 @@
+import { kindForPathname } from "./portfolio-kind.ts";
+
 export const primaryNav = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
@@ -9,11 +11,23 @@ export const primaryNav = [
 
 export function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
-  // Legacy /work/[slug] contains both professional and independent projects.
-  // Do not guess the collection from the URL alone.
-  if (href === "/work") return pathname === "/work";
-  if (href === "/side-quests") return pathname === "/side-quests";
+  // /work/[slug] serves both collections. Highlight the registry kind, not the prefix.
+  const kind = kindForPathname(pathname);
+  if (href === "/work") {
+    if (pathname === "/work") return true;
+    return kind === "work";
+  }
+  if (href === "/side-quests") {
+    if (pathname === "/side-quests") return true;
+    return kind === "side-quest";
+  }
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/** Exact routes are the current page. A matching collection is current in the set. */
+export function navCurrent(pathname: string, href: string): "page" | "true" | undefined {
+  if (!isActive(pathname, href)) return undefined;
+  return pathname === href ? "page" : "true";
 }
 
 /**

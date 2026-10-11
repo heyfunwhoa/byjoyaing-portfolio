@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Lockfiles & Reproducible Builds | Builder Academy",
+  title: "Lockfiles & Reproducible Builds",
   description:
     "A hands-on lesson about npm package manifests, package-lock.json, deterministic installs, and fixing lockfile drift in CI.",
 };

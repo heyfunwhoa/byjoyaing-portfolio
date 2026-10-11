@@ -2,6 +2,7 @@ import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack"
 import { CustomerFeedbackWorkflow } from "@/components/customer-feedback-workflow";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
+import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 
 function Arrow({ direction }: { direction: "right" | "down" }) {
@@ -101,6 +102,7 @@ export function CustomerFeedbackCase() {
       <section className="grid items-start gap-10 border-b border-border py-16 lg:grid-cols-2 lg:py-20">
         <div className="flex flex-col gap-6">
           <div className="flex flex-wrap items-center gap-3">
+            <ProjectKindLabel slug="customer-feedback-intelligence" />
             <p className="text-sm font-medium text-muted">Project 02</p>
             <Label index="01">Product and GTM systems</Label>
             <StatusBadge status="designed" />
