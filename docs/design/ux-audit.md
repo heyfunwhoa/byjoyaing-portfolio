@@ -2,6 +2,8 @@
 Date: 2026-10-09
 Status: preliminary source-code audit, not a completed browser or user test.
 
+> **Historical.** Findings below describe the site before the editorial homepage shipped. Do not treat "I build the systems..." or "Commercial Leader" as the current headline. Current requirements: [portfolio-experience-v2-prd.md](../product/portfolio-experience-v2-prd.md).
+
 ## Purpose and audience
 Primary: founder or hiring leader assessing commercial leadership.
 Secondary: recruiter seeking evidence; product/technical collaborator assessing judgment and projects.

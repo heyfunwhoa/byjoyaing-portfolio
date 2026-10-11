@@ -75,9 +75,8 @@ Colors above describe the **existing implementation**, not guaranteed accessibil
 
 ### Typography
 
-- Display: **Instrument Serif** (or existing configured display face), expressive for big editorial headlines.
-- Interface and body: **Geist Sans**, readable and restrained.
-- Technical labels/metadata: **Geist Mono**, sparingly.
+- Display and interface: **Geist Sans**. Headlines use weight and size. Pull quotes use italic. Chapter labels stay sentence case.
+- Technical metadata only: **Geist Mono**.
 - Preserve accessible font fallbacks, line lengths, logical hierarchy and mobile wrapping. Avoid gratuitous all-caps paragraphs.
 
 ### Character and avatar system
@@ -92,22 +91,24 @@ Maintain one consistent illustrated personal identity across three treatments: L
 - Keep shape language simple: measured rounded panels, fine borders, aligned grids and generous whitespace. Avoid decorative clutter, gratuitous shadows and over-animated transitions.
 - Motion must aid understanding and honor `prefers-reduced-motion`.
 
-## 5. Information architecture (proposed, not yet deployed)
+## 5. Information architecture
 
-Target primary destinations: **Home / About / Work / Field Notes / Builds / Contact** (stage the migration; do not break live URLs).
+**Verified on `main` (October 2026):** primary navigation is **Home / About / Work / Field Notes / Side Quests / Contact**. `/work` and `/side-quests` are live indexes. `/experience` remains the career timeline. `/projects` remains the filterable directory. Product requirements for the next pass live in [portfolio-experience-v2-prd.md](../product/portfolio-experience-v2-prd.md). Older notes that say this navigation is only proposed, or that the public name is "Builds," describe an earlier plan.
 
-- **Home:** professional positioning → credible proof → Selected Work → Side Quests preview → personal story → contact.
+Target primary destinations: **Home / About / Work / Field Notes / Side Quests / Contact**. Do not break live URLs.
+
+- **Home:** professional positioning → condensed credibility → three destinations (Work, Field Notes, Side Quests) → one field practice → About and Contact. See [homepage-simplification.md](../design/homepage-simplification.md).
 - **About:** short origin story including advertising background → values (personal and professional) → leadership philosophy → career timeline → education.
 - **Work:** professional outcomes, team development, sales/GTM strategy, enablement, collaboration and relevant impact.
 - **Field Notes:** editorial home for how I operate. Content types: Playbooks (practical repeatable methods), Frameworks (decision tools), Lessons Learned (grounded reflections), and **Operating Systems** (revenue/team cadences and processes that make practices repeatable). Never present planned methods as proven practice.
-- **Builds:** independent builds and Side Quests, software learning, AI workflows and cybersecurity research, with honest stages and linked artifacts.
+- **Side Quests:** independent builds, software learning, AI workflows and cybersecurity research, with honest stages and linked artifacts. Older copy may still say "Builds"; that word is not a separate navigation item.
 - **Contact:** straightforward email/social/contact path.
 
 **Routing rule:** Current `/projects` and `/work/[slug]` are live legacy routes. Do not change or redirect them until corresponding destination pages exist; maintain durable old links and metadata. A personal technical project is not “Work” merely because its present URL starts with `/work/`.
 
-**Navigation migration:** Add `/field-notes` as a real destination before linking it in navigation. Work and Builds may initially link to existing `/experience`, `/projects`, and `/work/[slug]` destinations; establish new destination routes before renaming links. Keep the private Joy Index entirely outside the public portfolio.
+**Navigation (verified):** Home, About, Work (`/work`), Field Notes (`/field-notes`), Side Quests (`/side-quests`), and Contact are in the header. Keep the private Joy Index entirely outside the public portfolio. Do not redirect `/experience` or `/projects` until a reviewed change adds tests for every inbound link.
 
-**Homepage direction:** Lead with professional positioning, then People / Strategy / Systems, Work and Side Quests audience pathways, selected builds, Field Notes, personal context and contact. This layout is proposed on PR #33 and remains subject to browser review. PR #9 is an earlier exploratory `/prototype` page, not an approved replacement for `/`.
+**Homepage direction:** The homepage is a five-section cover: positioning, condensed enterprise credibility, a Work-led bento with Field Notes and Side Quests, one field practice, and a short close. Detail lives on Work, Experience, Field Notes, Side Quests, and About. See [homepage-simplification.md](../design/homepage-simplification.md). `/prototype` is an exploratory page, not an approved replacement for `/`.
 
 ## 6. Case study patterns
 
@@ -130,7 +131,7 @@ Show what a tool genuinely does **today**, not simply its planned architecture. 
 
 ### Audience paths and navigation migration
 
-- **Work** navigation currently maps to the existing `/experience` route; **Builds** maps to `/projects`; **Field Notes** maps to `/field-notes`. These labels are navigational, not claims that all destination migrations are complete.
+- **Work** navigation maps to `/work`. **Side Quests** maps to `/side-quests`. **Field Notes** maps to `/field-notes`. `/experience` and `/projects` remain supporting routes. These labels are navigational, not claims that every collection is fully populated.
 - Preserve direct legacy routes `/experience`, `/projects`, `/capabilities` and `/work/[slug]`. Keep capabilities accessible from Work/About until a proper taxonomy is ready.
 - Do not add public Joy Index navigation. Revisit route changes separately after link, SEO and responsive checks.
 

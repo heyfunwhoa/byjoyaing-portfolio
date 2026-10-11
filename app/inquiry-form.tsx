@@ -9,7 +9,7 @@ import {
 } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
-type Mode = "message" | "resume" | "access";
+type Mode = "message" | "access";
 
 const fieldClass =
   "h-11 rounded-md border border-border bg-background px-3 text-base text-foreground outline-none focus:border-accent";
@@ -20,7 +20,7 @@ function subscribeToHash(onStoreChange: () => void) {
 }
 
 function modeFromHash(): Mode {
-  return window.location.hash === "#resume" ? "resume" : window.location.hash === "#access" ? "access" : "message";
+  return window.location.hash === "#access" ? "access" : "message";
 }
 
 export function InquiryForm() {
@@ -47,35 +47,19 @@ export function InquiryForm() {
     setStatus("sending");
     setMessage("");
 
-    const isResume = mode === "resume";
-
     try {
-      const response = await fetch(
-        isResume ? "/api/request-resume" : "/api/contact",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(
-            isResume
-              ? {
-                  name: data.get("name"),
-                  email: data.get("email"),
-                  company: data.get("company"),
-                  note: data.get("note"),
-                  website: data.get("website"),
-                  startedAt: startedAt.current,
-                }
-              : {
-                  name: data.get("name"),
-                  email: data.get("email"),
-                  company: data.get("company"),
-                  message: mode === "access" ? `Selected Work inquiry: ${String(data.get("message") ?? "")}` : data.get("message"),
-                  website: data.get("website"),
-                  startedAt: startedAt.current,
-                },
-          ),
-        },
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          company: data.get("company"),
+          message: mode === "access" ? `Selected Work inquiry: ${String(data.get("message") ?? "")}` : data.get("message"),
+          website: data.get("website"),
+          startedAt: startedAt.current,
+        }),
+      });
       const payload = (await response.json()) as { error?: string };
 
       if (!response.ok) {
@@ -87,25 +71,19 @@ export function InquiryForm() {
       form.reset();
       setStatus("sent");
       setMessage(
-        isResume
-          ? "Request sent. You should get a confirmation email. I’ll follow up with the resume if it’s a fit."
-          : mode === "access"
-            ? "Inquiry sent. This is not an access approval; I’ll follow up about any appropriate materials."
-            : "Message sent. You should get a confirmation email. I’ll reply if I can help.",
+        mode === "access"
+          ? "Inquiry sent. This is not an access approval; I’ll follow up about any appropriate materials."
+          : "Message sent. You should get a confirmation email. I’ll reply if I can help.",
       );
     } catch {
       setStatus("error");
-      setMessage(
-        isResume
-          ? "Could not send that request. Email kristen.aing@gmail.com instead."
-          : "Could not send that message. Email kristen.aing@gmail.com instead.",
-      );
+      setMessage("Could not send that message. Email kristen.aing@gmail.com instead.");
     }
   }
 
   return (
     <form
-      id={mode === "resume" ? "resume" : "write"}
+      id="write"
       onSubmit={onSubmit}
       className="relative flex max-w-xl flex-col gap-4 lg:max-w-none"
     >
@@ -113,7 +91,6 @@ export function InquiryForm() {
         {(
           [
             ["message", "Message"],
-            ["resume", "Resume"],
             ["access", "Selected Work"],
           ] as const
         ).map(([value, label]) => (
@@ -129,8 +106,8 @@ export function InquiryForm() {
             }}
             className={
               mode === value
-                ? "rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-accent-foreground"
-                : "rounded-md px-3 py-1.5 text-sm font-medium text-muted hover:text-foreground"
+                ? "inline-flex min-h-11 items-center rounded-md bg-accent px-3 text-sm font-medium text-accent-foreground"
+                : "inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-muted hover:text-foreground"
             }
           >
             {label}
@@ -138,11 +115,9 @@ export function InquiryForm() {
         ))}
       </div>
       <p className="text-base leading-7 text-muted">
-        {mode === "resume"
-          ? "I don’t post a public PDF. This emails me the request and sends you a confirmation. I’ll reply with the file if it’s a good fit."
-          : mode === "access"
-            ? "Ask about deeper, sanitized case-study materials. This sends an inquiry, not an access grant or login. Never include confidential company or customer details."
-            : "This emails me your note and sends you a confirmation. Reply to that email if you want to add more."}
+        {mode === "access"
+          ? "Ask about deeper, sanitized case-study materials. This sends an inquiry, not an access grant or login. Never include confidential company or customer details."
+          : "This emails me your note and sends you a confirmation. Reply to that email if you want to add more."}
       </p>
       <div className="hidden" aria-hidden="true">
         <label>
@@ -182,42 +157,22 @@ export function InquiryForm() {
           className={fieldClass}
         />
       </label>
-      {mode !== "resume" ? (
-        <label className="flex flex-col gap-1.5 text-sm">
-          <span className="font-medium text-foreground">{mode === "access" ? "What would you like to explore?" : "Message"}</span>
-          <textarea
-            required
-            minLength={8}
-            name="message"
-            rows={5}
-            className="rounded-md border border-border bg-background px-3 py-2 text-base text-foreground outline-none focus:border-accent"
-          />
-        </label>
-      ) : (
-        <label className="flex flex-col gap-1.5 text-sm">
-          <span className="font-medium text-foreground">
-            What you’re hiring for{" "}
-            <span className="font-normal text-muted">(optional)</span>
-          </span>
-          <textarea
-            name="note"
-            rows={4}
-            className="rounded-md border border-border bg-background px-3 py-2 text-base text-foreground outline-none focus:border-accent"
-          />
-        </label>
-      )}
+      <label className="flex flex-col gap-1.5 text-sm">
+        <span className="font-medium text-foreground">{mode === "access" ? "What would you like to explore?" : "Message"}</span>
+        <textarea
+          required
+          minLength={8}
+          name="message"
+          rows={5}
+          className="rounded-md border border-border bg-background px-3 py-2 text-base text-foreground outline-none focus:border-accent"
+        />
+      </label>
       <button
         type="submit"
         disabled={status === "sending"}
         className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
       >
-        {status === "sending"
-          ? "Sending…"
-          : mode === "resume"
-            ? "Request resume"
-            : mode === "access"
-              ? "Send access inquiry"
-              : "Send message"}
+        {status === "sending" ? "Sending…" : mode === "access" ? "Send access inquiry" : "Send message"}
       </button>
       {message ? (
         <p
