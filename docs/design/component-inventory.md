@@ -33,7 +33,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `mark.tsx` | `joy.` signature | Keep | Implemented |
 | `editorial-section.tsx` | Section framing | Editorial section header | Partial. Prefer this over a new header component. |
 | `editorial-bento.tsx` | Three links: Work, Field Notes, Side Quests | Editorial bento | Implemented. Work stays the large tile. Do not wrap every section in a bento. |
-| `geometric-motif.tsx` | Decorative orbits and three nodes, `aria-hidden` | Geometric decoration | Use on the Work tile only. Static. Do not spin it. |
+| `geometric-motif.tsx` | Decorative orbits and three nodes, `aria-hidden` | Geometric decoration | Public use is the Work tile. The design lab may preview it. Static. Do not spin it. |
 | `marginalia.tsx` | One short aside | Annotation | One per section at most. |
 | `crop-frame.tsx` | Crop marks around the portrait | Avatar frame | Marks may ease outward. The portrait file stays `/avatar.png`. |
 | `kicker.tsx` | Small label | Eyebrow | Exists. Editorial pages often use `.editorial-eyebrow` instead. |
@@ -51,14 +51,17 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `project-status-pill.tsx`, `status-badge.tsx` | Status display | Project status, evidence label | Partial. Two status widgets exist. A later PR should pick one for public labels rather than add a third. |
 | `projects-directory.tsx`, `projects-systems.tsx` | Filterable directory | Category filter | Implemented on `/projects`. Side Quests links here. |
 | `experience-timeline.tsx` | Career timeline, first two roles visible, earlier roles behind a button | Career timeline | Implemented on `/experience`. Visible roles keep every point and their related links. |
+| `editorial-project-card.tsx` | Directory facts, status pill, one destination. Featured variant for the field practice. | Lab preview | On `/design-lab` only. Does not replace `project-card.tsx`. |
+| `project-bento.tsx` | Responsive project gallery and empty state | Lab preview | Not the homepage `EditorialBento`. |
+| `project-filter.tsx` | Kind and existing-category filters with `aria-pressed` | Lab preview | URL state stays on `/design-lab`. |
 
 ## Identity and image
 
 | Component | What it does now | Action |
 | --- | --- | --- |
 | `brand-avatar.tsx` | `leader`, `explorer`, `builder`. All render `/avatar.png`. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. |
-| `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Homepage hero only. `aria-hidden` geometry. No spin, no face motion. |
-| `project-constellation.tsx` | Three linked projects plus a sentence for each edge | `/experience` only. Not a live integration diagram. |
+| `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Public use is the homepage hero. The design lab may preview it. `aria-hidden` geometry. No spin, no face motion. |
+| `project-constellation.tsx` | Three linked projects plus a sentence for each edge | Public use is `/experience`. The design lab previews the same component. Not a live integration diagram. |
 | `crop-frame.tsx` | Corner crop frame | Keep |
 | `tool-mark.tsx` | Small tool mark | Keep where already used |
 
