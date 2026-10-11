@@ -21,6 +21,8 @@ The connected Notion integration had write access. The following private pages e
 
 Seeded records: EPIC-01 through EPIC-08, FEAT-001 through FEAT-003, DEC-001 through DEC-003, three research rows from this audit, and three public content rows (homepage, one illustrative field note, one qualitative work story). No Joy Index text was copied.
 
+The planning pull request is https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/43. It is a draft and is not merged.
+
 ## Home
 
 Portfolio Studio states the vision, the active milestone (M0 Foundation), source-of-truth rules, blockers, and links to the databases. It does not embed the PRD body.
