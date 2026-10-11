@@ -415,3 +415,46 @@ Recommended after this planning PR is reviewed. Do not start them inside the pla
 - **Rollback:** Revert the commit.
 
 Homepage deduplication (EPIC-03) waits until PR A shows which sentences Work now carries.
+
+
+## 31. UX, SEO, evidence and component increment (2026-10-10 audit)
+
+**Authority:** This section extends this canonical PRD, not `docs/product/prd.md`, which is a historical summary. Existing editorial identity, Geist typography, approved palette, `joy.` wordmark, and public/private boundaries remain authoritative. Structural findings are from the inspected repository; real-device behavior, Lighthouse, Search Console, and user journeys are **not measured**. Do not mark any of these verified without evidence.
+
+### JTBD and release order
+- **Enterprise AE interviewer:** From Home → Work → selling evidence → contact in three understandable decisions. Professional evidence precedes independent software.
+- **Revenue leader / founder:** Evaluate personal sales execution, coaching/enablement versus line-management responsibility, and reproducible operating practices, without fabricated revenue claims.
+- **Research visitor:** Discover a published Field Note, identify whether it is practice/illustration/exploration, inspect the original sources and limitations, follow related content.
+- **Technical collaborator:** Browse Side Quests by domain and maturity; see real screenshots or honest architecture/sample representations; never infer production status from a diagram.
+- **Mobile visitor:** Read and navigate at 320/375/390/768/1280 px and 200% zoom with keyboard, menu, scroll, and contact flow working.
+
+### Requirements and acceptance criteria
+
+| ID | Priority | Requirement | Acceptance / evidence |
+| --- | --- | --- | --- |
+| SEO-01 | P0 | Accurate sitemap including Home, Work, Side Quests, Field Notes and canonical published detail routes | No fabricated last-modified timestamps; verified XML URLs; private routes absent |
+| SEO-02 | P0 | Per-page canonical identity, purposeful metadata and truthful OG preview | Production HTML `rel=canonical` inspected; OG image preview shows current brand; old public URLs remain functional |
+| SEO-03 | P0 | Accessible, accurate Person structured data | One JSON-LD Person with public name, site, and official public links only; syntax and rich-results compatibility reviewed |
+| EDI-01 | P0 | Evidence-first ProfessionalCaseStudy template | Context, personal role, execution, corroborated outcome/limits, reflection; no invented case study metrics |
+| EDI-02 | P0 | EditorialArticle + supporting SourceAndEvidencePanel, RelatedWork | Heading hierarchy, maximum ~68ch, effective link styling, usable citations, evidence-status labels, print/mobile behavior |
+| EDI-03 | P1 | Field Notes collection inventory and genuine reading paths | Published articles separated from planned topics; dates, status labels and links source-backed |
+| UX-01 | P1 | Side Quest evidence preview and ProjectLifecycle | Live/demo/design states truthfully differentiated, images show real UI or labeled illustration; touch-friendly cards |
+| UX-02 | P1 | About and Work content refinement | No duplicate resume dump on Home; professional evidence dominates Work; modest private-safe personality |
+| UX-03 | P1 | Mobile and inclusive design validation | No unintended page-level horizontal scrolling; 44px targets, visible focus, Escape/focus restoration, zoom & reduced motion tested |
+| UX-04 | P2 | Approved Leader / Explorer / Builder avatar art | Same likeness consistently; accessible decorative/meaningful alt; no new artwork without approval |
+| DATA-01 | P2 | Privacy-respecting instrumentation and conversion review | Explicit metric definitions and opt-out/privacy review; baseline measured before setting targets |
+
+### Architecture / contracts
+- Reuse `components/editorial/` for server-rendered narrative primitives (article shell, evidence panel, case-study and related content). Never fetch hidden notes in public components.
+- Content source remains existing typed registries and public evidence; links must point to existing public routes. Cite sources as links or footnotes; indicate observation vs inference.
+- Image/screenshot records require alt text, origin and current implementation stage, with no invented sample claims.
+- Respect Next.js App Router server/client boundaries and existing build/test/dependency gates. No broad dependencies, no redesign of fonts, no unreviewed third-party trackers.
+- Canonical owner for brand: `docs/brand/brand-guidelines.md`; engineering: `docs/engineering-standards.md`; roadmap: `docs/product/portfolio-experience-v2-roadmap.md`.
+
+### Release slices / Definition of Done
+1. **Slice A (implementation):** sitemap correction, metadata/OG image, structured data, editorial components, reuse on published Field Notes, truthful Work & Side Quest entry points, documentation. Commit to one reviewable PR with unit checks.
+2. **Slice B (content/evidence):** 2–3 professional selling/leadership case studies once public facts and redactions are checked; final written case studies cannot be fabricated from repository diagrams.
+3. **Slice C (visual and UX):** authentic project screenshots and approved avatar expressions; record responsive screens and a11y results. Browser screenshots are required—not inferred from CSS.
+4. **Slice D (measurement):** Search Console + Lighthouse baseline and consent-aware analytics; no success claims until measured.
+
+A slice is *implemented* when its files are committed, *validated* when lint/tests/build and the actual browser acceptance checks pass, *released* when the matching Vercel production deployment is READY and the routes work. These states must not be conflated.
