@@ -56,3 +56,16 @@ test("Better Auth GTM learning card has a real access-control exercise", () => {
   const content = JSON.stringify(lesson);
   assert.equal(/real customer|production secret|private account data/i.test(content), false);
 });
+
+test("privacy-first product measurement lesson has synthetic no-side-effect lab", () => {
+  const lesson = lessons.find((item) => item.slug === "measure-product-use-safely");
+  assert.ok(lesson);
+  assert.equal(lesson.track, "Builder");
+  assert.equal(lesson.level, "Beginner");
+  assert.match(lesson.exercise, /docs\/builder-academy\/measure-product-usage-safely\.md/);
+  assert.match(lesson.exercise, /synthetic/i);
+  assert.match(lesson.check.choices[lesson.check.answer], /authorize and persist/);
+  assert.match(lesson.check.explanation, /denied actions should not emit a success event/);
+  assert.ok(lesson.sources.some((source) => source.url.startsWith("https://posthog.com/")));
+  assert.equal(/kristen\.aing@gmail\.com|joy\s*index/i.test(JSON.stringify(lesson)), false);
+});
