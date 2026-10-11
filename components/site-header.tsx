@@ -25,7 +25,8 @@ function isActive(pathname: string, href: string) {
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [openOnPath, setOpenOnPath] = useState<string | null>(null);
+  const open = openOnPath === pathname;
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export function SiteHeader() {
     return () => { document.body.style.overflow = previousOverflow; };
   }, [open]);
 
-  function closeMenu() { setOpen(false); }
+  function closeMenu() { setOpenOnPath(null); }
   function handleMenuKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
     if (event.key === "Escape" && open) {
       event.stopPropagation();
@@ -58,7 +59,7 @@ export function SiteHeader() {
           aria-expanded={open}
           aria-controls="primary-menu"
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => setOpenOnPath(open ? null : pathname)}
         >
           {open ? "Close" : "Menu"}
         </button>
