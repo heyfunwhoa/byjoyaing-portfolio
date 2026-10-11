@@ -13,6 +13,18 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    files: ["components/lifeline/**/*.{ts,tsx}"],
+    rules: {
+      // Upstream Lifeline updates refs during render and settles layout in
+      // effects. Those patterns stay in the copied prototype; they are not
+      // used by the rest of the site.
+      "react-hooks/refs": "off",
+      "react-hooks/immutability": "off",
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/exhaustive-deps": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
