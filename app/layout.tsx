@@ -35,6 +35,19 @@ export const metadata: Metadata = {
   },
 };
 
+const publicIdentity = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Kristen Joy Aing",
+  url: "https://www.byjoyaing.com/",
+  description: "Enterprise cybersecurity seller, revenue and GTM leader, and independent builder.",
+  knowsAbout: ["Enterprise cybersecurity sales", "Go-to-market strategy", "Sales enablement", "Security research"],
+  sameAs: [
+    "https://www.linkedin.com/in/kristenaing",
+    "https://github.com/heyfunwhoa",
+  ],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -43,6 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col font-sans">
         <a href="#main-content" className="skip-link">Skip to main content</a>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(publicIdentity) }} />
         <SiteHeader />
         {children}
         <footer className="mt-auto border-t border-border">
