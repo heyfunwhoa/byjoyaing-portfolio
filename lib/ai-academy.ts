@@ -169,21 +169,21 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "enterprise-contracts-sales-cycle",
-    title: "NDA, DPA, ToS, MSA: enterprise deal reviews",
+    title: "NDA vs MNDA, DPA, MSA: enterprise deal reviews",
     track: "GTM",
     minutes: 30,
     level: "Beginner",
     summary: "Recognize the legal, privacy, security and commercial documents in a B2B sales cycle, and learn the distinct decisions an AE and Head of Sales coordinate.",
     analogy: "The order form says what you bought, ToS sets usage rules, an MSA governs the relationship, an MNDA protects exchanged secrets, and a DPA governs certain processing of personal data.",
     takeaways: [
-      "NDA protects confidentiality; MNDA is mutual. Neither automatically permits processing, exporting or indefinite retention of personal data.",
+      "An NDA can be unilateral or mutual; an MNDA explicitly protects confidential disclosures in both directions. Neither permits unrelated processing, exporting or indefinite retention of data.",
       "Terms of Service and API/data licenses define allowed use; an advertised API or paid plan does not guarantee storage, redistribution or CRM-sync rights.",
       "MSA addresses commercial relationship terms, order form specifies purchase, and SOW may define implementation services.",
       "A DPA covers controller-processor personal-data obligations when applicable; SCCs may govern some international transfers; a DPIA is an impact assessment, not a contract.",
       "Security due diligence examines evidence and controls; start reviews before the final signature week and track decision owners.",
       "An AE coordinates deal issues without offering unapproved legal promises; a Head of Sales sets deal-desk processes, escalation rights and reviews cycle friction with Legal, Security and Privacy."
     ],
-    exercise: "Read docs/builder-academy/enterprise-contracts-sales-cycle.md. For a fictional cybersecurity SaaS pilot, distinguish an unsigned MNDA, a DPA, security questionnaire, MSA redline and purchase order blocker. Build a six-column owner/decision/status tracker. Then propose one AE next action and one Head of Sales process change. Use no real customer agreements.",
+    exercise: "Read docs/builder-academy/enterprise-contracts-sales-cycle.md. Compare a unilateral NDA with an MNDA when both sides share confidential information. For a synthetic pilot, distinguish an unsigned MNDA, DPA, security questionnaire, MSA redline and purchase order blocker. Build an owner/decision/status tracker, then propose an AE next action and a Head of Sales process improvement. Do not use real customer agreements.",
     check: {
       question: "A buyer signs an MNDA. Does that by itself permit uploading employee data to any enrichment API and storing it forever?",
       choices: [
@@ -198,6 +198,41 @@ export const lessons: Lesson[] = [
       { label: "European Commission: controller and processor roles", url: "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/application-gdpr_en" },
       { label: "ICO: controller-processor contract terms", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/what-needs-to-be-included-in-the-contract/" },
       { label: "NIST: nondisclosure agreement", url: "https://csrc.nist.gov/glossary/term/non_disclosure_agreement" }
+    ]
+  },
+  {
+    slug: "security-assessments-buyer-size",
+    title: "Security assessments from startups to enterprises",
+    track: "GTM",
+    minutes: 35,
+    level: "Intermediate",
+    summary: "Understand vendor-security reviews across startup, mid-market and enterprise buyers, and evaluate SOC 2 reports, penetration tests, subprocessors, security questionnaires and buyer risk.",
+    analogy: "A vendor security review is a building inspection before moving in: you check not just the building's size but what is stored inside, who has the keys, and which contractors can enter.",
+    takeaways: [
+      "Security assessments are risk-based: sensitivity, access, criticality, regulations and integrations matter more than company headcount alone.",
+      "A SOC 2 Type I examines control design at a point in time; Type II examines design and operating effectiveness over a period, within a defined system scope and with possible exceptions.",
+      "A penetration test is an authorized point-in-time assessment, not a warranty. Review testing scope, date, material findings, remediation, retests, and permitted sharing tier.",
+      "ISO 27001, CAIQ, SIG, security policies, trust centers and pen-test summaries are different types of evidence and do not substitute for one another.",
+      "A subprocessor processes personal data on behalf of another processor. Review its role, categories of data, location/access, downstream providers, agreements, change notices and retention obligations.",
+      "AE responsibilities include early discovery, approved evidence, owners and next steps; Head of Sales responsibilities include repeatable security packets, deal-desk escalation, realistic forecasting and exception controls.",
+      "A signed NDA or MNDA may govern confidential sharing, but it does not establish DPA, BAA, data-license or vendor-risk approvals."
+    ],
+    exercise: "Read docs/builder-academy/security-assessments-by-buyer-size.md. Compare a fictional startup synthetic-data pilot, a mid-market repository integration and a regulated enterprise handling patient records. For each, identify risk tier, a suitable SOC 2 or pen-test evidence request, subprocessor/data-flow questions, the AE next action and a Head of Sales process improvement. Never use real reports or employer data.",
+    check: {
+      question: "A 12-person startup plans to send regulated patient records to a vendor, while a large enterprise tests with synthetic data. Which principle should guide the security review?",
+      choices: [
+        "Large enterprises always require more diligence solely because of employee count.",
+        "Actual data risk, access scope, law and buyer policy determine the assessment depth; small companies can face stringent requirements too.",
+        "An executed MNDA eliminates the need for reviewing pen-test reports, subprocessors or data processing."
+      ],
+      answer: 1,
+      explanation: "Buyer headcount predicts neither actual technical exposure nor legal obligations. Examine data, access, criticality, audit scope, subprocessors and authorized processing requirements."
+    },
+    sources: [
+      { label: "NIST CSF 2.0 guidance", url: "https://www.nist.gov/cyberframework/quick-start-guides" },
+      { label: "AICPA SOC 2 guide", url: "https://www.aicpa.com/cpe-learning/publication/soc-2-reporting-on-an-examination-of-controls-at-a-service-organization-relevant-to-security-availability-processing-integrity-confidentiality-or-privacy" },
+      { label: "OWASP pen-test report structure", url: "https://wstg.owasp.org/v4.2/5-Reporting/" },
+      { label: "ICO: Subprocessor contractual obligations", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-processor/" }
     ]
   },
   {slug:"what-is-ai",title:"AI, models and assistants",track:"Foundations",minutes:8,level:"Beginner",summary:"Learn the difference between AI, machine learning, LLMs, and products such as ChatGPT and Claude.",analogy:"The model is an engine; the app is the vehicle with controls, navigation and optional tools.",takeaways:["AI is a broad field, not just chatbots.","Apps may offer different models and tools.","Fluent output is not proof of accuracy."],exercise:"Ask an assistant to explain a topic for a novice, then identify two claims to independently check.",check:{question:"Which describes ChatGPT or Claude as an app?",choices:["The same thing as the underlying model weights","An interface that can combine models, context and tools","A vector database"],answer:1,explanation:"An assistant app may combine a model with files, tools, workflows and UI."},sources:[{label:"Google ML Crash Course",url:"https://developers.google.com/machine-learning/crash-course"}]},

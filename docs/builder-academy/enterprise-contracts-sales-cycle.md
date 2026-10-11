@@ -15,7 +15,7 @@ Buying a secure cloud service resembles leasing a managed office:
 - **Order Form:** the exact space, price, duration and purchased features.
 - **ToS (Terms of Service):** general rules for using the building, including restrictions. The click-through ToS might remain relevant even when an enterprise contract is negotiated.
 - **MSA (Master Services Agreement):** overarching commercial relationship: responsibilities, warranties, liability, indemnities, term, termination, disputes and precedence.
-- **NDA / MNDA (Mutual NDA):** a promise about how confidential information shared during discussions may be used and protected; *mutual* means both sides exchange protected information. Not every deal requires a separately signed NDA.
+- **NDA / MNDA:** an NDA is the general confidentiality agreement and can be one-way or mutual; an **MNDA** specifically protects information disclosed by both parties. Not every deal requires a separate signed NDA.
 - **DPA (Data Processing Agreement):** privacy obligations when an organization processes personal data *on another organization's behalf*; controller/processor roles, instructions, sub-processors, security, assistance, deletion/return and audit rights.
 - **SCCs (Standard Contractual Clauses):** standardized terms that may support certain international personal-data transfers. A DPA is not automatically a valid transfer mechanism; which module/instrument applies depends on roles and geography.
 - **DPIA (Data Protection Impact Assessment):** a privacy *risk assessment*, not a contract and not a synonym for DPA.
@@ -23,6 +23,26 @@ Buying a secure cloud service resembles leasing a managed office:
 - **SOW (Statement of Work):** sometimes used for implementation/professional services, specifying scope, deliverables and acceptance.
 
 No single paper automatically gives permission to scrape a provider's data, resell a dataset, or copy licensed contact records across organizations.
+
+## NDA vs. MNDA — what's actually different?
+
+**NDA (non-disclosure agreement)** is the broad category: an agreement about keeping certain information confidential. An NDA may be **unilateral (one-way)** *or mutual (two-way)*. **MNDA** simply spells out **mutual NDA** — it is not a different category of agreement.
+
+| Question | Unilateral / one-way NDA | Mutual NDA (MNDA) |
+| --- | --- | --- |
+| Whose information is protected? | Typically information disclosed by *one* party | Confidential information disclosed by **either** party |
+| Who promises to protect information? | Mainly the recipient of the one-way disclosure | Both parties when acting as recipients |
+| Common fictional sales example | A seller shares nonpublic product architecture with an evaluator who will not disclose nonpublic information back | Seller shares roadmap/internal architecture and buyer shares internal integration diagrams, customer datasets or private budget information |
+| What could go wrong? | Negotiating one-way paper despite both sides sharing sensitive material leaves unanswered protection questions | Broad or poorly scoped mutual obligations can make disclosures difficult to manage |
+| Who decides? | Legal or authorized contract owner, based on actual information flows | Legal or authorized contract owner, based on actual information flows |
+
+**Practical review checklist:** scope/purpose, definition and exclusions of confidential information, permitted recipients (employees/contractors/advisers), use restrictions, disclosure required by law, duration and survival, return/destruction, security measures, whether oral disclosures are included, and governing law. Confirm which party's template prevails; do not rewrite terms independently as an AE.
+
+**Examples:** If both a buyer and seller exchange proprietary diagrams and product information during a cybersecurity POC, an MNDA *may* be suitable. If only the seller discloses confidential information, one-way terms *may* suffice. In either case, an MNDA or NDA **does not** replace a DPA, BAA, data license, POC authorization or security approval.
+
+**AE:** clarify who will disclose what, identify whether existing master terms cover confidentiality, route the proposed paper for Legal review, and track who is authorized to sign. **Head of Sales:** agree on standard forms, a routing/approval matrix, turnaround goals, template escalation rules and an exception log with Legal—without assuming commercial urgency overrides confidentiality terms.
+
+For actual vendor-security requirements, including **SOC 2 Type I/II, penetration-test summaries and findings, ISO 27001, security questionnaires and subprocessors**, see [Security assessments by buyer size and risk](security-assessments-by-buyer-size.md).
 
 ## What each review actually asks
 
@@ -113,6 +133,8 @@ C. Yes, if the salesperson used a paid Pro subscription.
 - [UK ICO — controller/processor contracts, minimum terms and liabilities](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/what-needs-to-be-included-in-the-contract/).
 - [European Commission — SCCs and international transfers](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_sw).
 - [NIST glossary — Non-disclosure agreement](https://csrc.nist.gov/glossary/term/non_disclosure_agreement).
+- [Rocket Lawyer — Whether an NDA protects one or both parties](https://www.rocketlawyer.com/q-and-a/answer/does-an-nda-protect-both-parties-or-just-one-side) — secondary educational explainer; counsel should review actual language.
+- [Builder Academy — Security assessments by buyer size and risk](security-assessments-by-buyer-size.md) — synthetic practice and primary references.
 - [NIST SP 800-47 — Managing Security of Information Exchanges](https://www.nist.gov/publications/managing-security-information-exchanges).
 
 **Educational limitation:** legal obligations vary by geography, agreement and processing role. This lesson teaches issue spotting and sales coordination, not contract interpretation or legal advice. Obtain qualified legal/privacy counsel for actual deals.
