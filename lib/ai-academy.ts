@@ -5,6 +5,35 @@ export type Lesson = {
   sources: { label: string; url: string }[];
 };
 export const lessons: Lesson[] = [
+  {
+    slug: "idea-to-verified-release",
+    title: "From idea to verified release",
+    track: "Builder",
+    minutes: 15,
+    level: "Beginner",
+    summary: "See how priorities, requirements, Linear issues, Cursor, GitHub PRs and CI form one accountable delivery workflow without duplicating project tracking.",
+    analogy: "A restaurant order has one ticket, a recipe, a kitchen station and a quality check. You do not need five copies of the same order to know whether dinner is ready.",
+    takeaways: [
+      "A project groups an outcome; milestones divide it; issues specify testable slices. Priority is importance, while status is where the work stands.",
+      "Backlog means not yet committed; Todo means selected; In Progress means implementing; In Review means verifying; Done requires acceptance evidence.",
+      "Keep the PRD and source code in the owning repository, tasks in Linear, implementation and CI evidence in GitHub, and reusable standards in Technical Docs.",
+      "Link a Linear issue ID in branches and PRs. PR linking does not require GitHub Issues synchronization or duplicate tickets.",
+      "Use test results, code review and explicit acceptance criteria before declaring delivery complete. Do not equate a passing build with product correctness.",
+      "Adopt the workflow gradually for active initiatives; no separate Linear team or duplicated status page is required for every repository."
+    ],
+    exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md.",
+    check: {
+      question: "Your implementation PR passes CI but the expected calculation has not been checked. What should happen?",
+      choices: ["Mark Done because all green checks prove the feature works", "Keep the issue In Review until its acceptance criteria and user journey are verified", "Copy the issue into GitHub Issues and Notion to increase visibility"],
+      answer: 1,
+      explanation: "CI proves the checks it actually ran passed; it does not replace review of the expected business behavior."
+    },
+    sources: [
+      { label: "GitHub Docs: About pull requests", url: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests" },
+      { label: "GitHub Docs: About status checks", url: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks" },
+      { label: "Linear Docs: GitHub integration", url: "https://linear.app/docs/github" }
+    ]
+  },
   {slug:"what-is-ai",title:"AI, models and assistants",track:"Foundations",minutes:8,level:"Beginner",summary:"Learn the difference between AI, machine learning, LLMs, and products such as ChatGPT and Claude.",analogy:"The model is an engine; the app is the vehicle with controls, navigation and optional tools.",takeaways:["AI is a broad field, not just chatbots.","Apps may offer different models and tools.","Fluent output is not proof of accuracy."],exercise:"Ask an assistant to explain a topic for a novice, then identify two claims to independently check.",check:{question:"Which describes ChatGPT or Claude as an app?",choices:["The same thing as the underlying model weights","An interface that can combine models, context and tools","A vector database"],answer:1,explanation:"An assistant app may combine a model with files, tools, workflows and UI."},sources:[{label:"Google ML Crash Course",url:"https://developers.google.com/machine-learning/crash-course"}]},
   {slug:"evolution",title:"From rules to AI agents",track:"Foundations",minutes:10,level:"Beginner",summary:"Trace rule-based systems, machine learning, deep learning, transformers and tool-using agents.",analogy:"From following a fixed recipe to recognizing patterns, then assisting with tools and feedback.",takeaways:["These approaches overlap rather than replace one another.","Transformers enabled major language-model advances.","Agents need permission boundaries."],exercise:"Choose a business task and decide whether a rule, model or agent is actually necessary.",check:{question:"Does every useful automation require an AI agent?",choices:["Yes","No, deterministic rules may be simpler and safer","Only if it has a database"],answer:1,explanation:"Prefer the simplest reliable approach."},sources:[{label:"Attention Is All You Need",url:"https://arxiv.org/abs/1706.03762"}]},
   {slug:"prompting",title:"Write prompts that work",track:"Prompting",minutes:12,level:"Beginner",summary:"Practice specifying objective, context, inputs, constraints, output and validation.",analogy:"A good prompt is a good assignment brief—not a magic incantation.",takeaways:["Define a measurable outcome.","Keep source material separate from instructions.","Require uncertainties to be labeled."],exercise:"Rewrite 'Research this account' as a sourced account brief with audience, required fields and checks.",check:{question:"What most improves a vague request?",choices:["Adding lots of role adjectives","Clear task, context, constraints and a verifiable output","Always asking for a longer answer"],answer:1,explanation:"Specific expectations and inputs make results easier to assess."},sources:[{label:"OpenAI prompting guide",url:"https://platform.openai.com/docs/guides/prompt-engineering"}]},
