@@ -59,7 +59,7 @@ test("every registered logo is a local svg without active content", () => {
     assert.equal(existsSync(file), true, technology.logo);
     const svg = readFileSync(file, "utf8").toLowerCase();
     // False positive: this security assertion rejects script tags in static logo SVG files.
-    assert.equal(svg.includes("<script"), false); // nosemgrep: javascript.lang.security.audit.unknown-value-with-script-tag
+    assert.equal(svg.includes("<script"), false); // nosemgrep: javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag
     assert.equal(svg.includes("foreignobject"), false);
     assert.equal(svg.includes("javascript:"), false);
     assert.equal(svg.includes("onload"), false);
