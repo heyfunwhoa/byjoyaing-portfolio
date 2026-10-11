@@ -21,8 +21,11 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Revenue & GTM leadership in enterprise cybersecurity, people development, and practical systems that help teams grow.",
+    "Enterprise cybersecurity sales, GTM leadership, coaching and independent technical systems — the work and thinking of Kristen Joy Aing.",
+  alternates: { canonical: "/" },
   openGraph: {
+    url: "/",
+    siteName: "joy. — Kristen Joy Aing",
     title: "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder",
     description:
       "Curious by nature. Builder by instinct. Revenue, relationships, teams and repeatable GTM systems.",
