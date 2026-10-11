@@ -38,3 +38,5 @@ See [package registries, package managers, lockfiles and supply-chain security](
 ## Builder learning: Cursor workflows
 
 The in-app lesson `cursor-workflows` is the concise card. The longer source is [Cursor: from first prompt to verified pull request](builder-academy/cursor-agent-workflows.md). Publishing that Markdown file does not by itself add the card; the card is the `Lesson` record in `lib/ai-academy.ts`.
+
+The From idea to verified release lesson includes a Portfolio OS case study of that same public path. It sits after the six-stage delivery lab and does not add a second lesson.
