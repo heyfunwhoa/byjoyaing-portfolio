@@ -22,9 +22,7 @@ export const metadata: Metadata = {
   },
   description:
     "Enterprise cybersecurity sales, GTM leadership, coaching and independent technical systems — the work and thinking of Kristen Joy Aing.",
-  alternates: { canonical: "/" },
   openGraph: {
-    url: "/",
     siteName: "joy. — Kristen Joy Aing",
     title: "Kristen Joy Aing — Revenue & GTM Leader · Curious Builder",
     description:
