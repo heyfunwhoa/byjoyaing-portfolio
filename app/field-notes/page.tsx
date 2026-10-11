@@ -2,6 +2,7 @@ import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { publicStories } from "@/lib/public-stories";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/field-notes" },
@@ -78,6 +79,23 @@ export default function FieldNotesPage() {
               <p className="mt-3 text-sm leading-6 text-muted">{note.description}</p>
               <span className="mt-4 inline-block text-sm font-medium text-accent">Explore the guide →</span>
             </Link>
+          ))}
+        </div>
+      </section>
+      <section aria-labelledby="story-connections-title" className="border-b border-border py-12">
+        <p className="editorial-eyebrow text-accent">From practice to method</p>
+        <h2 id="story-connections-title" className="mt-3 font-display text-3xl">Where these ideas connect to professional work</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">Professional responsibilities and independent illustrations are presented separately. Explore the public work first, then follow the method or project that explains the thinking.</p>
+        <div className="mt-6 grid gap-3 md:grid-cols-3">
+          {publicStories.map(story => (
+            <article key={story.id} className="flex flex-col rounded-xl border border-border bg-card p-5">
+              <p className="editorial-eyebrow text-accent">{story.area}</p>
+              <h3 className="mt-2 text-xl font-semibold">{story.title}</h3>
+              <p className="mt-3 flex-1 text-sm leading-6 text-muted">{story.takeaway}</p>
+              <Link href={story.area === "Enterprise Sales" ? "/work#enterprise-sales" : story.area === "People & Leadership" ? "/work#people-leadership" : "/work#gtm-strategy"} className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">
+                Read professional context →
+              </Link>
+            </article>
           ))}
         </div>
       </section>
