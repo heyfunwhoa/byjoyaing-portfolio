@@ -202,3 +202,18 @@ Status conventions: proposed / implemented in branch / automated checks passing 
 **Next implementation phase:** Genuine project evidence (real screenshots and source-controlled architecture views, with provenance/alt) and a published-versus-planned Field Notes taxonomy. This increment does not introduce new integrations or claim live project data flows.
 
 **Acceptance:** CI tests/lint/build/security passing; keyboard, mobile (320/375/768/1280) and zoom navigation checked; production merge commit READY.
+
+
+## Side Quest visual evidence — implemented increment
+
+**Status:** Implemented on feature branch, pending CI, browser review and production verification.
+
+- Use existing sample components as visuals on selected Side Quest cards, the full project directory and featured project displays. This is **not** a claim to possess screenshots of separately deployed apps.
+- Reusable `ProjectEvidence` supplies an explicit evidence category and plain-language limitation for each existing `DirectoryPreview` kind: coverage sample, field brief, fictional account, or written concept.
+- Keep genuine screenshots out of the site until the target build/revision and image rights are confirmed, the capture is redacted, and alt text identifies the depicted interface.
+- Correct the Detector Coverage Atlas on-site sample link to the existing `/projects#featured` section; it no longer points to `/#atlas` on the abbreviated homepage.
+- For future real screenshots: record repository/commit, app route, screenshot capture date, synthetic/live data status, license/permission, and accessibility alt text; store only explicitly approved redacted images in the repository.
+
+**Acceptance:** Responsive preview scrollers at 320/375/768/1280px and 200% zoom, caption readability, links to existing project pages, keyboard focus and scroll discoverability, lint/test/build/security passing, Vercel deployment READY. Do not claim the visual checks until separately executed.
+
+**Next:** Replace illustration-only previews with approved actual application captures where available; then perform browser/device and Lighthouse baseline audit.
