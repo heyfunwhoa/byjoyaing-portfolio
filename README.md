@@ -40,6 +40,8 @@ There is no separate test runner yet. The reason, and the first tests worth addi
 - [docs/content-model.md](docs/content-model.md) — where words live, and what must stay unpublished
 - [docs/rebuild-roadmap.md](docs/rebuild-roadmap.md) — the rebuild as small pull requests
 - [docs/design-process.md](docs/design-process.md) — how a page redesign is decided before it is coded
+- [docs/design/ux-audit.md](docs/design/ux-audit.md) — prioritized findings on the current site
+- [docs/learning/design-learning-log.md](docs/learning/design-learning-log.md) — what to learn from the audit
 
 ## Stack
 
