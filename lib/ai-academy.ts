@@ -134,6 +134,72 @@ export const lessons: Lesson[] = [
       { label: "OWASP logging guidance", url: "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html" },
     ],
   },
+  {
+    slug: "mcp-vs-rest-api",
+    title: "MCP versus REST APIs: how integrations work",
+    track: "Builder",
+    minutes: 25,
+    level: "Beginner",
+    summary: "Compare REST APIs, MCP tools, webhooks and SDKs through a fictional account-research workflow. Understand what each does and why none grants data permissions by itself.",
+    analogy: "An API is an ordering contract, REST is a structured order form, MCP is a discoverable menu for AI assistants, and a webhook is a notification when the order changes.",
+    takeaways: [
+      "API is the broader concept. REST is a common HTTP resource-interface style using methods such as GET and POST; MCP is a tool/context protocol for AI clients and may call an existing REST API.",
+      "MCP hosts and clients discover tools, resources and prompts through a server using JSON-RPC; transport may be local stdio or remote HTTP.",
+      "Use deterministic REST/SDK calls for routine application sync, MCP for assistant-initiated approved tools, and verified webhooks for change notifications.",
+      "A tool listing or successful request does not grant authorization, billing rights, data retention rights or permission to export contacts.",
+      "Enforce credential scoping, server-side account authorization, human approval for consequential writes, budgets, error handling and event deduplication.",
+      "A provider-neutral research service can support both REST and MCP without creating two databases."
+    ],
+    exercise: "Read docs/builder-academy/mcp-vs-rest-api.md and diagram a synthetic account lookup three ways: app-to-CRM REST request, AI assistant-to-MCP research tool, and CRM-to-app webhook. Then add a mock access-denied test and explain how to handle an HTTP 429 response without spending paid credits.",
+    check: {
+      question: "A Sumble-like provider offers an MCP tool that reveals contact details. What does MCP access prove?",
+      choices: [
+        "That the contact list can be bulk copied into a personal warehouse",
+        "Only that a compatible client may invoke a tool subject to permissions, licensing and processing restrictions",
+        "That there is no need for a REST API, security review or provider agreement"
+      ],
+      answer: 1,
+      explanation: "MCP makes capabilities discoverable to an assistant. It does not waive tenant authorization, source licensing, credit budgets or data protection responsibilities."
+    },
+    sources: [
+      { label: "Model Context Protocol architecture", url: "https://modelcontextprotocol.io/docs/learn/architecture" },
+      { label: "MDN HTTP methods", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods" },
+      { label: "Microsoft Learn MCP overview", url: "https://learn.microsoft.com/en-us/azure/api-management/mcp-server-overview" }
+    ]
+  },
+  {
+    slug: "enterprise-contracts-sales-cycle",
+    title: "NDA, DPA, ToS, MSA: enterprise deal reviews",
+    track: "GTM",
+    minutes: 30,
+    level: "Beginner",
+    summary: "Recognize the legal, privacy, security and commercial documents in a B2B sales cycle, and learn the distinct decisions an AE and Head of Sales coordinate.",
+    analogy: "The order form says what you bought, ToS sets usage rules, an MSA governs the relationship, an MNDA protects exchanged secrets, and a DPA governs certain processing of personal data.",
+    takeaways: [
+      "NDA protects confidentiality; MNDA is mutual. Neither automatically permits processing, exporting or indefinite retention of personal data.",
+      "Terms of Service and API/data licenses define allowed use; an advertised API or paid plan does not guarantee storage, redistribution or CRM-sync rights.",
+      "MSA addresses commercial relationship terms, order form specifies purchase, and SOW may define implementation services.",
+      "A DPA covers controller-processor personal-data obligations when applicable; SCCs may govern some international transfers; a DPIA is an impact assessment, not a contract.",
+      "Security due diligence examines evidence and controls; start reviews before the final signature week and track decision owners.",
+      "An AE coordinates deal issues without offering unapproved legal promises; a Head of Sales sets deal-desk processes, escalation rights and reviews cycle friction with Legal, Security and Privacy."
+    ],
+    exercise: "Read docs/builder-academy/enterprise-contracts-sales-cycle.md. For a fictional cybersecurity SaaS pilot, distinguish an unsigned MNDA, a DPA, security questionnaire, MSA redline and purchase order blocker. Build a six-column owner/decision/status tracker. Then propose one AE next action and one Head of Sales process change. Use no real customer agreements.",
+    check: {
+      question: "A buyer signs an MNDA. Does that by itself permit uploading employee data to any enrichment API and storing it forever?",
+      choices: [
+        "Yes, a confidentiality agreement also grants processing and data licensing rights",
+        "No, data-use rights, privacy roles, DPA where applicable, security and retention obligations must be reviewed separately",
+        "Yes, but only if the vendor is on a paid plan"
+      ],
+      answer: 1,
+      explanation: "Confidentiality is not a substitute for privacy and data-processing terms, vendor licensing, access controls or a qualified legal review."
+    },
+    sources: [
+      { label: "European Commission: controller and processor roles", url: "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/application-gdpr_en" },
+      { label: "ICO: controller-processor contract terms", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/what-needs-to-be-included-in-the-contract/" },
+      { label: "NIST: nondisclosure agreement", url: "https://csrc.nist.gov/glossary/term/non_disclosure_agreement" }
+    ]
+  },
   {slug:"what-is-ai",title:"AI, models and assistants",track:"Foundations",minutes:8,level:"Beginner",summary:"Learn the difference between AI, machine learning, LLMs, and products such as ChatGPT and Claude.",analogy:"The model is an engine; the app is the vehicle with controls, navigation and optional tools.",takeaways:["AI is a broad field, not just chatbots.","Apps may offer different models and tools.","Fluent output is not proof of accuracy."],exercise:"Ask an assistant to explain a topic for a novice, then identify two claims to independently check.",check:{question:"Which describes ChatGPT or Claude as an app?",choices:["The same thing as the underlying model weights","An interface that can combine models, context and tools","A vector database"],answer:1,explanation:"An assistant app may combine a model with files, tools, workflows and UI."},sources:[{label:"Google ML Crash Course",url:"https://developers.google.com/machine-learning/crash-course"}]},
   {slug:"evolution",title:"From rules to AI agents",track:"Foundations",minutes:10,level:"Beginner",summary:"Trace rule-based systems, machine learning, deep learning, transformers and tool-using agents.",analogy:"From following a fixed recipe to recognizing patterns, then assisting with tools and feedback.",takeaways:["These approaches overlap rather than replace one another.","Transformers enabled major language-model advances.","Agents need permission boundaries."],exercise:"Choose a business task and decide whether a rule, model or agent is actually necessary.",check:{question:"Does every useful automation require an AI agent?",choices:["Yes","No, deterministic rules may be simpler and safer","Only if it has a database"],answer:1,explanation:"Prefer the simplest reliable approach."},sources:[{label:"Attention Is All You Need",url:"https://arxiv.org/abs/1706.03762"}]},
   {slug:"prompting",title:"Write prompts that work",track:"Prompting",minutes:12,level:"Beginner",summary:"Practice specifying objective, context, inputs, constraints, output and validation.",analogy:"A good prompt is a good assignment brief—not a magic incantation.",takeaways:["Define a measurable outcome.","Keep source material separate from instructions.","Require uncertainties to be labeled."],exercise:"Rewrite 'Research this account' as a sourced account brief with audience, required fields and checks.",check:{question:"What most improves a vague request?",choices:["Adding lots of role adjectives","Clear task, context, constraints and a verifiable output","Always asking for a longer answer"],answer:1,explanation:"Specific expectations and inputs make results easier to assess."},sources:[{label:"OpenAI prompting guide",url:"https://platform.openai.com/docs/guides/prompt-engineering"}]},
