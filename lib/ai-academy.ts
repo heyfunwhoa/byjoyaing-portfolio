@@ -21,7 +21,7 @@ export const lessons: Lesson[] = [
       "Use test results, code review and explicit acceptance criteria before declaring delivery complete. Do not equate a passing build with product correctness.",
       "Adopt the workflow gradually for active initiatives; no separate Linear team or duplicated status page is required for every repository."
     ],
-    exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md.",
+    exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md. When you choose a Cursor mode for that branch, continue with docs/builder-academy/cursor-agent-workflows.md.",
     check: {
       question: "Your implementation PR passes CI but the expected calculation has not been checked. What should happen?",
       choices: ["Mark Done because all green checks prove the feature works", "Keep the issue In Review until its acceptance criteria and user journey are verified", "Copy the issue into GitHub Issues and Notion to increase visibility"],
@@ -33,6 +33,38 @@ export const lessons: Lesson[] = [
       { label: "GitHub Docs: About status checks", url: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks" },
       { label: "Linear Docs: GitHub integration", url: "https://linear.app/docs/github" }
     ]
+  },
+  {
+    slug: "cursor-workflows",
+    title: "Cursor modes, rules, and safe handoffs",
+    track: "Builder",
+    minutes: 30,
+    level: "Beginner",
+    summary: "Choose Ask, Plan, or Agent for a small software task, write a bounded prompt, and tell a standing rule from a one-time request.",
+    analogy: "Ask is a question at the counter. Plan is the written order you approve. Agent is the cook who changes the dish only after that order is clear.",
+    takeaways: [
+      "Ask reads and explains. Plan proposes a reviewable approach. Agent edits only after the outcome and the checks are stated.",
+      "A prompt is one assignment. A project rule is a standing invariant. A skill is a repeated procedure with checks.",
+      "Open the one repository you intend to change. Treat other folders as references, and keep private notes out of public lessons and rules.",
+      "Finishing a chat is not a merged pull request, a passing check, or a deployment.",
+    ],
+    exercise: "Finish From idea to verified release first. Then write one prompt for a fictional classroom fix: the goal, the files in scope, the checks to run, and an instruction to stop before merge. Say whether the next step is Ask, Plan, or Agent. Read the longer companion at docs/builder-academy/cursor-agent-workflows.md.",
+    check: {
+      question: "You have an approved, scoped fix and you want Cursor to change the files and add tests. Which mode fits?",
+      choices: [
+        "Ask — read the code and leave the files unchanged",
+        "Plan — investigate and propose a reviewable implementation plan before building",
+        "Agent — edit the approved slice on a feature branch and run the checks",
+      ],
+      answer: 2,
+      explanation: "Ask explains without editing. Plan is for reviewing an approach before implementation. Agent applies a scoped change. A local finish still needs the diff, tests, review, and CI.",
+    },
+    sources: [
+      { label: "Cursor docs: Rules", url: "https://cursor.com/docs/rules" },
+      { label: "Cursor docs: Plan Mode", url: "https://prod.cursor.com/docs/agent/plan-mode" },
+      { label: "Cursor docs: Agent read access", url: "https://cursor.com/docs/agent/security/run-modes" },
+      { label: "Cursor: Agent best practices", url: "https://cursor.com/blog/agent-best-practices" },
+    ],
   },
   {slug:"what-is-ai",title:"AI, models and assistants",track:"Foundations",minutes:8,level:"Beginner",summary:"Learn the difference between AI, machine learning, LLMs, and products such as ChatGPT and Claude.",analogy:"The model is an engine; the app is the vehicle with controls, navigation and optional tools.",takeaways:["AI is a broad field, not just chatbots.","Apps may offer different models and tools.","Fluent output is not proof of accuracy."],exercise:"Ask an assistant to explain a topic for a novice, then identify two claims to independently check.",check:{question:"Which describes ChatGPT or Claude as an app?",choices:["The same thing as the underlying model weights","An interface that can combine models, context and tools","A vector database"],answer:1,explanation:"An assistant app may combine a model with files, tools, workflows and UI."},sources:[{label:"Google ML Crash Course",url:"https://developers.google.com/machine-learning/crash-course"}]},
   {slug:"evolution",title:"From rules to AI agents",track:"Foundations",minutes:10,level:"Beginner",summary:"Trace rule-based systems, machine learning, deep learning, transformers and tool-using agents.",analogy:"From following a fixed recipe to recognizing patterns, then assisting with tools and feedback.",takeaways:["These approaches overlap rather than replace one another.","Transformers enabled major language-model advances.","Agents need permission boundaries."],exercise:"Choose a business task and decide whether a rule, model or agent is actually necessary.",check:{question:"Does every useful automation require an AI agent?",choices:["Yes","No, deterministic rules may be simpler and safer","Only if it has a database"],answer:1,explanation:"Prefer the simplest reliable approach."},sources:[{label:"Attention Is All You Need",url:"https://arxiv.org/abs/1706.03762"}]},
