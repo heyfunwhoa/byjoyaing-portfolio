@@ -35,3 +35,7 @@ Complete the Builder Academy interactive worksheet with an invented Sales/CS/Sup
 ## Further reading
 - [Atlassian Product Discovery](https://www.atlassian.com/agile/product-management/discovery)
 - [Linear Customer Requests](https://linear.app/docs/customer-requests)
+
+## Evidence reference and provenance (fictional training example)
+
+Record **source system**, approved source reference/ID, observation date, recording timestamp or note section, relevant speaker if allowed, claim classification (direct quote vs AI summary vs interpretation vs hypothesis), evidence confidence, access permission, and the exact product-problem claim supported. Keep the full recording/transcript in the original authorized system; references are not permission grants. Corrections and withdrawn evidence should be traceable. A Gong call and a Granola summary of the *same* account are corroborating artifacts, **not** two independent customers. Real CRM ARR or pipeline data should only be linked through an employer-approved RevOps model, with clear distinctions between exposed and incremental attributable value.
