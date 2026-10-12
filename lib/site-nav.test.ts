@@ -62,9 +62,17 @@ test("public profile icons use known destinations and clear accessible names", (
   assert.doesNotMatch(linkedinSvg.toLowerCase(), /<script|javascript:|onload=|foreignobject/);
   const contact = readFileSync(new URL("../app/contact/page.tsx", import.meta.url), "utf8");
   assert.match(contact, /<SocialLinks placement="contact"/);
-  assert.match(contact, /mailto:kristen\.aing@gmail\.com/);
+  assert.match(contact, /<EmailLink placement="contact"/);
+  assert.doesNotMatch(contact, />kristen\.aing@gmail\.com</);
+  const emailLink = readFileSync(new URL("../components/email-link.tsx", import.meta.url), "utf8");
+  assert.match(emailLink, /href="mailto:kristen\.aing@gmail\.com"/);
+  assert.match(emailLink, /aria-label="Email Kristen Joy Aing/);
+  assert.match(emailLink, /min-h-11 min-w-11/);
+  assert.match(emailLink, /<Mail size=\{20\}/);
   const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
   assert.match(layout, /<SocialLinks placement="footer"/);
+  assert.match(layout, /<EmailLink placement="footer"/);
+  assert.doesNotMatch(layout, />kristen\.aing@gmail\.com</);
   assert.match(layout, /sameAs: socialProfiles\.map/);
 });
 
