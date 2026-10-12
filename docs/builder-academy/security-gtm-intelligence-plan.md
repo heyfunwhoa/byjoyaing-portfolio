@@ -17,3 +17,7 @@ Reuse current Secrets/NHI, identity lifecycle and evidence-based product request
 Private curator practice: 3 cited briefs, 3 recall exercises, unknown/conflict list, time spent and usefulness/correction feedback. Personal reflections belong in Joy Index/private journal with reference IDs; no automated export. Public teaching publishes only separately reviewed synthetic examples.
 
 Model: Auto/Cost or efficient drafting model, low–medium effort; strong reasoning reviewer for security claims. Validate current tests/lint/type/build and keyboard/mobile flow when UI implementation occurs. This planning document does not put an exercise into the UI and no application suite was run.
+
+## Connected sales-flow exercise
+
+KRU-61 may adapt the [ASE fictional rehearsal](https://github.com/heyfunwhoa/account-signal-engine/blob/docs/security-gtm-intelligence-foundation-20261011/docs/account-workshop/pilots/secrets-nhi-sales-flow.md) into the existing lesson after review. Learner traces category → account hypothesis → role-specific question → fictional statement → revised action; rejects the rotation-gap hypothesis and keeps economic buyer Unknown. The source packet is synthetic, never a real customer story or approved public research result. No UI change made here.
