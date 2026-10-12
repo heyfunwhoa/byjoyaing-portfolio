@@ -293,3 +293,28 @@ body {
   .nav-backdrop-enter { animation: nav-backdrop-reveal 180ms ease-out both; }
 }
 .nav-toggle-enter { animation: nav-icon-reveal 160ms ease-out both; }
+
+/* Editorial interactions: small gestures on actionable surfaces, never continuous motion. */
+.editorial-interactive {
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+.editorial-interactive:focus-within {
+  border-color: var(--accent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .editorial-interactive:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+}
+@keyframes disclosure-reveal {
+  from { opacity: .85; transform: translateY(-.2rem); }
+  to { opacity: 1; transform: none; }
+}
+.editorial-disclosure[open] > .disclosure-content {
+  animation: disclosure-reveal 160ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .editorial-interactive:hover { transform: none; }
+  .editorial-disclosure[open] > .disclosure-content { animation: none; }
+}

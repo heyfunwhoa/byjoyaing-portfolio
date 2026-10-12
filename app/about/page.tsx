@@ -1,3 +1,5 @@
+import { EditorialDisclosure } from "@/components/editorial/editorial-disclosure";
+import { WorkRequestCallout } from "@/components/work-request-callout";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CareerRail } from "@/components/career-rail";
@@ -84,7 +86,7 @@ export default function AboutPage() {
             ["Enablement", "Training and frameworks used in the field. Truffle Camp is the curriculum design, not that training.", "/work/truffle-camp"],
           ].map(([title, body, href]) => (
             <li key={title} className="list-none">
-              <Link href={href} className="block rounded-2xl border border-border p-5 hover:border-accent">
+              <Link href={href} className="editorial-interactive block rounded-2xl border border-border p-5 hover:border-accent">
                 <h3 className="font-semibold">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
               </Link>
@@ -114,7 +116,9 @@ export default function AboutPage() {
           Built with, used professionally, and still learning stay separate. A name in a case study is not a running integration.
         </p>
         <div className="mt-6">
-          <ToolsMap />
+          <EditorialDisclosure title="Explore the toolkit and learning areas" description="See what I’ve built with, used professionally and am still learning.">
+            <ToolsMap headingLevel="h3" />
+          </EditorialDisclosure>
         </div>
       </section>
 
@@ -127,8 +131,9 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <section className="py-12">
-        <h2 className="text-lg font-semibold">Contact</h2>
+      <WorkRequestCallout />
+      <section className="pb-12">
+        <h2 className="text-lg font-semibold">Connect directly</h2>
         <div className="mt-4 flex flex-wrap gap-4 text-sm font-medium">
           <Link href="/contact" className="text-accent">Get in touch</Link>
           <a href="https://www.linkedin.com/in/kristenaing" className="text-accent" target="_blank" rel="noreferrer">LinkedIn</a>

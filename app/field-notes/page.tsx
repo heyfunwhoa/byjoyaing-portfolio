@@ -1,3 +1,4 @@
+import { EditorialDisclosure } from "@/components/editorial/editorial-disclosure";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
@@ -73,11 +74,11 @@ export default function FieldNotesPage() {
               label: "Interactive playbook",
             },
           ].map((note) => (
-            <Link key={note.href} href={note.href} className="group block rounded-2xl border border-border bg-surface-clay p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+            <Link key={note.href} href={note.href} className="editorial-interactive group block rounded-2xl border border-border bg-surface-clay p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
               <p className="text-xs font-medium text-muted">{note.label}</p>
               <h3 className="mt-3 font-display text-2xl tracking-tight">{note.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted">{note.description}</p>
-              <span className="mt-4 inline-block text-sm font-medium text-accent">Explore the guide →</span>
+              <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-accent">Explore the guide <span aria-hidden="true" className="nudge-link">→</span></span>
             </Link>
           ))}
         </div>
@@ -123,22 +124,21 @@ export default function FieldNotesPage() {
         </p>
         <div className="mt-7 grid gap-4 md:grid-cols-2">
           {collections.map((collection) => (
-            <article key={collection.title} className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="text-xl font-semibold">{collection.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted">{collection.description}</p>
+            <EditorialDisclosure key={collection.title} title={collection.title} description="Planned collection · Expand to see the outline">
+              <p className="text-sm leading-6 text-muted">{collection.description}</p>
               <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">Planned topics — not published</p>
               <ul className="mt-2 list-inside list-disc space-y-2 text-sm">
                 {collection.examples.map((example) => <li key={example}>{example}</li>)}
               </ul>
-            </article>
+            </EditorialDisclosure>
           ))}
         </div>
       </section>
       <section id="private" className="scroll-mt-24 border-t border-border py-12">
         <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>
-        <Link href="/private-work" className="mb-8 block rounded-2xl border border-border bg-surface-mist p-5 hover:border-accent">
+        <Link href="/private-work" className="editorial-interactive mb-8 block rounded-2xl border border-border bg-surface-mist p-5 hover:border-accent">
           <h2 className="text-xl font-semibold">Private case studies</h2>
-          <p className="mt-2 text-sm leading-6 text-muted">Some detailed deal and operating artifacts require approval. See what can be requested and how access will work.</p>
+          <p className="mt-2 text-sm leading-6 text-muted">Ask about deeper, sanitized work examples. I review inquiries individually and share only appropriate materials; submitting a request does not unlock a private library.</p>
           <span className="mt-3 inline-block text-sm font-medium text-accent">About private access →</span>
         </Link>
         <h2 className="font-display text-3xl tracking-tight">See the work behind the ideas</h2>

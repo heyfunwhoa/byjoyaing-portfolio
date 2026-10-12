@@ -14,13 +14,14 @@ const stanceClass: Record<TechStance, string> = {
   learning: "border border-dashed border-foreground/40 text-foreground",
 };
 
-export function ToolsMap({ compact = false }: { compact?: boolean }) {
+export function ToolsMap({ compact = false, headingLevel = "h2" }: { compact?: boolean; headingLevel?: "h2" | "h3" }) {
+  const Heading = headingLevel;
   return (
     <div className="flex flex-col gap-8">
       <ul className="flex flex-col gap-10">
         {techCategories.map((group) => (
           <li key={group.id} className="flex flex-col gap-4">
-            <h2 className="text-sm font-medium text-muted">{group.title}</h2>
+            <Heading className="text-sm font-medium text-muted">{group.title}</Heading>
             <ul className="grid gap-3 sm:grid-cols-2">
               {group.items.map((item) => (
                 <li
