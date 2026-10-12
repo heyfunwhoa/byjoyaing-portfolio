@@ -1,4 +1,5 @@
 import { ProfessionalCaseStudy } from "@/components/editorial/professional-case-study";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import type {Metadata} from "next";
 import Link from "next/link";
 import {PageMain} from "@/components/page-main";
@@ -18,6 +19,30 @@ export default function WorkPage(){
   {title:"GTM Strategy",detail:"Revenue systems, planning, and cross-functional execution",href:"#gtm-strategy"}
  ].map(item=><a key={item.href} href={item.href} className="rounded-xl border border-border bg-card p-4 hover:border-accent focus-visible:outline-2 focus-visible:outline-ring"><span className="block font-display text-xl">{item.title}</span><span className="mt-2 block text-sm leading-6 text-muted">{item.detail}</span><span aria-hidden="true" className="mt-3 block text-accent">Explore ↓</span></a>)}
  </nav>
+ </section>
+ <section aria-labelledby="featured-work-heading" className="border-b border-border py-12 sm:py-16">
+ <div className="flex flex-wrap items-end justify-between gap-4">
+  <div><p className="editorial-eyebrow text-accent">Selected work / Explore</p>
+  <h2 id="featured-work-heading" className="mt-2 font-display text-3xl">Featured field systems</h2>
+  <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">A selection of professional practice examples. Project status and evidence boundaries are explained in each case study.</p></div>
+ </div>
+ <Carousel aria-label="Featured professional work" opts={{ align: "start", containScroll: "trimSnaps" }} className="mt-7">
+  <CarouselContent className="-ml-4">
+   {work.map((item, index) => <CarouselItem key={item.slug} className="pl-4 basis-[88%] sm:basis-[62%] lg:basis-[44%]">
+    <article className="flex h-full min-h-64 flex-col rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent sm:p-8">
+     <p className="editorial-eyebrow text-accent">{String(index + 1).padStart(2, "0")} / Professional practice</p>
+     <h3 className="mt-4 font-display text-2xl">{item.title}</h3>
+     <p className="mt-4 line-clamp-4 text-sm leading-7 text-muted">{item.summary}</p>
+     <p className="mt-4 text-xs leading-5 text-muted">Professional evidence and related independent builds are distinguished in the full story.</p>
+     <Link href={item.href} className="mt-auto inline-flex min-h-11 items-center self-start pt-4 text-sm font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-ring">Explore case study →</Link>
+    </article>
+   </CarouselItem>)}
+  </CarouselContent>
+  <div className="mt-5 flex items-center justify-between gap-4">
+   <p className="text-xs text-muted">Swipe, use the arrows, or browse by keyboard.</p>
+   <div className="flex gap-3"><CarouselPrevious className="static inset-auto m-0 size-11 translate-x-0 translate-y-0" /><CarouselNext className="static inset-auto m-0 size-11 translate-x-0 translate-y-0" /></div>
+  </div>
+ </Carousel>
  </section>
  <section id="enterprise-sales" className="scroll-mt-24 border-b border-border py-12">
  <p className="editorial-eyebrow text-accent">01 / Selling</p>
