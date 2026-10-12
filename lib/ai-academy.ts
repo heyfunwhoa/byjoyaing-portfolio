@@ -285,6 +285,73 @@ export const lessons: Lesson[] = [
       { label: "npm docs: npm audit", url: "https://docs.npmjs.com/cli/v11/commands/npm-audit/" },
     ],
   },
+
+  {
+    slug: "security-hardening-release-gates",
+    title: "Security hardening: standards to release gates",
+    track: "Builder",
+    minutes: 25,
+    level: "Intermediate",
+    summary: "Translate NIST SSDF and OWASP guidance into app-specific risk tiers, denied-path tests, code review and a verified deployment decision.",
+    analogy: "A building code is the requirement; the door lock is the implementation; a tested key is evidence; and a site inspection verifies the actual building.",
+    takeaways: [
+      "Reuse the shared security baseline instead of copying a different app's authentication code or declaring certification.",
+      "Choose risk tier from actual data, API, job, AI and release boundaries, not from how polished the site looks.",
+      "A working login session does not authorize access to a specific account; negative tests must cover forbidden direct requests with zero side effects.",
+      "Map the threat to a control, exact-commit CI evidence, an owner and a rollback/release gate.",
+      "Documented, implemented, tested, merged and deployment-verified are separate claims."
+    ],
+    exercise: "Complete the fictional threat-model and release-review lab in docs/builder-academy/security-hardening-release-gates.md. Produce two denied-path tests, one PR review decision and an explicit no-go condition. Never use production data.",
+    check: {
+      question: "A login PR is green, but a signed-in seller can open another seller's research by changing a URL. Is the application ready for a private real-data pilot?",
+      choices: [
+        "Yes. Successful login and CI certify access control.",
+        "No. Server-side object authorization and negative tests must pass, followed by deployment verification.",
+        "Yes. Hide the other account from navigation."
+      ],
+      answer: 1,
+      explanation: "Authentication, authorization and deployed access protections are distinct controls; a CI run only proves the tests it executed."
+    },
+    companion: { label: "Open the complete risk-based security lab", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/security-hardening-release-gates.md" },
+    sources: [
+      { label: "NIST SSDF v1.1 final", url: "https://csrc.nist.gov/pubs/sp/800/218/final" },
+      { label: "OWASP ASVS 5.0.0", url: "https://github.com/OWASP/ASVS/releases/tag/v5.0.0" },
+      { label: "OWASP Authorization Cheat Sheet", url: "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html" }
+    ]
+  },
+  {
+    slug: "secure-account-import-research",
+    title: "Secure CSV, AI research, and account export",
+    track: "Builder",
+    minutes: 25,
+    level: "Intermediate",
+    summary: "Protect the full account-data journey: staged imports, normalization, identity review, external website research, tool permissions and Excel/CRM boundaries.",
+    analogy: "An intake clerk checks each label and owner before inventory enters the warehouse. Research is a supplier note; approval is a separate decision.",
+    takeaways: [
+      "Raw, normalized, sourced and approved values are different objects; standardization does not prove accuracy.",
+      "A CSV owner name, website domain or account ID cannot grant a user permission.",
+      "Import previews should be read-only, preserving row dispositions and exceptions without provider spending or database mutations.",
+      "Scraped content is untrusted data and must not become instructions to an AI tool or another user's private account scope.",
+      "Approved Excel exports need fresh server authorization, source lineage, safe cell encoding and explicit CRM write approval."
+    ],
+    exercise: "Follow docs/builder-academy/secure-account-import-research.md with eight fictional rows. Identify unsafe inputs, propose a normalization preview, write two denied-path tests and explain what you would not deploy yet.",
+    check: {
+      question: "A CSV has a clean domain but a conflicting owner and uncertain revenue estimate. What should happen?",
+      choices: [
+        "Auto-overwrite the existing company and owner because the domain parsed.",
+        "Keep a read-only normalized candidate and require identity, field and server-authorized commit review.",
+        "Run paid enrichment and auto-sync the result to the CRM without review."
+      ],
+      answer: 1,
+      explanation: "A validated domain is not an entitlement or a verified legal entity; ownership and uncertain claims require explicit review."
+    },
+    companion: { label: "Open the complete secure-data lab", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/secure-account-import-research.md" },
+    sources: [
+      { label: "OWASP CSV Injection", url: "https://owasp.org/www-community/attacks/CSV_Injection" },
+      { label: "OWASP SSRF Prevention", url: "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html" },
+      { label: "OWASP GenAI LLM Top 10 2026", url: "https://genai.owasp.org/llm-top-10/" }
+    ]
+  },
 ];
 export type Workflow = {title:string;category:"GTM"|"Research"|"Coding"|"Productivity";difficulty:"Beginner"|"Intermediate";tool:string;asset:string;summary:string;why:string;prompt:string;next:string};
 export const workflows: Workflow[]=[
