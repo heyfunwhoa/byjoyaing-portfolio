@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
 import { officialToolWebsites, socialProfiles } from "./portfolio/external-links.ts";
+import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "./portfolio/public-contact.ts";
 import { isActive, menuPanelClass, navCurrent, primaryNav } from "./site-nav.ts";
 
 test("primary navigation keeps the six public destinations", () => {
@@ -65,7 +66,10 @@ test("public profile icons use known destinations and clear accessible names", (
   assert.match(contact, /<EmailLink placement="contact"/);
   assert.doesNotMatch(contact, />kristen\.aing@gmail\.com</);
   const emailLink = readFileSync(new URL("../components/email-link.tsx", import.meta.url), "utf8");
-  assert.match(emailLink, /href="mailto:kristen\.aing@gmail\.com"/);
+  assert.equal(PUBLIC_CONTACT_EMAIL, "kristen@byjoyaing.com");
+  assert.equal(PUBLIC_CONTACT_MAILTO, "mailto:kristen@byjoyaing.com");
+  assert.match(emailLink, /href=\{PUBLIC_CONTACT_MAILTO\}/);
+  assert.doesNotMatch(emailLink, /kristen\.aing@gmail\.com/);
   assert.match(emailLink, /aria-label="Email Kristen Joy Aing/);
   assert.match(emailLink, /min-h-11 min-w-11/);
   assert.match(emailLink, /<Mail size=\{20\}\s/);
@@ -74,6 +78,15 @@ test("public profile icons use known destinations and clear accessible names", (
   assert.match(layout, /<EmailLink placement="footer"/);
   assert.doesNotMatch(layout, />kristen\.aing@gmail\.com</);
   assert.match(layout, /sameAs: socialProfiles\.map/);
+  const fallback = readFileSync(new URL("../lib/email.ts", import.meta.url), "utf8");
+  const form = readFileSync(new URL("../app/inquiry-form.tsx", import.meta.url), "utf8");
+  const route = readFileSync(new URL("../app/api/contact/route.ts", import.meta.url), "utf8");
+  assert.match(fallback, /Email \$\{PUBLIC_CONTACT_EMAIL\} instead/);
+  assert.match(form, /Email \$\{PUBLIC_CONTACT_EMAIL\} instead/);
+  assert.match(route, /replyTo: PUBLIC_CONTACT_EMAIL/);
+  for (const source of [fallback, form, route]) {
+    assert.doesNotMatch(source, /kristen\.aing@gmail\.com/);
+  }
 });
 
 test("nav motion does not replace the mobile menu's focus, Escape, or current-page behavior", () => {
