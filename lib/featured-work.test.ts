@@ -43,7 +43,7 @@ test("source guard: Work mounts the carousel, homepage does not, and Embla is no
   assert.match(readFileSync(new URL("../components/ui/carousel.tsx", import.meta.url), "utf8"), /aria-roledescription="carousel"/);
   assert.doesNotMatch(carousel, /Autoplay|autoplay|loop:\s*true/);
   assert.match(carousel, /prefers-reduced-motion/);
-  assert.match(carousel, /basis-full md:basis-1\/2 lg:basis-1\/3/);
+  assert.match(carousel, /basis-full pl-4 md:basis-1\/2 lg:basis-1\/3/);
   const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(home, /FeaturedWorkCarousel|featured-work-carousel/);
 });
