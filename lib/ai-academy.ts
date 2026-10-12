@@ -6,6 +6,56 @@ export type Lesson = {
   companion?: { label: string; url: string };
 };
 export const lessons: Lesson[] = [
+  {
+    slug: "storybook-visual-regression",
+    title: "Build and test your Design Lab",
+    track: "Builder",
+    minutes: 18,
+    level: "Beginner",
+    summary: "Learn when to use Storybook, Playwright, and visual snapshots without replacing the existing Design Lab.",
+    analogy: "Storybook is the workshop where you inspect each part; Playwright is the quality inspector checking the working product.",
+    takeaways: [
+      "Storybook isolates components and documents variants; Design Lab curates the branded experience.",
+      "Playwright checks browser behavior and can compare screenshots against approved baselines.",
+      "Start with deterministic fixtures, fixed viewports, loaded fonts and reduced motion before relying on pixel diffs.",
+      "A visual snapshot alone does not prove accessibility or correct interaction.",
+      "Open-source licenses can cost $0 while cloud CI, artifacts and hosted reviews still incur usage costs."
+    ],
+    exercise: "Choose one avatar and one project card. Define default, mobile, keyboard-focused and reduced-motion states. Propose one browser interaction assertion and a screenshot baseline; explain how to review a legitimate layout change.",
+    check: {
+      question: "A screenshot test passes. Which conclusion is warranted?",
+      choices: ["The page is fully accessible", "The compared image did not exceed the configured visual difference threshold", "The Storybook components are deployed publicly"],
+      answer: 1,
+      explanation: "Visual comparisons detect pixel changes under configured conditions, not complete accessibility or deployed behavior."
+    },
+    companion: {label: "Read the complete Design Lab testing guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/storybook-visual-regression.md"},
+    sources: [{label:"Storybook Next.js framework",url:"https://storybook.js.org/docs/get-started/frameworks/nextjs-vite"},{label:"Playwright screenshot assertions",url:"https://playwright.dev/docs/test-snapshots"}]
+  },
+  {
+    slug: "integration-registry-finops",
+    title: "Control integrations and cloud spend",
+    track: "Builder",
+    minutes: 16,
+    level: "Beginner",
+    summary: "Use the existing Technical Docs registry to plan integrations, estimate cost, set spending guardrails and verify controls.",
+    analogy: "The software catalog is your equipment inventory; the FinOps policy is the budget and shutoff procedure.",
+    takeaways: [
+      "Reuse the canonical software catalog, architecture registry and integration contracts rather than maintaining duplicate inventories.",
+      "Proposed, configured, verified and paused are different integration states.",
+      "A free tool can still generate hosting, CI, storage or API costs.",
+      "Reviewing spend at 50% and 80% is useful, but alerts alone are not hard caps.",
+      "At 100% of an approved budget, a tested kill switch should stop nonessential metered jobs; protect essential security and incident functions."
+    ],
+    exercise: "Draft a fictional visual-testing project budget. List software licenses, CI runner minutes, screenshot storage, a forecast, alerts at 50% and 80%, and the control that stops nonessential work at 100%. Leave unverified dollar amounts unknown.",
+    check: {
+      question: "What is true of a billing alert at 100% of a monthly budget?",
+      choices: ["It always prevents further charges", "It may notify you without blocking additional charges", "It proves every service has a hard limit"],
+      answer: 1,
+      explanation: "Alerts and hard spending controls are not equivalent. Validate the vendor limit and an application-level stop mechanism."
+    },
+    companion: {label: "Read the complete FinOps lesson", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/finops-and-integration-registry.md"},
+    sources: [{label:"Canonical FinOps policy",url:"https://github.com/heyfunwhoa/technical-docs-platform/blob/main/software-catalog/finops-policy.md"},{label:"Integration registry",url:"https://github.com/heyfunwhoa/technical-docs-platform/blob/main/software-catalog/integrations.json"}]
+  },
   {slug:"evidence-based-product-request",title:"Write an evidence-based product request",track:"GTM",minutes:20,level:"Beginner",summary:"Turn Sales, CS, Support or leadership feedback into a user problem, source-backed evidence and a cautious business-impact hypothesis.",analogy:"Like a doctor's referral: describe the symptoms and evidence before prescribing a solution.",takeaways:["Start with the affected persona, workflow, problem and current workaround—not the desired feature.","Preserve the original source, date, frequency and confidence; distinguish facts from hypotheses.","Estimate customer value, commercial value and strategic relevance separately.","Opportunity size is exposed pipeline, not the value attributable to a feature. Probability-adjusted estimates require evidence and assumptions.","A request may enter discovery, need more evidence, receive a workaround, be deferred or be declined.","Use fictional scenarios here; real company and customer data must remain in approved systems."],exercise:"Complete the fictional product-request lab. Include evidence, measurable outcome and an incremental value estimate. Then explain what you would still need to validate.",check:{question:"A seller says a $200k deal needs a feature. What value can you claim?",choices:["The feature is worth $200k in ARR","Record $200k as exposure; estimate incremental win probability and label assumptions","Promise Product will build it"],answer:1,explanation:"Exposed pipeline is not attributable revenue. Estimate incremental impact with transparent uncertainty and no double counting."},sources:[{label:"Atlassian Product Discovery",url:"https://www.atlassian.com/agile/product-management/discovery"},{label:"Linear Customer Requests",url:"https://linear.app/docs/customer-requests"}]},
   {
     slug: "idea-to-verified-release",
