@@ -53,6 +53,14 @@ export const securityEvidenceSources = {
     supports: "Controller-to-processor processing under UK GDPR requires appropriate written contractual provisions, including data handling and audit duties.",
     cannotProve: "The guidance does not determine a hypothetical buyer/vendor's actual legal roles or cross-border transfer arrangement.",
   },
+  "ico-international-transfers": {
+    title: "ICO — A brief guide to international transfers (2026)",
+    publisher: "UK Information Commissioner's Office",
+    kind: "Regulator guidance (UK GDPR)",
+    url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/international-transfers/a-brief-guide-to-international-transfers/",
+    supports: "Under applicable UK GDPR transfer rules, making personal data accessible to a separate overseas organization can constitute a restricted international transfer.",
+    cannotProve: "It does not independently establish EU GDPR requirements, a specific buyer's contractual EU-residency promise, or whether cross-border access actually occurs.",
+  },
   "hhs-hipaa-cloud": {
     title: "HHS — HIPAA and cloud computing",
     publisher: "U.S. Department of Health & Human Services",
