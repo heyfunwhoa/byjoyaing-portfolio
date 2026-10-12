@@ -24,6 +24,12 @@ Buying a secure cloud service resembles leasing a managed office:
 
 No single paper automatically gives permission to scrape a provider's data, resell a dataset, or copy licensed contact records across organizations.
 
+## Evidence and legal applicability
+
+Start with the [Evidence-backed decisions standard](evidence-backed-sales-and-security-decisions.md). **Official legal guidance supports principles; only the actual signed contract and counsel's review establish what these parties agreed.** For one-way versus mutual confidentiality, [the UK Intellectual Property Office publishes examples of both](https://www.gov.uk/government/publications/non-disclosure-agreements/non-disclosure-agreements). For UK GDPR controller–processor obligations and subprocessor terms, see the [ICO's Article 28 contract guidance](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/contracts). For HIPAA business associate relationships, see [HHS business associate guidance](https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/business-associates/index.html). These jurisdictions and processing roles must not be interchanged.
+
+**Classification:** Legal/regulatory principles are source-backed; the suggested AE/Head of Sales steps and timelines are *recommended operating practice*, not guaranteed requirements or a real customer-approved process. Reviewed October 11, 2026.
+
 ## NDA vs. MNDA — what's actually different?
 
 **NDA (non-disclosure agreement)** is the broad category: an agreement about keeping certain information confidential. An NDA may be **unilateral (one-way)** *or mutual (two-way)*. **MNDA** simply spells out **mutual NDA** — it is not a different category of agreement.
@@ -133,7 +139,7 @@ C. Yes, if the salesperson used a paid Pro subscription.
 - [UK ICO — controller/processor contracts, minimum terms and liabilities](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/what-needs-to-be-included-in-the-contract/).
 - [European Commission — SCCs and international transfers](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_sw).
 - [NIST glossary — Non-disclosure agreement](https://csrc.nist.gov/glossary/term/non_disclosure_agreement).
-- [Rocket Lawyer — Whether an NDA protects one or both parties](https://www.rocketlawyer.com/q-and-a/answer/does-an-nda-protect-both-parties-or-just-one-side) — secondary educational explainer; counsel should review actual language.
+- [UK Intellectual Property Office — One-way and mutual NDAs](https://www.gov.uk/government/publications/non-disclosure-agreements/non-disclosure-agreements) — official government guide with distinct templates; UK law context, not a US form.
 - [Builder Academy — Security assessments by buyer size and risk](security-assessments-by-buyer-size.md) — synthetic practice and primary references.
 - [NIST SP 800-47 — Managing Security of Information Exchanges](https://www.nist.gov/publications/managing-security-information-exchanges).
 
