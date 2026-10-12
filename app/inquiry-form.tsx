@@ -56,7 +56,7 @@ export function InquiryForm() {
           name: data.get("name"),
           email: data.get("email"),
           company: data.get("company"),
-          message: mode === "access" ? `Selected Work inquiry: ${String(data.get("message") ?? "")}` : data.get("message"),
+          message: mode === "access" ? `Selected Work inquiry — ${String(data.get("sampleFocus") ?? "General")}: ${String(data.get("message") ?? "")}` : data.get("message"),
           website: data.get("website"),
           startedAt: startedAt.current,
         }),
@@ -88,18 +88,17 @@ export function InquiryForm() {
       onSubmit={onSubmit}
       className="relative flex max-w-xl flex-col gap-4 lg:max-w-none"
     >
-      <div className="flex gap-1" role="tablist" aria-label="Contact type">
+      <div className="flex flex-wrap gap-1" role="group" aria-label="Contact type">
         {(
           [
             ["message", "Message"],
-            ["access", "Selected Work"],
+            ["access", "Request work examples"],
           ] as const
         ).map(([value, label]) => (
           <button
             key={value}
             type="button"
-            role="tab"
-            aria-selected={mode === value}
+            aria-pressed={mode === value}
             onClick={() => {
               setChosen(value);
               setStatus("idle");
@@ -117,7 +116,7 @@ export function InquiryForm() {
       </div>
       <p className="text-base leading-7 text-muted">
         {mode === "access"
-          ? "Ask about deeper, sanitized case-study materials. This sends an inquiry, not an access grant or login. Never include confidential company or customer details."
+          ? "Tell me what you’re evaluating and which examples would help. I’ll review your request and follow up with appropriate, sanitized materials where available. Please leave out confidential company or customer information."
           : "This emails me your note and sends you a confirmation. Reply to that email if you want to add more."}
       </p>
       <div className="hidden" aria-hidden="true">
@@ -137,7 +136,7 @@ export function InquiryForm() {
           />
         </label>
         <label className="flex flex-col gap-1.5 text-sm">
-          <span className="font-medium text-foreground">Work email</span>
+          <span className="font-medium text-foreground">Email (work preferred)</span>
           <input
             required
             name="email"
@@ -158,12 +157,25 @@ export function InquiryForm() {
           className={fieldClass}
         />
       </label>
+      {mode === "access" ? (
+        <label className="flex flex-col gap-1.5 text-sm">
+          <span className="font-medium text-foreground">Which work would help you evaluate fit?</span>
+          <select name="sampleFocus" required defaultValue="" className={fieldClass}>
+            <option value="" disabled>Select a focus</option>
+            <option>Enterprise selling and deal strategy</option>
+            <option>Coaching, onboarding and enablement</option>
+            <option>Competitive intelligence and GTM systems</option>
+            <option>Broader leadership fit</option>
+          </select>
+        </label>
+      ) : null}
       <label className="flex flex-col gap-1.5 text-sm">
-        <span className="font-medium text-foreground">{mode === "access" ? "What would you like to explore?" : "Message"}</span>
+        <span className="font-medium text-foreground">{mode === "access" ? "What are you evaluating?" : "Message"}</span>
         <textarea
           required
           minLength={8}
           name="message"
+          placeholder={mode === "access" ? "For example: We’re hiring a sales leader and would like to understand your approach to coaching and onboarding. A sanitized example or walkthrough would help." : "What would you like to discuss?"}
           rows={5}
           className="rounded-md border border-border bg-background px-3 py-2 text-base text-foreground outline-none focus:border-accent"
         />
@@ -173,8 +185,9 @@ export function InquiryForm() {
         disabled={status === "sending"}
         className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
       >
-        {status === "sending" ? "Sending…" : mode === "access" ? "Send access inquiry" : "Send message"}
+        {status === "sending" ? "Sending…" : mode === "access" ? "Request work examples" : "Send message"}
       </button>
+      {mode === "access" ? <p className="text-xs leading-5 text-muted">I review each request before deciding what to share. Submitting this form does not unlock private files or guarantee that a particular sample is available.</p> : null}
       {message ? (
         <p
           className={`text-sm leading-6 ${status === "error" ? "text-red-700" : "text-muted"}`}

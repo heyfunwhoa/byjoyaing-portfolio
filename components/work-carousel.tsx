@@ -53,9 +53,9 @@ export function WorkCarousel({ items }: { items: readonly WorkPreview[] }) {
           <button type="button" className={control} aria-label="Next work preview" aria-controls={id} disabled={active === items.length - 1} onClick={() => move(active + 1)}><span aria-hidden="true">→</span></button>
         </div>
       </div>
-      <ul ref={track} id={id} tabIndex={0} aria-label="Work previews; use left and right arrow keys to browse" onKeyDown={onKeyDown} onScroll={syncPosition} className="relative flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain rounded-xl pb-4 pr-[15%] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:pr-[36%]">
+      <ul ref={track} id={id} tabIndex={0} aria-label="Work previews; use left and right arrow keys to browse" onKeyDown={onKeyDown} onScroll={syncPosition} className="relative flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain rounded-xl pb-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
         {items.map((item, index) => (
-          <li key={item.href} className="w-[85%] shrink-0 snap-start sm:w-[64%]">
+          <li key={item.href} className="w-[85%] shrink-0 snap-start last:mr-[15%] sm:w-[64%] sm:last:mr-[36%]">
             <a href={item.href} className="group flex h-full min-h-56 flex-col justify-between rounded-xl border border-border bg-card p-6 transition-[border-color,background-color] duration-200 hover:border-accent hover:bg-background focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-8">
               <span className="editorial-eyebrow text-accent">{String(index + 1).padStart(2, "0")} / Professional work</span>
               <span className="mt-5 block font-display text-2xl sm:text-3xl">{item.title}</span>
