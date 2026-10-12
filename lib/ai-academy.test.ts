@@ -227,3 +227,20 @@ test("published practice scenarios distinguish sourced guidance from real vendor
   assert.doesNotMatch(registry, /is (SOC 2 certified|HIPAA certified)/i);
   assert.ok(securityReviewScenarios.some((item) => item.id === "small-high-risk" && item.risk === "High"));
 });
+
+
+test("Design Lab and FinOps learning cards are reachable, sourced and public-safe", () => {
+  const slugs = ["storybook-visual-regression", "integration-registry-finops"];
+  const added = slugs.map((slug) => lessons.find((lesson) => lesson.slug === slug));
+  assert.equal(added.every(Boolean), true);
+  for (const lesson of added) {
+    assert.equal(lesson?.track, "Builder");
+    assert.equal(lesson?.level, "Beginner");
+    assert.match(lesson?.companion?.url ?? "", /^https:\/\/github\.com\/heyfunwhoa\//);
+    assert.ok(lesson?.takeaways.length >= 4);
+    assert.ok(lesson?.check.choices[lesson.check.answer]);
+    assert.doesNotMatch(JSON.stringify(lesson), /kristen\.aing@gmail\.com|API_KEY\s*=|private customer export/i);
+  }
+  assert.match(added[0]?.summary ?? "", /Storybook/);
+  assert.match(added[1]?.summary ?? "", /Technical Docs/);
+});
