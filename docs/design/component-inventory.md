@@ -72,7 +72,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 
 These are page-local systems, not the editorial design system. Do not generalize them into site chrome.
 
-`account-intelligence-case.tsx`, `account-intelligence-workflow.tsx`, `competitive-intelligence-case.tsx`, `competitive-intelligence-workflow.tsx`, `customer-feedback-case.tsx`, `customer-feedback-workflow.tsx`, `atlas-case.tsx`, `coverage.tsx`, `coverage-explorer.tsx`, `field-asset-case.tsx`, `sample-record.tsx`, `use-case-browser.tsx`, `tools-map.tsx`, `field-notes/deal-journey.tsx`, `field-notes/stakeholder-playground.tsx`, `builder-guide.tsx`, `credential-risk-explorer.tsx`, `identity-journey-lab.tsx`, and `ai-academy/*`.
+`account-intelligence-case.tsx`, `account-intelligence-workflow.tsx`, `competitive-intelligence-case.tsx`, `competitive-intelligence-workflow.tsx`, `customer-feedback-case.tsx`, `customer-feedback-workflow.tsx`, `atlas-case.tsx`, `coverage.tsx`, `coverage-explorer.tsx`, `field-asset-case.tsx`, `sample-record.tsx`, `use-case-browser.tsx`, `tools-map.tsx`, `toolkit-logo-grid.tsx`, `field-notes/deal-journey.tsx`, `field-notes/stakeholder-playground.tsx`, `builder-guide.tsx`, `credential-risk-explorer.tsx`, `identity-journey-lab.tsx`, and `ai-academy/*`.
 
 ## Not built, and not approved to build yet
 

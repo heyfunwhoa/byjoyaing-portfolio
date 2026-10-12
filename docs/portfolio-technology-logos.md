@@ -37,7 +37,9 @@ These studies do **not** get logos. Their copy names tools that are planned, abs
 - Product Release Intelligence, Product Prioritization, GTM Campaign Lab, Security Signal Intelligence
 - Revenue Planning Simulator, Revenue Intelligence, GTM Operating Plan
 
-Supabase, Exa, Sumble, Claude, Salesforce, Slack, Postgres, Drizzle, and Octokit are not installed here and are not in the registry.
+Supabase, Exa, Sumble, Claude, Salesforce, Slack, Postgres, Drizzle, and Octokit are not installed here and are not in the project registry.
+
+The About page has a separate **GTM systems toolkit** (`lib/portfolio/toolkit-registry.ts`, `public/logos/toolkit/`). Those marks identify field tools. They do not join `verified-stacks` or imply a running integration. Hover or focus a mark for the product name; the link is the official site.
 
 ## Usage
 
@@ -64,3 +66,5 @@ No homepage redesign and no new animation or dependencies. Logos identify a tech
 
 ## Asset credit
 Logoforge aggregates sources; individual brand artworks remain subject to their own trademarks. Credits: https://github.com/terravidhal/logoforge/blob/main/CREDITS.md
+
+About toolkit marks also use Simple Icons (CC0 presentation of brand marks), SVGL, and official product artwork from Salesforce, Attio, Outreach, Gong, Nooks, Clay, Common Room, Firecrawl, and Exa. Trademarks stay with their owners. Logos identify a product. They do not imply sponsorship.
