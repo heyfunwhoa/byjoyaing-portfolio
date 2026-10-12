@@ -92,7 +92,12 @@ test("installed primitives are present and public adoption stays explicitly scop
   assert.equal(layout.includes("ThemeProvider"), false);
 
   // Public adoption is reviewed per component and page rather than globally banned.
-  // FeaturedWorkCarousel is the approved public wrapper around ui/carousel.
+  // FeaturedWorkCarousel wraps ui/carousel. Stakeholder map pilot adopts only
+  // Button and Card in these two named wrappers; no global primitive exemption.
+  const scopedImports: Record<string, string[]> = {
+    "components/stakeholder-map/stakeholder-node.tsx": ["@/components/ui/button"],
+    "components/stakeholder-map/stakeholder-detail.tsx": ["@/components/ui/card"],
+  };
   const offenders: string[] = [];
   for (const file of [...sourceFiles("app"), ...sourceFiles("components")]) {
     if (
@@ -104,7 +109,8 @@ test("installed primitives are present and public adoption stays explicitly scop
     }
     const source = read(file);
     const imports = [...source.matchAll(/from\s+["'](@\/components\/ui\/[^"']+)["']/g)].map((match) => match[1]);
-    if (imports.length) offenders.push(`${file}: ${imports.join(", ")}`);
+    const unreviewed = imports.filter(item => !scopedImports[file]?.includes(item));
+    if (unreviewed.length) offenders.push(`${file}: ${unreviewed.join(", ")}`);
   }
   assert.deepEqual(offenders, []);
   assert.match(read("app/work/page.tsx"), /from ["']@\/components\/featured-work-carousel["']/);

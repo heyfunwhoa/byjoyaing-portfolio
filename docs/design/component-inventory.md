@@ -167,3 +167,7 @@ The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 
 | `@logoforge` | Healthy | Logo artwork. Trademarks stay with their owners. Registry registration is a separate pull request. | Do not install logo components. |
 | `@spectrumui` | Healthy, 315 items | Another visual language, with its own motion. The MCP server is a separate pull request. | Do not install components. |
 | Block and theme registries (`@shadcnblocks`, `@shadcn-studio`, and similar) | Mixed, several degraded | Full pages and themes would restyle the editorial site. | Do not install. |
+
+### Scoped stakeholder-map adoption pilot
+
+`/field-notes/multithreading` now proposes Button and Card adoption through `components/stakeholder-map/stakeholder-node.tsx` and `stakeholder-detail.tsx`. The map composition also appears in local Design Lab and Storybook. This is an explicit, reviewed exception to the earlier lab-only inventory, limited to these wrappers. See [stakeholder-map-library.md](stakeholder-map-library.md); other public primitive imports still require their own review.
