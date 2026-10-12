@@ -1,11 +1,12 @@
 "use client";
 
+import { ArrowLeft } from "@/components/icons/arrow-left";
+import { ArrowRight } from "@/components/icons/arrow-right";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  useCarousel,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { featuredSourceLabel, type FeaturedSlide } from "@/lib/featured-work";
@@ -78,21 +79,47 @@ export function FeaturedWorkCarousel({ slides }: { slides: readonly FeaturedSlid
               <p className="mt-3 text-sm leading-6 text-muted">{slide.summary}</p>
               <p className="editorial-link mt-auto inline-flex min-h-11 items-end pt-5 text-sm font-semibold text-accent underline">
                 {slide.collection === "Work" ? "Read the work" : "Read the Side Quest"}
-                <span aria-hidden="true" className="nudge-link ml-2 inline-block">
-                  →
-                </span>
+                <ArrowRight size={16} className="nudge-link ml-2 inline-block size-4" />
               </p>
             </article>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="mt-4 flex flex-wrap items-center gap-3">
-        <CarouselPrevious className="static translate-none" />
-        <p aria-live="polite" className="min-w-0 text-sm text-muted">
-          Group {index + 1} of {count}
-        </p>
-        <CarouselNext className="static translate-none" />
-      </div>
+      <FeaturedCarouselControls index={index} count={count} />
     </Carousel>
+  );
+}
+
+function FeaturedCarouselControls({ index, count }: { index: number; count: number }) {
+  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel();
+  const control =
+    "inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-semibold text-foreground hover:border-accent disabled:pointer-events-none disabled:opacity-40";
+
+  return (
+    <div className="mt-4 flex flex-wrap items-center gap-3">
+      <button
+        type="button"
+        data-slot="carousel-previous"
+        className={control}
+        disabled={!canScrollPrev}
+        onClick={scrollPrev}
+      >
+        <ArrowLeft size={16} className="size-4" />
+        Previous
+      </button>
+      <p aria-live="polite" className="min-w-0 text-sm text-muted">
+        Group {index + 1} of {count}
+      </p>
+      <button
+        type="button"
+        data-slot="carousel-next"
+        className={control}
+        disabled={!canScrollNext}
+        onClick={scrollNext}
+      >
+        Next
+        <ArrowRight size={16} className="size-4" />
+      </button>
+    </div>
   );
 }

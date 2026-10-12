@@ -18,8 +18,10 @@ test("featured carousel keeps 1/2/3 card bases, visible controls, and no autopla
   assert.match(carousel, /basis-full/);
   assert.match(carousel, /md:basis-1\/2/);
   assert.match(carousel, /lg:basis-1\/3/);
-  assert.match(carousel, /CarouselPrevious/);
-  assert.match(carousel, /CarouselNext/);
+  assert.match(carousel, /data-slot="carousel-previous"/);
+  assert.match(carousel, /data-slot="carousel-next"/);
+  assert.match(carousel, /@\/components\/icons\/arrow-left/);
+  assert.match(carousel, /@\/components\/icons\/arrow-right/);
   assert.match(carousel, /aria-live="polite"/);
   assert.doesNotMatch(carousel, /Autoplay|autoplay/);
   assert.match(carousel, /loop: false/);
