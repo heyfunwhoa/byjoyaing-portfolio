@@ -1,7 +1,10 @@
-import { Github, Linkedin } from "lucide-react";
+import Image from "next/image";
 import { socialProfiles } from "@/lib/portfolio/external-links";
 
-const icons = { linkedin: Linkedin, github: Github } as const;
+const logos = {
+  linkedin: "/logos/social/linkedin.svg",
+  github: "/logos/technology/github.svg",
+} as const;
 
 type Placement = "header" | "contact" | "footer";
 
@@ -13,7 +16,6 @@ export function SocialLinks({ placement = "contact" }: { placement?: Placement }
       className={`flex items-center gap-2 ${placement === "header" ? "justify-start" : ""}`}
     >
       {socialProfiles.map((profile) => {
-        const Icon = icons[profile.id];
         return (
           <li key={profile.id}>
             <a
@@ -24,7 +26,7 @@ export function SocialLinks({ placement = "contact" }: { placement?: Placement }
               title={profile.label}
               className={`group/social inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border text-foreground transition-[border-color,background-color,transform,color] duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-card hover:text-accent ${placement === "contact" ? "size-12 bg-card" : ""}`}
             >
-              <Icon aria-hidden="true" className="size-5" strokeWidth={1.75} />
+              <Image src={logos[profile.id]} alt="" width={20} height={20} unoptimized className="size-5 object-contain" />
             </a>
           </li>
         );
