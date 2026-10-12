@@ -20,21 +20,6 @@ export default function ContactPage() {
           <h1 className="max-w-xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
             Let&apos;s talk about the work.
           </h1>
-          <p className="max-w-xl text-base leading-7 text-muted">
-            If you&apos;re evaluating me for an enterprise sales or leadership role, you can request a deeper look at how I approach deals, develop teammates, and build useful GTM systems. For a quick conversation, use the email or LinkedIn icons.
-          </p>
-          <div className="rounded-xl border border-border bg-card p-5">
-            <h2 className="font-semibold">A deeper look, with context</h2>
-            <p className="mt-2 text-sm leading-6 text-muted">
-              Tell me what you want to evaluate. I&apos;ll review the request and discuss suitable examples, a sanitized walkthrough, or a conversation. The public Work pages remain available to everyone.
-            </p>
-            <a
-              href="#access"
-              className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4"
-            >
-              Request work examples →
-            </a>
-          </div>
           <div role="group" aria-label="Contact links" className="flex flex-wrap items-center gap-3">
             <EmailLink placement="contact" />
             <SocialLinks placement="contact" />

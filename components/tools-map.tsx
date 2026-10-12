@@ -1,5 +1,6 @@
 import { AiLoop } from "@/components/ai-loop";
 import { ToolMark } from "@/components/tool-mark";
+import { ToolkitLogoGrid } from "@/components/toolkit-logo-grid";
 import { officialToolWebsites } from "@/lib/portfolio/external-links";
 import {
   techCategories,
@@ -7,6 +8,7 @@ import {
   toolsFit,
   type TechStance,
 } from "@/lib/portfolio";
+import { siteHowBuilt } from "@/lib/portfolio/toolkit-registry";
 
 const stanceClass: Record<TechStance, string> = {
   built: "bg-accent text-accent-foreground",
@@ -17,10 +19,24 @@ const stanceClass: Record<TechStance, string> = {
 export function ToolsMap({ compact = false }: { compact?: boolean }) {
   return (
     <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
+        <h3 className="text-sm font-medium text-muted">GTM systems toolkit</h3>
+        <p className="max-w-2xl text-sm leading-6 text-muted">
+          Company marks first. Hover or focus a logo for the name. Each mark
+          opens the official product site. A logo is not a running integration.
+        </p>
+        <ToolkitLogoGrid />
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <h3 className="text-sm font-medium text-muted">How this site is built</h3>
+        <p className="max-w-3xl text-sm leading-6 text-muted">{siteHowBuilt}</p>
+      </div>
+
       <ul className="flex flex-col gap-10">
         {techCategories.map((group) => (
           <li key={group.id} className="flex flex-col gap-4">
-            <h2 className="text-sm font-medium text-muted">{group.title}</h2>
+            <h3 className="text-sm font-medium text-muted">{group.title}</h3>
             <ul className="grid gap-3 sm:grid-cols-2">
               {group.items.map((item) => (
                 <li
@@ -34,7 +50,7 @@ export function ToolsMap({ compact = false }: { compact?: boolean }) {
                       rel="noopener noreferrer"
                       aria-label={`Visit ${item.name} website (opens in a new tab)`}
                       title={`Visit ${item.name}`}
-                      className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md border border-border bg-background transition-[border-color,background-color,transform] duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-surface-sage"
+                      className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md border border-border bg-background transition-[border-color,background-color] duration-200 hover:border-accent hover:bg-surface-sage"
                     >
                       <ToolMark id={item.id} />
                     </a>

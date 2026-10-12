@@ -178,13 +178,11 @@ Contact →
 **Section order**
 
 1. H1: Let's talk about the work.
-2. One sentence for someone evaluating enterprise sales or leadership. Quick conversations use the email and LinkedIn icons.
-3. A short card that explains a reviewed, sanitized follow-up and links to `#access`. Public Work stays available without a request.
-4. Email, LinkedIn, GitHub.
-5. The form. Two pressed buttons: Message and Request work examples. The work-example mode asks which focus would help and what the visitor is evaluating. The URL hash `#access` selects that mode. `#write` stays the general note. No resume control.
+2. Email, LinkedIn, GitHub.
+3. The form. Two pressed buttons: Message and Request work examples. Message is the fields only. Request work examples asks which focus would help, what the visitor is evaluating, and keeps the note that a submission does not unlock private files. The URL hash `#access` selects that mode. `#write` stays the general note. No resume control, and no extra card beside the form.
 
 **Mobile.** Headline, links, then the form, full width.  
-**Desktop.** Copy and links on the left. Form on the right. The form does not jump above the headline in the DOM.
+**Desktop.** Headline and links on the left. Form on the right. The form does not jump above the headline in the DOM.
 
 ## Supporting pages (not in the header)
 

@@ -78,6 +78,10 @@ test("verified technology logos point to explicit public HTTPS destinations", ()
   assert.match(tech, /href=\{technology\.website\}/);
   assert.match(tech, /aria-label=\{/);
   assert.match(tech, /rel="noopener noreferrer"/);
+  assert.match(tech, /size-4 p-0.5/);
+  assert.match(tech, /size-6 p-1/);
+  assert.match(tech, /compact \? "size-6 justify-center gap-0"/);
+  assert.doesNotMatch(tech, /size-7 p-1.5/);
   for (const entry of Object.values(technologies)) {
     assert.match(entry.website, /^https:\/\//);
   }

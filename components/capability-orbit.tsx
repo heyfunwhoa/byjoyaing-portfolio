@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import { GeometricMotif } from "@/components/geometric-motif";
+import { OrbitArtwork } from "@/components/orbit-artwork";
 import { nextPillarIndex, orbitCenter, orbitPillars, type EvidenceSource } from "@/lib/capability-orbit";
 
 const RADIUS = 37;
@@ -16,7 +17,7 @@ const sourceLabel: Record<EvidenceSource, string> = {
   independent: "Independent · Side Quest",
 };
 
-export function CapabilityOrbit() {
+export function CapabilityOrbit({ artwork = true }: { artwork?: boolean }) {
   const [selected, setSelected] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const baseId = useId();
@@ -32,11 +33,18 @@ export function CapabilityOrbit() {
   return (
     <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:items-start">
       <div className="relative overflow-hidden rounded-2xl bg-foreground p-6 text-background [--ring:#E6B59A] sm:p-8">
-        <GeometricMotif className="inset-0" />
+        {artwork ? null : <GeometricMotif className="inset-0" />}
         <div className="relative mx-auto aspect-square w-full max-w-[21rem]">
+          {artwork ? (
+            <OrbitArtwork treatment="charcoal" surface="charcoal" fill sizes="(min-width: 1024px) 21rem, 90vw" />
+          ) : null}
           <svg aria-hidden="true" viewBox="0 0 100 100" className="pointer-events-none absolute inset-0 h-full w-full">
-            <circle cx="50" cy="50" r={RADIUS} fill="none" stroke="#F3EFE6" strokeWidth="0.35" opacity="0.55" />
-            <circle cx="50" cy="50" r="27" fill="none" stroke="#F3EFE6" strokeWidth="0.25" strokeDasharray="0.8 1.8" opacity="0.4" />
+            {artwork ? null : (
+              <>
+                <circle cx="50" cy="50" r={RADIUS} fill="none" stroke="#F3EFE6" strokeWidth="0.35" opacity="0.55" />
+                <circle cx="50" cy="50" r="27" fill="none" stroke="#F3EFE6" strokeWidth="0.25" strokeDasharray="0.8 1.8" opacity="0.4" />
+              </>
+            )}
             {nodes.map((node, index) => (
               <line
                 key={index}
@@ -54,7 +62,7 @@ export function CapabilityOrbit() {
 
           <Link
             href={orbitCenter.href}
-            className={`absolute top-1/2 left-1/2 flex aspect-square w-[30%] -translate-x-1/2 sm:w-[34%] -translate-y-1/2 items-center justify-center rounded-full bg-background p-2 text-center text-sm leading-tight font-semibold text-foreground`}
+            className="absolute top-1/2 left-1/2 z-10 flex aspect-square w-[30%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-background p-2 text-center text-sm leading-tight font-semibold text-foreground sm:w-[34%]"
           >
             {orbitCenter.label}
           </Link>
@@ -76,7 +84,7 @@ export function CapabilityOrbit() {
                   tabIndex={active ? 0 : -1}
                   onClick={() => setSelected(index)}
                   style={{ left: `${nodes[index].x}%`, top: `${nodes[index].y}%` }}
-                  className={`absolute inline-flex min-h-11 -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition-colors duration-200 ${
+                  className={`absolute z-10 inline-flex min-h-11 -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition-colors duration-200 ${
                     active
                       ? "border-[#E6B59A] bg-background text-foreground"
                       : "border-[#F3EFE6]/50 bg-foreground text-background hover:border-[#E6B59A]"

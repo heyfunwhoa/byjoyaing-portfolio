@@ -244,3 +244,16 @@ test("Design Lab and FinOps learning cards are reachable, sourced and public-saf
   assert.match(added[0]?.summary ?? "", /Storybook/);
   assert.match(added[1]?.summary ?? "", /Technical Docs/);
 });
+
+test("manual model evaluation lesson is in the Builder track without routing", () => {
+  const lesson = lessons.find((item) => item.slug === "evaluate-ai-models");
+  assert.ok(lesson);
+  assert.equal(lesson.track, "Builder");
+  assert.equal(lesson.level, "Beginner");
+  assert.match(lesson.exercise, /synthetic Account Signal Engine/i);
+  assert.match(lesson.exercise, /docs\/builder-academy\/evaluate-ai-models\.md/);
+  assert.match(lesson.exercise, /Do not build model routing/);
+  assert.match(lesson.check.choices[lesson.check.answer], /Fail the evidence requirement/);
+  assert.ok(lesson.sources.some((source) => source.url.includes("nist.gov")));
+  assert.doesNotMatch(JSON.stringify(lesson), /API_KEY\s*=|real customer export|joy\s*index/i);
+});

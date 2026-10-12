@@ -152,36 +152,18 @@ export const techCategories = [
         stance: "learning",
         note: "The coverage table is hardcoded. Nothing refreshes it.",
       },
-      {
-        id: "attio",
-        name: "Attio",
-        stance: "learning",
-        note: "Not connected.",
-      },
-    ],
-  },
-  {
-    id: "gtm",
-    title: "GTM Systems",
-    items: [
-      {
-        id: "salesforce",
-        name: "Salesforce",
-        stance: "professional",
-        note: "Where I have run enterprise cycles. Not integrated here.",
-      },
-      {
-        id: "slack",
-        name: "Slack",
-        stance: "professional",
-        note: "Where competitive notes and handoffs actually moved. Not integrated here.",
-      },
     ],
   },
   {
     id: "comms",
     title: "Communication",
     items: [
+      {
+        id: "slack",
+        name: "Slack",
+        stance: "professional",
+        note: "Where competitive notes and handoffs actually moved. Not integrated here.",
+      },
       {
         id: "resend",
         name: "Resend",
@@ -199,7 +181,7 @@ export const techCategories = [
 ] as const;
 
 export const toolsFit =
-  "Built with means the package or host is in this repository and you can see the result on the site. Used professionally means I sold with it. Learning means I have not shipped it here. A name in a case-study sketch is not a completed integration.";
+  "Built with means the package or host is in this repository and you can see the result on the site. Used professionally means I sold with it. Learning means I have not shipped it here. A name in a case-study sketch is not a completed integration. The GTM logo row is a field collection, not the verified Side Quest stack.";
 
 export const aiLoop = [
   {

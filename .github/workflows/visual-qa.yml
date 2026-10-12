@@ -15,7 +15,7 @@ permissions:
   contents: read
 concurrency:
   group: visual-qa-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   storybook-and-visual:
     runs-on: ubuntu-latest

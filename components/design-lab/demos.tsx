@@ -131,7 +131,7 @@ export function DesignLabDemos() {
             </CardHeader>
             <CardContent className="flex flex-wrap items-center gap-4">
               <Avatar size="lg">
-                <AvatarImage src="/avatar.png" alt="" />
+                <AvatarImage src="/brand/avatar/illustrated-portrait.png" alt="" />
                 <AvatarFallback>KA</AvatarFallback>
               </Avatar>
               <p className="text-sm text-muted">
