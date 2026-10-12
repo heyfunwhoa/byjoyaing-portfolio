@@ -13,7 +13,7 @@ Any technical, security or legal lesson should answer these six questions:
 5. **Application and decision rights:** Which action follows, under whose authority? Who must validate any unverified assumption?
 6. **Lifecycle:** What would invalidate the claim or trigger review? How would changes be recorded without rewriting the original customer evidence?
 
-**Mandatory labels in case studies:** \`Verified source principle\` / \`Fictional case fact\` / \`Practical recommendation\` / \`Unverified vendor-specific claim\` / \`Pending owner approval\`. Do not silently conflate them.
+**Mandatory labels in case studies:** `Verified source principle` / `Fictional case fact` / `Practical recommendation` / `Unverified vendor-specific claim` / `Pending owner approval`. Do not silently conflate them.
 
 ## Evidence hierarchy (fit for purpose, not a universal numeric score)
 
@@ -47,17 +47,17 @@ All case assumptions above are fictional. The primary references were reviewed *
 
 For *public lesson metadata* (not confidential deal storage), model:
 
-\`\`\`text
+```text
 Claim { id, text, classification, source_ids[], applicability, caveat, reviewed_at }
 Source { id, publisher, title, url, source_type, version_or_section, reviewed_at }
 Decision { scenario_id, role, choice, explanation, supporting_claim_ids[] }
-\`\`\`
+```
 
-For an *authorized employer deployment* only, expand with \`customer_request_id\`, \`security_artifact_ref\`, \`document_classification\`, \`document_owner\`, \`access_permission\`, \`expiration_date\`, \`approval_status\`, \`approver\`, and \`crm_opportunity_id\`. Keep restricted reports in approved document systems and store pointers plus entitlement checks, not public content duplicates.
+For an *authorized employer deployment* only, expand with `customer_request_id`, `security_artifact_ref`, `document_classification`, `document_owner`, `access_permission`, `expiration_date`, `approval_status`, `approver`, and `crm_opportunity_id`. Keep restricted reports in approved document systems and store pointers plus entitlement checks, not public content duplicates.
 
 ### Specific AE and Head of Sales habits
 
-- **AE:** In discovery, ask what data/access the evaluation actually involves, who owns vendor-risk review, and what evidence is needed. Track \`requested → provided → buyer reviewing → approved/conditioned/rejected\` separately. Never equate sending a SOC 2 report with receiving sign-off.
+- **AE:** In discovery, ask what data/access the evaluation actually involves, who owns vendor-risk review, and what evidence is needed. Track `requested → provided → buyer reviewing → approved/conditioned/rejected` separately. Never equate sending a SOC 2 report with receiving sign-off.
 - **Head of Sales:** Define a response library approved by Security/Legal/Privacy, with owners and last-reviewed dates. Create a decision-rights matrix and a fast exception path for repeat blockers; measure elapsed time by review type only from real CRM/process records with known sample sizes.
 - **Both:** Separate evidence that informs a recommendation from permission to sign, export, process data or override a buyer's risk decision.
 
@@ -67,11 +67,11 @@ For an *authorized employer deployment* only, expand with \`customer_request_id\
 - Give source-specific caveats: a US regulator's HIPAA guidance cannot establish EU GDPR controller roles; a UK IPO sample NDA is educational, not a US legal form.
 - Avoid copying full restricted audit reports, proprietary questionnaire contents, confidential security findings, personal data or customer contracts into public lessons.
 - Revisit changed legal/regulatory guidance and provider documentation; never silently update an existing claim without changing its reviewed date.
-- ACI/AI generation is drafting assistance only: a model-generated citation is not evidence until the linked document is checked and the relevant passage supports the claim.
+- AI-generated content is drafting assistance only: a model-generated citation is not evidence until the linked document is checked and the relevant passage supports the claim.
 
 ## Related lessons
 
 - [Security assessments by buyer size and risk](security-assessments-by-buyer-size.md).
 - [NDA/MNDA, DPA, MSA and enterprise legal review](enterprise-contracts-sales-cycle.md).
 - [MCP, REST API, webhook and SDK](mcp-vs-rest-api.md).
-- Interactive lab source registry: \`lib/ai-academy/security-review-evidence.ts\` — kept small and limited to stable public authoritative sources for question-level feedback.
+- Interactive lab source registry: `lib/ai-academy/security-review-evidence.ts` — kept small and limited to stable public authoritative sources for question-level feedback.
