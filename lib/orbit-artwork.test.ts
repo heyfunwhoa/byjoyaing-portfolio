@@ -18,6 +18,17 @@ function pngSize(buffer: Buffer) {
   return { width: buffer.readUInt32BE(16), height: buffer.readUInt32BE(20) };
 }
 
+test("the shared portrait sits beside the orbit folder", () => {
+  const avatarDir = path.join(root, "public/brand/avatar");
+  assert.deepEqual(readdirSync(avatarDir).sort(), ["illustrated-portrait.png"]);
+  const buffer = readFileSync(path.join(avatarDir, "illustrated-portrait.png"));
+  assert.deepEqual(pngSize(buffer), { width: 824, height: 1024 });
+  assert.equal(buffer.includes(Buffer.from("<script")), false);
+  const avatar = read("components/brand-avatar.tsx");
+  assert.match(avatar, /\/brand\/avatar\/illustrated-portrait\.png/);
+  assert.doesNotMatch(avatar, /src="\/avatar\.png"/);
+});
+
 test("orbit files are the two reviewed PNGs", () => {
   assert.deepEqual(readdirSync(orbitDir).sort(), [
     "orbit-filled-nodes.png",

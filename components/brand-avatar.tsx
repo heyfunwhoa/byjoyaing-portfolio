@@ -3,6 +3,9 @@ import { CropFrame } from "@/components/crop-frame";
 
 export type BrandAvatarVariant = "leader" | "explorer" | "builder";
 
+/** One shared portrait for every variant until separate exports are approved. */
+export const brandAvatarSrc = "/brand/avatar/illustrated-portrait.png";
+
 type BrandAvatarProps = {
   className?: string;
   variant?: BrandAvatarVariant;
@@ -10,8 +13,7 @@ type BrandAvatarProps = {
 };
 
 /**
- * Shared illustration until the master character and its variations are approved.
- * Do not reference variant-specific assets before they are committed.
+ * Shared illustration for Leader, Explorer, and Builder until separate files are approved.
  */
 export function BrandAvatar({
   className = "",
@@ -21,10 +23,10 @@ export function BrandAvatar({
   return (
     <CropFrame>
       <Image
-        src="/avatar.png"
+        src={brandAvatarSrc}
         alt={decorative ? "" : "Illustrated portrait of Kristen Aing"}
-        width={640}
-        height={640}
+        width={824}
+        height={1024}
         data-avatar-variant={variant}
         className={`aspect-square w-full bg-card object-cover ${className}`}
       />

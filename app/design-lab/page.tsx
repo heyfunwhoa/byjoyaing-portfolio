@@ -113,7 +113,7 @@ export default function DesignLabPage() {
         <section aria-labelledby="identity-title">
           <h2 id="identity-title" className="font-display text-2xl tracking-tight">Visual identity</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-            Geometry is a line language. Public pages keep the orbit on the homepage hero and the motif on the Work tile. Every avatar variant still uses <code className="font-mono text-xs">/avatar.png</code>. Rings do not spin, and the face does not animate.
+            Geometry is a line language. Public pages keep the orbit on the homepage hero and the motif on the Work tile. Every avatar variant still uses <code className="font-mono text-xs">/brand/avatar/illustrated-portrait.png</code>. Rings do not spin, and the face does not animate.
           </p>
           <div className="relative mt-5 overflow-hidden rounded-2xl bg-foreground p-6 text-background sm:p-8">
             <GeometricMotif className="inset-0" />
@@ -140,7 +140,7 @@ export default function DesignLabPage() {
             <figure className="min-w-0 rounded-2xl border border-border bg-background p-5">
               <figcaption className="text-sm font-semibold">About hero · published</figcaption>
               <p className="mt-1 text-sm leading-6 text-muted">
-                Ivory page. The transparent drawing frames <code className="font-mono text-xs">/avatar.png</code>. The portrait alt text stays on the image.
+                Ivory page. The transparent drawing frames the shared portrait. The portrait alt text stays on the image.
               </p>
               <div className="mt-4">
                 <OrbitPortrait surface="ivory" decorative />

@@ -12,7 +12,7 @@ type OrbitPortraitProps = {
 };
 
 /**
- * Transparent orbit around the approved portrait. The portrait stays /avatar.png.
+ * Transparent orbit around the shared portrait in public/brand/avatar.
  * The drawing is decoration and does not replace CelestialFrame on the homepage.
  */
 export function OrbitPortrait({
