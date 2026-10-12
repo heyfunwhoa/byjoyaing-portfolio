@@ -23,10 +23,10 @@ The illustrated character supports a real person's professional identity; it mus
 - Master source: a separately reviewed editable vector source stored in an approved design workflow; do not commit fonts or personal reference photos.
 - Export optimized SVG when safe and supported; use raster WebP/PNG fallbacks for complex illustration or unsupported features.
 - Approved future variants: `/avatar-leader.webp`, `/avatar-explorer.webp`, `/avatar-builder.webp`. Optional circular crop `/avatar-icon.webp`.
-- Until approved assets exist, **all component variants render the existing `/avatar.png`**. Never point production markup at hypothetical assets.
+- The current shared portrait is `/brand/avatar/illustrated-portrait.png`, stored beside the orbit artwork. **All component variants render that file.** Never point production markup at hypothetical `/avatar-leader.webp`, `/avatar-explorer.webp`, or `/avatar-builder.webp` files.
 - Do not embed scripts, remote resources, event handlers, or untrusted markup in SVG. Review SVG before inclusion.
 - Preserve natural aspect ratio; avoid face clipping at 375, 768 and 1280px and at 200% zoom. Ensure optimized image dimensions and no layout shift.
-- Simple static illustration by default. Do not animate facial movement. A hover or focus state may move the crop marks around the existing `/avatar.png`. It may not swap the face, tilt the portrait, or point at an unapproved file. Respect `prefers-reduced-motion`.
+- Simple static illustration by default. Do not animate facial movement. A hover or focus state may move the crop marks around the shared portrait. It may not swap the face, tilt the portrait, or point at an unapproved file. Respect `prefers-reduced-motion`.
 - The homepage hero may wrap that same file in static orbital lines. The lines are the celestial geometry in [brand-guidelines.md](./brand-guidelines.md). They are not a new illustration, they do not spin, and they are not a Leader, Explorer, or Builder variant.
 
 ## Component rules

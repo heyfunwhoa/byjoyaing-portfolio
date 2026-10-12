@@ -20,7 +20,7 @@ Templates are compositions of the components below. Do not add a template compon
 | T7 Timeline | `/experience` | Role rows from `roles` | Not a primary nav template |
 | T8 Directory | `/projects` | Filters plus `projects-directory` | Supporting. Side Quests is the introduction |
 
-Avatar by template: T1, T3, and Work use Leader. Field Notes uses Explorer. Side Quests and the directory use Builder. All of them render `/avatar.png`.
+Avatar by template: T1, T3, and Work use Leader. Field Notes uses Explorer. Side Quests and the directory use Builder. All of them render `/brand/avatar/illustrated-portrait.png`.
 
 This inventory does not prescribe a rebuild. Names in the "Possible later role" column are the shared pieces the product plan may need. If an existing component already does the job, extend it.
 
@@ -33,9 +33,11 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `mark.tsx` | `joy.` signature | Keep | Implemented |
 | `editorial-section.tsx` | Section framing | Editorial section header | Partial. Prefer this over a new header component. |
 | `editorial-bento.tsx` | Three links: Work, Field Notes, Side Quests | Editorial bento | Implemented. Work stays the large tile. Do not wrap every section in a bento. |
-| `geometric-motif.tsx` | Decorative orbits and three nodes, `aria-hidden` | Geometric decoration | Public use is the Work tile. The design lab may preview it. Static. Do not spin it. |
+| `geometric-motif.tsx` | Decorative orbits and three nodes, `aria-hidden` | Geometric decoration | Public use is the Work tile. The About capability card uses it only when the Recraft plate is off. The design lab may preview it. Static. Do not spin it. |
+| `orbit-artwork.tsx` | Decorative PNG from `public/brand/orbits`. Empty alt. | Orbit drawing | Transparent file on ivory or charcoal. Charcoal plate on charcoal only. Not a control. |
+| `orbit-portrait.tsx` | Transparent orbit around the shared portrait | Portrait framing | Public use is the About hero. The homepage keeps `CelestialFrame`. |
 | `marginalia.tsx` | One short aside | Annotation | One per section at most. |
-| `crop-frame.tsx` | Crop marks around the portrait | Avatar frame | Marks may ease outward. The portrait file stays `/avatar.png`. |
+| `crop-frame.tsx` | Crop marks around the portrait | Avatar frame | Marks may ease outward. The portrait file stays `/brand/avatar/illustrated-portrait.png`. |
 | `kicker.tsx` | Small label | Eyebrow | Exists. Editorial pages often use `.editorial-eyebrow` instead. |
 | `rail.tsx` | Supporting rail | Section divider or margin note | Exists. Confirm before a new divider. |
 
@@ -61,10 +63,10 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 
 | Component | What it does now | Action |
 | --- | --- | --- |
-| `brand-avatar.tsx` | `leader`, `explorer`, `builder`. All render `/avatar.png`. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. |
+| `brand-avatar.tsx` | `leader`, `explorer`, `builder`. All render `/brand/avatar/illustrated-portrait.png`. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. |
 | `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Public use is the homepage hero. The design lab may preview it. `aria-hidden` geometry. No spin, no face motion. |
 | `project-constellation.tsx` | Three linked projects plus a sentence for each edge | Public use is `/experience`. The design lab previews the same component. Not a live integration diagram. |
-| `capability-orbit.tsx` | Enterprise selling at the center, three selectable pillars (Strategist, Leader, Builder). ARIA tabs with arrow, Home, and End keys. Each panel shows evidence tagged employer or independent, plus links. | Public use is `/about`. Static rings. CSS color and reveal transitions only, collapsed by reduced motion. No Motion package. Only Builder may link to Side Quests. |
+| `capability-orbit.tsx` | Enterprise selling at the center, three selectable pillars (Strategist, Leader, Builder). ARIA tabs with arrow, Home, and End keys. Each panel shows evidence tagged employer or independent, plus links. | Public use is `/about`. The charcoal orbit PNG sits behind the same controls. CSS color and reveal transitions only, collapsed by reduced motion. No Motion package. Only Builder may link to Side Quests. |
 | `crop-frame.tsx` | Corner crop frame | Keep |
 | `tool-mark.tsx` | Small tool mark | Keep where already used |
 
@@ -109,7 +111,7 @@ Tailwind v4, Next.js, and React are the UI stack. Do not add an animation packag
 | Tabs | `components/ui/tabs.tsx` | Keyboard-selectable sections | In-page collection links |
 | Tooltip | `components/ui/tooltip.tsx` | Short label on hover and focus | The CSS brand tooltip in the header |
 | Hover Card | `components/ui/hover-card.tsx` | Preview on pointer and keyboard | Case-study pages |
-| Avatar | `components/ui/avatar.tsx` | Generic image with a fallback | `brand-avatar.tsx`. The portrait stays `/avatar.png` |
+| Avatar | `components/ui/avatar.tsx` | Generic image with a fallback | `brand-avatar.tsx`. The portrait stays `/brand/avatar/illustrated-portrait.png` |
 | Sheet | `components/ui/sheet.tsx` | Focus-trapped side panel | The header menu |
 | Dialog | `components/ui/dialog.tsx` | Focus-trapped modal | No public modal exists |
 | Accordion | `components/ui/accordion.tsx` | Disclosure with a heading button | `experience-timeline.tsx` |
