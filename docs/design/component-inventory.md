@@ -67,7 +67,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `brand-avatar.tsx` | `leader`, `explorer`, `builder`. All render `/brand/avatar/illustrated-portrait.png`. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. |
 | `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Public use is the homepage hero. The design lab may preview it. `aria-hidden` geometry. No spin, no face motion. |
 | `project-constellation.tsx` | Three linked projects plus a sentence for each edge | Public use is `/experience`. The design lab previews the same component. Not a live integration diagram. |
-| `capability-orbit.tsx` | Enterprise selling at the center, three selectable pillars (Strategist, Leader, Builder). ARIA tabs with arrow, Home, and End keys. Each panel shows evidence tagged employer or independent, plus links. | Public use is `/about`. The charcoal orbit PNG sits behind the same controls. CSS color and reveal transitions only, collapsed by reduced motion. No Motion package. Only Builder may link to Side Quests. |
+| `capability-orbit.tsx` | Enterprise selling at the center opens a short About panel; Strategist, Leader, and Builder are ARIA tabs with arrow, Home, and End keys. The selling panel offers a same-tab deeper dive to `/work#enterprise-sales`. Pillar panels show evidence tagged employer or independent, plus links. | Public use is `/about`. The charcoal orbit PNG sits behind the same controls. CSS color and reveal transitions only, collapsed by reduced motion. No Motion package. Only Builder may link to Side Quests. |
 | `crop-frame.tsx` | Corner crop frame | Keep |
 | `tool-mark.tsx` | Small tool mark | Keep where already used |
 
