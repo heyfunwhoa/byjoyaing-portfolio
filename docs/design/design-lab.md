@@ -59,6 +59,7 @@ Primitives already in the repo: links, buttons in the header and filters, `Proje
 | Motion | Written rules. The arrow uses `.nudge-link`. | Existing CSS |
 | Visual identity | Homepage orbit and Work-tile motif, labeled as those placements | `CelestialFrame`, `BrandAvatar`, `GeometricMotif`, `/avatar.png` |
 | Data visualization | Status pills and the experience constellation | `ProjectStatusPill`, `ProjectConstellation` |
+| Capability orbit | Static orbit with enterprise selling at the center and three selectable pillars (Strategist, Leader, Builder). Selection reveals evidence and links. Hand-written ARIA tabs with arrow, Home, and End keys. CSS transitions only, collapsed by reduced motion. No Motion package. | `GeometricMotif`, `lib/capability-orbit.ts` |
 | Interactions | Filter URL state, plus a native disclosure listing the timeline button and the joy. tooltip | None new |
 | Accessibility | Focus, pressed state, empty result, reduced motion | None new |
 

@@ -1,5 +1,6 @@
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CelestialFrame } from "@/components/celestial-frame";
+import { CapabilityOrbit } from "@/components/design-lab/capability-orbit";
 import { DesignLabGallery } from "@/components/design-lab-gallery";
 import { GeometricMotif } from "@/components/geometric-motif";
 import { PageMain } from "@/components/page-main";
@@ -137,6 +138,14 @@ export default function DesignLabPage() {
             ))}
           </ul>
           <ProjectConstellation />
+        </section>
+
+        <section aria-labelledby="capability-orbit-title">
+          <h2 id="capability-orbit-title" className="font-display text-2xl tracking-tight">Capability orbit</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            Enterprise selling at the center, with Strategist, Leader, and Builder around it. The rings are static. Selecting a pillar highlights one connector and reveals its evidence and links. Arrow keys, Home, and End move between pillars. Employer work and independent Side Quests are labeled separately. Not on a public page.
+          </p>
+          <CapabilityOrbit />
         </section>
 
         <section aria-labelledby="interactions-title">
