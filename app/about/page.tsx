@@ -1,5 +1,5 @@
-import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
+import { OrbitPortrait } from "@/components/orbit-portrait";
 import { CareerRail } from "@/components/career-rail";
 import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <PageMain>
-      <section className="grid items-center gap-10 border-b border-border py-12 sm:py-16 lg:grid-cols-[minmax(0,14rem)_minmax(0,1fr)]">
-        <div className="mx-auto w-full max-w-[14rem] lg:mx-0">
-          <BrandAvatar variant="leader" />
+      <section className="grid items-center gap-10 border-b border-border py-12 sm:py-16 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
+        <div className="mx-auto w-full lg:mx-0">
+          <OrbitPortrait surface="ivory" variant="leader" />
         </div>
         <div>
           <p className="editorial-eyebrow text-accent">About · Leader</p>

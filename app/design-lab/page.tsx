@@ -1,7 +1,10 @@
 import { BrandAvatar } from "@/components/brand-avatar";
+import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CelestialFrame } from "@/components/celestial-frame";
 import { DesignLabGallery } from "@/components/design-lab-gallery";
 import { GeometricMotif } from "@/components/geometric-motif";
+import { OrbitArtwork } from "@/components/orbit-artwork";
+import { OrbitPortrait } from "@/components/orbit-portrait";
 import { PageMain } from "@/components/page-main";
 import { ProjectConstellation } from "@/components/project-constellation";
 import { ProjectStatusPill } from "@/components/project-status-pill";
@@ -121,6 +124,70 @@ export default function DesignLabPage() {
                 Ivory strokes on charcoal. Crop marks may ease outward on hover or focus. Customize placement by wrapping the same portrait. Do not add a second illustration file here.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="orbits-title">
+          <h2 id="orbits-title" className="font-display text-2xl tracking-tight">Orbit artwork</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            Two PNG drawings live in <code className="font-mono text-xs">public/brand/orbits</code>. There is no SVG in that folder. The transparent file is the light-surface orbit. The charcoal plate is used only on charcoal. Neither drawing replaces the Strategist, Leader, and Builder controls.
+          </p>
+
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            <figure className="min-w-0 rounded-2xl border border-border bg-background p-5">
+              <figcaption className="text-sm font-semibold">About hero · published</figcaption>
+              <p className="mt-1 text-sm leading-6 text-muted">
+                Ivory page. The transparent drawing frames <code className="font-mono text-xs">/avatar.png</code>. The portrait alt text stays on the image.
+              </p>
+              <div className="mt-4">
+                <OrbitPortrait surface="ivory" decorative />
+              </div>
+            </figure>
+            <figure className="min-w-0 rounded-2xl bg-foreground p-5 text-background">
+              <figcaption className="text-sm font-semibold">Charcoal plate · decoration only</figcaption>
+              <p className="mt-1 text-sm leading-6 text-[#D4CEC4]">
+                This plate is <code className="font-mono text-xs">rgb(30, 34, 31)</code>, a few steps from charcoal <code className="font-mono text-xs">#1B211D</code>. It is not placed on ivory.
+              </p>
+              <OrbitArtwork treatment="charcoal" surface="charcoal" sizes="(min-width: 1024px) 24rem, 90vw" className="mx-auto mt-4 max-w-sm" />
+            </figure>
+          </div>
+
+          <h3 className="mt-8 text-lg font-semibold">Same controls, two drawings</h3>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            Both columns keep the center link, the three tabs, arrow keys, and the evidence panel. The first is the previous ring drawing. The second is what About publishes: the charcoal plate behind those controls, without a second set of rings.
+          </p>
+          <div className="mt-4 grid gap-8">
+            <div>
+              <p className="editorial-eyebrow text-accent">Current rings · lab only</p>
+              <CapabilityOrbit artwork={false} />
+            </div>
+            <div>
+              <p className="editorial-eyebrow text-accent">Charcoal artwork · About</p>
+              <CapabilityOrbit />
+            </div>
+          </div>
+
+          <h3 className="mt-8 text-lg font-semibold">Homepage portrait</h3>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            The homepage still uses <code className="font-mono text-xs">CelestialFrame</code>. These sit on charcoal so the cover can be compared before that frame changes.
+          </p>
+          <div className="mt-4 grid gap-6 rounded-2xl bg-foreground p-5 text-background sm:grid-cols-3 sm:p-6">
+            <figure className="min-w-0">
+              <div className="mx-auto w-full max-w-[14rem]">
+                <CelestialFrame>
+                  <BrandAvatar decorative />
+                </CelestialFrame>
+              </div>
+              <figcaption className="mt-3 text-sm leading-6 text-[#D4CEC4]">Published on the homepage.</figcaption>
+            </figure>
+            <figure className="min-w-0">
+              <OrbitPortrait surface="charcoal" decorative />
+              <figcaption className="mt-3 text-sm leading-6 text-[#D4CEC4]">Transparent drawing. Not on the homepage.</figcaption>
+            </figure>
+            <figure className="min-w-0">
+              <OrbitArtwork treatment="charcoal" surface="charcoal" sizes="(min-width: 640px) 16rem, 80vw" />
+              <figcaption className="mt-3 text-sm leading-6 text-[#D4CEC4]">Charcoal plate. Not on the homepage.</figcaption>
+            </figure>
           </div>
         </section>
 

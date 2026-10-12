@@ -58,6 +58,7 @@ Primitives already in the repo: links, buttons in the header and filters, `Proje
 | Cards | `EditorialProjectCard`, `ProjectBento`, `ProjectFilter` | Directory facts |
 | Motion | Written rules. The arrow uses `.nudge-link`. | Existing CSS |
 | Visual identity | Homepage orbit and Work-tile motif, labeled as those placements | `CelestialFrame`, `BrandAvatar`, `GeometricMotif`, `/avatar.png` |
+| Orbit artwork | Compare the transparent drawing, the charcoal plate, and the live pillar controls before changing the homepage | `OrbitPortrait`, `OrbitArtwork`, `CapabilityOrbit` |
 | Data visualization | Status pills and the experience constellation | `ProjectStatusPill`, `ProjectConstellation` |
 | Interactions | Filter URL state, plus a native disclosure listing the timeline button and the joy. tooltip | None new |
 | Accessibility | Focus, pressed state, empty result, reduced motion | None new |
