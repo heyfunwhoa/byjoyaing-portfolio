@@ -68,7 +68,7 @@ test("public profile icons use known destinations and clear accessible names", (
   assert.match(emailLink, /href="mailto:kristen\.aing@gmail\.com"/);
   assert.match(emailLink, /aria-label="Email Kristen Joy Aing/);
   assert.match(emailLink, /min-h-11 min-w-11/);
-  assert.match(emailLink, /<Mail size=\{20\}/);
+  assert.match(emailLink, /<Mail size=\{20\}\s/);
   const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
   assert.match(layout, /<SocialLinks placement="footer"/);
   assert.match(layout, /<EmailLink placement="footer"/);
