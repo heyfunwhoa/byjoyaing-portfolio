@@ -23,6 +23,7 @@ function DecisionEvidence({ sourceIds }: { sourceIds: readonly SecurityEvidenceS
             <a href={source.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-accent underline underline-offset-2">
               {source.publisher} · {source.title} ↗
             </a>
+            <p className="mt-1 text-xs text-muted">Source type: {source.kind}</p>
             <p className="mt-1 text-muted"><strong>What this supports:</strong> {source.supports}</p>
             <p className="mt-1 text-muted"><strong>What this doesn't prove:</strong> {source.cannotProve}</p>
           </li>
