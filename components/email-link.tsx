@@ -6,6 +6,7 @@ export function EmailLink({ placement = "contact" }: { placement?: "contact" | "
   return (
     <a
       href={PUBLIC_CONTACT_MAILTO}
+      data-ph-no-autocapture=""
       aria-label="Email Kristen Aing (opens your email app)"
       title="Email me"
       className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border text-foreground transition-[border-color,background-color,transform,color] duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-card hover:text-accent ${placement === "contact" ? "size-12 bg-card" : ""}`}

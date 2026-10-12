@@ -13,7 +13,7 @@ Do not fill the "Current" column with estimates. A blank current value means it 
 | Keyboard, zoom, and viewport pass | UX quality | Record viewport and what failed. Automated scans do not prove WCAG 2.2 AA. |
 | Repository checks | Technical quality | Count only jobs that exist in `.github/workflows/`. |
 | Editorial review | Content integrity | Compare the sentence with the public source. |
-| Product analytics | Planned: Vercel Web Analytics first; no tracking SDK installed as of 2026-10-11 | See [Analytics decision and privacy plan](./portfolio-analytics-plan.md) and [implementation issue #74](https://github.com/heyfunwhoa/byjoyaing-portfolio/issues/74). No baseline or live telemetry exists until integration and dashboard verification. |
+| Product analytics | PostHog client SDK is wired and inactive until a production project token is set. Vercel Web Analytics is still not installed. No baseline as of 2026-10-12 | See [Analytics decision and privacy plan](./portfolio-analytics-plan.md) and [implementation issue #74](https://github.com/heyfunwhoa/byjoyaing-portfolio/issues/74). No live telemetry exists until the token is set and a dashboard check confirms safe events. |
 
 ## Objectives
 
