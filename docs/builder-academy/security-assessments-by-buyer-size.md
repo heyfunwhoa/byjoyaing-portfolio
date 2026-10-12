@@ -9,6 +9,21 @@
 
 After this lesson, you should be able to (1) explain a *vendor security assessment*, (2) anticipate how procurement/security/privacy may differ by buyer size **and data risk**, (3) distinguish the evidence types and decision owners, (4) plan a risk-based assessment within a sales cycle, and (5) improve the process as an AE or Head of Sales.
 
+## Evidence-first reading guide
+
+This lesson separates **published security principles** from **illustrative sales-process patterns**. The company-size matrix is a fictional operating example, *not* a sourced study of average procurement processes. Before making a real customer-facing claim, use the [Evidence-backed decisions standard](evidence-backed-sales-and-security-decisions.md) and check the original material.
+
+| Narrow claim in this lesson | Primary evidence | What still needs checking |
+| --- | --- | --- |
+| Risk-aware supplier requirements matter more than generic checklists | [NIST SP 1305: Supply Chain Risk Management](https://csrc.nist.gov/pubs/sp/1305/final) | Actual buyer risk policy, criticality and access |
+| SOC 2 Type I and Type II test different dimensions of assurance | [AICPA SOC resources](https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services), [Journal of Accountancy](https://www.journalofaccountancy.com/issues/2011/jul/20103500/) | Vendor report scope, Type, period, opinion and exceptions |
+| Pen-test reporting needs scope, limitations, technical evidence and controlled access | [OWASP WSTG v4.2 Reporting](https://wstg.owasp.org/v4.2/5-Reporting/) | Real report, findings, remediation and rights to share |
+| UK GDPR subprocessor requirements involve authorization, contractual safeguards and change notices | [ICO processor/subprocessor guidance](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-processor/) | Actual processing roles and signed DPA |
+| Certain cloud uses of ePHI require HIPAA business-associate arrangements | [HHS cloud guidance](https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html) | Applicability to this buyer/vendor and signed BAA |
+| CAIQ is a cloud control questionnaire, not an independent audit | [Cloud Security Alliance CCM/CAIQ v4.1](https://cloudsecurityalliance.org/artifacts/cloud-controls-matrix-v4-1) | Latest submitted answers and supporting vendor evidence |
+
+**Source review:** October 11, 2026. A framework describes *how to assess*; it does not verify any fictional or named vendor's certifications, current control operation, or approval.
+
 ## What a security assessment is — plain language
 
 When an organization wants to buy software, it asks **"What could go wrong if we connect this vendor to our data, systems or users — and how well are those risks managed?"** A *third-party/vendor risk assessment* is the buyer's due diligence; it is not the same as a penetration test, vulnerability scan, SOC 2 examination, ISO 27001 certification audit or privacy impact assessment. Those reports may be **inputs** to a broader decision.

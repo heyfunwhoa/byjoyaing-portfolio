@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { getSecurityEvidenceSources, type SecurityEvidenceSourceId } from "@/lib/ai-academy/security-review-evidence";
 import {
   evaluateSecurityDecision,
   findSecurityReviewScenario,
@@ -10,6 +11,27 @@ import {
 
 const control = "mt-2 w-full rounded-lg border border-border bg-card p-3 text-sm";
 const choiceLabel = "flex cursor-pointer items-start gap-3 rounded-lg border border-border bg-card p-3 text-sm leading-6";
+
+function DecisionEvidence({ sourceIds }: { sourceIds: readonly SecurityEvidenceSourceId[] }) {
+  const sources = getSecurityEvidenceSources(sourceIds);
+  return (
+    <div className="mt-3 rounded-lg border border-border bg-background p-3">
+      <p className="text-xs font-semibold uppercase tracking-wide text-accent">Evidence behind the guidance</p>
+      <ul className="mt-2 space-y-3 text-sm">
+        {sources.map((source) => (
+          <li key={source.id}>
+            <a href={source.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-accent underline underline-offset-2">
+              {source.publisher} · {source.title} ↗
+            </a>
+            <p className="mt-1 text-xs text-muted">Source type: {source.kind}</p>
+            <p className="mt-1 text-muted"><strong>What this supports:</strong> {source.supports}</p>
+            <p className="mt-1 text-muted"><strong>What this does not prove:</strong> {source.cannotProve}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export function SecurityReviewLab() {
   const [scenarioId, setScenarioId] = useState(securityReviewScenarios[0].id);
@@ -134,10 +156,12 @@ export function SecurityReviewLab() {
           <div className="text-sm leading-6">
             <p className="font-semibold">Evidence decision · {evidenceResult.correct ? "Good judgment" : "Review this choice"}</p>
             <p className="mt-1 text-muted">{evidenceResult.explanation}</p>
+            <DecisionEvidence sourceIds={scenario.evidence.sourceIds} />
           </div>
           <div className="text-sm leading-6">
             <p className="font-semibold">{role === "ae" ? "AE next step" : "Leadership process"} · {actionResult.correct ? "Good judgment" : "Review this choice"}</p>
             <p className="mt-1 text-muted">{actionResult.explanation}</p>
+            <DecisionEvidence sourceIds={action.sourceIds} />
           </div>
           <div className="border-t border-border pt-3 text-sm leading-6">
             <p className="font-semibold">What to inspect in the real world</p>
@@ -145,7 +169,7 @@ export function SecurityReviewLab() {
               {scenario.guidance.map((item) => <li key={item}>{item}</li>)}
             </ul>
           </div>
-          <p className="text-xs text-muted">This is a learning exercise; do not infer actual security approval, legal permission or vendor compliance from your choices.</p>
+          <p className="text-xs text-muted"><strong>Evidence classification:</strong> linked authoritative guidance establishes general principles; the scenario facts are invented, and the recommended AE/leadership response is an instructional application of those principles. No actual buyer approval, audit, vendor compliance, or legal conclusion was verified. Sources reviewed 2026-10-11.</p>
         </div>
       )}
     </section>

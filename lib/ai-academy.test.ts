@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { lessons } from "./ai-academy.ts";
 import { evaluateSecurityDecision, findSecurityReviewScenario, securityReviewScenarios } from "./ai-academy/security-review-lab.ts";
+import { getSecurityEvidenceSources, securityEvidenceSources } from "./ai-academy/security-review-evidence.ts";
 
 test("lesson slugs are unique and knowledge checks point at a real choice", () => {
   assert.equal(new Set(lessons.map((lesson) => lesson.slug)).size, lessons.length);
@@ -193,4 +194,36 @@ test("security review lab case content is fictional and no real decisions or dat
   assert.doesNotMatch(content, /kristen\.aing@gmail\.com|real company address|production API key|Truffle Security/i);
   assert.match(content, /synthetic/i);
   assert.match(content, /subprocessor/i);
+});
+
+
+test("every security review decision cites existing authoritative public sources with limitations", () => {
+  const refs = securityEvidenceSources;
+  assert.ok(Object.keys(refs).length >= 6);
+  for (const [id, source] of Object.entries(refs)) {
+    assert.ok(id.length > 4);
+    assert.match(source.url, /^https:\/\//);
+    assert.ok(source.publisher.length >= 4);
+    assert.ok(source.supports.length >= 30);
+    assert.ok(source.cannotProve.length >= 30);
+    assert.notEqual(source.supports, source.cannotProve);
+    assert.doesNotMatch(source.url, /google\.com\/search|example\.com|localhost/);
+  }
+  for (const scenario of securityReviewScenarios) {
+    for (const decision of [scenario.evidence, scenario.actions.ae, scenario.actions["head-of-sales"]]) {
+      assert.ok(decision.sourceIds.length > 0, scenario.id);
+      assert.equal(new Set(decision.sourceIds).size, decision.sourceIds.length);
+      const actual = getSecurityEvidenceSources(decision.sourceIds);
+      assert.equal(actual.length, decision.sourceIds.length);
+      assert.ok(actual.every((source) => source.title && source.url && source.cannotProve));
+    }
+  }
+});
+
+test("published practice scenarios distinguish sourced guidance from real vendor compliance", () => {
+  const registry = Object.values(securityEvidenceSources).map((item) => item.cannotProve).join(" ");
+  assert.match(registry, /not|does not|cannot/i);
+  assert.match(registry, /vendor/i);
+  assert.doesNotMatch(registry, /is (SOC 2 certified|HIPAA certified)/i);
+  assert.ok(securityReviewScenarios.some((item) => item.id === "small-high-risk" && item.risk === "High"));
 });

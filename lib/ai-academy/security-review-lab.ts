@@ -1,3 +1,4 @@
+import type { SecurityEvidenceSourceId } from "./security-review-evidence";
 // Fictional Builder Academy cases. No real customer records or compliance determinations.
 export type SecurityReviewRole = "ae" | "head-of-sales";
 
@@ -6,6 +7,7 @@ export type SecurityDecision = {
   choices: readonly [string, string, string];
   answer: number;
   explanation: string;
+  sourceIds: readonly SecurityEvidenceSourceId[];
 };
 
 export type SecurityReviewScenario = {
@@ -37,6 +39,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
       ],
       answer: 1,
       explanation: "A limited, documented review matches a synthetic-only trial. Size alone neither removes risk nor justifies an unrestricted technical report.",
+      sourceIds: ["nist-supplier-risk"],
     },
     actions: {
       ae: {
@@ -48,6 +51,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
         ],
         answer: 0,
         explanation: "An AE coordinates a clear evaluation boundary and a responsible sign-off. Expanding to production requires a new risk review.",
+      sourceIds: ["nist-supplier-risk", "govuk-nda-types"],
       },
       "head-of-sales": {
         question: "As Head of Sales, what scalable policy would you introduce?",
@@ -58,6 +62,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
         ],
         answer: 2,
         explanation: "The policy should reduce unnecessary friction without exempting smaller customers from real high-risk changes.",
+      sourceIds: ["nist-supplier-risk"],
       },
     },
     guidance: [
@@ -81,6 +86,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
       ],
       answer: 0,
       explanation: "A scoped SOC 2 report and controlled testing evidence support review; confidentiality, dates, exceptions and remediation still matter.",
+      sourceIds: ["aicpa-soc2-types", "owasp-pen-test-report", "ico-subprocessors"],
     },
     actions: {
       ae: {
@@ -92,6 +98,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
         ],
         answer: 1,
         explanation: "An AE facilitates review with approved evidence and appropriate disclosure controls, without independent compliance promises.",
+      sourceIds: ["owasp-pen-test-report"],
       },
       "head-of-sales": {
         question: "As Head of Sales, what process improvement reduces recurring late-stage blockers?",
@@ -102,6 +109,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
         ],
         answer: 2,
         explanation: "A repeatable packet and clear approval matrix prevent inconsistent answers and unexpected procurement risk.",
+      sourceIds: ["nist-supplier-risk", "csa-caiq"],
       },
     },
     guidance: [
@@ -126,6 +134,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
       ],
       answer: 1,
       explanation: "Confidentiality is not a privacy, HIPAA or production-risk approval. Legal/Privacy/Security must determine actual obligations and authorized scope.",
+      sourceIds: ["hhs-hipaa-cloud", "ico-processor-contracts"],
     },
     actions: {
       ae: {
@@ -137,6 +146,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
         ],
         answer: 2,
         explanation: "Storage location alone does not prove every processing or support-access location. Give only approved, source-backed commitments.",
+      sourceIds: ["eu-crossborder", "ico-subprocessors"],
       },
       "head-of-sales": {
         question: "As Head of Sales, how do you manage this deal responsibly?",
@@ -147,6 +157,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
         ],
         answer: 0,
         explanation: "A manager makes decision rights and blockers visible without replacing qualified risk acceptance or legal approval.",
+      sourceIds: ["hhs-hipaa-cloud", "nist-supplier-risk"],
       },
     },
     guidance: [
@@ -171,6 +182,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
       ],
       answer: 0,
       explanation: "Data sensitivity, privilege and criticality dominate the assessment. An MNDA does not replace authorization and security controls.",
+      sourceIds: ["nist-supplier-risk"],
     },
     actions: {
       ae: {
@@ -182,6 +194,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
         ],
         answer: 1,
         explanation: "Document scope and keep privileged access blocked until approved through the proper channels.",
+      sourceIds: ["nist-supplier-risk"],
       },
       "head-of-sales": {
         question: "As Head of Sales, what should your team's process do?",
@@ -192,6 +205,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
         ],
         answer: 2,
         explanation: "The operating process should use risk-based gates rather than a simplistic company-size exemption.",
+      sourceIds: ["nist-supplier-risk"],
       },
     },
     guidance: [
