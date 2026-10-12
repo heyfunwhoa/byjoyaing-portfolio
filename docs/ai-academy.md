@@ -38,3 +38,18 @@ See [package registries, package managers, lockfiles and supply-chain security](
 ## Builder learning: Cursor workflows
 
 The in-app lesson `cursor-workflows` is the concise card. The longer source is [Cursor: from first prompt to verified pull request](builder-academy/cursor-agent-workflows.md). Publishing that Markdown file does not by itself add the card; the card is the `Lesson` record in `lib/ai-academy.ts`.
+
+
+## GTM security and commercial due-diligence learning path
+
+The existing Academy route renders lessons from \`lib/ai-academy.ts\`, rather than just publishing Markdown sources. The recommended sequence is:
+
+1. [MCP versus REST APIs](builder-academy/mcp-vs-rest-api.md) — learn how tools can reach data and why access does not grant retention or export rights.
+2. [NDA versus MNDA, DPA, MSA and deal reviews](builder-academy/enterprise-contracts-sales-cycle.md) — distinguish confidentiality, privacy, legal and procurement decision owners.
+3. [Security assessments by buyer size and risk](builder-academy/security-assessments-by-buyer-size.md) — review SOC 2, ISO 27001, pen-testing evidence, subprocessors and the buyer's risk-tiered approval process.
+
+The security-assessments card includes a **session-only, synthetic decision lab** in \`components/ai-academy/security-review-lab.tsx\`, fed by \`lib/ai-academy/security-review-lab.ts\`. It compares four buyer cases (a low-risk startup demo, a mid-market repository integration, a regulated enterprise processing real records, and a small high-risk startup requesting privileged production access). Learners switch between AE and Head of Sales roles, then select a proportionate evidence response and a role-specific action. The app explains each choice. The lab does not access a real CRM, submit a review, persist completion or claim legal/security approval.
+
+**Product acceptance:** the lab is visible when the \`security-assessments-buyer-size\` lesson is active; scenario/role changes reset previous selections; the evaluation button stays disabled until both questions are answered; correct/wrong results have supporting rationale; the smaller high-risk buyer is correctly distinguished from the low-risk synthetic buyer; no sensitive vendor report is exposed or collected.
+
+**Learning boundary:** explain practice decisions; do not substitute this material for enterprise counsel, qualified security review, SOC 2 auditing, risk acceptance, or a production procurement approval. Source documents and educational references are linked from the relevant Academy cards.
