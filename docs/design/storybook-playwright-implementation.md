@@ -1,17 +1,17 @@
 # Storybook + Playwright visual QA pilot
 
-**Status:** implementation PR; installation and generated baselines require CI verification. Existing /design-lab remains a development-only branded showcase.
+**Status:** dependencies and six baseline images committed; PR checks must pass before merge. Existing /design-lab remains a development-only branded showcase.
 
 ## Scope
 
 - Reuse current Button, Avatar, Card and Carousel components; no shared package or copied UI.
 - Storybook Next.js/Vite renders isolated examples; Playwright tests Chromium desktop and mobile screenshots, focus and carousel navigation.
-- The CI setup job resolves npm dependencies and generates a real lockfile and screenshot baselines on the authorized internal branch. Never guess integrity hashes.
+- A one-time CI bootstrap resolved npm dependencies and committed the real lockfile and six baseline images; the temporary write-permission workflow was removed.
 - Visual tests are manual/workflow-triggered or restricted to changes in the visual QA files; cap execution, concurrency, retention, and browser matrix.
 - CI screenshots are generated from synthetic public data only. Do not upload actual browser storage state or private account records.
 - Review visual snapshot changes; never blindly approve regenerated baselines.
 
-## Commands (once dependencies are installed and lockfile generated)
+## Commands
 
 ```bash
 npm ci
