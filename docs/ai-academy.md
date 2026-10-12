@@ -58,3 +58,5 @@ The security-assessments card includes a **session-only, synthetic decision lab*
 **Product acceptance:** the lab is visible when the `security-assessments-buyer-size` lesson is active; scenario/role changes reset previous selections; the evaluation button stays disabled until both questions are answered; correct/wrong results have supporting rationale; the smaller high-risk buyer is correctly distinguished from the low-risk synthetic buyer; no sensitive vendor report is exposed or collected.
 
 **Learning boundary:** explain practice decisions; do not substitute this material for enterprise counsel, qualified security review, SOC 2 auditing, risk acceptance, or a production procurement approval. Source documents and educational references are linked from the relevant Academy cards.
+
+The From idea to verified release lesson includes a Portfolio OS case study of that same public path. It sits after the six-stage delivery lab and does not add a second lesson.

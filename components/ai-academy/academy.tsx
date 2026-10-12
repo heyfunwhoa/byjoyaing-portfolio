@@ -2,6 +2,7 @@
 import { useMemo, useState } from "react";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { DeliveryLifecycleLab } from "@/components/ai-academy/delivery-lifecycle-lab";
+import { PortfolioOsCaseStudy } from "@/components/ai-academy/portfolio-os-case-study";
 import { ProductRequestLab } from "@/components/ai-academy/product-request-lab";
 import { SecurityReviewLab } from "@/components/ai-academy/security-review-lab";
 import { lessons, workflows } from "@/lib/ai-academy";
@@ -56,6 +57,7 @@ export function Academy(){
         <h3 className="font-semibold">What you should remember</h3><ul className="mt-3 list-disc space-y-2 pl-5">{lesson.takeaways.map(t=><li key={t}>{t}</li>)}</ul>
         <div className="mt-7 border-t border-border pt-6"><h3 className="font-semibold">Try it yourself</h3><p className="mt-2 leading-7">{lesson.exercise}</p></div>
         {lesson.slug==="idea-to-verified-release"&&<DeliveryLifecycleLab />}
+        {lesson.slug==="idea-to-verified-release"&&<PortfolioOsCaseStudy />}
         {lesson.slug==="evidence-based-product-request"&&<ProductRequestLab />}
         {lesson.slug==="security-assessments-buyer-size"&&<SecurityReviewLab />}
         <fieldset className="mt-7 rounded-lg border border-border p-4"><legend className="px-2 font-semibold">Knowledge check</legend><p className="mb-3">{lesson.check.question}</p>{lesson.check.choices.map((c,i)=><label key={c} className="mb-2 flex cursor-pointer items-start gap-2 text-sm"><input className="mt-1 accent-accent" type="radio" name={lesson.slug} checked={answer===i} onChange={()=>setAnswer(i)}/>{c}</label>)}{answer!==null&&<p role="status" className="mt-3 rounded bg-background p-3 text-sm"><strong>{answer===lesson.check.answer?"Correct.":"Try again."}</strong> {lesson.check.explanation}</p>}</fieldset>
