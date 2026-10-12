@@ -26,5 +26,6 @@ test("source guard: the rail is static and placed on Experience and About only",
   const read = (file: string) => readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
   assert.doesNotMatch(read("components/career-rail.tsx"), /"use client"|animate-|@keyframes|from "motion/);
   assert.match(read("app/experience/page.tsx"), /<CareerRail/);
+  assert.match(read("app/about/page.tsx"), /<CareerRail/);
   assert.doesNotMatch(read("app/page.tsx"), /CareerRail|career-rail/);
 });
