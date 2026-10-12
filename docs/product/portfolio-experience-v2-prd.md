@@ -21,7 +21,7 @@ Portfolio Experience 2.0 treats byjoyaing.com as a product. The public site alre
 
 This release of the plan does not rebuild the site. It records what is true, what is incomplete, and the sequence of small pull requests that may follow.
 
-Kristen Joy Aing is an experienced enterprise cybersecurity seller developing toward broader revenue and GTM leadership. Independent building demonstrates product thinking and systems design. It is not the primary identity. She has not held a Head of Sales title in the public record used here, and the site must not imply that she has.
+Kristen Aing is an experienced enterprise cybersecurity seller developing toward broader revenue and GTM leadership. Independent building demonstrates product thinking and systems design. It is not the primary identity. She has not held a Head of Sales title in the public record used here, and the site must not imply that she has.
 
 ## 2. Problem statement
 

@@ -14,7 +14,7 @@ Templates are compositions of the components below. Do not add a template compon
 | T1 Preview | Home | Hero, condensed proof, three-tile `EditorialBento`, one field practice, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
 | T2 Collection index | Work, Field Notes, Side Quests | Hero with the matching avatar, in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
 | T3 Profile | About | Leader portrait, origin, philosophy, arc link, interests | Toolkit stays last |
-| T4 Utility | Contact | Headline, links, `InquiryForm` | No new fields |
+| T4 Utility | Contact | Headline, links, `InquiryForm` | Work-example requests add a focus select. The general message does not. |
 | T5 Article | Field Notes guides | Evidence label, title, body, related links | Optional contents only when the guide is long |
 | T6 Case study | `/work/[slug]` | `work-story-template` or `build-story-template` by kind | Do not invent a third template |
 | T7 Timeline | `/experience` | Role rows from `roles` | Not a primary nav template |

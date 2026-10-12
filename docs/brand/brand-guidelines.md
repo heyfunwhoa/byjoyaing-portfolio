@@ -7,7 +7,8 @@
 ## 1. Brand fundamentals
 
 - **Signature:** `joy.`
-- **Name:** Kristen Joy Aing
+- **Name:** Kristen Aing
+- **Name treatment:** Public copy, metadata, accessibility labels, and email signatures use Kristen Aing. The signature `joy.` stays. The header reveals `joy.` on hover and keyboard focus. The footer shows `joy.` beside the name.
 - **Primary positioning:** **Revenue & GTM Leader · Curious Builder**
 - **Brand expression:** *Curious by nature. Builder by instinct.*
 - **Guiding philosophy:** **People first. Problem-driven. Systems-minded.**
@@ -85,7 +86,7 @@ Maintain one consistent illustrated personal identity across three treatments: L
 
 ### Logo, shapes and imagery
 
-- Use `joy.` as a recognizable **personal signature**, paired with readable “Kristen Joy Aing” where identity clarity matters.
+- Use `joy.` as a recognizable **personal signature**, paired with readable “Kristen Aing” where identity clarity matters.
 - The current topographic/engraved portrait is an existing visual exploration, **not a mandatory future brand asset**.
 - Favor original diagrams, product screenshots, source artifacts, systems maps, and intentional editorial compositions over stock photos or fabricated app mockups.
 - Keep shape language simple: measured rounded panels, fine borders, aligned grids and generous whitespace. Avoid decorative clutter, gratuitous shadows and over-animated transitions.

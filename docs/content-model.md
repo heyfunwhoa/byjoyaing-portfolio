@@ -6,7 +6,7 @@ Words on the site are data with a job. This document defines **content fields an
 
 **joy.** is the personal mark. It can appear as a logo or a short signature. It is not a second website.
 
-**Kristen Joy Aing** is the professional name. Use it in the title, the header, and metadata.
+**Kristen Aing** is the professional name. Use it in the title, the header, and metadata. The signature `joy.` stays separate: the header reveals it on hover and keyboard focus, and the footer shows it beside the name.
 
 **Revenue & GTM Leader · Curious Builder** is the positioning line. It is the sentence a visitor should be able to repeat. It does not replace the longer story on About.
 

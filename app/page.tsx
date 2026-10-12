@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: { url: "/" },
   title: {
-    absolute: "Revenue & GTM Leader · Curious Builder — Kristen Joy Aing",
+    absolute: "Revenue & GTM Leader · Curious Builder — Kristen Aing",
   },
   description:
     "Strategic enterprise cybersecurity selling, people development, go-to-market leadership, and curious independent builds.",
@@ -71,7 +71,7 @@ export default function Home() {
             People first. Problem-driven. Systems-minded.
           </p>
           <p className="editorial-subtle mt-3 max-w-[38rem] text-base leading-7">
-            I&apos;m Kristen Joy Aing. I sell into complex enterprise security decisions, coach the people around the deal, and build practical systems when the same friction shows up again.
+            I&apos;m Kristen Aing. I sell into complex enterprise security decisions, coach the people around the deal, and build practical systems when the same friction shows up again.
           </p>
           <div className="mt-7 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap">
             <Link

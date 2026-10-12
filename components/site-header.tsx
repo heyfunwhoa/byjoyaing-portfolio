@@ -81,7 +81,7 @@ export function SiteHeader() {
                 joy.
               </span>
             </span>
-            <span className="min-w-0 font-display text-base tracking-tight sm:text-lg">Kristen Joy Aing</span>
+            <span className="min-w-0 font-display text-base tracking-tight sm:text-lg">Kristen Aing</span>
           </Link>
           <button
             ref={menuButtonRef}
