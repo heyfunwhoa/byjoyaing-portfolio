@@ -1,7 +1,9 @@
 import { BrandAvatar } from "@/components/brand-avatar";
+import { CapabilityOrbit } from "@/components/capability-orbit";
+import { CareerRail } from "@/components/career-rail";
 import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
-import { roles } from "@/lib/portfolio";
+import { careerRailNodes } from "@/lib/career-rail";
 import { personalInterests, personalValues } from "@/lib/public-personal";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -53,14 +55,7 @@ export default function AboutPage() {
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Quantcast was advertising sales in a new market. Websense was the first cybersecurity book. Metadot was channel. Forcepoint, Rapid7, Darktrace, and Truffle Security are the enterprise security years. Dates and what was individual versus team are on Experience.
         </p>
-        <ol className="mt-6 flex flex-col gap-3">
-          {roles.slice(0, 4).map((role) => (
-            <li key={role.company} className="flex flex-wrap items-baseline justify-between gap-2 border-t border-border py-3 text-sm">
-              <span className="font-medium">{role.company}</span>
-              <span className="text-muted">{role.title}</span>
-            </li>
-          ))}
-        </ol>
+        <CareerRail nodes={careerRailNodes()} />
           <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:gap-6">
             <Link href="/experience" className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">
               Read the experience timeline
@@ -76,6 +71,7 @@ export default function AboutPage() {
         <p className="mt-3 max-w-2xl text-base leading-7 text-muted">
           Security, engineering, and executives in the same room. Discovery, a competitive story, and the close. Alongside the deal I coach sellers, support hiring, and build the ramp a sales lead owes the team.
         </p>
+        <CapabilityOrbit />
       </section>
 
       <section className="border-b border-border py-12">

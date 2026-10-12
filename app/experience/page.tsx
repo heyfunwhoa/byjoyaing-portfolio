@@ -1,8 +1,10 @@
 import { BrandAvatar } from "@/components/brand-avatar";
+import { CareerRail } from "@/components/career-rail";
 import { ExperienceTimeline } from "@/components/experience-timeline";
 import { MaterialsInvitation } from "@/components/materials-invitation";
 import { PageMain } from "@/components/page-main";
 import { ProjectConstellation } from "@/components/project-constellation";
+import { careerRailNodes } from "@/lib/career-rail";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -43,6 +45,13 @@ export default function ExperiencePage() {
           <BrandAvatar variant="leader" />
           <p className="editorial-eyebrow mt-3 text-center text-muted">Leader / Work</p>
         </div>
+      </section>
+      <section aria-labelledby="career-glance-title" className="border-b border-border py-12">
+        <h2 id="career-glance-title" className="font-display text-3xl tracking-tight">Career at a glance</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Seven roles, oldest to newest. The timeline below has what each role covered.
+        </p>
+        <CareerRail nodes={careerRailNodes()} />
       </section>
       <section className="border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">How the work connects</h2>

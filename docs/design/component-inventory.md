@@ -51,6 +51,8 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `project-status-pill.tsx`, `status-badge.tsx` | Status display | Project status, evidence label | Partial. Two status widgets exist. A later PR should pick one for public labels rather than add a third. |
 | `projects-directory.tsx`, `projects-systems.tsx` | Filterable directory | Category filter | Implemented on `/projects`. Side Quests links here. |
 | `experience-timeline.tsx` | Career timeline, first two roles visible, earlier roles behind a button | Career timeline | Implemented on `/experience`. Visible roles keep every point and their related links. |
+| `career-rail.tsx` | All seven roles, oldest to newest, from `roles`. Horizontal from 1024px, a vertical rail below. Line and dots are `aria-hidden`. | Career overview | Implemented on `/about` and above the timeline on `/experience`. Text only, no links. Static. |
+| `editorial/case-band-steps.tsx` | The five case-study fields as a horizontal band from 1024px. Below that, each step shows two lines until one "Read the full story" button expands the case. The full text stays in the accessibility tree. | Case-study layout | Implemented inside `ProfessionalCaseStudy` on `/work`. No Outcome step. |
 | `editorial-project-card.tsx` | Directory facts, status pill, one destination. Featured variant for the field practice. | Lab preview | On `/design-lab` only. Does not replace `project-card.tsx`. |
 | `project-bento.tsx` | Responsive project gallery and empty state | Lab preview | Not the homepage `EditorialBento`. |
 | `project-filter.tsx` | Kind and existing-category filters with `aria-pressed` | Lab preview | URL state stays on `/design-lab`. |
@@ -62,6 +64,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `brand-avatar.tsx` | `leader`, `explorer`, `builder`. All render `/avatar.png`. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. |
 | `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Public use is the homepage hero. The design lab may preview it. `aria-hidden` geometry. No spin, no face motion. |
 | `project-constellation.tsx` | Three linked projects plus a sentence for each edge | Public use is `/experience`. The design lab previews the same component. Not a live integration diagram. |
+| `capability-orbit.tsx` | Enterprise selling at the center, three selectable pillars (Strategist, Leader, Builder). ARIA tabs with arrow, Home, and End keys. Each panel shows evidence tagged employer or independent, plus links. | Public use is `/about`. Static rings. CSS color and reveal transitions only, collapsed by reduced motion. No Motion package. Only Builder may link to Side Quests. |
 | `crop-frame.tsx` | Corner crop frame | Keep |
 | `tool-mark.tsx` | Small tool mark | Keep where already used |
 
