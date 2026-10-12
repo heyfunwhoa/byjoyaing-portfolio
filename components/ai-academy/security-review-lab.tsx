@@ -25,7 +25,7 @@ function DecisionEvidence({ sourceIds }: { sourceIds: readonly SecurityEvidenceS
             </a>
             <p className="mt-1 text-xs text-muted">Source type: {source.kind}</p>
             <p className="mt-1 text-muted"><strong>What this supports:</strong> {source.supports}</p>
-            <p className="mt-1 text-muted"><strong>What this doesn't prove:</strong> {source.cannotProve}</p>
+            <p className="mt-1 text-muted"><strong>What this does not prove:</strong> {source.cannotProve}</p>
           </li>
         ))}
       </ul>
