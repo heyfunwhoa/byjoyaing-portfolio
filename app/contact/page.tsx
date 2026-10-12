@@ -23,7 +23,7 @@ export default function ContactPage() {
           <p className="max-w-xl text-base leading-7 text-muted">
             I&apos;m interested in sales-leadership and product-marketing conversations for technical products, and in the systems that keep the story and the sale aligned.
           </p>
-          <div className="flex flex-wrap items-center gap-3" aria-label="Contact links">
+          <div role="group" aria-label="Contact links" className="flex flex-wrap items-center gap-3">
             <a
               href="mailto:kristen.aing@gmail.com"
               className="link-rule inline-flex min-h-11 items-center gap-2 font-medium text-foreground hover:text-accent"
