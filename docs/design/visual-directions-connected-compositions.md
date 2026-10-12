@@ -1,7 +1,7 @@
 # Visual directions: orbits, rails, and connected nodes
 
 **Status:** Proposal for review. Nothing here is built. Production pages and components are unchanged.  
-**Date:** 2026-10-12  
+**Date:** 2026-10-11  
 **Baseline:** `main` at `daf1647`  
 **Brand:** [brand-guidelines.md](../brand/brand-guidelines.md) (canonical), [avatar-system.md](../brand/avatar-system.md)  
 **Constraints:** [editorial-ui-spec.md](editorial-ui-spec.md), [component-inventory.md](component-inventory.md), [component-adoption.md](component-adoption.md), [homepage-simplification.md](homepage-simplification.md), [portfolio-experience-v2-prd.md](../product/portfolio-experience-v2-prd.md)
