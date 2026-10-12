@@ -59,6 +59,7 @@ Primitives already in the repo: links, buttons in the header and filters, `Proje
 | Motion | Written rules. The arrow uses `.nudge-link`. | Existing CSS |
 | Visual identity | Homepage orbit and Work-tile motif, labeled as those placements | `CelestialFrame`, `BrandAvatar`, `GeometricMotif`, `/avatar.png` |
 | Data visualization | Status pills and the experience constellation | `ProjectStatusPill`, `ProjectConstellation` |
+| Connected compositions | Career rail, pillar orbit, and three case bands from [visual-directions-connected-compositions.md](visual-directions-connected-compositions.md). Not on any public page. | `roles`, `publicStories`, `lib/design-lab-compositions.ts` |
 | Interactions | Filter URL state, plus a native disclosure listing the timeline button and the joy. tooltip | None new |
 | Accessibility | Focus, pressed state, empty result, reduced motion | None new |
 

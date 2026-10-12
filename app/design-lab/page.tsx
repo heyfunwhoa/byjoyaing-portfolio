@@ -1,11 +1,15 @@
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CelestialFrame } from "@/components/celestial-frame";
+import { CareerRail } from "@/components/design-lab/career-rail";
+import { CaseBand } from "@/components/design-lab/case-band";
+import { PillarOrbit } from "@/components/design-lab/pillar-orbit";
 import { DesignLabGallery } from "@/components/design-lab-gallery";
 import { GeometricMotif } from "@/components/geometric-motif";
 import { PageMain } from "@/components/page-main";
 import { ProjectConstellation } from "@/components/project-constellation";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { designLabAvailable } from "@/lib/design-lab";
+import { careerRailNodes, caseBandSteps, caseBandStories, pillarOrbitNodes } from "@/lib/design-lab-compositions";
 import { robotsNoindex } from "@/lib/indexing";
 import type { ProjectStatus } from "@/lib/portfolio";
 import type { Metadata } from "next";
@@ -137,6 +141,38 @@ export default function DesignLabPage() {
             ))}
           </ul>
           <ProjectConstellation />
+        </section>
+
+        <section aria-labelledby="compositions-title">
+          <h2 id="compositions-title" className="font-display text-2xl tracking-tight">Connected compositions</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            Prototypes for the connected-ledger direction in <code className="font-mono text-xs">docs/design/visual-directions-connected-compositions.md</code>. None of them is on a public page. Every fact comes from <code className="font-mono text-xs">roles</code> or <code className="font-mono text-xs">publicStories</code>. Each figure is a list first. Lines, dots, and the orbit are decoration.
+          </p>
+
+          <h3 className="mt-8 text-lg font-semibold">Career rail</h3>
+          <p className="mt-1 max-w-2xl text-sm leading-6 text-muted">
+            Proposed for About, replacing the four-role list, and for Experience, above the timeline. Horizontal from 1024px, vertical below. The filled dot is the current role.
+          </p>
+          <CareerRail nodes={careerRailNodes()} />
+
+          <h3 className="mt-10 text-lg font-semibold">Pillar orbit</h3>
+          <p className="mt-1 max-w-2xl text-sm leading-6 text-muted">
+            Proposed for the About section “Enterprise selling and the leadership around it.” Selling is the center. The orbit is hidden below 640px, where the list carries it alone. It does not move.
+          </p>
+          <PillarOrbit center={pillarOrbitNodes.center} pillars={pillarOrbitNodes.pillars} />
+
+          <h3 className="mt-10 text-lg font-semibold">Case band</h3>
+          <p className="mt-1 max-w-2xl text-sm leading-6 text-muted">
+            Proposed for Work, as a layout of the existing case study. Same five fields, same order. The last step is what I learned, not an outcome. Five columns from 1024px, stacked below.
+          </p>
+          {caseBandStories.map((story, index) => (
+            <CaseBand
+              key={story.id}
+              eyebrow={`0${index + 1} / ${story.area}`}
+              title={story.title}
+              steps={caseBandSteps(story)}
+            />
+          ))}
         </section>
 
         <section aria-labelledby="interactions-title">
