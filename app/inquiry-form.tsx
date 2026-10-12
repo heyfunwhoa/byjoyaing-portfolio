@@ -30,8 +30,7 @@ export function InquiryForm() {
     modeFromHash,
     () => "message" as const,
   );
-  const [chosen, setChosen] = useState<Mode | null>(null);
-  const mode = chosen ?? hashMode;
+  const mode = hashMode;
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const startedAt = useRef(0);
@@ -88,7 +87,7 @@ export function InquiryForm() {
       onSubmit={onSubmit}
       className="relative flex max-w-xl flex-col gap-4 lg:max-w-none"
     >
-      <div className="flex flex-wrap gap-1" role="group" aria-label="Contact type">
+      <div id="access" tabIndex={-1} className="flex scroll-mt-24 flex-wrap gap-1" role="group" aria-label="Contact type">
         {(
           [
             ["message", "Message"],
@@ -100,7 +99,7 @@ export function InquiryForm() {
             type="button"
             aria-pressed={mode === value}
             onClick={() => {
-              setChosen(value);
+              window.location.hash = value === "access" ? "access" : "write";
               setStatus("idle");
               setMessage("");
             }}
