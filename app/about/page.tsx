@@ -111,7 +111,7 @@ export default function AboutPage() {
       <section id="technologies" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">Technical toolkit</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Built with, used professionally, and still learning stay separate. A name in a case study is not a running integration.
+          The GTM collection leads. Built with, used professionally, and still learning stay labeled. A name in a case study is not a running integration.
         </p>
         <div className="mt-6">
           <ToolsMap />
