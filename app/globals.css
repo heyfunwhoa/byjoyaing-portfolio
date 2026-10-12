@@ -293,3 +293,11 @@ body {
   .nav-backdrop-enter { animation: nav-backdrop-reveal 180ms ease-out both; }
 }
 .nav-toggle-enter { animation: nav-icon-reveal 160ms ease-out both; }
+
+@keyframes toolkit-panel-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .toolkit-panel-enter { animation: toolkit-panel-enter 180ms ease-out; }
+}

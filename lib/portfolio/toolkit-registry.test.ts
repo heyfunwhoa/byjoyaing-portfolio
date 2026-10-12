@@ -6,8 +6,16 @@ import { officialToolWebsites } from "./external-links.ts";
 import { technologies } from "./technology-registry.ts";
 import { gtmSystemsToolkit, siteHowBuilt } from "./toolkit-registry.ts";
 
+import { toolkitSections } from "./toolkit-sections.ts";
+import { techCategories } from "../portfolio.ts";
+
 const root = path.resolve(import.meta.dirname, "../..");
-const forbidden = [/\$/, /Head of Sales/i, /Joy Index/i, /\d{3}[-. ]\d{3}[-. ]\d{4}/];
+const forbidden = [
+  /\$/,
+  /Head of Sales/i,
+  /Joy Index/i,
+  /\d{3}[-. ]\d{3}[-. ]\d{4}/,
+];
 
 const expectedIds = [
   "salesforce",
@@ -37,7 +45,11 @@ test("the GTM toolkit is a curated public collection with local marks", () => {
     assert.equal(item.id in officialToolWebsites, true, item.id);
     assert.match(officialToolWebsites[item.id], /^https:\/\//);
     assert.match(item.logo, /^\/logos\/toolkit\/[a-z]+\.(svg|png)$/);
-    assert.equal(existsSync(path.join(root, "public", item.logo)), true, item.logo);
+    assert.equal(
+      existsSync(path.join(root, "public", item.logo)),
+      true,
+      item.logo,
+    );
     for (const pattern of forbidden) {
       assert.doesNotMatch(`${item.name} ${item.note} ${item.source}`, pattern);
     }
@@ -56,7 +68,10 @@ test("toolkit marks stay off the Side Quest verified stack", () => {
 test("toolkit SVGs do not include active content", () => {
   for (const item of gtmSystemsToolkit) {
     if (!item.logo.endsWith(".svg")) continue;
-    const svg = readFileSync(path.join(root, "public", item.logo), "utf8").toLowerCase();
+    const svg = readFileSync(
+      path.join(root, "public", item.logo),
+      "utf8",
+    ).toLowerCase();
     // False positive: this security assertion rejects script tags in static logo SVG files.
     assert.equal(svg.includes("<script"), false); // nosemgrep: javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag
     assert.equal(svg.includes("foreignobject"), false);
@@ -65,23 +80,39 @@ test("toolkit SVGs do not include active content", () => {
   }
 });
 
-test("About leads with linked toolkit logos and hover names", () => {
+test("About presents purpose sections with visible names and secure product links", () => {
   const about = readFileSync(path.join(root, "app/about/page.tsx"), "utf8");
-  const tools = readFileSync(path.join(root, "components/tools-map.tsx"), "utf8");
-  const grid = readFileSync(path.join(root, "components/toolkit-logo-grid.tsx"), "utf8");
+  const tools = readFileSync(
+    path.join(root, "components/tools-map.tsx"),
+    "utf8",
+  );
+  const explorer = readFileSync(
+    path.join(root, "components/toolkit-explorer.tsx"),
+    "utf8",
+  );
   assert.match(about, /<ToolsMap/);
-  assert.match(tools, /<ToolkitLogoGrid/);
+  assert.match(tools, /<ToolkitExplorer/);
   assert.match(tools, /siteHowBuilt/);
-  assert.match(tools, /officialToolWebsites\[item\.id\]/);
-  assert.match(grid, /href=\{href\}/);
-  assert.match(grid, /rel="noopener noreferrer"/);
-  assert.match(grid, /group-hover\/toolkit:opacity-100/);
-  assert.match(grid, /group-focus-visible\/toolkit:opacity-100/);
-  assert.match(grid, /item\.name/);
-  assert.match(grid, /size-8/);
-  assert.doesNotMatch(grid, /size-16/);
-  assert.match(grid, /flex max-w-xl flex-wrap/);
-  assert.doesNotMatch(about, /Joy Index/i);
-  assert.doesNotMatch(tools, /Joy Index/i);
-  assert.doesNotMatch(grid, /from "@\/components\/ui/);
+  assert.match(explorer, /aria-pressed/);
+  assert.match(explorer, /rel="noopener noreferrer"/);
+  assert.match(explorer, /tool.name/);
+  assert.doesNotMatch(about + tools + explorer, /Joy Index/i);
+});
+
+test("purpose sections preserve every tool and its evidence without duplicates", () => {
+  const existing = new Map<string, { stance: string; note: string }>([
+    ...techCategories.flatMap((group) =>
+      group.items.map((item) => [item.id, item] as const),
+    ),
+    ...gtmSystemsToolkit.map((item) => [item.id, item] as const),
+  ]);
+  const grouped = toolkitSections.flatMap((section) => section.tools);
+  assert.equal(toolkitSections[0].id, "revenue");
+  assert.equal(new Set(grouped.map((item) => item.id)).size, existing.size);
+  assert.equal(grouped.length, existing.size);
+  for (const item of grouped) {
+    assert.equal(item.stance, existing.get(item.id)?.stance);
+    assert.equal(item.note, existing.get(item.id)?.note);
+    assert.equal(item.href, officialToolWebsites[item.id]);
+  }
 });

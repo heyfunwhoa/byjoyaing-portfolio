@@ -142,7 +142,9 @@ test("outbound tool icons are restricted to recognized product destinations", ()
   }
   assert.equal("schema" in officialToolWebsites, false);
   assert.equal("ingest" in officialToolWebsites, false);
-  const tools = readFileSync(new URL("../components/tools-map.tsx", import.meta.url), "utf8");
-  assert.match(tools, /officialToolWebsites\[item\.id\]/);
+  const tools = readFileSync(new URL("../components/toolkit-explorer.tsx", import.meta.url), "utf8");
+  const sections = readFileSync(new URL("./portfolio/toolkit-sections.ts", import.meta.url), "utf8");
+  assert.match(sections, /officialToolWebsites\[id\]/);
+  assert.match(tools, /href=\{tool.href\}/);
   assert.match(tools, /rel="noopener noreferrer"/);
 });
