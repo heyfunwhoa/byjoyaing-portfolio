@@ -17,7 +17,7 @@ export function PillarOrbit({ center, pillars }: { center: OrbitNode; pillars: r
             <li key={node.label} className={index === 0 ? "" : "sm:ml-6"}>
               <Link
                 href={node.href}
-                className="block rounded-lg border border-border bg-card px-4 py-3 hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="block rounded-lg border border-border bg-card px-4 py-3 hover:border-accent"
               >
                 <span className={`font-semibold text-accent ${index === 0 ? "text-base" : "text-sm"}`}>
                   {node.label} →
