@@ -18,7 +18,7 @@ Apply in **Vercel → Project → Settings** (or keep the values already applied
 | Setting | Recommended | Why |
 | --- | --- | --- |
 | Framework | Next.js | Auto-detect |
-| Node.js Version | Align with GitHub Actions (prefer **22.x** on both, or **24.x** on both) | Avoid “works in CI / fails on Vercel” drift |
+| Node.js Version | **22.x** on Vercel and GitHub Actions | Applied; avoid version drift between CI and deploy |
 | Production Branch | `main` | Matches repo workflow |
 | Preview Deployments | **Enabled** | Every PR needs a URL for visual review |
 | Ignored Build Step | **Only** the repo `vercel.json` `ignoreCommand` | Skip `.github/`, `docs/operations/`, `docs/audit/`, and top-level agent readmes. App, Academy, and public docs still build. Fail open if the diff is unavailable. |
@@ -33,7 +33,7 @@ Apply in **Vercel → Project → Settings** (or keep the values already applied
 
 | Variable | Production | Preview | Notes |
 | --- | --- | --- | --- |
-| `RESEND_API_KEY` | Production key | Prefer a **separate** test key or omit | Shared prod+preview keys can send real mail from WIP |
+| `RESEND_API_KEY` | Production key only | Omit until a separate test key exists | Production-only as of 2026-10-12; preview contact returns the unconfigured 503 path |
 | `CONTACT_INBOX` / `RESUME_INBOX` | Real inbox | Safe internal test inbox | Never point preview at a customer mailbox by accident |
 | `RESEND_FROM` | Verified domain sender | `onboarding@resend.dev` or verified test | Matches Resend domain rules |
 | `VERCEL_AUTOMATION_BYPASS_SECRET` | Optional | Set for Preview (and Production if tools need it) | Created under Deployment Protection; never commit |
@@ -48,12 +48,24 @@ Do not put secrets in `NEXT_PUBLIC_*`.
 4. For automation: send header `x-vercel-protection-bypass: <secret>` (or query `?x-vercel-protection-bypass=`).
 5. Smoke `/`, `/about`, `/work`, `/contact` on that exact deployment before merge.
 
+## Applied project state (2026-10-12)
+
+| Control | Value |
+| --- | --- |
+| Ignored Build Step (Dashboard) | Empty — use repo `vercel.json` only |
+| Vercel Authentication | Preview |
+| Git fork protection | On |
+| Preview deployments | On |
+| Node.js | 22.x |
+| `RESEND_API_KEY` targets | Production only |
+
 ## Do not
 
 - Turn off Vercel Authentication on Preview for a public portfolio that may contain unpublished copy.
 - Add a second `vercel deploy` path in GitHub Actions while Git integration is the source of truth.
 - Redeploy in a loop after `git_info_fail`.
 - Treat “Canceled by Ignored Build Step” as a successful preview of UI work — force a rebuild if the PR changed app or public assets.
+- Re-attach the production `RESEND_API_KEY` to Preview; add a separate test key if preview mail is required.
 
 ## Related
 
