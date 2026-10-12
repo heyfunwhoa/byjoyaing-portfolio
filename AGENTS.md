@@ -12,7 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Before editing branding, copy, layout, navigation, portfolio examples or public project descriptions, read [docs/brand/brand-guidelines.md](docs/brand/brand-guidelines.md).
 
-- Canonical identity: **joy.** — Kristen Joy Aing, **Revenue & GTM Leader. Curious Builder.**
+- Canonical identity: **joy.** — Kristen Aing, **Revenue & GTM Leader. Curious Builder.**
 - Guiding philosophy: **People first. Problem-driven. Systems-minded.**
 - Lead with commercial and cybersecurity leadership; organize evidence around People, Strategy and Systems. Professional **Work** comes before independent **Side Quests**.
 - The alternative “Curious by nature. Builder by instinct.” is supporting copy, not a replacement headline unless explicitly approved.

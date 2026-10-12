@@ -9,7 +9,7 @@ Shared chrome, both widths:
 
 ```text
 [Skip to content]
-joy.  Kristen Joy Aing          Home About Work Field Notes Side Quests Contact
+joy.  Kristen Aing          Home About Work Field Notes Side Quests Contact
 ```
 
 Below `lg`, the six links sit in a button menu. Escape closes it and focus returns to the button. The name and the menu button stay on one row.
@@ -38,7 +38,7 @@ Calls to action are text links or the existing accent button. One primary action
 **Mobile (375)**
 
 ```text
-joy. Kristen Joy Aing          [Menu]
+joy. Kristen Aing          [Menu]
 Enterprise cybersecurity · Revenue & GTM
 Revenue & GTM Leader.
 Curious Builder.
@@ -170,17 +170,18 @@ Contact →
 
 ## Contact — How to connect
 
-**Purpose.** A direct, working way to write.  
-**Primary audience.** Anyone who finished another page.  
+**Purpose.** A direct way to write, and a reviewed request for deeper work examples.  
+**Primary audience.** Anyone who finished another page, especially someone evaluating enterprise selling, coaching, or GTM systems.  
 **Owns.** Email, LinkedIn, GitHub, and `InquiryForm`.  
-**Does not own.** A résumé download or a second biography.
+**Does not own.** A résumé download, a second biography, a login, or an automatic grant of private files.
 
 **Section order**
 
-1. H1: Let's connect.
-2. One sentence aligned with the homepage: strategic enterprise selling and revenue leadership. Product marketing may stay only if it remains secondary to that sentence. The current contact sentence leads with sales-leadership and product-marketing. Proposed: lead with enterprise selling and revenue leadership, and keep product marketing as a clause.
-3. Email, LinkedIn, GitHub.
-4. The form. Tabs remain Message and Selected Work. No resume tab.
+1. H1: Let's talk about the work.
+2. One sentence for someone evaluating enterprise sales or leadership. Quick conversations use the email and LinkedIn icons.
+3. A short card that explains a reviewed, sanitized follow-up and links to `#access`. Public Work stays available without a request.
+4. Email, LinkedIn, GitHub.
+5. The form. Two pressed buttons: Message and Request work examples. The work-example mode asks which focus would help and what the visitor is evaluating. The URL hash `#access` selects that mode. `#write` stays the general note. No resume control.
 
 **Mobile.** Headline, links, then the form, full width.  
 **Desktop.** Copy and links on the left. Form on the right. The form does not jump above the headline in the DOM.
