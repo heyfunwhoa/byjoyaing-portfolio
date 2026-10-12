@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
+import { officialToolWebsites, socialProfiles } from "./portfolio/external-links.ts";
 import { isActive, menuPanelClass, navCurrent, primaryNav } from "./site-nav.ts";
 
 test("primary navigation keeps the six public destinations", () => {
@@ -41,4 +43,47 @@ test("a closed mobile menu is hidden and an open menu hangs from the header", ()
   assert.equal(open.includes("hidden"), false);
   assert.equal(open.includes("4.75rem"), false);
   assert.match(open, /\blg:static\b/);
+});
+
+test("public profile icons use known destinations and clear accessible names", () => {
+  assert.deepEqual(socialProfiles.map((item) => item.id), ["linkedin", "github"]);
+  assert.equal(socialProfiles[0].href, "https://www.linkedin.com/in/kristenaing");
+  assert.equal(socialProfiles[1].href, "https://github.com/heyfunwhoa");
+  const links = readFileSync(new URL("../components/social-links.tsx", import.meta.url), "utf8");
+  assert.match(links, /aria-label=\{/);
+  assert.match(links, /rel="noopener noreferrer"/);
+  assert.match(links, /min-h-11 min-w-11/);
+  const contact = readFileSync(new URL("../app/contact/page.tsx", import.meta.url), "utf8");
+  assert.match(contact, /<SocialLinks placement="contact"/);
+  assert.match(contact, /mailto:kristen\.aing@gmail\.com/);
+  const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
+  assert.match(layout, /<SocialLinks placement="footer"/);
+  assert.match(layout, /sameAs: socialProfiles\.map/);
+});
+
+test("nav motion does not replace the mobile menu's focus, Escape, or current-page behavior", () => {
+  const nav = readFileSync(new URL("../components/site-header.tsx", import.meta.url), "utf8");
+  assert.match(nav, /<SocialLinks placement="header"/);
+  assert.match(nav, /nav-panel-enter/);
+  assert.match(nav, /nav-interactive/);
+  assert.match(nav, /navCurrent\(pathname, link\.href\)/);
+  assert.match(nav, /closeFromKeyboard/);
+  assert.match(nav, /setAttribute\("inert"/);
+  assert.match(nav, /aria-expanded=\{open\}/);
+  const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /\.nav-interactive\[aria-current\]::after/);
+  assert.match(css, /prefers-reduced-motion: reduce/);
+});
+
+test("outbound tool icons are restricted to recognized product destinations", () => {
+  for (const [id, url] of Object.entries(officialToolWebsites)) {
+    assert.match(id, /^[a-z]+$/);
+    assert.match(url, /^https:\/\//);
+    assert.equal(url.includes("localhost"), false);
+  }
+  assert.equal("schema" in officialToolWebsites, false);
+  assert.equal("ingest" in officialToolWebsites, false);
+  const tools = readFileSync(new URL("../components/tools-map.tsx", import.meta.url), "utf8");
+  assert.match(tools, /officialToolWebsites\[item\.id\]/);
+  assert.match(tools, /rel="noopener noreferrer"/);
 });
