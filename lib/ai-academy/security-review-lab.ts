@@ -146,7 +146,7 @@ export const securityReviewScenarios: readonly SecurityReviewScenario[] = [
         ],
         answer: 2,
         explanation: "Storage location alone does not prove every processing or support-access location. Give only approved, source-backed commitments.",
-      sourceIds: ["ico-subprocessors", "ico-processor-contracts"],
+      sourceIds: ["eu-crossborder", "ico-subprocessors"],
       },
       "head-of-sales": {
         question: "As Head of Sales, how do you manage this deal responsibly?",
