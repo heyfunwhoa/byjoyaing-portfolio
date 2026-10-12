@@ -42,5 +42,7 @@ jobs:
           git add package.json package-lock.json tests/visual
           if ! git diff --cached --quiet; then
             git commit -m "chore: lock visual QA dependencies and capture baseline screenshots"
+            git fetch origin feat/storybook-playwright-finops-20261012
+            git rebase origin/feat/storybook-playwright-finops-20261012
             git push origin HEAD:feat/storybook-playwright-finops-20261012
           fi
