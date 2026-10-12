@@ -1,3 +1,4 @@
+import type { ProjectStatus } from "./portfolio.ts";
 import { portfolioEntries } from "./portfolio-registry.ts";
 import { publicStories } from "./public-stories.ts";
 
@@ -12,6 +13,7 @@ export type FeaturedSlide = {
   collection: FeaturedCollection;
   source: FeaturedSource;
   area: string;
+  status?: ProjectStatus;
 };
 
 const storyAnchors: Record<(typeof publicStories)[number]["id"], string> = {
@@ -50,13 +52,16 @@ export function featuredWorkSlides(): FeaturedSlide[] {
   return slides;
 }
 
-/**
- * Ready when Side Quests gets its own featured strip. Not mounted on `/work`.
- * Uses the existing selected Side Quest order from that page.
- */
+export const featuredSideQuestSlugs = [
+  "account-intelligence",
+  "detector-coverage-atlas",
+  "truffle-camp",
+  "customer-feedback-intelligence",
+] as const;
+
+/** Selected independent builds for `/side-quests`. Not used on `/work`. */
 export function featuredSideQuestSlides(): FeaturedSlide[] {
-  const selected = ["account-intelligence", "detector-coverage-atlas", "truffle-camp", "customer-feedback-intelligence"];
-  return selected.flatMap((slug) => {
+  return featuredSideQuestSlugs.flatMap((slug) => {
     const entry = portfolioEntries.find((item) => item.slug === slug && item.kind === "side-quest");
     if (!entry) return [];
     return [
@@ -68,6 +73,7 @@ export function featuredSideQuestSlides(): FeaturedSlide[] {
         collection: "Side Quests" as const,
         source: "independent" as const,
         area: "Independent build",
+        status: entry.status,
       },
     ];
   });

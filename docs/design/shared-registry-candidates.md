@@ -16,7 +16,8 @@ This site is a personal portfolio. Most components encode Kristen’s positionin
 | `ProjectConstellation` | Three named projects plus sentences that deny live integrations. |
 | `ExperienceTimeline` | Public employment facts and coaching wording. |
 | `ProfessionalCaseStudy` / `CaseBandSteps` | The five Work fields and the compact mobile pattern. |
-| `FeaturedWorkCarousel` | Employer Work stories only. Side Quests deep-dive on `/side-quests`; `featuredSideQuestSlides()` is ready if that page later gets its own strip. The Embla primitive can be shared; this wrapper cannot. |
+| `FeaturedWorkCarousel` | Employer Work stories only. Embla previous/next. The primitive can be shared; this wrapper cannot. |
+| `FeaturedSideQuestStrip` | Independent builds on `/side-quests`. CSS scroll-snap, sage, status pills. Not Embla. |
 | `BrandAvatar`, `CelestialFrame`, `Mark` | Likeness, signature `joy.`, and the homepage portrait orbit. |
 | `EditorialBento` | Work-first homepage map. |
 | Academy labs and lessons | Teaching content, not a component kit. |

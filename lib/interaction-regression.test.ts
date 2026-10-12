@@ -34,5 +34,19 @@ test("Storybook is not installed; the design lab is the visual preview", () => {
   assert.doesNotMatch(pkg, /"motion"/);
   const lab = read("app/design-lab/page.tsx");
   assert.match(lab, /<FeaturedWorkCarousel/);
+  assert.match(lab, /<FeaturedSideQuestStrip/);
   assert.match(lab, /Storybook is not installed/);
+});
+
+test("Side Quest strip is scroll-snap, not a second Embla carousel", () => {
+  const strip = read("components/featured-side-quest-strip.tsx");
+  assert.match(strip, /snap-x/);
+  assert.match(strip, /snap-mandatory/);
+  assert.match(strip, /snap-start/);
+  assert.match(strip, /overflow-x-auto/);
+  assert.match(strip, /motion-reduce:scroll-auto/);
+  assert.match(strip, /bg-surface-sage/);
+  assert.match(strip, /ProjectStatusPill/);
+  assert.doesNotMatch(strip, /@\/components\/ui\/carousel/);
+  assert.doesNotMatch(strip, /carousel-previous|carousel-next|Autoplay|autoplay/);
 });

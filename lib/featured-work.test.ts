@@ -24,12 +24,13 @@ test("featured Work slides are employer stories only", () => {
   }
 });
 
-test("Side Quest slides stay ready for /side-quests and are not mixed into Work", () => {
+test("Side Quest slides stay on /side-quests and are not mixed into Work", () => {
   const quests = featuredSideQuestSlides();
   assert.ok(quests.length >= 3);
   for (const slide of quests) {
     assert.equal(slide.collection, "Side Quests");
     assert.equal(slide.source, "independent");
+    assert.ok(slide.status);
     const slug = slide.href.replace("/work/", "");
     assert.equal(kindBySlug[slug], "side-quest");
   }
@@ -52,4 +53,20 @@ test("source guard: Work mounts the carousel, homepage does not, and Embla is no
   assert.match(carousel, /basis-full pl-4 md:basis-1\/2 lg:basis-1\/3/);
   const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(home, /FeaturedWorkCarousel|featured-work-carousel/);
+  assert.doesNotMatch(work, /FeaturedSideQuestStrip|featured-side-quest-strip/);
+});
+
+test("source guard: Side Quests mounts a snap strip, not Embla", () => {
+  const quests = readFileSync(new URL("../app/side-quests/page.tsx", import.meta.url), "utf8");
+  assert.match(quests, /<FeaturedSideQuestStrip/);
+  assert.match(quests, /featuredSideQuestSlides\(\)/);
+  assert.match(quests, /featuredSideQuestSlugs/);
+  assert.match(quests, /BrandAvatar variant="builder"/);
+  assert.doesNotMatch(quests, /FeaturedWorkCarousel|embla|CarouselPrevious|autoplay/i);
+  const strip = readFileSync(new URL("../components/featured-side-quest-strip.tsx", import.meta.url), "utf8");
+  assert.match(strip, /snap-x snap-mandatory/);
+  assert.match(strip, /bg-surface-sage/);
+  assert.match(strip, /ProjectStatusPill/);
+  assert.match(strip, /aria-label="Featured independent builds"/);
+  assert.doesNotMatch(strip, /@\/components\/ui\/carousel|embla|Autoplay|carousel-previous|Group /);
 });

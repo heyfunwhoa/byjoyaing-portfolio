@@ -29,7 +29,7 @@ export default function WorkPage(){
  <p className="mt-6 text-sm leading-6 text-muted">
  Independent research and prototypes live in{" "}
  <Link href="/side-quests" className="font-semibold text-accent underline underline-offset-4">Side Quests</Link>
- , not in this strip. That page is the deep dive, and it can grow a featured strip of its own later.
+ , not in this strip. That page uses a snap strip with honest status instead of this carousel.
  </p>
  </section>
  <section id="enterprise-sales" className="section-enter scroll-mt-24 border-b border-border py-12">

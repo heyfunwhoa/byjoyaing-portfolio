@@ -3,7 +3,8 @@
 **Component:** `components/featured-work-carousel.tsx`  
 **Primitive:** `components/ui/carousel.tsx` (Embla)  
 **Data:** `lib/featured-work.ts`  
-**Preview:** `/work` and `/design-lab` while `next dev` is running  
+**Companion:** `components/featured-side-quest-strip.tsx` (CSS snap, not Embla)  
+**Preview:** `/work`, `/side-quests`, and `/design-lab` while `next dev` is running  
 **Decisions:** [shared-registry-candidates.md](../design/shared-registry-candidates.md), [component-adoption.md](../design/component-adoption.md)
 
 ## 1. Problem
@@ -16,7 +17,7 @@ Reuse the primitive. Put portfolio facts in a data helper. Keep the public wrapp
 
 1. `featuredWorkSlides()` reads `publicStories` and `portfolioEntries`. It does not write new titles.
 2. `FeaturedWorkCarousel` only renders those slides, labels the source, and wires Embla options.
-3. Work categories and the full case-study directory stay on the page below the carousel.
+3. Work categories and the full case-study directory stay on the page below the carousel. Independent builds use `featuredSideQuestSlides()` and `FeaturedSideQuestStrip` on `/side-quests`, not this wrapper.
 
 Public pages still must not import `components/ui` except the documented exceptions. The wrapper is the exception for carousel.
 
@@ -39,7 +40,7 @@ Unit tests (`lib/featured-work.test.ts`, `lib/interaction-regression.test.ts`) g
 
 ## 4. When not to adopt a primitive
 
-Skip a registry component when it needs Motion, autoplay, opacity-0 entrances, or a second visual language. The capability orbit uses hand-written tabs for that reason. The career rail is a list, not a slider.
+Skip a registry component when it needs Motion, autoplay, opacity-0 entrances, or a second visual language. The capability orbit uses hand-written tabs for that reason. The career rail is a list, not a slider. Side Quests use a snap strip instead of a second Embla carousel so status and sage stay visible without Previous/Next chrome.
 
 ## 5. Knowledge check
 
