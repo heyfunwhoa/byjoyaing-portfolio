@@ -33,7 +33,7 @@ export function FeaturedSideQuestStrip({ slides }: { slides: readonly FeaturedSl
               </Link>
             </h3>
             <p className="mt-3 text-sm leading-6 text-muted">{slide.summary}</p>
-            <p className="editorial-link mt-auto inline-flex min-h-11 items-end pt-5 text-sm font-semibold underline">
+            <p className="editorial-link mt-auto inline-flex min-h-11 items-end pt-5 text-sm font-semibold text-accent underline">
               Open the build
               <ArrowRight size={16} className="nudge-link ml-2 inline-block size-4" />
             </p>

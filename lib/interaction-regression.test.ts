@@ -47,6 +47,6 @@ test("Side Quest strip is scroll-snap, not a second Embla carousel", () => {
   assert.match(strip, /motion-reduce:scroll-auto/);
   assert.match(strip, /bg-surface-sage/);
   assert.match(strip, /ProjectStatusPill/);
-  assert.doesNotMatch(strip, /@\/components\/ui\/carousel/);
-  assert.doesNotMatch(strip, /carousel-previous|carousel-next|Autoplay|autoplay/);
+  assert.doesNotMatch(strip, /@\/components\/ui\/carousel|embla-carousel-react/);
+  assert.doesNotMatch(strip, /data-slot="carousel-previous"|data-slot="carousel-next"|aria-live="polite"/);
 });

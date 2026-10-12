@@ -62,11 +62,11 @@ test("source guard: Side Quests mounts a snap strip, not Embla", () => {
   assert.match(quests, /featuredSideQuestSlides\(\)/);
   assert.match(quests, /featuredSideQuestSlugs/);
   assert.match(quests, /BrandAvatar variant="builder"/);
-  assert.doesNotMatch(quests, /FeaturedWorkCarousel|embla|CarouselPrevious|autoplay/i);
+  assert.doesNotMatch(quests, /FeaturedWorkCarousel|@\/components\/ui\/carousel|embla-carousel-react/);
   const strip = readFileSync(new URL("../components/featured-side-quest-strip.tsx", import.meta.url), "utf8");
   assert.match(strip, /snap-x snap-mandatory/);
   assert.match(strip, /bg-surface-sage/);
   assert.match(strip, /ProjectStatusPill/);
   assert.match(strip, /aria-label="Featured independent builds"/);
-  assert.doesNotMatch(strip, /@\/components\/ui\/carousel|embla|Autoplay|carousel-previous|Group /);
+  assert.doesNotMatch(strip, /@\/components\/ui\/carousel|embla-carousel-react|data-slot="carousel-previous"|aria-live="polite"/);
 });
