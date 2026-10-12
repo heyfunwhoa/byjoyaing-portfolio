@@ -92,10 +92,7 @@ test("installed primitives are present and public adoption stays explicitly scop
   assert.equal(layout.includes("ThemeProvider"), false);
 
   // Public adoption is reviewed per component and page rather than globally banned.
-  // The approved Work carousel is the only public-page exception today.
-  const approvedPublicImports: Record<string, string[]> = {
-    "app/work/page.tsx": ["@/components/ui/carousel"],
-  };
+  // FeaturedWorkCarousel is the approved public wrapper around ui/carousel.
   const offenders: string[] = [];
   for (const file of [...sourceFiles("app"), ...sourceFiles("components")]) {
     if (
@@ -107,12 +104,13 @@ test("installed primitives are present and public adoption stays explicitly scop
     }
     const source = read(file);
     const imports = [...source.matchAll(/from\s+["'](@\/components\/ui\/[^"']+)["']/g)].map((match) => match[1]);
-    const unexpected = imports.filter((specifier) => !approvedPublicImports[file]?.includes(specifier));
-    if (unexpected.length) offenders.push(`${file}: ${unexpected.join(", ")}`);
+    if (imports.length) offenders.push(`${file}: ${imports.join(", ")}`);
   }
   assert.deepEqual(offenders, []);
-  assert.match(read("app/work/page.tsx"), /from ["']@\/components\/ui\/carousel["']/);
-  assert.match(read("app/work/page.tsx"), /<Carousel\b/);
+  assert.match(read("app/work/page.tsx"), /from ["']@\/components\/featured-work-carousel["']/);
+  assert.match(read("app/work/page.tsx"), /<FeaturedWorkCarousel\b/);
+  assert.match(read("components/featured-work-carousel.tsx"), /from ["']@\/components\/ui\/carousel["']/);
+  assert.match(read("components/featured-work-carousel.tsx"), /<Carousel\b/);
 });
 
 test("bento grid and lifeline stay inside the design lab", () => {

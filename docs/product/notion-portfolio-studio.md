@@ -19,7 +19,7 @@ The connected Notion integration had write access. The following private pages e
 | Product Decisions | https://app.notion.com/p/7351abb71aff4b80a92283567da16e93 |
 | Research and Feedback | https://app.notion.com/p/430e00197eff49dd86d1aae4f213df80 |
 
-Seeded records: EPIC-01 through EPIC-08, FEAT-001 through FEAT-003, DEC-001 through DEC-003, three research rows from this audit, and three public content rows (homepage, one illustrative field note, one qualitative work story). No Joy Index text was copied.
+Seeded records: EPIC-01 through EPIC-08, FEAT-001 through FEAT-003, DEC-001 through DEC-003, three research rows from this audit, and public content rows CNT-001 through CNT-004 (homepage, one illustrative field note, one qualitative work story, and the About Beyond work passage). No Joy Index text was copied.
 
 The planning pull request is https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/43. It is a draft and is not merged.
 
@@ -50,6 +50,8 @@ Feature ID, Feature title, Parent epic, User story, Problem, Proposed solution, 
 Content ID, Title, Content type, Portfolio section, Intended audience, Evidence status, Publication status, Source or reference, Review owner, Public URL, Last reviewed.
 
 Evidence status includes **Do not publish**. Use it as a hold. Do not create rows from private notes in order to mark them.
+
+CNT-004 is the live Beyond work passage on `/about` ([row](https://app.notion.com/p/3f7cdefaec7581eea3eaf30f491b9670)). It records the public interests in `lib/public-personal.ts`. Creative exploration is trying unfamiliar creative projects. Electronic music keeps “Creativity, energy and connection.” A travel interest is added when an approved public sentence describes travel.
 
 ### Product Decisions
 
