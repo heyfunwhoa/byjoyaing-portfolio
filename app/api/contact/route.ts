@@ -98,7 +98,7 @@ export async function POST(request: Request) {
       <p>Hi ${safeName},</p>
       <p>Thanks for writing from the portfolio site. I got your note and will reply if I can help.</p>
       <p>If you want to add context in the meantime, just reply to this email.</p>
-      <p>— Kristen Joy Aing</p>
+      <p>— Kristen Aing</p>
     `,
   });
 

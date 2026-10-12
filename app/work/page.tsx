@@ -1,3 +1,4 @@
+import { WorkCarousel } from "@/components/work-carousel";
 import { ProfessionalCaseStudy } from "@/components/editorial/professional-case-study";
 import type {Metadata} from "next";
 import Link from "next/link";
@@ -11,13 +12,11 @@ export default function WorkPage(){
  <p className="text-sm font-medium text-muted">Work / Professional experience</p>
  <h1 className="font-display mt-3 max-w-3xl text-4xl leading-[1.16] tracking-normal sm:text-5xl">People. Strategy. Systems.</h1>
  <p className="mt-4 max-w-2xl leading-7 text-muted">Enterprise cybersecurity sales, team development, competitive positioning and GTM operations. My professional experience comes first; independent product experiments live under Side Quests.</p>
- <nav aria-label="Explore professional work" className="mt-8 grid gap-3 sm:grid-cols-3">
- {[
-  {title:"Enterprise Sales",detail:"Strategic deals, technical evaluations, and commercial execution",href:"#enterprise-sales"},
-  {title:"People & Leadership",detail:"Coaching, enablement, and team development",href:"#people-leadership"},
-  {title:"GTM Strategy",detail:"Revenue systems, planning, and cross-functional execution",href:"#gtm-strategy"}
- ].map(item=><a key={item.href} href={item.href} className="rounded-xl border border-border bg-card p-4 hover:border-accent focus-visible:outline-2 focus-visible:outline-ring"><span className="block font-display text-xl">{item.title}</span><span className="mt-2 block text-sm leading-6 text-muted">{item.detail}</span><span aria-hidden="true" className="mt-3 block text-accent">Explore ↓</span></a>)}
- </nav>
+ <WorkCarousel items={[
+ {title:"Enterprise Sales",detail:"Strategic deals, technical evaluations, and commercial execution",href:"#enterprise-sales"},
+ {title:"People & Leadership",detail:"Coaching, enablement, and team development",href:"#people-leadership"},
+ {title:"GTM Strategy",detail:"Revenue systems, planning, and cross-functional execution",href:"#gtm-strategy"}
+ ]} />
  </section>
  <section id="enterprise-sales" className="scroll-mt-24 border-b border-border py-12">
  <p className="editorial-eyebrow text-accent">01 / Selling</p>
