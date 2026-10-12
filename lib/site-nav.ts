@@ -36,7 +36,7 @@ export function navCurrent(pathname: string, href: string): "page" | "true" | un
  */
 export function menuPanelClass(open: boolean) {
   if (open) {
-    return "absolute inset-x-0 top-full z-30 max-h-[70dvh] overflow-y-auto border-b border-border bg-background px-5 py-5 shadow-lg lg:static lg:z-auto lg:max-h-none lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none";
+    return "absolute inset-x-0 top-full z-30 max-h-[70dvh] overflow-y-auto border-b border-border bg-background px-5 py-5 shadow-lg lg:static lg:flex lg:items-center lg:z-auto lg:max-h-none lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none";
   }
-  return "hidden lg:block";
+  return "hidden lg:flex lg:items-center";
 }

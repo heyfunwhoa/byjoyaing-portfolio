@@ -33,29 +33,29 @@ export function TechnologyStack({
       {visible.map((id) => {
         const technology = technologies[id];
         return (
-          <li
-            key={id}
-            className={`inline-flex min-w-0 items-center ${compact ? "gap-1.5 text-xs" : "gap-2 text-sm"}`}
-          >
-            <span
-              className={`inline-flex shrink-0 items-center justify-center rounded-md border border-border bg-white ${
-                compact ? "size-6 p-1" : "size-8 p-1.5"
-              }`}
+          <li key={id} className="min-w-0">
+            <a
+              href={technology.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${technology.name} website (opens in a new tab)`}
+              title={technology.name}
+              className={`group/tech inline-flex min-h-11 min-w-11 items-center rounded-lg text-foreground transition-colors duration-200 hover:text-accent ${compact ? "gap-0" : "gap-2"}`}
             >
-              <Image
-                src={technology.logo}
-                alt=""
-                width={compact ? 16 : 24}
-                height={compact ? 16 : 24}
-                unoptimized
-                className="size-full object-contain"
-              />
-            </span>
-            {showLabels ? (
-              <span>{technology.name}</span>
-            ) : (
-              <span className="sr-only">{technology.name}</span>
-            )}
+              <span
+                className={`inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md border border-border bg-white transition-colors duration-200 group-hover/tech:border-accent ${compact ? "p-2.5" : "p-2"}`}
+              >
+                <Image
+                  src={technology.logo}
+                  alt=""
+                  width={compact ? 16 : 24}
+                  height={compact ? 16 : 24}
+                  unoptimized
+                  className="size-full object-contain"
+                />
+              </span>
+              {showLabels ? <span>{technology.name}</span> : null}
+            </a>
           </li>
         );
       })}

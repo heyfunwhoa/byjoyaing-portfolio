@@ -58,7 +58,8 @@ test("every registered logo is a local svg without active content", () => {
     const file = path.join(root, "public", technology.logo);
     assert.equal(existsSync(file), true, technology.logo);
     const svg = readFileSync(file, "utf8").toLowerCase();
-    assert.equal(svg.includes("<script"), false);
+    // False positive: this security assertion rejects script tags in static logo SVG files.
+    assert.equal(svg.includes("<script"), false); // nosemgrep: javascript.lang.security.audit.unknown-value-with-script-tag.unknown-value-with-script-tag
     assert.equal(svg.includes("foreignobject"), false);
     assert.equal(svg.includes("javascript:"), false);
     assert.equal(svg.includes("onload"), false);
@@ -69,5 +70,15 @@ test("compact cards never exceed the logo limit", () => {
   for (const slug of Object.keys(verifiedTechnologyStacks)) {
     assert.ok(compactTechnologyIds(slug).length <= CARD_LOGO_LIMIT);
     assert.ok(compactTechnologyIds(slug).length > 0);
+  }
+});
+
+test("verified technology logos point to explicit public HTTPS destinations", () => {
+  const tech = readFileSync(path.join(root, "components/portfolio/technology-stack.tsx"), "utf8");
+  assert.match(tech, /href=\{technology\.website\}/);
+  assert.match(tech, /aria-label=\{/);
+  assert.match(tech, /rel="noopener noreferrer"/);
+  for (const entry of Object.values(technologies)) {
+    assert.match(entry.website, /^https:\/\//);
   }
 });

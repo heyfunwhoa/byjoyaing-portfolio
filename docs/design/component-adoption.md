@@ -14,7 +14,7 @@ No new runtime dependency. Geist Sans and Geist Mono stay loaded through `next/f
 | Spacing | Page column is `max-w-5xl` with `px-5` / `sm:px-8`. Section rhythm is `py-12` / `sm:py-16`. Controls that are tapped use `min-h-11` or `min-h-12`. |
 | Type | Geist Sans for display and body. Geist Mono for technical metadata only. Sizes stay on the ADR 0001 table. |
 | Focus | `:focus-visible` is a 2px copper ring with 3px offset (`--ring`). Do not remove it for a custom glow. |
-| Motion | One entrance, `.section-enter`, is a 0.6rem rise. It does not fade to zero opacity. Hover transitions are color or a 0.2rem nudge. |
+| Motion | CSS-only and utility-focused. The existing `.section-enter` remains; navigation adds a short mobile menu reveal, active-link underline and sticky-scroll shadow. Nothing moves continuously. |
 | Reduced motion | `prefers-reduced-motion: reduce` sets `animation-name: none` and collapses transition duration. New motion has to remain readable when that rule fires. |
 | Color | Ivory, charcoal, copper, sage, mist, clay. Geometry uses the existing sage and warm paper tones. |
 
@@ -30,7 +30,7 @@ No new runtime dependency. Geist Sans and Geist Mono stay loaded through `next/f
 
 | Piece | Change |
 | --- | --- |
-| `site-header.tsx` | Open menu is `absolute top-full` inside the sticky header. A viewport backdrop sits underneath that stacking context. Closed menu stays `hidden lg:block`. |
+| `site-header.tsx` | Mobile menu still hangs at `absolute top-full` with backdrop, Escape, focus return, inert background and scroll lock. The closed panel uses `hidden lg:flex` to align links and profile icons on desktop. Motion remains CSS-only and honors reduced motion. |
 | `experience-timeline.tsx` | Used on `/experience`. The first two roles stay open with every evidence point and the existing related links. Earlier roles open from a button. |
 | `project-constellation.tsx` | Three existing projects. Each edge has a visible sentence. Revenue OS studies are not on the diagram. |
 

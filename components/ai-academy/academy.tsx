@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { DeliveryLifecycleLab } from "@/components/ai-academy/delivery-lifecycle-lab";
 import { ProductRequestLab } from "@/components/ai-academy/product-request-lab";
+import { SecurityReviewLab } from "@/components/ai-academy/security-review-lab";
 import { lessons, workflows } from "@/lib/ai-academy";
 const tracks=["All","Foundations","Prompting","Responsible AI","GTM","Builder"] as const;
 const button="rounded-lg border border-border px-3 py-2 text-sm transition hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
@@ -56,8 +57,10 @@ export function Academy(){
         <div className="mt-7 border-t border-border pt-6"><h3 className="font-semibold">Try it yourself</h3><p className="mt-2 leading-7">{lesson.exercise}</p></div>
         {lesson.slug==="idea-to-verified-release"&&<DeliveryLifecycleLab />}
         {lesson.slug==="evidence-based-product-request"&&<ProductRequestLab />}
+        {lesson.slug==="security-assessments-buyer-size"&&<SecurityReviewLab />}
         <fieldset className="mt-7 rounded-lg border border-border p-4"><legend className="px-2 font-semibold">Knowledge check</legend><p className="mb-3">{lesson.check.question}</p>{lesson.check.choices.map((c,i)=><label key={c} className="mb-2 flex cursor-pointer items-start gap-2 text-sm"><input className="mt-1 accent-accent" type="radio" name={lesson.slug} checked={answer===i} onChange={()=>setAnswer(i)}/>{c}</label>)}{answer!==null&&<p role="status" className="mt-3 rounded bg-background p-3 text-sm"><strong>{answer===lesson.check.answer?"Correct.":"Try again."}</strong> {lesson.check.explanation}</p>}</fieldset>
         <div className="mt-6 flex flex-wrap items-center gap-3"><button className="rounded-lg bg-accent px-5 py-3 font-semibold text-accent-foreground disabled:opacity-50" disabled={answer!==lesson.check.answer} onClick={complete}>Mark lesson complete</button><span className="text-xs text-muted">Session-only progress · no account required</span></div>
+        {lesson.companion&&<a href={lesson.companion.url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-block text-sm font-semibold text-accent underline underline-offset-2">{lesson.companion.label} ↗</a>}
         <div className="mt-7 border-t border-border pt-5"><p className="text-sm font-semibold">Learn more</p>{lesson.sources.map(s=><a key={s.url} href={s.url} target="_blank" rel="noopener noreferrer" className="mt-2 block text-sm text-accent underline">{s.label} ↗</a>)}</div>
       </article>
     </div>}

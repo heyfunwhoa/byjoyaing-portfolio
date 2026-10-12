@@ -3,6 +3,7 @@ export type Lesson = {
   slug: string; title: string; track: Track; minutes: number; level: "Beginner" | "Intermediate";
   summary: string; analogy: string; takeaways: string[]; exercise: string; check: { question: string; choices: string[]; answer: number; explanation: string };
   sources: { label: string; url: string }[];
+  companion?: { label: string; url: string };
 };
 export const lessons: Lesson[] = [
   {slug:"evidence-based-product-request",title:"Write an evidence-based product request",track:"GTM",minutes:20,level:"Beginner",summary:"Turn Sales, CS, Support or leadership feedback into a user problem, source-backed evidence and a cautious business-impact hypothesis.",analogy:"Like a doctor's referral: describe the symptoms and evidence before prescribing a solution.",takeaways:["Start with the affected persona, workflow, problem and current workaround—not the desired feature.","Preserve the original source, date, frequency and confidence; distinguish facts from hypotheses.","Estimate customer value, commercial value and strategic relevance separately.","Opportunity size is exposed pipeline, not the value attributable to a feature. Probability-adjusted estimates require evidence and assumptions.","A request may enter discovery, need more evidence, receive a workaround, be deferred or be declined.","Use fictional scenarios here; real company and customer data must remain in approved systems."],exercise:"Complete the fictional product-request lab. Include evidence, measurable outcome and an incremental value estimate. Then explain what you would still need to validate.",check:{question:"A seller says a $200k deal needs a feature. What value can you claim?",choices:["The feature is worth $200k in ARR","Record $200k as exposure; estimate incremental win probability and label assumptions","Promise Product will build it"],answer:1,explanation:"Exposed pipeline is not attributable revenue. Estimate incremental impact with transparent uncertainty and no double counting."},sources:[{label:"Atlassian Product Discovery",url:"https://www.atlassian.com/agile/product-management/discovery"},{label:"Linear Customer Requests",url:"https://linear.app/docs/customer-requests"}]},
@@ -10,7 +11,7 @@ export const lessons: Lesson[] = [
     slug: "idea-to-verified-release",
     title: "From idea to verified release",
     track: "Builder",
-    minutes: 15,
+    minutes: 25,
     level: "Beginner",
     summary: "See how priorities, requirements, Linear issues, Cursor, GitHub PRs and CI form one accountable delivery workflow without duplicating project tracking.",
     analogy: "A restaurant order has one ticket, a recipe, a kitchen station and a quality check. You do not need five copies of the same order to know whether dinner is ready.",
@@ -20,9 +21,13 @@ export const lessons: Lesson[] = [
       "Keep the PRD and source code in the owning repository, tasks in Linear, implementation and CI evidence in GitHub, and reusable standards in Technical Docs.",
       "Link a Linear issue ID in branches and PRs. PR linking does not require GitHub Issues synchronization or duplicate tickets.",
       "Use test results, code review and explicit acceptance criteria before declaring delivery complete. Do not equate a passing build with product correctness.",
-      "Adopt the workflow gradually for active initiatives; no separate Linear team or duplicated status page is required for every repository."
+      "Adopt the workflow gradually for active initiatives; no separate Linear team or duplicated status page is required for every repository.",
+      "Security scanners look for leaked secrets, vulnerable dependencies, risky code and configuration. Permission tests prove that a denied request cannot read data, change data or schedule work.",
+      "A configured check, a passing check and a required merge gate are different states. Review the latest commit; a manual checklist cannot technically prevent someone bypassing it.",
+      "Use deeper security review for auth, account permissions, imports, exports, fetching and automation. Green CI is not proof of a protected deployment or permission to use employer data."
     ],
-    exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md. When you choose a Cursor mode for that branch, continue with docs/builder-academy/cursor-agent-workflows.md.",
+    exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Then use the companion guide’s fictional security review: classify the change, choose scanners and denied-path tests, and explain why passing CI alone does not authorize release. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md. When you choose a Cursor mode for that branch, continue with docs/builder-academy/cursor-agent-workflows.md.",
+    companion: { label: "Read the full delivery and PR security guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/idea-to-verified-release.md" },
     check: {
       question: "Your implementation PR passes CI but the expected calculation has not been checked. What should happen?",
       choices: ["Mark Done because all green checks prove the feature works", "Keep the issue In Review until its acceptance criteria and user journey are verified", "Copy the issue into GitHub Issues and Notion to increase visibility"],
@@ -32,7 +37,9 @@ export const lessons: Lesson[] = [
     sources: [
       { label: "GitHub Docs: About pull requests", url: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests" },
       { label: "GitHub Docs: About status checks", url: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks" },
-      { label: "Linear Docs: GitHub integration", url: "https://linear.app/docs/github" }
+      { label: "Linear Docs: GitHub integration", url: "https://linear.app/docs/github" },
+      { label: "GitHub Docs: Secure use of Actions", url: "https://docs.github.com/en/actions/reference/security/secure-use" },
+      { label: "GitHub Docs: Dependency review", url: "https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-review" }
     ]
   },
   {
@@ -66,6 +73,177 @@ export const lessons: Lesson[] = [
       { label: "Cursor docs: Agent read access", url: "https://cursor.com/docs/agent/security/run-modes" },
       { label: "Cursor: Agent best practices", url: "https://cursor.com/blog/agent-best-practices" },
     ],
+  },
+  {
+    slug: "better-auth-gtm-workspace",
+    title: "Build a private GTM workspace with Better Auth",
+    track: "Builder",
+    minutes: 25,
+    level: "Intermediate",
+    summary: "Learn how a verified session differs from per-account authorization while planning a private research desk with Next.js and Neon.",
+    analogy: "Better Auth checks your badge at the building entrance; your app still decides which individual room that badge can unlock.",
+    takeaways: [
+      "Authentication proves which user has a valid session; authorization independently checks that user's permission to read or change an exact account.",
+      "A representative name, query string or account ID supplied by a browser is never a trusted permission boundary.",
+      "Start with a private, allowlisted operator and reject anonymous server actions before storage, job dispatch or provider calls.",
+      "Keep cron, webhook and agent service identities separate from human session cookies.",
+      "Test a synthetic two-user scenario: changing account IDs or rep names must fail with zero unauthorized side effects.",
+      "Record evidence per step: planned, tested, merged, deployed and production-verified are different states.",
+    ],
+    exercise: "Read docs/builder-academy/authentication-vs-authorization.md, then work through the synthetic Better Auth GTM case study at docs/builder-academy/better-auth-gtm-workspace.md. Draw the login-session-policy-data flow. Write a test where Alex tries to open Jordan's account: assert the server denies, no data changes and no research job starts. Record one observation using the evidence-journal template. Do not use real user data or credentials.",
+    check: {
+      question: "An AE signs in successfully but changes an account URL ID to view another AE's research. Which control must stop it?",
+      choices: [
+        "Better Auth login success means the user may view all accounts",
+        "A server-side account-permission check against the authenticated user's approved assignments",
+        "Hiding the account in the navigation menu",
+      ],
+      answer: 1,
+      explanation: "A valid session establishes identity only. The application's data-access policy must check the specific requested account before returning data or performing work.",
+    },
+    sources: [
+      { label: "Better Auth: Next.js integration", url: "https://better-auth.com/docs/integrations/next" },
+      { label: "Better Auth: Drizzle adapter", url: "https://better-auth.com/docs/adapters/drizzle" },
+      { label: "OWASP Authorization Cheat Sheet", url: "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html" },
+      { label: "Next.js authentication guidance", url: "https://nextjs.org/docs/app/guides/authentication" },
+    ],
+  },
+  {
+    slug: "measure-product-use-safely",
+    title: "Measure product use without collecting private activity",
+    track: "Builder",
+    minutes: 20,
+    level: "Beginner",
+    summary: "Understand PostHog versus Vercel Analytics, choose useful outcome events, and verify privacy before enabling measurement.",
+    analogy: "A login badge identifies who entered; a permission rule controls rooms; product analytics counts useful, approved work; an audit log records changes to the locks.",
+    takeaways: [
+      "Better Auth sessions, account authorization, product events, observability and security audit logs solve different problems.",
+      "Define numerator, denominator, timeframe and exclusions before installing an analytics SDK.",
+      "Capture a completed workflow after authorized durable success, not just an optimistic click or queued job.",
+      "Use fixed, low-cardinality properties, not raw customer details, URLs, form contents, model prompts or session tokens.",
+      "Disable recording/autocapture for sensitive applications until a separate privacy assessment approves it.",
+      "Instrument only products with a user decision to make and record tests, deployment evidence and uncertainty.",
+    ],
+    exercise: "Follow the fictional lesson in docs/builder-academy/measure-product-usage-safely.md. Draft a three-event plan for a seller workflow; define a seven-day funnel. Explain what happens if account access is denied or analytics is offline. Write a synthetic no-PII, no-duplicate-event test and one after-launch learning journal entry.",
+    check: {
+      question: "An AE signs in and clicks Create Draft, but account permission is denied. Should the app record outreach_draft_created?",
+      choices: [
+        "Yes, the button click proves adoption",
+        "No, the application must authorize and persist the draft first",
+        "Yes, authentication automatically authorizes all accounts",
+      ],
+      answer: 1,
+      explanation: "Only a permitted and persisted business outcome counts. A login is not account authorization; denied actions should not emit a success event.",
+    },
+    sources: [
+      { label: "PostHog Next.js guide", url: "https://posthog.com/docs/libraries/next-js" },
+      { label: "Vercel Analytics privacy", url: "https://vercel.com/docs/analytics/privacy-policy" },
+      { label: "OWASP logging guidance", url: "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html" },
+    ],
+  },
+  {
+    slug: "mcp-vs-rest-api",
+    title: "MCP versus REST APIs: how integrations work",
+    track: "Builder",
+    minutes: 25,
+    level: "Beginner",
+    summary: "Compare REST APIs, MCP tools, webhooks and SDKs through a fictional account-research workflow. Understand what each does and why none grants data permissions by itself.",
+    analogy: "An API is an ordering contract, REST is a structured order form, MCP is a discoverable menu for AI assistants, and a webhook is a notification when the order changes.",
+    takeaways: [
+      "API is the broader concept. REST is a common HTTP resource-interface style using methods such as GET and POST; MCP is a tool/context protocol for AI clients and may call an existing REST API.",
+      "MCP hosts and clients discover tools, resources and prompts through a server using JSON-RPC; transport may be local stdio or remote HTTP.",
+      "Use deterministic REST/SDK calls for routine application sync, MCP for assistant-initiated approved tools, and verified webhooks for change notifications.",
+      "A tool listing or successful request does not grant authorization, billing rights, data retention rights or permission to export contacts.",
+      "Enforce credential scoping, server-side account authorization, human approval for consequential writes, budgets, error handling and event deduplication.",
+      "A provider-neutral research service can support both REST and MCP without creating two databases."
+    ],
+    exercise: "Read docs/builder-academy/mcp-vs-rest-api.md and diagram a synthetic account lookup three ways: app-to-CRM REST request, AI assistant-to-MCP research tool, and CRM-to-app webhook. Then add a mock access-denied test and explain how to handle an HTTP 429 response without spending paid credits.",
+    check: {
+      question: "A Sumble-like provider offers an MCP tool that reveals contact details. What does MCP access prove?",
+      choices: [
+        "That the contact list can be bulk copied into a personal warehouse",
+        "Only that a compatible client may invoke a tool subject to permissions, licensing and processing restrictions",
+        "That there is no need for a REST API, security review or provider agreement"
+      ],
+      answer: 1,
+      explanation: "MCP makes capabilities discoverable to an assistant. It does not waive tenant authorization, source licensing, credit budgets or data protection responsibilities."
+    },
+    companion: { label: "Open the full lesson and practice guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/mcp-vs-rest-api.md" },
+    sources: [
+      { label: "Model Context Protocol architecture", url: "https://modelcontextprotocol.io/docs/learn/architecture" },
+      { label: "MDN HTTP methods", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods" },
+      { label: "Microsoft Learn MCP overview", url: "https://learn.microsoft.com/en-us/azure/api-management/mcp-server-overview" }
+    ]
+  },
+  {
+    slug: "enterprise-contracts-sales-cycle",
+    title: "NDA vs MNDA, DPA, MSA: enterprise deal reviews",
+    track: "GTM",
+    minutes: 30,
+    level: "Beginner",
+    summary: "Recognize the legal, privacy, security and commercial documents in a B2B sales cycle, and learn the distinct decisions an AE and Head of Sales coordinate.",
+    analogy: "The order form says what you bought, ToS sets usage rules, an MSA governs the relationship, an MNDA protects exchanged secrets, and a DPA governs certain processing of personal data.",
+    takeaways: [
+      "An NDA can be unilateral or mutual; an MNDA explicitly protects confidential disclosures in both directions. Neither permits unrelated processing, exporting or indefinite retention of data.",
+      "Terms of Service and API/data licenses define allowed use; an advertised API or paid plan does not guarantee storage, redistribution or CRM-sync rights.",
+      "MSA addresses commercial relationship terms, order form specifies purchase, and SOW may define implementation services.",
+      "A DPA covers controller-processor personal-data obligations when applicable; SCCs may govern some international transfers; a DPIA is an impact assessment, not a contract.",
+      "Security due diligence examines evidence and controls; start reviews before the final signature week and track decision owners.",
+      "An AE coordinates deal issues without offering unapproved legal promises; a Head of Sales sets deal-desk processes, escalation rights and reviews cycle friction with Legal, Security and Privacy."
+    ],
+    exercise: "Read docs/builder-academy/enterprise-contracts-sales-cycle.md. Compare a unilateral NDA with an MNDA when both sides share confidential information. For a synthetic pilot, distinguish an unsigned MNDA, DPA, security questionnaire, MSA redline and purchase order blocker. Build an owner/decision/status tracker, then propose an AE next action and a Head of Sales process improvement. Do not use real customer agreements.",
+    check: {
+      question: "A buyer signs an MNDA. Does that by itself permit uploading employee data to any enrichment API and storing it forever?",
+      choices: [
+        "Yes, a confidentiality agreement also grants processing and data licensing rights",
+        "No, data-use rights, privacy roles, DPA where applicable, security and retention obligations must be reviewed separately",
+        "Yes, but only if the vendor is on a paid plan"
+      ],
+      answer: 1,
+      explanation: "Confidentiality is not a substitute for privacy and data-processing terms, vendor licensing, access controls or a qualified legal review."
+    },
+    companion: { label: "Open the full lesson and practice guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/enterprise-contracts-sales-cycle.md" },
+    sources: [
+      { label: "European Commission: controller and processor roles", url: "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/application-gdpr_en" },
+      { label: "ICO: controller-processor contract terms", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/what-needs-to-be-included-in-the-contract/" },
+      { label: "NIST: nondisclosure agreement", url: "https://csrc.nist.gov/glossary/term/non_disclosure_agreement" }
+    ]
+  },
+  {
+    slug: "security-assessments-buyer-size",
+    title: "Security assessments from startups to enterprises",
+    track: "GTM",
+    minutes: 35,
+    level: "Intermediate",
+    summary: "Understand vendor-security reviews across startup, mid-market and enterprise buyers, and evaluate SOC 2 reports, penetration tests, subprocessors, security questionnaires and buyer risk.",
+    analogy: "A vendor security review is a building inspection before moving in: you check not just the building's size but what is stored inside, who has the keys, and which contractors can enter.",
+    takeaways: [
+      "Security assessments are risk-based: sensitivity, access, criticality, regulations and integrations matter more than company headcount alone.",
+      "A SOC 2 Type I examines control design at a point in time; Type II examines design and operating effectiveness over a period, within a defined system scope and with possible exceptions.",
+      "A penetration test is an authorized point-in-time assessment, not a warranty. Review testing scope, date, material findings, remediation, retests, and permitted sharing tier.",
+      "ISO 27001, CAIQ, SIG, security policies, trust centers and pen-test summaries are different types of evidence and do not substitute for one another.",
+      "A subprocessor processes personal data on behalf of another processor. Review its role, categories of data, location/access, downstream providers, agreements, change notices and retention obligations.",
+      "AE responsibilities include early discovery, approved evidence, owners and next steps; Head of Sales responsibilities include repeatable security packets, deal-desk escalation, realistic forecasting and exception controls.",
+      "A signed NDA or MNDA may govern confidential sharing, but it does not establish DPA, BAA, data-license or vendor-risk approvals."
+    ],
+    exercise: "Read docs/builder-academy/security-assessments-by-buyer-size.md. Compare a fictional startup synthetic-data pilot, a mid-market repository integration and a regulated enterprise handling patient records. For each, identify risk tier, a suitable SOC 2 or pen-test evidence request, subprocessor/data-flow questions, the AE next action and a Head of Sales process improvement. Never use real reports or employer data.",
+    check: {
+      question: "A 12-person startup plans to send regulated patient records to a vendor, while a large enterprise tests with synthetic data. Which principle should guide the security review?",
+      choices: [
+        "Large enterprises always require more diligence solely because of employee count.",
+        "Actual data risk, access scope, law and buyer policy determine the assessment depth; small companies can face stringent requirements too.",
+        "An executed MNDA eliminates the need for reviewing pen-test reports, subprocessors or data processing."
+      ],
+      answer: 1,
+      explanation: "Buyer headcount predicts neither actual technical exposure nor legal obligations. Examine data, access, criticality, audit scope, subprocessors and authorized processing requirements."
+    },
+    companion: { label: "Open the full lesson and practice guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/security-assessments-by-buyer-size.md" },
+    sources: [
+      { label: "NIST CSF 2.0 guidance", url: "https://www.nist.gov/cyberframework/quick-start-guides" },
+      { label: "AICPA SOC 2 guide", url: "https://www.aicpa.com/cpe-learning/publication/soc-2-reporting-on-an-examination-of-controls-at-a-service-organization-relevant-to-security-availability-processing-integrity-confidentiality-or-privacy" },
+      { label: "OWASP pen-test report structure", url: "https://wstg.owasp.org/v4.2/5-Reporting/" },
+      { label: "ICO: Subprocessor contractual obligations", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/controllers-and-processors/controllers-and-processors/what-does-it-mean-if-you-are-a-processor/" }
+    ]
   },
   {slug:"what-is-ai",title:"AI, models and assistants",track:"Foundations",minutes:8,level:"Beginner",summary:"Learn the difference between AI, machine learning, LLMs, and products such as ChatGPT and Claude.",analogy:"The model is an engine; the app is the vehicle with controls, navigation and optional tools.",takeaways:["AI is a broad field, not just chatbots.","Apps may offer different models and tools.","Fluent output is not proof of accuracy."],exercise:"Ask an assistant to explain a topic for a novice, then identify two claims to independently check.",check:{question:"Which describes ChatGPT or Claude as an app?",choices:["The same thing as the underlying model weights","An interface that can combine models, context and tools","A vector database"],answer:1,explanation:"An assistant app may combine a model with files, tools, workflows and UI."},sources:[{label:"Google ML Crash Course",url:"https://developers.google.com/machine-learning/crash-course"}]},
   {slug:"evolution",title:"From rules to AI agents",track:"Foundations",minutes:10,level:"Beginner",summary:"Trace rule-based systems, machine learning, deep learning, transformers and tool-using agents.",analogy:"From following a fixed recipe to recognizing patterns, then assisting with tools and feedback.",takeaways:["These approaches overlap rather than replace one another.","Transformers enabled major language-model advances.","Agents need permission boundaries."],exercise:"Choose a business task and decide whether a rule, model or agent is actually necessary.",check:{question:"Does every useful automation require an AI agent?",choices:["Yes","No, deterministic rules may be simpler and safer","Only if it has a database"],answer:1,explanation:"Prefer the simplest reliable approach."},sources:[{label:"Attention Is All You Need",url:"https://arxiv.org/abs/1706.03762"}]},
@@ -106,6 +284,73 @@ export const lessons: Lesson[] = [
       { label: "npm docs: npm ci", url: "https://docs.npmjs.com/cli/v11/commands/npm-ci/" },
       { label: "npm docs: npm audit", url: "https://docs.npmjs.com/cli/v11/commands/npm-audit/" },
     ],
+  },
+
+  {
+    slug: "security-hardening-release-gates",
+    title: "Security hardening: standards to release gates",
+    track: "Builder",
+    minutes: 25,
+    level: "Intermediate",
+    summary: "Translate NIST SSDF and OWASP guidance into app-specific risk tiers, denied-path tests, code review and a verified deployment decision.",
+    analogy: "A building code is the requirement; the door lock is the implementation; a tested key is evidence; and a site inspection verifies the actual building.",
+    takeaways: [
+      "Reuse the shared security baseline instead of copying a different app's authentication code or declaring certification.",
+      "Choose risk tier from actual data, API, job, AI and release boundaries, not from how polished the site looks.",
+      "A working login session does not authorize access to a specific account; negative tests must cover forbidden direct requests with zero side effects.",
+      "Map the threat to a control, exact-commit CI evidence, an owner and a rollback/release gate.",
+      "Documented, implemented, tested, merged and deployment-verified are separate claims."
+    ],
+    exercise: "Complete the fictional threat-model and release-review lab in docs/builder-academy/security-hardening-release-gates.md. Produce two denied-path tests, one PR review decision and an explicit no-go condition. Never use production data.",
+    check: {
+      question: "A login PR is green, but a signed-in seller can open another seller's research by changing a URL. Is the application ready for a private real-data pilot?",
+      choices: [
+        "Yes. Successful login and CI certify access control.",
+        "No. Server-side object authorization and negative tests must pass, followed by deployment verification.",
+        "Yes. Hide the other account from navigation."
+      ],
+      answer: 1,
+      explanation: "Authentication, authorization and deployed access protections are distinct controls; a CI run only proves the tests it executed."
+    },
+    companion: { label: "Open the complete risk-based security lab", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/security-hardening-release-gates.md" },
+    sources: [
+      { label: "NIST SSDF v1.1 final", url: "https://csrc.nist.gov/pubs/sp/800/218/final" },
+      { label: "OWASP ASVS 5.0.0", url: "https://github.com/OWASP/ASVS/releases/tag/v5.0.0" },
+      { label: "OWASP Authorization Cheat Sheet", url: "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html" }
+    ]
+  },
+  {
+    slug: "secure-account-import-research",
+    title: "Secure CSV, AI research, and account export",
+    track: "Builder",
+    minutes: 25,
+    level: "Intermediate",
+    summary: "Protect the full account-data journey: staged imports, normalization, identity review, external website research, tool permissions and Excel/CRM boundaries.",
+    analogy: "An intake clerk checks each label and owner before inventory enters the warehouse. Research is a supplier note; approval is a separate decision.",
+    takeaways: [
+      "Raw, normalized, sourced and approved values are different objects; standardization does not prove accuracy.",
+      "A CSV owner name, website domain or account ID cannot grant a user permission.",
+      "Import previews should be read-only, preserving row dispositions and exceptions without provider spending or database mutations.",
+      "Scraped content is untrusted data and must not become instructions to an AI tool or another user's private account scope.",
+      "Approved Excel exports need fresh server authorization, source lineage, safe cell encoding and explicit CRM write approval."
+    ],
+    exercise: "Follow docs/builder-academy/secure-account-import-research.md with eight fictional rows. Identify unsafe inputs, propose a normalization preview, write two denied-path tests and explain what you would not deploy yet.",
+    check: {
+      question: "A CSV has a clean domain but a conflicting owner and uncertain revenue estimate. What should happen?",
+      choices: [
+        "Auto-overwrite the existing company and owner because the domain parsed.",
+        "Keep a read-only normalized candidate and require identity, field and server-authorized commit review.",
+        "Run paid enrichment and auto-sync the result to the CRM without review."
+      ],
+      answer: 1,
+      explanation: "A validated domain is not an entitlement or a verified legal entity; ownership and uncertain claims require explicit review."
+    },
+    companion: { label: "Open the complete secure-data lab", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/secure-account-import-research.md" },
+    sources: [
+      { label: "OWASP CSV Injection", url: "https://owasp.org/www-community/attacks/CSV_Injection" },
+      { label: "OWASP SSRF Prevention", url: "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html" },
+      { label: "OWASP GenAI LLM Top 10 2026", url: "https://genai.owasp.org/llm-top-10/" }
+    ]
   },
 ];
 export type Workflow = {title:string;category:"GTM"|"Research"|"Coding"|"Productivity";difficulty:"Beginner"|"Intermediate";tool:string;asset:string;summary:string;why:string;prompt:string;next:string};
