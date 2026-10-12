@@ -6,7 +6,7 @@
 **Brand:** [brand-guidelines.md](../brand/brand-guidelines.md), [editorial-experience.md](../brand/editorial-experience.md)  
 **Supersedes for Home only:** the longer Home sequence in [page-wireframes.md](page-wireframes.md)
 
-The homepage is an editorial cover. It introduces Kristen Joy Aing, shows enterprise-selling credibility, and points to Work, Field Notes, Side Quests, About, and Contact. It does not retell those pages.
+The homepage is an editorial cover. It introduces Kristen Aing, shows enterprise-selling credibility, and points to Work, Field Notes, Side Quests, About, and Contact. It does not retell those pages.
 
 Positioning stays **Revenue & GTM Leader · Curious Builder.** Philosophy stays one line: **People first. Problem-driven. Systems-minded.** Signature stays **joy.** Fonts stay Geist Sans and Geist Mono. Palette, Leader avatar (`/avatar.png`), and the six-item navigation stay.
 

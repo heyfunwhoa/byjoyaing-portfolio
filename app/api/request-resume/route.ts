@@ -107,7 +107,7 @@ export async function POST(request: Request) {
       <p>Hi ${safeName},</p>
       <p>Thanks for requesting my resume from the portfolio site. I got it, and I’ll email the PDF if it’s a good fit.</p>
       <p>If you want to add context in the meantime, just reply to this email.</p>
-      <p>— Kristen Joy Aing</p>
+      <p>— Kristen Aing</p>
     `,
   });
 

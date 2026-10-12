@@ -30,7 +30,7 @@ export function getMailConfig() {
   const apiKey = isConfiguredApiKey(rawKey) ? rawKey : undefined;
   const inbox = process.env.CONTACT_INBOX ?? process.env.RESUME_INBOX;
   const from =
-    process.env.RESEND_FROM ?? "Kristen Joy Aing <onboarding@resend.dev>";
+    process.env.RESEND_FROM ?? "Kristen Aing <onboarding@resend.dev>";
 
   return { apiKey, inbox, from };
 }

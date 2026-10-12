@@ -2,6 +2,8 @@ import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CelestialFrame } from "@/components/celestial-frame";
 import { DesignLabGallery } from "@/components/design-lab-gallery";
+import { FeaturedSideQuestStrip } from "@/components/featured-side-quest-strip";
+import { FeaturedWorkCarousel } from "@/components/featured-work-carousel";
 import { GeometricMotif } from "@/components/geometric-motif";
 import { OrbitArtwork } from "@/components/orbit-artwork";
 import { OrbitPortrait } from "@/components/orbit-portrait";
@@ -9,6 +11,7 @@ import { PageMain } from "@/components/page-main";
 import { ProjectConstellation } from "@/components/project-constellation";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { designLabAvailable } from "@/lib/design-lab";
+import { featuredSideQuestSlides, featuredWorkSlides } from "@/lib/featured-work";
 import { robotsNoindex } from "@/lib/indexing";
 import type { ProjectStatus } from "@/lib/portfolio";
 import type { Metadata } from "next";
@@ -232,6 +235,16 @@ export default function DesignLabPage() {
           <p className="mt-4 text-sm leading-6">
             <a className="font-semibold text-accent underline" href="#cards-title">Back to the cards</a>
           </p>
+        </section>
+
+        <section aria-labelledby="featured-strips-title">
+          <h2 id="featured-strips-title" className="font-display text-2xl tracking-tight">Featured strips</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            Work uses the Embla wrapper. Side Quests uses CSS scroll-snap. Storybook may preview the primitive; these are the public compositions.
+          </p>
+          <FeaturedWorkCarousel slides={featuredWorkSlides()} />
+          <h3 className="mt-10 text-lg font-semibold">Side Quest snap strip</h3>
+          <FeaturedSideQuestStrip slides={featuredSideQuestSlides()} />
         </section>
       </article>
     </PageMain>

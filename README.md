@@ -1,13 +1,13 @@
 # byjoyaing.com
 
-Personal portfolio for Kristen Joy Aing. The public site is a Next.js app. This repository is the place where the site, its content, and its quality checks live.
+Personal portfolio for Kristen Aing. The public site is a Next.js app. This repository is the place where the site, its content, and its quality checks live.
 
 The brand has three public layers and one private boundary:
 
 | Name | What it is | Where it lives |
 | --- | --- | --- |
 | joy. | Personal brand mark | Visual system, later |
-| Kristen Joy Aing | Professional identity | Already on public pages |
+| Kristen Aing | Professional identity | Already on public pages |
 | Revenue & GTM Leader · Curious Builder | Positioning line | Live homepage headline |
 | Work | Professional experience and business impact | `/work`, with `/experience` as the career timeline |
 | Side Quests | Independent software and creative projects | `/side-quests`, with `/projects` as the filterable directory |

@@ -22,7 +22,7 @@ export function BrandAvatar({
     <CropFrame>
       <Image
         src="/avatar.png"
-        alt={decorative ? "" : "Illustrated portrait of Kristen Joy Aing"}
+        alt={decorative ? "" : "Illustrated portrait of Kristen Aing"}
         width={640}
         height={640}
         data-avatar-variant={variant}

@@ -8,7 +8,7 @@ Journeys describe what a prepared visitor is trying to do. They are acceptance s
 
 ## Shared entry
 
-Every journey starts at https://www.byjoyaing.com/ with the header Home / About / Work / Field Notes / Side Quests / Contact. The first screen states Kristen Joy Aing, **Revenue & GTM Leader. Curious Builder.**, and the philosophy **People first. Problem-driven. Systems-minded.**
+Every journey starts at https://www.byjoyaing.com/ with the header Home / About / Work / Field Notes / Side Quests / Contact. The first screen states Kristen Aing, **Revenue & GTM Leader. Curious Builder.**, and the philosophy **People first. Problem-driven. Systems-minded.**
 
 Professional evidence appears before independent software. That order is a requirement, not a finding about what visitors already understand.
 

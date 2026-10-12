@@ -70,7 +70,7 @@ test("public profile icons use known destinations and clear accessible names", (
   assert.equal(PUBLIC_CONTACT_MAILTO, "mailto:kristen@byjoyaing.com");
   assert.match(emailLink, /href=\{PUBLIC_CONTACT_MAILTO\}/);
   assert.doesNotMatch(emailLink, /kristen\.aing@gmail\.com/);
-  assert.match(emailLink, /aria-label="Email Kristen Joy Aing/);
+  assert.match(emailLink, /aria-label="Email Kristen Aing/);
   assert.match(emailLink, /min-h-11 min-w-11/);
   assert.match(emailLink, /<Mail size=\{20\}\s/);
   const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
@@ -87,6 +87,35 @@ test("public profile icons use known destinations and clear accessible names", (
   for (const source of [fallback, form, route]) {
     assert.doesNotMatch(source, /kristen\.aing@gmail\.com/);
   }
+});
+
+test("the public name is Kristen Aing and joy. still appears on header hover and focus", () => {
+  const header = readFileSync(new URL("../components/site-header.tsx", import.meta.url), "utf8");
+  assert.match(header, />Kristen Aing</);
+  assert.equal(header.includes("Kristen Joy Aing"), false);
+  assert.match(header, /group-hover\/brand:block group-focus-visible\/brand:block/);
+  assert.match(header, />\s*joy\.\s*</);
+  const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
+  assert.match(layout, /<span className="font-display text-accent">joy\.<\/span>/);
+  assert.match(layout, /<span>Kristen Aing<\/span>/);
+  assert.equal(layout.includes("Kristen Joy Aing"), false);
+});
+
+test("contact offers a message and a reviewed work-example request", () => {
+  const contact = readFileSync(new URL("../app/contact/page.tsx", import.meta.url), "utf8");
+  const form = readFileSync(new URL("../app/inquiry-form.tsx", import.meta.url), "utf8");
+  assert.match(contact, /Let&apos;s talk about the work\./);
+  assert.match(contact, /href="#access"/);
+  assert.match(contact, /Request work examples/);
+  assert.doesNotMatch(contact, /product-marketing/);
+  assert.match(form, /role="group" aria-label="Contact type"/);
+  assert.match(form, /aria-pressed=\{mode === value\}/);
+  assert.doesNotMatch(form, /role="tab"/);
+  assert.match(form, /name="sampleFocus"/);
+  assert.match(form, /window\.location\.hash === "#access"/);
+  assert.match(form, /does not unlock private files/);
+  assert.match(form, /id="access"/);
+  assert.match(form, /id="write"/);
 });
 
 test("nav motion does not replace the mobile menu's focus, Escape, or current-page behavior", () => {

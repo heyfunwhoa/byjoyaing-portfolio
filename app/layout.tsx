@@ -22,14 +22,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.byjoyaing.com"),
   title: {
-    default: "Revenue & GTM Leader · Curious Builder — Kristen Joy Aing",
-    template: "%s — Kristen Joy Aing",
+    default: "Revenue & GTM Leader · Curious Builder — Kristen Aing",
+    template: "%s — Kristen Aing",
   },
   description:
-    "Enterprise cybersecurity sales, GTM leadership, coaching and independent technical systems — the work and thinking of Kristen Joy Aing.",
+    "Enterprise cybersecurity sales, GTM leadership, coaching and independent technical systems — the work and thinking of Kristen Aing.",
   openGraph: {
-    siteName: "joy. — Kristen Joy Aing",
-    title: "Revenue & GTM Leader · Curious Builder — Kristen Joy Aing",
+    siteName: "joy. — Kristen Aing",
+    title: "Revenue & GTM Leader · Curious Builder — Kristen Aing",
     description:
       "Curious by nature. Builder by instinct. Revenue, relationships, teams and repeatable GTM systems.",
     type: "website",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 const publicIdentity = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Kristen Joy Aing",
+  name: "Kristen Aing",
   url: "https://www.byjoyaing.com/",
   description: "Enterprise cybersecurity seller, revenue and GTM leader, and independent builder.",
   knowsAbout: ["Enterprise cybersecurity sales", "Go-to-market strategy", "Sales enablement", "Security research"],
@@ -73,7 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <span className="flex items-center gap-2 font-medium text-foreground">
                   <Mark className="text-accent" />
                   <span className="font-display text-accent">joy.</span>
-                  <span>Kristen Joy Aing</span>
+                  <span>Kristen Aing</span>
                 </span>
                 <p className="text-xs leading-5">
                   Revenue & GTM Leader · Curious Builder · 2026

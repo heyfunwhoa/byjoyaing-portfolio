@@ -15,9 +15,20 @@ type Mode = "message" | "access";
 const fieldClass =
   "h-11 rounded-md border border-border bg-background px-3 text-base text-foreground outline-none focus:border-accent";
 
+const focusOptions = [
+  "Enterprise selling and deal strategy",
+  "Coaching, onboarding and enablement",
+  "Competitive intelligence and GTM systems",
+  "Broader leadership fit",
+] as const;
+
 function subscribeToHash(onStoreChange: () => void) {
   window.addEventListener("hashchange", onStoreChange);
-  return () => window.removeEventListener("hashchange", onStoreChange);
+  window.addEventListener("popstate", onStoreChange);
+  return () => {
+    window.removeEventListener("hashchange", onStoreChange);
+    window.removeEventListener("popstate", onStoreChange);
+  };
 }
 
 function modeFromHash(): Mode {
@@ -25,13 +36,11 @@ function modeFromHash(): Mode {
 }
 
 export function InquiryForm() {
-  const hashMode = useSyncExternalStore(
+  const mode = useSyncExternalStore(
     subscribeToHash,
     modeFromHash,
     () => "message" as const,
   );
-  const [chosen, setChosen] = useState<Mode | null>(null);
-  const mode = chosen ?? hashMode;
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const startedAt = useRef(0);
@@ -40,10 +49,23 @@ export function InquiryForm() {
     startedAt.current = Date.now();
   }, []);
 
+  function chooseMode(next: Mode) {
+    const hash = next === "access" ? "#access" : "#write";
+    if (window.location.hash !== hash) {
+      const nextUrl = `${window.location.pathname}${window.location.search}${hash}`;
+      window.history.pushState(null, "", nextUrl);
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    }
+    setStatus("idle");
+    setMessage("");
+  }
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
+    const note = String(data.get("message") ?? "");
+    const focus = String(data.get("sampleFocus") ?? "General");
 
     setStatus("sending");
     setMessage("");
@@ -56,7 +78,7 @@ export function InquiryForm() {
           name: data.get("name"),
           email: data.get("email"),
           company: data.get("company"),
-          message: mode === "access" ? `Selected Work inquiry: ${String(data.get("message") ?? "")}` : data.get("message"),
+          message: mode === "access" ? `Selected Work inquiry — ${focus}: ${note}` : note,
           website: data.get("website"),
           startedAt: startedAt.current,
         }),
@@ -73,7 +95,7 @@ export function InquiryForm() {
       setStatus("sent");
       setMessage(
         mode === "access"
-          ? "Inquiry sent. This is not an access approval; I’ll follow up about any appropriate materials."
+          ? "Request sent. I’ll review it and follow up if I can share an appropriate example. This does not unlock private files."
           : "Message sent. You should get a confirmation email. I’ll reply if I can help.",
       );
     } catch {
@@ -88,23 +110,18 @@ export function InquiryForm() {
       onSubmit={onSubmit}
       className="relative flex max-w-xl flex-col gap-4 lg:max-w-none"
     >
-      <div className="flex gap-1" role="tablist" aria-label="Contact type">
+      <div id="access" className="flex scroll-mt-24 flex-wrap gap-1" role="group" aria-label="Contact type">
         {(
           [
             ["message", "Message"],
-            ["access", "Selected Work"],
+            ["access", "Request work examples"],
           ] as const
         ).map(([value, label]) => (
           <button
             key={value}
             type="button"
-            role="tab"
-            aria-selected={mode === value}
-            onClick={() => {
-              setChosen(value);
-              setStatus("idle");
-              setMessage("");
-            }}
+            aria-pressed={mode === value}
+            onClick={() => chooseMode(value)}
             className={
               mode === value
                 ? "inline-flex min-h-11 items-center rounded-md bg-accent px-3 text-sm font-medium text-accent-foreground"
@@ -117,7 +134,7 @@ export function InquiryForm() {
       </div>
       <p className="text-base leading-7 text-muted">
         {mode === "access"
-          ? "Ask about deeper, sanitized case-study materials. This sends an inquiry, not an access grant or login. Never include confidential company or customer details."
+          ? "Tell me what you’re evaluating and which examples would help. I’ll review your request and follow up with appropriate, sanitized materials where available. Please leave out confidential company or customer information."
           : "This emails me your note and sends you a confirmation. Reply to that email if you want to add more."}
       </p>
       <div className="hidden" aria-hidden="true">
@@ -137,7 +154,7 @@ export function InquiryForm() {
           />
         </label>
         <label className="flex flex-col gap-1.5 text-sm">
-          <span className="font-medium text-foreground">Work email</span>
+          <span className="font-medium text-foreground">Email (work preferred)</span>
           <input
             required
             name="email"
@@ -158,12 +175,32 @@ export function InquiryForm() {
           className={fieldClass}
         />
       </label>
+      {mode === "access" ? (
+        <label className="flex flex-col gap-1.5 text-sm">
+          <span className="font-medium text-foreground">Which work would help you evaluate fit?</span>
+          <select name="sampleFocus" required defaultValue="" className={fieldClass}>
+            <option value="" disabled>
+              Select a focus
+            </option>
+            {focusOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
+      ) : null}
       <label className="flex flex-col gap-1.5 text-sm">
-        <span className="font-medium text-foreground">{mode === "access" ? "What would you like to explore?" : "Message"}</span>
+        <span className="font-medium text-foreground">{mode === "access" ? "What are you evaluating?" : "Message"}</span>
         <textarea
           required
           minLength={8}
           name="message"
+          placeholder={
+            mode === "access"
+              ? "For example: We’re hiring a sales leader and would like to understand your approach to coaching and onboarding. A sanitized example or walkthrough would help."
+              : "What would you like to discuss?"
+          }
           rows={5}
           className="rounded-md border border-border bg-background px-3 py-2 text-base text-foreground outline-none focus:border-accent"
         />
@@ -173,11 +210,16 @@ export function InquiryForm() {
         disabled={status === "sending"}
         className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
       >
-        {status === "sending" ? "Sending…" : mode === "access" ? "Send access inquiry" : "Send message"}
+        {status === "sending" ? "Sending…" : mode === "access" ? "Request work examples" : "Send message"}
       </button>
+      {mode === "access" ? (
+        <p className="text-xs leading-5 text-muted">
+          I review each request before deciding what to share. Submitting this form does not unlock private files or guarantee that a particular sample is available.
+        </p>
+      ) : null}
       {message ? (
         <p
-          className={`text-sm leading-6 ${status === "error" ? "text-red-700" : "text-muted"}`}
+          className={`text-sm leading-6 ${status === "error" ? "font-medium text-foreground" : "text-muted"}`}
           role="status"
         >
           {message}

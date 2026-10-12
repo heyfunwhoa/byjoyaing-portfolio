@@ -6,7 +6,7 @@
 Current portfolio foregrounds independent technical systems and doesn't immediately establish Kristen's commercial leadership, team development, and GTM strategy experience. Visitors need clearer pathways to evaluate demonstrated professional results versus independently built projects.
 
 ## Positioning
-Brand: **joy.** (visual signature); professional identity: **Kristen Joy Aing**.
+Brand: **joy.** (visual signature); professional identity: **Kristen Aing**.
 **Commercial Leader. Curious Builder.**
 **People first. Problem-driven. Systems-minded.**
 This is not a software company named Joy. The private **Joy Index** must not be exposed publicly.
