@@ -3,6 +3,7 @@ export type Lesson = {
   slug: string; title: string; track: Track; minutes: number; level: "Beginner" | "Intermediate";
   summary: string; analogy: string; takeaways: string[]; exercise: string; check: { question: string; choices: string[]; answer: number; explanation: string };
   sources: { label: string; url: string }[];
+  companion?: { label: string; url: string };
 };
 export const lessons: Lesson[] = [
   {slug:"evidence-based-product-request",title:"Write an evidence-based product request",track:"GTM",minutes:20,level:"Beginner",summary:"Turn Sales, CS, Support or leadership feedback into a user problem, source-backed evidence and a cautious business-impact hypothesis.",analogy:"Like a doctor's referral: describe the symptoms and evidence before prescribing a solution.",takeaways:["Start with the affected persona, workflow, problem and current workaround—not the desired feature.","Preserve the original source, date, frequency and confidence; distinguish facts from hypotheses.","Estimate customer value, commercial value and strategic relevance separately.","Opportunity size is exposed pipeline, not the value attributable to a feature. Probability-adjusted estimates require evidence and assumptions.","A request may enter discovery, need more evidence, receive a workaround, be deferred or be declined.","Use fictional scenarios here; real company and customer data must remain in approved systems."],exercise:"Complete the fictional product-request lab. Include evidence, measurable outcome and an incremental value estimate. Then explain what you would still need to validate.",check:{question:"A seller says a $200k deal needs a feature. What value can you claim?",choices:["The feature is worth $200k in ARR","Record $200k as exposure; estimate incremental win probability and label assumptions","Promise Product will build it"],answer:1,explanation:"Exposed pipeline is not attributable revenue. Estimate incremental impact with transparent uncertainty and no double counting."},sources:[{label:"Atlassian Product Discovery",url:"https://www.atlassian.com/agile/product-management/discovery"},{label:"Linear Customer Requests",url:"https://linear.app/docs/customer-requests"}]},
@@ -161,6 +162,7 @@ export const lessons: Lesson[] = [
       answer: 1,
       explanation: "MCP makes capabilities discoverable to an assistant. It does not waive tenant authorization, source licensing, credit budgets or data protection responsibilities."
     },
+    companion: { label: "Open the full lesson and practice guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/mcp-vs-rest-api.md" },
     sources: [
       { label: "Model Context Protocol architecture", url: "https://modelcontextprotocol.io/docs/learn/architecture" },
       { label: "MDN HTTP methods", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods" },
@@ -194,6 +196,7 @@ export const lessons: Lesson[] = [
       answer: 1,
       explanation: "Confidentiality is not a substitute for privacy and data-processing terms, vendor licensing, access controls or a qualified legal review."
     },
+    companion: { label: "Open the full lesson and practice guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/enterprise-contracts-sales-cycle.md" },
     sources: [
       { label: "European Commission: controller and processor roles", url: "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/application-gdpr_en" },
       { label: "ICO: controller-processor contract terms", url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/contracts-and-liabilities-between-controllers-and-processors-multi/what-needs-to-be-included-in-the-contract/" },
@@ -228,6 +231,7 @@ export const lessons: Lesson[] = [
       answer: 1,
       explanation: "Buyer headcount predicts neither actual technical exposure nor legal obligations. Examine data, access, criticality, audit scope, subprocessors and authorized processing requirements."
     },
+    companion: { label: "Open the full lesson and practice guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/security-assessments-by-buyer-size.md" },
     sources: [
       { label: "NIST CSF 2.0 guidance", url: "https://www.nist.gov/cyberframework/quick-start-guides" },
       { label: "AICPA SOC 2 guide", url: "https://www.aicpa.com/cpe-learning/publication/soc-2-reporting-on-an-examination-of-controls-at-a-service-organization-relevant-to-security-availability-processing-integrity-confidentiality-or-privacy" },
