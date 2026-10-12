@@ -53,6 +53,14 @@ export const securityEvidenceSources = {
     supports: "Controller-to-processor processing under UK GDPR requires appropriate written contractual provisions, including data handling and audit duties.",
     cannotProve: "The guidance does not determine a hypothetical buyer/vendor's actual legal roles or cross-border transfer arrangement.",
   },
+  "eu-crossborder": {
+    title: "European Commission — Rules on international data transfers",
+    publisher: "European Commission",
+    kind: "Regulator / official EU guidance (GDPR)",
+    url: "https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/rules-international-data-transfers_en",
+    supports: "Personal-data transfers beyond the EEA may need an applicable GDPR transfer mechanism and safeguards, depending on actual recipients and processing.",
+    cannotProve: "It does not prove that any vendor can promise EU-only storage or access, or that a particular customer has accepted the contract.",
+  },
   "ico-international-transfers": {
     title: "ICO — A brief guide to international transfers (2026)",
     publisher: "UK Information Commissioner's Office",
