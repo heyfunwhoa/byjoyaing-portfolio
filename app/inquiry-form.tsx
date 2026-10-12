@@ -132,11 +132,11 @@ export function InquiryForm() {
           </button>
         ))}
       </div>
-      <p className="text-base leading-7 text-muted">
-        {mode === "access"
-          ? "Tell me what you’re evaluating and which examples would help. I’ll review your request and follow up with appropriate, sanitized materials where available. Please leave out confidential company or customer information."
-          : "This emails me your note and sends you a confirmation. Reply to that email if you want to add more."}
-      </p>
+      {mode === "access" ? (
+        <p className="text-base leading-7 text-muted">
+          Tell me what you’re evaluating and which examples would help. I’ll review your request and follow up with appropriate, sanitized materials where available. Please leave out confidential company or customer information.
+        </p>
+      ) : null}
       <div className="hidden" aria-hidden="true">
         <label>
           Website
