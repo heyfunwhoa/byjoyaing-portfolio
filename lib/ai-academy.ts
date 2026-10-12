@@ -11,7 +11,7 @@ export const lessons: Lesson[] = [
     slug: "idea-to-verified-release",
     title: "From idea to verified release",
     track: "Builder",
-    minutes: 15,
+    minutes: 25,
     level: "Beginner",
     summary: "See how priorities, requirements, Linear issues, Cursor, GitHub PRs and CI form one accountable delivery workflow without duplicating project tracking.",
     analogy: "A restaurant order has one ticket, a recipe, a kitchen station and a quality check. You do not need five copies of the same order to know whether dinner is ready.",
@@ -21,9 +21,13 @@ export const lessons: Lesson[] = [
       "Keep the PRD and source code in the owning repository, tasks in Linear, implementation and CI evidence in GitHub, and reusable standards in Technical Docs.",
       "Link a Linear issue ID in branches and PRs. PR linking does not require GitHub Issues synchronization or duplicate tickets.",
       "Use test results, code review and explicit acceptance criteria before declaring delivery complete. Do not equate a passing build with product correctness.",
-      "Adopt the workflow gradually for active initiatives; no separate Linear team or duplicated status page is required for every repository."
+      "Adopt the workflow gradually for active initiatives; no separate Linear team or duplicated status page is required for every repository.",
+      "Security scanners look for leaked secrets, vulnerable dependencies, risky code and configuration. Permission tests prove that a denied request cannot read data, change data or schedule work.",
+      "A configured check, a passing check and a required merge gate are different states. Review the latest commit; a manual checklist cannot technically prevent someone bypassing it.",
+      "Use deeper security review for auth, account permissions, imports, exports, fetching and automation. Green CI is not proof of a protected deployment or permission to use employer data."
     ],
-    exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md. When you choose a Cursor mode for that branch, continue with docs/builder-academy/cursor-agent-workflows.md.",
+    exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Then use the companion guide’s fictional security review: classify the change, choose scanners and denied-path tests, and explain why passing CI alone does not authorize release. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md. When you choose a Cursor mode for that branch, continue with docs/builder-academy/cursor-agent-workflows.md.",
+    companion: { label: "Read the full delivery and PR security guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/idea-to-verified-release.md" },
     check: {
       question: "Your implementation PR passes CI but the expected calculation has not been checked. What should happen?",
       choices: ["Mark Done because all green checks prove the feature works", "Keep the issue In Review until its acceptance criteria and user journey are verified", "Copy the issue into GitHub Issues and Notion to increase visibility"],
@@ -33,7 +37,9 @@ export const lessons: Lesson[] = [
     sources: [
       { label: "GitHub Docs: About pull requests", url: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests" },
       { label: "GitHub Docs: About status checks", url: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks" },
-      { label: "Linear Docs: GitHub integration", url: "https://linear.app/docs/github" }
+      { label: "Linear Docs: GitHub integration", url: "https://linear.app/docs/github" },
+      { label: "GitHub Docs: Secure use of Actions", url: "https://docs.github.com/en/actions/reference/security/secure-use" },
+      { label: "GitHub Docs: Dependency review", url: "https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-review" }
     ]
   },
   {
