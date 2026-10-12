@@ -1,6 +1,6 @@
 # Builder Academy — From idea to verified release
 
-**Track:** Builder · **Level:** Beginner · **Time:** 15 minutes  
+**Track:** Builder · **Level:** Beginner · **Time:** 25 minutes  
 **Status:** Lesson source for the existing Academy lesson library. The linked Academy page is a public educational prototype; it does not expose private Linear or GitHub repositories.
 
 ## What you'll learn
