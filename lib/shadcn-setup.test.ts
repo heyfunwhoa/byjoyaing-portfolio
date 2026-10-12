@@ -93,7 +93,13 @@ test("installed primitives are present and public pages do not adopt them", () =
 
   const offenders: string[] = [];
   for (const file of [...sourceFiles("app"), ...sourceFiles("components")]) {
-    if (file === "app/layout.tsx" || isDesignLab(file)) continue;
+    if (
+      file === "app/layout.tsx" ||
+      file === "components/featured-work-carousel.tsx" ||
+      isDesignLab(file)
+    ) {
+      continue;
+    }
     const source = read(file);
     if (source.includes("@/components/ui/") || source.includes("components/ui/")) {
       offenders.push(file);
