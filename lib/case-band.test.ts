@@ -15,12 +15,13 @@ test("source guard: Work case studies keep the five fields in order, with no inv
   assert.match(read("app/work/page.tsx"), /<ProfessionalCaseStudy/);
 });
 
-test("source guard: the compact mobile band clamps visually and expands with a labeled button", () => {
+test("source guard: the compact mobile band clamps steps, closes connections, and expands with a labeled button", () => {
   const band = read("components/editorial/case-band-steps.tsx");
   assert.match(band, /line-clamp-2/);
   assert.match(band, /lg:line-clamp-none/);
   assert.match(band, /aria-expanded=\{expanded\}/);
-  assert.match(band, /aria-controls=\{listId\}/);
+  assert.match(band, /aria-controls=\{connections \? `\$\{listId\} \$\{connectionsId\}` : listId\}/);
+  assert.match(band, /lg:block \$\{expanded \? "" : "hidden"\}/);
   assert.match(band, /lg:hidden/);
   assert.match(band, /lg:grid-cols-5/);
   assert.doesNotMatch(band, /aria-hidden=\{!expanded\}|hidden=\{/);
