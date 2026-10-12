@@ -78,6 +78,9 @@ test("About leads with linked toolkit logos and hover names", () => {
   assert.match(grid, /group-hover\/toolkit:opacity-100/);
   assert.match(grid, /group-focus-visible\/toolkit:opacity-100/);
   assert.match(grid, /item\.name/);
+  assert.match(grid, /size-8/);
+  assert.doesNotMatch(grid, /size-16/);
+  assert.match(grid, /flex max-w-xl flex-wrap/);
   assert.doesNotMatch(about, /Joy Index/i);
   assert.doesNotMatch(tools, /Joy Index/i);
   assert.doesNotMatch(grid, /from "@\/components\/ui/);
