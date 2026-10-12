@@ -39,6 +39,12 @@ See [package registries, package managers, lockfiles and supply-chain security](
 
 The in-app lesson `cursor-workflows` is the concise card. The longer source is [Cursor: from first prompt to verified pull request](builder-academy/cursor-agent-workflows.md). Publishing that Markdown file does not by itself add the card; the card is the `Lesson` record in `lib/ai-academy.ts`.
 
+## Evidence-backed lessons
+
+Learning answers should connect a **narrow claim → verified primary reference → applicability limits → scenario recommendation → actual reviewer/approval owner**. See [Evidence-backed sales and security decisions](builder-academy/evidence-backed-sales-and-security-decisions.md).
+
+The interactive security-review lab has source references for *each decision*, with clear labels for what the official guidance supports versus what it cannot verify about a specific vendor. The learner's fictional choices are not proof of compliance, successful remediation or buyer approval. No restricted SOC 2/pen-test reports or live customer records are stored.
+
 ## GTM security and commercial due-diligence learning path
 
 The existing Academy route renders lessons from `lib/ai-academy.ts`, rather than just publishing Markdown sources. The recommended sequence is:
