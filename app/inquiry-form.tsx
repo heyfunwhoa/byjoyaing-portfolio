@@ -1,5 +1,6 @@
 "use client";
 
+import { PUBLIC_CONTACT_EMAIL } from "@/lib/portfolio/public-contact";
 import {
   useEffect,
   useRef,
@@ -77,7 +78,7 @@ export function InquiryForm() {
       );
     } catch {
       setStatus("error");
-      setMessage("Could not send that message. Email kristen.aing@gmail.com instead.");
+      setMessage(`Could not send that message. Email ${PUBLIC_CONTACT_EMAIL} instead.`);
     }
   }
 
