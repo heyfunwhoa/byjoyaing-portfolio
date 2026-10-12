@@ -36,6 +36,7 @@ test("a closed mobile menu is hidden and an open menu hangs from the header", ()
   assert.match(closed, /\bhidden\b/);
   assert.equal(closed.includes("fixed"), false);
   assert.equal(closed.includes("absolute"), false);
+  assert.match(closed, /lg:flex/);
   const open = menuPanelClass(true);
   assert.match(open, /\babsolute\b/);
   assert.match(open, /\btop-full\b/);
@@ -43,6 +44,7 @@ test("a closed mobile menu is hidden and an open menu hangs from the header", ()
   assert.equal(open.includes("hidden"), false);
   assert.equal(open.includes("4.75rem"), false);
   assert.match(open, /\blg:static\b/);
+  assert.match(open, /lg:flex/);
 });
 
 test("public profile icons use known destinations and clear accessible names", () => {
