@@ -55,6 +55,11 @@ test("public profile icons use known destinations and clear accessible names", (
   assert.match(links, /aria-label=\{/);
   assert.match(links, /rel="noopener noreferrer"/);
   assert.match(links, /min-h-11 min-w-11/);
+  assert.match(links, /logos\/social\/linkedin\.svg/);
+  assert.match(links, /logos\/technology\/github\.svg/);
+  assert.doesNotMatch(links, /from "lucide-react"/);
+  const linkedinSvg = readFileSync(new URL("../public/logos/social/linkedin.svg", import.meta.url), "utf8");
+  assert.doesNotMatch(linkedinSvg.toLowerCase(), /<script|javascript:|onload=|foreignobject/);
   const contact = readFileSync(new URL("../app/contact/page.tsx", import.meta.url), "utf8");
   assert.match(contact, /<SocialLinks placement="contact"/);
   assert.match(contact, /mailto:kristen\.aing@gmail\.com/);
