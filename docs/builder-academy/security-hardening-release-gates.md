@@ -74,6 +74,22 @@ Other controls: **SEC-04** fail webhook/cron requests with no token and zero dis
 
 If GitHub says all green but the Vercel alias serves private data anonymously, the release fails. A merge does not equal a deployment.
 
+## Real engineering lesson: why production-like tests matter
+
+An isolated PGlite test may successfully validate a login while a real PostgreSQL driver rejects the same write. That happened during review of a fictionalized owner-login implementation: the authentication library supplied JavaScript Date objects to a schema configured with string-mode timestamps, so the SQL driver rejected a session insert. Authentication appeared to work in the lightweight suite but failed in the disposable PostgreSQL integration check.
+
+The **security impact** is not that the date string itself is malicious; it is that a critical authentication path was not operationally verified against its intended datastore. A reviewer should require both success and failure cases and should not confuse a test marked *skipped* with a passing test.
+
+**Better verification pattern:**
+
+1. Keep fast, synthetic PGlite tests for local development.
+2. In CI, start a fresh, disposable PostgreSQL service with **no production credentials**, apply the additive auth schema and test direct signup rejection, valid login, session read and revocation.
+3. Explicitly fail the job if the disposable DB test is misconfigured or skipped; assert that unauthorized actions did not create identities or sessions.
+4. Test the separately protected operator bootstrap only against a **human-verified disposable database**; do not disable its guard merely to make CI convenient.
+5. Record exact test/job evidence and residual risks before any real-data release.
+
+**Quick exercise:** A new `npm test` reports green, but 1 integration test is skipped because an optional DB URL was absent. Would you mark the private release gate passed? **No.** Turn the needed test into a required, isolated CI step or keep the gate blocked.
+
 ## Practice lab — 15 minutes
 
 A fictional app called *Northstar Research* has a green PR for owner login, but its `GET /accounts/:id` handler only checks if a user is signed in. Its cron route accepts any token, and an AI tool can read all stored source notes.
