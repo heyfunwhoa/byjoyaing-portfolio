@@ -1,5 +1,8 @@
 import { Mark } from "@/components/mark";
+import { EmailLink } from "@/components/email-link";
 import { SiteHeader } from "@/components/site-header";
+import { SocialLinks } from "@/components/social-links";
+import { socialProfiles } from "@/lib/portfolio/external-links";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -44,10 +47,7 @@ const publicIdentity = {
   url: "https://www.byjoyaing.com/",
   description: "Enterprise cybersecurity seller, revenue and GTM leader, and independent builder.",
   knowsAbout: ["Enterprise cybersecurity sales", "Go-to-market strategy", "Sales enablement", "Security research"],
-  sameAs: [
-    "https://www.linkedin.com/in/kristenaing",
-    "https://github.com/heyfunwhoa",
-  ],
+  sameAs: socialProfiles.map((profile) => profile.href),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -96,12 +96,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                     {label}
                   </Link>
                 ))}
-                <a
-                  className="inline-flex min-h-11 items-center text-foreground underline-offset-4 hover:underline"
-                  href="mailto:kristen.aing@gmail.com"
-                >
-                  kristen.aing@gmail.com
-                </a>
+                <EmailLink placement="footer" />
+                <SocialLinks placement="footer" />
               </nav>
             </div>
           </footer>

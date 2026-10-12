@@ -250,3 +250,46 @@ body {
     transform: none;
   }
 }
+
+/* Navigation gestures: subtle editorial cues, not continuously animated decoration. */
+.nav-interactive::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.75rem;
+  bottom: 0.2rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease-out;
+}
+.nav-interactive:hover::after,
+.nav-interactive:focus-visible::after,
+.nav-interactive[aria-current]::after {
+  transform: scaleX(1);
+}
+.nav-brand-mark svg {
+  transition: transform 180ms ease-out;
+}
+.group\/brand:hover .nav-brand-mark svg,
+.group\/brand:focus-visible .nav-brand-mark svg {
+  transform: rotate(12deg);
+}
+@keyframes nav-panel-reveal {
+  from { opacity: 0.92; transform: translateY(-0.35rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes nav-backdrop-reveal {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+@keyframes nav-icon-reveal {
+  from { transform: rotate(-20deg) scale(0.95); }
+  to { transform: none; }
+}
+@media (max-width: 1023px) {
+  .nav-panel-enter { animation: nav-panel-reveal 180ms ease-out both; }
+  .nav-backdrop-enter { animation: nav-backdrop-reveal 180ms ease-out both; }
+}
+.nav-toggle-enter { animation: nav-icon-reveal 160ms ease-out both; }

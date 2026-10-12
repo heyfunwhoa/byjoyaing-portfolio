@@ -1,7 +1,7 @@
 import { InquiryForm } from "@/app/inquiry-form";
-import { ArrowUpRight } from "@/components/icons/arrow-up-right";
-import { Mail } from "@/components/icons/mail";
+import { EmailLink } from "@/components/email-link";
 import { PageMain } from "@/components/page-main";
+import { SocialLinks } from "@/components/social-links";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,20 +11,6 @@ export const metadata: Metadata = {
   description:
     "Email, LinkedIn, and GitHub for enterprise sales, GTM, and technical systems.",
 };
-
-const links = [
-  { href: "mailto:kristen.aing@gmail.com", label: "kristen.aing@gmail.com" },
-  {
-    href: "https://www.linkedin.com/in/kristenaing",
-    label: "LinkedIn",
-    external: true,
-  },
-  {
-    href: "https://github.com/heyfunwhoa",
-    label: "GitHub",
-    external: true,
-  },
-];
 
 export default function ContactPage() {
   return (
@@ -37,28 +23,10 @@ export default function ContactPage() {
           <p className="max-w-xl text-base leading-7 text-muted">
             I&apos;m interested in sales-leadership and product-marketing conversations for technical products, and in the systems that keep the story and the sale aligned.
           </p>
-          <ul className="flex flex-col gap-1 text-base sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:gap-y-2">
-            {links.map((link, index) => (
-              <li key={link.href} className="flex items-center gap-3">
-                {index > 0 ? (
-                  <span className="hidden text-muted sm:inline" aria-hidden="true">
-                    ·
-                  </span>
-                ) : null}
-                <a
-                  className="link-rule inline-flex min-h-11 items-center gap-1.5 text-foreground"
-                  href={link.href}
-                  {...(link.external
-                    ? { target: "_blank", rel: "noreferrer" }
-                    : {})}
-                >
-                  {link.href.startsWith("mailto:") ? <Mail size={16} className="size-4 shrink-0" /> : null}
-                  {link.label}
-                  {link.external ? <ArrowUpRight size={16} className="size-4 shrink-0" /> : null}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <div role="group" aria-label="Contact links" className="flex flex-wrap items-center gap-3">
+            <EmailLink placement="contact" />
+            <SocialLinks placement="contact" />
+          </div>
         </div>
         <InquiryForm />
       </section>

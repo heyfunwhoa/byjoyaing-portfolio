@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { PUBLIC_CONTACT_EMAIL } from "./portfolio/public-contact";
 
 export const EMAIL_MAX = {
   name: 80,
@@ -38,7 +39,7 @@ export function missingMailConfigResponse() {
   return Response.json(
     {
       error:
-        "Email is not configured yet. Email kristen.aing@gmail.com instead.",
+        `Email is not configured yet. Email ${PUBLIC_CONTACT_EMAIL} instead.`,
     },
     { status: 503 },
   );
@@ -146,7 +147,7 @@ export function rejectIfRateLimited(request: Request, email: string) {
   ) {
     return Response.json(
       {
-        error: "Too many requests. Email kristen.aing@gmail.com instead.",
+        error: `Too many requests. Email ${PUBLIC_CONTACT_EMAIL} instead.`,
       },
       { status: 429 },
     );

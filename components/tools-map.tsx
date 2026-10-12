@@ -1,5 +1,6 @@
 import { AiLoop } from "@/components/ai-loop";
 import { ToolMark } from "@/components/tool-mark";
+import { officialToolWebsites } from "@/lib/portfolio/external-links";
 import {
   techCategories,
   techStanceCopy,
@@ -26,9 +27,22 @@ export function ToolsMap({ compact = false }: { compact?: boolean }) {
                   key={item.id}
                   className="flex gap-3 border border-border bg-card p-3"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center border border-border bg-background">
-                    <ToolMark id={item.id} />
-                  </span>
+                  {officialToolWebsites[item.id] ? (
+                    <a
+                      href={officialToolWebsites[item.id]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${item.name} website (opens in a new tab)`}
+                      title={`Visit ${item.name}`}
+                      className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md border border-border bg-background transition-[border-color,background-color,transform] duration-200 hover:-translate-y-0.5 hover:border-accent hover:bg-surface-sage"
+                    >
+                      <ToolMark id={item.id} />
+                    </a>
+                  ) : (
+                    <span className="flex min-h-11 min-w-11 shrink-0 items-center justify-center border border-border bg-background">
+                      <ToolMark id={item.id} />
+                    </span>
+                  )}
                   <span className="flex min-w-0 flex-col gap-1">
                     <span className="flex flex-wrap items-center gap-2">
                       <span className="text-base leading-6 text-foreground">
