@@ -12,6 +12,8 @@
 
 ## Preview verification
 - Confirm preview deployment status is READY in the **correct project and scope**; visit the actual preview URL.
+- If the URL redirects to Vercel login, sign in as a project member or use a Shareable Link. Do not treat the login page as app QA. See [vercel-preview-settings.md](./vercel-preview-settings.md).
+- Treat `Canceled by Ignored Build Step` as “no preview built.” Rebuild when the PR changed app, public assets, or user-facing copy.
 - Smoke-test home, about, projects, work detail, contact, and redirect behavior as applicable.
 - Inspect broken assets, console/runtime errors, basic accessibility and mobile layout.
 - For any contact/email action, use a safe test mode or a pre-approved internal test destination; do not send real-user mail simply to test a preview.
@@ -41,6 +43,9 @@
 | CI failed | Actions → failed job/step logs; exact commit |
 | Build failed | `npm ci`, Next.js build output, dependency lockfile and version |
 | Vercel preview missing | Vercel Git integration, permission/scope, branch and deployment history |
+| Ignored Build Step on a UI PR | Project vs repo ignore command; force rebuild; see [vercel-preview-settings.md](./vercel-preview-settings.md) |
+| `git_info_fail` / empty aliases | GitHub rate limit before build; wait, then redeploy the SHA once |
+| Preview login wall | Vercel Authentication on Preview; use team login or Shareable Link |
 | Vercel 403 | Access/scope/authorization; do not replace an inaccessible project with another |
 | Site runs but page breaks | Runtime logs, server env scope, API failures, browser console |
 | Contact action fails | Server-side Resend configuration and provider response; redact secrets |

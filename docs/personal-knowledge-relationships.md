@@ -6,7 +6,7 @@
 The public site can describe:
 - **Professional identity:** commercial leadership, GTM, cybersecurity and independent software building.
 - **Values:** curiosity, authenticity, connection, growth and independence.
-- **Interests and enjoyment:** electronic music, DIY and working on cars, learning woodworking, photography and art.
+- **Interests and enjoyment:** electronic music, DIY and working on cars, learning woodworking, and trying unfamiliar creative projects.
 - **Expression:** how curiosity, making and connecting with others influence approach to work and learning.
 
 These are independent relationships, not a claim that every personal interest must be a professional skill. Don't instrumentalize every hobby into a career achievement.
