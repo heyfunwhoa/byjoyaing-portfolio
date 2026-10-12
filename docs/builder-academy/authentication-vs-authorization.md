@@ -113,6 +113,10 @@ Using the [Identity lifecycle lab](identity-lifecycle-lab.md), test these states
 
 **Reflection prompt:** Why is “user is logged in” not enough to protect a document?
 
+## Applied practice: a private GTM workspace
+
+Continue with [Build a private GTM workspace with Better Auth](better-auth-gtm-workspace.md). It uses only fictional AEs and accounts to teach session validation, per-account authorization, negative security tests, and evidence-driven learning notes. This is an **applied companion**, not a duplicate authentication overview and not proof that an app has deployed Better Auth.
+
 ## 8. References
 
 - [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)

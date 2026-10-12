@@ -24,3 +24,15 @@ Before editing branding, copy, layout, navigation, portfolio examples or public 
 - Change brand fundamentals only through an explicit reviewed update to the canonical guide; do not create competing brand guidelines in other files.
 
 These portfolio-specific rules supplement the Next.js agent block above. Other repositories may share engineering standards without adopting this site's branding.
+
+## Shared engineering and agent operating standards (cross-repository pointer)
+
+For **meaningful changes** to product requirements, architecture, security, integrations, CI, releases or AI-agent workflows, consult the **current** canonical [Technical Docs Platform](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/README.md) guidance as applicable:
+- [Risk-tiered engineering baseline and Definition of Done](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/engineering/baseline-v1.md)
+- [Agent execution contract](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/ai/agent-harness/execution-contract.md)
+- [Agent model-selection policy](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/ai/agent-harness/model-selection.md)
+- [Shared PRD template](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/templates/product-prd.md) (format only; this repo owns its product requirements)
+
+These are **links, not copied policy**. Local branding, privacy, product requirements, tested code, and the development workflow above still govern this site. Do not treat a remote document's existence as evidence a check was enforced. If the private standards repo cannot be read with available credentials, report the access limitation rather than claim it was consulted; do not import or expose private content.
+
+For scoped agent work: inspect existing issues/PRs before starting, map acceptance criteria to actual verification evidence, report checks not run, and stop for human review before merge or deployment. Do not create another source of truth or automatically synchronize documents.

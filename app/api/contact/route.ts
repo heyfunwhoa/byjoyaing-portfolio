@@ -8,6 +8,7 @@ import {
   rejectIfBot,
   rejectIfRateLimited,
 } from "@/lib/email";
+import { PUBLIC_CONTACT_EMAIL } from "@/lib/portfolio/public-contact";
 
 export const runtime = "nodejs";
 
@@ -91,7 +92,7 @@ export async function POST(request: Request) {
   await resend.emails.send({
     from,
     to: email,
-    replyTo: inbox,
+    replyTo: PUBLIC_CONTACT_EMAIL,
     subject: "I received your message",
     html: `
       <p>Hi ${safeName},</p>
