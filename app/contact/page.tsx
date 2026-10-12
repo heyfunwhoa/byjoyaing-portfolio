@@ -1,5 +1,5 @@
 import { InquiryForm } from "@/app/inquiry-form";
-import { Mail } from "@/components/icons/mail";
+import { EmailLink } from "@/components/email-link";
 import { PageMain } from "@/components/page-main";
 import { SocialLinks } from "@/components/social-links";
 import type { Metadata } from "next";
@@ -24,14 +24,7 @@ export default function ContactPage() {
             I&apos;m interested in sales-leadership and product-marketing conversations for technical products, and in the systems that keep the story and the sale aligned.
           </p>
           <div role="group" aria-label="Contact links" className="flex flex-wrap items-center gap-3">
-            <a
-              href="mailto:kristen.aing@gmail.com"
-              className="link-rule inline-flex min-h-11 items-center gap-2 font-medium text-foreground hover:text-accent"
-            >
-              <Mail size={18} className="size-5 shrink-0" />
-              kristen.aing@gmail.com
-            </a>
-            <span className="hidden h-8 w-px bg-border sm:block" aria-hidden="true" />
+            <EmailLink placement="contact" />
             <SocialLinks placement="contact" />
           </div>
         </div>
