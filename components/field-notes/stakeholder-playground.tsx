@@ -1,38 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { demoStakeholders } from "@/lib/field-notes";
+import { StakeholderMap } from "@/components/stakeholder-map/stakeholder-map";
+import {
+  exampleMapPeople,
+  exampleMapRelationships,
+} from "@/lib/stakeholder-map-demo";
 
-const labels = {
-  unknown: "No validated access",
-  developing: "Developing relationship",
-  engaged: "Engaged",
-};
 const steps = [
   "Understand the group",
   "Find the gap",
   "Plan the conversation",
 ] as const;
-const positions = [
-  { left: "8%", top: "37%" },
-  { left: "62%", top: "37%" },
-  { left: "35%", top: "4%" },
-  { left: "2%", top: "76%" },
-  { left: "35%", top: "76%" },
-  { left: "68%", top: "76%" },
-];
 
 export function StakeholderPlayground() {
   const [step, setStep] = useState(0);
-  const [selectedRole, setSelectedRole] = useState(0);
+  const [selectedId, setSelectedId] = useState("champion");
   const [perspective, setPerspective] = useState<"seller" | "leader">("seller");
-  const person = demoStakeholders[selectedRole];
   const controlClass =
     "min-h-11 rounded-lg border px-3 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 
   function chooseStep(index: number) {
     setStep(index);
-    setSelectedRole(index === 0 ? 0 : 2);
+    setSelectedId(index === 0 ? "champion" : "buyer");
   }
 
   return (
@@ -76,84 +66,15 @@ export function StakeholderPlayground() {
           </button>
         ))}
       </div>
-      <div className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
-        <div>
-          <div
-            className="relative hidden aspect-[2/1] rounded-xl border border-border bg-background sm:block"
-            role="group"
-            aria-label="Interactive stakeholder map"
-          >
-            <svg
-              viewBox="0 0 600 300"
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full"
-            >
-              <g
-                stroke="var(--border)"
-                strokeWidth="2"
-                fill="none"
-                strokeDasharray="6 6"
-              >
-                <path d="M300 36 L138 135 M300 36 L462 135 M138 135 L102 252 M138 135 L300 252 M462 135 L498 252 M462 135 L300 252" />
-              </g>
-            </svg>
-            {demoStakeholders.map((item, index) => (
-              <button
-                key={item.role}
-                type="button"
-                style={positions[index]}
-                aria-pressed={selectedRole === index}
-                onClick={() => setSelectedRole(index)}
-                className={`absolute min-h-11 w-[30%] rounded-lg border px-1 py-2 text-xs font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-safe:transition-colors ${selectedRole === index ? "border-accent bg-accent text-accent-foreground" : "border-border bg-card hover:border-accent"}`}
-              >
-                {item.role}
-              </button>
-            ))}
-          </div>
-          <div
-            className="grid grid-cols-2 gap-2 sm:hidden"
-            role="group"
-            aria-label="Inspect stakeholder role"
-          >
-            {demoStakeholders.map((item, index) => (
-              <button
-                key={item.role}
-                type="button"
-                aria-pressed={selectedRole === index}
-                onClick={() => setSelectedRole(index)}
-                className={`${controlClass} text-left ${selectedRole === index ? "border-accent bg-accent text-accent-foreground" : "border-border"}`}
-              >
-                {item.role}
-              </button>
-            ))}
-          </div>
-          <p className="mt-3 text-xs leading-5 text-muted">
-            Dashed lines show possible paths to explore, not confirmed reporting
-            lines or influence.
-          </p>
-        </div>
-        <div
-          className="rounded-xl border border-border bg-background p-5"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          <p className="text-xs font-medium tracking-wide text-muted uppercase">
-            Selected stakeholder
-          </p>
-          <h3 className="mt-2 text-xl font-semibold">{person.role}</h3>
-          <p className="mt-3 text-sm leading-6 text-muted">
-            Priority: {person.priority}
-          </p>
-          <p className="mt-3 text-sm">Access: {labels[person.access]}</p>
-          <p className="mt-2 text-xs leading-5 text-muted">
-            Evidence status: fictional scenario; decision authority unvalidated.
-          </p>
-          {step === 2 ? (
-            <p className="mt-4 text-sm leading-6">
-              Next conversation: {person.nextStep}.
-            </p>
-          ) : null}
-        </div>
+      <div className="mt-6">
+        <StakeholderMap
+          people={exampleMapPeople}
+          relationships={exampleMapRelationships}
+          selectedId={selectedId}
+          onSelect={setSelectedId}
+          emphasizedId={step > 0 ? "buyer" : undefined}
+          showNextStep={step === 2}
+        />
       </div>
       <div
         className="mt-5 flex flex-wrap gap-2"

@@ -1,3 +1,4 @@
+import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
@@ -209,6 +210,12 @@ export default function DesignLabPage() {
               <figcaption className="mt-3 text-sm leading-6 text-[#D4CEC4]">Charcoal plate. Not on the homepage.</figcaption>
             </figure>
           </div>
+        </section>
+
+        <section aria-labelledby="stakeholder-library-title">
+          <h2 id="stakeholder-library-title" className="font-display text-2xl tracking-tight">Stakeholder map library</h2>
+          <p className="mt-2 mb-5 max-w-2xl text-sm leading-6 text-muted">Reusable role cards, grouped map and evidence panel. This fixture is fictional; every public relationship is a hypothesis. Storybook covers selection, missing access, empty and invalid data states.</p>
+          <StakeholderPlayground />
         </section>
 
         <section aria-labelledby="data-title">
