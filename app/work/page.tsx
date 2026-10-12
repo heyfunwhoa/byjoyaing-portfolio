@@ -24,8 +24,13 @@ export default function WorkPage(){
  <section aria-labelledby="featured-work-title" className="section-enter border-b border-border py-12">
  <p className="editorial-eyebrow text-accent">Featured</p>
  <h2 id="featured-work-title" className="mt-2 font-display text-3xl">Cases and field systems</h2>
- <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">A short set of public stories and case studies. Employer work is labeled separately from independent Side Quests. Previous and next move one group. Swipe also works, unless reduced motion is requested. The sections below keep the full Work categories.</p>
+ <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">A short set of public enterprise stories. Previous and next move one group. The sections below keep the full Work categories. Independent builds have their own page.</p>
  <FeaturedWorkCarousel slides={featuredWorkSlides()} />
+ <p className="mt-6 text-sm leading-6 text-muted">
+ Independent research and prototypes live in{" "}
+ <Link href="/side-quests" className="font-semibold text-accent underline underline-offset-4">Side Quests</Link>
+ , not in this strip. That page is the deep dive, and it can grow a featured strip of its own later.
+ </p>
  </section>
  <section id="enterprise-sales" className="section-enter scroll-mt-24 border-b border-border py-12">
  <p className="editorial-eyebrow text-accent">01 / Selling</p>

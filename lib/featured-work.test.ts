@@ -1,40 +1,46 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { featuredWorkSlides } from "./featured-work.ts";
+import { featuredSideQuestSlides, featuredWorkSlides } from "./featured-work.ts";
 import { kindBySlug } from "./portfolio-kind.ts";
 import { publicStories } from "./public-stories.ts";
 
 const forbidden = [/\$/, /Head of Sales/i, /Joy Index/i, /\d{3}[-. ]\d{3}[-. ]\d{4}/];
 
-test("featured slides start with public Work stories and label Side Quests separately", () => {
+test("featured Work slides are employer stories only", () => {
   const slides = featuredWorkSlides();
-  assert.ok(slides.length >= 5);
+  assert.ok(slides.length >= 3);
   assert.deepEqual(
     slides.slice(0, 3).map((slide) => slide.id),
     publicStories.map((story) => story.id),
   );
   assert.equal(slides[0].href, "/work#enterprise-sales");
-  const work = slides.filter((slide) => slide.collection === "Work");
-  const quests = slides.filter((slide) => slide.collection === "Side Quests");
-  assert.ok(work.length >= 3);
-  assert.ok(quests.length >= 1);
-  assert.ok(slides.findIndex((slide) => slide.collection === "Side Quests") > slides.findIndex((slide) => slide.collection === "Work"));
-  for (const slide of work) assert.equal(slide.source, "employer");
-  for (const slide of quests) {
-    assert.equal(slide.source, "independent");
-    const slug = slide.href.replace("/work/", "");
-    assert.equal(kindBySlug[slug], "side-quest");
-  }
   for (const slide of slides) {
+    assert.equal(slide.collection, "Work");
+    assert.equal(slide.source, "employer");
+    assert.equal(slide.href.startsWith("/side-quests"), false);
     assert.ok(slide.summary.trim().length > 20);
     for (const pattern of forbidden) assert.doesNotMatch(`${slide.title} ${slide.summary}`, pattern);
   }
 });
 
+test("Side Quest slides stay ready for /side-quests and are not mixed into Work", () => {
+  const quests = featuredSideQuestSlides();
+  assert.ok(quests.length >= 3);
+  for (const slide of quests) {
+    assert.equal(slide.collection, "Side Quests");
+    assert.equal(slide.source, "independent");
+    const slug = slide.href.replace("/work/", "");
+    assert.equal(kindBySlug[slug], "side-quest");
+  }
+  const workIds = new Set(featuredWorkSlides().map((slide) => slide.id));
+  for (const slide of quests) assert.equal(workIds.has(slide.id), false);
+});
+
 test("source guard: Work mounts the carousel, homepage does not, and Embla is not set to autoplay", () => {
   const work = readFileSync(new URL("../app/work/page.tsx", import.meta.url), "utf8");
   assert.match(work, /<FeaturedWorkCarousel/);
+  assert.match(work, /href="\/side-quests"/);
   assert.match(work, /id="enterprise-sales"/);
   assert.match(work, /id="people-leadership"/);
   assert.match(work, /id="gtm-strategy"/);

@@ -1,4 +1,3 @@
-import { constellationSlugs } from "./constellation.ts";
 import { portfolioEntries } from "./portfolio-registry.ts";
 import { publicStories } from "./public-stories.ts";
 
@@ -21,7 +20,7 @@ const storyAnchors: Record<(typeof publicStories)[number]["id"], string> = {
   "competitive-evidence": "/work#gtm-strategy",
 };
 
-/** Public stories first, then registry Work, then labeled constellation Side Quests. No new facts. */
+/** Public Work stories, then registry Work. Independent builds stay on `/side-quests`. */
 export function featuredWorkSlides(): FeaturedSlide[] {
   const slides: FeaturedSlide[] = publicStories.map((story) => ({
     id: story.id,
@@ -48,23 +47,30 @@ export function featuredWorkSlides(): FeaturedSlide[] {
     used.add(entry.href);
   }
 
-  for (const slug of constellationSlugs) {
-    const entry = portfolioEntries.find((item) => item.slug === slug);
-    if (!entry || entry.kind !== "side-quest") continue;
-    if (used.has(entry.href)) continue;
-    slides.push({
-      id: entry.slug,
-      title: entry.title,
-      summary: entry.summary,
-      href: entry.href,
-      collection: "Side Quests",
-      source: "independent",
-      area: "Independent build",
-    });
-    used.add(entry.href);
-  }
-
   return slides;
+}
+
+/**
+ * Ready when Side Quests gets its own featured strip. Not mounted on `/work`.
+ * Uses the existing selected Side Quest order from that page.
+ */
+export function featuredSideQuestSlides(): FeaturedSlide[] {
+  const selected = ["account-intelligence", "detector-coverage-atlas", "truffle-camp", "customer-feedback-intelligence"];
+  return selected.flatMap((slug) => {
+    const entry = portfolioEntries.find((item) => item.slug === slug && item.kind === "side-quest");
+    if (!entry) return [];
+    return [
+      {
+        id: entry.slug,
+        title: entry.title,
+        summary: entry.summary,
+        href: entry.href,
+        collection: "Side Quests" as const,
+        source: "independent" as const,
+        area: "Independent build",
+      },
+    ];
+  });
 }
 
 export const featuredSourceLabel: Record<FeaturedSource, string> = {

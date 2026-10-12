@@ -146,7 +146,7 @@ export default function DesignLabPage() {
         <section aria-labelledby="featured-carousel-title">
           <h2 id="featured-carousel-title" className="font-display text-2xl tracking-tight">Featured carousel</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-            The same user-controlled Embla carousel as <code className="font-mono text-xs">/work</code>. One, two, or three cards depending on width. No autoplay. Previous and next sit in the document flow so 375px does not overflow. Storybook is not installed; this section is the preview. Check 375, 768 and 1280px, and reduced motion, before promoting a change.
+            The same employer-only Embla carousel as <code className="font-mono text-xs">/work</code>. Side Quests stay on their own page. One, two, or three cards depending on width. No autoplay. Previous and next sit in the document flow so 375px does not overflow. Storybook is not installed; this section is the preview.
           </p>
           <FeaturedWorkCarousel slides={featuredWorkSlides()} />
           <h3 className="mt-10 text-lg font-semibold">Career rail (public)</h3>

@@ -51,7 +51,7 @@ export function FeaturedWorkCarousel({ slides }: { slides: readonly FeaturedSlid
       setApi={setApi}
       opts={{ align: "start", loop: false, duration: reduced ? 0 : 20, watchDrag: !reduced }}
       className="mt-6"
-      aria-label="Featured work and independent builds"
+      aria-label="Featured professional work"
     >
       <CarouselContent className="-ml-4">
         {slides.map((slide, position) => (
