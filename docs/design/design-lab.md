@@ -59,7 +59,8 @@ Primitives already in the repo: links, buttons in the header and filters, `Proje
 | Motion | Written rules. The arrow uses `.nudge-link`. | Existing CSS |
 | Visual identity | Homepage orbit and Work-tile motif, labeled as those placements | `CelestialFrame`, `BrandAvatar`, `GeometricMotif`, `/avatar.png` |
 | Data visualization | Status pills and the experience constellation | `ProjectStatusPill`, `ProjectConstellation` |
+| Featured carousel | Same Embla strip as `/work`, plus the public career rail. Storybook is not installed. Check 375 / 768 / 1280 and reduced motion here. | `FeaturedWorkCarousel`, `CareerRail` |
 | Interactions | Filter URL state, plus a native disclosure listing the timeline button and the joy. tooltip | None new |
 | Accessibility | Focus, pressed state, empty result, reduced motion | None new |
 
-Lesson: [editorial-project-card.md](../builder-academy/editorial-project-card.md).
+Lessons: [editorial-project-card.md](../builder-academy/editorial-project-card.md), [component-adoption-interaction-testing.md](../builder-academy/component-adoption-interaction-testing.md).

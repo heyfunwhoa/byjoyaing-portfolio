@@ -64,6 +64,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `brand-avatar.tsx` | `leader`, `explorer`, `builder`. All render `/avatar.png`. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. |
 | `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Public use is the homepage hero. The design lab may preview it. `aria-hidden` geometry. No spin, no face motion. |
 | `project-constellation.tsx` | Three linked projects plus a sentence for each edge | Public use is `/experience`. The design lab previews the same component. Not a live integration diagram. |
+| `featured-work-carousel.tsx` | User-controlled Embla strip of public stories and labeled Side Quests. 1/2/3 cards. Controls in document flow. | Featured Work | Implemented on `/work`. Previewed on `/design-lab`. Only public `components/ui` import besides `app/layout.tsx`. |
 | `capability-orbit.tsx` | Enterprise selling at the center, three selectable pillars (Strategist, Leader, Builder). ARIA tabs with arrow, Home, and End keys. Each panel shows evidence tagged employer or independent, plus links. | Public use is `/about`. Static rings. CSS color and reveal transitions only, collapsed by reduced motion. No Motion package. Only Builder may link to Side Quests. |
 | `crop-frame.tsx` | Corner crop frame | Keep |
 | `tool-mark.tsx` | Small tool mark | Keep where already used |
@@ -113,7 +114,7 @@ Tailwind v4, Next.js, and React are the UI stack. Do not add an animation packag
 | Sheet | `components/ui/sheet.tsx` | Focus-trapped side panel | The header menu |
 | Dialog | `components/ui/dialog.tsx` | Focus-trapped modal | No public modal exists |
 | Accordion | `components/ui/accordion.tsx` | Disclosure with a heading button | `experience-timeline.tsx` |
-| Carousel | `components/ui/carousel.tsx` | One slide group with previous and next buttons | Editorial layout. Not used |
+| Carousel | `components/ui/carousel.tsx` | One slide group with previous and next buttons | Used by `FeaturedWorkCarousel` on `/work` and `/design-lab`. No autoplay. |
 | Button | `components/ui/button.tsx` | Required by Dialog, Sheet, and Carousel | Page links and the header button |
 
 ### Custom components that stay

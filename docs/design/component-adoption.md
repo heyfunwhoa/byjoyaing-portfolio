@@ -49,3 +49,7 @@ No new runtime dependency. Geist Sans and Geist Mono stay loaded through `next/f
 ## If a later pass copies source
 
 Keep the copyright notice the license requires, pin the file in this guide, and do not add the `motion` package unless a reviewed ADR says the entrance CSS is not enough.
+
+## Featured carousel (2026-10-12)
+
+`embla-carousel-react` was already installed with the unused shadcn carousel. `/work` now wraps that primitive in `FeaturedWorkCarousel`. Autoplay stays off. Reduced motion zeros duration and disables drag. Previous/next are `static` so 375px does not overflow. Public `components/ui` imports remain forbidden except `app/layout.tsx` and this wrapper. Storybook is not added; `/design-lab` is the preview. See [shared-registry-candidates.md](shared-registry-candidates.md).

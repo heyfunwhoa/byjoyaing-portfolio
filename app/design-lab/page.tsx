@@ -1,11 +1,15 @@
 import { BrandAvatar } from "@/components/brand-avatar";
+import { CareerRail } from "@/components/career-rail";
+import { FeaturedWorkCarousel } from "@/components/featured-work-carousel";
 import { CelestialFrame } from "@/components/celestial-frame";
 import { DesignLabGallery } from "@/components/design-lab-gallery";
 import { GeometricMotif } from "@/components/geometric-motif";
 import { PageMain } from "@/components/page-main";
 import { ProjectConstellation } from "@/components/project-constellation";
 import { ProjectStatusPill } from "@/components/project-status-pill";
+import { careerRailNodes } from "@/lib/career-rail";
 import { designLabAvailable } from "@/lib/design-lab";
+import { featuredWorkSlides } from "@/lib/featured-work";
 import { robotsNoindex } from "@/lib/indexing";
 import type { ProjectStatus } from "@/lib/portfolio";
 import type { Metadata } from "next";
@@ -137,6 +141,19 @@ export default function DesignLabPage() {
             ))}
           </ul>
           <ProjectConstellation />
+        </section>
+
+        <section aria-labelledby="featured-carousel-title">
+          <h2 id="featured-carousel-title" className="font-display text-2xl tracking-tight">Featured carousel</h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+            The same user-controlled Embla carousel as <code className="font-mono text-xs">/work</code>. One, two, or three cards depending on width. No autoplay. Previous and next sit in the document flow so 375px does not overflow. Storybook is not installed; this section is the preview. Check 375, 768 and 1280px, and reduced motion, before promoting a change.
+          </p>
+          <FeaturedWorkCarousel slides={featuredWorkSlides()} />
+          <h3 className="mt-10 text-lg font-semibold">Career rail (public)</h3>
+          <p className="mt-1 max-w-2xl text-sm leading-6 text-muted">
+            Already on About and Experience. Repeated here so the lab shows the diagrams the public site already uses, instead of a second visualization.
+          </p>
+          <CareerRail nodes={careerRailNodes()} />
         </section>
 
         <section aria-labelledby="interactions-title">

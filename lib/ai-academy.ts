@@ -279,6 +279,40 @@ export const lessons: Lesson[] = [
       { label: "npm docs: npm audit", url: "https://docs.npmjs.com/cli/v11/commands/npm-audit/" },
     ],
   },
+  {
+    slug: "component-adoption-interaction-testing",
+    title: "Adopt a primitive and test the interaction",
+    track: "Builder",
+    minutes: 15,
+    level: "Beginner",
+    summary: "Wrap an existing carousel instead of inventing a second slider, then verify keyboard, overflow, reduced motion and evidence labels in a browser.",
+    analogy: "A borrowed pan already browns food. You still write the recipe, label the ingredients, and taste before you serve.",
+    takeaways: [
+      "Reuse an installed primitive when it already meets keyboard and focus rules. Put portfolio facts in a data helper.",
+      "Do not autoplay. Previous and next belong in the document flow so a 375px screen does not overflow.",
+      "Unit tests guard copy and options. A browser pass is what proves swipe, focus and reduced motion.",
+      "Storybook is not in this repo. /design-lab is the preview, and it 404s in production.",
+    ],
+    exercise: "Read docs/builder-academy/component-adoption-interaction-testing.md. On a local /work page, tab to the featured carousel, move one group with the next button, then reload with reduced motion and confirm the cards still change without a slide animation.",
+    check: {
+      question: "What should you do after wrapping Embla for featured Work stories?",
+      choices: [
+        "Enable Autoplay so the strip feels alive, and skip the browser pass because npm test is green",
+        "Keep loop off, label employer work separately from Side Quests, and record keyboard, overflow and reduced-motion checks",
+        "Import components/ui from every public page so future routes inherit the carousel automatically",
+      ],
+      answer: 1,
+      explanation: "Autoplay and wide ui imports are rejected. Tests plus a recorded browser pass are the adoption bar.",
+    },
+    sources: [
+      { label: "WAI-ARIA APG: Carousel", url: "https://www.w3.org/WAI/ARIA/apg/patterns/carousel/" },
+      { label: "MDN: prefers-reduced-motion", url: "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" },
+    ],
+    companion: {
+      label: "Full lesson: component adoption and interaction testing",
+      url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/component-adoption-interaction-testing.md",
+    },
+  },
 ];
 export type Workflow = {title:string;category:"GTM"|"Research"|"Coding"|"Productivity";difficulty:"Beginner"|"Intermediate";tool:string;asset:string;summary:string;why:string;prompt:string;next:string};
 export const workflows: Workflow[]=[

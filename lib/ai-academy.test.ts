@@ -178,6 +178,15 @@ test("each security case offers evidence and role-specific decisions with determ
   assert.equal(evaluateSecurityDecision("missing", "ae", "evidence", 0), null);
 });
 
+test("component adoption lesson wraps Embla and forbids autoplay", () => {
+  const lesson = lessons.find((item) => item.slug === "component-adoption-interaction-testing");
+  assert.ok(lesson);
+  assert.equal(lesson.track, "Builder");
+  assert.match(lesson.exercise, /docs\/builder-academy\/component-adoption-interaction-testing\.md/);
+  assert.match(lesson.check.choices[lesson.check.answer], /label employer work/);
+  assert.doesNotMatch(JSON.stringify(lesson), /\$|Joy Index|281-703/);
+});
+
 test("API, contracting and security lessons link to full published companion guides", () => {
   for (const slug of ["mcp-vs-rest-api", "enterprise-contracts-sales-cycle", "security-assessments-buyer-size"]) {
     const lesson = lessons.find((item) => item.slug === slug);
