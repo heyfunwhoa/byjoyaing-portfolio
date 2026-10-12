@@ -63,7 +63,7 @@ function ConstellationLink({
   return (
     <Link
       href={project.caseStudyUrl}
-      className="flex min-h-11 flex-col rounded-xl border border-border bg-card p-4 hover:border-accent"
+      className="flex min-h-11 flex-col rounded-xl border border-border bg-card p-4 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
     >
       <span className="editorial-eyebrow text-accent">
         {kindLabel[kind]} · {statusCopy[project.status]}

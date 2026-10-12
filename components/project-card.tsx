@@ -15,8 +15,8 @@ export function ProjectCard({
     <article
       className={
         quiet
-          ? "flex flex-col gap-3 border border-dashed border-foreground/30 p-5 transition-colors hover:border-accent"
-          : "flex flex-col gap-3 border border-border bg-card p-5 transition-colors hover:border-accent sm:p-6"
+          ? "flex flex-col gap-3 border border-dashed border-foreground/30 p-5 transition-colors hover:border-accent focus-within:border-accent"
+          : "flex flex-col gap-3 border border-border bg-card p-5 transition-colors hover:border-accent focus-within:border-accent sm:p-6"
       }
     >
       <div className="flex flex-wrap items-center gap-2">

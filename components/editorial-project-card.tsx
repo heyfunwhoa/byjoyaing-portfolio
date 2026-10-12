@@ -11,10 +11,10 @@ export function EditorialProjectCard({ project }: { project: LabProject }) {
 
   return (
     <article
-      className={`group editorial-panel relative flex h-full min-w-0 flex-col p-5 transition-[background-color,border-color] focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-ring sm:p-6 ${
+      className={`group editorial-panel relative flex h-full min-w-0 flex-col p-5 focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-ring sm:p-6 ${
         featured
-          ? "bg-foreground text-background hover:bg-[#303A32]"
-          : "bg-card hover:border-accent"
+          ? "editorial-dark bg-foreground text-background hover:bg-[#303A32]"
+          : "bg-card"
       }`}
     >
       {project.figure ? (

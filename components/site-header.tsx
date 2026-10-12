@@ -98,7 +98,7 @@ export function SiteHeader() {
                       href={link.href}
                       onClick={closeMenu}
                       aria-current={current}
-                      className={`inline-flex min-h-11 items-center rounded-md px-1 underline-offset-4 hover:underline lg:min-h-0 ${current ? "font-semibold text-accent underline decoration-2" : "text-muted hover:text-foreground"}`}
+                      className={`inline-flex min-h-11 items-center rounded-md px-2 underline-offset-4 hover:underline lg:min-h-0 ${current ? "bg-card font-semibold text-accent underline decoration-2" : "text-muted hover:text-foreground"}`}
                     >
                       {link.label}
                     </Link>

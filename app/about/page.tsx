@@ -50,7 +50,7 @@ export default function AboutPage() {
         <p className="mt-5 max-w-2xl text-sm leading-6 text-muted">My approach to leadership combines accountability with curiosity: clear expectations, thoughtful feedback, evidence-based decisions and room for people to develop their own strengths.</p>
       </section>
 
-      <section className="border-b border-border py-12">
+      <section className="section-enter border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">Career progression</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Quantcast was advertising sales in a new market. Websense was the first cybersecurity book. Metadot was channel. Forcepoint, Rapid7, Darktrace, and Truffle Security are the enterprise security years. Dates and what was individual versus team are on Experience.
@@ -66,7 +66,7 @@ export default function AboutPage() {
           </div>
       </section>
 
-      <section className="border-b border-border py-12">
+      <section className="section-enter border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">Enterprise selling and the leadership around it</h2>
         <p className="mt-3 max-w-2xl text-base leading-7 text-muted">
           Security, engineering, and executives in the same room. Discovery, a competitive story, and the close. Alongside the deal I coach sellers, support hiring, and build the ramp a sales lead owes the team.
@@ -84,7 +84,7 @@ export default function AboutPage() {
             ["Enablement", "Training and frameworks used in the field. Truffle Camp is the curriculum design, not that training.", "/work/truffle-camp"],
           ].map(([title, body, href]) => (
             <li key={title} className="list-none">
-              <Link href={href} className="block rounded-2xl border border-border p-5 hover:border-accent">
+              <Link href={href} className="block rounded-2xl border border-border p-5 transition-colors hover:border-accent">
                 <h3 className="font-semibold">{title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
               </Link>
