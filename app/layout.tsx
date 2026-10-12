@@ -1,4 +1,5 @@
 import { Mark } from "@/components/mark";
+import { EmailLink } from "@/components/email-link";
 import { SiteHeader } from "@/components/site-header";
 import { SocialLinks } from "@/components/social-links";
 import { socialProfiles } from "@/lib/portfolio/external-links";
@@ -95,12 +96,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                     {label}
                   </Link>
                 ))}
-                <a
-                  className="inline-flex min-h-11 items-center text-foreground underline-offset-4 hover:underline"
-                  href="mailto:kristen.aing@gmail.com"
-                >
-                  kristen.aing@gmail.com
-                </a>
+                <EmailLink placement="footer" />
                 <SocialLinks placement="footer" />
               </nav>
             </div>
