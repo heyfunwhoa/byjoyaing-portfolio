@@ -53,3 +53,7 @@ Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, and Resend for co
 The source of truth for messaging, voice and design boundaries is [docs/brand/brand-guidelines.md](docs/brand/brand-guidelines.md). **Revenue & GTM Leader · Curious Builder** is the primary positioning, and **joy.** is the personal signature. The philosophy is **People first. Problem-driven. Systems-minded.** Design experiments must not silently override these decisions.
 
 Coding agents should follow [AGENTS.md](AGENTS.md). All proposed portfolio changes should use the [PR review checklist](.github/pull_request_template.md), including verified claims, accessibility, security and CI evidence. Brand identity is specific to this portfolio; risk-based software engineering standards are reusable across other projects.
+
+## Reusable intelligence learning plan
+
+[Builder Academy plan](docs/builder-academy/security-gtm-intelligence-plan.md) scopes one synthetic exercise after validated topic pilots; no new UI is claimed by this plan.
