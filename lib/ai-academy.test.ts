@@ -4,6 +4,22 @@ import { lessons } from "./ai-academy.ts";
 import { evaluateSecurityDecision, findSecurityReviewScenario, securityReviewScenarios } from "./ai-academy/security-review-lab.ts";
 import { getSecurityEvidenceSources, securityEvidenceSources } from "./ai-academy/security-review-evidence.ts";
 
+test("frontend building-blocks lesson teaches the seven-part model and tool boundaries", () => {
+  const lesson = lessons.find((item) => item.slug === "frontend-building-blocks");
+  assert.ok(lesson);
+  assert.equal(lesson.track, "Builder");
+  assert.equal(lesson.level, "Beginner");
+  assert.ok(lesson.takeaways.includes("Frontend = Structure + Components + Styling + Behavior + Data + Accessibility + User Experience."));
+  assert.ok(lesson.takeaways.some((point) => /Semantic HTML/.test(point) && /Next.js/.test(point)));
+  assert.ok(lesson.takeaways.some((point) => /Tailwind/.test(point) && /shadcn/.test(point)));
+  assert.ok(lesson.takeaways.some((point) => /layout, display, navigation/.test(point)));
+  assert.match(lesson.exercise, /docs\\/builder-academy\\/frontend-building-blocks\\.md/);
+  assert.match(lesson.exercise, /synthetic/i);
+  assert.match(lesson.check.choices[lesson.check.answer], /Accessibility and user experience/);
+  assert.ok(lesson.sources.some((source) => source.url.includes("w3.org/WAI")));
+  assert.doesNotMatch(JSON.stringify(lesson), /kristen\\.aing@gmail\\.com|joy\\s*index|API_KEY\\s*=/i);
+});
+
 test("lesson slugs are unique and knowledge checks point at a real choice", () => {
   assert.equal(new Set(lessons.map((lesson) => lesson.slug)).size, lessons.length);
   for (const lesson of lessons) {
