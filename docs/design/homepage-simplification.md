@@ -54,9 +54,8 @@ Nothing public was deleted from the site. Sentences that left the homepage still
 1. **Hero.** Who I am. Positioning, one philosophy line, one short description, Leader avatar, Explore Work, About Me.
 2. **Credibility.** Truffle Security as one paragraph. Rapid7 and Forcepoint as two supporting links to `/experience`.
 3. **Bento.** Work, Field Notes, Side Quests. Work is visually dominant. DOM order is the mobile order.
-4. **One field practice.** `competitive-evidence`: “Turning competitive context into usable field guidance.” Status **Professional field system**. Link `/work/competitive-intelligence-engine`. The monitor on that page stays a design.
-5. **One Side Quest.** Detector Coverage Atlas, with its existing Prototype label and summary. Not a project grid.
-6. **Close.** A short note. Get in touch, and About.
+4. **One Side Quest.** Detector Coverage Atlas, with its existing Prototype label and summary. Not a project grid. The competitive field practice lives on `/work`, not here.
+5. **Close.** A short note. Get in touch, and About.
 
 The featured story is the competitive field practice, not a Side Quest and not the synthetic multithreading guide. The public story, the `kind: "work"` classification, and the case-study caveat already exist. Multithreading stays on Field Notes, labeled as a playbook.
 

@@ -1,3 +1,4 @@
+import { FieldNoteBreadcrumb } from "@/components/collection-breadcrumb";
 import { SourceAndEvidencePanel } from "@/components/editorial/source-and-evidence-panel";
 import { RelatedWork } from "@/components/editorial/related-work";
 import { PageMain } from "@/components/page-main";
@@ -24,7 +25,7 @@ const moves = [
 export default function MultithreadingPage() {
   return <PageMain>
     <header className="border-b border-border py-14">
-      <Link href="/field-notes" className="text-sm font-medium text-accent">← Field Notes</Link>
+      <FieldNoteBreadcrumb title="Multithreading & Stakeholder Mapping" />
       <p className="mt-8 text-xs font-medium uppercase tracking-wider text-muted">Playbook · Illustrative model</p>
       <h1 className="mt-3 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">Multithreading is about alignment, not a contact count.</h1>
       <p className="mt-5 max-w-3xl text-base leading-7 text-muted">A practical framework for navigating a complex enterprise buying group—from champion development to executive alignment—with a separate coaching lens for sales leaders.</p>

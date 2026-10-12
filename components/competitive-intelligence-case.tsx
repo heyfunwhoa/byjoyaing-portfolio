@@ -2,6 +2,7 @@ import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack"
 import { CompetitiveIntelligenceWorkflow } from "@/components/competitive-intelligence-workflow";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
+import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { providers } from "@/lib/competitive-intelligence-demo";
@@ -103,6 +104,7 @@ export function CompetitiveIntelligenceCase() {
     <PageMain>
       <section className="grid items-start gap-10 border-b border-border py-16 lg:grid-cols-2 lg:py-20">
         <div className="flex flex-col gap-6">
+          <WorkCaseBreadcrumb slug="competitive-intelligence-engine" />
           <div className="flex flex-wrap items-center gap-3">
             <ProjectKindLabel slug="competitive-intelligence-engine" />
             <p className="text-sm font-medium text-muted">Project 03</p>

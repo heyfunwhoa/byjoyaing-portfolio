@@ -2,6 +2,7 @@ import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack"
 import { AccountIntelligenceWorkflow } from "@/components/account-intelligence-workflow";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
+import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { demoAccounts, demoSignals } from "@/lib/account-intelligence-demo";
@@ -103,6 +104,7 @@ export function AccountIntelligenceCase() {
     <PageMain>
       <section className="grid items-start gap-10 border-b border-border py-16 lg:grid-cols-2 lg:gap-12 lg:py-20">
         <div className="flex flex-col gap-6">
+          <WorkCaseBreadcrumb slug="account-intelligence" />
           <div className="flex flex-wrap items-center gap-3">
             <ProjectKindLabel slug="account-intelligence" />
             <SectionLabel index="01">GTM systems</SectionLabel>

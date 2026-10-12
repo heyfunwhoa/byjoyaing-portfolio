@@ -7,7 +7,6 @@ import { PageMain } from "@/components/page-main";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { directoryProjects } from "@/lib/project-directory";
 import { roles, statusCopy, statusHelp } from "@/lib/portfolio";
-import { publicStories } from "@/lib/public-stories";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -29,14 +28,6 @@ function roleByCompany(company: string) {
   return role;
 }
 
-function storyById(id: string) {
-  const story = publicStories.find((item) => item.id === id);
-  if (!story) {
-    throw new Error(`Missing story ${id}`);
-  }
-  return story;
-}
-
 /** One existing sentence per earlier role. The rest stays on /experience. */
 function supportLine(company: string) {
   const role = roleByCompany(company);
@@ -49,7 +40,6 @@ function supportLine(company: string) {
 export default function Home() {
   const current = roleByCompany("Truffle Security");
   const earlier = [roleByCompany("Rapid7"), roleByCompany("Forcepoint")];
-  const fieldPractice = storyById("competitive-evidence");
   const sideQuest = directoryProjects.find((project) => project.slug === "detector-coverage-atlas");
   if (!sideQuest) {
     throw new Error("Missing detector-coverage-atlas");
@@ -134,29 +124,8 @@ export default function Home() {
 
       <EditorialBento />
 
-      <section aria-labelledby="featured-title" className="section-enter border-b border-border py-12 sm:py-16">
-        <p className="editorial-eyebrow text-accent">03 / A field practice</p>
-        <div className="mt-4 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-14">
-          <div className="min-w-0">
-            <p className="editorial-eyebrow text-muted">{statusCopy.field}</p>
-            <h2 id="featured-title" className="editorial-section-title mt-3 max-w-[18ch]">
-              {fieldPractice.title}
-            </h2>
-          </div>
-          <div className="min-w-0">
-            <p className="max-w-xl text-base leading-7">{fieldPractice.takeaway}</p>
-            <Link
-              href="/work/competitive-intelligence-engine"
-              className="editorial-link mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
-            >
-              Read the field approach <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
       <section aria-labelledby="build-title" className="section-enter border-b border-border py-12 sm:py-16">
-        <p className="editorial-eyebrow text-accent">04 / A side quest</p>
+        <p className="editorial-eyebrow text-accent">03 / A side quest</p>
         <div className="mt-4 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-14">
           <div className="min-w-0">
             <p className="editorial-eyebrow text-muted">{statusCopy[sideQuest.status]}</p>
@@ -188,7 +157,7 @@ export default function Home() {
       </section>
 
       <section aria-labelledby="close-title" className="section-enter py-14 sm:py-20">
-        <p className="editorial-eyebrow text-accent">05 / A note</p>
+        <p className="editorial-eyebrow text-accent">04 / A note</p>
         <h2 id="close-title" className="editorial-quotation mt-4 max-w-[24ch]">
           The useful next step is a conversation.
         </h2>

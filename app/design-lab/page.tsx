@@ -1,5 +1,6 @@
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { CelestialFrame } from "@/components/celestial-frame";
 import { DesignLabGallery } from "@/components/design-lab-gallery";
 import { FeaturedSideQuestStrip } from "@/components/featured-side-quest-strip";
@@ -89,8 +90,24 @@ export default function DesignLabPage() {
             The header on this page is the public <code className="font-mono text-xs">SiteHeader</code>. Home, About, Work, Field Notes, Side Quests, and Contact stay in that order. Below 1024px the links sit in a panel with <code className="font-mono text-xs">absolute top-full</code>. Escape and the scrim return focus to the menu button. This lab does not render a second header.
           </p>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-            A case-study breadcrumb is the next component, not this one. For kind work it would read Home / Work / title. For kind side-quest it would read Home / Side Quests / title. Filters on this page are pressed buttons, not tabs.
+            Case-study breadcrumbs are live. Kind work reads Home / Work / title. Kind side-quest reads Home / Side Quests / title. Field Notes guides read Home / Field Notes / title. Filters on this page are pressed buttons, not tabs.
           </p>
+          <div className="mt-5 space-y-3 rounded-xl border border-border bg-card p-4">
+            <CollectionBreadcrumb
+              items={[
+                { href: "/", label: "Home" },
+                { href: "/side-quests", label: "Side Quests" },
+                { label: "Detector Coverage Atlas" },
+              ]}
+            />
+            <CollectionBreadcrumb
+              items={[
+                { href: "/", label: "Home" },
+                { href: "/work", label: "Work" },
+                { label: "Competitive Intelligence Engine" },
+              ]}
+            />
+          </div>
         </section>
 
         <section aria-labelledby="cards-title">
