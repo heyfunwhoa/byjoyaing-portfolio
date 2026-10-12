@@ -51,7 +51,7 @@ Content ID, Title, Content type, Portfolio section, Intended audience, Evidence 
 
 Evidence status includes **Do not publish**. Use it as a hold. Do not create rows from private notes in order to mark them.
 
-CNT-004 is the live Beyond work passage on `/about` ([row](https://app.notion.com/p/3f7cdefaec7581eea3eaf30f491b9670)). It records the public interests in `lib/public-personal.ts`. Creative exploration is photography, art, and unfamiliar creative projects. Electronic music keeps “Creativity, energy and connection.” A travel interest is added when an approved public sentence describes travel.
+CNT-004 is the live Beyond work passage on `/about` ([row](https://app.notion.com/p/3f7cdefaec7581eea3eaf30f491b9670)). It records the public interests in `lib/public-personal.ts`. Creative exploration is trying unfamiliar creative projects. Electronic music keeps “Creativity, energy and connection.” A travel interest is added when an approved public sentence describes travel.
 
 ### Product Decisions
 

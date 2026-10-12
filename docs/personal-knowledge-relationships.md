@@ -6,7 +6,7 @@
 The public site can describe:
 - **Professional identity:** commercial leadership, GTM, cybersecurity and independent software building.
 - **Values:** curiosity, authenticity, connection, growth and independence.
-- **Interests and enjoyment:** electronic music; making and fixing things (DIY, working on cars, learning woodworking); creative exploration (photography, art, and unfamiliar creative projects). A travel interest is added only with its own approved sentence in `lib/public-personal.ts`.
+- **Interests and enjoyment:** electronic music; making and fixing things (DIY, working on cars, learning woodworking); creative exploration (trying unfamiliar creative projects). A travel interest is added only with its own approved sentence in `lib/public-personal.ts`.
 - **Expression:** how curiosity, making and connecting with others influence approach to work and learning.
 
 These are independent relationships, not a claim that every personal interest must be a professional skill. Don't instrumentalize every hobby into a career achievement.
