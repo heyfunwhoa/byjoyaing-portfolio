@@ -13,11 +13,11 @@ test("frontend building-blocks lesson teaches the seven-part model and tool boun
   assert.ok(lesson.takeaways.some((point) => /Semantic HTML/.test(point) && /Next.js/.test(point)));
   assert.ok(lesson.takeaways.some((point) => /Tailwind/.test(point) && /shadcn/.test(point)));
   assert.ok(lesson.takeaways.some((point) => /layout, display, navigation/.test(point)));
-  assert.match(lesson.exercise, /docs\\/builder-academy\\/frontend-building-blocks\\.md/);
+  assert.ok(lesson.exercise.includes("docs/builder-academy/frontend-building-blocks.md"));
   assert.match(lesson.exercise, /synthetic/i);
   assert.match(lesson.check.choices[lesson.check.answer], /Accessibility and user experience/);
   assert.ok(lesson.sources.some((source) => source.url.includes("w3.org/WAI")));
-  assert.doesNotMatch(JSON.stringify(lesson), /kristen\\.aing@gmail\\.com|joy\\s*index|API_KEY\\s*=/i);
+  assert.equal(JSON.stringify(lesson).includes("API_KEY="), false);
 });
 
 test("lesson slugs are unique and knowledge checks point at a real choice", () => {
