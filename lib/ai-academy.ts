@@ -7,6 +7,34 @@ export type Lesson = {
 };
 export const lessons: Lesson[] = [
   {
+    slug: "evaluate-ai-models",
+    title: "Evaluate AI models with evidence",
+    track: "Builder",
+    minutes: 18,
+    level: "Beginner",
+    summary: "Compare AI models on the same synthetic tasks using measurable quality, evidence, privacy and cost criteria; no automated routing required.",
+    analogy: "Choosing a model is like choosing a tool for a job: run the same practical test, inspect the result, and decide based on fit rather than the brand.",
+    takeaways: [
+      "Evaluation measures performance against a rubric; selection is a human decision; automatic routing is a separate, deferred engineering project.",
+      "Fix the prompt, dataset, tools, output contract and scoring criteria before comparing candidates.",
+      "Record exact model/version, correctness, schema adherence, sourced claims, abstention, latency, costs and human rework.",
+      "A fabricated citation or a critical privacy failure cannot be excused by an attractive overall score.",
+      "Use synthetic or approved public inputs, keep untrusted source instructions separate, and require human review before adoption."
+    ],
+    exercise: "Read docs/builder-academy/evaluate-ai-models.md. Using only synthetic Account Signal Engine fixtures, compare two candidate models on schema validity, grounded industry classification, missing-source abstention and prompt-injection resistance. Fill in a scorecard from real test outputs, then write one human-reviewed recommendation. Do not build model routing or connect production APIs.",
+    check: {
+      question: "A model returns valid JSON but fabricates a source URL. What should your evaluation conclude?",
+      choices: ["Pass because the JSON schema is valid", "Fail the evidence requirement and record the fabricated citation", "Automatically route the next request to a different provider"],
+      answer: 1,
+      explanation: "Schema compliance and source integrity are separate requirements. An invented citation fails evaluation, and automated routing is not part of this lesson."
+    },
+    companion: {label: "Read the model evaluation lab", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/evaluate-ai-models.md"},
+    sources: [
+      {label: "NIST AI Risk Management Framework", url: "https://www.nist.gov/itl/ai-risk-management-framework"},
+      {label: "OWASP LLM Top 10", url: "https://genai.owasp.org/llm-top-10/"}
+    ]
+  },
+  {
     slug: "storybook-visual-regression",
     title: "Build and test your Design Lab",
     track: "Builder",
