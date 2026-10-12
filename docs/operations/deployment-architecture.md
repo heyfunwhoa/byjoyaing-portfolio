@@ -1,6 +1,6 @@
 # Deployment Architecture — Portfolio
 
-**Status:** proposed topology, backed by repository configuration where noted. Updated October 10, 2026. This is not a verified live infrastructure diagram.
+**Status:** topology with production observations from 2026-10-12. This is not a complete infrastructure diagram. See [GitHub API & Deployment Reliability Standard](github-api-deployment-reliability.md).
 
 ## Conceptual system flow
 
@@ -25,9 +25,10 @@ flowchart TD
 | Source | `heyfunwhoa/byjoyaing-portfolio` Next.js 16 + React 19 + TypeScript | `package.json`, `README.md` on `main` |
 | Code quality | `.github/workflows/ci.yml` triggers on PR/main, runs `npm ci`, lint, tests and build | Actual workflow file; passing runs need checking for the specific release |
 | Email | Resend runtime dependency present | `package.json`. Actual sending route/config/permission not audited here |
-| Hosting project | Vercel project named `byjoyaing-portfolio` exists in the connected account | Authenticated project listing, Oct 10, 2026 |
-| Git-to-Vercel link, branch settings, deployment state, preview URL, production domain | **Unverified** | Vercel deployment history query was blocked by a 403 authorization error. Inspect project settings/deployments in the authorized Vercel scope |
-| CI release gating | **Unverified** | A passing GitHub Actions job does not establish branch protection or Vercel Deployment Checks |
+| Hosting project | Vercel project `byjoyaing-portfolio` (`prj_BWgeuBsxiMKOlGzg193H5O4odb2i`), framework Next.js, Node 24.x | Project read, 2026-10-12. Actions still uses Node 22 |
+| Git-to-Vercel link | Connected. Production deployments from `main` use `source: git`. Failed fetches return `git_info_fail` and did not own aliases | Deployments `dpl_2qxLe6YHSCLZgm2L9snuiy13vGAJ` and `dpl_6SDZdBmNNbw1GxawQqDFKvcjUv26` |
+| Production domain | `www.byjoyaing.com` and `byjoyaing.com` were owned by READY deployment `dpl_6SDZdBmNNbw1GxawQqDFKvcjUv26`, SHA `7486b46706880137672ab606aa72a6f99664d964`. Home returned HTTP 200 | Alias list and response headers, 2026-10-12 |
+| CI release gating | Actions and Vercel are separate. Branch protection was not readable (API 403) | Workflow files; `gh api` branch protection |
 | DNS/TLS and website uptime | **Not tested** | Inspect domain records, certificate state and live responses before marking verified |
 
 ## Security boundaries

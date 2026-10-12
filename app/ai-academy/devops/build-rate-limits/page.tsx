@@ -13,6 +13,11 @@ const cases = [
     next: "Open the Vercel deployment/status details. Check project and team limits and recent deployment frequency. Don't rerun repeatedly.",
   },
   {
+    symptom: "Vercel error code git_info_fail within a few seconds, before a build log",
+    meaning: "The Git integration could not retrieve the commit. A GitHub secondary rate limit returns HTTP 403 or 429 at this step, sometimes while the hourly quota remains. The application was not compiled.",
+    next: "Stop further deploys. Read retry-after when the log includes it. Confirm which READY deployment owns the production domain. Wait, then make one new deployment of the same commit.",
+  },
+  {
     symptom: "GitHub Actions TypeScript, lint, or unit test job failed",
     meaning: "The code-quality pipeline found an error independent of whether Vercel can deploy.",
     next: "Open Actions, find the first failed step, read its error, fix the code, and rerun the check.",
@@ -54,6 +59,7 @@ export default function BuildRateLimitsLesson() {
           <li><strong className="text-foreground">Rate limit:</strong> If too many deployment attempts happen within a provider-defined window, Vercel may reject new builds, even though source-code checks could still pass.</li>
         </ol>
         <p className="text-muted">Rate limits cap how often work may be started. Concurrency limits cap how many builds run at the same time; queued builds are different from rejected builds. Exact quotas depend on the account, plan, and current provider rules.</p>
+        <p className="text-muted">A GitHub secondary rate limit is a burst limit on GitHub&apos;s API. Vercel&apos;s build quota is a separate limit. On 12 October 2026, production deployment <span className="font-mono text-foreground">dpl_2qxLe6YHSCLZgm2L9snuiy13vGAJ</span> for commit <span className="font-mono text-foreground">8c37fc10dfa1e028dabc84b6c958f351103662cb</span> failed with <span className="font-mono text-foreground">git_info_fail</span> and owned no aliases. The same commit failed its unit tests in a different check. The READY deployment that still owned www.byjoyaing.com was commit <span className="font-mono text-foreground">7486b46706880137672ab606aa72a6f99664d964</span>.</p>
       </section>
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-semibold">Diagnose the symptom, not just the red icon</h2>
@@ -92,6 +98,7 @@ export default function BuildRateLimitsLesson() {
           <li><a className="underline underline-offset-4 hover:text-foreground" href="https://vercel.com/docs/deployments" target="_blank" rel="noopener noreferrer">Vercel deployments</a></li>
           <li><a className="underline underline-offset-4 hover:text-foreground" href="https://vercel.com/docs/project-configuration/git-settings" target="_blank" rel="noopener noreferrer">Vercel Git deployment settings</a></li>
           <li><a className="underline underline-offset-4 hover:text-foreground" href="https://docs.github.com/en/actions" target="_blank" rel="noopener noreferrer">GitHub Actions</a></li>
+          <li><a className="underline underline-offset-4 hover:text-foreground" href="https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api" target="_blank" rel="noopener noreferrer">GitHub REST API best practices, including secondary rate limits</a></li>
         </ul>
         <p className="mt-3">This lesson is generalized educational guidance. Limits and controls can change; verify current settings against official platform documentation.</p>
       </footer>

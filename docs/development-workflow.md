@@ -17,7 +17,7 @@ Use this small-team workflow for all meaningful product changes.
 ## 3. Review before merge
 - Push the feature branch, open **one PR** targeting `main`, and write why, what changed, tests, risks, and screenshots for visual changes.
 - Run the repository's existing tests, TypeScript check, lint, and build; wait for GitHub CI to finish successfully.
-- For database changes, check forward migrations and rollback strategy; for external calls, protect secrets, rate limits, cost, and permissions.
+- For database changes, check forward migrations and rollback strategy; for external calls, protect secrets, rate limits, cost, and permissions. Follow the [GitHub API & Deployment Reliability Standard](operations/github-api-deployment-reliability.md) before describing a merge as deployed.
 - Review the PR diff and test the affected user journey manually. Do not merge on a red or unverified check.
 - Merge (prefer squash for a tidy history when appropriate), then sync local `main` and delete the completed feature branch.
 

@@ -370,6 +370,39 @@ export const lessons: Lesson[] = [
     ]
   },
   {
+    slug: "github-deployment-reliability",
+    title: "When a deploy fails before the build",
+    track: "Builder",
+    minutes: 12,
+    level: "Beginner",
+    summary: "Tell a GitHub secondary rate limit apart from a failed test, and require production evidence before calling a merge deployed.",
+    analogy: "A red kitchen timer is not a burnt dish. One means the delivery truck never arrived; the other means the recipe itself failed a check.",
+    takeaways: [
+      "A secondary rate limit is a short burst limit. GitHub can return 403 or 429 while the hourly quota still remains.",
+      "Vercel git_info_fail happens before the build. Caching inside the app does not stop that Git fetch.",
+      "A failed unit test and a failed Git fetch on the same commit are two records. Fixing one does not close the other.",
+      "A failed production deployment that owns no aliases leaves the last READY deployment in place. Confirm the alias instead of assuming the site changed.",
+      "Wait for the provider's retry time, then make one new attempt. Do not redeploy in a loop."
+    ],
+    exercise: "Read docs/builder-academy/github-api-deployment-reliability.md. Using the 2026-10-12 portfolio case, write two evidence lines: the unit-test failure and the git_info_fail deployment. Say which SHA was still serving www.byjoyaing.com, and what you would not do next.",
+    check: {
+      question: "Production failed with git_info_fail, and unit tests failed on the same commit. What is true?",
+      choices: [
+        "The site is down, and fixing the unit test deploys the commit.",
+        "These are different failures. The Git fetch never built, and the previous READY deployment can still own production.",
+        "Redeploy immediately and repeatedly until GitHub accepts the fetch."
+      ],
+      answer: 1,
+      explanation: "A Git provider failure happens before the build. A green test does not prove production moved, and repeated deploys can deepen a rate limit."
+    },
+    companion: { label: "Open the full lesson", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/github-api-deployment-reliability.md" },
+    sources: [
+      { label: "GitHub Docs: REST API best practices", url: "https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api" },
+      { label: "GitHub Docs: Rate limits for the REST API", url: "https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api" },
+      { label: "Vercel: ignoreCommand", url: "https://vercel.com/docs/project-configuration/vercel-json#ignorecommand" }
+    ]
+  },
+  {
     slug: "secure-account-import-research",
     title: "Secure CSV, AI research, and account export",
     track: "Builder",

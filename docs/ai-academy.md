@@ -39,6 +39,10 @@ See [package registries, package managers, lockfiles and supply-chain security](
 
 The in-app lesson `cursor-workflows` is the concise card. The longer source is [Cursor: from first prompt to verified pull request](builder-academy/cursor-agent-workflows.md). Publishing that Markdown file does not by itself add the card; the card is the `Lesson` record in `lib/ai-academy.ts`.
 
+## Builder learning: deployment failures
+
+The card `github-deployment-reliability` is the short version. The source lesson is [When a deploy fails before the build](builder-academy/github-api-deployment-reliability.md). It separates a failed test from a GitHub rate limit that stops Vercel before the build.
+
 ## Evidence-backed lessons
 
 Learning answers should connect a **narrow claim → verified primary reference → applicability limits → scenario recommendation → actual reviewer/approval owner**. See [Evidence-backed sales and security decisions](builder-academy/evidence-backed-sales-and-security-decisions.md).

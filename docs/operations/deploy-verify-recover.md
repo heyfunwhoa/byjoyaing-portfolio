@@ -28,6 +28,28 @@
 - Mark **verified** only with evidence from the deployed version (not only a green build).
 - Notify owner or open an issue if anything diverges from the runbook.
 
+## Release check
+Use this sequence before calling a merge deployed. The decision rules are in [GitHub API & Deployment Reliability Standard](github-api-deployment-reliability.md). A merged pull request is not one of the checks.
+
+1. Open the GitHub Actions runs for the intended commit. Record each job conclusion.
+2. Copy the full 40-character release SHA. A short SHA is not enough.
+3. Open the Vercel deployment for that SHA. Record the deployment ID, ready state, and error code.
+4. List the production aliases and the deployment that owns them. `READY` without the alias is not production.
+5. Confirm the alias owner's full SHA equals the intended SHA.
+6. Request `/`, `/about`, `/work`, `/contact`, and `/ai-academy` on the production domain. Record the status codes. Do not send contact email as the test.
+7. Write the result in the evidence template, including one failure class per signal.
+
+| Signal | Class |
+| --- | --- |
+| Lint or unit tests failed | Source validation |
+| Semgrep, TruffleHog, Trivy, or `npm audit` failed | Security check |
+| Production build or a Vercel build error after the source was fetched | Application build |
+| `git_info_fail`, or GitHub 403/429 with a rate-limit body, before the build | Git provider / API rate limit |
+| Vercel `ERROR`, `CANCELED`, or `BLOCKED` after source retrieval, or the wrong alias owner | Deployment platform |
+| A READY site whose smoke route is not HTTP 200 | Runtime or smoke-test failure |
+
+On a Git provider failure, wait for `retry-after` or at least one minute, then make one new deployment of the same SHA. Do not loop. The ignored build step does not run when the Git fetch itself fails.
+
 ## Recovery decision
 1. Stop further risky releases; determine the affected environment, blast radius and whether data changed.
 2. If it is application-code-only, select a previously verified production deployment **in the same Vercel scope** and follow the documented rollback procedure with operator authorization.
@@ -42,6 +64,7 @@
 | Build failed | `npm ci`, Next.js build output, dependency lockfile and version |
 | Vercel preview missing | Vercel Git integration, permission/scope, branch and deployment history |
 | Vercel 403 | Access/scope/authorization; do not replace an inaccessible project with another |
+| Vercel `git_info_fail` | Git provider fetch failed before the build. Check for a GitHub secondary rate limit. Do not redeploy in a loop. Confirm the previous READY deployment still owns production aliases |
 | Site runs but page breaks | Runtime logs, server env scope, API failures, browser console |
 | Contact action fails | Server-side Resend configuration and provider response; redact secrets |
 | Domain/TLS error | DNS records, domain assignment, certificate status |

@@ -229,6 +229,20 @@ test("published practice scenarios distinguish sourced guidance from real vendor
 });
 
 
+test("deployment reliability lesson separates a Git fetch failure from a failed test", () => {
+  const lesson = lessons.find((item) => item.slug === "github-deployment-reliability");
+  assert.ok(lesson);
+  assert.equal(lesson.track, "Builder");
+  assert.equal(lesson.level, "Beginner");
+  assert.match(lesson.exercise, /docs\/builder-academy\/github-api-deployment-reliability\.md/);
+  assert.match(lesson.summary, /secondary rate limit/);
+  assert.match(lesson.check.choices[lesson.check.answer], /previous READY deployment/);
+  assert.match(lesson.check.explanation, /before the build/);
+  assert.match(lesson.companion?.url ?? "", /github-api-deployment-reliability\.md$/);
+  assert.ok(lesson.sources.some((source) => source.url.includes("docs.github.com")));
+  assert.doesNotMatch(JSON.stringify(lesson), /kristen\.aing@gmail\.com|joy\s*index|API_KEY\s*=/i);
+});
+
 test("Design Lab and FinOps learning cards are reachable, sourced and public-safe", () => {
   const slugs = ["storybook-visual-regression", "integration-registry-finops"];
   const added = slugs.map((slug) => lessons.find((lesson) => lesson.slug === slug));
