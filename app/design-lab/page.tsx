@@ -1,4 +1,6 @@
 import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
+import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
+import { ComponentOptions } from "@/components/design-lab/component-options";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
@@ -50,6 +52,9 @@ export default function DesignLabPage() {
             This page previews reusable pieces before they move onto the public site. A production build returns 404. The public navigation does not link here.
           </p>
         </header>
+
+        <MotionWorkbench />
+        <ComponentOptions />
 
         <section aria-labelledby="foundations-title">
           <h2 id="foundations-title" className="font-display text-2xl tracking-tight">Foundations</h2>
@@ -119,13 +124,6 @@ export default function DesignLabPage() {
           <Suspense fallback={<p className="mt-6 text-sm text-muted">Loading the directory…</p>}>
             <DesignLabGallery />
           </Suspense>
-        </section>
-
-        <section aria-labelledby="motion-title">
-          <h2 id="motion-title" className="font-display text-2xl tracking-tight">Motion</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-            No motion library is installed. The card border changes color on hover. The arrow uses the existing nudge, which collapses when reduced motion is requested. Sections on the public site still use the short rise in <code className="font-mono text-xs">.section-enter</code>. That rise does not fade to invisible.
-          </p>
         </section>
 
         <section aria-labelledby="identity-title">

@@ -9,7 +9,7 @@
 
 ## Audit
 
-Installed UI dependencies are Next.js 16.4.0, React 19.2.8, and React DOM. Resend is the mail dependency. Tailwind CSS 4 is a dev dependency. shadcn/ui, Radix, Motion, and Framer Motion are not installed. Do not add them for the lab.
+Installed UI dependencies are Next.js 16.4.0, React 19.2.8, and React DOM. Resend is the mail dependency. Tailwind CSS 4 is a dev dependency. The original audit below predates the installed shadcn/Radix primitives and Embla carousel. Current setup is `radix-nova` in `components.json`; Motion/Framer Motion remain uninstalled. See the current workbench section below.
 
 | Finding | Impact | Complexity | Recommendation |
 | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ Do not install Motion for React. The existing timing is the source of truth:
 - `.section-enter` is a 0.6rem rise with no fade to zero opacity.
 - Celestial lines do not spin.
 
-New lab components add no keyframes.
+The original editorial cards add no keyframes. The current workbench below adds scoped, replayable preview keyframes; public entrance styles are unchanged.
 
 ## Layers
 
@@ -56,7 +56,7 @@ Primitives already in the repo: links, buttons in the header and filters, `Proje
 | Layouts | Static span diagram for the project gallery | None |
 | Navigation | Notes on the live header. No second header. Breadcrumb is not built. | `SiteHeader` from the root layout |
 | Cards | `EditorialProjectCard`, `ProjectBento`, `ProjectFilter` | Directory facts |
-| Motion | Written rules. The arrow uses `.nudge-link`. | Existing CSS |
+| Motion | Interactive workbench: four scoped transitions, seven component previews, replay, timing, and motion-off controls. | Existing Radix/Embla primitives plus a CSS module |
 | Visual identity | Homepage orbit and Work-tile motif, labeled as those placements | `CelestialFrame`, `BrandAvatar`, `GeometricMotif`, `/brand/avatar/illustrated-portrait.png` |
 | Orbit artwork | Compare the transparent drawing, the charcoal plate, and the live pillar controls before changing the homepage | `OrbitPortrait`, `OrbitArtwork`, `CapabilityOrbit` |
 | Data visualization | Status pills and the experience constellation | `ProjectStatusPill`, `ProjectConstellation` |
@@ -64,3 +64,32 @@ Primitives already in the repo: links, buttons in the header and filters, `Proje
 | Accessibility | Focus, pressed state, empty result, reduced motion | None new |
 
 Lesson: [editorial-project-card.md](../builder-academy/editorial-project-card.md).
+
+## Motion & component workbench (2026-10-12)
+
+The top of `/design-lab` now provides a compact selector and one preview stage, followed by a project-filtered collection of ten component families. The production gate remains in place. Storybook exposes `Design Lab/Motion Workbench` and `Design Lab/Component Options`.
+
+- Transitions: gentle rise, panel slide, soft settle, grouped reveal; 160/240/400ms and replay. All text stays visible, without autoplay or scroll-triggered hiding.
+- Components: avatar/owners, interactive card, tabs, accordion, dialog, sheet, carousel. Existing portfolio source is reused.
+- Device reduced motion overrides previews, including portal content and Embla duration. The explicit disable control also removes movement.
+- Curated options distinguish source available in this portfolio from candidate additions. App assignments are recommendations, not claims of implementation in another repository. The catalog is `lib/component-options.ts`; it contains no customer, employer, or private workspace records.
+
+### Selective adoption
+
+Use [shadcn/create](https://ui.shadcn.com/docs/installation#use-create) for a **new** app/preset. Existing projects should retain their component configuration and add the component needed for a specific feature. This portfolio already has Radix-based `radix-nova`; do not rerun initialization or overwrite tokens. The [React Aria Avatar](https://ui.shadcn.com/docs/components/aria/avatar) is an alternative family. Existing `components/ui/avatar.tsx` already provides Radix image/fallback/group/badge source, so no migration is needed for ownership displays. Official docs checked 2026-10-12.
+
+| Destination | First patterns to try | Motion choice |
+| --- | --- | --- |
+| Portfolio | Cards, avatar, tabs, accordion, short carousel | Brief rise or panel slide |
+| Account Signal Engine | Data table, filters, evidence sheet, combobox, state feedback | Panel change; keep dense data stable |
+| Security Market Map | Search, category tabs, comparison table, evidence sheet | Selected detail change; keep the map stable |
+| Detector Coverage Atlas | Data table, column filters, comparison detail, empty/loading states | State changes; no animation of numeric meaning |
+| Truffle Camp | Lesson cards, accordion, progress, tabs | Short grouped reveal |
+| Interview dashboard | Calendar/date picker, owner avatar, action dialog, sidebar | Context panel change |
+| GTM Revenue OS | Tables, workspace navigation, date filters, charts | Subtle view changes |
+
+UI proposals do not add backend behavior: a Calendar is not calendar sync, a Dialog is not access control, and a Chart requires verified data. Check each destination’s framework, component family, dependencies, license and privacy requirements before copying. Select official primitives first; assess third-party registry blocks individually. Defer a shared installable package until multiple repos use a proven pattern.
+
+### Verification and rollback
+
+Catalog tests check app/source references and source availability. Storybook interaction tests cover project filtering, reduced motion, keyboard selection and dialog focus return. Run `npm test`, `npm run build`, `npm run storybook:build`, and `npm run test:visual` where browser infrastructure is supported. Rollback removes the two lab imports/mounts and new files; no data migration or public-page rollout is involved.
