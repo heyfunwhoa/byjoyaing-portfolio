@@ -20,7 +20,10 @@ export type OrbitPillar = {
 export const orbitCenter = {
   label: "Enterprise selling",
   summary: "Full-cycle enterprise cybersecurity sales across security, engineering, and executive buyers.",
+  detail:
+    "Full-cycle work comes first. The public record describes responsibilities and selected agreements; customers, contract details and unsupported metrics are omitted.",
   href: "/work#enterprise-sales",
+  links: [{ label: "Enterprise deal execution", href: "/work#enterprise-sales", collection: "Work" }],
 } as const;
 
 export const orbitPillars: readonly OrbitPillar[] = [

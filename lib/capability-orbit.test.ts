@@ -9,6 +9,8 @@ const forbidden = [/\$/, /%/, /Head of Sales/i, /Joy Index/i, /\d{3}[-. ]\d{3}[-
 function allText() {
   return [
     orbitCenter.summary,
+    orbitCenter.detail,
+    ...orbitCenter.links.map((link) => link.label),
     ...orbitPillars.flatMap((p) => [p.summary, p.boundary ?? "", ...p.evidence.map((e) => e.text), ...p.links.map((l) => l.label)]),
   ];
 }
@@ -16,6 +18,10 @@ function allText() {
 test("enterprise selling is the center and the three pillars keep brand order", () => {
   assert.equal(orbitCenter.label, "Enterprise selling");
   assert.equal(orbitCenter.href, "/work#enterprise-sales");
+  assert.deepEqual(
+    orbitCenter.links.map((link) => [link.href, link.collection, link.label]),
+    [["/work#enterprise-sales", "Work", "Enterprise deal execution"]],
+  );
   assert.deepEqual(orbitPillars.map((p) => p.label), ["Strategist", "Leader", "Builder"]);
   for (const pillar of orbitPillars) {
     assert.ok(pillar.summary.length > 20);
@@ -30,17 +36,15 @@ test("copy carries no unverified figures, titles, or private content", () => {
 
 test("links stay on existing public routes and respect the Work / Side Quest split", () => {
   const routes = /^\/(work(#[a-z-]+)?|work\/[a-z0-9-]+|experience|about|side-quests)$/;
-  for (const pillar of orbitPillars) {
-    for (const link of pillar.links) {
-      assert.match(link.href, routes, link.href);
-      const slug = link.href.startsWith("/work/") ? link.href.slice("/work/".length) : null;
-      if (slug) {
-        const kind = kindBySlug[slug];
-        assert.ok(kind, `unclassified ${slug}`);
-        assert.equal(kind === "side-quest", link.collection === "Side Quests", link.href);
-      }
-      if (link.href === "/side-quests") assert.equal(link.collection, "Side Quests");
+  for (const link of [...orbitCenter.links, ...orbitPillars.flatMap((pillar) => pillar.links)]) {
+    assert.match(link.href, routes, link.href);
+    const slug = link.href.startsWith("/work/") ? link.href.slice("/work/".length) : null;
+    if (slug) {
+      const kind = kindBySlug[slug];
+      assert.ok(kind, `unclassified ${slug}`);
+      assert.equal(kind === "side-quest", link.collection === "Side Quests", link.href);
     }
+    if (link.href === "/side-quests") assert.equal(link.collection, "Side Quests");
   }
 });
 
@@ -79,6 +83,10 @@ test("source guard: the orbit is static, uses no motion library, and is placed o
   assert.match(source, /aria-hidden="true"/);
   assert.match(source, /treatment="charcoal"/);
   assert.match(source, /orbitCenter\.label/);
+  assert.match(source, /useState<OrbitSelection>\("center"\)/);
+  assert.match(source, /aria-pressed=\{selected === "center"\}/);
+  assert.doesNotMatch(source, /href=\{orbitCenter\.href\}/);
+  assert.doesNotMatch(source, /target="_blank"/);
   const about = readFileSync(new URL("../app/about/page.tsx", import.meta.url), "utf8");
   assert.match(about, /<CapabilityOrbit/);
   assert.match(about, /<OrbitPortrait surface="ivory"/);
