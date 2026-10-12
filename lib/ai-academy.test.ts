@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { lessons } from "./ai-academy.ts";
+import { evaluateSecurityDecision, findSecurityReviewScenario, securityReviewScenarios } from "./ai-academy/security-review-lab.ts";
 
 test("lesson slugs are unique and knowledge checks point at a real choice", () => {
   assert.equal(new Set(lessons.map((lesson) => lesson.slug)).size, lessons.length);
@@ -134,4 +135,62 @@ test("security assessment training uses public fictional scenarios and no person
   assert.ok(lesson);
   const content = JSON.stringify(lesson);
   assert.doesNotMatch(content, /kristen\.aing@gmail\.com|real customer agreement|private client data|API_KEY\s*=/i);
+});
+
+
+test("security assessment lab includes varied buyer sizes and risk, including a high-risk startup", () => {
+  assert.equal(securityReviewScenarios.length, 4);
+  assert.equal(new Set(securityReviewScenarios.map((scenario) => scenario.id)).size, 4);
+  assert.equal(findSecurityReviewScenario("startup-demo")?.risk, "Limited");
+  assert.equal(findSecurityReviewScenario("small-high-risk")?.risk, "High");
+  assert.equal(findSecurityReviewScenario("not-a-scenario"), undefined);
+  for (const scenario of securityReviewScenarios) {
+    assert.ok(scenario.context.length > 40);
+    assert.ok(scenario.signals.length >= 2);
+    assert.ok(scenario.guidance.length >= 2);
+    for (const decision of [scenario.evidence, scenario.actions.ae, scenario.actions["head-of-sales"]]) {
+      assert.equal(decision.choices.length, 3);
+      assert.ok(decision.answer >= 0 && decision.answer < decision.choices.length);
+      assert.ok(decision.explanation.length > 25);
+    }
+  }
+});
+
+test("each security case offers evidence and role-specific decisions with deterministic feedback", () => {
+  for (const scenario of securityReviewScenarios) {
+    for (const role of ["ae", "head-of-sales"] as const) {
+      for (const stage of ["evidence", "action"] as const) {
+        const question = stage === "evidence" ? scenario.evidence : scenario.actions[role];
+        assert.deepEqual(
+          evaluateSecurityDecision(scenario.id, role, stage, question.answer),
+          { correct: true, explanation: question.explanation },
+        );
+        assert.equal(
+          evaluateSecurityDecision(scenario.id, role, stage, (question.answer + 1) % question.choices.length)?.correct,
+          false,
+        );
+      }
+    }
+  }
+  assert.equal(evaluateSecurityDecision("startup-demo", "ae", "evidence", null), null);
+  assert.equal(evaluateSecurityDecision("startup-demo", "ae", "evidence", -1), null);
+  assert.equal(evaluateSecurityDecision("startup-demo", "ae", "evidence", 4), null);
+  assert.equal(evaluateSecurityDecision("missing", "ae", "evidence", 0), null);
+});
+
+test("API, contracting and security lessons link to full published companion guides", () => {
+  for (const slug of ["mcp-vs-rest-api", "enterprise-contracts-sales-cycle", "security-assessments-buyer-size"]) {
+    const lesson = lessons.find((item) => item.slug === slug);
+    assert.ok(lesson);
+    assert.ok(lesson.companion);
+    assert.match(lesson.companion.url, /^https:\/\/github\.com\/heyfunwhoa\/byjoyaing-portfolio\/blob\/main\/docs\/builder-academy\/.+\.md$/);
+    assert.match(lesson.companion.label, /full lesson/);
+  }
+});
+
+test("security review lab case content is fictional and no real decisions or data are stored", () => {
+  const content = JSON.stringify(securityReviewScenarios);
+  assert.doesNotMatch(content, /kristen\.aing@gmail\.com|real company address|production API key|Truffle Security/i);
+  assert.match(content, /synthetic/i);
+  assert.match(content, /subprocessor/i);
 });
