@@ -40,16 +40,16 @@ export function TechnologyStack({
               rel="noopener noreferrer"
               aria-label={`Visit ${technology.name} website (opens in a new tab)`}
               title={technology.name}
-              className={`group/tech inline-flex min-h-11 min-w-11 items-center rounded-md text-foreground transition-colors duration-200 hover:text-accent ${compact ? "justify-center gap-0" : "gap-2"}`}
+              className={`group/tech inline-flex items-center rounded-md text-foreground transition-colors duration-200 hover:text-accent ${compact ? "size-6 justify-center gap-0" : "min-h-11 gap-2"}`}
             >
               <span
-                className={`inline-flex shrink-0 items-center justify-center rounded-md border border-border bg-white transition-colors duration-200 group-hover/tech:border-accent ${compact ? "size-6 p-1" : "size-7 p-1.5"}`}
+                className={`inline-flex shrink-0 items-center justify-center rounded-sm border border-border bg-white transition-colors duration-200 group-hover/tech:border-accent ${compact ? "size-4 p-0.5" : "size-6 p-1"}`}
               >
                 <Image
                   src={technology.logo}
                   alt=""
-                  width={compact ? 12 : 14}
-                  height={compact ? 12 : 14}
+                  width={compact ? 10 : 12}
+                  height={compact ? 10 : 12}
                   unoptimized
                   className="size-full object-contain"
                 />

@@ -30,7 +30,7 @@ Per-project ids: `lib/portfolio/verified-stacks.ts`.
 - Truffle Camp
 - Partner GTM Engine
 
-Side Quest cards and the project directory show at most four compact 24px marks, with the name in screen-reader text. Detail pages show 28px chips with visible labels. Atlas also shows GitHub on the detail page. The About GTM toolkit uses 32px chips in a wrapping row, not a full-width grid.
+Side Quest cards and the project directory show at most four compact 16px marks, with the name in screen-reader text. Detail pages show 24px chips with visible labels. Atlas also shows GitHub on the detail page. The About GTM toolkit uses 32px chips in a wrapping row, not a full-width grid.
 
 These studies do **not** get logos. Their copy names tools that are planned, absent, or living in a repository that is not public (`gtm-revenue-os` returned 404):
 
@@ -58,7 +58,7 @@ import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack"
 3. Review the SVG for scripts, event attributes, `foreignObject`, and remote references before committing it.
 4. Save it in `public/logos/technology/`.
 5. Register it in `lib/portfolio/technology-registry.ts` and add the id only to verified project stacks. Update this file.
-6. Keep the white chip so dark marks stay visible on ivory and on charcoal sections. Compact chips are 24px, detail chips 28px, About toolkit chips 32px. The link hit area stays at least 44px. Check 375px width. Names stay visible or in `sr-only` text.
+6. Keep the white chip so dark marks stay visible on ivory and on charcoal sections. Compact chips are 16px (24px hit area). Detail chips are 24px. About toolkit chips are 32px. Check 375px width. Names stay visible or in `sr-only` text.
 7. Run `npm run lint`, `npm test`, and `npm run build`.
 
 ## Scope
