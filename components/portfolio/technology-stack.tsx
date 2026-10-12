@@ -43,7 +43,7 @@ export function TechnologyStack({
               className={`group/tech inline-flex min-h-11 min-w-11 items-center rounded-lg text-foreground transition-colors duration-200 hover:text-accent ${compact ? "gap-0" : "gap-2"}`}
             >
               <span
-                className={`inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md border border-border bg-white transition-colors duration-200 group-hover/tech:border-accent ${compact ? "p-2.5" : "p-2"}`}
+                className={`inline-flex size-11 shrink-0 items-center justify-center rounded-md border border-border bg-white transition-colors duration-200 group-hover/tech:border-accent ${compact ? "p-2.5" : "p-2"}`}
               >
                 <Image
                   src={technology.logo}
@@ -51,7 +51,7 @@ export function TechnologyStack({
                   width={compact ? 16 : 24}
                   height={compact ? 16 : 24}
                   unoptimized
-                  className="size-full object-contain"
+                  className={`shrink-0 object-contain ${compact ? "size-4" : "size-6"}`}
                 />
               </span>
               {showLabels ? <span>{technology.name}</span> : null}
