@@ -123,17 +123,59 @@ export default function MultithreadingPage() {
           shared separately after review, where available.
         </p>
       </section>
-      <section id="research" className="scroll-mt-24 py-8">
-        <p className="max-w-2xl text-sm leading-6 text-muted">
-          Account research can suggest who to involve; customer conversations
-          validate their priorities and influence.{" "}
+      <section
+        id="research"
+        className="scroll-mt-24 py-8"
+        aria-labelledby="method-context-title"
+      >
+        <h2 id="method-context-title" className="font-display text-2xl">
+          Where this fits
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Account planning and discovery inform who to involve. Stakeholder
+          alignment connects those conversations to technical evaluation and the
+          approval path. This example focuses on that alignment step.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          <span className="font-medium text-foreground">
+            Methods that inform my approach:
+          </span>{" "}
+          <a
+            href="https://meddicc.com/meddpicc-sales-methodology-and-process"
+            target="_blank"
+            rel="noreferrer"
+            className="text-accent underline underline-offset-4"
+          >
+            MEDDPICC ↗
+          </a>{" "}
+          helps inspect champion influence, economic-buyer access, and decision
+          and paper processes.{" "}
+          <a
+            href="https://www.forcemanagement.com/offerings/b2b-sales-message-consulting"
+            target="_blank"
+            rel="noreferrer"
+            className="text-accent underline underline-offset-4"
+          >
+            Force Management’s Command of the Message ↗
+          </a>{" "}
+          informs the connection between stakeholder priorities and business
+          outcomes. The map is my illustrative synthesis, not an official
+          methodology tool or certification.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-4 text-sm">
           <Link
             href="/field-notes/enterprise-deal"
             className="text-accent underline underline-offset-4"
           >
-            See where this fits in an enterprise deal →
+            Explore the enterprise deal sequence →
           </Link>
-        </p>
+          <Link
+            href="/field-notes"
+            className="text-accent underline underline-offset-4"
+          >
+            Browse related field practices →
+          </Link>
+        </div>
       </section>
       <SourceAndEvidencePanel
         status="illustrative"

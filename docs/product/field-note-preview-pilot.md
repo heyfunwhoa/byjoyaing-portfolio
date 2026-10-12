@@ -30,3 +30,11 @@ Before hosting full playbooks, establish verified identity, explicit resource gr
 ## Verification
 
 Production build and 130 unit tests passed. Changed application files passed ESLint and generated Next.js types. One existing source assertion was made whitespace-tolerant after formatting. Browser controls unavailable: 375/768/1280px, 200% zoom, keyboard and visual checks remain a review task. No production deployment or real email send attempted.
+
+## Methodology context
+
+A concise “Where this fits” section places multithreading between account planning/discovery and evaluation/approval. It attributes the relevant qualification lens to MEDDPICC and value-messaging lens to Force Management's Command of the Message, linking official public sources. The map remains an illustrative personal synthesis, with no certification, affiliation or vendor-tool claim.
+
+Private methodology material was reviewed to identify the relevant lenses; private notes, drill questions and source repository links were not copied into public content. The public Field Notes index is the browse destination. A dedicated public sales-playbook index and automated private-to-public synchronization are not implemented.
+
+Source review: 2026-10-12. Public references: https://meddicc.com/meddpicc-sales-methodology-and-process and https://www.forcemanagement.com/offerings/b2b-sales-message-consulting . These are source links, not access to the owner's full playbook.
