@@ -43,3 +43,8 @@ next-env.d.ts
 
 # resume (contains personal contact details; keep local / attach via Resend)
 content/*.pdf
+
+# visual QA build and test artifacts
+/storybook-static/
+/playwright-report/
+/test-results/
