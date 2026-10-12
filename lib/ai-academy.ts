@@ -7,6 +7,43 @@ export type Lesson = {
 };
 export const lessons: Lesson[] = [
   {
+    slug: "frontend-building-blocks",
+    title: "Frontend building blocks: from framework to experience",
+    track: "Builder",
+    minutes: 25,
+    level: "Beginner",
+    summary: "Learn how structure, components, styling, behavior, data, accessibility and UX combine to make a frontend; identify the role of Next.js, React, Tailwind and shadcn/ui.",
+    analogy: "Building a house requires a floor plan, reusable rooms, finishes, working controls and useful information. Accessibility and UX influence the entire design, not just the final coat of paint.",
+    takeaways: [
+      "Frontend = Structure + Components + Styling + Behavior + Data + Accessibility + User Experience.",
+      "Semantic HTML gives content structure; React creates reusable components and state; Next.js organizes routing, rendering and server capabilities.",
+      "Tailwind generates CSS for styling and responsive layouts; shadcn/ui provides customizable component code. Neither replaces React or Next.js.",
+      "Components can handle layout, display, navigation, interaction, forms, data displays, visualizations or feedback; a single component can span several categories.",
+      "Data comes from props, local objects or APIs; React state changes what's displayed. A component looking correct does not guarantee accurate data.",
+      "Accessible keyboard navigation, focus states, readable content and reduced-motion support are frontend requirements, not optional polish.",
+      "UX asks whether visitors can reach their goals; GitHub and Vercel manage code and deployment rather than defining frontend structure or style."
+    ],
+    exercise: "Read docs/builder-academy/frontend-building-blocks.md. Use a synthetic project card to label structure (HTML), component (React), styling (Tailwind), behavior (click/focus), data (props), accessibility (semantic link and keyboard focus) and UX (can a reader find the project?). Then compare a mobile layout bug with a data bug and explain which layer you would fix first. Do not edit production content during this reading exercise.",
+    check: {
+      question: "A project carousel looks polished but visitors cannot navigate it with a keyboard. What is missing?",
+      choices: [
+        "Nothing; styling is the entire frontend",
+        "Accessibility and user experience must be improved alongside the other frontend layers",
+        "Install a different application framework to fix the colors"
+      ],
+      answer: 1,
+      explanation: "Frontend work includes semantics, keyboard/focus behavior and a usable journey. React, Tailwind and a carousel library alone do not guarantee accessibility or task success."
+    },
+    companion: { label: "Read the complete frontend building-blocks guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/frontend-building-blocks.md" },
+    sources: [
+      { label: "MDN: Learn web development", url: "https://developer.mozilla.org/en-US/docs/Learn_web_development" },
+      { label: "React: Your first component", url: "https://react.dev/learn/your-first-component" },
+      { label: "Next.js: App Router", url: "https://nextjs.org/docs/app" },
+      { label: "Tailwind CSS: Styling with utility classes", url: "https://tailwindcss.com/docs/styling-with-utility-classes" },
+      { label: "W3C WAI accessibility fundamentals", url: "https://www.w3.org/WAI/fundamentals/accessibility-intro/" }
+    ]
+  },
+  {
     slug: "evaluate-ai-models",
     title: "Evaluate AI models with evidence",
     track: "Builder",
