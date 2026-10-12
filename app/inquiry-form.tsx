@@ -24,7 +24,11 @@ const focusOptions = [
 
 function subscribeToHash(onStoreChange: () => void) {
   window.addEventListener("hashchange", onStoreChange);
-  return () => window.removeEventListener("hashchange", onStoreChange);
+  window.addEventListener("popstate", onStoreChange);
+  return () => {
+    window.removeEventListener("hashchange", onStoreChange);
+    window.removeEventListener("popstate", onStoreChange);
+  };
 }
 
 function modeFromHash(): Mode {
@@ -48,7 +52,9 @@ export function InquiryForm() {
   function chooseMode(next: Mode) {
     const hash = next === "access" ? "#access" : "#write";
     if (window.location.hash !== hash) {
-      window.location.hash = hash;
+      const nextUrl = `${window.location.pathname}${window.location.search}${hash}`;
+      window.history.pushState(null, "", nextUrl);
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
     }
     setStatus("idle");
     setMessage("");
@@ -104,7 +110,7 @@ export function InquiryForm() {
       onSubmit={onSubmit}
       className="relative flex max-w-xl flex-col gap-4 lg:max-w-none"
     >
-      <div id="access" tabIndex={-1} className="flex scroll-mt-24 flex-wrap gap-1" role="group" aria-label="Contact type">
+      <div id="access" className="flex scroll-mt-24 flex-wrap gap-1" role="group" aria-label="Contact type">
         {(
           [
             ["message", "Message"],
