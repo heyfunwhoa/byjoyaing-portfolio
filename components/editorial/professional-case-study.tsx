@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { CaseBandSteps } from "./case-band-steps";
 
 type CaseSection = { heading: string; content: ReactNode };
 
@@ -36,14 +37,7 @@ export function ProfessionalCaseStudy({
   return (
     <article className="editorial-panel bg-card p-5 sm:p-8" aria-label={title}>
       <h3 className="font-display text-2xl leading-tight sm:text-3xl">{title}</h3>
-      <dl className="mt-6 grid gap-5 md:grid-cols-2">
-        {sections.map((section) => (
-          <div key={section.heading} className="min-w-0 border-t border-border pt-3">
-            <dt className="text-sm font-semibold text-foreground">{section.heading}</dt>
-            <dd className="editorial-prose mt-2 text-sm text-muted">{section.content}</dd>
-          </div>
-        ))}
-      </dl>
+      <CaseBandSteps steps={sections} title={title} />
       {relatedItems && relatedItems.length > 0 ? (
         <nav aria-label={`Explore connections for ${title}`} className="mt-7 border-t border-border pt-5">
           <p className="editorial-eyebrow text-accent">Connect the story</p>
