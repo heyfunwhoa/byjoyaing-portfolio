@@ -3,64 +3,156 @@ import { SourceAndEvidencePanel } from "@/components/editorial/source-and-eviden
 import { RelatedWork } from "@/components/editorial/related-work";
 import { PageMain } from "@/components/page-main";
 import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
-import { connectedSources } from "@/lib/field-notes";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/field-notes/multithreading" },
+  openGraph: { url: "/field-notes/multithreading" },
   title: "Multithreading & Stakeholder Mapping",
-  description: "A seller and sales leader playbook for mapping complex buying groups, validating champions, and inspecting relationship gaps.",
+  description:
+    "How I think about complex buying groups: a short field note, an interactive stakeholder example, and a deeper walkthrough by request.",
 };
 
-const moves = [
-  ["01", "Start with the buying problem", "Identify the problem owner, consequences of inaction, affected teams and a credible reason to engage."],
-  ["02", "Map the roles, not just names", "Identify champion, economic buyer, technical evaluators, executive sponsor, procurement, security assurance and possible blockers."],
-  ["03", "Validate influence", "Test whether the champion can mobilize stakeholders, explain the approval path, and sponsor access to decision makers."],
-  ["04", "Earn additional conversations", "Give each stakeholder an outcome-specific reason to participate. Avoid asking for intros merely to increase contact count."],
-  ["05", "Coordinate decisions", "Align technical success criteria, business outcomes, risk reviews, budget, procurement and mutual milestones."],
-  ["06", "Inspect and adapt", "Review access gaps and evidence after meaningful meetings. Update the plan when power, priority or timing changes."],
-] as const;
-
 export default function MultithreadingPage() {
-  return <PageMain>
-    <header className="border-b border-border py-14">
-      <FieldNoteBreadcrumb title="Multithreading & Stakeholder Mapping" />
-      <p className="mt-8 text-xs font-medium uppercase tracking-wider text-muted">Playbook · Illustrative model</p>
-      <h1 className="mt-3 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">Multithreading is about alignment, not a contact count.</h1>
-      <p className="mt-5 max-w-3xl text-base leading-7 text-muted">A practical framework for navigating a complex enterprise buying group—from champion development to executive alignment—with a separate coaching lens for sales leaders.</p>
-      <div className="mt-5 flex flex-wrap gap-4 text-sm"><Link href="/field-notes/enterprise-deal" className="font-medium text-accent">See the deal anatomy →</Link><a href="#coverage-lab" className="font-medium text-accent">Try the coverage lab ↓</a></div>
-    </header>
-    <nav aria-label="Playbook sections" className="flex flex-wrap gap-4 border-b border-border py-5 text-sm font-medium"><a href="#coverage-lab" className="text-accent underline underline-offset-4">Explore the map</a><a href="#method" className="text-accent underline underline-offset-4">Six moves</a><a href="#coaching" className="text-accent underline underline-offset-4">Coaching</a><a href="#research" className="text-accent underline underline-offset-4">Research connections</a></nav>
-    <section id="coverage-lab" className="scroll-mt-24 border-b border-border py-12"><StakeholderPlayground /></section>
-    <section id="method" className="scroll-mt-24 border-b border-border py-12">
-      <h2 className="font-display text-3xl">The six moves</h2>
-      <ol className="mt-6 grid gap-4 md:grid-cols-2">{moves.map(([number, title, description]) => <li key={number} className="rounded-2xl border border-border p-5"><p className="text-xs text-muted">{number}</p><h3 className="mt-2 font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{description}</p></li>)}</ol>
-    </section>
-    <section id="coaching" className="scroll-mt-24 border-b border-border py-12">
-      <h2 className="font-display text-3xl">How I would coach this across a sales team</h2>
-      <div className="mt-5 grid gap-4 md:grid-cols-3">{[
-        ["Inspect evidence", "Ask who holds budget and decision rights, what validates champion influence, and where access is missing."],
-        ["Coach the next move", "Identify a compelling reason to connect with each stakeholder; role-play executive outreach and sponsor requests."],
-        ["Build the operating cadence", "Review coverage at stage changes and before forecast commits; track next steps and owners without turning coverage into an arbitrary probability."],
-      ].map(([title, body]) => <article key={title} className="rounded-2xl border border-border p-5"><h3 className="font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{body}</p></article>)}</div>
-    </section>
-    <section id="research" className="scroll-mt-24 py-12">
-      <h2 className="font-display text-3xl">From research to a decision</h2>
-      <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">Research is an input, not a substitute for customer conversations. This conceptual workflow joins three separate projects without copying private account data.</p>
-      <div className="mt-6 grid gap-3 md:grid-cols-4">{[["01 · Why now?","Validate an account signal and its source."],["02 · Who matters?","Map buyer roles and possible partner introductions."],["03 · What matters?","Prepare security-category context and buyer-specific hypotheses."],["04 · Next best conversation","Review evidence with a human before taking action."]].map(([title,body])=><div key={title} className="rounded-xl border border-border bg-card p-4"><h3 className="font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{body}</p></div>)}</div>
-      <h3 className="mt-10 text-xl font-semibold">Connected research and tools</h3>
-      <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">These connections describe how the playbook could draw on projects in my portfolio. This page does not read other repositories at runtime or ingest live account data.</p>
-      <div className="mt-6 grid gap-4 md:grid-cols-3">{connectedSources.map((source) => <article key={source.name} className="rounded-2xl border border-border p-5">
-        <h3 className="font-semibold">{source.name}</h3>
-        <p className="mt-2 text-sm leading-6 text-muted">{source.capability}</p>
-        <p className="mt-3 text-sm leading-6">{source.application}</p>
-        <p className="mt-3 text-xs text-muted">{source.stage}</p>
-        {"url" in source && <a href={source.url} target="_blank" rel="noreferrer" className="mt-4 inline-block text-sm font-medium text-accent">View public project ↗</a>}
-      </article>)}</div>
-      <p className="mt-5 text-sm text-muted">Future integrations should use explicit consent, source provenance, least-privilege access, review before CRM writes, redaction and tenant isolation. Private repository data is not part of this public demonstration.</p>
-    </section>
-    <SourceAndEvidencePanel status="illustrative" limitations="Stakeholders, relationships and access states are synthetic. Mapping access is not proof of decision power, budget approval, purchase intent or successful deals. This demonstration does not call connected account systems." />
-    <RelatedWork items={[{href:"/field-notes/enterprise-deal",title:"Enterprise deal anatomy",category:"Field Notes"},{href:"/work",title:"Enterprise sales and team leadership",category:"Work"},{href:"/side-quests",title:"Independent GTM experiments",category:"Side Quests"}]} />
-  </PageMain>;
+  return (
+    <PageMain>
+      <header className="border-b border-border py-14">
+        <FieldNoteBreadcrumb title="Multithreading & Stakeholder Mapping" />
+        <p className="mt-8 text-xs font-medium tracking-wider text-muted uppercase">
+          Field practice · Illustrative model · Short read
+        </p>
+        <h1 className="mt-3 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">
+          Map the people behind the decision.
+        </h1>
+        <p className="mt-5 max-w-2xl text-base leading-7 text-muted">
+          Complex deals depend on more than a strong champion. My approach is to
+          map decision roles, validate influence, and give each stakeholder a
+          relevant reason to join the conversation.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          For the seller, that means a clearer next conversation. For the sales
+          leader, it means a practical way to coach gaps in access and
+          alignment.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a
+            href="#coverage-lab"
+            className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-accent-foreground"
+          >
+            Explore the example ↓
+          </a>
+          <a
+            href="#deeper-access"
+            className="inline-flex min-h-11 items-center rounded-full border border-border px-5 text-sm font-medium"
+          >
+            Request a walkthrough
+          </a>
+        </div>
+      </header>
+      <section
+        id="method"
+        className="scroll-mt-24 py-10"
+        aria-labelledby="principles-title"
+      >
+        <h2 id="principles-title" className="font-display text-2xl">
+          Three questions guide the work.
+        </h2>
+        <div className="mt-5 grid gap-5 md:grid-cols-3">
+          {[
+            [
+              "Who matters?",
+              "Map decision roles and affected teams, beyond the people already in the meeting.",
+            ],
+            [
+              "What is validated?",
+              "Separate access from influence. A responsive contact is not automatically a champion or budget owner.",
+            ],
+            [
+              "Why another conversation?",
+              "Connect each introduction to a stakeholder’s priorities and the decision the group needs to make.",
+            ],
+          ].map(([title, body]) => (
+            <article key={title} className="border-l-2 border-border pl-4">
+              <h3 className="font-semibold">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section
+        id="coverage-lab"
+        className="scroll-mt-24 border-b border-border pb-10"
+      >
+        <StakeholderPlayground />
+      </section>
+      <section id="coaching" className="scroll-mt-24 py-10">
+        <h2 className="font-display text-2xl">What the example reveals</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
+          The security champion and technical evaluator are engaged, but budget
+          authority is still unvalidated. I would use the next conversation to
+          understand the approval path and earn a business-outcome discussion.
+          As a coach, I would ask what evidence supports that introduction and
+          who owns the next action.
+        </p>
+      </section>
+      <section
+        id="deeper-access"
+        className="scroll-mt-24 rounded-2xl border border-border bg-card p-6 sm:p-8"
+      >
+        <p className="text-xs font-medium tracking-wide text-muted uppercase">
+          A closer look · Reviewed individually
+        </p>
+        <h2 className="mt-2 font-display text-3xl">
+          Go deeper into the approach.
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
+          Request a conversation about stakeholder planning, champion
+          validation, and how I would coach the next move. I’ll review the
+          request and confirm which walkthrough or sanitized materials I can
+          share.
+        </p>
+        <Link
+          href="/contact?playbook=multithreading#access"
+          className="mt-5 inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-accent-foreground"
+        >
+          Request a deeper walkthrough →
+        </Link>
+        <p className="mt-3 text-xs leading-5 text-muted">
+          Requests do not automatically unlock files. Detailed materials are
+          shared separately after review, where available.
+        </p>
+      </section>
+      <section id="research" className="scroll-mt-24 py-8">
+        <p className="max-w-2xl text-sm leading-6 text-muted">
+          Account research can suggest who to involve; customer conversations
+          validate their priorities and influence.{" "}
+          <Link
+            href="/field-notes/enterprise-deal"
+            className="text-accent underline underline-offset-4"
+          >
+            See where this fits in an enterprise deal →
+          </Link>
+        </p>
+      </section>
+      <SourceAndEvidencePanel
+        status="illustrative"
+        limitations="Stakeholders, relationships and access states are fictional. This preview does not read private account systems. Coverage does not prove influence, budget approval or purchase intent."
+      />
+      <RelatedWork
+        items={[
+          {
+            href: "/field-notes/enterprise-deal",
+            title: "Enterprise deal anatomy",
+            category: "Field Notes",
+          },
+          {
+            href: "/work",
+            title: "Enterprise sales and team leadership",
+            category: "Work",
+          },
+        ]}
+      />
+    </PageMain>
+  );
 }
