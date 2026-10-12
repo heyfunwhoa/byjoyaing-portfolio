@@ -2,6 +2,7 @@ import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack"
 import { PageMain } from "@/components/page-main";
 import { RelatedWork } from "@/components/related-work";
 import { SampleRecordView } from "@/components/sample-record";
+import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { salesProject, sampleFor } from "@/lib/sales";
@@ -19,7 +20,8 @@ export function FieldAssetCase({
   return (
     <PageMain>
       <section className="border-b border-border py-16">
-        <div className="flex flex-wrap items-center gap-3">
+        <WorkCaseBreadcrumb slug={slug} />
+        <div className="mt-4 flex flex-wrap items-center gap-3">
           <ProjectKindLabel slug={slug} />
           <StatusBadge status={project.status} />
           <p className="text-sm text-muted">{project.phase}</p>

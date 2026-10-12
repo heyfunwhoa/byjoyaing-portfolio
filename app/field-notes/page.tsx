@@ -2,7 +2,6 @@ import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { publicStories } from "@/lib/public-stories";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/field-notes" },
@@ -11,27 +10,13 @@ export const metadata: Metadata = {
   description: "Playbooks, frameworks, lessons learned, and operating systems for relationships, revenue, and teams.",
 };
 
-const collections = [
-  {
-    title: "Playbooks",
-    description: "Practical approaches to strategic account planning, buying-committee alignment, deal execution, and coaching.",
-    examples: ["Multithreading & stakeholder mapping (seller + coach perspectives)", "Strategic account planning", "Deal inspection"],
-  },
-  {
-    title: "Frameworks",
-    description: "Decision tools for exploring markets, evaluating tradeoffs, and finding the right problems to solve.",
-    examples: ["ICP and segmentation", "Opportunity qualification", "Prioritization"],
-  },
-  {
-    title: "Operating Systems",
-    description: "Repeatable rhythms and processes that connect strategy to execution. These are operating models, not claims of deployed software.",
-    examples: ["Pipeline and forecast cadence", "GTM account planning", "Coaching and onboarding rhythms"],
-  },
-  {
-    title: "Lessons Learned",
-    description: "Reflections on field experience, collaboration, experiments, and what I would do differently.",
-    examples: ["Building trust across teams", "Making technical complexity useful", "Learning through iteration"],
-  },
+const plannedTopics = [
+  "Strategic account planning",
+  "Deal inspection",
+  "ICP and segmentation",
+  "Opportunity qualification",
+  "Pipeline and forecast cadence",
+  "Coaching and onboarding rhythms",
 ] as const;
 
 export default function FieldNotesPage() {
@@ -48,16 +33,14 @@ export default function FieldNotesPage() {
           not just the finished output.
         </p>
         <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
-          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#featured">Featured guides</a>
-          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#approach">Approach</a>
-          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#collections">Collections</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#featured">Published guides</a>
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#private">Private work</a>
         </nav>
         </div>
         <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="explorer" /><p className="editorial-eyebrow mt-3 text-center text-muted">Explorer / Field Notes</p></div>
       </header>
       <section id="featured" className="section-enter scroll-mt-24 border-b border-border py-12">
-        <div className="flex flex-wrap items-end justify-between gap-4"><h2 className="font-display text-3xl tracking-tight">Start with the work</h2><span className="text-xs text-muted">Two interactive field guides · Synthetic demonstrations</span></div>
+        <div className="flex flex-wrap items-end justify-between gap-4"><h2 className="font-display text-3xl tracking-tight">The published notes</h2><span className="text-xs text-muted">Two interactive field guides · Synthetic demonstrations</span></div>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {[
             {
@@ -82,57 +65,16 @@ export default function FieldNotesPage() {
           ))}
         </div>
       </section>
-      <section aria-labelledby="story-connections-title" className="border-b border-border py-12">
-        <p className="editorial-eyebrow text-accent">From practice to method</p>
-        <h2 id="story-connections-title" className="mt-3 font-display text-3xl">Where these ideas connect to professional work</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">Professional responsibilities and independent illustrations are presented separately. Explore the public work first, then follow the method or project that explains the thinking.</p>
-        <div className="mt-6 grid gap-3 md:grid-cols-3">
-          {publicStories.map(story => (
-            <article key={story.id} className="flex flex-col rounded-xl border border-border bg-card p-5">
-              <p className="editorial-eyebrow text-accent">{story.area}</p>
-              <h3 className="mt-2 text-xl font-semibold">{story.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-6 text-muted">{story.takeaway}</p>
-              <Link href={story.area === "Enterprise Sales" ? "/work#enterprise-sales" : story.area === "People & Leadership" ? "/work#people-leadership" : "/work#gtm-strategy"} className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">
-                Read professional context →
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section id="approach" className="scroll-mt-24 border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">A way of working, not a set of job titles</h2>
-        <ol className="mt-7 divide-y divide-border border-y border-border">
-          {[
-            ["Strategist", "Look for patterns, understand buyers, and ask better questions."],
-            ["Leader", "Build trust, create alignment, and develop people."],
-            ["Builder", "Translate ideas into useful and repeatable systems."],
-          ].map(([title, description], index) => (
-            <li key={title} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 py-4 sm:grid-cols-[3rem_12rem_minmax(0,1fr)] sm:items-baseline">
-              <span className="editorial-eyebrow pt-1 text-accent">{String(index + 1).padStart(2, "0")}</span>
-              <h3 className="font-display text-2xl sm:col-start-2">{title}</h3>
-              <p className="col-start-2 text-sm leading-6 text-muted sm:col-start-3">{description}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-      <section id="collections" className="scroll-mt-24 py-12">
-        <h2 className="font-display text-3xl tracking-tight">Browse the collections</h2>
+      <section id="coming-later" className="scroll-mt-24 border-b border-border py-12">
+        <h2 className="font-display text-3xl tracking-tight">Notes still in outline</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Collection outlines are starting points, not published case studies or claims of measured results.
-          Two interactive guides are published above. The topics below are planned outlines, not clickable or published articles. New entries will include sources and labels: Used in practice, Illustrative model, or Exploring.
+          These topics are not articles. They are subjects I may write later, each labeled Used in practice, Illustrative model, or Exploring when they exist. Nothing below is clickable on purpose.
         </p>
-        <div className="mt-7 grid gap-4 md:grid-cols-2">
-          {collections.map((collection) => (
-            <article key={collection.title} className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="text-xl font-semibold">{collection.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted">{collection.description}</p>
-              <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-muted">Planned topics — not published</p>
-              <ul className="mt-2 list-inside list-disc space-y-2 text-sm">
-                {collection.examples.map((example) => <li key={example}>{example}</li>)}
-              </ul>
-            </article>
+        <ul className="mt-6 max-w-xl list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
+          {plannedTopics.map((topic) => (
+            <li key={topic}>{topic}</li>
           ))}
-        </div>
+        </ul>
       </section>
       <section id="private" className="scroll-mt-24 border-t border-border py-12">
         <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>

@@ -11,7 +11,7 @@ Templates are compositions of the components below. Do not add a template compon
 
 | Template | Used by | Composition | Build note |
 | --- | --- | --- | --- |
-| T1 Preview | Home | Hero, condensed proof, three-tile `EditorialBento`, one field practice, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
+| T1 Preview | Home | Hero, condensed proof, three-tile `EditorialBento`, one side quest, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
 | T2 Collection index | Work, Field Notes, Side Quests | Hero with the matching avatar, in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
 | T3 Profile | About | Leader portrait, origin, philosophy, arc link, interests | Toolkit stays last |
 | T4 Utility | Contact | Headline, links, `InquiryForm` | Work-example requests add a focus select. The general message does not. |
@@ -28,6 +28,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 
 | Component | What it does now | Possible later role | Action |
 | --- | --- | --- | --- |
+| `collection-breadcrumb.tsx` | Home / collection / title. Kind, not the `/work/` prefix, picks Work vs Side Quests. | Case-study and Field Notes trail | Implemented on `/work/[slug]` templates and Field Notes guides. |
 | `page-main.tsx` | Page width and padding | Keep | Implemented |
 | `site-header.tsx` | Six-item nav, mobile menu, Escape restores focus | Keep | Implemented. Closed panel is `hidden`. Open panel hangs from the header with `top-full`. While open, main, footer, and the skip link are `inert`. `/work/[slug]` is not marked active. |
 | `mark.tsx` | `joy.` signature | Keep | Implemented |

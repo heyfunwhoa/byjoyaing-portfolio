@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
-import Link from "next/link";
+import { FieldNoteBreadcrumb } from "@/components/collection-breadcrumb";
 import type { EvidenceStatus } from "@/components/editorial/source-and-evidence-panel";
+import type { ReactNode } from "react";
 
 const labels: Record<EvidenceStatus, string> = {
   "used-in-practice": "Used in practice",
@@ -28,7 +28,7 @@ export function EditorialArticle({
   return (
     <article className="min-w-0">
       <header className="border-b border-border py-10 sm:py-14">
-        <Link href="/field-notes" className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">← All Field Notes</Link>
+        <FieldNoteBreadcrumb title={title} />
         <p className="editorial-eyebrow mt-4 text-accent">{eyebrow}</p>
         <h1 className="editorial-title mt-3 max-w-[19ch]">{title}</h1>
         <p className="editorial-intro mt-5 text-muted">{description}</p>
