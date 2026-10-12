@@ -67,7 +67,7 @@ test("brand tokens stay ivory, charcoal, and copper", () => {
   assert.match(css, /color:\s*var\(--foreground\)/);
 });
 
-test("installed primitives are present and public pages do not adopt them", () => {
+test("installed primitives are present and public adoption stays explicitly scoped", () => {
   for (const file of [
     "components/ui/card.tsx",
     "components/ui/tabs.tsx",
@@ -91,6 +91,11 @@ test("installed primitives are present and public pages do not adopt them", () =
   assert.equal(layout.includes('from "geist"'), false);
   assert.equal(layout.includes("ThemeProvider"), false);
 
+  // Public adoption is reviewed per component and page rather than globally banned.
+  // The approved Work carousel is the only public-page exception today.
+  const approvedPublicImports: Record<string, string[]> = {
+    "app/work/page.tsx": ["@/components/ui/carousel"],
+  };
   const offenders: string[] = [];
   for (const file of [...sourceFiles("app"), ...sourceFiles("components")]) {
     if (
@@ -101,11 +106,13 @@ test("installed primitives are present and public pages do not adopt them", () =
       continue;
     }
     const source = read(file);
-    if (source.includes("@/components/ui/") || source.includes("components/ui/")) {
-      offenders.push(file);
-    }
+    const imports = [...source.matchAll(/from\s+["'](@\/components\/ui\/[^"']+)["']/g)].map((match) => match[1]);
+    const unexpected = imports.filter((specifier) => !approvedPublicImports[file]?.includes(specifier));
+    if (unexpected.length) offenders.push(`${file}: ${unexpected.join(", ")}`);
   }
   assert.deepEqual(offenders, []);
+  assert.match(read("app/work/page.tsx"), /from ["']@\/components\/ui\/carousel["']/);
+  assert.match(read("app/work/page.tsx"), /<Carousel\b/);
 });
 
 test("bento grid and lifeline stay inside the design lab", () => {
