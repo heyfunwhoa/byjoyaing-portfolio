@@ -72,3 +72,13 @@ test("compact cards never exceed the logo limit", () => {
     assert.ok(compactTechnologyIds(slug).length > 0);
   }
 });
+
+test("verified technology logos point to explicit public HTTPS destinations", () => {
+  const tech = readFileSync(path.join(root, "components/portfolio/technology-stack.tsx"), "utf8");
+  assert.match(tech, /href=\{technology\.website\}/);
+  assert.match(tech, /aria-label=\{/);
+  assert.match(tech, /rel="noopener noreferrer"/);
+  for (const entry of Object.values(technologies)) {
+    assert.match(entry.website, /^https:\/\//);
+  }
+});
