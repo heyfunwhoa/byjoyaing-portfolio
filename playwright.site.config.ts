@@ -23,6 +23,7 @@ export default defineConfig({
   },
   projects: [
     { name: "site-desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1280, height: 900 } } },
+    { name: "site-tablet", use: { ...devices["Desktop Chrome"], viewport: { width: 768, height: 1024 }, hasTouch: true } },
     { name: "site-mobile", use: { ...devices["Pixel 7"], browserName: "chromium" } },
   ],
   webServer: remote ? undefined : {
