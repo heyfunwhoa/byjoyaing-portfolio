@@ -15,6 +15,7 @@ export const learningPaths = [
     outcome:
       "Connect delivery planning, Cursor, dependencies, integrations and cost controls.",
     slugs: [
+      "reading-code-and-yaml",
       "idea-to-verified-release",
       "cursor-workflows",
       "package-registries",
@@ -61,3 +62,4 @@ export const learningPaths = [
     ],
   },
 ] as const;
+

@@ -28,6 +28,11 @@ const availableLesson = {
 } as const;
 
 export const lessonGuidance = {
+  "reading-code-and-yaml": {
+    ...availableLesson,
+    prerequisites: [],
+    guide: guide("reading-code-and-yaml", "Read the code and YAML beginner guide"),
+  },
   "what-is-ai": { ...availableLesson, prerequisites: [] },
   evolution: { ...availableLesson, prerequisites: ["what-is-ai"] },
   privacy: { ...availableLesson, prerequisites: [] },
@@ -254,3 +259,4 @@ export const academyResources = [
   format: string;
   detail: string;
 }[];
+

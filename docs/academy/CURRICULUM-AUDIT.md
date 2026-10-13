@@ -5,6 +5,27 @@
 **Owner:** Kristen Aing
 **Status:** Priority order retained. The user authorized the existing-content navigation and metadata foundation (Batch B slice), including its merge before mission work. New lesson authoring and new labs remain on hold. See [mission handoff](MISSION-HANDOFF.md).
 
+## Focused re-audit: AI Foundations versus Builder Academy
+
+**2026-10-12 follow-up:** The user authorized one beginner code/file/YAML lesson and this comparison. This supersedes the authoring hold only for that slice. The prior full inventory remains a historical baseline; this follow-up inspected the current catalog, guidance, paths, programming registry, program and open PR #131. It is not a fresh exhaustive route or browser audit.
+
+The shared catalog has 22 lessons before this change and 23 with `reading-code-and-yaml`. Keep one Academy and two clearly described entry paths; `/ai-academy` is the shared implementation, not proof of a separate competing AI product. Keep legacy `/builder-academy/*` lab links intact.
+
+| Area | Current evidence | Decision / next action |
+| --- | --- | --- |
+| AI Foundations | AI basics, privacy, prompting, verification and their journeys already exist | Keep AI basics as this path's entry; deepen tokens/context/retrieval through existing lessons, not a duplicate Academy |
+| Builder foundations | Programming registry has 10 module records; current resource metadata reports only two guided tutorials | Add this no-prerequisite file-reading bridge; complete existing language modules before adding another language explorer |
+| Shared content | Privacy, verification, skills, model evaluation and applied research span paths | Reuse stable lesson IDs and cross-links; avoid cloned content and duplicate progress |
+| Naming | UI paths and source folders mix AI and Builder names; PROGRAM already specifies one platform | Describe the umbrella as Builder Academy with AI Foundations and Software Building entry paths; a route rename is unnecessary and not implemented here |
+| BA-03: files/repository | New guide covers file recognition and small code traces | Partly addressed; terminal output, import tracing and repository navigation remain follow-up |
+| BA-05: structured data | New guide covers JSON/YAML, types, nesting, parser versus schema | Partly addressed; runtime validation and schema repair are not implemented |
+| BA-02: app journey | Open PR #131 implements Follow one click on the merged foundation | Review and integrate that PR separately; do not recreate its mission or progress storage |
+| Learning evidence | Cards, guides and simulations offer different depth | Preserve Reviewed, Practiced and Passed checks as distinct; a guide answer key is self-review, not automatic grading |
+
+**Recommended sequence after this slice:** review the existing mission PR; deepen repository/terminal reading; teach HTTP request/response; add one debugging exercise; complete structured-data runtime validation. AI mental models can progress independently. Reuse the existing FinOps walkthrough, Git simulation and privacy lessons along the way. Keep broader systems and new paid/live labs planned.
+
+**Acceptance for this slice:** one sourced guide with glossary, worked examples and answer key; one registered lesson and matching guidance; delivery path entry; no required AI prerequisite, new route, dependency or progress mechanism. Registration is not production deployment verification.
+
 ## Decision and scope
 
 Complete and connect the existing material before expanding the catalog. The biggest missing bridge is understanding and diagnosing a working application: repository → browser/server → structured data → HTTP → persisted records → verified outcome.
@@ -219,3 +240,4 @@ Implementation acceptance follows [LEARNING-DEPTH.md](LEARNING-DEPTH.md): observ
 - Primary evidence: [lesson catalog](../../lib/ai-academy.ts), [path definitions](../../lib/academy/learning-paths.ts), [programming curriculum](../../lib/academy/programming.ts), [guided tutorials](../../lib/academy/guided-lessons.ts), [Academy renderer](../../components/ai-academy/academy.tsx), [programming renderer](../../components/ai-academy/programming-foundations.tsx), [systems page](../../app/ai-academy/systems/page.tsx), [advanced lab scenarios](../../lib/ai-academy-advanced-labs.ts), [identity scenarios](../../lib/builder-academy/identity-journey.ts), [credential-risk scenarios](../../lib/builder-academy/credential-risk.ts).
 - This is a content/coverage audit, not a legal/security fact check, learner efficacy study, full accessibility audit or certification.
 - Docs-only validation: catalog/module/guide/route counts reconciled, inventory coverage checked, relative links checked, whitespace diff checked. Application tests/build/browser checks are not required for unchanged runtime and were not run in this change.
+
