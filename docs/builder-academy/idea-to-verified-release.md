@@ -57,6 +57,120 @@ Your fictional button-label fix is committed and its PR is open. Someone says, â
 
 When that feels familiar, continue below for the more detailed workflow and terminology.
 
+## Beginner layer: dependencies and the whole delivery cycle
+
+**Optional extension:** 20 minutes, followed by a 10-minute paper exercise. **Primary references checked:** 2026-10-13. Start here after the typo example. No terminal, accounts or paid tools required.
+
+**Outcome:** Explain what a change needs, identify the version being checked, and distinguish prepared, tested, merged and verified live.
+
+### The life cycle in ordinary words
+
+The **software development life cycle (SDLC)** is the repeating process of understanding a problem, building a solution, checking it, releasing it and maintaining it. Teams revisit earlier steps as they learn; this table is a teaching sequence, not a mandatory one-way process.
+
+| Plain-language question | Technical term | Fictional lesson-editor example |
+| --- | --- | --- |
+| Who needs help, and why? | Discovery | A lesson author finds code editing cumbersome |
+| What must work? | Requirements and acceptance criteria | Save one lesson without changing its URL or learner progress |
+| How will the pieces fit? | Design, architecture and interface contract | Editor writes content; reader displays it; scoring remains code-owned |
+| What must happen first? | Planning and dependency mapping | Agree on the lesson fields before connecting the editor and reader |
+| Make the smallest useful change | Implementation | Connect one lesson end to end: a vertical slice |
+| Does it behave as intended? | Verification and testing | Save, read, reload and inspect progress |
+| Does it meet the learner's need? | Validation and user acceptance testing (UAT) | Watch someone complete the editing task |
+| Inspect and accept the proposal | Code review and integration | Review a PR, then merge when authorized |
+| Run the version on hosting | Deployment | Publish a build to a preview or production environment |
+| Make it available to users | Release | Enable the lesson for learners |
+| Notice problems and improve | Operations and maintenance | Investigate errors, repair defects and review updates |
+
+A **PRD** records product requirements. An **issue** tracks a bounded task. **Scope** says what belongs in that task; **non-goals** say what is deliberately excluded. A **Definition of Done** describes the evidence expected before completion. Security, accessibility and privacy belong throughout this loop.
+
+### Dependencies: what this work needs
+
+Think about a fictional webinar: invitations need a registration page; the event needs a meeting service. Software dependencies work similarly.
+
+| Kind | Meaning | Example |
+| --- | --- | --- |
+| Task dependency | One task needs another result first | Expand to three editable lessons after proving one |
+| Package dependency | The app uses reusable software | A framework or Markdown parser |
+| Service dependency | A feature calls another system | An email service delivers a contact message |
+| Data dependency | A view needs records in an agreed format | Comparison cells need claims and source references |
+| Access/configuration dependency | Work requires permissions or settings | A reviewer needs access to deployment records |
+
+A **blocker** is a missing or failing dependency that prevents a particular next step. Missing production access may block live verification while local tests continue. Record precisely what is blocked.
+
+**Upstream** produces something; **downstream** consumes it. An editor can produce a lesson record that a reader consumes. Their agreed fields are an **interface contract** or **schema**. Renaming a required field without updating consumers can be a **breaking change**.
+
+Independent tasks may run **in parallel**. Dependent tasks need sequencing. A chain of dependencies that determines the earliest finish is the **critical path**. Adding more workers to unrelated tasks does not remove its blocker.
+
+### Packages and lockfiles
+
+A **direct dependency** is explicitly listed by your project. A **transitive dependency** is needed by one of its dependencies. A **development dependency** supports development, tests or builds; it can still execute code and create risk.
+
+In an npm project, `package.json` declares packages and allowed versions. `package-lock.json` records a resolved dependency tree. It helps reproduce installations; it does not guarantee identical results across every operating system or configuration. See the [npm lockfile reference](https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json/).
+
+An upgrade may fix a vulnerability or change behavior. Read its changes, keep the manifest and lockfile consistent, and verify the affected features. Practice next in [Lockfiles and reproducible builds](https://www.byjoyaing.com/ai-academy/dependencies/lockfiles).
+
+### Full head SHA: which saved version?
+
+A **commit** is a recorded checkpoint. Its **SHA**, or commit hash, identifies that commit. SHA stands for Secure Hash Algorithm. In a SHA-1 repository, a full identifier has 40 hexadecimal characters. A shortened display is convenient; retain the full identifier in a handoff.
+
+A commit links a project snapshot with metadata and parent history, so identical files can occur in different commits. A SHA identifies a version; it does not prove quality or approval. [Git objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects) explains the structure.
+
+For a PR, **head SHA** means the latest commit on its source branch. The **base branch** is its destination, commonly `main`. A branch name can point to a newer commit later; a commit identifier keeps identifying that particular checkpoint. Local Git's `HEAD` identifies the current checkout and is not automatically the remote PR head.
+
+### Follow the evidence when the version changes
+
+Synthetic example: a reviewer approved proposal version A. The writer changes it to B. The approval evidence for A cannot establish that the changed B is ready.
+
+| Observation | What you may conclude |
+| --- | --- |
+| Tests passed for A; PR now contains B | A's results alone do not verify B |
+| B passes a test for saving a lesson | That tested behavior passed; progress preservation may still be untested |
+| Required build was skipped | No build pass was established by that run |
+| PR merged | Changes entered the destination; production may still serve an older version |
+| Production deployment succeeded | Check the affected live user journey before claiming it works |
+
+**Continuous integration (CI)** runs automated checks. Some PR workflows check a temporary merge with the base branch. Match evidence to the current proposal and relevant baseline; if either changes, reassess applicable checks. Status reports and enforced merge rules are separate. See [GitHub status checks](https://docs.github.com/en/pull-requests/reference/status-checks).
+
+A merge or rebase can create new commit identifiers. Follow the PR's merge record and deployment revision rather than expecting the original PR head and production SHA always to be identical.
+
+### What each test asks
+
+| Technical word | Plain-language question |
+| --- | --- |
+| Unit test | Does this small piece behave correctly? |
+| Integration test | Do these connected pieces cooperate? |
+| End-to-end test (E2E) | Can the tested user journey succeed? |
+| Regression test | Did we break a behavior that used to work? |
+| Visual regression check | Did appearance change against the configured reference? |
+| Accessibility check | Can people operate and understand the tested interface? |
+| Smoke test | Do the most essential functions work after a change? |
+
+A **merge conflict** is an edit Git cannot reconcile automatically. An **integration bug** can occur even after a clean merge when components disagree. A flaky test gives inconsistent results under apparently similar conditions; investigate it instead of repeatedly rerunning until green.
+
+### Where the app runs, and how to recover
+
+**Local** is a development environment. **Preview/staging** is a place to inspect a candidate. **Production** serves real users. Their data, permissions and configuration can differ.
+
+A **build artifact** is the packaged output used to run an application. Deployment puts a version onto hosting; release makes a feature available. A **feature flag** can separate those events. Continuous **delivery** keeps changes ready for release; continuous **deployment** automatically releases changes that pass the configured gates.
+
+**Monitoring** watches known signals. **Observability** supplies logs, metrics and traces to investigate behavior. An **incident** is a disruption requiring response; a **hotfix** is a focused urgent repair. **Rollback** returns to an earlier version, but does not necessarily undo data changes or sent emails. Data migrations need their own recovery plan.
+
+### Paper practice: decide what is ready
+
+Use fictional labels A/B/C instead of real commit IDs. Do not change a live repository.
+
+1. Editor work needs a schema; an unrelated wording fix can start now. Which tasks run together?
+2. The PR head is B. Tests passed for A; the build for B failed. What should happen next?
+3. Tests for B pass after repair. The PR is squash-merged as C. What version should deployment evidence identify?
+4. Production is inaccessible to the reviewer. Which completion claim must remain unverified?
+5. Two branches merge cleanly, but one sends `heading` while the reader expects `title`. Name the problem.
+
+**Answer key:** (1) The wording fix can run while the schema is defined; connect the editor after the contract is agreed. (2) Inspect B's failure, fix it, record the resulting new head and relevant results; A is insufficient evidence. (3) Trace the accepted changes to C and check the actual deployment's revision, then the live journey. (4) Production behavior remains unverified even if local tests pass. (5) An integration bug caused by a broken contract.
+
+**Completion evidence:** Write a five-line handoff: change and scope; dependencies/blockers; PR and full head SHA; checks with pass/fail/not-run; release status and recovery. Explain why each line matters. This paper practice does not automatically award an in-app assessment pass.
+
+**Next layer:** [Add agents to this delivery loop](cursor-agent-workflows.md#11-add-agents-to-the-delivery-loop). The basics still apply when an AI performs some steps.
+
 ## Add the security layer when you are ready
 
 Continue with [Developer tools and AppSec: follow one change](developer-tooling-appsec-workflow.md). Start with IDEs and AI assistants, then Git history, pre-commit and CI/CD checks. Follow a fictional credential exposure into AppSec controls and specific MITRE ATT&CK techniques. The final layer introduces SSDF, ASVS, SAMM and CWE, with official sources and a practice exercise.
