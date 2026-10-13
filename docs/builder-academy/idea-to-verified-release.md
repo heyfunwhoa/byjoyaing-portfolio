@@ -227,6 +227,133 @@ Link the accepted PRD revision in the agent brief. If new evidence changes a req
 
 No source above validates the fictional lesson-editor outcome or certifies that this portfolio follows its process.
 
+### People and organizations: who fits where?
+
+**Optional extension:** 20 minutes. The maps below are illustrative responsibility patterns, not a universal org chart or a recommendation to hire every role.
+
+Separate three lenses:
+
+- **Delivery roles:** people building and operating the product.
+- **Customer personas and buying roles:** people using, administering, evaluating or purchasing it.
+- **Decision authority:** who can choose scope, accept risk, spend money or authorize release.
+
+A **persona** summarizes evidence about a type of user: their task, context, obstacles and success criteria. A job title alone does not establish those needs. An **organization chart** shows reporting relationships; it does not automatically explain workflow or decision rights. A **stakeholder** affects or is affected by the outcome.
+
+GOV.UK describes multidisciplinary service teams whose skills evolve through the life cycle [O1]. Its discovery guidance includes learning about different users and expressing that understanding through artifacts such as personas [O2]. The commercial examples and timing maps below are Academy teaching synthesis.
+
+### The team building the product
+
+Read these as responsibilities that need coverage, not mandatory departments.
+
+| Role or function | Plain-language contribution | Question they help answer |
+| --- | --- | --- |
+| Product manager / product owner | Frames outcomes and priorities | Which problem should this slice solve? |
+| Designer / researcher | Investigates needs and tests the experience | Can intended users complete the task? |
+| Engineering / technical lead | Designs, implements and reviews the system | Will these components work together? |
+| Delivery manager / project manager / TPM | Coordinates execution and dependencies | Who is waiting on whom, and what decision unblocks them? |
+| Quality / test specialist | Challenges behavior and missing coverage | Which failure would our current checks miss? |
+| Security / privacy / legal | Reviews relevant boundaries and obligations | What may this feature access, retain or disclose? |
+| Platform / operations / SRE | Supports deployment, reliability and recovery | Who notices and recovers from a failure? |
+| Data / analytics | Defines useful measurement | What evidence would change our next decision? |
+| Product marketing / enablement | Explains value and prepares adoption material | What can we accurately tell users and sellers? |
+| Sales / solutions engineering | Brings field needs and evaluation evidence | What prevents a customer from buying or adopting? |
+| Customer success / support | Brings onboarding friction and recurring problems | Where do users need help after launch? |
+| Executive sponsor / finance | Sets investment boundaries and resolves trade-offs | Why fund this now, and within what limits? |
+
+**PM** often means product manager; **TPM** means technical program manager; **PMM** means product marketing manager; **SRE** means site reliability engineering. Titles and authority vary. Product owner can be an accountability held by someone with another job title. A technical lead and an engineering manager may have different responsibilities. Ask who owns the specific decision.
+
+Quality, security and accessibility need shared attention. A specialist's involvement does not transfer every responsibility away from the rest of the team.
+
+### Roughly when each perspective matters
+
+These are recurring collaborations, not a document passed between departments with no return path.
+
+| Stage | Typical collaboration | Reviewable output |
+| --- | --- | --- |
+| Idea / discovery | Product, users, research, sales, support/CS | Observed problem, affected personas, alternatives and unknowns |
+| PRD / scope | Product with design, engineering and relevant specialists | Agreed outcome, requirements, exclusions and decision owners |
+| Design / feasibility | Design, engineering, security/privacy, operations | Tested concept, interface decisions and risk/dependency notes |
+| Build | Engineering with product/design available for questions | Small PRs, tests and documented changes to assumptions |
+| Review / validation | Reviewers, intended users, product and relevant specialists | Acceptance evidence, usability observations and unresolved risks |
+| Release / adoption | Engineering/operations, product, PMM, support/CS and sales as relevant | Deployment evidence, recovery, release notes and accurate enablement |
+| Operate / learn | Users, support/CS, operations, product and analytics | Incidents, adoption evidence and next prioritization decision |
+
+Bring a perspective in early when it could invalidate the plan. For example, a privacy constraint that changes the data model belongs before implementation, not only in a final launch review. Customer-facing teams can contribute throughout; a feature request remains evidence to assess, not an automatic delivery promise.
+
+### Customer organizations: user is not always buyer
+
+A B2B product may serve several people with different concerns. The following is a fictional security-tool example, not researched personas for any named company.
+
+| Persona / buying role | Task or concern to investigate | PRD implication | Evidence to seek |
+| --- | --- | --- | --- |
+| Practitioner / daily user | Investigate a finding without losing context | Useful workflow, evidence links and clear uncertainty | Observe an investigation task |
+| Administrator / platform owner | Configure access and integrations | Setup, permissions, diagnostics and recovery | Observe setup and failed configuration |
+| Champion | Build internal support for change | A defensible explanation of value and limitations | Validate how they secure agreement |
+| Technical evaluator / security reviewer | Determine whether it fits requirements | Testable boundaries, compatibility and documentation | Agreed evaluation scenarios |
+| Economic buyer / budget owner | Decide whether the investment is worthwhile | Outcome measures and commercial constraints | Confirm decision criteria and baseline |
+| Procurement / legal / privacy reviewer | Evaluate contractual and data-handling terms | Document requirements or constraints needing decisions | Ask for actual review requirements |
+| Executive sponsor | Align the change with organizational goals | Strategic outcome and ownership | Confirm sponsorship and authority |
+| Support or service partner | Help others use or operate it | Troubleshooting and handoff information | Examine support tasks and failure cases |
+
+One person can occupy several roles. A champion may lack budget authority; a CISO is not automatically the economic buyer for every purchase. Validate the actual organization instead of inferring its process from a title.
+
+**ICP** means ideal customer profile: the type of organization a product is intended to serve. **Persona** focuses on a type of person and their needs. **Buying committee** describes participants in a purchase decision. **Jobs to be done (JTBD)** focuses on the progress someone wants to make in a situation. These lenses inform research; none replaces it.
+
+For a persona worksheet, capture role, context, job, current workaround, pain, desired outcome, constraints, accessibility/support needs, decision authority and evidence/date. Mark untested descriptions as hypotheses. Avoid invented biographies or irrelevant demographic stereotypes.
+
+### How this scales with an organization
+
+| Setting | Plausible arrangement | What to keep explicit |
+| --- | --- | --- |
+| Solo builder | One person covers product, delivery, review and operations; agents assist | Which hat is making a decision, what is unverified, and release authority |
+| Small startup | Founder/product and a few engineers share work; sales/CS bring customer context | One outcome owner, shared-file ownership and support responsibility |
+| Growing company | Product/design/engineering squads with shared specialist support | Interfaces between squads, common platform dependencies and rollout ownership |
+| Larger or regulated organization | Multiple product teams and specialist review functions | Applicable approvals, evidence retention, data ownership and escalation paths |
+
+These are examples, not headcount thresholds or a maturity ranking. Add coordination when actual dependency or risk warrants it. Buying more tools or assigning more agent roles does not establish organizational maturity.
+
+A **cross-functional team** combines different skills around an outcome. A **platform team** provides shared capabilities to other teams. A **matrix organization** can involve both functional reporting and project collaboration. Clarify actual decision rights in any structure.
+
+### Who decides? A small decision record
+
+For a consequential decision, Atlassian's **DACI** framework distinguishes the **Driver** coordinating it, the **Approver** deciding, **Contributors** advising and people **Informed** of the result [O3]. This is a decision framework, not a software permission system. This lesson does not require applying it to every edit.
+
+Fictional decision: should the lesson editor support hosted publishing now?
+
+- Driver: the product/delivery owner gathers options and blockers.
+- Approver: the authorized product/service owner chooses scope and investment.
+- Contributors: an author, engineer and relevant access/security owner assess usability and feasibility.
+- Informed: support and anyone maintaining the learner experience.
+- Record: options, evidence, decision, reason, date and the issues it changes.
+
+Scope approval and permission to deploy are distinct. Name the authorized release owner explicitly. An AI assigned “reviewer” or “security agent” may inspect evidence, but that label supplies neither professional assurance nor organizational authority.
+
+### Connect the people back to requirements
+
+Synthetic requirement R1: “Authors can update a summary without changing learner progress.”
+
+The author supplies the need; the learner is an affected user. Product defines scope and success. Engineering assesses storage and reader behavior. Design tests feedback and keyboard flow. Review checks the actual change and progress evidence. Operations owns the intended environment and recovery. Support needs an accurate explanation of where editing works. An agent can help perform bounded tasks within each role's authorization.
+
+A sales leader can contribute structured evidence: affected segment/persona, workflow, frequency, impact, workaround, sources, uncertainty and urgency. Product evaluates it alongside other needs. Avoid promising dates or general availability before the owning team agrees.
+
+### Practice: spot the missing people
+
+A fictional buyer asks for automatic publication. Sales promises next week. An implementation agent adds a Publish button. The author likes it, but nobody checks reader progress, who may publish, or how support restores a bad edit.
+
+Name the missing perspectives and decide what to do next.
+
+**Answer key:** Involve the product decision owner to revisit scope and the unapproved commitment; an access/security owner for publishing rights; engineering/review for progress and failure-path evidence; operations/support for recovery; and affected learners for the experience. Record the buyer's request as input rather than treating it as everyone else's need. Keep the change in review until applicable decisions and checks are resolved. Do not create six new departments or six agents just to cover six questions.
+
+**Completion evidence:** Map one fictional feature to its user, buyer/admin if applicable, decision owner, implementer, reviewer and operator. State one question each contributes and the artifact carrying its answer.
+
+### Team and persona source notes
+
+- **[O1] [GOV.UK — What each role does in a service team](https://www.gov.uk/service-manual/the-team/what-each-role-does-in-service-team):** supports multidisciplinary skills, changing needs through the life cycle and shared quality responsibility. Its government roles are not a universal commercial org chart.
+- **[O2] [GOV.UK — User research in discovery](https://www.gov.uk/service-manual/user-research/user-research-in-discovery):** supports researching different users and needs, including support/access needs, before treating persona descriptions as established.
+- **[O3] [Atlassian — DACI](https://www.atlassian.com/team-playbook/plays/daci):** defines a practical decision-role framework. The fictional assignment above is an adaptation, not measured proof of effectiveness.
+
+Sources checked 2026-10-13. Commercial-role examples, organization patterns and exercises are instructional synthesis, not claims about a particular employer, customer or target company.
+
 ### Translate the PRD into work and evidence
 
 Give requirements simple identifiers so people can trace decisions. This is **requirements traceability**.
