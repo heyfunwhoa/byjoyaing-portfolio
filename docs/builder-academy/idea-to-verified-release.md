@@ -1,11 +1,30 @@
 # Builder Academy — From idea to verified release
 
-**Track:** Builder · **Level:** Beginner · **Time:** 25 minutes  
+**Track:** Builder · **Level:** Beginner · **Time:** Core path ~45 minutes; optional extensions  
 **Status:** Lesson source for the existing Academy lesson library. The linked Academy page is a public educational prototype; it does not expose private Linear or GitHub repositories.
 
 ## What you'll learn
 
 Translate a business idea into a small, verified software change, using a single source of truth for each kind of information. The benefit is less context switching, less duplicate administration, and evidence-based delivery rather than declaring something done because an agent said it finished.
+
+
+## Choose a short learning path
+
+Do not read every reference in one sitting. These suggested times are study budgets, not measured completion times. The first three stops form the core path; optional sections remain available for later.
+
+| Stop | Read | Produce before moving on |
+| --- | --- | --- |
+| 1 — Save, check, publish (10 minutes) | [Start here](#start-here-save-it-check-it-publish-it), then [full head SHA](#full-head-sha-which-saved-version) | Explain why an open PR and an old passing test do not establish a live fix |
+| 2 — Define the work (15 minutes) | [A small PRD](#a-small-prd-you-can-actually-use), [people and organizations](#people-and-organizations-who-fits-where), then [dependencies](#dependencies-what-this-work-needs) | Write one problem, owner, requirement, non-goal and dependency |
+| 3 — Make a release decision (20 minutes) | [The worked exercise](#worked-exercise-one-lesson-edit-with-controls) below | Complete the handoff and recovery decision; compare with the answer key |
+| Optional — Research and organization | PRD deep dive, team/persona maps and [evidence practice](#use-evidence-to-improve-a-product-decision) | Identify what a source supports and what still needs local evidence |
+| Optional — Add agents (15 minutes) | [Agent companion](cursor-agent-workflows.md#11-add-agents-to-the-delivery-loop) | Give a worker permitted files, evidence requirements and a stop condition |
+| Optional — Go deeper | Security review and repository learning links | Choose one control and identify its owner, implementation and test |
+
+**Where do my answers go?** These Markdown exercises have no submit button or storage mechanism of their own. Write fictional answers on paper or in a practice note you control. They do not submit research to another application, update a CRM or award an Academy badge. The separate interactive Academy has its own storage behavior: inspect its current disclosure and implementation before assuming answers are private, synced, reviewed by a person or retained. Do not enter confidential information into a practice exercise.
+
+**Your stopping point:** You can explain the decisions and produce the listed artifacts without copying the answer key. If you cannot, reread that stop and try a new fictional example. This is self-assessment, not certification.
+
 
 ## Start here: save it, check it, publish it
 
@@ -541,6 +560,100 @@ Use fictional labels A/B/C instead of real commit IDs. Do not change a live repo
 **Completion evidence:** Write a five-line handoff: change and scope; dependencies/blockers; PR and full head SHA; checks with pass/fail/not-run; release status and recovery. Explain why each line matters. This paper practice does not automatically award an in-app assessment pass.
 
 **Next layer:** [Add agents to this delivery loop](cursor-agent-workflows.md#11-add-agents-to-the-delivery-loop). The basics still apply when an AI performs some steps.
+
+
+## Worked exercise: one lesson edit with controls
+
+**Scenario:** A fictional author wants to improve one lesson summary. The learner's existing progress must survive. You coordinate the work; a bounded implementation agent proposes the change; a human with the relevant authority decides whether to merge and release. This paper exercise does not describe verified production controls.
+
+### First make the product decision
+
+- **Problem:** The summary is unclear; whether a rewrite improves understanding remains a hypothesis.
+- **Scope:** Change one permitted summary field.
+- **Non-goals:** New accounts, scoring changes, AI tutoring, new integrations or curriculum migration.
+- **R1:** The reviewed summary renders correctly.
+- **R2:** Lesson ID and existing progress remain intact.
+- **R3:** An unauthorized editor cannot write.
+- **Outcome question:** Can an intended learner explain the summary more accurately after the change? Record observations rather than inventing improvement percentages.
+
+### Map the data before assigning tools
+
+A **data flow** says where information moves. A **trust boundary** is a point where permissions or assumptions change.
+
+| Data | Intended home and movement in this scenario | Access / lifecycle question |
+| --- | --- | --- |
+| Proposed public lesson text | Author workspace → branch/PR → approved build → reader | Author proposes; reviewer checks; authorized publisher releases. Git history can retain old text after a revert |
+| Learner progress | Existing learner-state store; excluded from the editorial change | Preserve it without copying it into prompts, PRs or fixtures; verify actual storage behavior separately |
+| Verification evidence | Synthetic test result → PR → linked delivery issue | Record commit and check result; exclude tokens and real learner data |
+| Diagnostic logs | Approved logging destination, if needed | Minimize fields; set access and retention; do not record full learner answers by default |
+| Practice answers | Learner's chosen paper/private practice note | No automatic application handoff; learner decides whether to retain or delete |
+| Copies and backups | Inventory actual exports, caches and backups before release | Deletion from one screen is not proof every copy disappeared; owner documents the applicable recovery/retention process |
+
+Do not invent a universal retention period. Choose one for the actual purpose and system, with the responsible owner. Do not use a public Git commit to store information that must remain private.
+
+### Turn the guardrails into evidence
+
+A **control** is a rule or mechanism intended to prevent, detect or recover from a problem. The table specifies desired controls for this exercise; it does not assert they exist.
+
+| Failure to prevent | Accountable role | Mechanism to inspect or implement | Evidence to request |
+| --- | --- | --- | --- |
+| Edit changes IDs or scoring | Product owner and implementer | Field/schema restrictions and scoped diff | Rejected forbidden-field fixture; stable-ID/progress regression result |
+| Unauthorized write | Engineering/security owner | Server-side authorization where applicable | Allowed and denied requests; denied request causes no write |
+| Agent exceeds its task | Coordinator | Scoped tool permissions and explicit task limits | Only permitted paths changed; unauthorized actions unavailable where enforceable |
+| Old checks justify new code | Reviewer | Review current PR head and relevant CI results | Full head SHA plus applicable check results |
+| Unapproved release | Release owner | Verified branch/environment rules, or disclosed manual gate | Current rule configuration or explicit manual approval limitation |
+| Bad release persists | Operator | Stop/revert/redeploy procedure and recovery check | Synthetic rehearsal, restored rendering and intact progress |
+| Hidden spending | Budget owner | No paid tools in this exercise; caps/approval for future activation | No paid calls; future estimates and actual usage tracked separately |
+
+A prompt saying “do not spend” is an instruction, not a provider-enforced budget limit. Likewise, a release checklist is not a technical block on deployment.
+
+### Walk through the handoffs
+
+1. **Product owner:** approves the small requirement set and names the release decision owner.
+2. **Coordinator:** gives the worker the requirements, allowed summary field, synthetic fixtures and stop-before-merge boundary.
+3. **Worker:** prepares a branch/PR, inspects the diff, runs applicable checks and records the full head SHA. No real learner data or paid calls.
+4. **Reviewer:** checks R1–R3 against evidence on the current version. Missing denied-write or progress evidence keeps the proposal in review.
+5. **Authorized maintainer/operator:** only after approval, integrates and releases using the repository's actual workflow. A merge may trigger deployment; inspect this before acting.
+6. **Operator:** verifies the deployed revision, rendered text and permitted learner journey. If access is unavailable, record live verification as blocked.
+7. **Product owner:** reviews learner feedback. Correct implementation and improved understanding are separate questions.
+
+### Recovery and correction
+
+Suppose the summary is misleading after publication. Stop further publishing, identify the affected revision and its consumers, propose a corrected or reverted version, review it, then verify the replacement. Record the correction where readers of the original claim can find it when appropriate.
+
+If progress was actually overwritten, reverting text does not restore the data. Stop affected writes and use the separately tested data-recovery procedure. Escalate when no verified recovery exists rather than claim that a Git revert repaired everything.
+
+### Your five-line handoff
+
+Fill this in with fictional labels; do not perform a real release.
+
+1. **Scope:** requirement IDs, allowed change and non-goals.
+2. **Data and owner:** stores/boundaries touched, decision owner and operator.
+3. **Version and evidence:** PR reference, full head SHA, checks passed/failed/not run.
+4. **Decision:** ready for review, blocked or authorized for a named action; unresolved evidence.
+5. **Recovery and outcome:** recovery method, live-verification status and later learner observation.
+
+**Decision drill:** Version A passed. The worker then pushed B. The B build passes, but no progress-preservation result or denied-write result exists. The reviewer cannot access production. Should this ship?
+
+**Answer key:** Keep it in review. A's results do not establish B's behavior; obtain applicable R2/R3 evidence on the current version and inspect the diff. Production access blocks live verification, not necessarily the synthetic tests. Release requires its own authorization. If a later authorized release occurs, record actual deployed revision and verification; do not mark those steps complete in advance.
+
+**Transfer check:** Apply the same five-line handoff to a fictional “resume last lesson” change. Identify one new failure case, such as a saved ID that no longer exists. Success means you can explain the dependency, denied/error path, evidence and recovery without relying on this example's wording.
+
+### When stronger controls become necessary
+
+Use changes in exposure as review triggers, not arbitrary company size.
+
+| Trigger | Revisit before activation |
+| --- | --- |
+| Second user or separate organization | Identity, role/tenant boundaries, denied-path tests and access removal |
+| Private or durable data | Purpose, minimum fields, retention/deletion, backups and restore evidence |
+| Scheduled or autonomous agent | Limited credentials, retries without duplicate side effects, cancellation, audit and failure alerts |
+| Paid API or larger workload | Cost estimate, request/concurrency ceilings, retry budget and authorized spend limits |
+| External publication or synchronization | Human publication decision, source permissions, correction/retraction and downstream copies |
+| Business-critical use | Service expectations, incident owner, monitoring, recovery and dependency failure behavior |
+
+These triggers are instructional synthesis applying the guide's source and ownership principles. They are not a compliance certification or claims that the portfolio has implemented these controls. Shared standards live in their owning documentation; each product must supply its own implementation evidence.
+
 
 ## Add the security layer when you are ready
 
