@@ -75,6 +75,10 @@ A fictional developer adds a credential to a local configuration file. For this 
 5. **Future use:** keep secrets out of source and use an approved delivery/identity approach. A secrets manager does not erase copies already leaked.
 6. **Verification:** demonstrate the relevant control with approved synthetic fixtures. An arbitrary placeholder may not match a detector; a clean scan is not proof of coverage.
 
+## Go deeper: why pre-commit is not complete prevention
+
+[Why pre-commit alone cannot stop every secret](pre-commit-secrets-defense-in-depth.md) follows missing hooks, remote commits, staged-content differences, detector gaps, optional CI and remediation. Includes a synthetic control-validation exercise and a framework for examining other checks.
+
 ## 5. Frameworks: learn the question before the acronym
 
 A framework helps organize decisions. It does not replace tests or certify a product.
