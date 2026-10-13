@@ -31,7 +31,7 @@ export function MissionLayout({
                 aria-current={step === i ? "step" : undefined}
                 className={`min-h-12 w-full rounded-xl border px-4 py-3 text-left text-sm transition-colors motion-reduce:transition-none ${step === i ? "border-accent bg-card font-semibold" : "border-border hover:bg-card"}`}
               >
-                <span className="mr-2 text-accent">{i + 1}.</span>
+                <span className="mr-2 text-accent">{i + 1}.</span>{" "}
                 {label}
               </button>
             </li>

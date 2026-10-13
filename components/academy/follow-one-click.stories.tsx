@@ -5,7 +5,7 @@ import { getClickMissionMetadata } from "@/lib/academy/click-mission-metadata";
 const meta = {
   title: "Academy/Follow one click",
   component: FollowOneClick,
-  parameters: { layout: "padded", nextjs: { appDirectory: true } },
+  parameters: { layout: "padded" },
   args: getClickMissionMetadata(),
 } satisfies Meta<typeof FollowOneClick>;
 export default meta;
