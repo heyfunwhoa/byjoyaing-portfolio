@@ -1,0 +1,79 @@
+.stage {
+  --lab-duration: 240ms;
+}
+.rise {
+  animation: rise var(--lab-duration) ease-out both;
+}
+.slide {
+  animation: slide var(--lab-duration) ease-out both;
+}
+.settle {
+  animation: settle var(--lab-duration) ease-out both;
+}
+.stagger > * {
+  animation: rise var(--lab-duration) ease-out both;
+}
+.stagger > :nth-child(2) {
+  animation-delay: 60ms;
+}
+.stagger > :nth-child(3) {
+  animation-delay: 120ms;
+}
+.lift {
+  transition:
+    transform var(--lab-duration) ease-out,
+    border-color var(--lab-duration) ease-out;
+}
+.lift:hover,
+.lift:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+@keyframes rise {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes slide {
+  from {
+    transform: translateX(12px);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes settle {
+  from {
+    transform: scale(0.98);
+  }
+  to {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage *,
+  .stage *::before,
+  .stage *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .lift:hover,
+  .lift:focus-visible {
+    transform: none;
+  }
+}
+.still *,
+.still *::before,
+.still *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+.still .lift:hover,
+.still .lift:focus-visible {
+  transform: none;
+}
