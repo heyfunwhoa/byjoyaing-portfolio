@@ -83,6 +83,83 @@ The **software development life cycle (SDLC)** is the repeating process of under
 
 A **PRD** records product requirements. An **issue** tracks a bounded task. **Scope** says what belongs in that task; **non-goals** say what is deliberately excluded. A **Definition of Done** describes the evidence expected before completion. Security, accessibility and privacy belong throughout this loop.
 
+### Before the code: turn an idea into a product decision
+
+An idea is a possible solution: “Let authors edit lessons without touching code.” Before assigning an agent to build it, ask who needs it, what is difficult today and what evidence would show improvement.
+
+**Discovery** is learning about the problem. A **hypothesis** is an explanation or expected benefit that still needs testing. For example: “A structured editor might reduce accidental edits to assessment logic.” That is a hypothesis, not a measured result.
+
+A **product requirements document (PRD)** is a shared explanation of what you intend to solve and what the solution must do. Its job is to preserve decisions beyond one conversation. It can be a short page for a small feature. A typo fix usually needs only a clear issue; a feature with several behaviors and dependencies benefits from a PRD.
+
+This is a recommended teaching workflow, not a claim that every company uses identical documents.
+
+| Artifact | The question it answers | Fictional example |
+| --- | --- | --- |
+| Product idea | What might help? | An easier lesson editor |
+| Problem statement | Who struggles with what today? | Authors must edit code to change explanatory text |
+| Discovery notes | What did we observe, and what is unknown? | Observe one author; do not invent time savings |
+| PRD | What outcome and behavior do we intend? | Edit one lesson while keeping its identity and progress |
+| Technical design | How will we implement the behavior? | Define editorial fields and connect them to the existing reader |
+| Milestone | What meaningful checkpoint comes next? | One lesson edited, reviewed and rendered |
+| Issue / user story | What bounded slice can someone complete? | Save the existing lesson's summary through the editor |
+| Acceptance criteria | What observable evidence would satisfy the task? | Saved summary renders; ID and progress remain unchanged |
+| Task brief | What may this agent do, with which boundaries? | Named files, base commit, checks and stop-before-merge instruction |
+| PR and checks | What changed and what was verified? | Diff and test results tied to the current head |
+| Release review | Should this version reach users? | Review risks, permissions, checks and recovery |
+| Feedback and outcome review | Did it help enough to continue? | Observe the author again; compare with the baseline |
+
+A **user story** describes a need from someone's perspective: “As a lesson author, I want to edit explanatory text so I can maintain the lesson without changing its assessment.” It helps explain intent, but still needs specific acceptance criteria.
+
+### A small PRD you can actually use
+
+**Fictional PRD: edit one lesson safely**
+
+- **User and problem:** An author needs to update the existing verification lesson's explanatory text; editing the shared code catalog makes the boundary with assessment logic unclear.
+- **Evidence and unknowns:** The current workflow requires a code edit. Whether a dedicated editor is easier remains untested; observe a baseline task before claiming improvement.
+- **Desired outcome:** The author can make a permitted text edit, review the proposed change and see it in the reader.
+- **Functional requirements:** Load the existing lesson; edit permitted editorial fields; save a valid record; show an understandable validation error for invalid input; render accepted content.
+- **Quality requirements (non-functional requirements):** Preserve lesson identity and progress, keep controls usable by keyboard, and restrict editor access to the intended environment.
+- **Non-goals:** Whole-curriculum migration, new scoring, reader accounts, AI tutoring and automatic publication.
+- **Dependencies:** Agreed content schema, existing reader and progress behavior, editor package compatibility, and appropriate access for any hosted editing.
+- **Acceptance criteria:** A valid edit persists and renders; invalid input gives feedback without replacing the valid record; the lesson URL and saved progress survive; another lesson still works.
+- **Success measurement:** Observe completion of the same editing task before and after; record completion, errors and assistance needed. Choose a target after establishing the baseline.
+- **Rollout and recovery:** Pilot one lesson. Keep review before release. Document how to restore its previous record and reader behavior.
+- **Open decisions and owner:** The product owner decides whether local editing is enough for the pilot or hosted editing is required; missing hosted credentials must remain a recorded limitation.
+
+**Functional** means what the product does. **Non-functional** describes qualities and constraints, such as accessibility, reliability or performance. **Acceptance criteria** judge whether a specific slice meets its requirements. **Success metrics** judge whether the result helps users. Passing tests does not establish a measured time saving.
+
+### Translate the PRD into work and evidence
+
+Give requirements simple identifiers so people can trace decisions. This is **requirements traceability**.
+
+| PRD requirement | Implementation issue | Acceptance evidence | Remaining outcome question |
+| --- | --- | --- | --- |
+| R1: edit permitted text | Add one editable summary field | Valid save persists and reader shows it | Can the author complete it without help? |
+| R2: preserve learner state | Verify existing progress after editing | Seeded progress survives reload | Is the continuation experience understandable? |
+| R3: respect editor boundary | Restrict editor to intended environment | Allowed and denied access checks | Does the chosen workflow fit the author? |
+
+Tests should address the requirement's failure modes, not merely repeat how the code was written. A test that only finds a Save button does not prove saving persists.
+
+Keep the PRD in its agreed authoritative home. Link it from issues and PRs. The PRD explains intended behavior; Linear tracks execution; GitHub records proposed and accepted changes. Copying the same changing requirements into multiple places creates **documentation drift**.
+
+### When the idea changes mid-build
+
+Suppose the author now asks for an AI tutor. That is a new product idea, not an automatic addition to the editor task.
+
+Record the request, examine its value and dependencies, and decide whether it replaces current scope or becomes later work. This is **scope management** or **change control**. Update the PRD and affected acceptance criteria when a decision changes. Make sure the implementation owner reads that revision.
+
+A **backlog** holds potential work; it is not a promise to build everything. **Prioritization** selects what deserves attention next. An **MVP** is a minimal useful version for testing a product hypothesis; a **vertical slice** is one thin end-to-end piece. Neither means skipping essential correctness or access controls.
+
+### Practice: from idea to an agent-ready issue
+
+Fictional idea: “Help learners resume their last lesson.”
+
+Write: (1) one user/problem statement, (2) two requirements, (3) a non-goal, (4) a dependency, (5) one bounded issue, (6) one failure case and its acceptance evidence, and (7) one outcome observation after release.
+
+**Example answer:** A returning learner loses their place. Remember the last lesson on this device and offer a working resume link. Exclude cross-device accounts. Depend on stable lesson IDs and existing storage behavior. First issue: reuse existing local progress to show one resume action. If the saved ID no longer exists, show a safe fallback instead of a broken link; test that fixture. Later observe whether the learner can resume without searching. Do not invent a completion-rate improvement.
+
+**Agent assignment comes after these decisions:** give the implementation worker the issue, linked PRD, permitted files, acceptance criteria, dependencies and approval boundary. The worker can propose changes to the plan when evidence contradicts it; it should not silently redefine the product.
+
 ### Dependencies: what this work needs
 
 Think about a fictional webinar: invitations need a registration page; the event needs a meeting service. Software dependencies work similarly.
