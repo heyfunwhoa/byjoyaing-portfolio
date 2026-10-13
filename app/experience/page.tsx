@@ -73,6 +73,7 @@ export default function ExperiencePage() {
           <CareerRail nodes={careerRailNodes()} />
       </details>
       </section>
+      <ExperienceTimeline related={related} />
       <details className="my-6 rounded-2xl border border-border bg-card p-5">
         <summary className="cursor-pointer py-1 text-lg font-semibold">
           Explore related independent systems
@@ -106,7 +107,6 @@ export default function ExperiencePage() {
         </ul>
         <ProjectConstellation />
       </details>
-      <ExperienceTimeline related={related} />
       <MaterialsInvitation tone="work" />
     </PageMain>
   );

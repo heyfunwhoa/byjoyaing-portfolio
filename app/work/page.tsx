@@ -37,7 +37,6 @@ export default function WorkPage() {
         aria-labelledby="featured-work-heading"
         className="border-b border-border py-12 sm:py-16"
       >
-        <Link href="/about#how-i-work" className="mb-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">How I approach the work →</Link>
         <p className="editorial-eyebrow text-accent">Selected work / Explore</p>
         <h2 id="featured-work-heading" className="mt-2 font-display text-3xl">
           Explore professional evidence
@@ -71,6 +70,7 @@ export default function WorkPage() {
             />
           ))}
         />
+        <Link href="/about#how-i-work" className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">How I approach the work →</Link>
         <p className="mt-6 text-sm leading-6 text-muted">
           Independent research and prototypes live in{" "}
           <Link

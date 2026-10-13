@@ -68,16 +68,6 @@ export default function SideQuestsPage() {
         </div>
       </section>
 
-      <nav aria-label="Explore independent projects by focus" className="grid gap-3 border-b border-border py-8 sm:grid-cols-2 lg:grid-cols-4">
-        {focusLinks.map((item) => (
-          <Link key={item.label} href={item.href} className="rounded-xl border border-border bg-card p-4 hover:border-accent">
-            <span className="block font-display text-xl">{item.label}</span>
-            <span className="mt-2 block text-sm leading-6 text-muted">{item.detail}</span>
-            <span className="mt-3 block text-sm font-medium text-accent">Explore →</span>
-          </Link>
-        ))}
-      </nav>
-
       <section aria-labelledby="featured-quests-title" className="section-enter border-b border-border py-12">
         <p className="editorial-eyebrow text-accent">Featured builds</p>
         <h2 id="featured-quests-title" className="mt-2 font-display text-3xl">
@@ -89,19 +79,15 @@ export default function SideQuestsPage() {
         <FeaturedSideQuestStrip slides={featuredSideQuestSlides()} />
       </section>
 
-      <section id="look-closer" className="scroll-mt-24 border-b border-border py-8"
-      >
-        <h2 className="font-display text-2xl">Look closer</h2>
-        <p className="mt-3 text-sm leading-6 text-muted">
-          Open a project to inspect its sample, contribution and implementation
-          limits.
-        </p>
-        <Link href="/projects#directory"
-          className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4"
-        >
-          Explore the project directory →
-        </Link>
-      </section>
+      <nav aria-label="Explore independent projects by focus" className="grid gap-3 border-b border-border py-8 sm:grid-cols-2 lg:grid-cols-4">
+        {focusLinks.map((item) => (
+          <Link key={item.label} href={item.href} className="rounded-xl border border-border bg-card p-4 hover:border-accent">
+            <span className="block font-display text-xl">{item.label}</span>
+            <span className="mt-2 block text-sm leading-6 text-muted">{item.detail}</span>
+            <span className="mt-3 block text-sm font-medium text-accent">Explore →</span>
+          </Link>
+        ))}
+      </nav>
 
       <section className="py-12">
         <h2 className="font-display text-3xl">Other explorations</h2>
@@ -141,8 +127,18 @@ export default function SideQuestsPage() {
             </a>
           </div>
         </div>
-        <Link href="/projects" className="mt-6 inline-block text-sm text-accent underline">
-          View legacy project directory →
+      </section>
+      <section id="look-closer" className="scroll-mt-24 border-b border-border py-8"
+      >
+        <h2 className="font-display text-2xl">Look closer</h2>
+        <p className="mt-3 text-sm leading-6 text-muted">
+          Open a project to inspect its sample, contribution and implementation
+          limits.
+        </p>
+        <Link href="/projects#directory"
+          className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4"
+        >
+          Explore the project directory →
         </Link>
       </section>
     </PageMain>

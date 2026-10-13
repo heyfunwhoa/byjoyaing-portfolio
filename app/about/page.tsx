@@ -42,13 +42,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="how-i-work" aria-labelledby="how-i-work-heading" className="scroll-mt-24 border-b border-border py-12">
-        <p className="editorial-eyebrow text-accent">The approach behind the work</p>
-        <h2 id="how-i-work-heading" className="mt-3 font-display text-3xl">How I work</h2>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-muted">Enterprise selling sits at the center. Strategy, leadership and building are the ways I connect people, decisions and practical systems. Choose a pillar to explore the evidence.</p>
-        <CapabilityOrbit />
-      </section>
-
       <section className="border-b border-border py-12">
         <p className="text-sm font-medium text-muted">My guiding philosophy</p>
         <h2 className="font-display mt-3 text-3xl">People first. Problem-driven. Systems-minded.</h2>
@@ -65,6 +58,13 @@ export default function AboutPage() {
           ))}
         </div>
         <p className="mt-5 max-w-2xl text-sm leading-6 text-muted">My approach to leadership combines accountability with curiosity: clear expectations, thoughtful feedback, evidence-based decisions and room for people to develop their own strengths.</p>
+      </section>
+
+      <section id="how-i-work" aria-labelledby="how-i-work-heading" className="scroll-mt-24 border-b border-border py-12">
+        <p className="editorial-eyebrow text-accent">The approach behind the work</p>
+        <h2 id="how-i-work-heading" className="mt-3 font-display text-3xl">How I work</h2>
+        <p className="mt-3 max-w-2xl text-base leading-7 text-muted">Enterprise selling sits at the center. Strategy, leadership and building are the ways I connect people, decisions and practical systems. Choose a pillar to explore the evidence.</p>
+        <CapabilityOrbit />
       </section>
 
       <section className="border-b border-border py-12">
@@ -86,9 +86,26 @@ export default function AboutPage() {
               See capabilities
             </Link>
           </div>
+        <div className="mt-8 border-t border-border pt-6">
+          <h3 className="text-lg font-semibold">Education and continued learning</h3>
+          <ul className="mt-4 grid gap-4 text-sm leading-6 text-muted sm:grid-cols-3">
+            <li>B.S. Advertising, Business Foundations. The University of Texas at Austin.</li>
+            <li>MBA, IT Management. Western Governors University, in progress.</li>
+            <li>AWS Cloud Practitioner and AI Practitioner, foundational.</li>
+          </ul>
+        </div>
       </section>
 
-
+      <section id="technologies" className="scroll-mt-24 border-b border-border py-12">
+        <p className="editorial-eyebrow text-accent">Systems behind the work</p>
+        <h2 className="font-display mt-3 text-3xl tracking-tight">From approach to practice.</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Start with a workflow. Explore the approach, open the supporting tools, then follow the evidence—from enterprise selling and team development to independent building.
+        </p>
+        <div className="mt-6">
+          <ToolsMap />
+        </div>
+      </section>
 
       <section className="border-b border-border py-8">
         <h2 className="font-display text-2xl">
@@ -124,33 +141,12 @@ export default function AboutPage() {
             <article key={interest.id} className="rounded-xl border border-border bg-card p-5">
           <h3 className="text-lg font-semibold">{interest.title}</h3>
           <p className="mt-2 text-sm leading-6 text-muted">{interest.detail}</p>
-          <p className="mt-3 text-xs leading-5 text-muted">{interest.connection}</p>
           </article>))}
         </div>
         <p className="mt-6 text-sm font-medium">What matters to me</p>
         <ul className="mt-3 flex flex-wrap gap-2">{personalValues.map((value) => (
             <li key={value} className="rounded-full border border-border px-3 py-1 text-sm">{value}</li>
           ))}</ul>
-      </section>
-
-      <section id="technologies" className="scroll-mt-24 border-b border-border py-12">
-        <p className="editorial-eyebrow text-accent">Systems behind the work</p>
-        <h2 className="font-display mt-3 text-3xl tracking-tight">How I work. What supports it.</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Start with a workflow. Explore the approach, open the supporting tools, then follow the evidence—from enterprise selling and team development to independent building.
-        </p>
-        <div className="mt-6">
-          <ToolsMap />
-        </div>
-      </section>
-
-      <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">Advertising, then the technical market</h2>
-        <ul className="mt-4 grid gap-4 text-sm leading-6 text-muted sm:grid-cols-3">
-          <li>B.S. Advertising, Business Foundations. The University of Texas at Austin.</li>
-          <li>MBA, IT Management. Western Governors University, in progress.</li>
-          <li>AWS Cloud Practitioner and AI Practitioner, foundational.</li>
-        </ul>
       </section>
 
       <section className="py-12">
