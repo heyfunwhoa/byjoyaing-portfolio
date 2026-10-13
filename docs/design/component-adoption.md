@@ -75,7 +75,7 @@ These references guide selective composition rather than replacing the portfolio
 ## About orbit discovery and interaction (proposed, 2026-10-13)
 
 - Source: existing CapabilityOrbit, OrbitArtwork and public capability data. No new dependency or claims.
-- Primary home: `/about#how-i-work`, openly displayed immediately after the introduction. Removes the former collapsed duplicate.
+- Primary home: `/about#how-i-work`, openly displayed after the introduction and guiding philosophy. Removes the former collapsed duplicate.
 - Homepage: a compact link below the existing CelestialFrame portrait. Work: a link back to the approach. Neither page mounts a second interactive orbit. Individual case-study pillar labels are deferred until their mapping is reviewed; no inferred tags added.
 - Interaction: existing keyboard-operated pillar tabs and center overview; evidence and truthful employer/independent labels preserved. Short selected-line trace and panel entrance; focus/hover highlight. Rings and labels stay stationary. Reduced-motion removes new animations and transitions.
 - Mobile: smaller node labels/padding to retain room around the diagram; panels stack below. Desktop: diagram and evidence side by side. No hover-only information.
@@ -93,3 +93,25 @@ Supersedes the plain Work grid proposal above after user review: the difference 
 - CSS hover lift and icon tilt; 240ms expand / 180ms collapse; explicit reduced-motion disables all new animation. No autoplay, continuous movement, hidden-on-hover summaries or new data claims.
 - New composition is a scoped public adoption proposal; `shadcn-setup.test.ts` allows only `work-explorer.tsx` to use the bento source outside the lab. Other restrictions remain.
 - Build and focused lint pass. Browser interaction coverage added for expansion, switching, focus return, fragment links and overflow. Execution is pending supported browser infrastructure; do not claim visual sign-off.
+
+## Page flow review (2026-10-13, proposed)
+
+Task: help a hiring reader understand the person, inspect professional evidence and choose a next step without switching repeatedly between professional and personal content.
+
+| Route | Reviewed flow and decision |
+| --- | --- |
+| `/` | Keep positioning → credibility → Work-led destination bento → labeled independent example → conversation. |
+| `/about` | Reorder to introduction → philosophy → capability orbit → career and compact education → workflow toolkit → evidence destinations → personal interests → contact. Rename toolkit heading to “From approach to practice.” Keep interests on About; omit their repeated professional-connection captions here. |
+| `/work` | Keep introduction → professional evidence → related field systems → career context. Move the About approach link after the evidence explorer so it does not precede the page's main task. |
+| `/experience` | Keep introduction and compact career overview; move the role timeline before optional independent systems; retain the materials invitation last. |
+| `/side-quests` | Introduction → selected experiments → browse by focus → other explorations → directory close. Preserve `#look-closer`, remove the duplicate “legacy project directory” link. |
+| `/field-notes` | Keep published guides first, optional outlined topics second, related work/private access/contact last. |
+| `/projects` | Keep directory and filters before optional system connections and roadmap. |
+| `/capabilities` and its detail template | Keep overview → capability choices; details already lead with professional evidence before related projects. |
+| `/contact` | Keep purpose and direct links alongside the form; it stacks naturally on smaller screens. |
+| `/private-work` | Keep access boundaries before requesting material. No access-control changes. |
+| Field Note and `/work/[slug]` detail templates | Retain introductory context/status → guided body/evidence → related work. This pass does not reorder individual interactive lessons or project-specific case bodies. |
+
+Reuse: existing page sections, `CapabilityOrbit`, `ToolsMap`, `CareerRail`, `ExperienceTimeline`, `FeaturedSideQuestStrip` and `WorkExplorer`. Catalog families: summaries and disclosure. No new component, dependency, motion or upstream source. Source is this repository; owner is the portfolio maintainer. Status: proposed until review/merge.
+
+Responsive composition: the same section DOM order on phone, tablet and desktop; existing inner grids, tabs and disclosures retain their responsive rules. Keyboard and screen-reader traversal follow section order; durable anchors stay in place. Reduced-motion behavior is inherited without new animations. No new loading, error or permission states. No new test is necessary for static section movement; use existing type/build, page smoke and interaction checks. Verification and unrun manual checks are recorded in the PR. Roll back by reverting this focused commit.
