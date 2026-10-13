@@ -10,7 +10,7 @@ Evaluate creative AI tools for visual identity, UX prototypes, educational conte
 ## Explore first
 | Capability | Candidate tools/models | Intended experiment | Guardrail |
 | --- | --- | --- | --- |
-| Vector brand assets | Recraft | Create consistent editable vector icon and avatar variations | Preserve vector-only avatar direction, freckles, brand palette and human review |
+| Vector brand assets | Recraft | Create consistent editable vector icon and avatar variations | Follow avatar-system.md: approved likeness, editable vector master when available, safe raster fallbacks, canonical palette and human review |
 | UI/UX prototyping | Figma Make; Google Stitch; Vercel v0 | Compare dashboard and Design Lab screen concepts | Treat prototypes as proposals; require reusable, accessible source code |
 | Source-grounded learning | Google's NotebookLM / Notebook-style tools | Turn approved public source packs into an Academy lesson outline | Verify original sources; never paste private Joy Index or confidential data |
 
@@ -35,11 +35,14 @@ Evaluate creative AI tools for visual identity, UX prototypes, educational conte
 
 These products are not interchangeable; **a gateway does not by itself establish model quality or safe provider approval**. No automated routing, provider gateway, fallback policy, paid subscriptions or API integration is authorized by this inventory.
 
+## Candidate status and adoption gate
+All listed products are **unevaluated candidates** unless separately documented with evidence. An experiment result is not subscription approval, a deployment decision, or permission to send restricted data to a provider. Any proposed adoption requires an explicit use case, source/rights/privacy review, documented tradeoffs, cost approval, accessibility validation and a separate implementation PR where applicable.
+
 ## Manual pilot scorecard
 Compare only against a defined task and licensed, approved materials. Record: deliverable, tool and exact model/version if exposed, prompt/input revision, editability/vector export, consistency with the approved brand, accessibility, output fidelity, provenance, human rework, latency, actual cost, commercial rights, privacy/data retention, and decision (try / adopt for use case / reject / defer). Record unknown instead of inventing results.
 
 ## Suggested first three experiments
-1. **Recraft:** Produce three synthetic vector motifs compatible with ivory, charcoal, copper and green; test SVG editability and small-screen legibility.
+1. **Recraft:** Produce three synthetic non-person editorial vector motifs using the canonical ivory, charcoal and copper tokens; test SVG editability and small-screen legibility. Do not introduce green/sage without a separate brand and contrast review.
 2. **Figma Make or Stitch:** Design a single responsive portfolio project-card concept; validate keyboard behavior and brand tokens in implementation.
 3. **NotebookLM-style research notebook:** Use approved public references to outline one Builder Academy lesson; manually verify cited claims.
 
