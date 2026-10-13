@@ -4,7 +4,7 @@ Owner: Kristen Aing. Scope: byjoyaing-portfolio. Updated: 2026-10-13.
 
 ## Implemented in this change
 
-- CI's `Production build + TypeScript` job now starts the actual production build and runs `npm run test:site` in desktop/mobile Chromium. No email provider keys are required.
+- CI's `Production build + TypeScript` job now starts the actual production build and runs `npm run test:site` in phone/tablet/desktop Chromium. No email provider keys are required.
 - Site tests cover Home, About, Work, Contact and Academy rendering, uncaught browser exceptions, horizontal overflow, keyboard navigation, empty/invalid-email contact validation, request-mode disclosure, the legacy About redirect and unknown-route 404.
 - Browser tests abort contact/resume API requests. Invalid form cases must issue no request. They do not prove real email delivery. Remote mode is limited to the two public portfolio origins, disables trace/screenshots/video and uses no bypass credentials.
 - `Production smoke` is an on-demand post-release browser check against `https://www.byjoyaing.com`. Run from main only. It observes the live domain; it does not prove that its deployed SHA matches the workflow SHA, hold a release, monitor continuously or automatically roll back.
@@ -62,3 +62,7 @@ No monitoring credentials or billing settings are changed by this PR. Production
 - [Playwright web server](https://playwright.dev/docs/test-webserver)
 
 The current shared engineering baseline was read for this change. These local controls are implementation evidence, not a security/compliance certification.
+
+## Responsive pilot coverage
+
+The suite includes 768×1024 touch-enabled Chromium tablet emulation alongside phone and desktop. The case count grows with the suite; CI reports the actual executed count. See the [proposed shared responsive standard](https://github.com/heyfunwhoa/technical-docs-platform/blob/c7ae9a18b8045bdad5f729322722343022b13970/engineering/responsive-apps-v1.md) and [review PR](https://github.com/heyfunwhoa/technical-docs-platform/pull/26). This pilot does not claim actual zoom, screen-reader, real-device/Safari or all-page visual verification.

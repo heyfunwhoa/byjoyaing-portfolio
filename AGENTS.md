@@ -40,3 +40,8 @@ For scoped agent work: inspect existing issues/PRs before starting, map acceptan
 ## UI and motion workbench reuse
 
 Before UI, layout, component or animation work, read [the workbench reuse contract](docs/design/workbench-reuse.md), the linked inventory, and relevant workbench/catalog entries. Reuse or adapt suitable existing patterns before creating a parallel implementation. Record the source, destination, reuse decision, responsive/accessibility behavior and verification in the PR. Lab availability is not approval for public use; retain scoped adoption review, brand tokens and existing dependency restrictions. This requirement does not mandate motion or copying portfolio branding into other apps.
+
+
+## Responsive app design and verification
+
+For new UI journeys and material interface changes, consult the [proposed responsive app standard v1.0](https://github.com/heyfunwhoa/technical-docs-platform/blob/c7ae9a18b8045bdad5f729322722343022b13970/engineering/responsive-apps-v1.md) and its review status in [Technical Docs PR #26](https://github.com/heyfunwhoa/technical-docs-platform/pull/26). This is a pinned cross-repository reference; local brand, privacy and permissions remain authoritative. Define phone/tablet/desktop composition and the primary task before implementation. Test the built app, keyboard/focus, reduced motion and content/error states; record manual zoom/reflow and real-device checks separately. A passing viewport test does not prove WCAG conformance or review of every page. Do not add dependencies or rewrite tables/maps by default.
