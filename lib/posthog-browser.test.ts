@@ -122,3 +122,33 @@ test("all capability combinations preserve exception privacy and reject unapprov
       assert.equal(filter(event("$exception")), null);
     }
 });
+
+test("connection page rejects pageviews and all browser events", () => {
+  assert.equal(
+    sanitizePageview(
+      event("$pageview", { $current_url: "https://www.byjoyaing.com/connect" }),
+    ),
+    null,
+  );
+  const previous = Object.getOwnPropertyDescriptor(globalThis, "window");
+  try {
+    for (const pathname of ["/connect", "/connect/"]) {
+      Object.defineProperty(globalThis, "window", {
+        configurable: true,
+        value: { location: { pathname } },
+      });
+      const filter = posthogClientOptions({
+        ...env,
+        enabled: "true",
+        analyticsEnabled: "true",
+      }).before_send;
+      if (typeof filter !== "function") throw new Error("Missing event filter");
+      for (const name of ["$pageview", "$exception", "$autocapture"]) {
+        assert.equal(filter(event(name)), null);
+      }
+    }
+  } finally {
+    if (previous) Object.defineProperty(globalThis, "window", previous);
+    else Reflect.deleteProperty(globalThis, "window");
+  }
+});

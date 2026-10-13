@@ -71,6 +71,12 @@ export function posthogClientOptions(env: Environment): Partial<PostHogConfig> {
     advanced_disable_feature_flags: true,
     before_send: (event) => {
       if (!event) return null;
+      // Also suppress events after client-side navigation from another page.
+      if (
+        typeof window !== "undefined" &&
+        window.location.pathname.replace(/\/+$/, "") === "/connect"
+      )
+        return null;
       if (event.event === "$exception") {
         if (!monitoring || !allowError()) return null;
         return {
