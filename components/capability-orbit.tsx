@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import styles from "./capability-orbit.module.css";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import { GeometricMotif } from "@/components/geometric-motif";
 import { OrbitArtwork } from "@/components/orbit-artwork";
@@ -75,7 +76,8 @@ export function CapabilityOrbit({ artwork = true }: { artwork?: boolean }) {
                 x2={node.x}
                 y2={node.y}
                 strokeWidth={pillarIndex === index ? 0.6 : 0.3}
-                className="transition-[stroke,opacity] duration-300"
+                pathLength={1}
+                className={pillarIndex === index ? styles.connection : undefined}
                 stroke={pillarIndex === index ? "#E6B59A" : "#F3EFE6"}
                 opacity={pillarIndex === index ? 1 : 0.3}
               />
@@ -87,7 +89,7 @@ export function CapabilityOrbit({ artwork = true }: { artwork?: boolean }) {
             aria-pressed={selected === "center"}
             aria-controls={`${baseId}-panel-center`}
             onClick={() => setSelected("center")}
-            className={`absolute top-1/2 left-1/2 z-10 flex aspect-square w-[30%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border p-2 text-center text-sm leading-tight font-semibold sm:w-[34%] ${
+            className={`${styles.node} absolute top-1/2 left-1/2 z-10 flex aspect-square w-[30%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border p-2 text-center text-sm leading-tight font-semibold sm:w-[34%] ${
               selected === "center"
                 ? "border-[#E6B59A] bg-background text-foreground"
                 : "border-[#F3EFE6]/50 bg-background text-foreground hover:border-[#E6B59A]"
@@ -113,7 +115,7 @@ export function CapabilityOrbit({ artwork = true }: { artwork?: boolean }) {
                   tabIndex={active || (pillarIndex === null && index === 0) ? 0 : -1}
                   onClick={() => setSelected(index)}
                   style={{ left: `${nodes[index].x}%`, top: `${nodes[index].y}%` }}
-                  className={`absolute z-10 inline-flex min-h-11 -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border px-4 text-sm font-semibold whitespace-nowrap transition-colors duration-200 ${
+                  className={`${styles.node} absolute z-10 inline-flex min-h-11 -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border px-2 text-xs font-semibold whitespace-nowrap sm:px-4 sm:text-sm transition-colors duration-200 ${
                     active
                       ? "border-[#E6B59A] bg-background text-foreground"
                       : "border-[#F3EFE6]/50 bg-foreground text-background hover:border-[#E6B59A]"
@@ -135,9 +137,10 @@ export function CapabilityOrbit({ artwork = true }: { artwork?: boolean }) {
       </div>
 
       <section
+        aria-label="Enterprise selling overview"
         id={`${baseId}-panel-center`}
         hidden={selected !== "center"}
-        className="editorial-panel bg-card p-6 transition-[opacity,translate] duration-200 ease-out starting:translate-y-1 starting:opacity-70 sm:p-8"
+        className={`${styles.panel} editorial-panel bg-card p-6 sm:p-8`}
       >
         <p className="editorial-eyebrow text-accent">The work at the center</p>
         <h3 className="mt-2 font-display text-2xl tracking-tight">{orbitCenter.label}</h3>
@@ -153,7 +156,7 @@ export function CapabilityOrbit({ artwork = true }: { artwork?: boolean }) {
           id={`${baseId}-panel-${pillar.id}`}
           aria-labelledby={`${baseId}-tab-${pillar.id}`}
           hidden={pillarIndex !== index}
-          className="editorial-panel bg-card p-6 transition-[opacity,translate] duration-200 ease-out starting:translate-y-1 starting:opacity-70 sm:p-8"
+          className={`${styles.panel} editorial-panel bg-card p-6 sm:p-8`}
         >
           <p className="editorial-eyebrow text-accent">Around enterprise selling</p>
           <h3 className="mt-2 font-display text-2xl tracking-tight">{pillar.label}</h3>

@@ -42,6 +42,13 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section id="how-i-work" aria-labelledby="how-i-work-heading" className="scroll-mt-24 border-b border-border py-12">
+        <p className="editorial-eyebrow text-accent">The approach behind the work</p>
+        <h2 id="how-i-work-heading" className="mt-3 font-display text-3xl">How I work</h2>
+        <p className="mt-3 max-w-2xl text-base leading-7 text-muted">Enterprise selling sits at the center. Strategy, leadership and building are the ways I connect people, decisions and practical systems. Choose a pillar to explore the evidence.</p>
+        <CapabilityOrbit />
+      </section>
+
       <section className="border-b border-border py-12">
         <p className="text-sm font-medium text-muted">My guiding philosophy</p>
         <h2 className="font-display mt-3 text-3xl">People first. Problem-driven. Systems-minded.</h2>
@@ -81,18 +88,7 @@ export default function AboutPage() {
           </div>
       </section>
 
-      <section className="border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">Enterprise selling and the leadership around it</h2>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-muted">
-          Security, engineering, and executives in the same room. Discovery, a competitive story, and the close. Alongside the deal I coach sellers, support hiring, and build the ramp a sales lead owes the team.
-        </p>
-        <details className="mt-5 rounded-xl border border-border bg-card p-4">
-          <summary className="cursor-pointer py-1 font-medium">
-            Explore the capability evidence
-          </summary>
-          <CapabilityOrbit />
-        </details>
-      </section>
+
 
       <section className="border-b border-border py-8">
         <h2 className="font-display text-2xl">

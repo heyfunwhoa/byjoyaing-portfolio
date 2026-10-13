@@ -1,0 +1,41 @@
+.node {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+.node:hover,
+.node:focus-visible {
+  box-shadow: 0 0 0 3px rgb(230 181 154 / 24%);
+}
+.connection {
+  stroke-dasharray: 1;
+  animation: trace 240ms ease-out;
+}
+.panel:not([hidden]) {
+  animation: reveal 200ms ease-out;
+}
+@keyframes trace {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes reveal {
+  from {
+    transform: translateY(5px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .node {
+    transition: none;
+  }
+  .connection,
+  .panel:not([hidden]) {
+    animation: none;
+  }
+}
