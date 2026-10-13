@@ -19,7 +19,22 @@ Do not read every reference in one sitting. These suggested times are study budg
 | 3 — Make a release decision (20 minutes) | [The worked exercise](#worked-exercise-one-lesson-edit-with-controls) below | Complete the handoff and recovery decision; compare with the answer key |
 | Optional — Research and organization | PRD deep dive, team/persona maps and [evidence practice](#use-evidence-to-improve-a-product-decision) | Identify what a source supports and what still needs local evidence |
 | Optional — Add agents (15 minutes) | [Agent companion](cursor-agent-workflows.md#11-add-agents-to-the-delivery-loop) | Give a worker permitted files, evidence requirements and a stop condition |
-| Optional — Go deeper | Security review and repository learning links | Choose one control and identify its owner, implementation and test |
+| Optional — First deployment (15 minutes) | [Deployment settings companion](first-deployment-settings.md) | Explain the settings, choose required integrations and write a verification checklist |
+| Optional — Security decision (10-minute exercise) | [Release security companion](release-security-review.md) | Choose one control and identify its owner, implementation and test |
+
+### How this curriculum is organized
+
+This is one parent lesson with three core stops, followed by optional companions. The core teaches **save/check/publish → define a small change → justify a release decision**. Use one fictional lesson-edit example across the stops; the revenue-planning example is an alternative, not a second required assignment.
+
+- **Core session:** follow stops 1–3 in order and stop after the five-line handoff. Approximately 45 minutes is a study budget, not a measured guarantee.
+- **Reference shelf in this parent:** PRD deep dive, team/persona tables, package details, status terminology and the revenue-planning example. Open only the section needed for the current question.
+- **Deployment companion:** practice configuring hosting after the core terminology is familiar.
+- **Security companion:** inspect missing release evidence; use before releasing a feature that changes access or sensitive data.
+- **Agent companion:** apply the same decisions to a bounded worker task after completing the core. Agents do not replace the product decision or reviewer.
+
+These companion files are sections of this learning path, not new tracked Academy lessons. Preserve the existing parent lesson ID, prerequisites, assessment and progress behavior. Wiring source text into the public renderer is a separate verified publication step.
+
+**Resume note:** write “Last stop / artifact produced / unresolved question / next section” in your own practice note. This is a suggested note format, not a new storage feature. Reading, attempting an exercise and demonstrating its criteria are different milestones.
 
 **Where do my answers go?** These Markdown exercises have no submit button or storage mechanism of their own. Write fictional answers on paper or in a practice note you control. They do not submit research to another application, update a CRM or award an Academy badge. The separate interactive Academy has its own storage behavior: inspect its current disclosure and implementation before assuming answers are private, synced, reviewed by a person or retained. Do not enter confidential information into a practice exercise.
 
@@ -705,79 +720,9 @@ Source: [GitHub Docs — GitHub flow](https://docs.github.com/en/get-started/usi
 
 ## Optional practice: your first deployment (15 minutes)
 
-**Outcome:** explain a hosting form, choose only what the app needs, and distinguish a successful build from a verified release. This fictional public market explorer ships with a bundled catalog. It has no private records, required database or live research service. Do this as a paper exercise first; deploying a real project requires its owner's approval.
+Open [First deployment: settings and integrations](first-deployment-settings.md) when you are ready to understand a hosting form. It explains repository versus website, each setting, integration choices, environment variables and real release verification.
 
-### Repository, website and portfolio link
-
-A repository stores source code. A hosting project builds and serves that code. A portfolio card can link to either one. Finding a GitHub link inside another website does not mean the app is hosted inside that website. Before creating a new hosting project, check existing project names, connected repositories, domains and any configured proxy routes.
-
-### Read the form before choosing
-
-The example uses Vercel and Next.js; confirm the current repository and provider documentation rather than copying these defaults into every app.
-
-| Setting | Meaning | Fictional example |
-| --- | --- | --- |
-| Team / scope | Account responsible for access, resources and billing | The owner's existing team |
-| Project name | Hosting project's name; separate from repository name and custom domain | sample-market-explorer |
-| Git repository | Source code to build | The approved market-explorer repository |
-| Production branch | Branch used for production changes | main, after review |
-| Framework preset | Platform adapter appropriate to the app | Next.js, confirmed in package.json |
-| Root directory | Folder containing this app | ./ only when the app is at the repository root |
-| Install command | Installs declared dependencies using the package manager/lockfile | Detected default; investigate mismatches |
-| Build command | Assembles the deployable application | npm run build if the repository defines it |
-| Output directory | Location of build output used by the hosting adapter | Framework default; do not guess public or out |
-| Environment variables | Configuration supplied outside source code | None required for this fictional bundled-catalog app |
-
-Vercel can detect framework build defaults [D1]. The project name is not a promise that a specific hostname is available. A generated deployment address and a custom domain are separate concepts [D3].
-
-### Should I add integrations?
-
-For this exercise, leave optional integrations unselected. A service is useful when implemented behavior needs it; installing it does not create that behavior.
-
-| Capability | Evidence needed before adding a service |
-| --- | --- |
-| Database | Implemented durable record storage, schema, access rules and recovery plan |
-| Web research provider | Implemented collection flow, approved sources, usage limits and review boundaries |
-| Background scheduler | Implemented jobs with retry, deduplication and operational ownership |
-| AI provider | A defined model-powered task, evaluation and spending limits |
-| Authentication | A private/user-specific feature with server-side authorization |
-| Analytics / monitoring | A named usage or reliability question, appropriate data handling and actionable ownership |
-
-These are sequencing decisions for a small public example, not a rule to postpone essential security or monitoring in a private or business-critical application. Reuse approved services when possible. Check cost, permissions, data flow and an owner before activating a real integration.
-
-Environment variables are not all secrets. Keep secret values out of Git, screenshots and chat; expose only intentionally public values to browser code. Next.js public-prefixed variables can reach the browser [D2]. Review Production, Preview and Development scope separately. Adding a key does not implement an API integration, and changing configuration does not prove an existing deployment uses it.
-
-### From Deploy to evidence
-
-1. Confirm approved source, branch, configuration and publication scope.
-2. Deploy only with owner approval. The platform obtains code, installs dependencies and builds it.
-3. If the build fails, read the first actionable error. Fix through the existing PR workflow; do not disable checks or add unrelated services to make it green.
-4. If it succeeds, record the deployment URL, environment and Git commit. Confirm the revision contains the intended change.
-5. Open the user-facing URL as its intended audience. Check category → vendor → comparison → original source; also check the affected Academy link.
-6. Repeat the affected flow with a keyboard and narrow viewport. Check missing information and error states. A hosting dashboard's Ready status alone does not prove this behavior.
-7. Record actual results and remaining gaps in the existing issue. Agree on recovery, such as reverting the scoped change and deploying the reviewed revision, before broader use.
-
-A 403 in an assistant's hosting connection means that connection was denied access; it does not by itself establish a website outage. A missing project in one account's list does not prove the app was never hosted elsewhere. Ask for the actual site URL or inspect the correct account rather than creating duplicates.
-
-### Check your understanding
-
-**Scenario:** a portfolio card opens GitHub. The PR is merged, and a hosting form offers database, AI and scheduler integrations. No deployment URL has been established.
-
-- Is the app verified live? **No. A repository link and merge are not deployment evidence.**
-- Which integrations should this fictional app use? **None beyond its required hosting/source connection; its catalog is bundled.**
-- What evidence closes the release task? **The intended deployed revision plus a passing real user-path check, with limitations recorded.**
-- Can an agent mark the issue Done because the build passed? **No. It must satisfy the issue's actual acceptance criteria.**
-
-**Practice output:** a completed settings table with reasons, an integration decision, and a release checklist. Record reviewed after reading; practiced after doing the exercise. Do not claim a real deployment or award a passing result without the required evidence.
-
-### Deployment sources
-
-Checked 2026-10-13; provider interfaces and defaults can change.
-
-- [D1: Vercel — Configuring a build](https://vercel.com/docs/builds/configure-a-build)
-- [D2: Vercel — Framework environment variables](https://vercel.com/docs/environment-variables/framework-environment-variables)
-- [D3: Vercel — Generated deployment URLs](https://vercel.com/docs/deployments/generated-urls)
-- [D4: Vercel — Deployment overview](https://vercel.com/docs/deployments/overview)
+**Start when:** you can distinguish merge, deployment and live verification. **Return with:** a settings table with reasons, an integration decision and a release checklist. Paper practice is sufficient; no paid services or real deployment are required.
 
 ## Follow a fictional revenue-planning product
 
@@ -832,106 +777,9 @@ Use one Linear team initially; activate projects only for current deliverables; 
 
 ## Security review before merge (additional 10-minute practice)
 
-**Learning objectives:** explain what each check can find; distinguish authentication from authorization; choose denied-path tests; separate configured, passing and enforced controls; decide when a release still needs verification.
+Continue with [Review release evidence and security boundaries](release-security-review.md). This optional companion preserves the scan comparison, authentication/authorization examples, denied-path tests, configured-versus-enforced distinction and release-decision exercise.
 
-This is a fictional account-research application with synthetic data. It is teaching material, not a live audit or claim about any private project's security.
-
-### What a pull request and CI do
-
-A pull request proposes a change for review. Continuous integration (CI) runs repeatable checks against a particular commit. A check can pass even when an important requirement has no test. The question is: **what did this check actually prove?**
-
-| Check | What it helps find | What it cannot prove |
-| --- | --- | --- |
-| Lint and TypeScript | Code mistakes, inconsistent types and some risky patterns | That the logged-in user is allowed to access an account |
-| Automated tests | Whether the behaviors asserted by those tests work | Untested requirements or actual production setup |
-| Production build | Whether the app can be assembled in the tested environment | That it is deployed or protected |
-| Secret scanning, such as TruffleHog | Credentials accidentally added to source/history; coverage depends on detector and configuration | That every possible secret was found or exposed credentials were revoked |
-| Dependency scanning, such as npm audit or Trivy | Known advisories in included packages | All unknown flaws, actual exploitability or all build-tool risks |
-| Static application scanning (SAST), such as Semgrep | Suspicious code patterns matched by enabled rules | Complete business-specific authorization |
-| Configuration scanning, such as Trivy | Known risky settings in supported configuration files | The actual live hosting, database or identity settings |
-| Human diff review | Whether the change matches intent, boundaries and evidence | An automatic guarantee of correctness |
-
-These tools are examples, not a requirement to install every scanner. Review existing checks first. Overlapping tools can add cost and noise; keep rules relevant to the stack and verify how findings affect job exit status. Dependency review examines changes introduced by a PR [1]. Scanners vary in licensing, coverage and repository availability.
-
-### Authentication asks who; authorization asks what they may do
-
-A session establishes identity. Server-side authorization decides which account or operation that identity may access. An identity SDK does not automatically supply your app's ownership rules.
-
-A machine token identifies an authorized background caller. Cron and webhook credentials should be limited to their intended purpose. Deny requests when required credentials are absent. A logged-in user and a valid machine caller are different trust boundaries.
-
-| Synthetic test | Required evidence |
-| --- | --- |
-| Logged-out visitor requests an account | Denied; account data is not returned |
-| User A requests User B's account | Denied; private fields do not appear |
-| User A attempts to modify or export User B's account | Denied before any write or export |
-| Cron receives a missing, wrong or webhook-only token | Denied; scheduler is not called |
-| Webhook receives an invalid token and malformed JSON | Denied before parsing, ingesting or syncing |
-
-These are **denied-path tests**: intentionally try something that should fail and assert both the response and the absence of side effects. A test that expects “401 Unauthorized” without checking whether work already ran can miss a dangerous ordering mistake. Use synthetic credentials and mocked providers; no live attacks or customer data are needed.
-
-### Match review depth to the change
-
-| Change | Appropriate focus |
-| --- | --- |
-| Copy, layout or lesson text | Existing source/dependency hygiene, accurate claims, accessibility and normal quality checks |
-| APIs, fetching, imports or integrations | Input validation, URL safety, credentials, rate limits, timeouts and paid-provider controls |
-| Account permissions, private data or durable automation | Trust boundaries, denied reads/writes/exports, least privilege, data integrity and recovery |
-
-For imports, check malformed files and size/row limits. For exports, check spreadsheet formula injection and excluded private fields. For URL fetching, check unsupported schemes, credentials in URLs, private/local destinations, redirects and DNS behavior relevant to the implementation. A hostname string check alone is not a complete defense against server-side request forgery.
-
-For AI research, treat retrieved text as data: it cannot authorize tool calls, data publication, spending or changes to permissions. Review ingestion and publication boundaries separately.
-
-### Configured, passed, enforced and deployed are different
-
-| State | Evidence |
-| --- | --- |
-| Documented | A policy says the control should exist |
-| Configured | A workflow or test is present |
-| Passed | The applicable job succeeded on the reviewed commit |
-| Enforced | Verified repository rules prevent merging when that required check fails |
-| Released and verified | The intended change is deployed, and the permitted user journey plus access boundaries were checked |
-
-Record the exact reviewed commit. New commits invalidate earlier approval evidence for the changed code. A queued, failed, cancelled or unexpectedly skipped required check is not a pass. GitHub status checks report results; repository protection/rules determine whether results block merging [2].
-
-If platform enforcement is unavailable, explicitly record a **manual maintainer gate**: review the diff, check every applicable result on the latest commit, inspect acceptance evidence and approve deliberately. A manual gate helps discipline but cannot technically stop direct pushes or bypasses. Keep data-bearing repositories private; check current plan capabilities rather than publishing private code to obtain a feature.
-
-### Secure the checks themselves
-
-Use minimal workflow-token permissions, review third-party Actions and pin them to verified immutable commits [3]. A pinned wrapper action may still download a mutable scanner image or ruleset: inspect the full execution chain. Keep updates reviewable through the existing dependency-update process.
-
-PR jobs should use synthetic fixtures and avoid production credentials, real database writes and paid provider calls. Do not execute untrusted PR code in a privileged workflow with production secrets. For production dependency auditing, remember that development dependencies also execute during installs and builds; review that separate exposure.
-
-Do not silently disable a failing scanner or add broad ignore rules. Explain false positives and record narrowly scoped exceptions with owner, rationale, mitigation and review date.
-
-### Practice: would you release this?
-
-A fictional PR adds “Export accounts.” Secret, dependency and static scans pass. A mock-based test confirms the download works for its owner. There is no wrong-owner test. The repository has no verified required-check enforcement.
-
-1. Name the data boundary that changed.
-2. Write an acceptance criterion for a denied export.
-3. Describe how you will prove no file was generated and no private fields escaped.
-4. Identify the merge-control limitation and the interim process.
-5. List what must be checked after deployment, separately from CI.
-
-**Knowledge check:** Which action is justified?
-
-- A. Release now because every scanner passed.
-- B. Keep the PR in review, add denied-export evidence, inspect the actual diff and latest checks, document the enforcement limitation, then obtain approval and verify the deployment separately.
-- C. Install another scanner and assume it supplies account permissions.
-
-**Answer: B.** The scans did not establish wrong-owner isolation. More scanning cannot substitute for a missing business-specific permission test.
-
-### Why this matters to a seller and future sales leader
-
-As a rep, you can explain the evidence precisely: “Our tests verify this boundary,” rather than “CI says we are secure.” As a leader, you can assign an owner, define the release gate and keep CRM/customer information inside approved systems. These are useful operating habits; they are not certification, legal permission or proof of customer-ready security.
-
-Use the existing delivery loop: requirement → scoped change → test evidence → review → approved merge → deployment verification → learning. Technical Docs owns shared policy; the product repository owns implementation and proof; the Academy teaches with publishable examples.
-
-### Security sources
-
-1. [GitHub Docs — Dependency review](https://docs.github.com/en/code-security/concepts/supply-chain-security/dependency-review): explains dependency changes and configurable enforcement, not business-specific permissions.
-2. [GitHub Docs — About status checks](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks): explains reported results; a successful check alone does not establish branch protection or deployed behavior.
-3. [GitHub Docs — Secure use reference](https://docs.github.com/en/actions/reference/security/secure-use): supports least privilege, action pinning and untrusted-input protections; applying the guidance is not certification.
+**Start when:** you can explain PR, commit, check, merge and deployment. **Return with:** one release decision, the missing evidence and its owner. Do not add this extension to the core session unless the learner's task needs it.
 
 ## References
 
