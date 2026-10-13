@@ -319,3 +319,8 @@ body {
 body:has([data-connect-page]) [data-site-chrome] {
   display: none;
 }
+
+/* Company card: charcoal from the official wordmark; mascot colors stay unchanged. */
+[data-connect-variant="truffle"] {
+  --foreground: #252525;
+}

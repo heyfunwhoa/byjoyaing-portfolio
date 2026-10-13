@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/connect",
+        source: "/connect/:path*",
         headers: [
           { key: "Referrer-Policy", value: "no-referrer" },
           { key: "X-Frame-Options", value: "DENY" },
