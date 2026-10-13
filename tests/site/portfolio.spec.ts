@@ -47,10 +47,15 @@ for (const path of routes) {
     await page.locator(".skip-link").focus();
     await page.locator(".skip-link").press("Enter");
     await expect(page.locator("#main-content")).toBeFocused();
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
-      "href",
-      new RegExp(`${path === "/" ? "/" : path}$`),
-    );
+    const canonical = await page
+      .locator('link[rel="canonical"]')
+      .getAttribute("href");
+    expect(canonical).toBeTruthy();
+    const canonicalUrl = new URL(canonical!);
+    expect(canonicalUrl.origin).toBe("https://www.byjoyaing.com");
+    expect(canonicalUrl.pathname).toBe(path);
+    expect(canonicalUrl.search).toBe("");
+    expect(canonicalUrl.hash).toBe("");
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       "content",
       /opengraph-image/,
