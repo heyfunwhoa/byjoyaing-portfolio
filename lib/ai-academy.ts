@@ -6,6 +6,57 @@ export type Lesson = {
   companion?: { label: string; url: string };
 };
 export const lessons: Lesson[] = [
+{
+  "slug": "cms-fundamentals",
+  "title": "Content management: Git, Keystatic, and Sanity",
+  "track": "Builder",
+  "minutes": 20,
+  "level": "Beginner",
+  "summary": "Understand what a CMS does, compare repository-based and hosted content, and decide when an editor is worth adding.",
+  "analogy": "A CMS is the editorial desk: writers organize and revise material, while the website is the place readers experience it. The publishing process connects the two.",
+  "takeaways": [
+    "A content management system helps people create, organize, edit and publish content using defined fields and workflows.",
+    "Traditional CMSs often combine editing and website presentation; headless CMSs expose content to a separate frontend. Git-based describes file storage and can overlap with headless delivery.",
+    "A schema defines fields such as lesson ID, title, prerequisites, body and sources; content records fill those fields, while components control presentation and interaction.",
+    "Keystatic edits repository files; Sanity stores structured content in a hosted database. Choose based on editorial workflow, reuse, privacy and total operating cost.",
+    "Free software or a free plan does not remove hosting, build, storage, maintenance or migration costs. Git-based edits may still trigger CI.",
+    "A private page does not protect a public dataset or public repository. Editor login and reader authorization are separate controls.",
+    "A CMS becomes useful when frequent content edits, collaboration or reuse justify its setup. It does not automatically implement learner progress, authentication or source verification."
+  ],
+  "exercise": "Read the CMS fundamentals companion guide. For a fictional three-lesson Academy, define the content fields, choose Git alone, Keystatic or Sanity, and trace draft to review to publication. Explain where private material and learner progress belong. Use the written answer key for self-review; no CMS is installed and no production content is changed.",
+  "check": {
+    "question": "A team already reviews lesson files in Git and wants an editing interface for one site. Which is the most proportionate first experiment?",
+    "choices": [
+      "Migrate all research, user accounts and lessons into a CMS immediately",
+      "Pilot Keystatic on a few public lessons while preserving review and build checks",
+      "Put confidential lessons in a public dataset and hide their page links"
+    ],
+    "answer": 1,
+    "explanation": "A small repository-based editing pilot addresses the stated need. Sanity may fit independent publishing or cross-app content reuse, but neither a CMS editor nor a hidden URL establishes reader authorization."
+  },
+  "companion": {
+    "label": "Read the CMS fundamentals and selection guide",
+    "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/cms-fundamentals.md"
+  },
+  "sources": [
+    {
+      "label": "Keystatic: introduction",
+      "url": "https://keystatic.com/docs/introduction"
+    },
+    {
+      "label": "Sanity: platform documentation",
+      "url": "https://www.sanity.io/docs"
+    },
+    {
+      "label": "Sanity: current plans",
+      "url": "https://www.sanity.io/pricing"
+    },
+    {
+      "label": "WordPress: features",
+      "url": "https://wordpress.org/about/features/"
+    }
+  ]
+},
   {
     slug: "frontend-building-blocks",
     title: "Frontend building blocks: from framework to experience",
