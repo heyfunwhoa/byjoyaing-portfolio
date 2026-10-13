@@ -7,7 +7,57 @@
 
 Translate a business idea into a small, verified software change, using a single source of truth for each kind of information. The benefit is less context switching, less duplicate administration, and evidence-based delivery rather than declaring something done because an agent said it finished.
 
-## A simple mental model
+## Start here: save it, check it, publish it
+
+Imagine fixing a typo on a practice website. You want to save your work, check that it is right, and let visitors see the correction.
+
+**Three big steps:**
+1. **Prepare the change:** edit the text and save a recorded version.
+2. **Check and accept it:** review the change and bring it into the main version.
+3. **Publish and confirm it:** put that version on the website and check what visitors see.
+
+The technical words below name smaller steps in that same process. You do not need to memorize them all at once.
+
+### One example, from typo to live website
+
+| What you do | What developers call it |
+| --- | --- |
+| Create a separate place to fix “Welocme” without changing the main version | Create a **branch** |
+| Change it to “Welcome” and inspect the difference | **Edit** and check the **diff** |
+| Record that correction in the project's history | **Commit** |
+| Upload the recorded change so it is available on GitHub | **Push** |
+| Open a proposal showing the correction | Open a **pull request**, or **PR** |
+| Read the change and inspect the relevant automated results | **Review** and **checks** |
+| Accept the correction into the main version | **Merge** |
+| Publish the updated version to the website | **Deploy** |
+| Open the published website and confirm it says “Welcome” | **Verify live** |
+
+Some tools combine steps for you. For example, a browser editor may create the commit directly on GitHub, and merging may automatically start a deployment. The meanings still stay separate.
+
+### What should I say when the PR is ready?
+
+> Review the PR, fix any issues, and merge once the required checks pass.
+
+If it changes a website, add:
+
+> Then confirm the update is live and works as expected.
+
+**Why not just say “commit”?** A commit records work. A merge accepts the proposed work into the main version. A deployment publishes a version for visitors.
+
+### Two examples where you pause
+
+- **A check fails:** investigate the failure, fix the problem, and check the updated PR again before merging.
+- **The PR merged but the typo is still live:** inspect the deployment. The main version may be updated while the website still serves an older version.
+
+### Try explaining it back
+
+Your fictional button-label fix is committed and its PR is open. Someone says, “It is saved, so it must be live.” What would you check?
+
+**Example answer:** “I would check whether the PR was reviewed and merged, whether the updated version deployed, and whether the published button shows the corrected label.”
+
+When that feels familiar, continue below for the more detailed workflow and terminology.
+
+## How the wider project fits together
 
 - **Strategy & prioritization:** Why do this before other work? Evaluate impact, urgency, dependencies, effort, and risk. Treat scoring as a decision aid; security incidents and hard deadlines override it.
 - **Project:** What outcome are we pursuing?
