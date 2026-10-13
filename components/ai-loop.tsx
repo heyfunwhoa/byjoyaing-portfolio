@@ -1,16 +1,16 @@
 import { Index } from "@/components/kicker";
 import { aiLoop } from "@/lib/portfolio";
 
-export function AiLoop() {
+export function AiLoop({ embedded = false }: { embedded?: boolean }) {
   return (
-    <div id="ai" className="flex scroll-mt-24 flex-col gap-5">
+    <div id={embedded ? undefined : "ai"} className="flex scroll-mt-24 flex-col gap-5">
       <div className="flex flex-wrap items-baseline gap-3">
-        <h2 className="text-sm font-medium text-muted">
+        <p className="text-sm font-medium text-muted">
           AI, as a rule I have not shipped
-        </h2>
+        </p>
         <p className="text-sm text-muted">Learning — not a product</p>
       </div>
-      <ol className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
+      <ol className={`grid gap-5 sm:grid-cols-2 ${embedded ? "" : "xl:grid-cols-4"}`}>
         {aiLoop.map((step, index) => (
           <li key={step.title} className="flex flex-col gap-2">
             <Index n={index + 1} />
