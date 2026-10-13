@@ -1,3 +1,4 @@
+import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -13,7 +14,7 @@ export default function IdentityJourneyPage() {
   return (
     <PageMain>
       <section className="py-12 sm:py-16">
-        <p className="text-sm font-medium text-muted">joy. / Builder Academy / Identity security</p>
+        <AcademyBreadcrumb title="Identity Journey Lab" />
         <h1 className="mt-3 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">
           Identity is more than a login.
         </h1>

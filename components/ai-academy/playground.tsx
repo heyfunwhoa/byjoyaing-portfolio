@@ -1,4 +1,6 @@
 "use client";
+import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
+
 import {useState} from "react";
 import Link from "next/link";
 import {assessCase,assessEvidence,detectiveCases,evidenceLessons,reviewPrompt,promptFields,recommendApproach} from "@/lib/ai-academy-labs";
@@ -14,6 +16,7 @@ export function Playground(){
  const c=detectiveCases[scenario],feedback=answer===null?null:assessCase(c.id,answer),result=reviewPrompt(fields),recommendation=recommendApproach(task,sensitive,offline);
  const prompt=promptFields.map(f=>`${f}: ${fields[f]||"[add details]"}`).join("\n");
  return <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-5xl px-5 py-12 sm:px-8">
+    <AcademyBreadcrumb title="Playground" />
  <p className="text-xs font-semibold uppercase tracking-[.2em] text-accent">AI Academy / Practice</p>
  <h1 className="font-display mt-3 text-5xl">AI Playground</h1>
  <p className="mt-3 max-w-2xl text-muted">Practice a skill with fictional scenarios and transparent feedback. No AI provider calls, tracking, saved answers or accounts required.</p>
