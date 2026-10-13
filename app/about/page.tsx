@@ -109,9 +109,10 @@ export default function AboutPage() {
       </section>
 
       <section id="technologies" className="scroll-mt-24 border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight">Technical toolkit</h2>
+        <p className="editorial-eyebrow text-accent">Systems behind the work</p>
+        <h2 className="font-display mt-3 text-3xl tracking-tight">How I work. What supports it.</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          The GTM collection leads. Built with, used professionally, and still learning stay labeled. A name in a case study is not a running integration.
+          Start with a workflow. Explore the approach, open the supporting tools, then follow the evidence—from enterprise selling and team development to independent building.
         </p>
         <div className="mt-6">
           <ToolsMap />

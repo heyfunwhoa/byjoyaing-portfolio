@@ -68,3 +68,7 @@
 | Outcome / owner / time | |
 
 Official references: [Vercel Deployments](https://vercel.com/docs/deployments), [Vercel Rollbacks](https://vercel.com/docs/deployments/rolling-back-a-deployment), [GitHub Actions](https://docs.github.com/en/actions).
+
+## Automated browser checks
+
+See [release checks](release-checks.md) for current test commands, exact required-check names, and enforcement/monitoring gaps. CI tests the locally built site; the manual Production smoke workflow tests the public domain after release. Neither replaces deployed-SHA verification or real email-delivery checks.

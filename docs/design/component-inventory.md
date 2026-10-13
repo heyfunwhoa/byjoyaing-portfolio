@@ -171,3 +171,21 @@ The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 
 ### Scoped stakeholder-map adoption pilot
 
 `/field-notes/multithreading` now proposes Button and Card adoption through `components/stakeholder-map/stakeholder-node.tsx` and `stakeholder-detail.tsx`. The map composition also appears in local Design Lab and Storybook. This is an explicit, reviewed exception to the earlier lab-only inventory, limited to these wrappers. See [stakeholder-map-library.md](stakeholder-map-library.md); other public primitive imports still require their own review.
+
+
+## About workflow toolkit · PR #112
+
+`components/toolkit-explorer.tsx` is a scoped adoption of existing `ui/tabs`, `ui/button`, and Radix Collapsible from the installed `radix-ui` package. No new dependencies or global UI exemption. The adoption allowlist in `lib/shadcn-setup.test.ts` names this wrapper only.
+
+Five workflow summaries lead into a labeled example, three approach steps, a relevant public evidence/learning destination, and a collapsed supporting-tool grid. Revenue execution opens first. Field experience, independent building and proposed AI learning remain distinct. Existing tools and usage notes are preserved; multi-purpose tools appear under a primary purpose.
+
+Tabs provide arrow-key navigation; disclosures use an explicit button and expanded state. Panel entry (180ms), expansion (220ms), collapse (160ms), and chevron rotation honor reduced motion. Nothing auto-advances. Existing legacy anchors remain available.
+
+Local build/typecheck, lint and unit/content checks are recorded in the PR. Browser responsive, keyboard, screen-reader and motion verification remain outstanding; this note does not claim a live release.
+
+
+### Mobile adaptation
+
+Below 640px, one labeled native selector replaces the five summary tabs. A visible position indicator and full workflow heading preserve orientation. Short option labels fit narrow screens; the selector uses 16px text and a 48px minimum height. Desktop tabs and mobile selection share state without duplicating the workflow panel. The mobile approach steps use a compact numbered list; tools remain collapsed and open into a readable single-column grid. Main example text and product links use 16px on phones. No autoplay, hover-only details, sticky overlays or sideways page scrolling is introduced by this design.
+
+Implementation checks do not prove rendered usability. Verify 320/375/390/430px, portrait/landscape, 200% zoom, native selection, focus, screen-reader labels and reduced motion before calling mobile QA complete.

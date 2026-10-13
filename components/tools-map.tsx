@@ -1,91 +1,33 @@
 import { AiLoop } from "@/components/ai-loop";
-import { ToolMark } from "@/components/tool-mark";
-import { ToolkitLogoGrid } from "@/components/toolkit-logo-grid";
-import { officialToolWebsites } from "@/lib/portfolio/external-links";
-import {
-  techCategories,
-  techStanceCopy,
-  toolsFit,
-  type TechStance,
-} from "@/lib/portfolio";
+import { ToolkitExplorer } from "@/components/toolkit-explorer";
+import { toolkitSections } from "@/lib/portfolio/toolkit-sections";
 import { siteHowBuilt } from "@/lib/portfolio/toolkit-registry";
-
-const stanceClass: Record<TechStance, string> = {
-  built: "bg-accent text-accent-foreground",
-  professional: "border border-accent bg-card text-accent",
-  learning: "border border-dashed border-foreground/40 text-foreground",
-};
 
 export function ToolsMap({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex flex-col gap-4">
-        <h3 className="text-sm font-medium text-muted">GTM systems toolkit</h3>
-        <p className="max-w-2xl text-sm leading-6 text-muted">
-          Company marks first. Hover or focus a logo for the name. Each mark
-          opens the official product site. A logo is not a running integration.
-        </p>
-        <ToolkitLogoGrid />
-      </div>
-
-      <div className="flex flex-col gap-3">
-        <h3 className="text-sm font-medium text-muted">How this site is built</h3>
-        <p className="max-w-3xl text-sm leading-6 text-muted">{siteHowBuilt}</p>
-      </div>
-
-      <ul className="flex flex-col gap-10">
-        {techCategories.map((group) => (
-          <li key={group.id} className="flex flex-col gap-4">
-            <h3 className="text-sm font-medium text-muted">{group.title}</h3>
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {group.items.map((item) => (
-                <li
-                  key={item.id}
-                  className="flex gap-3 border border-border bg-card p-3"
-                >
-                  {officialToolWebsites[item.id] ? (
-                    <a
-                      href={officialToolWebsites[item.id]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Visit ${item.name} website (opens in a new tab)`}
-                      title={`Visit ${item.name}`}
-                      className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md border border-border bg-background transition-[border-color,background-color] duration-200 hover:border-accent hover:bg-surface-sage"
-                    >
-                      <ToolMark id={item.id} />
-                    </a>
-                  ) : (
-                    <span className="flex min-h-11 min-w-11 shrink-0 items-center justify-center border border-border bg-background">
-                      <ToolMark id={item.id} />
-                    </span>
-                  )}
-                  <span className="flex min-w-0 flex-col gap-1">
-                    <span className="flex flex-wrap items-center gap-2">
-                      <span className="text-base leading-6 text-foreground">
-                        {item.name}
-                      </span>
-                      <span
-                        className={`inline-flex w-fit rounded-md px-2 py-0.5 text-xs font-medium ${stanceClass[item.stance]}`}
-                      >
-                        {techStanceCopy[item.stance]}
-                      </span>
-                    </span>
-                    {compact ? null : (
-                      <span className="text-sm leading-6 text-muted">
-                        {item.note}
-                      </span>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+    <div className="space-y-5">
+      <ToolkitExplorer sections={toolkitSections} compact={compact} />
       {compact ? null : (
-        <p className="max-w-3xl text-base leading-7 text-muted">{toolsFit}</p>
+        <div className="grid gap-3 md:grid-cols-2">
+          <details className="rounded-2xl border border-border bg-card p-4">
+            <summary className="cursor-pointer rounded-sm py-1 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+              How this site is built
+            </summary>
+            <p className="mt-3 text-sm leading-6 text-muted">{siteHowBuilt}</p>
+          </details>
+          <details
+            id="ai"
+            className="scroll-mt-24 rounded-2xl border border-border bg-card p-4"
+          >
+            <summary className="cursor-pointer rounded-sm py-1 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+              My approach to AI · Learning
+            </summary>
+            <div className="mt-4">
+              <AiLoop embedded />
+            </div>
+          </details>
+        </div>
       )}
-      <AiLoop />
     </div>
   );
 }
