@@ -101,21 +101,17 @@ test("the public name is Kristen Aing and joy. still appears on header hover and
   assert.equal(layout.includes("Kristen Joy Aing"), false);
 });
 
-test("contact offers a message and a reviewed work-example request", () => {
+test("contact offers one form with editable work-example context", () => {
   const contact = readFileSync(new URL("../app/contact/page.tsx", import.meta.url), "utf8");
   const form = readFileSync(new URL("../app/inquiry-form.tsx", import.meta.url), "utf8");
   assert.match(contact, /Let&apos;s talk about the work\./);
   assert.doesNotMatch(contact, /A deeper look, with context/);
   assert.doesNotMatch(contact, /For a quick conversation/);
   assert.doesNotMatch(contact, /product-marketing/);
-  assert.match(form, /role="group"\s+aria-label="Contact type"/);
-  assert.match(form, /aria-pressed=\{mode === value\}/);
-  assert.doesNotMatch(form, /role="tab"/);
-  assert.doesNotMatch(form, /This emails me your note/);
-  assert.match(form, /name="sampleFocus"/);
-  assert.match(form, /window\.location\.hash === "#access"/);
+  assert.equal((form.match(/<form\b/g) ?? []).length, 1);
+  assert.doesNotMatch(form, /sampleFocus|chooseMode|Contact type/);
+  assert.match(form, /defaultValue=\{selectedPlaybook/);
   assert.match(form, /does not unlock private files/);
-  assert.match(form, /Please leave out\s+confidential/);
   assert.match(form, /id="access"/);
   assert.match(form, /id="write"/);
 });

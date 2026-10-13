@@ -115,7 +115,7 @@ test("contact rejects empty and invalid-email submissions without calling the AP
   await expect(name).toBeFocused();
   await name.fill("Synthetic QA");
   const email = page.getByRole("textbox", {
-    name: "Email (work preferred)",
+    name: "Email",
     exact: true,
   });
   await email.fill("invalid-email");
@@ -130,17 +130,9 @@ test("contact rejects empty and invalid-email submissions without calling the AP
     ),
   ).toBe(true);
   expect(submissions).toBe(0);
-  await page
-    .getByRole("button", { name: "Request work examples", exact: true })
-    .click();
-  await expect(
-    page.getByRole("combobox", {
-      name: "Which work would help you evaluate fit?",
-    }),
-  ).toBeVisible();
-  await expect(
-    page.getByText(/Submitting this form does not unlock private files/),
-  ).toBeVisible();
+  await expect(page.locator("form")).toHaveCount(1);
+  await expect(page.getByRole("combobox")).toHaveCount(0);
+  await expect(page.getByText(/Submitting this form does not unlock private files/)).toBeVisible();
 });
 
 test("legacy About redirect and unknown-page status remain correct", async ({
@@ -307,19 +299,20 @@ test("professional requests retain context without granting private access", asy
     .getByRole("link", { name: "Request more context", exact: false })
     .click();
   await expect(page).toHaveURL(/example=team-enablement/);
-  await expect(
-    page.getByText("Requested walkthrough: Coaching and team development", {
-      exact: false,
-    }),
-  ).toBeVisible();
-  await expect(
-    page.getByText(/Submitting this form does not unlock private files/),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Message", exact: true }).click();
-  await expect(page).toHaveURL(/#write$/);
-  await expect(page.getByText("Requested walkthrough: Coaching and team development", { exact: false })).toHaveCount(0);
-  await page.goBack();
-  await expect(page.getByText("Requested walkthrough: Coaching and team development", { exact: false })).toBeVisible();
+  const message = page.getByRole("textbox", { name: "Message", exact: true });
+  await expect(message).toHaveValue(/Coaching and team development/);
+  await expect(page.locator("form")).toHaveCount(1);
+  await expect(page.getByRole("combobox")).toHaveCount(0);
+  let submitted: Record<string, unknown> | undefined;
+  await page.route("**/api/contact", async (route) => {
+    submitted = route.request().postDataJSON();
+    await route.fulfill({ json: { ok: true } });
+  });
+  await page.getByRole("textbox", { name: "Name", exact: true }).fill("Synthetic QA");
+  await page.getByRole("textbox", { name: "Email", exact: true }).fill("qa@example.com");
+  await page.getByRole("button", { name: "Send message", exact: true }).click();
+  await expect(page.getByRole("status")).toContainText("Message sent");
+  expect(submitted?.message).toContain("Coaching and team development");
 });
 
 test("Academy starting paths select existing lessons and keep navigation usable", async ({

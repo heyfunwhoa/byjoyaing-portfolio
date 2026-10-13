@@ -28,8 +28,8 @@ export default async function ContactPage({
           <h1 className="max-w-xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
             Let&apos;s talk about the work.
           </h1>
-          <p className="max-w-xl text-base leading-7 text-muted">For hiring conversations, collaboration or a closer look at an example, send a message or request work context.</p>
-          <p className="max-w-xl text-sm leading-6 text-muted">Requests are reviewed individually. Any material shared must be appropriate for the conversation and its confidentiality requirements; submitting a form does not grant access.</p>
+          <p className="max-w-xl text-base leading-7 text-muted">For hiring conversations, collaboration or a closer look at an example, send a message.</p>
+
           <div
             role="group"
             aria-label="Contact links"
