@@ -19,6 +19,38 @@ Translate a business idea into a small, verified software change, using a single
 - **Verification:** Check acceptance criteria and the relevant user journey before moving the issue to Done.
 - **Learning:** Retrospect on the process with a synthetic, publishable example; keep private reflections in a private workspace.
 
+## Commit, review, merge and deploy: what to say next
+
+A typical branch workflow is **edit → inspect the diff and run relevant checks → commit → push → open a PR → review and CI → fix issues → merge → deploy when needed → verify the published result**. Review and CI can run in parallel. Repeat commit, push and review when fixes change the PR.
+
+| Term | Plain-language meaning |
+| --- | --- |
+| Commit | Record a snapshot in Git history; saving a file alone is not a commit. |
+| Push | Upload local commits to the remote branch. Web-based tools may commit remotely without a separate local push. |
+| Pull request (PR) | Propose integrating a branch and collect discussion, review and check results. |
+| Review | Inspect the changes for correctness, scope and evidence. Review can happen before committing and again on the PR. |
+| Checks / CI | Automated validation for a particular commit; confirm what ran and what it proves. |
+| Merge | Integrate the approved change into the target branch, commonly main. |
+| Deploy | Publish a revision to an environment; a preview and production are different destinations. |
+| Verify live | Confirm the intended deployed revision and affected user behavior. |
+
+**Useful instruction when a PR already exists:** “Review the PR, fix any issues, and merge once the required checks pass on the latest commit.”
+
+For a deployed application, add: “Then verify the production deployment and affected user journey.” If merge triggers automatic deployment, inspect that deployment rather than starting a duplicate. Preview deployments may happen before merge.
+
+“Review then commit” is appropriate for reviewing uncommitted edits. Once the PR exists, the usual next action is **review then merge**; fixes still require new commits and another check of the updated PR. Green checks do not replace review or authorize bypassing repository rules.
+
+A repository-only Markdown change may be complete after merge and verifying the file on the target branch. Documentation rendered into a website still needs publication/deployment verification. A docs-only commit can also trigger a configured deployment automatically; check the actual workflow.
+
+### Quick practice: identify the next action
+
+1. Your edits are saved locally but absent from Git history. **Inspect the diff, run relevant checks, then commit and push.**
+2. A PR is open but a required check failed. **Investigate and fix it; push the fix and review the latest results before merging.**
+3. A PR merged but production still shows the old version. **Check deployment status and revision, then verify the affected page after publication.**
+4. You read the lesson but did not attempt the exercise. **Record reviewed, not practiced or passed checks.**
+
+Source: [GitHub Docs — GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), checked 2026-10-13. The deployment steps above describe this lesson's delivery convention; each repository determines its own deployment triggers.
+
 ## Follow a fictional revenue-planning product
 
 A founder-facing simulator needs to represent a manager who also sells. Imagine a fully productive seller with an annual quota of $800,000, expected attainment of 70%, and 45% selling allocation. The model gives **$252,000 in expected new ARR** ($800,000 × 0.70 × 0.45). These are entirely fictional classroom assumptions, not measured customer revenue or an investment recommendation.
