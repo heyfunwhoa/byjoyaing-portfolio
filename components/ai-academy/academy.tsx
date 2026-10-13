@@ -55,11 +55,11 @@ export function Academy({ resources }: { resources?: ReactNode }){
       </div>
     </div>
       {resources}
-      <div className="mb-8 grid grid-cols-3 gap-2 sm:gap-3">
-      <div className="rounded-xl border border-border bg-card p-5"><p className="text-xs uppercase tracking-widest text-muted">Curriculum</p><p className="mt-2 text-3xl font-semibold">{lessons.length} lessons</p><p className="mt-1 text-sm text-muted">From fundamentals to building</p></div>
-      <div className="rounded-xl border border-border bg-card p-5"><p className="text-xs uppercase tracking-widest text-muted">Your progress</p><p className="mt-2 text-3xl font-semibold">{completed.length} / {lessons.length}</p><p className="mt-1 text-sm text-muted">In this session (not saved)</p></div>
-      <div className="rounded-xl border border-border bg-card p-5"><p className="text-xs uppercase tracking-widest text-muted">Practice</p><p className="mt-2 text-3xl font-semibold">{workflows.length} workflows</p><p className="mt-1 text-sm text-muted">Prompts, tasks and skills</p></div>
-    </div>
+      <dl className="mb-8 grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
+        <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5"><dt className="text-xs font-medium text-muted">Lessons</dt><dd className="mt-2 text-xl font-semibold sm:text-3xl">{lessons.length}</dd><p className="mt-1 text-xs leading-5 text-muted sm:text-sm">Basics to building</p></div>
+        <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5"><dt className="text-xs font-medium text-muted">Progress</dt><dd className="mt-2 text-xl font-semibold sm:text-3xl">{completed.length} / {lessons.length}</dd><p className="mt-1 text-xs leading-5 text-muted sm:text-sm">This session only</p></div>
+        <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5"><dt className="text-xs font-medium text-muted">Workflows</dt><dd className="mt-2 text-xl font-semibold sm:text-3xl">{workflows.length}</dd><p className="mt-1 text-xs leading-5 text-muted sm:text-sm">Prompts and tasks</p></div>
+      </dl>
     <nav aria-label="Academy sections" className="mb-7 flex flex-wrap gap-2 border-b border-border pb-4">
       {([["learn","01 / Learn AI"],["apply","02 / Apply AI"],["skills","03 / Build skills"],
           ] as const).map(([id,name])=> (
