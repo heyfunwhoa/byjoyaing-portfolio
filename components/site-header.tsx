@@ -101,7 +101,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className={`sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm transition-shadow duration-200 ${scrolled ? "shadow-[0_5px_20px_-16px_#1B211D]" : ""}`}>
+      <header data-site-chrome className={`sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm transition-shadow duration-200 ${scrolled ? "shadow-[0_5px_20px_-16px_#1B211D]" : ""}`}>
         <nav className="relative mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-5 py-4 sm:px-8" aria-label="Primary">
           <Link
             ref={brandRef}
