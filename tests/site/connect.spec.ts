@@ -55,3 +55,39 @@ test("QR landing keeps confirmation deliberate and destination fixed", async ({
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL("https://www.linkedin.com/in/kristenaing");
 });
+
+test("sales card has its own brand, QR and fixed destinations", async ({
+  page,
+  request,
+}) => {
+  const response = await request.get(
+    "/connect/truffle?url=https://example.invalid",
+  );
+  expect(response.status()).toBe(200);
+  expect(response.headers()["x-frame-options"]).toBe("DENY");
+  expect(response.headers()["referrer-policy"]).toBe("no-referrer");
+  await page.goto("/connect/truffle?url=https://example.invalid");
+  const main = page.locator("main");
+  await expect(
+    main.getByRole("heading", { name: "Make secrets easier." }),
+  ).toBeVisible();
+  await expect(
+    main.getByRole("img", { name: "Truffle Security", exact: true }),
+  ).toBeVisible();
+  await expect(
+    main.getByRole("link", { name: "Contact the Truffle team" }),
+  ).toHaveAttribute("href", "https://trufflesecurity.com/contact");
+  await expect(
+    main.getByRole("link", { name: "Continue to LinkedIn" }),
+  ).toHaveAttribute("href", "https://www.linkedin.com/in/kristenaing");
+  await main.locator("summary").click();
+  await expect(
+    main.getByRole("link", { name: "Save QR image" }),
+  ).toHaveAttribute("href", "/connect/truffle/qr.png");
+  await expect(main.locator("form")).toHaveCount(0);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true);
+});

@@ -13,8 +13,7 @@ const env = {
   mode: process.env.NODE_ENV,
 };
 const capabilities = posthogCapabilities(env);
-const isConnectionPage =
-  window.location.pathname.replace(/\/+$/, "") === "/connect";
+const isConnectionPage = /^\/connect(?:\/|$)/.test(window.location.pathname);
 if (!isConnectionPage && (capabilities.monitoring || capabilities.analytics)) {
   try {
     posthog.init(env.token!, posthogClientOptions(env));

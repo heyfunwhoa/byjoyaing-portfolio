@@ -132,7 +132,12 @@ test("connection page rejects pageviews and all browser events", () => {
   );
   const previous = Object.getOwnPropertyDescriptor(globalThis, "window");
   try {
-    for (const pathname of ["/connect", "/connect/"]) {
+    for (const pathname of [
+      "/connect",
+      "/connect/",
+      "/connect/truffle",
+      "/connect/truffle/",
+    ]) {
       Object.defineProperty(globalThis, "window", {
         configurable: true,
         value: { location: { pathname } },
