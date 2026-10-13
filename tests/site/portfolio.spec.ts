@@ -315,6 +315,11 @@ test("professional requests retain context without granting private access", asy
   await expect(
     page.getByText(/Submitting this form does not unlock private files/),
   ).toBeVisible();
+  await page.getByRole("button", { name: "Message", exact: true }).click();
+  await expect(page).toHaveURL(/#write$/);
+  await expect(page.getByText("Requested walkthrough: Coaching and team development", { exact: false })).toHaveCount(0);
+  await page.goBack();
+  await expect(page.getByText("Requested walkthrough: Coaching and team development", { exact: false })).toBeVisible();
 });
 
 test("Academy starting paths select existing lessons and keep navigation usable", async ({
