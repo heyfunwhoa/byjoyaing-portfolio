@@ -1,0 +1,1064 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-13",
+  "scope": "64 shadcn component types from index; 32 current dnd-kit React/core pages from map; 25 Sandpack docs navigation pages. Not every prop, example, registry, legacy API or non-React framework page.",
+  "sources": [
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/accordion",
+      "title": "Accordion - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338a-f490-70e5-8037-a9be8ba18cde",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/alert",
+      "title": "Alert - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-1489-7469-9e4b-815e786c7bac",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/alert-dialog",
+      "title": "Alert Dialog - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-03c0-74ae-8b59-0b110e1aa14a",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/aspect-ratio",
+      "title": "Aspect Ratio - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-35a0-7238-a0ba-9818878be1e2",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/attachment",
+      "title": "Attachment - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-24c5-70da-85ef-ee07d738bb4b",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/avatar",
+      "title": "Avatar - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-4512-75ad-82ee-fbdd9808f653",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/badge",
+      "title": "Badge - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-07d6-7299-897a-d81d7b299b74",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/breadcrumb",
+      "title": "Breadcrumb - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-1dad-7219-b504-888ea5c43129",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/bubble",
+      "title": "Bubble - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-2b97-769f-89b5-18c18823e9e2",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/button",
+      "title": "Button - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-3a8d-7008-b240-5a7c42f4b238",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/button-group",
+      "title": "Button Group - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-4ec0-7485-b52e-47cc46a87a4c",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/calendar",
+      "title": "Calendar - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-5eba-70a6-9681-e5659b1aa8ab",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/card",
+      "title": "Card - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-708d-7346-87b8-ffe462f24de0",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/carousel",
+      "title": "Carousel - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-828f-73f9-9345-96148f57e2cd",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/chart",
+      "title": "Chart - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-9874-73c1-8098-f39f2d86be0b",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/checkbox",
+      "title": "Checkbox - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-532e-74a2-9575-e54b8c73cca7",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/collapsible",
+      "title": "Collapsible - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-61f0-76fd-ac10-755b1f7b7f6d",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/combobox",
+      "title": "Combobox - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-815c-727d-aa6d-90705a25e8c1",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/command",
+      "title": "Command - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-90f3-718d-9206-a67270a9cc10",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/context-menu",
+      "title": "Context Menu - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-a013-7586-b8ba-7c14289aa230",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/data-table",
+      "title": "Data Table - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-b8a7-725b-a3cb-b77c45f183a7",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/date-picker",
+      "title": "Date Picker - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-c9d5-732c-a0df-38891868b35a",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/dialog",
+      "title": "Dialog - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-dda8-717f-8903-65d3e61d7844",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/direction",
+      "title": "Direction - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-ee0e-7572-8351-43a9f6dd2c1c",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/drawer",
+      "title": "Drawer - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-fe23-71af-b832-64efaefeaa01",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/dropdown-menu",
+      "title": "Dropdown Menu - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-1374-7088-82fd-147292f2d9e9",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/empty",
+      "title": "Empty - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-c925-702f-b335-97e82b54a733",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/field",
+      "title": "Field - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-d82a-7446-9e4c-e43bcc201661",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/hover-card",
+      "title": "Hover Card - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-e8df-75ae-92ad-94381bfdbb12",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/input",
+      "title": "Input - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338b-fa62-73cb-befd-d6a7a83a989d",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/input-group",
+      "title": "Input Group - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-08cb-72e9-b37c-66b7c0a1a363",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/input-otp",
+      "title": "Input OTP - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-1ed4-747e-8692-6638b6e03dbe",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/item",
+      "title": "Item - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-03e0-75b8-b57f-963ab2da6f9a",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/kbd",
+      "title": "Kbd - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-148d-7587-bcf7-c4964ee96c3b",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/label",
+      "title": "Label - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-26aa-715f-96f5-29f925b258d2",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/marker",
+      "title": "Marker - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-34fd-70ae-bc67-eb3d953c3aac",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/menubar",
+      "title": "Menubar - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-45f5-75fe-96a9-6030c53b4362",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/message",
+      "title": "Message - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-55b8-775b-b314-66dbed9a40bf",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/message-scroller",
+      "title": "Message Scroller - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-6c9a-73d4-a817-158eb0164bbc",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/native-select",
+      "title": "Native Select - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-7f84-7019-a6a2-58ad7ff7a0ad",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/navigation-menu",
+      "title": "Navigation Menu - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-8fbe-7774-83c1-3f3da04c9664",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/pagination",
+      "title": "Pagination - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-add2-77a8-aa56-26eb5f1b822a",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/popover",
+      "title": "Popover - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-55a6-75ea-b8cc-39c71019cfe4",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/progress",
+      "title": "Progress - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-6e48-748e-96c3-9f94e0ff19eb",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/questionnaire",
+      "title": "Questionnaire - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-7efb-740e-8d9e-5dd29e50612a",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/radio-group",
+      "title": "Radio Group - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-9501-7032-8d85-0a49621f9032",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/resizable",
+      "title": "Resizable - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-a536-705b-af93-084dbfd7216e",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/scroll-area",
+      "title": "Scroll Area - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-b57f-756f-9f6a-fca877566d54",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/select",
+      "title": "Select - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-ca0c-770e-8b14-740f35ace157",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/separator",
+      "title": "Separator - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-df58-7378-9f8f-74b6e1f43146",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/sheet",
+      "title": "Sheet - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-f078-718b-b7aa-0935c847a703",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/sidebar",
+      "title": "Sidebar - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-fe71-72a5-9cc4-c829c6ebc4be",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/skeleton",
+      "title": "Skeleton - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-1181-7249-860f-52335e95a213",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/slider",
+      "title": "Slider - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-2537-759d-b5c9-32899aaa9d92",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/spinner",
+      "title": "Spinner - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-37c7-779c-978a-cd64543757a3",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/switch",
+      "title": "Switch - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-ef54-73f1-9862-8bdf7a6bd3e9",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/table",
+      "title": "Table - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338c-ff5a-771b-a7b2-039e2b543d48",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/tabs",
+      "title": "Tabs - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-0f7f-734a-9cd0-ca2fa48bd245",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/textarea",
+      "title": "Textarea - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-2aca-71cd-84c9-dca23f053130",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/toast",
+      "title": "Toast - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-4654-70b7-8347-724d6a82c337",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/toggle",
+      "title": "Toggle - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-587c-746c-937d-8fbb6e97aeed",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/toggle-group",
+      "title": "Toggle Group - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-7169-743c-b5bd-7cd05d19da98",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/tooltip",
+      "title": "Tooltip - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-81d4-71a9-8932-3a09d9d61527",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://ui.shadcn.com/docs/components/base/typography",
+      "title": "Typeset - shadcn/ui",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-91a8-761c-9733-5fe035513170",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/guides/sortable-state-management",
+      "title": "Managing Sortable State - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-a5a7-70fa-9444-576058d5e450",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/quickstart",
+      "title": "Quickstart Guide - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-b49f-74f9-b9da-c70ca492a7d8",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/concepts/sortable",
+      "title": "Sortable Lists - Core Concepts | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-d7b6-7789-ba1d-636e6e3d1890",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/quickstart",
+      "title": "React Quickstart - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-e8a9-754a-aee5-392a1de8a298",
+      "hasContent": true,
+      "notice": "Embedded preview unavailable; documentation text only"
+    },
+    {
+      "url": "https://dndkit.com/react/hooks/use-sortable",
+      "title": "useSortable Hook - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-9b5a-7307-96bc-6d1f9db790c0",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/hooks/use-draggable",
+      "title": "useDraggable Hook - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-b125-77ad-9861-e2f5d714f905",
+      "hasContent": true,
+      "notice": "Embedded preview unavailable; documentation text only"
+    },
+    {
+      "url": "https://dndkit.com/react/components/drag-drop-provider",
+      "title": "DragDropProvider - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-c43f-717b-a78c-a52e741e5654",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/extend/plugins/auto-scroller",
+      "title": "Auto Scroller Plugin - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-15c9-7231-a7ad-6292e566fe25",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/guides/sensors",
+      "title": "Configuring Sensors - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-cdf8-74fa-b2b0-6d224402e8bb",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/concepts/drag-drop-manager",
+      "title": "DragDropManager - Core Concepts | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338d-dcef-727d-95b6-cfaed40739d3",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/concepts/draggable",
+      "title": "Draggable Elements - Core Concepts | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-6eee-7586-b782-26d5a241ce62",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/concepts/droppable",
+      "title": "Droppable Targets - Core Concepts | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-8002-7498-95fd-805d97614eb0",
+      "hasContent": true,
+      "notice": "Embedded preview unavailable; documentation text only"
+    },
+    {
+      "url": "https://dndkit.com/extend/modifiers",
+      "title": "Modifiers - Extend dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-9426-741d-ac0d-cb1d046dbc84",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/extend/plugins",
+      "title": "Plugins - Extend dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-a6fe-70ee-a331-5e5af8c027f9",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/extend/plugins/accessibility",
+      "title": "Accessibility Plugin - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-bf66-71eb-bf26-79c47a7eb84b",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/extend/plugins/cursor",
+      "title": "Cursor Plugin - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-7fae-7739-be9b-1f3a8d0cfc36",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/extend/plugins/debug",
+      "title": "Debug Plugin - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-8f89-72aa-9a33-63d37e02ab5e",
+      "hasContent": true,
+      "notice": "Embedded preview unavailable; documentation text only"
+    },
+    {
+      "url": "https://dndkit.com/extend/plugins/feedback",
+      "title": "Feedback Plugin - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-90f4-74c8-ba94-6f9d41681668",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/extend/plugins/style-injector",
+      "title": "Style Injector Plugin - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-a148-712d-8823-89e4f3e4279a",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/extend/sensors",
+      "title": "Sensors - Extend dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-b3db-704c-9420-b351d77672ba",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/extend/sensors/keyboard-sensor",
+      "title": "Keyboard Sensor - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338e-c471-76a2-9842-b467402bd5ab",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/extend/sensors/pointer-sensor",
+      "title": "Pointer Sensor - dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-25a9-777c-988a-4ae9b5c84a51",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/components/drag-overlay",
+      "title": "DragOverlay - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-3704-706f-b072-84513792961f",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/guides/collision-detection",
+      "title": "Collision Detection - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-47e6-728c-8945-f6141177e4a3",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/guides/feedback",
+      "title": "Feedback Plugin - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-59af-705c-8dd5-dca2b2f1e190",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/guides/migration",
+      "title": "Migration Guide - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-6b6b-75e9-9dba-4ca3c5b00a94",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/guides/modifiers",
+      "title": "Modifiers - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-7d81-741f-84f9-00a636155b64",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/guides/multiple-sortable-lists",
+      "title": "Multiple Sortable Lists - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-8e27-72bd-b8c3-e4de2fd12f60",
+      "hasContent": true,
+      "notice": "Embedded preview unavailable; documentation text only"
+    },
+    {
+      "url": "https://dndkit.com/react/hooks/use-drag-drop-manager",
+      "title": "useDragDropManager - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-517c-7728-b5c1-da997435da54",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/hooks/use-drag-drop-monitor",
+      "title": "useDragDropMonitor - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-6213-75bc-adce-33b267a938bd",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/hooks/use-drag-operation",
+      "title": "useDragOperation - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-6320-7388-81bb-9da33c20265b",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://dndkit.com/react/hooks/use-droppable",
+      "title": "useDroppable Hook - React | dnd kit",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-768d-74ae-b816-d87a008bb19f",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs",
+      "title": "Introduction | Sandpack Docs – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-7384-7114-b5d2-27daaa69bcb7",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/quickstart",
+      "title": "Playground – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13389-dbe2-76e1-a016-702a0e10e9bf",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/resources/faq",
+      "title": "Frequently Asked Questions – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-8992-729a-9191-fe6e1c447ee4",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/getting-started",
+      "title": "Install – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-c286-72d9-81a7-b1979fdab53b",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/getting-started/usage",
+      "title": "Usage – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-857f-7722-ab43-af20874bdbf7",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/getting-started/layout",
+      "title": "Layout – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-bdf3-743a-bbeb-9460f3ed36fb",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/getting-started/themes",
+      "title": "Sandpack Themes – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a1338f-cdd2-73da-8687-02b9163b6250",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/getting-started/private-packages",
+      "title": "Private packages – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13390-0aba-743e-8bd0-9210ee01e417",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/advanced-usage",
+      "title": "Overview – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13390-1ade-72ef-a49d-ece72ef6ff9d",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/advanced-usage/components",
+      "title": "Components – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13390-4f57-73be-bef0-db9cab3b9485",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/advanced-usage/hooks",
+      "title": "Hooks – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13390-9b19-75cf-8a7e-e3d782f569a9",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/advanced-usage/client",
+      "title": "Sandpack Client – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13390-ab0c-776c-ac73-5b91d87fd312",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/advanced-usage/static",
+      "title": "Static – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13390-bbc7-75e0-baea-70826375ceea",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/advanced-usage/bundlers",
+      "title": "Experimental bundler (beta) – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13390-cbf5-761e-b582-125de2063e53",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/advanced-usage/serving-static-files",
+      "title": "Serving static files – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13390-db30-7716-9e35-bee3bd22b55b",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/guides",
+      "title": "Guides – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-1c10-7182-a2ca-59d569b1baef",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/guides/local-dependencies",
+      "title": "Local dependencies/packages – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-32a1-777f-a744-110208b335f8",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/guides/hosting-the-bundler",
+      "title": "Hosting the Bundler – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-456d-71fd-afcb-be5f1eef5174",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/guides/integrate-monaco-editor",
+      "title": "Integrate Monaco Editor – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-5720-73fe-9055-bc4b7db269cc",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/guides/ssr",
+      "title": "Server-side rendering – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-678e-748e-aef9-498ddc63cd90",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/resources/community",
+      "title": "Community – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-2535-73ae-8c01-611dbb036985",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/resources/migration-guide/v1",
+      "title": "v1.x – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-34d7-7771-8a0c-a9f78ed9bdaf",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/resources/migration-guide/v2",
+      "title": "v2.x – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-72ba-7313-9b62-5158518c22d4",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/architecture/overview",
+      "title": "Overview – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-4527-71ce-8f23-93bd6a5b10a7",
+      "hasContent": true,
+      "notice": null
+    },
+    {
+      "url": "https://sandpack.codesandbox.io/docs/architecture/private-packages",
+      "title": "Private dependencies: technical specification – Sandpack",
+      "statusCode": 200,
+      "scrapeId": "01a13391-55b3-7510-b740-f277e690407c",
+      "hasContent": true,
+      "notice": null
+    }
+  ],
+  "repositories": [
+    {
+      "repo": "byjoyaing-portfolio",
+      "packageUrl": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/package.json",
+      "packageBlobSha": "2dd4dc3ac3551e94fee8f52bf32c877d06015ec1",
+      "componentsConfigBlobSha": "9e9005649f29b84c4b335ec80f69962aee1c6f59",
+      "style": "radix-nova",
+      "radix": "^1.7.0",
+      "directDndKitDependencies": [],
+      "directSandpackDependencies": []
+    },
+    {
+      "repo": "account-signal-engine",
+      "packageUrl": "https://github.com/heyfunwhoa/account-signal-engine/blob/main/package.json",
+      "packageBlobSha": "51c356c1caa911fe50d46accfac49915b315864a",
+      "componentsConfigBlobSha": "02e61e07044c3cdfad1b3e89161cd6717e602abe",
+      "style": "radix-nova",
+      "radix": "^1.6.7",
+      "directDndKitDependencies": [],
+      "directSandpackDependencies": []
+    },
+    {
+      "repo": "security-market-map",
+      "packageUrl": "https://github.com/heyfunwhoa/security-market-map/blob/main/package.json",
+      "packageBlobSha": "20d394d372e75d56de29dbc9346e7e292cbc1869",
+      "componentsConfigBlobSha": "02e61e07044c3cdfad1b3e89161cd6717e602abe",
+      "style": "radix-nova",
+      "radix": "^1.6.7",
+      "directDndKitDependencies": [],
+      "directSandpackDependencies": []
+    },
+    {
+      "repo": "gtm-revenue-os",
+      "packageUrl": "https://github.com/heyfunwhoa/gtm-revenue-os/blob/main/package.json",
+      "packageBlobSha": "64e5a89d1905859d88b1ae38e0e8e230b9cbf5f9",
+      "componentsConfigBlobSha": null,
+      "style": null,
+      "radix": null,
+      "directDndKitDependencies": [],
+      "directSandpackDependencies": []
+    },
+    {
+      "repo": "detector-coverage-atlas",
+      "packageUrl": "https://github.com/heyfunwhoa/detector-coverage-atlas/blob/main/package.json",
+      "packageBlobSha": "2d29e10bb2fc0a086a94de07444de4f7a8796f10",
+      "componentsConfigBlobSha": "02e61e07044c3cdfad1b3e89161cd6717e602abe",
+      "style": "radix-nova",
+      "radix": "^1.6.7",
+      "directDndKitDependencies": [],
+      "directSandpackDependencies": []
+    },
+    {
+      "repo": "channel-territory-mapping",
+      "packageUrl": "https://github.com/heyfunwhoa/channel-territory-mapping/blob/main/package.json",
+      "packageBlobSha": "ac84efcc0274e41eb99a6361e61697b2e119f91a",
+      "componentsConfigBlobSha": "02e61e07044c3cdfad1b3e89161cd6717e602abe",
+      "style": "radix-nova",
+      "radix": "^1.6.7",
+      "directDndKitDependencies": [],
+      "directSandpackDependencies": []
+    },
+    {
+      "repo": "truffle-camp",
+      "packageUrl": "https://github.com/heyfunwhoa/truffle-camp/blob/main/package.json",
+      "packageBlobSha": "b0ad4ddb6b4fdb843ff1aab2b1df69178b0df0f2",
+      "componentsConfigBlobSha": "02e61e07044c3cdfad1b3e89161cd6717e602abe",
+      "style": "radix-nova",
+      "radix": "^1.6.7",
+      "directDndKitDependencies": [],
+      "directSandpackDependencies": []
+    }
+  ],
+  "licenseSources": [
+    {
+      "repo": "shadcn-ui/ui",
+      "url": "https://github.com/shadcn-ui/ui/blob/main/LICENSE.md",
+      "blobSha": "fad4d887a681dd49233e5ed01ee2c7a1513089a0"
+    },
+    {
+      "repo": "clauderic/dnd-kit",
+      "url": "https://github.com/clauderic/dnd-kit/blob/main/LICENSE",
+      "blobSha": "4a86c7f6fb9adce21fbfc5c7227fee008697daeb"
+    },
+    {
+      "repo": "codesandbox/sandpack",
+      "url": "https://github.com/codesandbox/sandpack/blob/main/LICENSE",
+      "blobSha": "0e9ff7e78ca1d1c5b6cc49a6fe7de0382c24bdeb"
+    }
+  ]
+}
