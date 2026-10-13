@@ -1,3 +1,4 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { Kicker } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
 import { loadLimaCharlieSnapshot } from "@/lib/account-signal/limacharlie";
@@ -6,12 +7,12 @@ import { robotsNoindex } from "@/lib/indexing";
 import { MemoryResearchStore } from "@/lib/account-signal/store";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "LimaCharlie research brief",
   description:
     "A source-grounded brief from one public LimaCharlie documentation page. Prototype, not a live account feed.",
   robots: robotsNoindex,
-};
+}, "/account-signal");
 
 export default function AccountSignalPage() {
   const result = ingestPublicSnapshot(loadLimaCharlieSnapshot(), new MemoryResearchStore());

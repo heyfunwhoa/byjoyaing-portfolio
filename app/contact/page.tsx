@@ -1,3 +1,4 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { resolvePlaybookRequest } from "@/lib/playbook-request";
 import { InquiryForm } from "@/app/inquiry-form";
 import { EmailLink } from "@/components/email-link";
@@ -5,13 +6,13 @@ import { PageMain } from "@/components/page-main";
 import { SocialLinks } from "@/components/social-links";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   alternates: { canonical: "/contact" },
   openGraph: { url: "/contact" },
   title: "Contact",
   description:
     "Connect with Kristen Aing or request reviewed work examples covering enterprise selling, coaching and GTM systems.",
-};
+}, "/contact");
 
 export default async function ContactPage({
   searchParams,

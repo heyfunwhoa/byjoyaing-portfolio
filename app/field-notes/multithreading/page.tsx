@@ -1,3 +1,4 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { FieldNoteBreadcrumb } from "@/components/collection-breadcrumb";
 import { SourceAndEvidencePanel } from "@/components/editorial/source-and-evidence-panel";
 import { RelatedWork } from "@/components/editorial/related-work";
@@ -6,13 +7,13 @@ import { StakeholderPlayground } from "@/components/field-notes/stakeholder-play
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   alternates: { canonical: "/field-notes/multithreading" },
   openGraph: { url: "/field-notes/multithreading" },
   title: "Multithreading & Stakeholder Mapping",
   description:
     "How I think about complex buying groups: a short field note, an interactive stakeholder example, and a deeper walkthrough by request.",
-};
+}, "/field-notes/multithreading");
 
 export default function MultithreadingPage() {
   return (

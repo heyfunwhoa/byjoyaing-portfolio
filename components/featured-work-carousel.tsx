@@ -25,7 +25,9 @@ function useReducedMotion() {
   return reduced;
 }
 
-export function FeaturedWorkCarousel({ slides }: { slides: readonly FeaturedSlide[] }) {
+export function FeaturedWorkCarousel({ slides,
+}: { slides: readonly FeaturedSlide[];
+}) {
   const reduced = useReducedMotion();
   const [api, setApi] = useState<CarouselApi>();
   const [index, setIndex] = useState(0);
@@ -49,7 +51,8 @@ export function FeaturedWorkCarousel({ slides }: { slides: readonly FeaturedSlid
   return (
     <Carousel
       setApi={setApi}
-      opts={{ align: "start", loop: false, duration: reduced ? 0 : 20, watchDrag: !reduced }}
+      opts={{ align: "start", loop: false, duration: reduced ? 0 : 20, watchDrag: true,
+      }}
       className="mt-6"
       aria-label="Featured professional work"
     >
@@ -68,11 +71,12 @@ export function FeaturedWorkCarousel({ slides }: { slides: readonly FeaturedSlid
               <h3 className="mt-3 font-display text-xl leading-tight tracking-tight">
                 <Link
                   href={slide.href}
-                  className="focus-visible:outline-none after:absolute after:inset-0 after:content-['']"
+                  className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >
                   <span className="relative">{slide.title}</span>
                   <span className="sr-only">
-                    . {position + 1} of {slides.length}. {featuredSourceLabel[slide.source]}.
+                    . {position + 1} of {slides.length}. {" "}
+                    {featuredSourceLabel[slide.source]}.
                   </span>
                 </Link>
               </h3>
@@ -90,7 +94,9 @@ export function FeaturedWorkCarousel({ slides }: { slides: readonly FeaturedSlid
   );
 }
 
-function FeaturedCarouselControls({ index, count }: { index: number; count: number }) {
+function FeaturedCarouselControls({ index, count,
+}: { index: number; count: number;
+}) {
   const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel();
   const control =
     "inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-semibold text-foreground hover:border-accent disabled:pointer-events-none disabled:opacity-40";

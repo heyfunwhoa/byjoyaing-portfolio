@@ -1,10 +1,11 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Build Rate Limits",
   description: "Learn the difference between GitHub CI and Vercel deployments, diagnose rate limits, and reduce unnecessary preview builds safely.",
-};
+}, "/ai-academy/devops/build-rate-limits");
 
 const cases = [
   {
@@ -31,7 +32,7 @@ const cases = [
 
 export default function BuildRateLimitsLesson() {
   return (
-    <main className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
+    <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
       <nav className="mb-8 text-sm text-muted"><Link href="/ai-academy" className="underline underline-offset-4 hover:text-foreground">← Builder Academy</Link> / DevOps / Build rate limits</nav>
       <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">Builder Academy · DevOps foundations · Beginner</p>
       <h1 className="mb-5 text-4xl font-semibold leading-tight tracking-normal sm:text-5xl">Why did my deployment get rate-limited?</h1>

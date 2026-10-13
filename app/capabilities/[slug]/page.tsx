@@ -1,6 +1,8 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { ProjectStatusPill } from "@/components/project-status-pill";
-import { capabilityBySlug, capabilityViews, projectsForCapability } from "@/lib/capabilities";
+import { capabilityBySlug, capabilityViews, projectsForCapability,
+} from "@/lib/capabilities";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,14 +13,18 @@ export function generateStaticParams() {
   return capabilityViews.map((view) => ({ slug: view.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const view = capabilityBySlug(slug);
   if (!view) return { title: "Capabilities" };
-  return {
+  return completePageMetadata(
+    {
     title: view.title,
     description: view.summary,
-  };
+  },
+    `/capabilities/${slug}`,
+  );
 }
 
 export default async function CapabilityPage({ params }: PageProps) {

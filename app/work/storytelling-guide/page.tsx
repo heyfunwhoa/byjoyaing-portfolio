@@ -1,3 +1,4 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { robotsNoindex } from "@/lib/indexing";
 import type { Metadata } from "next";
@@ -5,11 +6,11 @@ import { WorkStoryTemplate } from "@/components/work-story-template";
 import { BuildStoryTemplate } from "@/components/build-story-template";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Two Ways to Tell the Work",
   description: "A demonstration of distinct editorial templates for commercial leadership and independently built software.",
   robots: robotsNoindex,
-};
+}, "/work/storytelling-guide");
 
 export default function StorytellingGuide() {
   return <PageMain><div className="py-12 sm:py-16">

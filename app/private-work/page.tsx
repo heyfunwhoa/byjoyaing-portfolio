@@ -1,13 +1,14 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { robotsNoindex } from "@/lib/indexing";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Private case studies",
   description: "Learn about invitation-based access to selected portfolio case studies.",
   robots: robotsNoindex,
-};
+}, "/private-work");
 
 export default function PrivateWorkInfoPage() {
   return (

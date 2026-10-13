@@ -1,3 +1,4 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { EditorialArticle } from "@/components/editorial/editorial-article";
 import { SourceAndEvidencePanel } from "@/components/editorial/source-and-evidence-panel";
@@ -6,11 +7,11 @@ import { DealJourney } from "@/components/field-notes/deal-journey";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   alternates: { canonical: "/field-notes/enterprise-deal" },
   title: "Strategic Enterprise Deal Anatomy",
   description: "A structured illustrative approach to enterprise deal execution and sales-leader coaching.",
-};
+}, "/field-notes/enterprise-deal");
 
 export default function EnterpriseDealPage() {
   return (

@@ -87,7 +87,9 @@ export function InquiryForm({
           startedAt: startedAt.current,
         }),
       });
-      const payload = (await response.json()) as { error?: string };
+      const payload = (await response.json()) as { error?: string;
+        confirmationAccepted?: boolean;
+      };
 
       if (!response.ok) {
         setStatus("error");
@@ -100,7 +102,7 @@ export function InquiryForm({
       setMessage(
         mode === "access"
           ? "Request sent. I’ll review it and follow up if I can share an appropriate example. This does not unlock private files."
-          : "Message sent. You should get a confirmation email. I’ll reply if I can help.",
+          : "Message sent. I’ll reply if I can help.",
       );
     } catch {
       setStatus("error");

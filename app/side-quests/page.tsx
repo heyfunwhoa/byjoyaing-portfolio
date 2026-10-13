@@ -1,23 +1,24 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { FeaturedSideQuestStrip } from "@/components/featured-side-quest-strip";
 import { PageMain } from "@/components/page-main";
-import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
-import { ProjectEvidence } from "@/components/project-evidence";
 import { ProjectStatusPill } from "@/components/project-status-pill";
-import { featuredSideQuestSlides, featuredSideQuestSlugs } from "@/lib/featured-work";
-import { statusHelp } from "@/lib/portfolio";
+import { featuredSideQuestSlides, featuredSideQuestSlugs,
+} from "@/lib/featured-work";
 import { portfolioEntries } from "@/lib/portfolio-registry";
-import { directoryProjects } from "@/lib/project-directory";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata(
+  {
   alternates: { canonical: "/side-quests" },
   openGraph: { url: "/side-quests" },
   title: "Side Quests",
   description:
     "Independent cybersecurity, AI, enablement, and GTM software experiments, with transparent build stages.",
-};
+},
+  "/side-quests",
+);
 
 const featuredSlugSet = new Set<string>(featuredSideQuestSlugs);
 
@@ -46,17 +47,15 @@ const focusLinks = [
 
 export default function SideQuestsPage() {
   const items = portfolioEntries.filter((entry) => entry.kind === "side-quest");
-  const featured = featuredSideQuestSlugs.flatMap((slug) => items.filter((entry) => entry.slug === slug));
-  const featuredPreviewBySlug = new Map(directoryProjects.map((project) => [project.slug, project.preview]));
   const more = items.filter((entry) => !featuredSlugSet.has(entry.slug));
 
   return (
     <PageMain>
       <section className="grid items-center gap-10 border-b border-border py-12 sm:py-16 lg:grid-cols-[minmax(0,14rem)_minmax(0,1fr)]">
-        <div className="mx-auto w-full max-w-[14rem] lg:mx-0">
+        <div className="order-2 mx-auto w-full max-w-[9rem] lg:order-1 lg:mx-0 lg:max-w-[14rem]">
           <BrandAvatar variant="builder" />
         </div>
-        <div>
+        <div className="order-1 lg:order-2">
           <p className="editorial-eyebrow text-accent">Side Quests / Independent builds</p>
           <h1 className="font-display mt-3 text-4xl leading-[1.16] tracking-normal sm:text-5xl">
             Curiosity, put to work.
@@ -85,37 +84,24 @@ export default function SideQuestsPage() {
           Selected experiments
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
-          Sage cards and honest status. Scroll sideways to see the next build. These are independent experiments, not
-          employer deployments.
+          Explore selected independent experiments. Each is labeled with its
+          current build stage.
         </p>
         <FeaturedSideQuestStrip slides={featuredSideQuestSlides()} />
       </section>
 
-      <section id="look-closer" className="section-enter border-b border-border py-12">
-        <h2 className="font-display text-3xl">Look closer</h2>
-        <p className="mt-2 text-sm text-muted">
-          The same four builds, with evidence and stack. Selected for relevance to security, commercial problem-solving,
-          and learning—not because each app is finished.
+      <section id="look-closer" className="scroll-mt-24 border-b border-border py-8"
+      >
+        <h2 className="font-display text-2xl">Look closer</h2>
+        <p className="mt-3 text-sm leading-6 text-muted">
+          Open a project to inspect its sample, contribution and implementation
+          limits.
         </p>
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {featured.map((item) => (
-            <article key={item.slug} className="flex flex-col rounded-xl border border-border bg-card p-6">
-              <div className="mb-4">
-                {featuredPreviewBySlug.get(item.slug) ? (
-                  <ProjectEvidence kind={featuredPreviewBySlug.get(item.slug)!} compact />
-                ) : null}
-              </div>
-              <ProjectStatusPill status={item.status} />
-              <h3 className="mt-2 text-xl font-semibold">{item.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-6 text-muted">{item.summary}</p>
-              <p className="mt-3 text-xs leading-5 text-muted">{statusHelp[item.status]}</p>
-              <ProjectTechnologyStack slug={item.slug} presentation="compact" className="mt-4" />
-              <Link href={item.href} className="mt-5 inline-flex min-h-11 items-center text-sm font-medium text-accent underline">
-                View case study →
-              </Link>
-            </article>
-          ))}
-        </div>
+        <Link href="/projects#directory"
+          className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4"
+        >
+          Explore the project directory →
+        </Link>
       </section>
 
       <section className="py-12">

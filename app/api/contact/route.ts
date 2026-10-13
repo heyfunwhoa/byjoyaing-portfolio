@@ -1,3 +1,4 @@
+import { acceptMessageAndConfirm } from "@/lib/email-delivery";
 import {
   EMAIL_MAX,
   createResend,
@@ -45,7 +46,8 @@ export async function POST(request: Request) {
     );
   }
   if (company.length > EMAIL_MAX.company) {
-    return Response.json({ error: "That company name is too long." }, { status: 400 });
+    return Response.json({ error: "That company name is too long." }, { status: 400 },
+    );
   }
   if (message.length < 8 || message.length > EMAIL_MAX.message) {
     return Response.json(
@@ -68,7 +70,9 @@ export async function POST(request: Request) {
   const safeCompany = escapeHtml(company || "Not provided");
   const safeMessage = escapeHtml(message).replaceAll("\n", "<br />");
 
-  const { error } = await resend.emails.send({
+  const delivery = await acceptMessageAndConfirm(
+    () =>
+      resend.emails.send({
     from,
     to: inbox,
     replyTo: email,
@@ -80,16 +84,10 @@ export async function POST(request: Request) {
       <strong>Company / team:</strong> ${safeCompany}</p>
       <p><strong>Message:</strong><br />${safeMessage}</p>
     `,
-  });
+  }),
 
-  if (error) {
-    return Response.json(
-      { error: "Could not send that message. Try email instead." },
-      { status: 502 },
-    );
-  }
-
-  await resend.emails.send({
+    () =>
+      resend.emails.send({
     from,
     to: email,
     replyTo: PUBLIC_CONTACT_EMAIL,
@@ -100,7 +98,17 @@ export async function POST(request: Request) {
       <p>If you want to add context in the meantime, just reply to this email.</p>
       <p>— Kristen Aing</p>
     `,
-  });
+  }),
+  );
 
-  return Response.json({ ok: true });
+  if (!delivery.accepted) {
+    return Response.json(
+      { error: "Could not send that message. Try email instead." },
+      { status: 502 },
+    );
+  }
+
+  return Response.json({ ok: true,
+    confirmationAccepted: delivery.confirmationAccepted,
+  });
 }
