@@ -28,7 +28,7 @@ for (const path of routes) {
 test("primary navigation works by keyboard on desktop and mobile", async ({ page }) => {
   await page.goto("/");
   const nav = page.getByRole("navigation", { name: "Primary", exact: true });
-  const menu = nav.getByRole("button", { name: "Open navigation menu" });
+  const menu = nav.getByRole("button", { name: /^(Open|Close) navigation menu$/ });
   if (await menu.isVisible()) {
     await menu.focus();
     await menu.press("Enter");
