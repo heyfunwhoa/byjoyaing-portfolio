@@ -178,3 +178,15 @@ Reuse the existing Academy card, native disclosure, track selector and lesson se
 The primary task is choosing an appropriate entry point, reading a lesson and reaching its existing practice. Phone/tablet use the existing lesson select; desktop retains the sidebar. Path steps stack on phones and use two columns from the small breakpoint. The lesson heading receives focus on navigation; buttons have accessible names and a minimum 44px height. Native disclosures preserve keyboard behavior. Existing global reduced-motion behavior applies, with no added motion.
 
 Verification: metadata integrity and navigation browser regression tests added for desktop/tablet/mobile, keyboard activation, focused headings, separate reviewed/check state, independent builder entry and planned resources. Local lint, unit tests and production build pass. Browser installation locally is blocked by truncated download archives; PR CI must verify browser behavior before merge. Manual zoom/reflow and real-device checks are not claimed. Mission extension points and remaining scope are recorded in `docs/academy/MISSION-HANDOFF.md`.
+
+
+## Academy check results — lab prototype (2026-10-13)
+
+- Owner: portfolio maintainer. Destination: local `/design-lab`, `components/design-lab/learning-checks-preview.tsx`. Status: proposed lab prototype; no public Academy adoption.
+- Task: inspect unanswered, mixed/retry and passed feedback before integrating a learner-facing result summary.
+- Adapt existing `components/academy/follow-one-click.tsx` semantic radio/disclosure patterns; reuse `lib/academy/click-mission.ts` questions, IDs and `recordAnswer` scoring. Catalog families: forms and disclosure. No parallel scoring, credential or course registry.
+- Fictional preview attempts remain in component memory. No storage, network, code execution or reading acknowledgment mutation. Correct-check totals remain separate from reading reviewed status.
+- Existing card/border/muted/accent tokens. One wrapping column at phone/tablet/desktop sizes; native radio arrow keys and disclosures, unique group name, polite result announcement, 44px labels/actions. No motion; reduced motion unchanged. Empty/unattempted, retry and success are explicit. Loading, denied and server-error states do not apply.
+- No imported third-party code, package, version or attribution obligation added. Hirael/Seam remain reference candidates, not installed libraries.
+- Verification: isolated TypeScript, esbuild and React/JSDOM interaction checks passed for all three states, keyboard radio movement, reading-state separation and unchanged saved progress. Full repository checks, 375/768/1280px browser review and 200% zoom remain pending; browser installation returned corrupt archives.
+- Production Design Lab 404 gate is retained. Roll back by removing the preview import/mount and file. Do not mount it publicly as real learner progress.
