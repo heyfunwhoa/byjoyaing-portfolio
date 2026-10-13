@@ -67,7 +67,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           />
           <SiteHeader />
           {children}
-          <footer className="mt-auto border-t border-border">
+          <footer data-site-chrome className="mt-auto border-t border-border">
             <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-5 py-8 text-sm text-muted sm:flex-row sm:items-end sm:justify-between sm:px-8">
               <div className="flex flex-col gap-2">
                 <span className="flex items-center gap-2 font-medium text-foreground">

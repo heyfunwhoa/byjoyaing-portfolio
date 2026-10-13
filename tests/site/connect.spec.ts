@@ -16,8 +16,25 @@ test("QR landing keeps confirmation deliberate and destination fixed", async ({
   await page.goto("/connect?next=https://example.invalid");
   const main = page.locator("main");
   await expect(main.getByRole("heading", { level: 1 })).toHaveText(
-    "Let's stay connected.",
+    "Kristen Aing",
   );
+  await expect(page.locator("header[data-site-chrome]")).toBeHidden();
+  await expect(page.locator("footer[data-site-chrome]")).toBeHidden();
+  const disclosure = main.locator("details");
+  await expect(disclosure).not.toHaveAttribute("open", "");
+  const summary = disclosure.locator("summary");
+  await summary.focus();
+  await page.keyboard.press("Enter");
+  await expect(disclosure).toHaveAttribute("open", "");
+  await expect(disclosure.getByRole("img")).toBeVisible();
+  await expect(
+    disclosure.getByRole("link", { name: "Save QR image" }),
+  ).toHaveAttribute("download", "kristen-aing-qr.png");
+  await summary.press("Enter");
+  await expect(disclosure.getByRole("img")).toBeHidden();
+  await main.getByRole("link", { name: "Explore my work" }).click();
+  await expect(page.locator("header[data-site-chrome]")).toBeVisible();
+  await page.goBack();
   const link = main.getByRole("link", { name: "Continue to LinkedIn" });
   await expect(link).toHaveAttribute(
     "href",

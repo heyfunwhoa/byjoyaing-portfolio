@@ -314,3 +314,8 @@ body {
   .toolkit-disclosure[data-state="open"] { animation: toolkit-unfold 220ms ease-out; }
   .toolkit-disclosure[data-state="closed"] { animation: toolkit-fold 160ms ease-in; }
 }
+
+/* The public connection card has its own single portfolio exit. No JS-dependent shell flash. */
+body:has([data-connect-page]) [data-site-chrome] {
+  display: none;
+}
