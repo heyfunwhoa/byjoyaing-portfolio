@@ -84,3 +84,28 @@ test("invalid answers do not create practice evidence", () => {
     assert.equal(recordAnswer(p, checks[0].id, n), p);
   assert.equal(recordAnswer(p, "unknown", 0), p);
 });
+
+test("pilot consumes the existing lesson and foundation metadata", async () => {
+  const { getClickMissionMetadata } =
+    await import("./click-mission-metadata.ts");
+  const { lessons } = await import("../ai-academy.ts");
+  const { getLessonGuidance, availabilityLabels, academyResources } =
+    await import("./lesson-guidance.ts");
+  const p = getClickMissionMetadata();
+  const guidance = getLessonGuidance(emptyProgress().lessonId)!;
+  assert.equal(
+    p.lessonTitle,
+    lessons.find((l) => l.slug === emptyProgress().lessonId)?.title,
+  );
+  assert.deepEqual(
+    p.prerequisites,
+    guidance.prerequisites.map(
+      (id) => lessons.find((l) => l.slug === id)?.title,
+    ),
+  );
+  const resource = academyResources.find(
+    (r) => r.id === emptyProgress().activityId,
+  )!;
+  assert.equal(p.availabilityLabel, availabilityLabels[resource.availability]);
+  assert.equal(guidance.practice?.href, resource.href);
+});

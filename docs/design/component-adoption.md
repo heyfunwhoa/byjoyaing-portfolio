@@ -122,6 +122,44 @@ Reuse `InquiryForm` at `/contact` for all inquiries. Remove the message/request 
 
 Verification: scoped lint, TypeScript, navigation/request tests; updated browser coverage mocks the mail endpoint to verify project context without sending email. Hosted browser checks remain required before merge. Personal interests stay on About; a short Contact invitation is a recommendation, not implemented here.
 
+## Conference connection page — proposed, October 2026
+
+Owner: portfolio / Kristen Aing. Destination: `/connect`.
+Reuse `PageMain`, `BrandAvatar` (Leader) and the existing public-profile registry;
+adapt the site's semantic anchor/action styling. No lab primitive import, new
+runtime dependency, animation, carousel or modal is needed for one explicit link.
+Phone, tablet and desktop use one centered column, max-width 28rem, wrapping copy
+and a minimum 48px main action. Native anchor keyboard behavior and global focus
+styles apply. The page is static; loading, form, error and permission states are
+not applicable. Private material remains outside this journey.
+
+The QR contains only `https://www.byjoyaing.com/connect`; query parameters cannot
+choose the LinkedIn destination. Scanning grants no access and verifies no identity.
+The visitor sends a request on LinkedIn; Kristen reviews it there. LinkedIn/app
+sign-in behavior remains outside this site's control. No contact download or
+connection action happens automatically.
+
+`/connect` suppresses PostHog initialization on direct entry and events after
+client navigation. Its response disallows framing, forms, object embeds and
+cross-origin script connections; the outbound link suppresses referrer sharing.
+This is a scoped CSP, not a complete site-wide script policy. Hosting access logs
+may still exist; do not claim anonymous or zero-data hosting. Existing site footer
+and navigation remain. No private access/authentication logic is changed.
+
+QR assets: `public/connect/qr.svg`, `qr.png`, `conference-card.png`. Regeneration:
+`scripts/qr/generate-connect.py` uses offline ReportLab and Pillow, not a QR SaaS.
+Maintain four-module white margin; no logo overlays. Print the visible domain and
+inspect physical cards for replacement stickers. Protect domain, GitHub, hosting
+and LinkedIn accounts with MFA; account settings were not audited or changed.
+
+Verification: production build, lint/typecheck and unit tests; independent ZXing
+QR decode of both PNG assets, plus visual review of the card. Browser installation
+returned corrupt archives, so viewport, keyboard, mobile app handoff, real-device
+scan and 200% zoom remain manual release checks. Automated browser coverage is in
+`tests/site/connect.spec.ts` but must run in a working browser environment. Do not
+print/distribute until the route is deployed and a real-phone scan is verified.
+Rollback: revert this focused PR and retire any distributed QR assets if needed.
+
 ## Context navigation (2026-10-13, proposed)
 
 - Task: orient a reader arriving directly at a nested lesson, lab, case or capability and offer predictable parent links.
@@ -131,3 +169,12 @@ Verification: scoped lint, TypeScript, navigation/request tests; updated browser
 - Phone/tablet/desktop: same compact, wrapping list; long labels may wrap, no horizontal rail or sticky overlay. Actual links have a minimum 44px height, with existing focus styles, semantic nav/ordered list, decorative separators and one non-linked current-page label. No motion means reduced-motion remains unchanged. Async/error/loading states are not applicable to static navigation.
 - Workbench availability is not deployment evidence. Automated build and browser evidence belongs in the PR; real-device and manual 200% zoom review remain separate. Revert call-site additions and the Academy wrapper to roll back.
 - Owner: portfolio maintainer. Future lesson integration should reuse this composition; use explicit known parents, never split a URL into guessed links. Top-level About/Contact pages do not need a redundant breadcrumb. Filter persistence and previous/next lesson sequencing are separate work.
+
+
+## Academy navigation foundation — 2026-10-13
+
+Reuse the existing Academy card, native disclosure, track selector and lesson selector in `components/ai-academy/academy.tsx`; adapt the existing learning-path buttons into ordered steps and previous/next navigation. Keep `AcademyBreadcrumb` and its shared collection trail unchanged. Resource cards remain server-rendered in `app/ai-academy/page.tsx`. No new dependency, animation or parallel badge system: availability uses plain text because existing project-status badges have different semantics.
+
+The primary task is choosing an appropriate entry point, reading a lesson and reaching its existing practice. Phone/tablet use the existing lesson select; desktop retains the sidebar. Path steps stack on phones and use two columns from the small breakpoint. The lesson heading receives focus on navigation; buttons have accessible names and a minimum 44px height. Native disclosures preserve keyboard behavior. Existing global reduced-motion behavior applies, with no added motion.
+
+Verification: metadata integrity and navigation browser regression tests added for desktop/tablet/mobile, keyboard activation, focused headings, separate reviewed/check state, independent builder entry and planned resources. Local lint, unit tests and production build pass. Browser installation locally is blocked by truncated download archives; PR CI must verify browser behavior before merge. Manual zoom/reflow and real-device checks are not claimed. Mission extension points and remaining scope are recorded in `docs/academy/MISSION-HANDOFF.md`.

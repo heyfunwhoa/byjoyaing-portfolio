@@ -135,10 +135,14 @@ function RequestWalkthrough() {
 
 export function FollowOneClick({
   lessonTitle,
+  missionTitle,
   prerequisites,
+  availabilityLabel,
 }: {
   lessonTitle: string;
+  missionTitle: string;
   prerequisites: readonly string[];
+  availabilityLabel: string;
 }) {
   const [progress, setProgress] = useState<MissionProgress>(emptyProgress);
   const [storage, setStorage] = useState<"loading" | "device" | "session">(
@@ -200,13 +204,13 @@ export function FollowOneClick({
   }
   return (
     <>
-      <AcademyBreadcrumb title={clickMission.title} />
+      <AcademyBreadcrumb title={missionTitle} />
       <header className="mt-6 max-w-3xl">
         <p className="text-sm font-medium text-accent">
-          Guided practice · {lessonTitle}
+          {availabilityLabel} · Guided practice · {lessonTitle}
         </p>
         <h1 className="mt-3 font-display text-4xl sm:text-5xl">
-          {clickMission.title}
+          {missionTitle}
         </h1>
         <p className="mt-4 text-lg leading-8 text-muted">
           Open a fictional account brief. Find out who answers the request, why

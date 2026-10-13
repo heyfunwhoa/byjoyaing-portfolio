@@ -2,7 +2,6 @@
 export const clickMission = {
   lessonId: "mcp-vs-rest-api",
   activityId: "follow-one-click",
-  title: "Follow one click",
   steps: ["Understand", "See", "Try", "Explain"],
 } as const;
 export const progressKey = `academy:practice:${clickMission.lessonId}:${clickMission.activityId}:v1`;

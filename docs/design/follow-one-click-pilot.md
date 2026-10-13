@@ -1,12 +1,12 @@
 # Follow one click — guided practice pilot
 
-Status: implementation in progress; integration waits for the Academy navigation/prerequisite foundation to merge. No merge/deployment claim.
+Status: implemented in the pilot branch on merged Academy foundation #130 (`d4d18fc`). Draft for review; not a deployment claim.
 
 ## Ownership and integration contract
 
 This change owns the mission layout, challenge feedback and browser-local resume behavior. The Academy foundation owns lesson identities, prerequisites, resource metadata, paths, available/planned labels and navigation. Do not duplicate that registry or replace the Academy landing page.
 
-Practice activity `follow-one-click` belongs to existing lesson `mcp-vs-rest-api`. The pilot introduces no new Academy lesson ID. Route planned: `/ai-academy/journeys/follow-one-click`. After the foundation merges, derive parent title and prerequisite names from `lessons` and `lessonGuidance`; add the practice link to the existing lesson's metadata. Retain the foundation's resource status vocabulary. Readiness must not be inferred from an activity file existing.
+Practice activity `follow-one-click` belongs to existing lesson `mcp-vs-rest-api`. The pilot introduces no new Academy lesson ID. Route: `/ai-academy/journeys/follow-one-click`. Parent title and prerequisite names are derived from `lessons` and `getLessonGuidance`; the practice link is added to the existing lesson metadata. The shared `academyResources` entry provides the mission title and availability, rendered using `availabilityLabels`. Retain the foundation's resource status vocabulary. Readiness must not be inferred from an activity file existing.
 
 ## Progress contract
 
@@ -31,7 +31,7 @@ Save version, existing lesson ID, activity ID, last mission step, reviewed/pract
 
 ## Acceptance and verification
 
-- Existing registry/metadata and status labels reused: pending foundation merge and integration.
+- Existing registry/metadata and status labels reused: implemented via `getClickMissionMetadata`, covered by a metadata projection test.
 - Four-step lesson, successful/denied simulation, hints, correct/incorrect feedback, teach-back and source links.
 - Unit coverage: corrupt/incompatible/oversized storage; scoped persistence; independent progress markers; invalid answers; repeated and corrected checks.
 - Browser coverage: reload/resume/reset, wrong then corrected answer, denied/allowed simulation, storage unavailable, keyboard heading focus and viewport overflow.
@@ -39,8 +39,8 @@ Save version, existing lesson ID, activity ID, last mission step, reviewed/pract
 
 Rollback: remove the practice metadata link and route, then this isolated component/model. The namespaced local record is inert without the pilot; do not clear unrelated browser storage. No backend migration.
 
-## Draft delivery state
+## Integrated delivery state
 
-Foundation dependency is [PR #130](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/130), still open at inspection. The reviewable preview lives in Storybook, `Academy / Follow one click / Pilot`; it deliberately passes no prerequisite overrides while the canonical foundation is unmerged. No public route, metadata, available/planned label, Academy navigation or course-path edit is included in this draft. Browser scenarios target the isolated Storybook preview in `tests/visual/follow-one-click.spec.ts`; adapt/add the route entry check after integration.
+Foundation [PR #130](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/130) merged before route integration. Reconciled its test command without removing any checks. The public route and Storybook preview now consume the same metadata projection. Discovery uses the existing guides/labs resource list and the parent lesson's practice link; no Academy landing component or navigation rewrite.
 
-Validated locally: 163 unit tests, full lint and Storybook production build. Application build result and hosted browser evidence are recorded in the PR. The browser installer previously returned invalid archives in this environment; hosted CI must run the visual interaction checks. Integration is not complete and this draft must not be called a published lesson.
+Validated locally: 168 unit tests, full lint, TypeScript and production builds (app and Storybook; exact results also recorded in the PR). Tests in `tests/visual/follow-one-click.spec.ts` exercise the mission; `tests/site/follow-one-click.spec.ts` verifies discovery, direct route/reload and breadcrumb return. The local browser download was unavailable; hosted browser evidence remains required. Manual 200% zoom, real-device and screen-reader checks remain pending.
