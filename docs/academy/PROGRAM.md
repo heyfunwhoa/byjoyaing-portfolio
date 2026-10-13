@@ -2,8 +2,12 @@
 
 **Status:** proposed curriculum and product architecture (not an assertion that labs are implemented).
 **Last reviewed:** 2026-10-10.
-**Canonical implementation:** `/ai-academy` in this repository. Keep the existing seven-lesson MVP and PR #16 Version Control Playground; do not create a competing app/repo.
+**Canonical implementation:** `/ai-academy` in this repository. Preserve the existing catalog and Version Control Playground; do not create a competing app/repo. The seven-lesson MVP below is historical context, not the current catalog count.
 **Other references:** [AI Command Center](https://app.notion.com/p/3f3cdefaec758139a149ef6b77d14f03), [existing academy MVP](../ai-academy.md).
+
+## Current curriculum priorities
+
+Use the [2026-10-12 curriculum audit](CURRICULUM-AUDIT.md) for the complete inventory, observed implementation depth, reuse decisions and current priority order. The audited catalog has 22 registered lessons; Programming Foundations has 2 guided tutorials among 10 module records. This program remains the wider vision. Its older phases below are not the current implementation queue. Lesson/UI implementation is on hold pending explicit authorization.
 
 ## Product recommendation
 One learning platform, two coherent entry points:

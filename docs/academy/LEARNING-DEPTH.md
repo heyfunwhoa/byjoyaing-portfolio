@@ -2,6 +2,10 @@
 Status: curriculum expansion proposal, not implemented functionality.
 Reviewed: 2026-10-10. Applies to existing AI Academy lessons and five playground labs in PR #20.
 
+## Current prioritization
+
+The [curriculum audit](CURRICULUM-AUDIT.md) inventories current cards, guides and simulations and sequences the remaining work. Use this file as the instructional quality contract, not proof that its proposed extensions are implemented. Several journeys and simulations now exist; inspect the linked audit before creating a new one. Implementation remains on hold.
+
 ## Instructional design contract
 
 Every lesson should include:
