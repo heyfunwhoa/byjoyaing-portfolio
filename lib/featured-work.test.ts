@@ -38,13 +38,14 @@ test("Side Quest slides stay on /side-quests and are not mixed into Work", () =>
   for (const slide of quests) assert.equal(workIds.has(slide.id), false);
 });
 
-test("source guard: Work mounts the carousel, homepage does not, and Embla is not set to autoplay", () => {
+test("source guard: Work uses the bento explorer, homepage omits it, and lab carousel has no autoplay", () => {
   const work = readFileSync(new URL("../app/work/page.tsx", import.meta.url), "utf8");
-  assert.match(work, /<FeaturedWorkCarousel/);
+  assert.match(work, /<WorkExplorer/);
+  const explorer = readFileSync(new URL("../components/work-explorer.tsx", import.meta.url), "utf8");
   assert.match(work, /href="\/side-quests"/);
-  assert.match(work, /id="enterprise-sales"/);
-  assert.match(work, /id="people-leadership"/);
-  assert.match(work, /id="gtm-strategy"/);
+  assert.match(explorer, /id: "enterprise-sales"/);
+  assert.match(explorer, /id: "people-leadership"/);
+  assert.match(explorer, /id: "gtm-strategy"/);
   const carousel = readFileSync(new URL("../components/featured-work-carousel.tsx", import.meta.url), "utf8");
   assert.match(carousel, /@\/components\/ui\/carousel/);
   assert.match(readFileSync(new URL("../components/ui/carousel.tsx", import.meta.url), "utf8"), /aria-roledescription="carousel"/);

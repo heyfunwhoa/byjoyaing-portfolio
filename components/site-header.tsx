@@ -18,6 +18,7 @@ export function SiteHeader() {
   const open = openOnPath === pathname;
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const brandRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const updateScroll = () => setScrolled(window.scrollY > 8);
@@ -37,12 +38,40 @@ export function SiteHeader() {
       document.querySelector(".skip-link"),
       document.getElementById("main-content"),
       document.querySelector("footer"),
+      brandRef.current,
     ].filter((node): node is HTMLElement => node instanceof HTMLElement);
     for (const node of inertTargets) node.setAttribute("inert", "");
 
     menuRef.current?.querySelector<HTMLAnchorElement>("a[href]")?.focus();
 
     function closeFromKeyboard(event: KeyboardEvent) {
+      if (event.key === "Tab") {
+        const targets = [
+          menuButtonRef.current,
+          ...Array.from(
+            menuRef.current?.querySelectorAll<HTMLAnchorElement>("a[href]") ??
+              [],
+          ),
+        ].filter(
+          (node): node is HTMLButtonElement | HTMLAnchorElement =>
+            node !== null,
+        );
+        const first = targets[0];
+        const last = targets[targets.length - 1];
+        if (!first || !last) return;
+        const active = document.activeElement;
+        if (!targets.some((node) => node === active)) {
+          event.preventDefault();
+          first.focus();
+        } else if (event.shiftKey && active === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && active === last) {
+          event.preventDefault();
+          first.focus();
+        }
+        return;
+      }
       if (event.key !== "Escape") return;
       event.preventDefault();
       setOpenOnPath(null);
@@ -74,7 +103,9 @@ export function SiteHeader() {
     <>
       <header className={`sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm transition-shadow duration-200 ${scrolled ? "shadow-[0_5px_20px_-16px_#1B211D]" : ""}`}>
         <nav className="relative mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-5 py-4 sm:px-8" aria-label="Primary">
-          <Link href="/" className="group/brand relative flex min-w-0 items-center gap-2.5 rounded-md text-foreground transition-colors duration-200 hover:text-accent">
+          <Link
+            ref={brandRef}
+            href="/" className="group/brand relative flex min-w-0 items-center gap-2.5 rounded-md text-foreground transition-colors duration-200 hover:text-accent">
             <span className="nav-brand-mark relative shrink-0">
               <Mark className="text-accent" />
               <span className="pointer-events-none absolute top-[calc(100%+0.4rem)] left-0 z-40 hidden w-max rounded-md border border-border bg-card px-2 py-1 text-xs font-medium text-foreground group-hover/brand:block group-focus-visible/brand:block">
@@ -93,7 +124,11 @@ export function SiteHeader() {
             onClick={() => setOpenOnPath(open ? null : pathname)}
           >
             <span className="inline-flex items-center gap-2">
-              {open ? <X size={16} className="nav-toggle-enter size-4" /> : <Menu size={16} className="nav-toggle-enter size-4" />}
+              {open ? (
+                <X size={16} className="nav-toggle-enter size-4" />
+              ) : (
+                <Menu size={16} className="nav-toggle-enter size-4" />
+              )}
               {open ? "Close" : "Menu"}
             </span>
           </button>

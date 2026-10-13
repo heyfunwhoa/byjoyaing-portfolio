@@ -518,13 +518,13 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "truffle-camp": {
     pipeline:
-      "A written scenario → the reader separates detection from verification → a manager could score the explanation. On this site you read the module. You cannot complete it in software.",
+      "A written scenario → the reader separates detection from verification → a manager could score the explanation. On this site you can read the module and try one synthetic knowledge check. Progress is not saved.",
     workingToday:
-      "The First Expedition write-up on the case study. Teams have used discovery frameworks, playbooks, and Darktrace industry training. Those are not a course app.",
+      "The First Expedition write-up and one synthetic knowledge check on the case study. Teams have used discovery frameworks, playbooks, and Darktrace industry training. Those are not a course app.",
     plannedNext:
-      "One playable mission with synthetic evidence and no real secret.",
+      "A fuller playable mission after testing the synthetic knowledge check.",
     implementedTech:
-      "Static copy in this Next.js page. No lesson player, saved progress, or model.",
+      "A static module and session-only knowledge check in this Next.js page. No course platform, saved progress, or model.",
   },
   "partner-gtm-engine": {
     pipeline:

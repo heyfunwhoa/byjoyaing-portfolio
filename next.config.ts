@@ -1,15 +1,24 @@
-import { posthogIngestionHost, posthogRewrites } from "@/lib/posthog-browser";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  skipTrailingSlashRedirect: true,
-  async redirects() {
-    return [{ source: "/approach", destination: "/about", permanent: true }];
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+        ],
+      },
+    ];
   },
-  async rewrites() {
-    return posthogRewrites(
-      posthogIngestionHost(process.env.NEXT_PUBLIC_POSTHOG_HOST),
-    );
+  async redirects() {
+    return [
+      { source: "/approach", destination: "/about", permanent: true }];
   },
 };
 

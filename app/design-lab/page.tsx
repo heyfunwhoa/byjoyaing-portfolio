@@ -1,3 +1,7 @@
+import { completePageMetadata } from "@/lib/page-metadata";
+import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
+import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
+import { ComponentOptions } from "@/components/design-lab/component-options";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
@@ -19,10 +23,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Design lab",
   robots: robotsNoindex,
-};
+}, "/design-lab");
 
 const statuses: ProjectStatus[] = ["field", "prototype", "designed", "exploring"];
 
@@ -49,6 +53,9 @@ export default function DesignLabPage() {
             This page previews reusable pieces before they move onto the public site. A production build returns 404. The public navigation does not link here.
           </p>
         </header>
+
+        <MotionWorkbench />
+        <ComponentOptions />
 
         <section aria-labelledby="foundations-title">
           <h2 id="foundations-title" className="font-display text-2xl tracking-tight">Foundations</h2>
@@ -118,13 +125,6 @@ export default function DesignLabPage() {
           <Suspense fallback={<p className="mt-6 text-sm text-muted">Loading the directory…</p>}>
             <DesignLabGallery />
           </Suspense>
-        </section>
-
-        <section aria-labelledby="motion-title">
-          <h2 id="motion-title" className="font-display text-2xl tracking-tight">Motion</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-            No motion library is installed. The card border changes color on hover. The arrow uses the existing nudge, which collapses when reduced motion is requested. Sections on the public site still use the short rise in <code className="font-mono text-xs">.section-enter</code>. That rise does not fade to invisible.
-          </p>
         </section>
 
         <section aria-labelledby="identity-title">
@@ -209,6 +209,12 @@ export default function DesignLabPage() {
               <figcaption className="mt-3 text-sm leading-6 text-[#D4CEC4]">Charcoal plate. Not on the homepage.</figcaption>
             </figure>
           </div>
+        </section>
+
+        <section aria-labelledby="stakeholder-library-title">
+          <h2 id="stakeholder-library-title" className="font-display text-2xl tracking-tight">Stakeholder map library</h2>
+          <p className="mt-2 mb-5 max-w-2xl text-sm leading-6 text-muted">Reusable role cards, grouped map and evidence panel. This fixture is fictional; every public relationship is a hypothesis. Storybook covers selection, missing access, empty and invalid data states.</p>
+          <StakeholderPlayground />
         </section>
 
         <section aria-labelledby="data-title">

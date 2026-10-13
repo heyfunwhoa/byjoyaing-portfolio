@@ -1,3 +1,4 @@
+import { acceptMessageAndConfirm } from "@/lib/email-delivery";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import {
@@ -45,7 +46,8 @@ export async function POST(request: Request) {
     );
   }
   if (company.length > EMAIL_MAX.company || note.length > EMAIL_MAX.note) {
-    return Response.json({ error: "That message is too long." }, { status: 400 });
+    return Response.json({ error: "That message is too long." }, { status: 400 },
+    );
   }
 
   const limited = rejectIfRateLimited(request, email);
@@ -62,8 +64,7 @@ export async function POST(request: Request) {
   const safeCompany = escapeHtml(company || "Not provided");
   const safeNote = escapeHtml(note || "No note").replaceAll("\n", "<br />");
 
-  let attachments:
-    | { filename: string; content: Buffer }[]
+  let attachments: { filename: string; content: Buffer }[]
     | undefined;
   try {
     const pdf = await readFile(
@@ -74,7 +75,9 @@ export async function POST(request: Request) {
     attachments = undefined;
   }
 
-  const { error } = await resend.emails.send({
+  const delivery = await acceptMessageAndConfirm(
+    () =>
+      resend.emails.send({
     from,
     to: inbox,
     replyTo: email,
@@ -89,16 +92,10 @@ export async function POST(request: Request) {
       <p>${attachments ? "The current resume PDF is attached. Reply to this email to send it." : "No PDF was found on the server. Attach the resume when you reply."}</p>
       <p>The requester also received a confirmation email (no PDF attached).</p>
     `,
-  });
+  }),
 
-  if (error) {
-    return Response.json(
-      { error: "Could not send that request. Try email instead." },
-      { status: 502 },
-    );
-  }
-
-  await resend.emails.send({
+    () =>
+      resend.emails.send({
     from,
     to: email,
     replyTo: inbox,
@@ -109,7 +106,17 @@ export async function POST(request: Request) {
       <p>If you want to add context in the meantime, just reply to this email.</p>
       <p>— Kristen Aing</p>
     `,
-  });
+  }),
+  );
 
-  return Response.json({ ok: true });
+  if (!delivery.accepted) {
+    return Response.json(
+      { error: "Could not send that request. Try email instead." },
+      { status: 502 },
+    );
+  }
+
+  return Response.json({ ok: true,
+    confirmationAccepted: delivery.confirmationAccepted,
+  });
 }

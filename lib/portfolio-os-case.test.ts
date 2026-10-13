@@ -45,9 +45,9 @@ test("source guard: Academy source keeps the lab, case study, and product-reques
   const academy = readFileSync(join(root, "components/ai-academy/academy.tsx"), "utf8");
   const lab = readFileSync(join(root, "components/ai-academy/delivery-lifecycle-lab.tsx"), "utf8");
   const caseStudy = readFileSync(join(root, "components/ai-academy/portfolio-os-case-study.tsx"), "utf8");
-  const lifecycle = academy.indexOf('lesson.slug==="idea-to-verified-release"&&<DeliveryLifecycleLab />');
-  const portfolio = academy.indexOf('lesson.slug==="idea-to-verified-release"&&<PortfolioOsCaseStudy />');
-  const product = academy.indexOf('lesson.slug==="evidence-based-product-request"&&<ProductRequestLab />');
+  const lifecycle = academy.search(/lesson\.slug\s*===\s*"idea-to-verified-release"\s*&&\s*\(?\s*<DeliveryLifecycleLab\s*\/>/);
+  const portfolio = academy.search(/lesson\.slug\s*===\s*"idea-to-verified-release"\s*&&\s*\(?\s*<PortfolioOsCaseStudy\s*\/>/);
+  const product = academy.search(/lesson\.slug\s*===\s*"evidence-based-product-request"\s*&&\s*\(?\s*<ProductRequestLab\s*\/>/);
   assert.ok(lifecycle >= 0);
   assert.ok(portfolio > lifecycle);
   assert.ok(product >= 0);

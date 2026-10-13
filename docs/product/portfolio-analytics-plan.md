@@ -1,49 +1,43 @@
-# Portfolio analytics — privacy-first decision and rollout
+# Portfolio analytics — bounded rollout
 
-**Decision status:** PostHog client capture is wired as of 2026-10-12 and stays inactive until `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` is set for a production build. It is **not production-verified** and has no baseline. Vercel Web Analytics is still **not installed**. [Tracking issue #74](https://github.com/heyfunwhoa/byjoyaing-portfolio/issues/74).  
-**Product:** byjoyaing.com public editorial/professional site. Distinct from the private Account Signal Engine product, which has a [separate PostHog plan](https://github.com/heyfunwhoa/account-signal-engine/blob/main/docs/product-analytics/posthog-pilot.md) (**subject to the related PR merging**).  
-**Canonical measurable outcomes:** [Portfolio success metrics](portfolio-success-metrics.md). **Standards:** shared product-measurement template proposed in technical-docs-platform.
+**Status:** PostHog page analytics is implemented but disabled by default and not production-verified. No baseline exists. Vercel Web Analytics is not installed. [Tracking issue #74](https://github.com/heyfunwhoa/byjoyaing-portfolio/issues/74).
 
-## Why Vercel Analytics first?
+## Purpose and limits
 
-Learn which pages people discover and the sources of visits. It provides aggregate page views and referrers without needing per-user login, identifying profiles, or session replays. **Don't conflate page views with hiring outcomes, recruiter satisfaction or conversion to an interview.**
+Measure discovery of reviewed public landing pages. Pageviews are a proxy for discovery, not proof of hiring outcomes or successful contact. Only `/`, `/about`, `/work`, `/contact`, `/side-quests` and `/academy` are allowed. Other routes, including private work, dynamic case-study slugs and labs, are dropped. Extend the explicit allowlist only after route review.
 
-## Hypothesis and useful questions
+## Integration contract
 
-**Hypothesis (unverified):** People who land on the portfolio can find relevant work samples and the contact route.
+One `instrumentation-client.ts` initializer serves both analytics and [error monitoring](../monitoring/posthog-errors.md). Each capability has an independent enable switch. A token alone enables neither. Both require a recognized US/EU ingestion host, a project token, production mode and Vercel production environment. Preview and local builds remain off.
 
-- **Discovery:** Visits to `/work`, `/field-notes`, `/side-quests`, `/about` and `/contact` by safe route/path pattern. The current count is **not measured**.
-- **Acquisition:** Aggregate referrer categories and high-level regions or devices, subject to the privacy configuration.
-- **Potential follow-up:** A specific CTA event may be useful later if tested and reviewed, but avoid scraping contact form inputs or tracking email/link recipients. Do not assume external mailto or LinkedIn navigation equals a successful hiring conversation.
+Analytics requires `NEXT_PUBLIC_POSTHOG_ANALYTICS_ENABLED=true`; browser error monitoring requires `NEXT_PUBLIC_POSTHOG_MONITORING_ENABLED=true`. Server monitoring keeps its separate existing switch. All default to false.
 
-**Baseline:** none. Do not populate numeric targets until real observations exist and sample size is meaningful.
+Only `$pageview` events on reviewed production origins and paths are admitted for analytics. The filter reconstructs the payload with safe pathname/current URL and no person processing; it removes query strings, fragments, referrers, arbitrary properties, nested values and person updates. Exception events use their existing strict sanitizer and ten-per-minute instance budget, independently of analytics.
 
-## Implementation and privacy review before installation
+Click autocapture, pageleave, replay, heatmaps, surveys and performance capture remain off. Browser storage is disabled and identity is transient in memory; no person profiles are created. This is not a claim that network requests are anonymous: vendor/network metadata and billing/retention settings require review. Repeat-visitor and acquisition attribution are not supported by this bounded pilot.
 
-1. Verify authorized Vercel project/team and explicitly enable Web Analytics via the Vercel dashboard. Do not assume the GitHub repository alone activates it.
-2. Review the public privacy/consent notice and any relevant jurisdictional requirements; Vercel's claimed privacy-preserving architecture is not a legal conclusion for this app.
-3. Review URL content and query parameters for tokens, user IDs, search terms or confidential content; only safe route templates/pathnames should be captured. Evaluate `beforeSend` filtering per current package docs, especially if protected Selected Work routes are later introduced.
-4. Vercel Web Analytics, if used later, still needs a reviewed `@vercel/analytics` install and `<Analytics />` in the root layout only after steps 1–3. PostHog is a separate client install: `posthog-js` initializes from `instrumentation-client.ts` only when the project token is present and the hostname is not local. Capture is limited to anonymous pageviews and link/button clicks. Session replay, surveys, exception capture, feature-flag polling, and `$identify` are off. Query strings, hashes, and contact fields are removed before send. The contact form, the competitive-intelligence practice form, and the mailto control are marked `data-ph-no-autocapture`. Events go through the first-party `/relay` rewrite. Do not put the project token in Preview until a synthetic check is intentional.
-5. Run lint, typecheck, tests, build, secret and dependency checks; verify no unexpected scripts/replay/identifiers are present. Use safe synthetic preview visits to validate events without generating sensitive URLs.
-6. Once explicitly approved for production, verify the released commit SHA and the Vercel dashboard; only then mark metrics as collecting data.
-7. Set a 7–14-day evaluation (or enough traffic): what changed in route discovery, what can we not infer, and do we need any additional events?
+Ingestion uses the configured PostHog host directly. The proposed `/relay` rewrite and global trailing-slash proxy were removed during reconciliation; site redirects and security headers stay unchanged. No additional SDK or lockfile change is needed because main already includes PostHog.
 
-## Separation of concerns
+## Activation and verification
 
-| System | Measurement role | Must not contain |
-| --- | --- | --- |
-| Portfolio site: PostHog client, inactive until a production token is set | Anonymous route pageviews and link/button clicks through `/relay` | Names, emails, message text, user IDs, query values, session replay, surveys |
-| Builder Academy (future) | Only opt-in or otherwise appropriately governed synthetic-safe learning-step events if justified | Free-text submissions, student profiles, raw recordings |
-| Account Signal Engine: PostHog (later) | Authenticated, permission-checked GTM workflow success events; separate app/project | Customer accounts, signals, research details, rep names, revenue |
-| Product audit logging | Tamper-resistant/retained records of privileged authenticated application changes | Vendor analytics as sole proof of access decision |
+1. Confirm the portfolio project, region, access, retention and billing limits; follow the monitoring rollout checklist. Keep Account Signal Engine research in its separate project.
+2. Review the public privacy notice and collection basis before enabling page analytics.
+3. Set the analytics switch only in Vercel Production after that review, with the existing public project token and recognized host. Rebuild because public variables are baked into the bundle. This PR does not change production variables.
+4. Verify one controlled public landing-page view and navigation in browser network tools and PostHog. Confirm queries, person properties and private paths are absent. Confirm a monitoring-only configuration sends no pageviews and preview/local send nothing.
+5. Record released SHA, observed payload and dashboard evidence before calling collection live. Production delivery and dashboard counts remain unverified.
+6. Evaluate usefulness after 7–14 days or sufficient traffic, without inventing a baseline. Add explicit CTA events only through a separate reviewed contract.
 
-## Product measurement habit
+## Rollback
 
-For each feature (portfolio or learning app), write one problem/outcome, one measurable proxy, a small event set, exclusions/consent and exact test. Review dashboards **after** verified release, with baseline, time window and limitations. Refer to [Builder Academy's measuring-product-usage lesson](../builder-academy/measure-product-usage-safely.md) for a fictional practice lab; don't add persistent learner tracking as a prerequisite for the lesson.
+Set `NEXT_PUBLIC_POSTHOG_ANALYTICS_ENABLED=false` and rebuild to stop analytics while retaining independently enabled error monitoring. To stop all monitoring as well, disable both browser/server monitoring switches and redeploy. Disabling code does not delete previously ingested data.
+
+## Evidence
+
+Unit tests cover the four capability combinations, production gates, payload redaction, route rejection, unapproved events and error flood limits. CI checks build, typecheck, lint, security and browser regressions. These do not prove live ingestion or legal compliance.
 
 ## Sources
 
-- [Vercel Analytics quickstart](https://vercel.com/docs/analytics/quickstart)
-- [Vercel Analytics privacy](https://vercel.com/docs/analytics/privacy-policy)
-- [Vercel Analytics configuration and beforeSend](https://vercel.com/docs/analytics/package)
-- [PostHog privacy documentation](https://posthog.com/docs/privacy)
+- [PostHog SDK configuration](https://posthog.com/docs/libraries/js/config)
+- [PostHog persistence](https://posthog.com/docs/libraries/js/persistence)
+- [PostHog person profiles](https://posthog.com/docs/data/persons)
+- [Portfolio success metrics](portfolio-success-metrics.md)

@@ -12,7 +12,7 @@ export function SourceJourney(){
  const evidenceResult=source===null?null:assessEvidence(sample.id,source);
  const passed=claimResult?.correct===true&&evidenceResult?.correct===true;
  function resetCase(index:number){setCaseIndex(index);setClassification(null);setSource(null);setChecked(false);setReflection("");setCompleted(false);setStep(1);}
- return <main className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
+ return <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
  <Link href="/ai-academy/playground" className="text-sm text-accent underline">← All playground labs</Link>
  <p className="mt-8 text-xs font-semibold uppercase tracking-[.2em] text-accent">AI Foundations / Guided learning journey</p>
  <h1 className="font-display mt-3 text-4xl sm:text-5xl">Can you trust an AI-generated claim?</h1>

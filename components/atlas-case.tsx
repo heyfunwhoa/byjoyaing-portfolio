@@ -1,3 +1,5 @@
+import { PortfolioExample } from "@/components/portfolio-example";
+import { portfolioExamples } from "@/lib/portfolio-examples";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { CoverageExplorer } from "@/components/coverage-explorer";
 import { RelatedWork } from "@/components/related-work";
@@ -48,6 +50,8 @@ export function AtlasCase() {
           <p className="mt-4 text-xs text-muted">Notes mention 910 parsed TruffleHog records and 14 enriched. Those rows are not in this table.</p>
         </div>
       </section>
+
+      <PortfolioExample key="detector-coverage-atlas" example={portfolioExamples["detector-coverage-atlas"]} />
 
       <ProjectTechnologyStack slug="detector-coverage-atlas" />
 

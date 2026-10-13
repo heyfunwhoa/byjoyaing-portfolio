@@ -108,14 +108,14 @@ test("contact offers a message and a reviewed work-example request", () => {
   assert.doesNotMatch(contact, /A deeper look, with context/);
   assert.doesNotMatch(contact, /For a quick conversation/);
   assert.doesNotMatch(contact, /product-marketing/);
-  assert.match(form, /role="group" aria-label="Contact type"/);
+  assert.match(form, /role="group"\s+aria-label="Contact type"/);
   assert.match(form, /aria-pressed=\{mode === value\}/);
   assert.doesNotMatch(form, /role="tab"/);
   assert.doesNotMatch(form, /This emails me your note/);
   assert.match(form, /name="sampleFocus"/);
   assert.match(form, /window\.location\.hash === "#access"/);
   assert.match(form, /does not unlock private files/);
-  assert.match(form, /Please leave out confidential/);
+  assert.match(form, /Please leave out\s+confidential/);
   assert.match(form, /id="access"/);
   assert.match(form, /id="write"/);
 });
@@ -142,7 +142,9 @@ test("outbound tool icons are restricted to recognized product destinations", ()
   }
   assert.equal("schema" in officialToolWebsites, false);
   assert.equal("ingest" in officialToolWebsites, false);
-  const tools = readFileSync(new URL("../components/tools-map.tsx", import.meta.url), "utf8");
-  assert.match(tools, /officialToolWebsites\[item\.id\]/);
+  const tools = readFileSync(new URL("../components/toolkit-explorer.tsx", import.meta.url), "utf8");
+  const sections = readFileSync(new URL("./portfolio/toolkit-sections.ts", import.meta.url), "utf8");
+  assert.match(sections, /officialToolWebsites\[id\]/);
+  assert.match(tools, /href=\{tool.href\}/);
   assert.match(tools, /rel="noopener noreferrer"/);
 });

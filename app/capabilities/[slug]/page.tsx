@@ -1,6 +1,8 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { ProjectStatusPill } from "@/components/project-status-pill";
-import { capabilityBySlug, capabilityViews, projectsForCapability } from "@/lib/capabilities";
+import { capabilityBySlug, capabilityViews, projectsForCapability,
+} from "@/lib/capabilities";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,14 +13,18 @@ export function generateStaticParams() {
   return capabilityViews.map((view) => ({ slug: view.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const view = capabilityBySlug(slug);
   if (!view) return { title: "Capabilities" };
-  return {
+  return completePageMetadata(
+    {
     title: view.title,
     description: view.summary,
-  };
+  },
+    `/capabilities/${slug}`,
+  );
 }
 
 export default async function CapabilityPage({ params }: PageProps) {
@@ -38,7 +44,13 @@ export default async function CapabilityPage({ params }: PageProps) {
         <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">{view.title}</h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">{view.summary}</p>
       </section>
-      <ul className="flex flex-col gap-4 py-12">
+      <section className="border-b border-border py-8" aria-labelledby="professional-evidence">
+        <h2 id="professional-evidence" className="text-xl font-semibold">Start with professional experience</h2>
+        <Link href={view.professionalHref} className="mt-3 inline-flex min-h-11 items-center font-medium text-accent underline underline-offset-4">{view.professionalLabel} →</Link>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">{view.boundary}</p>
+      </section>
+      <section className="py-8" aria-labelledby="related-examples"><h2 id="related-examples" className="text-xl font-semibold">Related projects and field artifacts</h2>
+      <ul className="mt-5 flex flex-col gap-4">
         {projects.map((project) => (
           <li key={project.slug}>
             <article className="rounded-2xl border border-border p-5">
@@ -49,13 +61,13 @@ export default async function CapabilityPage({ params }: PageProps) {
               <h2 className="mt-3 text-xl font-semibold tracking-tight">{project.title}</h2>
               <p className="mt-2 text-sm leading-6 text-muted">{project.summary}</p>
               <p className="mt-2 text-sm leading-6">{project.role}</p>
-              <Link href={project.caseStudyUrl} className="mt-4 inline-flex text-sm font-medium text-accent">
+              <Link href={project.caseStudyUrl} className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-accent">
                 View case study
               </Link>
             </article>
           </li>
         ))}
-      </ul>
+      </ul></section>
       <p className="pb-12 text-sm">
         <Link href="/projects" className="font-medium text-accent">Back to all projects</Link>
       </p>

@@ -1,5 +1,6 @@
 "use client";
 
+import { formatWorkRequest } from "@/lib/playbook-request";
 import { PUBLIC_CONTACT_EMAIL } from "@/lib/portfolio/public-contact";
 import {
   useEffect,
@@ -31,15 +32,20 @@ function subscribeToHash(onStoreChange: () => void) {
   };
 }
 
-function modeFromHash(): Mode {
-  return window.location.hash === "#access" ? "access" : "message";
+function modeFromHash(defaultMode: Mode): Mode {
+  if (window.location.hash === "#access") return "access";
+  if (window.location.hash === "#write") return "message";
+  return defaultMode;
 }
 
-export function InquiryForm() {
+export function InquiryForm({
+  selectedPlaybook,
+}: { selectedPlaybook?: string } = {}) {
+  const defaultMode: Mode = selectedPlaybook ? "access" : "message";
   const mode = useSyncExternalStore(
     subscribeToHash,
-    modeFromHash,
-    () => "message" as const,
+    () => modeFromHash(defaultMode),
+    () => defaultMode,
   );
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -78,12 +84,17 @@ export function InquiryForm() {
           name: data.get("name"),
           email: data.get("email"),
           company: data.get("company"),
-          message: mode === "access" ? `Selected Work inquiry — ${focus}: ${note}` : note,
+          message:
+            mode === "access"
+              ? formatWorkRequest(focus, note, selectedPlaybook)
+              : note,
           website: data.get("website"),
           startedAt: startedAt.current,
         }),
       });
-      const payload = (await response.json()) as { error?: string };
+      const payload = (await response.json()) as { error?: string;
+        confirmationAccepted?: boolean;
+      };
 
       if (!response.ok) {
         setStatus("error");
@@ -96,11 +107,13 @@ export function InquiryForm() {
       setMessage(
         mode === "access"
           ? "Request sent. I’ll review it and follow up if I can share an appropriate example. This does not unlock private files."
-          : "Message sent. You should get a confirmation email. I’ll reply if I can help.",
+          : "Message sent. I’ll reply if I can help.",
       );
     } catch {
       setStatus("error");
-      setMessage(`Could not send that message. Email ${PUBLIC_CONTACT_EMAIL} instead.`);
+      setMessage(
+        `Could not send that message. Email ${PUBLIC_CONTACT_EMAIL} instead.`,
+      );
     }
   }
 
@@ -111,7 +124,12 @@ export function InquiryForm() {
       data-ph-no-autocapture=""
       className="relative flex max-w-xl flex-col gap-4 lg:max-w-none"
     >
-      <div id="access" className="flex scroll-mt-24 flex-wrap gap-1" role="group" aria-label="Contact type">
+      <div
+        id="access"
+        className="flex scroll-mt-24 flex-wrap gap-1"
+        role="group"
+        aria-label="Contact type"
+      >
         {(
           [
             ["message", "Message"],
@@ -133,9 +151,17 @@ export function InquiryForm() {
           </button>
         ))}
       </div>
+      {mode === "access" && selectedPlaybook ? (
+        <p className="rounded-lg border border-border bg-card p-3 text-sm font-medium">
+          Requested walkthrough: {selectedPlaybook}
+        </p>
+      ) : null}
       {mode === "access" ? (
         <p className="text-base leading-7 text-muted">
-          Tell me what you’re evaluating and which examples would help. I’ll review your request and follow up with appropriate, sanitized materials where available. Please leave out confidential company or customer information.
+          Tell me what you’re evaluating and which examples would help. I’ll
+          review your request and follow up with appropriate, sanitized
+          materials where available. Please leave out confidential company or
+          customer information.
         </p>
       ) : null}
       <div className="hidden" aria-hidden="true">
@@ -155,7 +181,9 @@ export function InquiryForm() {
           />
         </label>
         <label className="flex flex-col gap-1.5 text-sm">
-          <span className="font-medium text-foreground">Email (work preferred)</span>
+          <span className="font-medium text-foreground">
+            Email (work preferred)
+          </span>
           <input
             required
             name="email"
@@ -178,8 +206,15 @@ export function InquiryForm() {
       </label>
       {mode === "access" ? (
         <label className="flex flex-col gap-1.5 text-sm">
-          <span className="font-medium text-foreground">Which work would help you evaluate fit?</span>
-          <select name="sampleFocus" required defaultValue="" className={fieldClass}>
+          <span className="font-medium text-foreground">
+            Which work would help you evaluate fit?
+          </span>
+          <select
+            name="sampleFocus"
+            required
+            defaultValue={selectedPlaybook ? focusOptions[0] : ""}
+            className={fieldClass}
+          >
             <option value="" disabled>
               Select a focus
             </option>
@@ -192,7 +227,9 @@ export function InquiryForm() {
         </label>
       ) : null}
       <label className="flex flex-col gap-1.5 text-sm">
-        <span className="font-medium text-foreground">{mode === "access" ? "What are you evaluating?" : "Message"}</span>
+        <span className="font-medium text-foreground">
+          {mode === "access" ? "What are you evaluating?" : "Message"}
+        </span>
         <textarea
           required
           minLength={8}
@@ -211,11 +248,17 @@ export function InquiryForm() {
         disabled={status === "sending"}
         className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
       >
-        {status === "sending" ? "Sending…" : mode === "access" ? "Request work examples" : "Send message"}
+        {status === "sending"
+          ? "Sending…"
+          : mode === "access"
+            ? "Request work examples"
+            : "Send message"}
       </button>
       {mode === "access" ? (
         <p className="text-xs leading-5 text-muted">
-          I review each request before deciding what to share. Submitting this form does not unlock private files or guarantee that a particular sample is available.
+          I review each request before deciding what to share. Submitting this
+          form does not unlock private files or guarantee that a particular
+          sample is available.
         </p>
       ) : null}
       {message ? (

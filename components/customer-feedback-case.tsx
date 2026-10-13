@@ -1,3 +1,6 @@
+import { PortfolioExample } from "@/components/portfolio-example";
+import { portfolioExamples } from "@/lib/portfolio-examples";
+import { DisclosureSection } from "@/components/disclosure-section";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { CustomerFeedbackWorkflow } from "@/components/customer-feedback-workflow";
 import { RelatedWork } from "@/components/related-work";
@@ -35,7 +38,9 @@ function Label({ index, children }: { index: string; children: string }) {
   );
 }
 
-function Node({ title, detail, state }: { title: string; detail: string; state: "field" | "demo" | "planned" }) {
+function Node({ title, detail, state,
+}: { title: string; detail: string; state: "field" | "demo" | "planned";
+}) {
   const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this demo" : "Planned";
   const style =
     state === "planned"
@@ -57,42 +62,60 @@ const layers = [
     title: "Feedback sources",
     body: "Sales conversations at Truffle are the field habit. This site does not read CRM, calls, success notes, or tickets.",
     nodes: [
-      { title: "CRM", detail: "Planned source. Not connected.", state: "planned" as const },
-      { title: "Call records", detail: "Planned source. Not connected.", state: "planned" as const },
-      { title: "Customer Success notes", detail: "Planned source. Not connected.", state: "planned" as const },
-      { title: "Support tickets", detail: "Planned source. Not connected.", state: "planned" as const },
+      { title: "CRM", detail: "Planned source. Not connected.", state: "planned" as const,
+      },
+      { title: "Call records", detail: "Planned source. Not connected.", state: "planned" as const,
+      },
+      { title: "Customer Success notes", detail: "Planned source. Not connected.", state: "planned" as const,
+      },
+      { title: "Support tickets", detail: "Planned source. Not connected.", state: "planned" as const,
+      },
     ],
   },
   {
     title: "Intelligence processing",
     body: "The demo shows a suggested theme you can correct. Ingestion and deduplication are not built. No model runs.",
     nodes: [
-      { title: "Ingestion", detail: "Planned. The sample is hardcoded.", state: "planned" as const },
-      { title: "Structured extraction", detail: "Fields are designed. Nothing extracts them.", state: "planned" as const },
-      { title: "Classification", detail: "You can confirm or edit a suggestion locally.", state: "demo" as const },
-      { title: "Deduplication", detail: "Planned. The sample is already grouped by hand.", state: "planned" as const },
-      { title: "Evidence preservation", detail: "The original sentence stays on the card.", state: "demo" as const },
+      { title: "Ingestion", detail: "Planned. The sample is hardcoded.", state: "planned" as const,
+      },
+      { title: "Structured extraction", detail: "Fields are designed. Nothing extracts them.", state: "planned" as const,
+      },
+      { title: "Classification", detail: "You can confirm or edit a suggestion locally.", state: "demo" as const,
+      },
+      { title: "Deduplication", detail: "Planned. The sample is already grouped by hand.", state: "planned" as const,
+      },
+      { title: "Evidence preservation", detail: "The original sentence stays on the card.", state: "demo" as const,
+      },
     ],
   },
   {
     title: "Product intelligence",
     body: "Themes, accounts, and a review a person confirms. Confirming the demo does not update a roadmap.",
     nodes: [
-      { title: "Normalized feedback", detail: "Five sample records.", state: "demo" as const },
-      { title: "Account context", detail: "Fictional accounts stay on each note.", state: "demo" as const },
-      { title: "Feedback themes", detail: "Two sample themes with filters.", state: "demo" as const },
-      { title: "Product review", detail: "A local confirm. It does not persist.", state: "demo" as const },
-      { title: "Decision tracking", detail: "Planned record of who accepted what.", state: "planned" as const },
+      { title: "Normalized feedback", detail: "Five sample records.", state: "demo" as const,
+      },
+      { title: "Account context", detail: "Fictional accounts stay on each note.", state: "demo" as const,
+      },
+      { title: "Feedback themes", detail: "Two sample themes with filters.", state: "demo" as const,
+      },
+      { title: "Product review", detail: "A local confirm. It does not persist.", state: "demo" as const,
+      },
+      { title: "Decision tracking", detail: "Planned record of who accepted what.", state: "planned" as const,
+      },
     ],
   },
   {
     title: "Closed loop",
     body: "A follow-up draft you can edit and copy. It does not send, and a shipped feature would not close every request.",
     nodes: [
-      { title: "Product status updates", detail: "Local status only. Not a release.", state: "demo" as const },
-      { title: "Release information", detail: "Planned join to Product Release Intelligence.", state: "planned" as const },
-      { title: "Account owner review", detail: "Designed step. No owner inbox here.", state: "planned" as const },
-      { title: "Customer follow-up", detail: "Draft you can copy. It does not email.", state: "demo" as const },
+      { title: "Product status updates", detail: "Local status only. Not a release.", state: "demo" as const,
+      },
+      { title: "Release information", detail: "Planned join to Product Release Intelligence.", state: "planned" as const,
+      },
+      { title: "Account owner review", detail: "Designed step. No owner inbox here.", state: "planned" as const,
+      },
+      { title: "Customer follow-up", detail: "Draft you can copy. It does not email.", state: "demo" as const,
+      },
     ],
   },
 ];
@@ -158,6 +181,8 @@ export function CustomerFeedbackCase() {
         </div>
       </section>
 
+      <PortfolioExample key="customer-feedback-intelligence" example={portfolioExamples["customer-feedback-intelligence"]} />
+
       <ProjectTechnologyStack slug="customer-feedback-intelligence" />
 
       <section className="border-b border-border py-16">
@@ -169,7 +194,8 @@ export function CustomerFeedbackCase() {
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {[
               ["Sales", "New admins wait days for console access."],
-              ["Customer Success", "SCIM was named in the pilot and never turned on."],
+              ["Customer Success", "SCIM was named in the pilot and never turned on.",
+              ],
               ["Support", "SSO works. Contractor roles do not."],
               ["Closed-lost", "Security review required SCIM."],
             ].map(([source, quote]) => (
@@ -195,7 +221,11 @@ export function CustomerFeedbackCase() {
         </div>
       </section>
 
-      <section id="workflow" className="scroll-mt-24 border-b border-border py-16">
+      <DisclosureSection
+        id="workflow"
+        title="Explore the workflow"
+        className="my-6"
+      >
         <Label index="03">Product experience</Label>
         <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           From a customer signal to a decision a person still has to make.
@@ -206,9 +236,13 @@ export function CustomerFeedbackCase() {
         <div className="mt-8">
           <CustomerFeedbackWorkflow />
         </div>
-      </section>
+      </DisclosureSection>
 
-      <section id="architecture" className="scroll-mt-24 border-b border-border py-16">
+      <DisclosureSection
+        id="architecture"
+        title="Architecture and implementation"
+        className="my-6"
+      >
         <Label index="04">System architecture</Label>
         <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           How the feedback loop would work.
@@ -241,18 +275,25 @@ export function CustomerFeedbackCase() {
             </div>
           ))}
         </div>
-      </section>
+      </DisclosureSection>
 
-      <section className="border-b border-border py-16">
+      <DisclosureSection
+        id="design-decisions"
+        title="Design decisions and tradeoffs"
+        className="my-6"
+      >
         <Label index="05">Product decisions</Label>
         <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           Designing for a focused MVP.
         </h2>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {[
-            ["Account context over raw volume", "Four notes from three accounts, including a loss, matter more than forty identical upvotes with no account."],
-            ["A person confirms the roadmap", "A suggestion can group notes. It cannot promise a customer that something will ship."],
-            ["Sit beside the tools that already hold the notes", "CRM, success notes, and the backlog stay where they are. This layer points at them. It does not replace them."],
+            ["Account context over raw volume", "Four notes from three accounts, including a loss, matter more than forty identical upvotes with no account.",
+            ],
+            ["A person confirms the roadmap", "A suggestion can group notes. It cannot promise a customer that something will ship.",
+            ],
+            ["Sit beside the tools that already hold the notes", "CRM, success notes, and the backlog stay where they are. This layer points at them. It does not replace them.",
+            ],
           ].map(([title, body]) => (
             <article key={title} className="rounded-2xl border border-border bg-card p-5">
               <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
@@ -264,20 +305,23 @@ export function CustomerFeedbackCase() {
           <summary className="cursor-pointer font-semibold">Technical notes</summary>
           <div className="mt-4 max-w-2xl space-y-3 text-sm leading-6 text-muted">
             <p>
-              <span className="font-medium text-foreground">Planned records. </span>
+              <span className="font-medium text-foreground">Planned records. {" "}
+              </span>
               Signal, Theme, Account, Evidence, Persona, Outcome.
             </p>
             <p>
-              <span className="font-medium text-foreground">MVP question. </span>
+              <span className="font-medium text-foreground">MVP question. {" "}
+              </span>
               Does a theme with the account attached change what Product reviews, faster than a raw request list?
             </p>
             <p>
-              <span className="font-medium text-foreground">Out of scope. </span>
+              <span className="font-medium text-foreground">Out of scope. {" "}
+              </span>
               Replacing the backlog tool, and auto-committing roadmap items from a model.
             </p>
           </div>
         </details>
-      </section>
+      </DisclosureSection>
 
       <section className="border-b border-border py-16">
         <Label index="06">Outcomes and roadmap</Label>
@@ -289,9 +333,15 @@ export function CustomerFeedbackCase() {
         </p>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {[
-            ["Data quality", ["Feedback classification accuracy", "Account association accuracy", "Time to identify recurring themes"]],
-            ["Product adoption", ["Product review rate", "Share of themes with a recorded decision"]],
-            ["Business outcomes", ["Closed-loop communication rate", "Follow-ups that match the decision, without claiming every request is done"]],
+            ["Data quality", ["Feedback classification accuracy", "Account association accuracy", "Time to identify recurring themes",
+              ],
+            ],
+            ["Product adoption", ["Product review rate", "Share of themes with a recorded decision",
+              ],
+            ],
+            ["Business outcomes", ["Closed-loop communication rate", "Follow-ups that match the decision, without claiming every request is done",
+              ],
+            ],
           ].map(([title, items]) => (
             <article key={title as string} className="rounded-2xl border border-border p-5">
               <h3 className="text-sm font-medium text-muted">{title as string}</h3>
@@ -306,9 +356,15 @@ export function CustomerFeedbackCase() {
         </div>
         <ol className="mt-8 grid gap-4 md:grid-cols-3">
           {[
-            ["Designed now", ["Manual import of notes", "A normalized theme", "A board", "The account left on the note"]],
-            ["Next", ["CRM and call-note intake", "Tighter duplicate detection", "A decision log"]],
-            ["Later", ["Join to release intelligence", "Account-specific updates", "More sources"]],
+            ["Designed now", ["Manual import of notes", "A normalized theme", "A board", "The account left on the note",
+              ],
+            ],
+            ["Next", ["CRM and call-note intake", "Tighter duplicate detection", "A decision log",
+              ],
+            ],
+            ["Later", ["Join to release intelligence", "Account-specific updates", "More sources",
+              ],
+            ],
           ].map(([when, items]) => (
             <li key={when as string} className="rounded-xl border border-border bg-card p-4">
               <h3 className="text-sm font-medium">{when as string}</h3>

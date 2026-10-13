@@ -1,16 +1,22 @@
-import { posthogClientOptions, shouldInitPostHog } from "@/lib/posthog-browser";
+import posthog from "posthog-js";
+import {
+  posthogCapabilities,
+  posthogClientOptions,
+} from "./lib/posthog-browser";
 
-const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
-
-if (token && shouldInitPostHog({ token, hostname: window.location.hostname })) {
-  void import("posthog-js")
-    .then(({ default: posthog }) => {
-      posthog.init(
-        token,
-        posthogClientOptions(process.env.NEXT_PUBLIC_POSTHOG_HOST),
-      );
-    })
-    .catch((error: unknown) => {
-      console.error("PostHog init failed", error);
-    });
+const env = {
+  enabled: process.env.NEXT_PUBLIC_POSTHOG_MONITORING_ENABLED,
+  analyticsEnabled: process.env.NEXT_PUBLIC_POSTHOG_ANALYTICS_ENABLED,
+  token: process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN,
+  host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+  deployment: process.env.NEXT_PUBLIC_VERCEL_ENV,
+  mode: process.env.NODE_ENV,
+};
+const capabilities = posthogCapabilities(env);
+if (capabilities.monitoring || capabilities.analytics) {
+  try {
+    posthog.init(env.token!, posthogClientOptions(env));
+  } catch {
+    // Telemetry must not stop hydration or application use.
+  }
 }

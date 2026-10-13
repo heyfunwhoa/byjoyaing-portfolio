@@ -7,7 +7,7 @@ export function AdvancedPlayground({mode}:{mode:"skill"|"pipeline"}){
  const [draft,setDraft]=useState<SkillDraft>(empty),[variant,setVariant]=useState<Variant>("original"),[stage,setStage]=useState(0),[copyState,setCopyState]=useState("");
  const assessment=validateSkill(draft),scenario=pipelineScenarios[variant];
  async function copy(){try{await navigator.clipboard.writeText(skillMarkdown(draft));setCopyState("Copied draft. Review it before using in Cursor.");}catch{setCopyState("Copy unavailable. Select and copy the text manually.");}}
- return <main className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8"><Link className="text-sm text-accent underline" href="/ai-academy/playground">← All labs</Link>
+ return <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8"><Link className="text-sm text-accent underline" href="/ai-academy/playground">← All labs</Link>
  <p className="mt-8 text-xs font-semibold uppercase tracking-[.2em] text-accent">AI Academy / Intermediate practice</p>
  <h1 className="font-display mt-3 text-4xl sm:text-5xl">{mode==="skill"?"Build a Skill":"Research Pipeline Simulator"}</h1>
  {mode==="skill"?<section className="mt-7 space-y-6">
