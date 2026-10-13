@@ -59,7 +59,7 @@ When that feels familiar, continue below for the more detailed workflow and term
 
 ## Beginner layer: dependencies and the whole delivery cycle
 
-**Optional extension:** 20 minutes, followed by a 10-minute paper exercise. **Primary references checked:** 2026-10-13. Start here after the typo example. No terminal, accounts or paid tools required.
+**Optional extension:** Read in short sessions: SDLC basics, idea/PRD practice, then version evidence. Allow 45–60 minutes including the optional exercises. **Primary references checked:** 2026-10-13. Start here after the typo example. No terminal, accounts or paid tools required.
 
 **Outcome:** Explain what a change needs, identify the version being checked, and distinguish prepared, tested, merged and verified live.
 
@@ -127,6 +127,105 @@ A **user story** describes a need from someone's perspective: “As a lesson aut
 - **Open decisions and owner:** The product owner decides whether local editing is enough for the pilot or hosted editing is required; missing hosted credentials must remain a recorded limitation.
 
 **Functional** means what the product does. **Non-functional** describes qualities and constraints, such as accessibility, reliability or performance. **Acceptance criteria** judge whether a specific slice meets its requirements. **Success metrics** judge whether the result helps users. Passing tests does not establish a measured time saving.
+
+### PRD deep dive: a shared decision document
+
+**PRD** stands for **Product Requirements Document**. It explains the intended user problem, desired outcome, product behavior and boundaries clearly enough for collaborators to discuss and implement a solution. Its value is shared understanding and reviewable decisions, not its length.
+
+Think of commissioning a workshop: who is attending, what they should learn, what must be provided, what is excluded and how success will be assessed. The PRD carries that intent. The implementation team still needs to work out the detailed design.
+
+A PRD can evolve. “Approved” means a particular scope or revision has been accepted by its decision owner; it does not prove the product was built or authorize every operational action. A document written by an AI is a draft until its assumptions, evidence and decisions are reviewed.
+
+### What belongs where?
+
+| Document | Primary purpose | Example |
+| --- | --- | --- |
+| Product vision | Long-term direction | Help beginners confidently evaluate software changes |
+| Roadmap | Sequence of intended outcomes | First one editable lesson, then a resumable journey |
+| PRD | User need, desired behavior, constraints and success | Define what the editing pilot must preserve and demonstrate |
+| Technical design / architecture decision record (ADR) | Implementation approach and trade-offs | Choose how the editor record reaches the reader |
+| Issue | Bounded execution task | Implement one validated save path |
+| Test plan | Verification approach | Exercise valid, invalid and denied saves |
+| Release checklist | Readiness and recovery | Identify revision, remaining risks and rollback steps |
+
+These boundaries are a practical convention; organizations use different names and formats. A PRD may include a technical constraint when it affects the product, while linking detailed implementation decisions elsewhere.
+
+### Evidence-backed practices, with their limits
+
+Primary sources reviewed **2026-10-13**. These are organizational guidance and published working practices, not controlled studies proving one PRD format outperforms all others.
+
+| Practice | Supporting evidence | How to apply it here | Limit |
+| --- | --- | --- | --- |
+| Begin with the user's problem and observed evidence | GOV.UK user-needs guidance [P1] | Separate observations from guesses about what an author needs | Government service guidance requires adaptation to a personal prototype |
+| Give collaborators concise goals, assumptions and linked context | Atlassian PRD guidance [P2] | Record why this matters, key unknowns and links to stories/designs | A vendor's recommended format is not a universal mandate |
+| Make acceptance criteria describe observable outcomes | GOV.UK user-story guidance [P3] | “The saved summary appears after reload” is checkable | A checklist still needs well-chosen evidence |
+| Validate the problem and evaluate the proposed solution | GitLab's development flow [P4] | Confirm the editing friction, then try the proposed editor with an author | This describes GitLab's process, not a requirement to copy every stage |
+
+GOV.UK recommends refining needs as research develops [P1]. Atlassian describes a collaborative requirements document with assumptions and open questions [P2]. GitLab varies the process according to what is already understood [P4]. The lesson's synthesis is to keep the document useful and current, with review depth proportional to uncertainty and risk.
+
+### A reusable lightweight structure
+
+Use this as a teaching worksheet. It complements an owning team's established template; it is not a second organization-wide policy.
+
+1. **Document control:** title, owner, status, revision, review date and intended audience.
+2. **Problem and evidence:** who struggles, in what situation, observed examples, and assumptions.
+3. **Outcome and why now:** desired user/business change, baseline or “not measured,” and how you will assess it.
+4. **Scope:** first useful slice, explicit exclusions and existing behavior to preserve.
+5. **User journey:** starting point, main steps, successful ending and failure/empty/denied states.
+6. **Requirements:** stable IDs, priority and observable acceptance criteria.
+7. **Constraints and dependencies:** permissions, data boundaries, accessibility, reliability, compatibility, cost and external services as relevant.
+8. **Decisions and open questions:** options considered, decision owner, unresolved risk and what evidence would settle it.
+9. **Delivery and validation:** linked milestones/issues, checks, rollout, recovery and post-release observation.
+10. **Sources and change history:** evidence links and significant scope decisions with their rationale.
+
+For one small change, several items can share a paragraph. Expand where misunderstanding would be costly. Dates and numeric targets must be justified; write “unknown” instead of inventing them.
+
+### Turn vague requirements into checkable behavior
+
+| Weak statement | More useful requirement |
+| --- | --- |
+| “The editor should be easy.” | An author can open the existing lesson, change its summary, save and find the result; observe where help is needed |
+| “Saving must work.” | Given valid input, saving persists the summary and it appears after reload |
+| “Handle errors.” | Invalid input shows an understandable message and leaves the previous valid record intact |
+| “Keep it secure.” | In the intended production configuration, an unauthorized editor request is denied without modifying content |
+| “Make it fast.” | Specify the action, test environment, workload, measurement and an agreed threshold before claiming a performance pass |
+
+The first row needs usability observation; the other criteria can use appropriate automated and manual evidence. The compact **Given / When / Then** structure means precondition, action and expected result. It is an optional writing aid, not the only valid format.
+
+**Example:** Given a stored lesson and existing learner progress, when an authorized author saves a valid summary, then the reader shows the new summary while the lesson ID and stored progress remain unchanged.
+
+### Frequent mistakes and repairs
+
+- **A solution disguised as a need:** “Users need an AI agent.” Ask what task users cannot complete today.
+- **An unbounded wish list:** Choose one useful slice and put later ideas in a backlog.
+- **Implementation chosen before constraints are understood:** Compare feasible options; link the design rationale.
+- **No error or permission behavior:** Specify the important failure paths, not only the happy path.
+- **Numbers without evidence:** Mark the baseline unmeasured and explain how it will be observed.
+- **A stale document treated as authority:** Review changed decisions and reconcile affected issues, designs and tests.
+- **A polished AI draft mistaken for discovery:** Verify claims and talk to or observe intended users where possible.
+
+These repairs are Academy instructional recommendations informed by the sources; they are not measured performance claims.
+
+### Review it before handing it to an agent
+
+For this exercise, call a slice **ready for implementation** when its user/outcome, scope, critical dependencies, observable criteria and owner are clear enough to begin. This is a lightweight readiness heuristic. It does not require resolving every future question.
+
+Have the product owner assess value/scope, an implementation reviewer assess feasibility, and a learner or user representative assess whether the journey makes sense. One person can cover several roles in a solo project; record uncertainty when independent feedback is unavailable. Involve security, accessibility or operations expertise when the change warrants it.
+
+Link the accepted PRD revision in the agent brief. If new evidence changes a requirement, record the decision and update affected issues and checks. After release, revisit the outcome: shipped functionality may still fail to solve the user problem.
+
+**Practice:** An AI draft says, “Add an autonomous editor that makes authors 50% faster; publish every save.” Identify three unsupported decisions.
+
+**Answer key:** Automation is a proposed solution needing justification; 50% is unsupported without a baseline and measurement; automatic publication is a workflow/permission decision requiring explicit agreement. Rewrite the need as maintaining lesson text, pilot a reviewed save path, and measure author task completion before claiming improvement.
+
+### PRD source notes
+
+- **[P1] [GOV.UK — Learning about users and their needs](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs):** supports evidence-based, problem-focused needs and iterative refinement.
+- **[P2] [Atlassian — Product requirements](https://www.atlassian.com/agile/product-management/requirements/):** supports collaborative requirements, concise context, goals, assumptions, user stories and linked design material.
+- **[P3] [GOV.UK — Writing user stories](https://www.gov.uk/service-manual/agile-delivery/writing-user-stories):** supports outcome-oriented acceptance criteria and breaking large stories into smaller work.
+- **[P4] [GitLab Handbook — Product development flow](https://handbook.gitlab.com/handbook/product-development/how-we-work/product-development-flow/):** illustrates problem validation, design, solution validation and build activities adapted to context.
+
+No source above validates the fictional lesson-editor outcome or certifies that this portfolio follows its process.
 
 ### Translate the PRD into work and evidence
 
