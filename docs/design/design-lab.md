@@ -101,3 +101,63 @@ The library defaults to cards on all screens and supports an explicit Table view
 Below 640px, the workbench uses a native pattern selector instead of the full button grid. Project/search controls fill the available width, and controls retain 44px minimum tap areas. The preview stage can be capped at 360px or 680px, always bounded by available space. These caps help compare content density; they do not emulate a device or trigger viewport media queries. Actual breakpoints require browser/device testing.
 
 Four additional preview patterns cover empty-state recovery, static loading placeholders, three-step progress and a native record table. They are locally implemented demos, not installed shadcn Skeleton/Progress/Data Table components and not live workflows. Candidate status in the curated catalog remains unchanged. Browser cases cover view/filter continuity, empty-result reset, feedback actions and overflow at 375/768/1280px. Execution remains pending where supported browser tooling is unavailable.
+
+
+## Portable pattern shortlist (2026-10-13)
+
+Status: candidate specifications for scoped adoption, not new components or a cross-repo rollout. These extend the existing [component-options catalog](../../lib/component-options.ts); they do not replace it. The five patterns below compose existing families. The portfolio maintainer owns this shortlist; each consuming repo owns its implementation and verification.
+
+### Five reusable compositions
+
+| Pattern / catalog families | Starting source in this repo | Intended task and destinations | Adoption decision |
+| --- | --- | --- | --- |
+| Filterable collection / summaries, search, data | `components/projects-directory.tsx`; existing project-filter and project-bento inventory entries | Portfolio project discovery; account, vendor, detector and partner lists in their owning apps | Adapt local filter behavior and stable record IDs; do not copy portfolio taxonomy. Work overview grid is separately proposed in PR #120, not shipped by this note. |
+| Summary with evidence details / summaries, context, feedback | Existing card and sheet primitives; no generic evidence composition verified | Account Signal Engine: summary → sourced change → evidence → next action. Security Market Map: comparison → supporting sources → limitations | Candidate domain composition. Keep source attribution, review state, material caveats and freshness visible beside the summary. |
+| Comparison panel / data, measurement | Workbench native record comparison described in design-lab.md; candidate data-table/chart catalog entries | Security Market Map vendor comparison; Detector Coverage Atlas coverage; GTM Revenue OS scenario assumptions and outputs | Adapt semantic table first. Unknown differs from absent/false. Preserve units, dates and per-claim sources. Scenario output must be labeled modeled. |
+| Workflow accordion / disclosure | `components/ui/accordion.tsx`, `components/ui/tabs.tsx` (inventory references) | About toolkit, public playbook previews, Builder Academy and Truffle Camp lessons | Compose a visible workflow summary with optional steps. Tabs are peer views, not filter buttons. Completion requires real state, never animation alone. |
+| Responsive detail sheet / context | `components/ui/sheet.tsx` (Radix Dialog-based source inspected) | Account evidence, vendor sources, detector metadata, partner/territory details | Adapt installed primitive in the destination component family. Provide a durable detail link for long or shareable material. Do not replace the portfolio header. |
+
+Sources inspected directly for this addition: projects-directory.tsx (filter state and mobile selectors), ui/sheet.tsx (Radix composition), and lib/component-options.ts. Other source references come from the existing inventory and require direct inspection before implementation. These observations do not establish adoption in another repo.
+
+### Responsive, accessibility and state requirements
+
+| Pattern | Phone / tablet / desktop | Keyboard and focus | Reduced motion and data states |
+| --- | --- | --- | --- |
+| Filterable collection | Stacked cards and labeled selectors / compact grid / grid or explicit table; preserve filters between views | Native controls or pressed filter buttons; stable focus after filtering; politely announce result count | Instant updates are acceptable; no animated reordering of dense tables. Include loading, empty, no-match/reset and retry states. |
+| Summary with evidence | Essential evidence label stays in the summary at every size; details below or in a sheet | Explicit details button and descriptive source links; never hover-only | Reveal without movement when disabled. Distinguish unreviewed, stale, corrected, withdrawn and unavailable evidence; flag affected conclusions. |
+| Comparison panel | Summary cards plus optional contained table / contained table / aligned table | Table caption and row/column headers; label any scroll region; no drag-only navigation | Keep values stable. Display unknown, not applicable and unavailable separately. Include units, assumptions and an accessible text/table alternative to charts. |
+| Workflow accordion | One column; short visible summaries at every width | Heading buttons expose expanded state; use existing primitive behavior; preserve focus | No delayed access to text. Empty optional sections omitted; permission-denied content fetched only after authorization. |
+| Detail sheet | Width bounded to viewport, independently scrollable body / bounded side sheet / side sheet | Accessible title, close button, Escape, focus containment and return to trigger; sensible fallback if trigger disappears | No sliding with reduced motion. Cover loading, retry, missing record and denied access without leaking record contents. |
+
+Use destination tokens, 44px control targets and the existing viewport/zoom checklist. A CSS disclosure is not access control: private playbooks, account records and employer material must never enter public bundles or fixtures.
+
+### Free-source guide
+
+These are references to evaluate, not installed dependencies or blanket license approvals. A free component does not make all templates on the same site free. Pin the exact source revision and retain required notices before any copy.
+
+| Source | Starting link | Role and cost boundary | Decision |
+| --- | --- | --- | --- |
+| shadcn/ui Blocks | https://ui.shadcn.com/blocks | Official open-source/free blocks for composed layouts | First reference for workspace structure. Preserve existing Radix configuration and tokens; do not reinitialize. |
+| Tremor | https://www.tremor.so/ and https://www.tremor.so/docs/getting-started/dashboard-template | Open-source dashboard components and a designated free Next.js dashboard template | Candidate for GTM Revenue OS and data summaries. Inspect exact dependencies, license and framework compatibility before import. |
+| Magic UI | https://magicui.design/docs/components | Free open-source component collection; premium offerings are separate | Selective portfolio accents. Existing Bento Grid provenance remains authoritative. Many effects introduce Motion; no wholesale adoption. |
+| Motion | https://motion.dev/docs/react and https://motion.dev/examples?platform=react | Core animation documentation; some example source and Motion UI require Motion+ | Inspiration/candidate only. CSS remains the portfolio default; a dependency change requires the existing reviewed ADR. No purchase is needed for these five specifications. |
+| Shadcnblocks free collection | https://www.shadcnblocks.com/blocks/free | Designated free subset of a mixed free/paid catalog | Page-section reference. Check exact block license, attribution and redistribution terms. |
+| React Bits | https://reactbits.dev/ | Creative component reference; exact current license not independently verified in this pass | Hold source import. Existing adoption record flags a Commons Clause concern. Do not describe it as unrestricted MIT or approved for a redistributed component bank. |
+
+References checked against official source pages during this task; per-file licenses and revisions remain pending because no upstream code was copied. The GitHub React Bits LICENSE page could not be retrieved by the web tool.
+
+### Adoption sequence and acceptance
+
+1. Portfolio: reconcile the existing Work grid PR #120; choose one toolkit or collection interaction using installed primitives.
+2. Account Signal Engine: one fictional account demonstrates summary → change → evidence → action, including a corrected/withdrawn source. Keep the pilot private.
+3. Security Market Map: one comparison demonstrates source links, unknown values and visible limitations.
+4. Detector Coverage Atlas / GTM Revenue OS: adapt comparisons after inspecting each repo's stack, current UI and open work.
+5. Channel Territory Mapping: evaluate filterable partner collection + detail sheet after local audit. Builder Academy / Truffle Camp: evaluate workflow accordion with honest progress.
+
+This order is a proposal, not evidence of deployment or enrollment. Technical Docs Platform remains the engineering-policy owner; do not copy vendor facts or portfolio branding into it. Joy Index remains private.
+
+For each destination, complete the existing workbench adoption record: source path and pinned commit, destination and owner, candidate/prototype/approved/shipped status, license/dependency decision, token mapping, responsive/keyboard/reduced-motion behavior, state coverage, checks and rollback. Promote to shipped only with reviewed call sites and verification.
+
+Acceptance for each implementation: a user can complete the named task at 375/768/1280px and 200% zoom, using keyboard and motion disabled; essential evidence remains visible; missing/stale/denied states are honest; existing required CI passes. Record unrun browser and assistive-technology checks explicitly.
+
+Verification for this documentation addition: reviewed against current reuse contract, inventory, catalog, adoption rules and open PR list. No runtime code, dependencies or other repositories changed. Application build/browser tests are not run for this documentation-only addition. Rollback: remove this section.
