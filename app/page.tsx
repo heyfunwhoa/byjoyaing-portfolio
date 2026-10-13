@@ -90,6 +90,7 @@ export default function Home() {
             <BrandAvatar variant="leader" />
           </CelestialFrame>
           <p className="editorial-subtle mt-3 text-center text-xs leading-5">Curious by nature. Builder by instinct.</p>
+          <Link href="/about#how-i-work" className="mt-3 flex min-h-11 items-center justify-center gap-2 text-center text-sm font-semibold text-[#E6B59A] underline underline-offset-4">Explore how I work <ArrowRight size={16} aria-hidden="true" /></Link>
         </div>
       </section>
 
