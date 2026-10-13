@@ -239,6 +239,102 @@ Use the fictional rates from section 9.
 
 Suggested learning order in the existing Academy: “MCP versus REST APIs: how integrations work” → “Control integrations and cloud spend” (this lesson) → “Secure CSV, AI research, and account export” → “Evaluate AI models with evidence.”
 
+## 15. Follow one research action from click to bill
+
+**Fictional design walkthrough, not a claim about a deployed app.** Cedar Example uses the reserved domain cedar.example; it is not a real prospect. All dollar figures below are teaching assumptions.
+
+| Step | What happens | Possible cost | Evidence the app should retain |
+| --- | --- | --- | --- |
+| Add account | Validate the domain and authorized ownership, then save | App/database usage; no research provider call in this design | Account ID, admission decision |
+| Preview research | Plan one search, four pages and bounded AI work | App compute; no research dispatch | Scope, price version, estimate and maximum |
+| Authorize and reserve | Check access plus every applicable allowance | Database transaction | Durable reservation and logical operation IDs |
+| Search | Ask an approved provider for sources | Search units/options | Provider request ID, units, returned URLs |
+| Read pages | Fetch only selected approved pages | Page credits/options | Capture versions, timestamps, usage and failures |
+| Extract and interpret | Process bounded evidence and label hypotheses | Model input/output/cache/tool usage | Model/version, usage and supporting capture IDs |
+| Review | Accept, correct or dismiss the brief | App/database usage; no automatic regeneration | Review decision and reason |
+| Reopen | Read the stored brief | App/database usage | Cache/storage read; no new paid provider operation |
+| Refresh | Check only the approved scope again | New collection; analysis only where needed | New captures, comparison and partial states |
+| Reconcile | Compare usage records with provider reporting | Administrative work; avoid unnecessary polling | Matched, adjusted or unresolved billing records |
+
+A suggested preflight message:
+
+> Research Cedar Example once: up to one search and four approved pages. Two model calls share a 12,000-input-token and 2,000-output-token ceiling. Estimated research usage: USD 0.09; reserve up to USD 0.12 for this run using the configured price assumptions. No automatic retries or schedule. Hosting/database/job costs are outside this research cap. Remaining pilot allowance before this reservation: USD 10.00.
+
+The USD 0.12 maximum must be calculated from enforceable operation bounds and valid rates in a real implementation, not chosen merely because it exceeds the estimate. Unknown or unbounded charges mean the operation cannot start under this policy.
+
+### Building the app versus running it
+
+**Build costs** can include coding-assistant usage, development sandboxes, CI test minutes, builds and preview deployments. **Run costs** include research APIs, models, hosted functions, background steps, storage and monitoring. Both belong in the overall project budget; only the specified research meters belong in the example research ceiling.
+
+Do not assume a chat or coding subscription pays for model API usage inside your app. Identify the billing arrangement for the exact product and connection. A connector may use a linked provider account, included product allowance or another arrangement; verify it rather than inferring from the provider logo.
+
+### Who pays?
+
+For each connection, privately record: product → integration method → credential owner → billing account/project → plan/allowance → environment → operator who can pause it. Never publish the actual key or billing account ID.
+
+Before estimating, ask whether a search already includes usable page content. Fetching the same content through another service can add cost without useful new evidence. Freshness or source-quality needs may still justify that second fetch.
+
+For shared hosting, choose and document an allocation method: measured usage when available, otherwise a clearly labeled allocation assumption. Do not pretend a rough equal split is measured usage, and do not charge the full shared bill to every project.
+
+## 16. Sample usage ledger and reconciliation exercise
+
+A ledger is a record of operations and their financial state. It is not necessarily a list of new cash charges. This simplified example uses fictional providers and the rates in section 9. Rows are separate attempts; reservations are maximums, not extra expenses.
+
+| Operation | Work observed | Reserved maximum | App-accounted usage | Provider-confirmed usage value | Final state |
+| --- | --- | --- | --- | --- | --- |
+| search-01 | One search | USD 0.020 | USD 0.010 | USD 0.010 | Reconciled |
+| pages-01 | Four basic pages | USD 0.030 | USD 0.020 | USD 0.020 | Reconciled |
+| ai-01 | 12,000 input and 2,000 output tokens across the bounded analysis | USD 0.070 | USD 0.060 | USD 0.060 | Reconciled |
+| search-02 | Refresh attempt timed out after dispatch | USD 0.020 | Unknown | USD 0.010 | Reconciled after provider confirmation |
+| reopen-01 | Open saved brief | USD 0.000 research | USD 0.000 research | USD 0.000 research | No research call; infrastructure excluded |
+
+The table shows states **after reconciliation**, not five simultaneous outstanding holds. The first three rows started with a combined USD 0.12 reservation and settled at USD 0.09. The refresh held USD 0.02 while uncertain, then settled at USD 0.01.
+
+Before refresh confirmation: USD 0.09 accounted + USD 0.02 unresolved reservation = **USD 0.11 committed allowance**.
+After confirmation: **USD 0.10 usage value**, no outstanding reservation. Of the cumulative USD 0.14 reserved across these attempts, USD 0.04 was released. Do not add reservations to settled usage as a second cost.
+
+In this exercise, the fictional search provider applies USD 0.02 of an existing prepaid balance to the two searches. The other fictional providers invoice USD 0.02 for pages and USD 0.06 for AI. New variable invoice charges are **USD 0.08**, while research consumption is **USD 0.10**. The earlier credit purchase belongs to its own cash-payment period. Fixed fees, infrastructure and taxes remain excluded.
+
+### Your assignment
+
+1. Your app shows USD 0.09, but provider usage totals USD 0.10. Find the missing operation.
+2. Explain why zero returned results from search-02 does not mean zero charge.
+3. Calculate the five-account pilot's remaining USD 10 research allowance after all rows reconcile.
+4. State the additional cash charge and explain why it differs from usage consumption.
+5. List the identifiers you would use to match records without exposing private data.
+6. If the provider cannot confirm search-02 yet, decide whether to release its reservation.
+
+**Answer key:**
+1. The timed-out refresh search was billed at USD 0.01. It was absent from the app's settled total.
+2. A provider may complete billable work before the app receives a response.
+3. USD 9.90, assuming no other pilot activity and that the policy counts all consumption including prepaid units.
+4. USD 0.08 in the simplified example; USD 0.02 came from existing prepaid credit.
+5. Internally use provider/request/attempt/job/project IDs, native units, endpoint/model and timestamps with the provider's billing timezone. Public examples use fictional IDs only.
+6. Keep the USD 0.02 exposure unresolved; do not automatically refund or blindly retry.
+
+### When records disagree
+
+Match the same billing window and timezone. Check reporting delay, aggregated or rounded line items, duplicates, billable retries, endpoint options, model/cache categories, credits, tax and use by another project. Preserve corrections as an audit trail. If the provider reports more than the reserved maximum, record the overage truthfully and pause new discretionary dispatch while investigating; never truncate the bill to fit the cap.
+
+Some providers expose only aggregate usage. Reconcile at the narrowest supported level and label per-account amounts as allocated or estimated when exact matching is impossible.
+
+## 17. Controls that sound similar but solve different problems
+
+| Concept | What it controls | What it does not guarantee |
+| --- | --- | --- |
+| Rate limit | How many operations happen within a time window | A monthly spending ceiling |
+| Concurrency limit | How many operations run at once | Fewer total operations |
+| Token/page limit | Size of one operation or run | The number of repeated runs |
+| Budget reservation | Allowance held before dispatch | An invoice cap for unguarded or unbounded services |
+| Alert | Notification of a threshold | Prevention of further work |
+| Pause | Stops specified future work | Cancellation of accepted jobs, subscriptions or retained storage |
+| Retention rule | How long stored evidence/logs remain | Removal of every backup or termination of the service plan |
+
+Choose freshness by information type. A stable company description might tolerate less frequent checking than an active announcement feed; select the intervals based on the decision they support. These are design choices, not universal schedules.
+
+Estimate expected usage and an enforceable maximum separately. Optimize for accurate, useful reviewed results and review time, rather than the lowest price per call. A cheap brief that requires extensive correction may not be good value.
+
+
 ## Additional primary references
 
 Pricing structures checked on 2026-10-12. Recheck rates and your own account terms before forecasting; the worked example deliberately uses fictional rates.
