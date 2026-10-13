@@ -83,6 +83,42 @@ const motions = [
 
 const patterns = [
   {
+    id: "empty",
+    name: "Empty & recovery",
+    category: "Feedback",
+    use: "Explain why a view has no results and offer a useful next step.",
+    fit: "Search results · New workspaces",
+    source: "components/design-lab/motion-workbench.tsx",
+    rule: "Native demo; connect the recovery action to a real workflow when adopting.",
+  },
+  {
+    id: "loading",
+    name: "Loading placeholder",
+    category: "Feedback",
+    use: "Reserve space while data arrives without shifting the page.",
+    fit: "Research lists · Evidence panels",
+    source: "components/design-lab/motion-workbench.tsx",
+    rule: "Static illustrative loading state; no request runs. Keep a readable status and a real error path.",
+  },
+  {
+    id: "progress",
+    name: "Step progress",
+    category: "Feedback",
+    use: "Show completed work and the next step in a bounded process.",
+    fit: "Lesson modules · Import review",
+    source: "components/design-lab/motion-workbench.tsx",
+    rule: "Use determinate progress only when the total is known. This is a three-step fictional process.",
+  },
+  {
+    id: "table",
+    name: "Record comparison",
+    category: "Organize",
+    use: "Compare the same fields across a small collection.",
+    fit: "Account signals · Detector coverage",
+    source: "components/design-lab/motion-workbench.tsx",
+    rule: "Native table demo, not a server-connected data grid. Use a caption, column headers, and a compact mobile alternative.",
+  },
+  {
     id: "avatar",
     name: "Avatar & owners",
     category: "Browse",
@@ -156,6 +192,108 @@ function PatternPreview({
   still: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
+  const [step, setStep] = useState(0);
+  if (pattern === "empty")
+    return (
+      <div className="rounded-xl border border-border bg-card p-5">
+        <h4 className="font-semibold">
+          {expanded ? "Sample item added" : "Nothing to review yet"}
+        </h4>
+        <p className="mt-2 text-sm text-muted">
+          {expanded
+            ? "The recovery action leads to a useful populated state. This is fictional content."
+            : "Start with a sample to see how this view works."}
+        </p>
+        <Button
+          variant="outline"
+          className="mt-4"
+          onClick={() => setExpanded((value) => !value)}
+        >
+          {expanded ? "Clear sample" : "Add sample item"}
+        </Button>
+      </div>
+    );
+  if (pattern === "loading")
+    return (
+      <div className="w-full rounded-xl border border-border bg-card p-5">
+        <p role="status" className="text-sm font-medium">
+          Loading preview · illustrative only
+        </p>
+        <div aria-hidden="true" className="mt-4 space-y-3">
+          {["w-3/4", "w-full", "w-1/2"].map((width) => (
+            <div key={width} className={`h-4 rounded bg-border ${width}`} />
+          ))}
+        </div>
+        <p className="mt-4 text-xs text-muted">
+          Stable space for content. No continuous shimmer or active data
+          request.
+        </p>
+      </div>
+    );
+  if (pattern === "progress")
+    return (
+      <div className="w-full rounded-xl border border-border bg-card p-5">
+        <label className="block text-sm font-semibold">
+          Sample review progress
+          <progress
+            className="mt-3 block h-3 w-full accent-accent"
+            value={step}
+            max={3}
+          >
+            {step} of 3
+          </progress>
+        </label>
+        <p role="status" className="mt-3 text-sm text-muted">
+          {step} of 3 steps complete
+        </p>
+        <Button
+          variant="outline"
+          className="mt-4"
+          onClick={() => setStep((value) => (value === 3 ? 0 : value + 1))}
+        >
+          {step === 3 ? "Restart sample" : "Complete next step"}
+        </Button>
+      </div>
+    );
+  if (pattern === "table")
+    return (
+      <div
+        className="w-full overflow-x-auto rounded-xl border border-border bg-card"
+        role="region"
+        aria-label="Fictional record comparison"
+        tabIndex={0}
+      >
+        <table className="w-full text-left text-sm">
+          <caption className="p-3 text-left text-xs text-muted">
+            Fictional records · no customer data
+          </caption>
+          <thead>
+            <tr>
+              {["Record", "Status", "Owner"].map((label) => (
+                <th
+                  key={label}
+                  scope="col"
+                  className="border-b border-border p-2"
+                >
+                  {label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {["A", "B", "C"].map((label) => (
+              <tr key={label}>
+                <th scope="row" className="p-2 font-medium">
+                  Sample {label}
+                </th>
+                <td className="p-2">Review</td>
+                <td className="p-2">Demo</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
   if (pattern === "avatar")
     return (
       <div className="space-y-5">
@@ -210,7 +348,7 @@ function PatternPreview({
   if (pattern === "tabs")
     return (
       <Tabs defaultValue="people">
-        <TabsList className="w-full">
+        <TabsList className="h-auto w-full flex-wrap">
           {["people", "strategy", "systems"].map((name) => (
             <TabsTrigger key={name} value={name} className="capitalize">
               {name}
@@ -338,6 +476,7 @@ export function MotionWorkbench({
   const [pattern, setPattern] = useState<PatternId>("avatar");
   const [category, setCategory] = useState("All");
   const [duration, setDuration] = useState(240);
+  const [previewWidth, setPreviewWidth] = useState("full");
   const [still, setStill] = useState(false);
   const [replay, setReplay] = useState(0);
   const selectedMotion = motions.find((entry) => entry.id === motion)!;
@@ -369,7 +508,7 @@ export function MotionWorkbench({
           </p>
         </div>
         <span className="rounded-full border border-border px-3 py-1 text-xs">
-          4 transitions · 7 components
+          4 transitions · 11 components
         </span>
       </div>
       <div
@@ -401,27 +540,47 @@ export function MotionWorkbench({
               role="group"
               aria-label="Component purpose"
             >
-              {["All", "Browse", "Organize", "Focus"].map((name) => (
-                <Button
-                  key={name}
-                  size="xs"
-                  variant={category === name ? "default" : "ghost"}
-                  aria-pressed={category === name}
-                  onClick={() => {
-                    setCategory(name);
-                    const first = patterns.find(
-                      (entry) => name === "All" || entry.category === name,
-                    );
-                    if (first) setPattern(first.id);
-                  }}
-                >
-                  {name}
-                </Button>
-              ))}
+              {["All", "Browse", "Organize", "Focus", "Feedback"].map(
+                (name) => (
+                  <Button
+                    key={name}
+                    size="xs"
+                    variant={category === name ? "default" : "ghost"}
+                    aria-pressed={category === name}
+                    onClick={() => {
+                      setCategory(name);
+                      const first = patterns.find(
+                        (entry) => name === "All" || entry.category === name,
+                      );
+                      if (first) setPattern(first.id);
+                    }}
+                  >
+                    {name}
+                  </Button>
+                ),
+              )}
             </div>
           )}
+          <label className="grid gap-2 text-sm font-medium sm:hidden">
+            {view === "transitions" ? "Transition preset" : "Component pattern"}
+            <select
+              value={selected.id}
+              onChange={(event) => {
+                if (view === "transitions")
+                  setMotion(event.target.value as typeof motion);
+                else setPattern(event.target.value as PatternId);
+              }}
+              className="min-h-11 w-full min-w-0 rounded-lg border border-border bg-background px-3"
+            >
+              {(view === "transitions" ? motions : choices).map((entry) => (
+                <option key={entry.id} value={entry.id}>
+                  {entry.name}
+                </option>
+              ))}
+            </select>
+          </label>
           <div
-            className="grid grid-cols-2 gap-2 lg:grid-cols-1"
+            className="hidden grid-cols-2 gap-2 sm:grid lg:grid-cols-1"
             role="group"
             aria-label={
               view === "transitions"
@@ -485,10 +644,35 @@ export function MotionWorkbench({
               </label>
             )}
           </div>
+          <label className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+            Preview width
+            <select
+              className="min-h-11 max-w-full rounded-lg border border-border bg-card px-2"
+              value={previewWidth}
+              onChange={(event) => setPreviewWidth(event.target.value)}
+            >
+              <option value="full">Fit available space</option>
+              <option value="360">Phone · up to 360px</option>
+              <option value="680">Tablet · up to 680px</option>
+            </select>
+          </label>
+          <p className="mt-2 text-xs leading-5 text-muted">
+            Width is capped by available space. This previews content density;
+            use browser/device testing for responsive breakpoints.
+          </p>
           <div
             id={`${id}-preview`}
             className={`mt-4 flex min-h-64 items-center justify-center overflow-hidden rounded-xl border border-border bg-surface-sage p-4 ${styles.stage} ${still ? styles.still : ""}`}
-            style={{ "--lab-duration": `${duration}ms` } as CSSProperties}
+            style={
+              {
+                "--lab-duration": `${duration}ms`,
+                width:
+                  previewWidth === "full"
+                    ? "100%"
+                    : `min(100%, ${previewWidth}px)`,
+                marginInline: "auto",
+              } as CSSProperties
+            }
           >
             {view === "transitions" ? (
               <div

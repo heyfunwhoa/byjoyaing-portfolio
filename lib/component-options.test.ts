@@ -42,3 +42,31 @@ test("availability labels agree with the portfolio source boundary", () => {
       );
   }
 });
+
+test("search combines purpose, components, project and availability filters", () => {
+  assert.deepEqual(
+    optionsForApp("Portfolio", "  AVATAR  ", "Available here").map(
+      (option) => option.id,
+    ),
+    ["identity"],
+  );
+  assert.deepEqual(
+    optionsForApp("Detector Coverage Atlas", "column filters", "Candidate").map(
+      (option) => option.id,
+    ),
+    ["data"],
+  );
+  assert.equal(optionsForApp("Security Market Map", "avatar").length, 0);
+  assert.equal(optionsForApp("All", "calendar", "Available here").length, 0);
+});
+
+test("empty and whitespace searches have predictable recovery behavior", () => {
+  assert.equal(optionsForApp("All", " \t ").length, componentOptions.length);
+  assert.equal(optionsForApp("All", "no-such-component").length, 0);
+  assert.equal(
+    optionsForApp("All", "", "Available here").every(
+      (option) => option.availability === "Available here",
+    ),
+    true,
+  );
+});

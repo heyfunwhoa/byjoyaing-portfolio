@@ -56,7 +56,7 @@ Primitives already in the repo: links, buttons in the header and filters, `Proje
 | Layouts | Static span diagram for the project gallery | None |
 | Navigation | Notes on the live header. No second header. Breadcrumb is not built. | `SiteHeader` from the root layout |
 | Cards | `EditorialProjectCard`, `ProjectBento`, `ProjectFilter` | Directory facts |
-| Motion | Interactive workbench: four scoped transitions, seven component previews, replay, timing, and motion-off controls. | Existing Radix/Embla primitives plus a CSS module |
+| Motion | Interactive workbench: four scoped transitions, eleven component previews, replay, timing, and motion-off controls. | Existing Radix/Embla primitives plus a CSS module |
 | Visual identity | Homepage orbit and Work-tile motif, labeled as those placements | `CelestialFrame`, `BrandAvatar`, `GeometricMotif`, `/brand/avatar/illustrated-portrait.png` |
 | Orbit artwork | Compare the transparent drawing, the charcoal plate, and the live pillar controls before changing the homepage | `OrbitPortrait`, `OrbitArtwork`, `CapabilityOrbit` |
 | Data visualization | Status pills and the experience constellation | `ProjectStatusPill`, `ProjectConstellation` |
@@ -70,7 +70,7 @@ Lesson: [editorial-project-card.md](../builder-academy/editorial-project-card.md
 The top of `/design-lab` now provides a compact selector and one preview stage, followed by a project-filtered collection of ten component families. The production gate remains in place. Storybook exposes `Design Lab/Motion Workbench` and `Design Lab/Component Options`.
 
 - Transitions: gentle rise, panel slide, soft settle, grouped reveal; 160/240/400ms and replay. All text stays visible, without autoplay or scroll-triggered hiding.
-- Components: avatar/owners, interactive card, tabs, accordion, dialog, sheet, carousel. Existing portfolio source is reused.
+- Components: avatar/owners, interactive card, tabs, accordion, dialog, sheet, carousel, empty/recovery, static loading, bounded progress, and native record comparison. Existing portfolio source is reused.
 - Device reduced motion overrides previews, including portal content and Embla duration. The explicit disable control also removes movement.
 - Curated options distinguish source available in this portfolio from candidate additions. App assignments are recommendations, not claims of implementation in another repository. The catalog is `lib/component-options.ts`; it contains no customer, employer, or private workspace records.
 
@@ -93,3 +93,11 @@ UI proposals do not add backend behavior: a Calendar is not calendar sync, a Dia
 ### Verification and rollback
 
 Catalog tests check app/source references and source availability. Storybook interaction tests cover project filtering, reduced motion, keyboard selection and dialog focus return. Run `npm test`, `npm run build`, `npm run storybook:build`, and `npm run test:visual` where browser infrastructure is supported. Rollback removes the two lab imports/mounts and new files; no data migration or public-page rollout is involved.
+
+### Mobile, tablet and comparison expansion
+
+The library defaults to cards on all screens and supports an explicit Table view. Search (all terms), project, and availability filters share state across both layouts. Empty results expose a reset action. The native comparison table includes caption, row/column headers, sources and adoption notes; its keyboard-focusable scrolling region contains horizontal overflow on narrow screens. No data-grid package is added.
+
+Below 640px, the workbench uses a native pattern selector instead of the full button grid. Project/search controls fill the available width, and controls retain 44px minimum tap areas. The preview stage can be capped at 360px or 680px, always bounded by available space. These caps help compare content density; they do not emulate a device or trigger viewport media queries. Actual breakpoints require browser/device testing.
+
+Four additional preview patterns cover empty-state recovery, static loading placeholders, three-step progress and a native record table. They are locally implemented demos, not installed shadcn Skeleton/Progress/Data Table components and not live workflows. Candidate status in the curated catalog remains unchanged. Browser cases cover view/filter continuity, empty-result reset, feedback actions and overflow at 375/768/1280px. Execution remains pending where supported browser tooling is unavailable.

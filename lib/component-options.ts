@@ -167,8 +167,21 @@ export const componentOptions: ComponentOption[] = [
       "Use verified data, units, source, and date. Supply a text summary or table; a chart is not a relationship map.",
   },
 ];
-export function optionsForApp(app: ComponentApp | "All") {
+export function optionsForApp(
+  app: ComponentApp | "All",
+  query = "",
+  availability: ComponentOption["availability"] | "All" = "All",
+) {
+  const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   return componentOptions.filter(
-    (option) => app === "All" || option.apps.includes(app),
+    (option) =>
+      (app === "All" || option.apps.includes(app)) &&
+      (availability === "All" || option.availability === availability) &&
+      terms.every((term) =>
+        [option.name, option.purpose, ...option.parts, ...option.apps]
+          .join(" ")
+          .toLowerCase()
+          .includes(term),
+      ),
   );
 }
