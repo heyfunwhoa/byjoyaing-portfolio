@@ -281,8 +281,8 @@ export const lessons: Lesson[] = [
     analogy: "A restaurant order has one ticket, a recipe, a kitchen station and a quality check. You do not need five copies of the same order to know whether dinner is ready.",
     takeaways: [
       "Start with three steps: prepare a change, check and accept it, then publish and confirm it. Follow a fictional website typo fix in the companion guide.",
-      "Next, learn where IDEs, AI assistants, Git, pre-commit hooks and CI/CD fit. The companion links a worked AppSec example with MITRE ATT&CK techniques, SSDF, ASVS, SAMM and CWE; a framework mapping is not proof of tool coverage."
-      "Commit means record your work. Merge means accept it into the main version. Deploy means publish a version for visitors. These are separate steps."
+      "Next, learn where IDEs, AI assistants, Git, pre-commit hooks and CI/CD fit. The companion links a worked AppSec example with MITRE ATT&CK techniques, SSDF, ASVS, SAMM and CWE; a framework mapping is not proof of tool coverage.",
+      "Commit means record your work. Merge means accept it into the main version. Deploy means publish a version for visitors. These are separate steps.",
       "For an open PR, say: Review the PR, fix any issues, and merge once required checks pass on the latest commit. Review and CI can run in parallel; fixes repeat the loop.",
       "A merge is not proof of deployment. Repository-only docs may finish at merge; website lesson updates still need publication verification. Reading a lesson is reviewed, not practiced or passed checks.",
       "A project groups an outcome; milestones divide it; issues specify testable slices. Priority is importance, while status is where the work stands.",
@@ -293,7 +293,7 @@ export const lessons: Lesson[] = [
       "Adopt the workflow gradually for active initiatives; no separate Linear team or duplicated status page is required for every repository.",
       "Security scanners look for leaked secrets, vulnerable dependencies, risky code and configuration. Permission tests prove that a denied request cannot read data, change data or schedule work.",
       "A configured check, a passing check and a required merge gate are different states. Review the latest commit; a manual checklist cannot technically prevent someone bypassing it.",
-      "Pre-commit helps catch local mistakes but can be absent, bypassed or limited in scope. The AppSec companion links a deep dive: Did it run? What did it scan? Did a finding actually block the action? Blocking merge does not undo a secret already pushed."
+      "Pre-commit helps catch local mistakes but can be absent, bypassed or limited in scope. The AppSec companion links a deep dive: Did it run? What did it scan? Did a finding actually block the action? Blocking merge does not undo a secret already pushed.",
       "Use deeper security review for auth, account permissions, imports, exports, fetching and automation. Green CI is not proof of a protected deployment or permission to use employer data."
     ],
     exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Then use the companion guide’s fictional security review: classify the change, choose scanners and denied-path tests, and explain why passing CI alone does not authorize release. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md. When you choose a Cursor mode for that branch, continue with docs/builder-academy/cursor-agent-workflows.md.",
