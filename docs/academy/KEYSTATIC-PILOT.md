@@ -74,6 +74,8 @@ GitHub mode, GitHub App credentials, hosted editor authentication and hosted pre
 
 Dependency gate: initial `npm audit --omit=dev --audit-level=high` identified Keystatic Next's Chokidar 3 → braces advisory. The scoped `@keystatic/next` override to Chokidar 4.0.3 removes that production chain; audit now reports **0 vulnerabilities**. Chokidar 4 removes glob support; inspection found the legacy Pages-router reader-refresh adapter passes resolved directories, not globs. This pilot uses the App Router route handler, which does not use that watcher. Local edit/render was verified with the override. Reassess/remove it when upstream updates; do not blindly run `npm audit fix --force` or weaken the audit gate.
 
+Storybook compatibility: the initial hosted Visual QA run failed all six Follow One Click cases before rendering (`Unexpected identifier 'assert'`). The installed `vite-plugin-storybook-nextjs` SWC transform sets `emitAssertForImportAttributes: true`. A Storybook-only pre-transform removes the JSON import attribute from the verification adapter before SWC; Vite handles the JSON module. Node tests retain the required `with { type: "json" }` source import, and production code is unchanged. Remove this workaround when the upstream transform supports this import through Vite without emitting assertions. Existing visual tests and screenshot thresholds remain unchanged; hosted Visual QA is the screenshot baseline gate because the local browser differs from CI.
+
 ## References
 
 1. [Agreed editorial and migration contract](REVENUE-ENABLEMENT-MISSION.md#pilot-editorial-contract).
