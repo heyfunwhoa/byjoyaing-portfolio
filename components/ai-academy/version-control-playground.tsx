@@ -1,6 +1,7 @@
 "use client";
+import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 
-import Link from "next/link";
+
 import { useState } from "react";
 
 import { scenarios, quiz, quizScore, quizComplete, isCorrectScenarioAnswer } from "@/lib/version-control";
@@ -29,10 +30,8 @@ export function VersionControlPlayground() {
   ];
 
   return <main id="main-content" className="mx-auto w-full max-w-5xl px-5 pb-24 pt-12 sm:px-8">
-    <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted">
-      <Link className="underline underline-offset-4 hover:text-foreground" href="/ai-academy">AI Academy</Link>
-      <span aria-hidden="true"> / </span> Git Workflow Essentials
-    </nav>
+    <AcademyBreadcrumb title="Git Workflow Essentials" />
+
     <header className="max-w-3xl">
       <p className="text-xs font-semibold uppercase tracking-widest text-accent">Builder Academy · Beginner · Interactive practice</p>
       <h1 className="font-display mt-3 text-4xl leading-tight sm:text-6xl">Git Workflow Essentials</h1>

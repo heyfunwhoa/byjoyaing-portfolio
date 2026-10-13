@@ -3,6 +3,10 @@ Status: curriculum and lab specifications; only the overview page is implemented
 Route: /ai-academy/systems
 Reviewed: 2026-10-10
 
+## Current sequencing
+
+The [curriculum audit](CURRICULUM-AUDIT.md) maps all thirteen outlines to the ordered prerequisite and applied-learning backlog. Its batch order supersedes the older sequencing below. The seven standalone lab concepts remain parked; reuse existing Academy simulations when appropriate. No systems lessons or labs are built by this planning update.
+
 ## Learning modules
 1. Web research infrastructure: HTTP and DNS, indexing, crawlers, extraction, APIs, RAG, citations and provider selection.
 2. Systems architecture: architecture diagrams, modular monoliths, services, coupling, integration boundaries and scalability.

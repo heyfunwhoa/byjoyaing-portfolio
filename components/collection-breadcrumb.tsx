@@ -7,18 +7,18 @@ export function CollectionBreadcrumb({ items }: { items: readonly TrailItem[] })
     <nav aria-label="Breadcrumb">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
         {items.map((item, index) => (
-          <li key={`${item.label}-${index}`} className="inline-flex min-h-11 items-center gap-2">
+          <li key={`${item.label}-${index}`} className="inline-flex min-h-11 min-w-0 max-w-full items-center gap-2">
             {index > 0 ? (
               <span aria-hidden="true" className="text-muted">
                 /
               </span>
             ) : null}
             {item.href ? (
-              <Link href={item.href} className="font-medium text-accent underline underline-offset-4">
+              <Link href={item.href} className="inline-flex min-h-11 min-w-0 items-center break-words font-medium text-accent underline underline-offset-4">
                 {item.label}
               </Link>
             ) : (
-              <span aria-current="page" className="text-muted">
+              <span aria-current="page" className="min-w-0 break-words text-muted">
                 {item.label}
               </span>
             )}

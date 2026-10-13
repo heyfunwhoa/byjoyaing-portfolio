@@ -1,4 +1,6 @@
 "use client";
+import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
+
 import {useState} from "react";
 import Link from "next/link";
 import {evaluatePrompt,fictionalSources,generatePracticePrompt,improvedExample,promptJourneySteps,promptLabels,promptParts,starterPrompt,type PromptInput} from "@/lib/ai-prompt-journey";
@@ -7,7 +9,8 @@ export function PromptJourney(){
  const [step,setStep]=useState(0),[draft,setDraft]=useState<PromptInput>(empty),[checked,setChecked]=useState(false),[reflection,setReflection]=useState(""),[complete,setComplete]=useState(false),[copyStatus,setCopyStatus]=useState("");
  const result=evaluatePrompt(draft);
  const btn="rounded-lg bg-accent px-5 py-3 font-semibold text-accent-foreground disabled:opacity-50";
- return <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8"><Link className="text-sm text-accent underline" href="/ai-academy/playground">← All labs</Link>
+ return <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
+    <AcademyBreadcrumb title="Prompting Journey" playground />
  <p className="mt-8 text-xs font-semibold uppercase tracking-[.2em] text-accent">AI Foundations / Guided journey</p><h1 className="font-display mt-3 text-4xl sm:text-5xl">Turn a vague prompt into a research workflow</h1><p className="mt-4 text-muted">Learn, practice, evaluate, and apply structured prompting with fictional account research. No model calls or data storage.</p>
  <nav aria-label="Journey steps" className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4">{promptJourneySteps.map((label,i)=><div key={label} aria-current={step===i?"step":undefined} className={`rounded-lg border p-3 text-sm ${step===i?"border-accent bg-card":"border-border"}`}><span className="block text-xs text-muted">{i+1} of 4</span><strong>{label}</strong></div>)}</nav>
  {step===0&&<section className="mt-8 space-y-5 rounded-xl border border-border bg-card p-6"><h2 className="font-display text-3xl">Why prompts need structure</h2><div className="rounded-lg bg-background p-4"><p className="text-xs text-muted">Before</p><p className="mt-2 font-semibold">{starterPrompt}</p></div><p>A model could invent buying intent because the task provides neither evidence nor a validation standard. A stronger request specifies six things: objective, audience, sources, constraints, format, and validation.</p><div className="grid gap-3 sm:grid-cols-2">{promptParts.map(part=><div key={part} className="rounded-lg border border-border p-3"><strong>{promptLabels[part]}</strong><p className="mt-1 text-sm text-muted">{improvedExample[part]}</p></div>)}</div><p className="text-sm text-muted">A well-structured prompt does not guarantee a correct answer; factual checks still matter.</p><button className={btn} onClick={()=>setStep(1)}>Practice →</button></section>}

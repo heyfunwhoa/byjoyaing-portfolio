@@ -159,3 +159,13 @@ scan and 200% zoom remain manual release checks. Automated browser coverage is i
 `tests/site/connect.spec.ts` but must run in a working browser environment. Do not
 print/distribute until the route is deployed and a real-phone scan is verified.
 Rollback: revert this focused PR and retire any distributed QR assets if needed.
+
+## Context navigation (2026-10-13, proposed)
+
+- Task: orient a reader arriving directly at a nested lesson, lab, case or capability and offer predictable parent links.
+- Reuse/adapt `components/collection-breadcrumb.tsx`; add the small `AcademyBreadcrumb` composition. No dependency, URL migration, browser-history button, fetch, animation or new client directive.
+- Destinations: all 12 current Academy lesson/lab routes across `/ai-academy` and `/builder-academy`, capability details and the storytelling guide. Existing Work/Side Quest and Field Notes trails retain their collection-aware behavior. The Design Lab Navigation section demonstrates the deeper Academy trail.
+- Parent pages: `/ai-academy` is the Academy home; `/ai-academy/playground` is the practice hub. `journeys`, `devops`, `dependencies` and `/builder-academy` have no index page, so do not manufacture links to them. Exercise progress is not page hierarchy; keep step indicators separate. Planned lessons receive no Next links.
+- Phone/tablet/desktop: same compact, wrapping list; long labels may wrap, no horizontal rail or sticky overlay. Actual links have a minimum 44px height, with existing focus styles, semantic nav/ordered list, decorative separators and one non-linked current-page label. No motion means reduced-motion remains unchanged. Async/error/loading states are not applicable to static navigation.
+- Workbench availability is not deployment evidence. Automated build and browser evidence belongs in the PR; real-device and manual 200% zoom review remain separate. Revert call-site additions and the Academy wrapper to roll back.
+- Owner: portfolio maintainer. Future lesson integration should reuse this composition; use explicit known parents, never split a URL into guessed links. Top-level About/Contact pages do not need a redundant breadcrumb. Filter persistence and previous/next lesson sequencing are separate work.

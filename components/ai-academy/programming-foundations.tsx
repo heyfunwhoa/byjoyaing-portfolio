@@ -1,7 +1,8 @@
 "use client";
+import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
+
 
 import { useState } from "react";
-import Link from "next/link";
 import { curriculum, technologies, findTechnology } from "@/lib/academy/programming";
 import { GuidedProgrammingLesson } from "@/components/ai-academy/guided-programming-lesson";
 import { getGuidedLesson } from "@/lib/academy/guided-lessons";
@@ -23,7 +24,8 @@ export function ProgrammingFoundations(){
   const visible = technologies.filter(t=>(kind==="All"||t.kind===kind)&&(`${t.name} ${t.summary} ${t.usage}`).toLowerCase().includes(search.toLowerCase()));
   const score=questions.filter((q,i)=>answers[i]===q.answer).length;
   return <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-6xl px-5 pb-24 pt-12 sm:px-8">
-    <nav aria-label="Breadcrumb" className="text-sm text-muted"><Link href="/ai-academy" className="underline underline-offset-4">AI Academy</Link> <span aria-hidden="true">/</span> Programming Foundations</nav>
+    <AcademyBreadcrumb title="Programming Foundations" />
+
     <header className="mt-9 max-w-3xl">
       <p className="text-xs font-semibold uppercase tracking-[.2em] text-accent">Builder Academy / Programming Foundations</p>
       <h1 className="font-display mt-3 text-4xl sm:text-6xl">Learn the languages behind the things you build.</h1>

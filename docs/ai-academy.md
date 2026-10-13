@@ -22,6 +22,10 @@ Start with core AI literacy, practice on realistic exercises, then recommend a w
 - Add unit tests for recommendation filtering/lesson logic and E2E tests for navigation before production.
 - No external state mutation or sync without explicit approval and scoped credentials.
 
+## Current curriculum audit
+
+See the [complete curriculum inventory and priorities](academy/CURRICULUM-AUDIT.md), reviewed 2026-10-12. It distinguishes registered cards, guided tutorials, companion references, simulations and planned modules. Its delivery order supersedes the older roadmap below. Current work is documentation and prioritization only; lesson/UI implementation is on hold.
+
 ## Roadmap
 P0: check build and accessibility, improve lesson testing, add learner feedback and source review dates.
 P1: optional persistent progress with consent, learning tracks, richer GTM scenarios.
