@@ -28,6 +28,11 @@ const availableLesson = {
 } as const;
 
 export const lessonGuidance = {
+  "llms-models-inference-gateways": {
+    ...availableLesson,
+    prerequisites: ["what-is-ai", "privacy"],
+    guide: guide("llms-models-inference-gateways"),
+  },
   "what-is-ai": { ...availableLesson, prerequisites: [] },
   evolution: { ...availableLesson, prerequisites: ["what-is-ai"] },
   privacy: { ...availableLesson, prerequisites: [] },
@@ -148,7 +153,7 @@ export const lessonGuidance = {
   },
   "evaluate-ai-models": {
     ...availableLesson,
-    prerequisites: ["prompting", "privacy", "verification"],
+    prerequisites: ["prompting", "privacy", "verification", "llms-models-inference-gateways"],
   },
   "measure-product-use-safely": {
     ...availableLesson,
