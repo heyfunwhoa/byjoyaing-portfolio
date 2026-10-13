@@ -95,6 +95,7 @@ test("installed primitives are present and public adoption stays explicitly scop
   // FeaturedWorkCarousel wraps ui/carousel. Stakeholder map pilot adopts only
   // Button and Card in these two named wrappers; no global primitive exemption.
   const scopedImports: Record<string, string[]> = {
+    "components/work-explorer.tsx": ["@/components/ui/bento-grid"],
     "components/toolkit-explorer.tsx": ["@/components/ui/tabs", "@/components/ui/button"],
     "components/stakeholder-map/stakeholder-node.tsx": ["@/components/ui/button"],
     "components/stakeholder-map/stakeholder-detail.tsx": ["@/components/ui/card"],
@@ -114,13 +115,13 @@ test("installed primitives are present and public adoption stays explicitly scop
     if (unreviewed.length) offenders.push(`${file}: ${unreviewed.join(", ")}`);
   }
   assert.deepEqual(offenders, []);
-  assert.match(read("app/work/page.tsx"), /from ["']@\/components\/featured-work-carousel["']/);
-  assert.match(read("app/work/page.tsx"), /<FeaturedWorkCarousel\b/);
+  assert.match(read("app/work/page.tsx"), /from ["']@\/components\/work-explorer["']/);
+  assert.match(read("app/work/page.tsx"), /<WorkExplorer\b/);
   assert.match(read("components/featured-work-carousel.tsx"), /from ["']@\/components\/ui\/carousel["']/);
   assert.match(read("components/featured-work-carousel.tsx"), /<Carousel\b/);
 });
 
-test("bento grid and lifeline stay inside the design lab", () => {
+test("bento adoption is scoped to Work; lifeline stays in the lab", () => {
   assert.equal(read("components/lifeline/lifeline.tsx").includes("export function Lifeline"), true);
   assert.equal(read("components/lifeline/lifeline-labels.tsx").includes("Age"), false);
   assert.match(read("components/lifeline/lifeline-labels.tsx"), /Co\./);
@@ -155,6 +156,6 @@ test("bento grid and lifeline stay inside the design lab", () => {
     if (isDesignLab(file)) labUsers.push(file);
     else publicUsers.push(file);
   }
-  assert.deepEqual(publicUsers, []);
+  assert.deepEqual(publicUsers, ["components/work-explorer.tsx"]);
   assert.ok(labUsers.includes("components/design-lab/demos.tsx"));
 });

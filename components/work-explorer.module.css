@@ -1,0 +1,57 @@
+.card {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+.card[data-state="open"] {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.chevron,
+.symbol {
+  transition: transform 200ms ease;
+}
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-3px);
+  }
+  .card:hover .symbol {
+    transform: rotate(-5deg);
+  }
+}
+.panel {
+  overflow: hidden;
+}
+.panel[data-state="open"] {
+  animation: expand 240ms ease-out;
+}
+.panel[data-state="closed"] {
+  animation: collapse 180ms ease-in;
+}
+@keyframes expand {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+  }
+}
+@keyframes collapse {
+  from {
+    height: var(--radix-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .chevron,
+  .symbol {
+    transition: none;
+    transform: none;
+  }
+  .panel[data-state] {
+    animation: none;
+  }
+}

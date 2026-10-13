@@ -128,7 +128,9 @@ test("workflow examples link to existing evidence with truthful practice labels"
     assert.ok(existsSync(page), section.evidence.href);
     if (anchor)
       assert.ok(
-        readFileSync(page, "utf8").includes(`id="${anchor}"`),
+        readFileSync(page, "utf8").includes(`id="${anchor}"`) ||
+          (route === "/work" && readFileSync(page, "utf8").includes("<WorkExplorer") &&
+            readFileSync(path.join(root, "components/work-explorer.tsx"), "utf8").includes(`id: "${anchor}"`)),
         section.evidence.href,
       );
   }
