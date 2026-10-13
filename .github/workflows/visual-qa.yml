@@ -5,6 +5,10 @@ on:
     paths:
       - ".storybook/**"
       - "components/ui/**"
+      - "components/design-lab/**"
+      - "components/field-notes/**"
+      - "lib/component-options.ts"
+      - "app/globals.css"
       - "tests/visual/**"
       - "playwright.config.ts"
       - "package.json"

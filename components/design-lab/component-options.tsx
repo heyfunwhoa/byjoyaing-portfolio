@@ -19,7 +19,7 @@ export function ComponentOptions() {
   >("All");
   const options = optionsForApp(app, query, availability);
   return (
-    <section aria-labelledby={`${id}-title`}>
+    <section aria-labelledby={`${id}-title`} className="w-full min-w-0">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="editorial-eyebrow text-accent">
@@ -35,9 +35,10 @@ export function ComponentOptions() {
           </p>
         </div>
         <label className="grid w-full min-w-0 gap-2 text-sm font-medium sm:w-auto">
-          Project
+          <span id={`${id}-project-label`}>Project</span>
           <select
-            className="min-h-11 max-w-full rounded-lg border border-border bg-card px-3"
+            aria-labelledby={`${id}-project-label`}
+            className="min-h-11 w-full max-w-full min-w-0 rounded-lg border border-border bg-card px-3"
             value={app}
             onChange={(event) =>
               setApp(event.target.value as ComponentApp | "All")
@@ -62,13 +63,14 @@ export function ComponentOptions() {
           />
         </label>
         <label className="grid gap-2 text-sm font-medium">
-          Availability
+          <span id={`${id}-availability-label`}>Availability</span>
           <select
+            aria-labelledby={`${id}-availability-label`}
             value={availability}
             onChange={(event) =>
               setAvailability(event.target.value as typeof availability)
             }
-            className="min-h-11 rounded-lg border border-border bg-card px-3"
+            className="min-h-11 w-full min-w-0 rounded-lg border border-border bg-card px-3"
           >
             <option>All</option>
             <option>Available here</option>
@@ -126,10 +128,10 @@ export function ComponentOptions() {
             role="region"
             aria-label="Component comparison table"
             tabIndex={0}
-            className="max-w-full overflow-x-auto rounded-xl border border-border bg-card"
+            className="relative w-full max-w-full min-w-0 overflow-x-auto rounded-xl border border-border bg-card"
           >
             <table className="w-full min-w-[42rem] border-collapse text-left text-sm">
-              <caption className="sr-only">
+              <caption className="p-4 text-left text-xs text-muted">
                 Component options for {app}, filtered by search and availability
               </caption>
               <thead className="bg-surface-sage">

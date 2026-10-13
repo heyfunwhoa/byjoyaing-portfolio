@@ -562,8 +562,13 @@ export function MotionWorkbench({
             </div>
           )}
           <label className="grid gap-2 text-sm font-medium sm:hidden">
-            {view === "transitions" ? "Transition preset" : "Component pattern"}
+            <span id={`${id}-pattern-label`}>
+              {view === "transitions"
+                ? "Transition preset"
+                : "Component pattern"}
+            </span>
             <select
+              aria-labelledby={`${id}-pattern-label`}
               value={selected.id}
               onChange={(event) => {
                 if (view === "transitions")
@@ -631,8 +636,9 @@ export function MotionWorkbench({
             </label>
             {view === "transitions" && (
               <label className="flex items-center gap-2">
-                Duration
+                <span id={`${id}-duration-label`}>Duration</span>
                 <select
+                  aria-labelledby={`${id}-duration-label`}
                   className="min-h-11 rounded-lg border border-border bg-card px-2"
                   value={duration}
                   onChange={(event) => setDuration(Number(event.target.value))}
@@ -645,8 +651,9 @@ export function MotionWorkbench({
             )}
           </div>
           <label className="mt-3 flex flex-wrap items-center gap-2 text-sm">
-            Preview width
+            <span id={`${id}-width-label`}>Preview width</span>
             <select
+              aria-labelledby={`${id}-width-label`}
               className="min-h-11 max-w-full rounded-lg border border-border bg-card px-2"
               value={previewWidth}
               onChange={(event) => setPreviewWidth(event.target.value)}

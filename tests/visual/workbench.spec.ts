@@ -7,10 +7,17 @@ test("transition presets replay without movement when the device requests reduce
   await page.goto(
     "/iframe.html?id=design-lab-motion-workbench--transitions&viewMode=story",
   );
+  await expect(
+    page.getByRole("heading", { name: "Motion & components", exact: true }),
+  ).toBeVisible();
   const preset = page.getByRole("button", { name: "Grouped reveal" });
-  if (await page.getByLabel("Transition preset", { exact: true }).isVisible()) {
+  if (
     await page
-      .getByLabel("Transition preset", { exact: true })
+      .getByRole("combobox", { name: "Transition preset", exact: true })
+      .isVisible()
+  ) {
+    await page
+      .getByRole("combobox", { name: "Transition preset", exact: true })
       .selectOption("stagger");
   } else {
     await preset.focus();
@@ -41,7 +48,7 @@ test("library preserves filters across cards/table and resets an empty result", 
   );
   await page.getByLabel("Search options", { exact: true }).fill("avatar");
   await page
-    .getByLabel("Availability", { exact: true })
+    .getByRole("combobox", { name: "Availability", exact: true })
     .selectOption("Available here");
   await expect(page.getByRole("status")).toContainText("1 options");
   await page.getByRole("button", { name: /^table$/i }).click();
@@ -64,14 +71,21 @@ test("feedback demos offer recovery and bounded progress", async ({ page }) => {
   await page.goto(
     "/iframe.html?id=design-lab-motion-workbench--components&viewMode=story",
   );
+  await expect(
+    page.getByRole("heading", { name: "Motion & components", exact: true }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "Feedback", exact: true }).click();
   await page.getByRole("button", { name: "Add sample item" }).click();
   await expect(
     page.getByRole("heading", { name: "Sample item added" }),
   ).toBeVisible();
-  if (await page.getByLabel("Component pattern", { exact: true }).isVisible())
+  if (
     await page
-      .getByLabel("Component pattern", { exact: true })
+      .getByRole("combobox", { name: "Component pattern", exact: true })
+      .isVisible()
+  )
+    await page
+      .getByRole("combobox", { name: "Component pattern", exact: true })
       .selectOption("progress");
   else
     await page
@@ -96,11 +110,14 @@ test("comparison table stays within the page at phone, tablet and desktop widths
     await expect(
       page.getByRole("region", { name: "Component comparison table" }),
     ).toBeVisible();
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
-      ),
-    ).toBe(true);
+    await expect
+      .poll(() =>
+        page.evaluate(() => ({
+          page: document.documentElement.scrollWidth,
+          viewport: window.innerWidth,
+        })),
+      )
+      .toEqual({ page: width, viewport: width });
   }
 });
 
@@ -130,7 +147,7 @@ test("app filter retains suitable options and avoids portfolio-only recommendati
     "/iframe.html?id=design-lab-component-options--library&viewMode=story",
   );
   await page
-    .getByLabel("Project", { exact: true })
+    .getByRole("combobox", { name: "Project", exact: true })
     .selectOption("Detector Coverage Atlas");
   await expect(page.getByRole("status")).toContainText(
     "Detector Coverage Atlas",
