@@ -80,7 +80,7 @@ Application-level caching cannot prevent a Vercel-managed Git fetch error. `git_
 - A failed production deployment must not be promoted. Confirm alias ownership. On 2026-10-12 the `git_info_fail` deployments owned no aliases, and the previous READY deployment still owned `www.byjoyaing.com`.
 - Do not set `github.autoAlias` to false and do not disable `git.deploymentEnabled`. Both would change the release path without fixing a rate limit.
 - Vercel `github.autoJobCancelation` stays at the provider default. The observed failures were `ERROR`, not cancelled builds. Turning cancellation off would spend more build time without answering `git_info_fail`.
-- Security scans stay enabled. Trivy remains report-only (`exit-code: "0"`) until a separate decision changes that gate. Semgrep stays blocking. The weekly Semgrep cron stays.
+- Security scans stay enabled. Trivy is now blocking (`exit-code: "1"`) after the security follow-through review; see [release readiness](../security/release-readiness.md). Semgrep stays blocking. The weekly Semgrep cron stays.
 
 Permissions stay `contents: read`. Checkouts set `persist-credentials: false`. Dependency installs stay `npm ci` with the lockfile and `actions/setup-node` npm cache. That cache does not change the resolved tree.
 

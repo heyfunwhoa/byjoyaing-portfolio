@@ -1,6 +1,6 @@
 # PostHog error monitoring rollout
 
-Status: integration prepared on a feature branch; production collection is not yet enabled or verified. Owner: Kristen Aing. Scope: byjoyaing-portfolio error monitoring; independently gated page analytics is documented in [the analytics plan](../product/portfolio-analytics-plan.md).
+Status: integration code is on main; production ingestion and alert delivery remain unverified. Owner: Kristen Aing. Scope: byjoyaing-portfolio error monitoring; independently gated page analytics is documented in [the analytics plan](../product/portfolio-analytics-plan.md).
 
 ## Implemented
 
@@ -40,3 +40,7 @@ Disable both enable switches and redeploy. Client switches require a rebuild. Ke
 Privacy tests cover explicit activation, preview/local exclusion, nested synthetic secret removal and flood limits. Build, lint, unit tests and dependency audit results belong in the PR. Production delivery, source maps, alert delivery, uptime checks and cron monitoring remain unverified/not implemented.
 
 Sources: [Next.js installation](https://posthog.com/docs/error-tracking/installation/nextjs), [Node installation](https://posthog.com/docs/error-tracking/installation/node), [SDK configuration](https://posthog.com/docs/libraries/js/config), [billing limits](https://posthog.com/docs/billing/limits-alerts), [Next.js instrumentation](https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation).
+
+## Read-only verification — 2026-10-13 UTC
+
+The connected PostHog project was confirmed as `byjoyaing-portfolio` (659261). Error tracking is enabled at the project level, but that does not prove that the deployed app sends events. The complete error-alert destination list returned **0 results** (`next: null`); the project reported no connected integrations. No alert was created or test notification sent. An owner-selected destination and delivery test remain required; do not invent a channel or enable collection without the existing privacy/cost checks.
