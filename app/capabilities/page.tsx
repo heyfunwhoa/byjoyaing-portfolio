@@ -1,13 +1,14 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { capabilityViews } from "@/lib/capabilities";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Capabilities",
   description:
     "Revenue strategy, GTM engineering, revenue operations, AI product systems, and sales enablement, shown through existing portfolio work.",
-};
+}, "/capabilities");
 
 export default function CapabilitiesPage() {
   return (

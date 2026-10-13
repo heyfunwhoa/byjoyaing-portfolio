@@ -1,3 +1,4 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { AccountIntelligenceCase } from "@/components/account-intelligence-case";
 import { AtlasCase } from "@/components/atlas-case";
@@ -33,10 +34,13 @@ export async function generateMetadata({
   if (!project) {
     return { title: "Project" };
   }
-  return {
+  return completePageMetadata(
+    {
     title: project.title,
     description: project.sales.salesQuestion,
-  };
+  },
+    `/work/${slug}`,
+  );
 }
 
 function Block({ title, children }: { title: string; children: ReactNode }) {
@@ -90,12 +94,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <PageMain>
       <div className="grid gap-12 border-b border-border py-16 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-16">
-        <aside className="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start">
+        <aside className="order-2 flex flex-col gap-6 lg:sticky lg:top-24 lg:order-1 lg:self-start">
           <StatusBadge status={project.status} />
           {useCase ? (
             <p className="text-sm leading-6 text-muted">
               <Link
-                href={`/projects#${useCase.id}`}
+                href={`/projects?category=${useCase.id === "account" ? "accounts" : "revenue"}#directory`}
                 className="link-rule font-medium text-foreground"
               >
                 {useCase.title}
@@ -111,11 +115,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             href="/projects"
             className="link-rule w-fit text-sm font-medium text-accent"
           >
-            All four capabilities
+            Browse the project directory
           </Link>
         </aside>
 
-        <article className="flex min-w-0 flex-col gap-8">
+        <article className="order-1 flex min-w-0 flex-col gap-8 lg:order-2">
           <header className="flex flex-col gap-5">
             <WorkCaseBreadcrumb slug={slug} />
             <ProjectKindLabel slug={slug} />
@@ -127,16 +131,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </p>
           </header>
 
-          <dl className="grid max-w-2xl gap-5 text-base leading-7">
+          <dl className="grid max-w-2xl gap-5 text-base leading-7 sm:grid-cols-2">
             <div>
               <dt className="font-medium text-foreground">Who uses it</dt>
               <dd className="text-muted">{sales.userMoment}</dd>
-            </div>
-            <div>
-              <dt className="font-medium text-foreground">
-                Inputs → review → output
-              </dt>
-              <dd className="text-muted">{sales.pipeline}</dd>
             </div>
             <div>
               <dt className="font-medium text-foreground">
@@ -147,6 +145,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div>
               <dt className="font-medium text-foreground">Working today</dt>
               <dd className="text-muted">{sales.workingToday}</dd>
+            </div>
+          </dl>
+          <details className="rounded-xl border border-border bg-card p-4">
+            <summary className="cursor-pointer py-1 font-semibold">
+              Workflow and next steps
+            </summary>
+            <dl className="mt-4 grid gap-4 text-sm leading-6">
+              <div>
+                <dt className="font-medium text-foreground">
+                  Inputs → review → output
+                </dt>
+                <dd className="text-muted">{sales.pipeline}</dd>
             </div>
             <div>
               <dt className="font-medium text-foreground">Planned next</dt>
@@ -159,6 +169,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <dd className="text-muted">{sales.implementedTech}</dd>
             </div>
           </dl>
+          </details>
 
           <ProjectTechnologyStack slug={project.slug} />
 

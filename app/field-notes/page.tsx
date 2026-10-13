@@ -1,14 +1,18 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata(
+  {
   alternates: { canonical: "/field-notes" },
   openGraph: { url: "/field-notes" },
   title: "Field Notes",
   description: "Playbooks, frameworks, lessons learned, and operating systems for relationships, revenue, and teams.",
-};
+},
+  "/field-notes",
+);
 
 const plannedTopics = [
   "Strategic account planning",
@@ -70,11 +74,16 @@ export default function FieldNotesPage() {
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           These topics are not articles. They are subjects I may write later, each labeled Used in practice, Illustrative model, or Exploring when they exist. Nothing below is clickable on purpose.
         </p>
-        <ul className="mt-6 max-w-xl list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
+        <details className="mt-4 rounded-xl border border-border bg-card p-4">
+          <summary className="cursor-pointer py-1 font-medium">
+            View topics in outline
+          </summary>
+          <ul className="mt-4 max-w-xl list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
           {plannedTopics.map((topic) => (
             <li key={topic}>{topic}</li>
           ))}
         </ul>
+        </details>
       </section>
       <section id="private" className="scroll-mt-24 border-t border-border py-12">
         <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>

@@ -1,3 +1,4 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
 import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
 import { ComponentOptions } from "@/components/design-lab/component-options";
@@ -22,10 +23,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Design lab",
   robots: robotsNoindex,
-};
+}, "/design-lab");
 
 const statuses: ProjectStatus[] = ["field", "prototype", "designed", "exploring"];
 

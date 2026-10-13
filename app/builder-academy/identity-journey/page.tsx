@@ -1,12 +1,13 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { IdentityJourneyLab } from "@/components/identity-journey-lab";
 import { PageMain } from "@/components/page-main";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Identity Journey Lab",
   description: "Learn how humans, service accounts, deployment pipelines and AI agents authenticate and receive permissions.",
-};
+}, "/builder-academy/identity-journey");
 
 export default function IdentityJourneyPage() {
   return (

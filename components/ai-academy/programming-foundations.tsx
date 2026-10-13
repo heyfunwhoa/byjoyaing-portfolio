@@ -22,7 +22,7 @@ export function ProgrammingFoundations(){
   const selected = findTechnology(selection) ?? technologies[0];
   const visible = technologies.filter(t=>(kind==="All"||t.kind===kind)&&(`${t.name} ${t.summary} ${t.usage}`).toLowerCase().includes(search.toLowerCase()));
   const score=questions.filter((q,i)=>answers[i]===q.answer).length;
-  return <main className="mx-auto w-full max-w-6xl px-5 pb-24 pt-12 sm:px-8">
+  return <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-6xl px-5 pb-24 pt-12 sm:px-8">
     <nav aria-label="Breadcrumb" className="text-sm text-muted"><Link href="/ai-academy" className="underline underline-offset-4">AI Academy</Link> <span aria-hidden="true">/</span> Programming Foundations</nav>
     <header className="mt-9 max-w-3xl">
       <p className="text-xs font-semibold uppercase tracking-[.2em] text-accent">Builder Academy / Programming Foundations</p>

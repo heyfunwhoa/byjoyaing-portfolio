@@ -1,12 +1,13 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageMain } from "@/components/page-main";
 import { CredentialRiskExplorer } from "@/components/credential-risk-explorer";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Credential to Identity Risk",
   description: "Explore secrets detection, non-human identity, permissions and remediation with synthetic evidence.",
-};
+}, "/builder-academy/credential-risk");
 
 export default function CredentialRiskPage() {
   return (
