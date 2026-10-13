@@ -72,6 +72,16 @@ Keep the copyright notice the license requires, pin the file in this guide, and 
 These references guide selective composition rather than replacing the portfolio with a template. Verification is recorded in the PR; browser/device review is pending.
 
 
+## About orbit discovery and interaction (proposed, 2026-10-13)
+
+- Source: existing CapabilityOrbit, OrbitArtwork and public capability data. No new dependency or claims.
+- Primary home: `/about#how-i-work`, openly displayed immediately after the introduction. Removes the former collapsed duplicate.
+- Homepage: a compact link below the existing CelestialFrame portrait. Work: a link back to the approach. Neither page mounts a second interactive orbit. Individual case-study pillar labels are deferred until their mapping is reviewed; no inferred tags added.
+- Interaction: existing keyboard-operated pillar tabs and center overview; evidence and truthful employer/independent labels preserved. Short selected-line trace and panel entrance; focus/hover highlight. Rings and labels stay stationary. Reduced-motion removes new animations and transitions.
+- Mobile: smaller node labels/padding to retain room around the diagram; panels stack below. Desktop: diagram and evidence side by side. No hover-only information.
+- Design Lab retains its existing orbit variants as the motion/reference home. Rollback: revert this scoped change. Browser, zoom and keyboard visual verification remain pending supported infrastructure; automated checks are recorded in the PR.
+
+
 ## Work bento disclosure revision (2026-10-13, proposed follow-up to PR #120)
 
 Supersedes the plain Work grid proposal above after user review: the difference was too subtle. `/work` now uses `WorkExplorer`: one wide charcoal Enterprise Sales card and two supporting category cards, with one expandable evidence story at a time. The three long repeated story sections are replaced, not duplicated below the overview.
