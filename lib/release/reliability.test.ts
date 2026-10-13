@@ -161,7 +161,7 @@ test("workflow concurrency cancels pull requests only and keeps security jobs", 
   assert.match(files.ci, /branches: \[main\]/);
   assert.match(files.security, /group: security-\$\{\{ github\.workflow \}\}-\$\{\{ github\.ref \}\}/);
   assert.match(files.security, /trufflesecurity\/trufflehog@[0-9a-f]{40}/);
-  assert.match(files.security, /exit-code: "0"/);
+  assert.match(files.security, /exit-code: "1"/);
   assert.match(files.semgrep, /group: semgrep-\$\{\{ github\.workflow \}\}-\$\{\{ github\.ref \}\}/);
   assert.match(files.semgrep, /cron: '37 11 \* \* 2'/);
   assert.match(files.semgrep, /semgrep scan --config p\/security-audit/);
