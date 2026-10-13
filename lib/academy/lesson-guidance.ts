@@ -28,6 +28,11 @@ const availableLesson = {
 } as const;
 
 export const lessonGuidance = {
+  "reading-code-and-yaml": {
+    ...availableLesson,
+    prerequisites: [],
+    guide: guide("reading-code-and-yaml", "Read the code and YAML beginner guide"),
+  },
   "sales-frameworks": {
     ...availableLesson,
     prerequisites: [],

@@ -124,7 +124,7 @@ test("path switching clears stale answers and links to existing practice", async
     .click();
   await expect(
     page.getByRole("heading", {
-      name: "From idea to verified release",
+      name: "Reading code, files, JSON and YAML",
       exact: true,
     }),
   ).toBeVisible();

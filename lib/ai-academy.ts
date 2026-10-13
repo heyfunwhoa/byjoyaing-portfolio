@@ -61,6 +61,51 @@ export const lessons: Lesson[] = [
   ]
 },
 {
+  "slug": "reading-code-and-yaml",
+  "title": "Reading code, files, JSON and YAML",
+  "track": "Builder",
+  "minutes": 25,
+  "level": "Beginner",
+  "summary": "Recognize common file types, trace a small function, and read configuration with plain-language definitions.",
+  "analogy": "A repository is a project folder: some files explain the work, some hold information, and others tell tools what to do.",
+  "takeaways": [
+    "Read a file by asking its purpose, inputs, decisions, outputs and which tool interprets it.",
+    "HTML describes structure; CSS presentation; JavaScript and TypeScript program behavior; JSON and YAML represent structured information.",
+    "YAML indentation changes nesting. Valid syntax can still put a setting in the wrong place.",
+    "Configuration can instruct tools to execute commands. Inspect triggers, permissions and effects before running anything.",
+    "Reading, practicing and passing a check are different evidence of learning."
+  ],
+  "exercise": "Read docs/builder-academy/reading-code-and-yaml.md. Using the synthetic snippets, predict the function output, identify JSON value types, repair YAML nesting and explain which tool interprets a workflow. Compare your five-line note with the answer key; no commands or live services are required.",
+  "check": {
+    "question": "A YAML file parses, but verified is at the root instead of inside account. What does that tell you?",
+    "choices": [
+      "Parsing proves the application will behave correctly.",
+      "Syntax is valid, but the structure can still violate application expectations.",
+      "YAML executes each line like a shell script."
+    ],
+    "answer": 1,
+    "explanation": "A parser checks syntax. Nesting determines structure; the consuming application and its schema determine whether that structure is meaningful and valid."
+  },
+  "companion": {
+    "label": "Read the full lesson, glossary and answer key",
+    "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/reading-code-and-yaml.md"
+  },
+  "sources": [
+    {
+      "label": "YAML 1.2.2 specification",
+      "url": "https://yaml.org/spec/1.2.2/"
+    },
+    {
+      "label": "MDN: Working with JSON",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON"
+    },
+    {
+      "label": "GitHub Actions workflow syntax",
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
+    }
+  ]
+},
+{
   "slug": "llms-models-inference-gateways",
   "title": "LLMs, models, inference, and AI gateways",
   "track": "Foundations",
