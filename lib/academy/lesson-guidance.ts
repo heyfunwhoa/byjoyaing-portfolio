@@ -33,6 +33,11 @@ export const lessonGuidance = {
     prerequisites: [],
     guide: guide("reading-code-and-yaml", "Read the code and YAML beginner guide"),
   },
+  "llms-models-inference-gateways": {
+    ...availableLesson,
+    prerequisites: ["what-is-ai", "privacy"],
+    guide: guide("llms-models-inference-gateways"),
+  },
   "what-is-ai": { ...availableLesson, prerequisites: [] },
   evolution: { ...availableLesson, prerequisites: ["what-is-ai"] },
   privacy: { ...availableLesson, prerequisites: [] },
@@ -113,6 +118,10 @@ export const lessonGuidance = {
   "mcp-vs-rest-api": {
     ...availableLesson,
     prerequisites: ["privacy"],
+    practice: {
+      label: "Start or resume Follow one click",
+      href: "/ai-academy/journeys/follow-one-click",
+    },
     preparation: {
       label: "HTTP overview — public reference",
       href: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview",
@@ -153,7 +162,7 @@ export const lessonGuidance = {
   },
   "evaluate-ai-models": {
     ...availableLesson,
-    prerequisites: ["prompting", "privacy", "verification"],
+    prerequisites: ["prompting", "privacy", "verification", "llms-models-inference-gateways"],
   },
   "measure-product-use-safely": {
     ...availableLesson,
@@ -184,6 +193,15 @@ export function getLessonGuidance(slug: string): LessonGuidance | undefined {
 }
 
 export const academyResources = [
+  {
+    id: "follow-one-click",
+    title: "Follow one click",
+    href: "/ai-academy/journeys/follow-one-click",
+    availability: "available",
+    format: "guided simulation",
+    detail:
+      "Trace an account request, diagnose denied access, and resume practice on this device.",
+  },
   {
     id: "programming",
     title: "Programming Foundations",
@@ -259,4 +277,3 @@ export const academyResources = [
   format: string;
   detail: string;
 }[];
-

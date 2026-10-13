@@ -198,3 +198,7 @@ Implementation checks do not prove rendered usability. Verify 320/375/390/430px,
 ### Context navigation extension (proposed, 2026-10-13)
 
 `CollectionBreadcrumb` remains the shared public pattern. `AcademyBreadcrumb` composes it for lessons and Playground labs; capability details and the storytelling guide now adopt the same pattern. See the context-navigation record in [component-adoption.md](component-adoption.md). This is branch implementation, not a claim of deployment.
+
+### Guided request mission (draft on merged Academy foundation #130)
+
+`components/academy/mission-layout.tsx` composes local Understand / See / Try / Explain steps with heading focus and unlocked reading. `follow-one-click.tsx` provides the fictional request walkthrough, feedback and activity-scoped resume. Storybook: Academy / Follow one click / Pilot. Mounted at `/ai-academy/journeys/follow-one-click` in this branch, discovered through the shared resource/practice metadata; not yet a deployed-feature claim. Reuses `AcademyBreadcrumb`, native disclosures and existing tokens; adds no dependencies. See [pilot ownership and progress contract](follow-one-click-pilot.md).
