@@ -57,6 +57,10 @@ Your fictional button-label fix is committed and its PR is open. Someone says, â
 
 When that feels familiar, continue below for the more detailed workflow and terminology.
 
+## Add the security layer when you are ready
+
+Continue with [Developer tools and AppSec: follow one change](developer-tooling-appsec-workflow.md). Start with IDEs and AI assistants, then Git history, pre-commit and CI/CD checks. Follow a fictional credential exposure into AppSec controls and specific MITRE ATT&CK techniques. The final layer introduces SSDF, ASVS, SAMM and CWE, with official sources and a practice exercise.
+
 ## How the wider project fits together
 
 - **Strategy & prioritization:** Why do this before other work? Evaluate impact, urgency, dependencies, effort, and risk. Treat scoring as a decision aid; security incidents and hard deadlines override it.
