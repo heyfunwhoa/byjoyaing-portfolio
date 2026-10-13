@@ -134,6 +134,7 @@ export function WorkExplorer({ stories }: { stories: ReactNode[] }) {
                   </p>
                   <button
                     type="button"
+                    aria-label={`Close story: ${title}`}
                     onClick={() => close(id)}
                     className="min-h-11 rounded-lg px-3 text-sm font-semibold text-accent underline underline-offset-4"
                   >
