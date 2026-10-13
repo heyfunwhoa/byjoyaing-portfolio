@@ -46,7 +46,7 @@ Proposed 2026-10-13; merge and publication remain separate review steps.
 
 Market Map category cards link to the Academy credential-risk, identity-journey and source-verification routes. Academy owns lesson text, exercises and progress. Market Map owns vendors, products and sourced market claims. The pilot shares only short preview metadata and ordinary links; it does not fetch private notes or synchronize progress.
 
-The [shared public framework register](https://github.com/heyfunwhoa/technical-docs-platform/tree/9ef20979b0ae439e754d24be89a89985185c48d9/frameworks) in Technical Docs owns stable framework IDs, publisher links, limitations and review status. Private Index keeps personal adaptations and links outward. Keystatic may later edit the public records, but must not create a second authoritative inventory.
+The maintainer-only framework register in private Technical Docs is the proposed owner of stable framework IDs, publisher links, limitations and review status. It is not a public learner resource or a public runtime dependency. Public lessons must cite independently accessible publisher sources; any future public projection requires explicit review and a verified public destination before linking it. Private Index keeps personal adaptations and links outward. Keystatic may later edit approved public editorial content, but must not import private records or create a second authoritative inventory.
 
 Start simple: learn the concept, practice with a fictional example, then compare the market evidence. Use the [Market Map repository](https://github.com/heyfunwhoa/security-market-map) for market context and sourced category records.
 
