@@ -354,6 +354,74 @@ Name the missing perspectives and decide what to do next.
 
 Sources checked 2026-10-13. Commercial-role examples, organization patterns and exercises are instructional synthesis, not claims about a particular employer, customer or target company.
 
+
+### Use evidence to improve a product decision
+
+**Optional practice (10 minutes).** A citation helps a reader inspect a claim. It does not automatically prove the claim applies to your users or that your implementation works.
+
+Use three labels while learning:
+
+| Label | Meaning | Example |
+| --- | --- | --- |
+| Source-backed guidance | An identified publisher recommends or defines something | GOV.UK recommends researching users' current tasks and barriers [O2] |
+| Local evidence | An observation or test about the particular product, with its context recorded | A synthetic fixture passed on a recorded commit; this establishes only the asserted behavior |
+| Hypothesis or teaching example | A plausible idea or invented scenario awaiting validation | “Authors will need less developer help” is an outcome hypothesis until evaluated |
+
+**What the sources support:** GOV.UK's discovery guidance includes users, people supporting them, existing workflows and accessibility needs [O2]. Its team guidance describes several contributing skills and says the needed mix changes through the service life cycle [O1]. Atlassian presents DACI as a way to assign decision roles [O3]. These are practice guides, not controlled experiments showing that this exact organization chart, PRD template or agent arrangement is best.
+
+**Apply, then verify:** In the fictional lesson-editor example, include the author, learner and support perspective in discovery. Ask how edits happen today and where people get stuck. Translate a confirmed problem into a requirement, then test that requirement. Whether the new workflow saves effort remains a separate outcome question.
+
+#### A small evidence record
+
+For each material claim, record:
+
+- **Claim and decision:** What are we asserting, and what choice could it change?
+- **Source and location:** Publisher, URL or authorized record, and the specific section supporting it.
+- **Dates and context:** Publication/update date if available, date checked, population or product version.
+- **Evidence type:** Guidance, vendor statement, observed task, interview, test result or hypothesis.
+- **Limits and contradictions:** What does this not establish? What evidence disagrees?
+- **Owner and next check:** Who reviews it, and what event would make it stale?
+
+This record is a teaching recommendation. Adapt it to the owning project's existing evidence format; do not introduce another database just for this exercise. Keep sensitive records in their authorized system and use fictional examples here.
+
+#### Worked example: avoid turning a source into a promise
+
+**Fictional input:** Two practice authors say they ask a developer to change a lesson summary. This is an invented classroom observation, not real research.
+
+**Reasonable PRD hypothesis:** Letting an authorized author propose a summary edit may reduce handoffs.
+
+**Requirement:** The author can propose an allowed text change for review while stable lesson IDs and stored progress remain intact.
+
+**Acceptance evidence:** Save/render behavior, denied edits and progress-preservation checks against the reviewed version.
+
+**Outcome evidence still needed:** Observe whether intended authors finish the task, where they need help and whether review effort moves elsewhere. Two comments alone do not establish prevalence, willingness to pay or a percentage improvement.
+
+**Counterexample to investigate:** An author may prefer a developer-managed workflow because edits are rare. That could change the priority even if the feature is technically feasible.
+
+**Answer-key habit:** For any claim, finish the sentence “This source supports ___, but does not establish ___.” AI-generated summaries and multiple pages repeating one original claim are not independent confirmation.
+
+### Practice across repositories without copying the lesson
+
+The following is a learning map, not a live integration or delivery-status report. Links may require repository access. This guide remains usable without them.
+
+| Learning need | Authoritative home / optional practice | How to connect it |
+| --- | --- | --- |
+| Understand PRDs, SDLC, roles and agents | This Academy guide and its [agent companion](cursor-agent-workflows.md#11-add-agents-to-the-delivery-loop) | Keep explanations and fictional exercises here |
+| Reuse a PRD structure | [Technical Docs PRD template](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/templates/product-prd.md) | Start from the template; maintain actual requirements in the owning product repo |
+| Practice customer/persona research and commercial decisions | [GTM Revenue OS customer intelligence playbook](https://github.com/heyfunwhoa/gtm-revenue-os/blob/main/docs/product/customer-intelligence-playbook.md) | Use its authorized-data boundaries and synthetic practice; the playbook is documentation, not a live customer integration |
+| Explore staffing and revenue assumptions | [GTM Revenue OS](https://github.com/heyfunwhoa/gtm-revenue-os/blob/main/README.md) | Compare fictional scenarios; modeled capacity is not achieved revenue |
+| Examine a research application's evidence handling | [Account Signal Engine](https://github.com/heyfunwhoa/account-signal-engine/blob/main/README.md) | Inspect current requirements and verification before claiming a pipeline or persistence feature works |
+| Examine claim-to-source comparisons | [Security Market Map](https://github.com/heyfunwhoa/security-market-map/blob/main/README.md) | Practice checking original sources, unknowns and corrections; do not treat catalog inclusion as independent validation |
+| Track implementation and review | Owning Linear issue and GitHub PR | Link requirements, dependencies, current commit and checks; do not mirror changing statuses in this lesson |
+| Reflect on personal learning | An authorized private learning workspace | Keep private reflections separate; publish only deliberately sanitized learning examples |
+
+Repository documentation was inspected on 2026-10-13 to identify these learning destinations. That inspection does not verify runtime behavior or production readiness. The links follow `main` and can change; record a commit permalink when using repository content as historical evidence.
+
+**Documentation link versus software dependency:** Reading a linked template is a navigation choice. Fetching another repository's content during an app build or request creates a software dependency with access, availability and versioning consequences. This learning map adds documentation links only.
+
+**Small next exercise:** Choose one fictional feature. Read the Academy explanation, use the existing PRD template if accessible, and write one persona hypothesis, requirement and evidence check in a practice note. Identify its eventual owning product repo. Do not open implementation work until it is prioritized; do not copy the lesson into every repo.
+
+
 ### Translate the PRD into work and evidence
 
 Give requirements simple identifiers so people can trace decisions. This is **requirements traceability**.
