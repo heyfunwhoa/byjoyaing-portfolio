@@ -171,3 +171,81 @@ This is a **new lesson source**, not a new Academy app. Link it from [From idea 
 Suggested follow-up labs: writing a good issue-to-Agent prompt; creating scoped rules; debugging a flaky test; reviewing an AI-generated PR; coordinating two worktrees; multi-root access and privacy; designing a responsive component in Design Mode.
 
 **Source maintenance:** Recheck Cursor feature names, keyboard shortcuts, availability and permission behavior on a scheduled review or major release. Primary sources: [Rules](https://cursor.com/docs/rules), [Plan Mode](https://prod.cursor.com/docs/agent/plan-mode), [Debug Mode](https://prod.cursor.com/docs/agent/debug-mode), [Multi-agent](https://prod.cursor.com/help/ai-features/multi-agent), [Design Mode](https://prod.cursor.com/docs/agent/design-mode), [Agent best practices](https://cursor.com/blog/agent-best-practices), [Cursor multi-root/worktrees release](https://cursor.com/changelog/04-24-26).
+
+## 11. Add agents to the delivery loop
+
+**Optional extension:** 15 minutes. Start with the [SDLC and dependency basics](idea-to-verified-release.md#beginner-layer-dependencies-and-the-whole-delivery-cycle). This worked paper exercise supplements the existing lesson; it is not an implemented autonomous system or new scored assessment.
+
+An agent combines a model with context, tools and an execution loop. The SDLC still needs requirements, version control, tests, review and release evidence. An agent's confident completion message is a claim to inspect.
+
+### Translate the roles
+
+| Plain language | Actual term | Responsibility |
+| --- | --- | --- |
+| Decide what is useful and acceptable | Product owner / human operator | Set outcome, scope, priorities and approval boundaries |
+| Keep tasks in order | Coordinator / orchestrator | Track dependencies and assign ownership |
+| Make a bounded change | Implementation agent / worker | Inspect the repository, edit permitted files, run relevant checks |
+| Challenge the proposed result | Reviewer / verifier | Inspect actual diff and evidence; identify gaps |
+| Execute repeatable checks | CI runner | Run configured jobs for identified revisions |
+
+One person or agent can perform several roles sequentially. The role labels do not grant permissions. A second reviewer can share the writer's blind spots; agreement is not ground truth.
+
+### One worker first; parallelize independent work
+
+In a fictional project, worker A owns lesson editing, and worker B owns a separate vendor-comparison app. They can proceed independently if neither requires the other's unfinished interface. A coordinator reads both PRs and records blockers.
+
+If both need to change the same lesson schema, assign one writer. Agree on the contract first, then let the consumer implement against it. Separate branches or **worktrees** isolate work in progress; they do not guarantee the eventual combined code works.
+
+Provider guidance recommends beginning with simple workflows and adding agent complexity when justified. It distinguishes predetermined workflows from agents that choose their next steps. This is engineering guidance, not proof that multiple agents improve every task: [Anthropic — Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), checked 2026-10-13.
+
+The one-writer and handoff approach here is an instructional recommendation. Compare it with a single-worker baseline before treating it as a proven productivity gain.
+
+### Give the worker a contract
+
+A useful **task brief** states:
+
+- Outcome and intended user.
+- Repository, base commit and exact permitted files.
+- Dependencies, non-goals and ownership of shared files.
+- Acceptance criteria and how to check them.
+- Allowed tools, data boundaries and actions requiring approval.
+- Time/spend limits and stop conditions.
+- Required handoff: PR, full head SHA, changed paths, actual check results, limitations and rollback.
+
+Example: “In a fictional learning app, improve the existing lesson-save error message. Preserve lesson IDs and progress. Own only the named editor component and its relevant test. Stop if the fix requires a schema or permission change. Use synthetic data. Return one PR and evidence for its latest head. Do not merge or deploy.”
+
+A written limit helps communication; technical access controls and measured budgets determine what is actually enforced. Do not assume a prompt alone prevents spending or unauthorized actions.
+
+### Handoffs make work visible across chats
+
+Separate chats may not share current context or unpushed edits. Use durable artifacts: issue for execution state, PR/diff for proposed changes, test runs for evidence, deployment records for what runs.
+
+A coordinator asks:
+
+1. Is this still the agreed task?
+2. Which upstream result or permission is missing?
+3. Does another worker own any changed file?
+4. Do the checks cover the latest head and intended behavior?
+5. What remains unverified, and who owns the next step?
+
+**Orchestration** means coordinating these tasks. **Human-in-the-loop** means a person participates at defined decisions. Neither term implies all work is automated or safe.
+
+### Failure exercise: three reports, one decision
+
+Synthetic reports:
+
+- Worker A: “Lesson editor complete. Current head B. Tests passed at A.”
+- Worker B: “Comparison complete. Source service inaccessible; missing-source behavior not tested.”
+- Reviewer: “Both summaries look good. Merge everything.”
+
+Write a response and assign the next actions.
+
+**Answer key:** A must inspect changes since A and supply relevant evidence for its current head (or any new repair head), including progress behavior if affected. B must preserve the access limitation and test a synthetic missing-source case; it must not claim the unavailable live service was verified. The reviewer must inspect actual diffs and criterion-specific evidence. Keep each issue at its supported state; release only after applicable gates and authorization. Neither more agents nor a larger model supplies missing access.
+
+**Success rubric:** Identify stale evidence, missing coverage, unsupported approval and separate ownership. Produce one actionable handoff per worker. Do not call merely reading this exercise “passed.”
+
+### What the human is doing
+
+You are practicing product ownership and delivery coordination: choosing the problem, making work small enough to review, sequencing dependencies, assigning boundaries, asking for evidence and deciding whether to release. You are also learning technical vocabulary by examining concrete artifacts.
+
+Useful questions: “What changed?” “Which version?” “What proves it?” “What is blocked?” “Is it live?” You do not need to memorize hashes. You need to connect claims to the versions and checks they describe.
