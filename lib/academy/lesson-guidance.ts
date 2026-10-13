@@ -28,6 +28,11 @@ const availableLesson = {
 } as const;
 
 export const lessonGuidance = {
+  "cms-fundamentals": {
+    ...availableLesson,
+    prerequisites: ["frontend-building-blocks"],
+    guide: guide("cms-fundamentals"),
+  },
   "llms-models-inference-gateways": {
     ...availableLesson,
     prerequisites: ["what-is-ai", "privacy"],

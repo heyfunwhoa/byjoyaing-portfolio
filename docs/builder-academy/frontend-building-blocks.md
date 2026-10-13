@@ -2,7 +2,7 @@
 
 **Track:** Builder · **Level:** Beginner · **Estimated time:** 25–30 minutes  
 **Status:** Source lesson; Academy lesson card is registered in `lib/ai-academy.ts`. The lesson is not considered deployed until its PR is reviewed, merged and a production deployment is verified.  
-**Reviewed:** 2026-10-12  
+**Reviewed:** 2026-10-13
 **Prerequisites:** [Programming Foundations](../ai-academy/programming-foundations.md) (HTML/CSS, JavaScript and the React/Next.js profiles); [From idea to verified release](idea-to-verified-release.md) for publishing changes.
 
 ## The mental model
@@ -128,7 +128,62 @@ A filter can use `useState` in a **Client Component** (marked `"use client"`), o
 **Q3.** Are React, Tailwind and shadcn/ui all application frameworks?  
 **Answer:** No. React is a UI library, Tailwind is a CSS framework, shadcn/ui supplies component code/patterns, and Next.js is the application framework in this stack.
 
+## Tool map: what job does each tool do?
+
+Examples identify responsibilities, not a shopping list. You do not need a product from every row. The first three rows are the browser foundation; content and deployment connect that foundation to publishing.
+
+| Layer | Examples | Question to ask |
+| --- | --- | --- |
+| Structure, presentation, behavior | HTML, CSS, JavaScript | What does the browser actually render and execute? |
+| Development language | JavaScript, TypeScript | What mistakes can static types catch? Types do not validate untrusted runtime data automatically. |
+| UI and application structure | React, Next.js | Which component renders this, and which route serves it? |
+| Styling | Plain CSS, Tailwind | How does this adapt to a narrow screen? |
+| Reusable controls | Radix Primitives, shadcn/ui | What interaction behavior is supplied, and what still needs styling and testing? |
+| Content editing | Repository files, Keystatic, Sanity | Who edits the content and where is the authoritative version? |
+| Delivery | GitHub, Vercel, Netlify | Where is the source reviewed, and where is a runnable version served? |
+| Data access | Local JSON/typed objects, HTTP APIs | Is the value local, fetched or derived? A database typically sits behind server access controls. |
+| Interaction and feedback | Forms, filters, loading, empty and error states | What does the user see after acting or when a request fails? |
+| Accessibility | Semantic HTML, labels, keyboard and focus behavior | Can the task be completed without a mouse? |
+| Inspection and verification | Browser DevTools, Storybook, Playwright | Am I inspecting one component or testing a complete user flow? |
+
+Radix supplies low-level interaction primitives; shadcn/ui supplies customizable component source and supports different primitive families. Do not assume every shadcn example uses Radix: preserve the project's selected family. Neither removes responsibility for accessible composition and testing. See the primary references below.
+
+A CMS provides editorial workflows; a database provides general storage and querying. A CMS can use a database internally. Storybook isolates component states; automated browser tests exercise selected flows. Neither alone proves the whole site works. Authentication establishes identity; authorization decides whether an operation is allowed.
+
+## Follow one Academy card from content to publication
+
+This is a fictional reading exercise using the existing project-card pattern above, not an implemented CMS migration or new interactive lab.
+
+1. **Define the content.** Give a lesson a stable ID, title, summary, prerequisites, sources and availability. A title may change while the ID remains stable so links and progress references survive.
+2. **Render the component.** Pass the lesson fields into a React card. Use a heading, summary and descriptive link such as “Read CMS fundamentals.” Choose the heading level from the surrounding page hierarchy.
+3. **Style for the task.** Use existing tokens and CSS/Tailwind spacing. Let text wrap and cards stack on a phone. A grid change is a styling decision, not a reason to replace the framework.
+4. **Make the action usable.** Use a link for navigation and a button for an action. Check visible keyboard focus, logical reading order and that meaning is available without hovering.
+5. **Trace the data.** Today the Academy catalog is in `lib/ai-academy.ts`. In a future pilot, an editor could maintain lesson files or hosted content. Identify the real source; do not maintain independent editable duplicates. Keep learner progress separate from public lesson content.
+6. **Inspect and verify.** In DevTools, inspect the rendered heading and link. Use the Network panel only if a request exists; local or server-rendered content need not make a separate browser-side CMS request. Consider loading, empty and failure states when adding asynchronous fetching. Check the card at narrow widths, with keyboard input and at 200% zoom. Storybook can expose component variants; a browser test can verify the actual destination.
+7. **Review publication.** Commit on a branch, review the diff and applicable checks, inspect a deployment preview, obtain approval, publish and verify the production page. Record the deployed revision so rollback has a known target.
+
+### Small sidebar: hosting and deployment
+
+**Build** prepares source for execution or delivery. **Hosting** serves the application. **Deployment** makes a particular version available. Vercel and Netlify support deployment workflows with preview and production versions; their platforms also support server-side capabilities, so they are not simply places to upload frontend images. Their exact framework/runtime support and plan limits require checking for the chosen app.[D1][D2]
+
+A **domain** is a human-readable address; **DNS** helps resolve it. An **environment variable** supplies configuration for a particular environment. Anything included in client code can be exposed to visitors, regardless of whether it began as an environment variable. A **rollback** restores an earlier deployed version, but does not automatically reverse external database changes.
+
+GitHub Actions checks and a hosting provider's builds are separate jobs and may have separate budgets. A passing build does not prove a working user journey. Follow the existing [Build Rate Limits & CI/CD guide](https://www.byjoyaing.com/ai-academy/devops/build-rate-limits) for deeper explanation; no new hosting track or provider migration is needed for this lesson.
+
+### Explain your understanding
+
+- The title is wrong: inspect content and props first.
+- The title is correct but overflows: inspect CSS and responsive layout.
+- A link looks right but opens a missing page: inspect the URL, route and deployed version.
+- A preview works but production differs: compare deployed commits, configuration and caching before editing the component.
+- A hidden lesson uses public storage: hiding a link does not authorize or protect access.
+
+Write the content source, component, styling rule, expected link destination and one verification step for a fictional card. This is self-reviewed practice, not a saved or automatically graded completion.
+
 ## What to learn next
+
+- [CMS fundamentals: Keystatic versus Sanity](cms-fundamentals.md) — content models, editorial workflows, cost and privacy
+- [Authentication versus authorization](authentication-vs-authorization.md) — separate identity from access decisions
 
 - [Programming Foundations](../ai-academy/programming-foundations.md) — individual language/framework basics
 - [Design Lab and visual regression](storybook-visual-regression.md) — inspect variants and verify browser behavior
@@ -142,3 +197,14 @@ A filter can use `useState` in a **Client Component** (marked `"use client"`), o
 - [Next.js: App Router](https://nextjs.org/docs/app)
 - [Tailwind: Styling with utility classes](https://tailwindcss.com/docs/styling-with-utility-classes)
 - [W3C WAI: Accessibility fundamentals](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
+
+### Additional primary references
+
+Checked 2026-10-13. Tool responsibilities are sourced; the card walkthrough and diagnostic scenarios are original teaching synthesis.
+
+- [Radix Primitives introduction](https://www.radix-ui.com/primitives/docs/overview/introduction)
+- [shadcn/ui introduction](https://ui.shadcn.com/docs)
+- [D1: Vercel deployments](https://vercel.com/docs/deployments)
+- [D2: Netlify: create deploys](https://docs.netlify.com/deploy/create-deploys/)
+- [Playwright introduction](https://playwright.dev/docs/intro)
+- CMS sources and dated plan details appear in the linked CMS guide.
