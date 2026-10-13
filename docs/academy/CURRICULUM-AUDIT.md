@@ -1,9 +1,9 @@
 # Builder Academy curriculum audit and priorities
 
-**Reviewed:** 2026-10-12 (America/Chicago)  
-**Source snapshot:** `569c1f5` on `main`  
-**Owner:** Kristen Aing  
-**Status:** Proposed priority order; documentation edits only. Lesson authoring, UI changes, new labs, merge and deployment are on hold pending the next explicit instruction.
+**Reviewed:** 2026-10-12 (America/Chicago)
+**Original source snapshot:** `569c1f5` on `main`; reconciled after merged PR #126 (breadcrumbs) and PR #127 (FinOps walkthrough), through `a9cb44e758cb772ecabd740bbbb5c208b24c3fb2`
+**Owner:** Kristen Aing
+**Status:** Proposed priority order; documentation edits only. The user authorized reconciliation and merging the reviewed documentation PRs. New lesson authoring, UI changes and new labs remain on hold.
 
 ## Decision and scope
 
@@ -39,7 +39,7 @@ All rows below are registered in [the catalog](../../lib/ai-academy.ts); referen
 | Frontend building blocks: from framework to experience (`frontend-building-blocks`) | Retain + deepen | P2 | Strong layer overview and card example; add a props/state/forms exercise with loading, empty and error states. Avoid another framework survey. |
 | Evaluate AI models with evidence (`evaluate-ai-models`) | Deepen existing lab | P3 | Already has a scorecard, case categories and scoring dimensions. Supply fixed fictional inputs and expected answers; do not recreate the evaluation rubric or add model routing. |
 | Build and test your Design Lab (`storybook-visual-regression`) | Retain + connect | P2 | Use after frontend and testing basics; add an independent interaction-versus-screenshot decision, not a second Design Lab. |
-| Control integrations and cloud spend (`integration-registry-finops`) | Deepen existing lab | P1 | Already teaches call/retry/concurrency caps, caching and shutoff. Add worked five-account arithmetic and a stop-condition exercise; no new budget registry. |
+| Control integrations and cloud spend (`integration-registry-finops`) | Deepen existing lab | P1 | PR #127 now supplies five-account arithmetic, billing units, cache/retry scenarios, reservation/reconciliation examples and answer keys. Reuse this completed companion; no duplicate worksheet or budget registry. |
 | Write an evidence-based product request (`evidence-based-product-request`) | Retain + connect | P2 | Embedded lab exists. Link its problem/outcome to acceptance criteria and post-release measurement; preserve exposure versus attributable value distinction. |
 | From idea to verified release (`idea-to-verified-release`) | Retain + sequence | P1 | Delivery simulator and Portfolio OS case already exist. Use as the delivery spine; avoid a duplicate PR/Linear course. |
 | Cursor modes, rules, and safe handoffs (`cursor-workflows`) | Retain + connect | P1 | Long guide already exists but lacks a companion field on its card. Add prerequisite and visible next-step wiring later; reconcile current vendor behavior before editing instructional claims. |
@@ -116,7 +116,7 @@ These are the 23 current files under `docs/builder-academy`. Titles are shortene
 | [Model evaluation](../builder-academy/evaluate-ai-models.md) | Rubric + lab specification | P3 supply fixed fixture packet; rubric already exists |
 | [Evidence-backed decisions](../builder-academy/evidence-backed-sales-and-security-decisions.md) | Shared teaching reference | Retain across security/GTM lessons; no second facts database |
 | [Evidence-based product requests](../builder-academy/evidence-based-product-requests.md) | Companion guide | P2 connect to existing request lab |
-| [FinOps and registry](../builder-academy/finops-and-integration-registry.md) | Guide + guardrail exercise | P1 worked arithmetic, then P2 budget-stop scenario |
+| [FinOps and registry](../builder-academy/finops-and-integration-registry.md) | Guide + guardrail exercise | PR #127 companion expansion merged; connect and verify learner use later |
 | [Frontend building blocks](../builder-academy/frontend-building-blocks.md) | Foundation + card exercise | P1 reuse; P2 state/form extension |
 | [Idea to verified release](../builder-academy/idea-to-verified-release.md) | Delivery + security practice | P1 spine; keep deeper security section optional until prerequisites |
 | [Identity across channels](../builder-academy/identity-across-channels.md) | Conceptual guide | Connect within identity sequence, not another introductory course |
@@ -147,7 +147,7 @@ A “new bridge” fills a learner prerequisite absent as a full guided lesson; 
 | 6 / BA-06 | P1 | HTTP/API request and response basics | MCP guide + web research outline | BA-02, BA-05; JS async needed only for code variant | Read method, URL, headers/body and response; choose investigate/fix/retry/stop from mock outcomes | New bridge; medium |
 | 7 / BA-07 | P1 | Debug one failed user task | Git/CI scenarios + rate-limit lesson | BA-03, BA-06 | Identify failed layer using sanitized console, Network and server-log fixtures; distinguish symptom from cause | New bridge; medium |
 | 8 / BA-08 | P1 | Basic AI mental model + safe practice | AI/models, privacy, prompt and source journeys | None; parallel entry for AI-only learners | Explain model vs app, context vs retrieval, safe input and unsupported output | Extend existing foundations; small |
-| 9 / BA-09 | P1 | Five-account budget worksheet | Existing FinOps guardrail exercise | BA-06; arithmetic only | Compute a fictional upper bound including retries and mark unknown costs; stop before unapproved spend | Extend existing; small |
+| 9 / BA-09 | P1 | Five-account budget worksheet | FinOps companion expanded in merged PR #127 | BA-06; arithmetic only | Compute a fictional upper bound and identify exclusions, uncertain retries and stop decisions | Written walkthrough/answer keys complete; future learner validation and path wiring only |
 | 10 / BA-10 | P2 | SQL + data modeling and validation | SQL outline, raw/normalized/sourced/approved guide | BA-05, Programming Concepts | Relate accounts, sources and claims; reject duplicate/orphan records and preserve unknowns | Complete/extend existing; medium |
 | 11 / BA-11 | P2 | UI state, accessible forms and navigation | Frontend, editorial card, Design Lab | HTML/CSS, JS; TypeScript as needed | Handle loading/empty/error/success; keyboard and mobile task checks | Extend existing; medium |
 | 12 / BA-12 | P2 | What tests prove + local/preview/production | Delivery, Git, security gates, Storybook | BA-07; app/data/auth concepts as relevant | Choose checks for one feature; distinguish simulated, integration and deployed evidence; explain environment isolation | Extend + bridge; medium |
@@ -193,7 +193,7 @@ The seven proposed systems labs remain parked as independent builds. Reuse exist
 5. **Plain language and scope:** introduce vocabulary before tool names; explain where an analogy fails; split dense 25–35 minute guides into optional sections. Re-estimate times only after a learner walkthrough.
 6. **Existing heuristics:** prompt/skill completeness is not quality evaluation. Review YAML quoting/escaping in `skillMarkdown` before teaching exported drafts as validated files. Review credential `contained` wording separately from post-revocation recovery.
 7. **Sources and freshness:** store source checked date/review trigger consistently; date-sensitive vendor behavior, package versions, privacy/legal and security claims need specific source review when revised. This audit does not certify their accuracy.
-8. **Navigation:** PR #126 already covers breadcrumbs. Coordinate that work; previous/next lesson sequencing and entry context remain separate planned work. Do not duplicate its component edits here.
+8. **Navigation:** PR #126 merged the breadcrumb work. Preserve it; previous/next lesson sequencing and entry context remain separate planned work. Do not duplicate its component edits here.
 9. **Consistency:** reduce drift between full guide, short card, route copy and planning documents. Keep one primary teaching source per topic and concise linked summaries.
 10. **Transfer:** use a fictional five-account workflow as the builder spine, plus a small portfolio UI example for frontend lessons. Each lesson ends with one observable artifact or decision; quizzes alone do not prove transfer.
 
@@ -202,8 +202,8 @@ The seven proposed systems labs remain parked as independent builds. Reuse exist
 | Batch | Scope | Exit criteria | Status |
 | --- | --- | --- | --- |
 | A: audit and prioritization | This record + pointers in existing plans | All surfaces inventoried; reuse/new/planned distinguished; ordered backlog and boundaries reviewed | Documented in this change; review pending |
-| B: connect what exists | BA-01 implementation; prerequisite/companion/source accessibility fixes; coordinate #126 | Honest status, existing labs reachable, no duplicate courses, clear starting point | HOLD |
-| C: understand and diagnose | BA-02 through BA-09 in small slices | One fictional task can be traced, its data/request understood, failure located and cost bounded | HOLD |
+| B: connect what exists | BA-01 implementation; prerequisite/companion/source accessibility fixes; preserve merged #126 breadcrumbs | Honest status, existing labs reachable, no duplicate courses, clear starting point | HOLD |
+| C: understand and diagnose | BA-02 through BA-09 in small slices | One fictional task can be traced, its data/request understood, failure located and cost bounded | HOLD; BA-09 written companion already merged in #127 |
 | D: build reliably | BA-10 through BA-14 with existing auth/security/delivery | Permission, data, failure, UI and test reasoning demonstrated | HOLD |
 | E: specialize and operate | BA-15 through BA-18 | Traceable research correction and an outcome-based applied capstone | HOLD |
 
@@ -213,8 +213,8 @@ Implementation acceptance follows [LEARNING-DEPTH.md](LEARNING-DEPTH.md): observ
 
 ## Evidence and limitations
 
-- Code snapshot: `569c1f5`; source inventory and wiring reviewed, not production rendered behavior.
-- Open repository work checked on 2026-10-12: [PR #126](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/126) covers breadcrumbs; open issues #23 and #74 concern dependency/security and analytics work, not a replacement curriculum backlog. Their current technical findings were not revalidated here.
+- Original inventory snapshot: `569c1f5`; reconciled merged breadcrumbs and FinOps source changes through `a9cb44e`. Counts remain unchanged. Production rendered behavior was not verified.
+- Repository work reconciled on 2026-10-12: [PR #126](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/126) merged breadcrumbs; [PR #127](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/127) merged the FinOps billing walkthrough; open issues #23 and #74 concern dependency/security and analytics work, not a replacement curriculum backlog. Their current technical findings were not revalidated here.
 - Existing source pointers to KRU-17, KRU-22 and KRU-61 identify related work; Linear status was not queried and no duplicate tasks were created.
 - Primary evidence: [lesson catalog](../../lib/ai-academy.ts), [path definitions](../../lib/academy/learning-paths.ts), [programming curriculum](../../lib/academy/programming.ts), [guided tutorials](../../lib/academy/guided-lessons.ts), [Academy renderer](../../components/ai-academy/academy.tsx), [programming renderer](../../components/ai-academy/programming-foundations.tsx), [systems page](../../app/ai-academy/systems/page.tsx), [advanced lab scenarios](../../lib/ai-academy-advanced-labs.ts), [identity scenarios](../../lib/builder-academy/identity-journey.ts), [credential-risk scenarios](../../lib/builder-academy/credential-risk.ts).
 - This is a content/coverage audit, not a legal/security fact check, learner efficacy study, full accessibility audit or certification.

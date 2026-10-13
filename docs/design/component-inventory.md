@@ -194,3 +194,7 @@ Implementation checks do not prove rendered usability. Verify 320/375/390/430px,
 ### Proposed Work bento adoption — follow-up to PR #120
 
 `components/work-explorer.tsx` consumes the local `BentoGrid` and installed Radix Collapsible on `/work`, replacing the overview carousel and repeated story sections. This supersedes the historical lab-only bento statement for this single destination when merged. `BentoCard` and Lifeline remain under their existing restrictions. See component-adoption.md for references, motion, responsive behavior and pending browser validation.
+
+### Context navigation extension (proposed, 2026-10-13)
+
+`CollectionBreadcrumb` remains the shared public pattern. `AcademyBreadcrumb` composes it for lessons and Playground labs; capability details and the storytelling guide now adopt the same pattern. See the context-navigation record in [component-adoption.md](component-adoption.md). This is branch implementation, not a claim of deployment.
