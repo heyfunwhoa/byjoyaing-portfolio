@@ -6,7 +6,7 @@ Route: `/ai-academy` on the portfolio. Built on a feature branch to avoid change
 Start with core AI literacy, practice on realistic exercises, then recommend a workflow and graduate repeatable activities into version-controlled skills. Notion stays the human-facing knowledge layer; GitHub is canonical for code and skills.
 
 ## Current acceptance criteria
-- Guided lessons live in `lib/ai-academy.ts`. Each one includes an analogy, an exercise, a knowledge check, and external references. The in-app count follows that list, including package registries and npm supply-chain basics.
+- Guided lessons are registered in `lib/ai-academy.ts`. The `verification` editorial record is read from `content/academy/lessons/verification.json` through a validated adapter; its checks and identity remain code-owned. See the [local Keystatic pilot and rollback](academy/KEYSTATIC-PILOT.md). Each one includes an analogy, an exercise, a knowledge check, and external references. The in-app count follows that list, including package registries and npm supply-chain basics.
 - Lesson completion is intentionally **session-only**, clearly disclosed.
 - Workflow finder searches five task-to-tool recommendations and offers copyable starter prompts.
 - Accessible labeled controls, visible keyboard focus, mobile-responsive layout, meaningful empty states.
