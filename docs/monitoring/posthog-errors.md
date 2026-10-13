@@ -1,12 +1,12 @@
 # PostHog error monitoring rollout
 
-Status: integration prepared on a feature branch; production collection is not yet enabled or verified. Owner: Kristen Aing. Scope: byjoyaing-portfolio, errors only.
+Status: integration prepared on a feature branch; production collection is not yet enabled or verified. Owner: Kristen Aing. Scope: byjoyaing-portfolio error monitoring; independently gated page analytics is documented in [the analytics plan](../product/portfolio-analytics-plan.md).
 
 ## Implemented
 
 - Browser unhandled errors/rejections via `instrumentation-client.ts`; Node request errors via Next.js `onRequestError`.
 - Separate explicit client/server enable switches, valid project token and recognized ingestion host required. Only Vercel production collects; preview/local remain off.
-- No automatic pageviews, click analytics, replay, heatmaps, surveys, persistent browser identity or person profiles.
+- Monitoring alone sends no pageviews. An independent, default-off analytics switch permits reviewed public landing-page views through the same initializer. Click analytics, replay, heatmaps, surveys, persistent browser identity and person profiles remain off.
 - Strict exception allowlist retains common error types, code-file basenames and line/column numbers. Freeform error messages, full paths/URLs, request headers/bodies, source context, user properties and provider payloads are removed.
 - Monitoring delivery failures cannot replace the original response. Node delivery has a 1.5-second request timeout with no retries.
 - Flood guard allows ten exceptions per minute per browser or server instance. This is not a global quota or billing cap.

@@ -121,6 +121,7 @@ export function InquiryForm({
     <form
       id="write"
       onSubmit={onSubmit}
+      data-ph-no-autocapture=""
       className="relative flex max-w-xl flex-col gap-4 lg:max-w-none"
     >
       <div

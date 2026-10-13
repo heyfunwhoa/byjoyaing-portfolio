@@ -442,7 +442,7 @@ export function CompetitiveIntelligenceWorkflow() {
                 </li>
               ))}
             </ol>
-            <form onSubmit={submitObservation} className="grid gap-3 rounded-xl border border-border bg-card p-4 text-sm">
+            <form onSubmit={submitObservation} data-ph-no-autocapture="" className="grid gap-3 rounded-xl border border-border bg-card p-4 text-sm">
               <label className="block">
                 <span className="text-xs font-medium text-muted">Provider</span>
                 <select value={providerId} onChange={(event) => setProviderId(event.target.value)} className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1.5">
