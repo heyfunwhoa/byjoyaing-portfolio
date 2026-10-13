@@ -38,9 +38,9 @@ test("Side Quest slides stay on /side-quests and are not mixed into Work", () =>
   for (const slide of quests) assert.equal(workIds.has(slide.id), false);
 });
 
-test("source guard: Work mounts the carousel, homepage does not, and Embla is not set to autoplay", () => {
+test("source guard: Work uses the grid, homepage omits it, and lab carousel has no autoplay", () => {
   const work = readFileSync(new URL("../app/work/page.tsx", import.meta.url), "utf8");
-  assert.match(work, /<FeaturedWorkCarousel/);
+  assert.match(work, /<FeaturedWorkCarousel[^>]*layout="grid"/);
   assert.match(work, /href="\/side-quests"/);
   assert.match(work, /id="enterprise-sales"/);
   assert.match(work, /id="people-leadership"/);
