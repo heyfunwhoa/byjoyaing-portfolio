@@ -52,17 +52,20 @@ export default function FieldNotesPage() {
               description: "A transparent walkthrough of the account hypothesis, buying group, technical evaluation, and commercial decision—with seller and leader views.",
               href: "/field-notes/enterprise-deal",
               label: "Illustrative framework",
+              when: "Use when technical evaluation, stakeholder alignment and commercial review need a shared plan.",
             },
             {
               title: "Multithreading & Stakeholder Mapping",
               description: "An interactive buying-committee coverage exercise plus a coaching playbook, connected conceptually to other portfolio research projects.",
               href: "/field-notes/multithreading",
               label: "Interactive playbook",
+              when: "Use when a deal depends on one contact or the buying group is unclear.",
             },
           ].map((note) => (
             <Link key={note.href} href={note.href} className="group block rounded-2xl border border-border bg-surface-clay p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
               <p className="text-xs font-medium text-muted">{note.label}</p>
               <h3 className="mt-3 font-display text-2xl tracking-tight">{note.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-muted"><strong>When to use it:</strong> {note.when}</p>
               <p className="mt-3 text-sm leading-6 text-muted">{note.description}</p>
               <span className="mt-4 inline-block text-sm font-medium text-accent">Explore the guide →</span>
             </Link>

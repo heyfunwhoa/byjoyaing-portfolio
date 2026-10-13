@@ -84,8 +84,7 @@ export default function SideQuestsPage() {
           Selected experiments
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
-          Explore selected independent experiments. Each is labeled with its
-          current build stage.
+          Start with account research, a source-backed coverage comparison or a synthetic learning exercise. Each example shows its current stage and what you can inspect today.
         </p>
         <FeaturedSideQuestStrip slides={featuredSideQuestSlides()} />
       </section>

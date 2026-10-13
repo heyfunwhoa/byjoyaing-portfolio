@@ -1,3 +1,5 @@
+import { PortfolioExample } from "@/components/portfolio-example";
+import { portfolioExamples } from "@/lib/portfolio-examples";
 import { DisclosureSection } from "@/components/disclosure-section";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { CompetitiveIntelligenceWorkflow } from "@/components/competitive-intelligence-workflow";
@@ -190,6 +192,8 @@ export function CompetitiveIntelligenceCase() {
           </div>
         </div>
       </section>
+
+      <PortfolioExample key="competitive-intelligence-engine" example={portfolioExamples["competitive-intelligence-engine"]} />
 
       <ProjectTechnologyStack slug="competitive-intelligence-engine" />
 

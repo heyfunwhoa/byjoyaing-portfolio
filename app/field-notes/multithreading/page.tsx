@@ -36,6 +36,8 @@ export default function MultithreadingPage() {
           leader, it means a practical way to coach gaps in access and
           alignment.
         </p>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted"><strong>Use this when:</strong> the opportunity relies on one contact or the decision roles are unclear. Try one gap in the synthetic map, then decide which conversation would test it.</p>
+        <Link href="/work#enterprise-sales" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">See my enterprise-selling experience →</Link>
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href="#coverage-lab"

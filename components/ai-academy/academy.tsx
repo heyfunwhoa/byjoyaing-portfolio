@@ -5,12 +5,14 @@ import { DeliveryLifecycleLab } from "@/components/ai-academy/delivery-lifecycle
 import { PortfolioOsCaseStudy } from "@/components/ai-academy/portfolio-os-case-study";
 import { ProductRequestLab } from "@/components/ai-academy/product-request-lab";
 import { SecurityReviewLab } from "@/components/ai-academy/security-review-lab";
+import { learningPaths } from "@/lib/academy/learning-paths";
 import { lessons, workflows } from "@/lib/ai-academy";
 const tracks=["All","Foundations","Prompting","Responsible AI","GTM","Builder",
 ] as const;
 const button="rounded-lg border border-border px-3 py-2 text-sm transition hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 export function Academy({ resources }: { resources?: ReactNode }){
   const [tab,setTab]=useState<"learn"|"apply"|"skills">("learn");
+  const [pathId, setPathId] = useState<string | null>(null);
   const [track,setTrack]=useState<(typeof tracks)[number]>("All");
   const [active,setActive]=useState(lessons[0].slug);
   const [answer,setAnswer]=useState<number|null>(null);
@@ -54,6 +56,11 @@ export function Academy({ resources }: { resources?: ReactNode }){
         <p className="editorial-eyebrow mt-3 text-center text-muted">Builder</p>
       </div>
     </div>
+      <details className="mb-6 rounded-xl border border-border bg-card p-4">
+        <summary className="cursor-pointer py-1 font-semibold">Choose a starting path</summary>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">{learningPaths.map(path => <div key={path.id} className="rounded-xl border border-border bg-background p-4"><h2 className="font-semibold">{path.title}</h2><p className="mt-2 text-xs text-muted">{path.prerequisite}</p><p className="mt-2 text-sm leading-6">{path.outcome}</p><button type="button" className="mt-3 min-h-11 text-sm font-semibold text-accent underline underline-offset-4" onClick={() => { setPathId(path.id); setTrack("All"); setTab("learn"); setActive(path.slugs[0]); setAnswer(null); }}>Start {path.title.toLowerCase()} →</button></div>)}</div>
+      </details>
+      {pathId ? <nav aria-label="Selected learning path" className="mb-6 rounded-xl border border-border p-4"><p className="text-sm font-semibold">{learningPaths.find(path => path.id === pathId)?.title}</p><ol className="mt-2 flex flex-wrap gap-2">{learningPaths.find(path => path.id === pathId)?.slugs.map(slug => {const item = lessons.find(l => l.slug === slug)!;return <li key={slug}><button type="button" aria-current={active === slug ? "step" : undefined} className="min-h-11 rounded-lg border border-border px-3 py-2 text-left text-sm" onClick={() => { setTrack("All"); setTab("learn"); setActive(slug); setAnswer(null); }}>{item.title}</button></li>;})}</ol><p className="mt-2 text-xs text-muted">Read each lesson, try its exercise and explain the answer to its knowledge check. Progress is session-only.</p><button type="button" className="mt-2 min-h-11 text-sm text-accent underline" onClick={() => setPathId(null)}>Leave this path</button></nav> : null}
       {resources}
       <dl className="mb-8 grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
         <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5"><dt className="text-xs font-medium text-muted">Lessons</dt><dd className="mt-2 text-xl font-semibold sm:text-3xl">{lessons.length}</dd><p className="mt-1 text-xs leading-5 text-muted sm:text-sm">Basics to building</p></div>
