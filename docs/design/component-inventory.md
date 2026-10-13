@@ -182,3 +182,10 @@ Five workflow summaries lead into a labeled example, three approach steps, a rel
 Tabs provide arrow-key navigation; disclosures use an explicit button and expanded state. Panel entry (180ms), expansion (220ms), collapse (160ms), and chevron rotation honor reduced motion. Nothing auto-advances. Existing legacy anchors remain available.
 
 Local build/typecheck, lint and unit/content checks are recorded in the PR. Browser responsive, keyboard, screen-reader and motion verification remain outstanding; this note does not claim a live release.
+
+
+### Mobile adaptation
+
+Below 640px, one labeled native selector replaces the five summary tabs. A visible position indicator and full workflow heading preserve orientation. Short option labels fit narrow screens; the selector uses 16px text and a 48px minimum height. Desktop tabs and mobile selection share state without duplicating the workflow panel. The mobile approach steps use a compact numbered list; tools remain collapsed and open into a readable single-column grid. Main example text and product links use 16px on phones. No autoplay, hover-only details, sticky overlays or sideways page scrolling is introduced by this design.
+
+Implementation checks do not prove rendered usability. Verify 320/375/390/430px, portrait/landscape, 200% zoom, native selection, focus, screen-reader labels and reduced motion before calling mobile QA complete.

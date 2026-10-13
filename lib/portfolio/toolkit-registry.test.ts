@@ -121,6 +121,7 @@ test("purpose sections preserve every tool and its evidence without duplicates",
 test("workflow examples link to existing evidence with truthful practice labels", () => {
   for (const section of toolkitSections) {
     assert.equal(section.steps.length, 3);
+    assert.ok(section.mobileLabel.length > 0 && section.mobileLabel.length <= 24);
     assert.ok(section.example.length > 30);
     const [route, anchor] = section.evidence.href.split("#");
     const page = path.join(root, "app", route, "page.tsx");

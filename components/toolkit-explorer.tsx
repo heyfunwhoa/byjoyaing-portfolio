@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Collapsible } from "radix-ui";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -25,16 +25,42 @@ export function ToolkitExplorer({
   compact?: boolean;
 }) {
   const [selectedId, setSelectedId] = useState(sections[0].id);
+  const selectId = useId();
+  const selectedIndex = sections.findIndex(
+    (section) => section.id === selectedId,
+  );
   return (
     <div className="space-y-4">
       <p className="text-xs leading-5 text-muted">
         Choose a workflow · Explore the tools · Follow the evidence
       </p>
       <Tabs value={selectedId} onValueChange={setSelectedId} className="gap-4">
+        <div className="space-y-2 sm:hidden">
+          <div className="flex items-center justify-between gap-3 text-sm">
+            <label htmlFor={selectId} className="font-medium">
+              Explore a workflow
+            </label>
+            <span className="text-muted">
+              {selectedIndex + 1} of {sections.length}
+            </span>
+          </div>
+          <select
+            id={selectId}
+            value={selectedId}
+            onChange={(event) => setSelectedId(event.target.value)}
+            className="min-h-12 w-full rounded-xl border border-border bg-card px-3 py-3 text-base text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          >
+            {sections.map((section) => (
+              <option key={section.id} value={section.id}>
+                {section.mobileLabel}
+              </option>
+            ))}
+          </select>
+        </div>
         <TabsList
           variant="line"
           aria-label="Explore how I work"
-          className="grid h-auto w-full grid-cols-2 items-stretch gap-2 bg-transparent p-0 sm:grid-cols-3 lg:grid-cols-5"
+          className="hidden h-auto w-full items-stretch gap-2 bg-transparent p-0 sm:grid sm:grid-cols-3 lg:grid-cols-5"
         >
           {sections.map((section, index) => (
             <TabsTrigger
@@ -69,12 +95,12 @@ export function ToolkitExplorer({
                   {section.status}
                 </p>
                 <h3 className="mt-2 text-xl font-semibold">{section.title}</h3>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+                <p className="mt-2 max-w-2xl text-base leading-7 text-muted sm:text-sm sm:leading-6">
                   {section.example}
                 </p>
                 <Link
                   href={section.evidence.href}
-                  className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-sm text-base font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:text-sm"
                 >
                   {section.evidence.label}
                   <ArrowUpRight
@@ -90,7 +116,7 @@ export function ToolkitExplorer({
                 {section.steps.map((step, index) => (
                   <li
                     key={step}
-                    className="flex items-center gap-3 rounded-xl border border-border bg-background px-3 py-3"
+                    className="flex items-center gap-3 py-1.5 sm:rounded-xl sm:border sm:border-border sm:bg-background sm:px-3 sm:py-3"
                   >
                     <span
                       aria-hidden="true"
@@ -158,7 +184,7 @@ export function ToolkitExplorer({
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={`${tool.name} website (opens in a new tab)`}
-                                className="inline-flex min-h-11 items-center gap-1 rounded-sm text-sm font-semibold underline decoration-border underline-offset-4 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                                className="inline-flex min-h-11 items-center gap-1 rounded-sm text-base font-semibold underline decoration-border underline-offset-4 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:text-sm"
                               >
                                 {tool.name}
                                 <span aria-hidden="true">↗</span>

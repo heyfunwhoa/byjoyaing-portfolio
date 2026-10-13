@@ -5,6 +5,7 @@ import { gtmSystemsToolkit } from "./toolkit-registry.ts";
 export type ToolkitSection = {
   id: string;
   title: string;
+  mobileLabel: string;
   summary: string;
   example: string;
   steps: readonly string[];
@@ -30,6 +31,7 @@ const definitions = [
   {
     id: "revenue",
     title: "Revenue execution",
+    mobileLabel: "Revenue execution",
     summary: "Move complex buying decisions forward.",
     example:
       "I connect discovery, technical evaluation and commercial conversations into a clear account strategy.",
@@ -48,6 +50,7 @@ const definitions = [
   {
     id: "research",
     title: "Market & account intelligence",
+    mobileLabel: "Market intelligence",
     summary: "Turn market context into useful field guidance.",
     example:
       "I collect competitive evidence, separate observations from assumptions and package findings for sellers.",
@@ -62,6 +65,7 @@ const definitions = [
   {
     id: "collaboration",
     title: "Team enablement & collaboration",
+    mobileLabel: "Team enablement",
     summary: "Help people ramp and share what they know.",
     example:
       "I turn recurring discovery and evaluation questions into shared resources for sellers and customer-facing teams.",
@@ -80,6 +84,7 @@ const definitions = [
   {
     id: "build",
     title: "Building & automation",
+    mobileLabel: "Building & automation",
     summary: "Turn recurring problems into practical experiments.",
     example:
       "This portfolio is a live independent build. My Side Quests explore research, account and enablement workflows, with each project's stage labeled.",
@@ -98,6 +103,7 @@ const definitions = [
   {
     id: "ai",
     title: "AI & data practice",
+    mobileLabel: "AI & data",
     summary: "Explore assistance with evidence and human review.",
     example:
       "I use AI for drafting support and am learning how structured, source-grounded information could support research workflows.",
