@@ -1,5 +1,26 @@
 export const learningPaths = [
   {
+    id: "enterprise-evaluation",
+    title: "Enterprise evaluation and buying process",
+    prerequisite:
+      "No AI or coding prerequisite; begin with the framework orientation",
+    outcome:
+      "Build a fictional POC plan, mutual action plan, executive readout and buying-readiness packet.",
+    slugs: [
+      "sales-frameworks",
+      "evaluation-discovery",
+      "evaluation-value",
+      "evaluation-deployment",
+      "evaluation-poc",
+      "evaluation-map",
+      "evaluation-procurement",
+      "evaluation-security",
+      "evaluation-negotiation",
+      "evaluation-readout",
+      "evaluation-handoff",
+    ],
+  },
+  {
     id: "foundations",
     title: "Start with AI basics",
     prerequisite: "No experience needed",
