@@ -28,6 +28,103 @@ const availableLesson = {
 } as const;
 
 export const lessonGuidance = {
+  "sales-frameworks": {
+    ...availableLesson,
+    prerequisites: [],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/sales-frameworks.md",
+    },
+  },
+  "evaluation-discovery": {
+    ...availableLesson,
+    prerequisites: ["sales-frameworks"],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-discovery.md",
+    },
+  },
+  "evaluation-value": {
+    ...availableLesson,
+    prerequisites: ["evaluation-discovery"],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-value.md",
+    },
+  },
+  "evaluation-deployment": {
+    ...availableLesson,
+    prerequisites: ["evaluation-discovery"],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-deployment.md",
+    },
+  },
+  "evaluation-poc": {
+    ...availableLesson,
+    prerequisites: ["evaluation-value", "evaluation-deployment"],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-poc.md",
+    },
+  },
+  "evaluation-map": {
+    ...availableLesson,
+    prerequisites: ["evaluation-poc"],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-map.md",
+    },
+  },
+  "evaluation-procurement": {
+    ...availableLesson,
+    prerequisites: ["evaluation-map", "enterprise-contracts-sales-cycle"],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-procurement.md",
+    },
+  },
+  "evaluation-security": {
+    ...availableLesson,
+    prerequisites: [
+      "evaluation-deployment",
+      "evaluation-map",
+      "security-assessments-buyer-size",
+    ],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-security.md",
+    },
+  },
+  "evaluation-negotiation": {
+    ...availableLesson,
+    prerequisites: ["evaluation-value", "evaluation-procurement"],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-negotiation.md",
+    },
+  },
+  "evaluation-readout": {
+    ...availableLesson,
+    prerequisites: [
+      "evaluation-poc",
+      "evaluation-procurement",
+      "evaluation-security",
+    ],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-readout.md",
+    },
+  },
+  "evaluation-handoff": {
+    ...availableLesson,
+    prerequisites: ["evaluation-readout", "evaluation-negotiation"],
+    guide: {
+      label: "Read the lesson and toolkit",
+      href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/evaluation-handoff.md",
+    },
+  },
+
   "cms-fundamentals": {
     ...availableLesson,
     prerequisites: ["frontend-building-blocks"],

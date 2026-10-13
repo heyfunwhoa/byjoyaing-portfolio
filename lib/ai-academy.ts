@@ -1,3 +1,5 @@
+import { enterpriseEvaluationLessons } from "./academy/enterprise-evaluation.ts";
+
 export type Track = "Foundations" | "Prompting" | "Responsible AI" | "GTM" | "Builder";
 export type Lesson = {
   slug: string; title: string; track: Track; minutes: number; level: "Beginner" | "Intermediate";
@@ -6,6 +8,7 @@ export type Lesson = {
   companion?: { label: string; url: string };
 };
 export const lessons: Lesson[] = [
+  ...enterpriseEvaluationLessons,
 {
   "slug": "cms-fundamentals",
   "title": "Content management: Git, Keystatic, and Sanity",

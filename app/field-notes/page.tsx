@@ -44,9 +44,16 @@ export default function FieldNotesPage() {
         <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="explorer" /><p className="editorial-eyebrow mt-3 text-center text-muted">Explorer / Field Notes</p></div>
       </header>
       <section id="featured" className="section-enter scroll-mt-24 border-b border-border py-12">
-        <div className="flex flex-wrap items-end justify-between gap-4"><h2 className="font-display text-3xl tracking-tight">The published notes</h2><span className="text-xs text-muted">Two interactive field guides · Synthetic demonstrations</span></div>
+        <div className="flex flex-wrap items-end justify-between gap-4"><h2 className="font-display text-3xl tracking-tight">The published notes</h2><span className="text-xs text-muted">Guides and toolkit · Synthetic demonstrations</span></div>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {[
+            {
+              title: "From Technical Evaluation to Buying Decision",
+              description: "An original fictional case study with a POC scorecard, executive brief, mutual action plan, procurement and security checklists, and a decision readout. Opens the repository toolkit.",
+              href: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/case-study.md",
+              label: "Illustrative model · Reading and templates",
+              when: "Use when an evaluation needs measurable criteria, shared commitments and a clear buying decision.",
+            },
             {
               title: "Strategic Enterprise Deal Anatomy",
               description: "A transparent walkthrough of the account hypothesis, buying group, technical evaluation, and commercial decision—with seller and leader views.",
