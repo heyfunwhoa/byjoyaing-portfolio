@@ -84,7 +84,7 @@ export const techCategories = [
         id: "github",
         name: "GitHub",
         stance: "built",
-        note: "heyfunwhoa/byjoyaing-portfolio. No other project repo is public.",
+        note: "Source and version history for this portfolio.",
       },
       {
         id: "vercel",

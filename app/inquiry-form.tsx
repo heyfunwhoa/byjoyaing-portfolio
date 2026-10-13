@@ -32,15 +32,20 @@ function subscribeToHash(onStoreChange: () => void) {
   };
 }
 
-function modeFromHash(): Mode {
-  return window.location.hash === "#access" ? "access" : "message";
+function modeFromHash(defaultMode: Mode): Mode {
+  if (window.location.hash === "#access") return "access";
+  if (window.location.hash === "#write") return "message";
+  return defaultMode;
 }
 
 export function InquiryForm({
   selectedPlaybook,
 }: { selectedPlaybook?: string } = {}) {
-  const mode = useSyncExternalStore(subscribeToHash, modeFromHash, () =>
-    selectedPlaybook ? ("access" as const) : ("message" as const),
+  const defaultMode: Mode = selectedPlaybook ? "access" : "message";
+  const mode = useSyncExternalStore(
+    subscribeToHash,
+    () => modeFromHash(defaultMode),
+    () => defaultMode,
   );
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -87,7 +92,9 @@ export function InquiryForm({
           startedAt: startedAt.current,
         }),
       });
-      const payload = (await response.json()) as { error?: string };
+      const payload = (await response.json()) as { error?: string;
+        confirmationAccepted?: boolean;
+      };
 
       if (!response.ok) {
         setStatus("error");
@@ -100,7 +107,7 @@ export function InquiryForm({
       setMessage(
         mode === "access"
           ? "Request sent. I’ll review it and follow up if I can share an appropriate example. This does not unlock private files."
-          : "Message sent. You should get a confirmation email. I’ll reply if I can help.",
+          : "Message sent. I’ll reply if I can help.",
       );
     } catch {
       setStatus("error");

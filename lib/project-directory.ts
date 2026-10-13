@@ -117,10 +117,10 @@ const sources: DirectorySource[] = [
   {
     slug: "truffle-camp",
     summary:
-      "A designed path for secrets-security onboarding and practice. The case study is a written module, not a course app.",
+      "A designed secrets-security learning path with a written module and one synthetic practice question. No course platform or saved progress.",
     categories: ["Sales Enablement & Productivity"],
     role: "I designed the curriculum on top of enablement I have already done with teams.",
-    technologies: "Static copy in this Next.js page. No lesson player.",
+    technologies: "A written module and session-only practice question in this Next.js page. No course platform.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,

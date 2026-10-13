@@ -1,7 +1,8 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Systems Engineering", description: "Learn systems architecture, research pipelines, evidence and operations through applied exercises." };
+export const metadata: Metadata = completePageMetadata({ title: "Systems Engineering", description: "Learn systems architecture, research pipelines, evidence and operations through applied exercises." }, "/ai-academy/systems");
 
 const modules = [
   ["Web research infrastructure","Search indexes, crawling, extraction, RAG, provider selection and citations.","Draw a research request from browser to verified evidence."],
@@ -29,7 +30,7 @@ const labs = [
 ];
 
 export default function SystemsPage() {
- return <main className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
+ return <main id="main-content" tabIndex={-1} className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
    <Link href="/ai-academy" className="text-sm text-muted underline underline-offset-4">← Back to Academy</Link>
    <p className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted">Builder Academy · Learning pathway</p>
    <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground">Engineering connected systems</h1>

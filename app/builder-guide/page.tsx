@@ -1,11 +1,12 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import { PageMain } from "@/components/page-main";
 import { BuilderGuide } from "@/components/builder-guide";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Builder Guide",
   description: "Find the commercial leadership work, practical builds, and story behind joy.",
-};
+}, "/builder-guide");
 
 export default function BuilderGuidePage() {
   return (

@@ -9,20 +9,26 @@ type CaseConnection = { href: string; label: string; category: string };
 export function ProfessionalCaseStudy({
   title,
   context,
+  scope,
+  collaboration,
   role,
   execution,
   evidence,
   reflection,
+  requestHref,
   relatedHref,
   relatedLabel = "Explore related Field Notes",
   relatedItems,
 }: {
   title: string;
   context: ReactNode;
+  scope?: ReactNode;
+  collaboration?: ReactNode;
   role: ReactNode;
   execution: ReactNode;
   evidence: ReactNode;
   reflection: ReactNode;
+  requestHref?: string;
   relatedHref?: string;
   relatedLabel?: string;
   relatedItems?: readonly CaseConnection[];
@@ -39,6 +45,10 @@ export function ProfessionalCaseStudy({
       <h3 className="font-display text-2xl leading-tight sm:text-3xl">
         {title}
       </h3>
+      {scope || collaboration ? <dl className="mt-4 grid gap-3 border-b border-border pb-4 text-sm sm:grid-cols-2">
+        {scope ? <div><dt className="font-semibold">Scope of responsibility</dt><dd className="mt-1 leading-6 text-muted">{scope}</dd></div> : null}
+        {collaboration ? <div><dt className="font-semibold">Who the work involved</dt><dd className="mt-1 leading-6 text-muted">{collaboration}</dd></div> : null}
+      </dl> : null}
       <CaseBandSteps
         steps={sections}
         title={title}
@@ -77,6 +87,7 @@ export function ProfessionalCaseStudy({
           ) : null
         }
       />
+      {requestHref ? <Link href={requestHref} className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">Request more context →</Link> : null}
     </article>
   );
 }

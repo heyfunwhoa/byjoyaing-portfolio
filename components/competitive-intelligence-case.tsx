@@ -1,3 +1,6 @@
+import { PortfolioExample } from "@/components/portfolio-example";
+import { portfolioExamples } from "@/lib/portfolio-examples";
+import { DisclosureSection } from "@/components/disclosure-section";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { CompetitiveIntelligenceWorkflow } from "@/components/competitive-intelligence-workflow";
 import { RelatedWork } from "@/components/related-work";
@@ -36,7 +39,9 @@ function Label({ index, children }: { index: string; children: string }) {
   );
 }
 
-function Node({ title, detail, state }: { title: string; detail: string; state: "field" | "demo" | "planned" }) {
+function Node({ title, detail, state,
+}: { title: string; detail: string; state: "field" | "demo" | "planned";
+}) {
   const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this demo" : "Planned";
   const style =
     state === "planned"
@@ -58,48 +63,66 @@ const layers = [
     title: "Source collection",
     body: "Field briefs were written from public pages and deal notes. This site does not collect those sources.",
     nodes: [
-      { title: "Official websites", detail: "Read by hand for briefs. Not crawled here.", state: "field" as const },
-      { title: "Product documentation", detail: "Planned input. Not connected.", state: "planned" as const },
-      { title: "Release notes", detail: "Planned input. Not connected.", state: "planned" as const },
-      { title: "Public GitHub repositories", detail: "One cited URL. No GitHub API client.", state: "demo" as const },
+      { title: "Official websites", detail: "Read by hand for briefs. Not crawled here.", state: "field" as const,
+      },
+      { title: "Product documentation", detail: "Planned input. Not connected.", state: "planned" as const,
+      },
+      { title: "Release notes", detail: "Planned input. Not connected.", state: "planned" as const,
+      },
+      { title: "Public GitHub repositories", detail: "One cited URL. No GitHub API client.", state: "demo" as const,
+      },
     ],
   },
   {
     title: "Change intelligence",
     body: "The walkthrough shows a hand-written pair of sentences. Nothing is scheduled, snapshotted, or classified by software.",
     nodes: [
-      { title: "Scheduled monitoring", detail: "Not built.", state: "planned" as const },
-      { title: "Source snapshots", detail: "Not stored.", state: "planned" as const },
-      { title: "Change detection", detail: "Illustrative pair only. Not a diff.", state: "demo" as const },
-      { title: "Classification", detail: "One category, chosen by hand.", state: "demo" as const },
-      { title: "Source attribution", detail: "The public URL stays on the claim.", state: "demo" as const },
+      { title: "Scheduled monitoring", detail: "Not built.", state: "planned" as const,
+      },
+      { title: "Source snapshots", detail: "Not stored.", state: "planned" as const,
+      },
+      { title: "Change detection", detail: "Illustrative pair only. Not a diff.", state: "demo" as const,
+      },
+      { title: "Classification", detail: "One category, chosen by hand.", state: "demo" as const,
+      },
+      { title: "Source attribution", detail: "The public URL stays on the claim.", state: "demo" as const,
+      },
     ],
   },
   {
     title: "Human review",
     body: "Recommendations do not approve themselves. A model is not called.",
     nodes: [
-      { title: "Evidence verification", detail: "Briefs used with teams were reviewed by a person. Those files are not in this repo.", state: "field" as const },
-      { title: "Impact analysis", detail: "A written hypothesis you can mark reviewed.", state: "demo" as const },
-      { title: "Approved findings", detail: "One teaching claim on this page.", state: "demo" as const },
-      { title: "Recommendation review", detail: "A review queue is not built.", state: "planned" as const },
+      { title: "Evidence verification", detail: "Briefs used with teams were reviewed by a person. Those files are not in this repo.", state: "field" as const,
+      },
+      { title: "Impact analysis", detail: "A written hypothesis you can mark reviewed.", state: "demo" as const,
+      },
+      { title: "Approved findings", detail: "One teaching claim on this page.", state: "demo" as const,
+      },
+      { title: "Recommendation review", detail: "A review queue is not built.", state: "planned" as const,
+      },
     ],
   },
   {
     title: "Field activation",
     body: "Battlecards were documents. Alerts, CRM context, and change history are later.",
     nodes: [
-      { title: "Competitive profiles", detail: "Briefs and playbooks used with teams. Not this app.", state: "field" as const },
-      { title: "Battlecards", detail: "The sample brief in the walkthrough.", state: "demo" as const },
+      { title: "Competitive profiles", detail: "Briefs and playbooks used with teams. Not this app.", state: "field" as const,
+      },
+      { title: "Battlecards", detail: "The sample brief in the walkthrough.", state: "demo" as const,
+      },
       { title: "Alerts", detail: "Not built.", state: "planned" as const },
-      { title: "Field feedback", detail: "A form that stays in the browser.", state: "demo" as const },
-      { title: "Change history", detail: "Not stored.", state: "planned" as const },
+      { title: "Field feedback", detail: "A form that stays in the browser.", state: "demo" as const,
+      },
+      { title: "Change history", detail: "Not stored.", state: "planned" as const,
+      },
     ],
   },
 ];
 
 export function CompetitiveIntelligenceCase() {
-  const reviewed = providers.filter((provider) => provider.lastReviewed !== "Not reviewed").length;
+  const reviewed = providers.filter((provider) => provider.lastReviewed !== "Not reviewed",
+  ).length;
   return (
     <PageMain>
       <section className="grid items-start gap-10 border-b border-border py-16 lg:grid-cols-2 lg:py-20">
@@ -170,6 +193,8 @@ export function CompetitiveIntelligenceCase() {
         </div>
       </section>
 
+      <PortfolioExample key="competitive-intelligence-engine" example={portfolioExamples["competitive-intelligence-engine"]} />
+
       <ProjectTechnologyStack slug="competitive-intelligence-engine" />
 
       <section className="border-b border-border py-16">
@@ -204,7 +229,11 @@ export function CompetitiveIntelligenceCase() {
         </div>
       </section>
 
-      <section id="workflow" className="scroll-mt-24 border-b border-border py-16">
+      <DisclosureSection
+        id="workflow"
+        title="Explore the workflow"
+        className="my-6"
+      >
         <Label index="03">Product experience</Label>
         <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           From a competitor change to field execution.
@@ -215,9 +244,13 @@ export function CompetitiveIntelligenceCase() {
         <div className="mt-8">
           <CompetitiveIntelligenceWorkflow />
         </div>
-      </section>
+      </DisclosureSection>
 
-      <section id="architecture" className="scroll-mt-24 border-b border-border py-16">
+      <DisclosureSection
+        id="architecture"
+        title="Architecture and implementation"
+        className="my-6"
+      >
         <Label index="04">System architecture</Label>
         <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           How the intelligence system would work.
@@ -250,18 +283,25 @@ export function CompetitiveIntelligenceCase() {
             </div>
           ))}
         </div>
-      </section>
+      </DisclosureSection>
 
-      <section className="border-b border-border py-16">
+      <DisclosureSection
+        id="design-decisions"
+        title="Design decisions and tradeoffs"
+        className="my-6"
+      >
         <Label index="05">Product decisions</Label>
         <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           Designing for trustworthy intelligence.
         </h2>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {[
-            ["Evidence before interpretation", "A claim keeps the original source and the review date. A sentence without those two is not ready for the field."],
-            ["A person approves the guidance", "Change detection can point at a diff. It cannot approve what a seller is allowed to say."],
-            ["A short list before broad coverage", "Start with a few providers and sources that can be checked. An empty cell stays empty."],
+            ["Evidence before interpretation", "A claim keeps the original source and the review date. A sentence without those two is not ready for the field.",
+            ],
+            ["A person approves the guidance", "Change detection can point at a diff. It cannot approve what a seller is allowed to say.",
+            ],
+            ["A short list before broad coverage", "Start with a few providers and sources that can be checked. An empty cell stays empty.",
+            ],
           ].map(([title, body]) => (
             <article key={title} className="rounded-2xl border border-border bg-card p-5">
               <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
@@ -273,20 +313,23 @@ export function CompetitiveIntelligenceCase() {
           <summary className="cursor-pointer font-semibold">Technical notes</summary>
           <div className="mt-4 max-w-2xl space-y-3 text-sm leading-6 text-muted">
             <p>
-              <span className="font-medium text-foreground">Planned records. </span>
+              <span className="font-medium text-foreground">Planned records. {" "}
+              </span>
               Competitor, Claim, Change, Impact, Recommendation, Deal context.
             </p>
             <p>
-              <span className="font-medium text-foreground">MVP question. </span>
+              <span className="font-medium text-foreground">MVP question. {" "}
+              </span>
               Does a shared brief change how a deal is run more than a one-off deck?
             </p>
             <p>
-              <span className="font-medium text-foreground">Out of scope. </span>
+              <span className="font-medium text-foreground">Out of scope. {" "}
+              </span>
               Scraping the entire internet, and automated public attack content.
             </p>
           </div>
         </details>
-      </section>
+      </DisclosureSection>
 
       <section className="border-b border-border py-16">
         <Label index="06">Outcomes and roadmap</Label>
@@ -298,9 +341,15 @@ export function CompetitiveIntelligenceCase() {
         </p>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {[
-            ["System reliability", ["Source monitoring coverage", "Change detection latency", "Evidence completeness"]],
-            ["Intelligence quality", ["Time to human review", "Percentage of findings approved", "Battlecard freshness"]],
-            ["Field adoption", ["Brief usage", "Field feedback submissions", "Competitive opportunity usage"]],
+            ["System reliability", ["Source monitoring coverage", "Change detection latency", "Evidence completeness",
+              ],
+            ],
+            ["Intelligence quality", ["Time to human review", "Percentage of findings approved", "Battlecard freshness",
+              ],
+            ],
+            ["Field adoption", ["Brief usage", "Field feedback submissions", "Competitive opportunity usage",
+              ],
+            ],
           ].map(([title, items]) => (
             <article key={title as string} className="rounded-2xl border border-border p-5">
               <h3 className="text-sm font-medium text-muted">{title as string}</h3>
@@ -315,9 +364,15 @@ export function CompetitiveIntelligenceCase() {
         </div>
         <ol className="mt-8 grid gap-4 md:grid-cols-3">
           {[
-            ["Professional field system", ["Structured competitor profiles", "Source-backed battlecards", "Reusable field briefs"]],
-            ["Next", ["Scheduled source snapshots", "Change detection", "Human-reviewed updates"]],
-            ["Later", ["Field alerts", "CRM opportunity context", "Product feedback integration", "Historical change analytics"]],
+            ["Professional field system", ["Structured competitor profiles", "Source-backed battlecards", "Reusable field briefs",
+              ],
+            ],
+            ["Next", ["Scheduled source snapshots", "Change detection", "Human-reviewed updates",
+              ],
+            ],
+            ["Later", ["Field alerts", "CRM opportunity context", "Product feedback integration", "Historical change analytics",
+              ],
+            ],
           ].map(([when, items]) => (
             <li key={when as string} className="rounded-xl border border-border bg-card p-4">
               <h3 className="text-sm font-medium">{when as string}</h3>

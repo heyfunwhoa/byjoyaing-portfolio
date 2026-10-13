@@ -1,27 +1,32 @@
-import { BrandAvatar } from "@/components/brand-avatar";
-import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
-import { PageMain } from "@/components/page-main";
-import { ProjectEvidence } from "@/components/project-evidence";
 import { ProjectStatusPill } from "@/components/project-status-pill";
+import { completePageMetadata } from "@/lib/page-metadata";
+import { BrandAvatar } from "@/components/brand-avatar";
+import { PageMain } from "@/components/page-main";
 import { ProjectsDirectory } from "@/components/projects-directory";
 import { ProjectsSystems } from "@/components/projects-systems";
-import { categoryFromSlug, featuredProjects, roadmapProjects } from "@/lib/project-directory";
+import { categoryFromSlug,
+  lifecycleStages, roadmapProjects,
+} from "@/lib/project-directory";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata(
+  {
   title: "Projects",
   description:
     "Revenue, account, enablement, customer, and technical GTM systems, labeled as prototype, field practice, design, or concept.",
-};
+},
+  "/projects",
+);
 
 export default async function ProjectsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; stage?: string }>;
 }) {
-  const { category } = await searchParams;
-  const featured = featuredProjects();
+  const { category, stage } = await searchParams;
+  const initialStage =
+    lifecycleStages.find((value) => value === stage) ?? "All";
   const roadmap = roadmapProjects();
 
   return (
@@ -39,57 +44,7 @@ export default async function ProjectsPage({
           Each project is a prototype, professional field system, design, or concept. The label is the implementation status, not a production claim.
         </p>
         </div>
-        <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="builder" /><p className="editorial-eyebrow mt-3 text-center text-muted">Builder / Side Quests</p></div>
-      </section>
-
-      <section id="featured" className="scroll-mt-24 border-b border-border py-12">
-        <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Selected projects</h2>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-muted">
-          A closer look at systems I have designed, built, and applied across cybersecurity, enterprise sales, and GTM operations.
-        </p>
-        <div className="mt-8 flex flex-col gap-6">
-          {featured.map((project, index) => {
-            const flipped = index % 2 === 1;
-            return (
-              <article key={project.slug} className="grid min-w-0 grid-cols-1 items-center gap-6 rounded-2xl border border-border bg-surface-mist p-4 sm:p-6 lg:grid-cols-2">
-                <div className={flipped ? "lg:order-2" : undefined}>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <ProjectStatusPill status={project.status} />
-                    <span className="text-xs text-muted">{project.categories.join(" · ")}</span>
-                  </div>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight">{project.title}</h3>
-                  <p className="mt-3 text-base leading-7 text-muted">{project.summary}</p>
-                  <p className="mt-3 text-sm leading-6">
-                    <span className="font-medium">My contribution. </span>
-                    {project.role}
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-muted">
-                    <span className="font-medium text-foreground">Technology. </span>
-                    {project.technologies}
-                  </p>
-                  <ProjectTechnologyStack slug={project.slug} presentation="compact" className="mt-3" />
-                  <div className="mt-4 flex flex-wrap gap-4 text-sm font-medium">
-                    <Link href={project.caseStudyUrl} className="text-accent">
-                      View case study
-                    </Link>
-                    {project.demoUrl ? (
-                      <Link href={project.demoUrl} className="text-accent">
-                        See the on-site sample
-                      </Link>
-                    ) : null}
-                    {project.githubUrl ? (
-                      <a href={project.githubUrl} className="text-accent" target="_blank" rel="noreferrer">
-                        GitHub
-                      </a>
-                    ) : null}
-                  </div>
-                </div>
-                <div className={flipped ? "min-w-0 lg:order-1" : "min-w-0"}>
-                  <ProjectEvidence kind={project.preview} />
-                </div>
-              </article>
-            );
-          })}
+        <div className="mx-auto w-full max-w-[8rem] md:max-w-[12rem]"><BrandAvatar variant="builder" /><p className="editorial-eyebrow mt-3 text-center text-muted">Builder / Side Quests</p>
         </div>
       </section>
 
@@ -99,7 +54,8 @@ export default async function ProjectsPage({
           Lifecycle stages are a second filter. A project can sit in more than one functional category. Revenue Intelligence is the Measure prototype. The other case studies still carry their own metrics. A hypothesis is not a measured outcome.
         </p>
         <div className="mt-6">
-          <ProjectsDirectory key={category ?? "all"} initialCategory={categoryFromSlug(category)} />
+          <ProjectsDirectory key={`${category ?? "all"}-${stage ?? "All"}`} initialCategory={categoryFromSlug(category)}
+            initialStage={initialStage} />
         </div>
       </section>
 
@@ -109,9 +65,14 @@ export default async function ProjectsPage({
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           These projects cover different parts of the same motion. Selecting one shows its inputs and output. The lines are a map, not a data integration.
         </p>
-        <div className="mt-8">
+        <details className="mt-5 rounded-xl border border-border bg-card p-4">
+          <summary className="cursor-pointer py-1 font-medium">
+            Explore how the systems connect
+          </summary>
+          <div className="mt-4">
           <ProjectsSystems />
         </div>
+        </details>
       </section>
 
       <section id="roadmap" className="scroll-mt-24 py-12">

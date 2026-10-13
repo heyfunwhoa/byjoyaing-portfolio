@@ -1,3 +1,6 @@
+import { PortfolioExample } from "@/components/portfolio-example";
+import { portfolioExamples } from "@/lib/portfolio-examples";
+import { DisclosureSection } from "@/components/disclosure-section";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { AccountIntelligenceWorkflow } from "@/components/account-intelligence-workflow";
 import { RelatedWork } from "@/components/related-work";
@@ -10,7 +13,9 @@ import Link from "next/link";
 
 const planned = ["Supabase", "Exa", "Sumble", "Claude"] as const;
 
-function SectionLabel({ index, children }: { index: string; children: string }) {
+function SectionLabel({ index, children,
+}: { index: string; children: string;
+}) {
   return (
     <p className="text-sm font-medium text-muted">
       <span className="tabular-nums">{index}</span>
@@ -72,29 +77,40 @@ const columns = [
     title: "Data collection",
     body: "Assignments would arrive from territory mapping or be typed in, then sit in this app’s own database. Exa and Sumble are the research sources in the design. None of those connections run here.",
     nodes: [
-      { title: "Territory mapping", detail: "Would send account assignments. The partner page is a design, not a live webhook.", state: "planned" as const },
-      { title: "Manual entry", detail: "A rep could add an account when no assignment exists.", state: "planned" as const },
-      { title: "Supabase", detail: "Planned store for accounts, signals, and drafts. Not a dependency of this site.", state: "planned" as const },
-      { title: "Exa and Sumble", detail: "Planned sources for public company changes. Not called from this repo.", state: "planned" as const },
+      { title: "Territory mapping", detail: "Would send account assignments. The partner page is a design, not a live webhook.", state: "planned" as const,
+      },
+      { title: "Manual entry", detail: "A rep could add an account when no assignment exists.", state: "planned" as const,
+      },
+      { title: "Supabase", detail: "Planned store for accounts, signals, and drafts. Not a dependency of this site.", state: "planned" as const,
+      },
+      { title: "Exa and Sumble", detail: "Planned sources for public company changes. Not called from this repo.", state: "planned" as const,
+      },
     ],
   },
   {
     title: "Intelligence processing",
     body: "Events would be normalized, tied to an assigned account, classified, and stored. This page classifies four sample rows by hand.",
     nodes: [
-      { title: "Normalize and classify", detail: "Funding, leadership, hiring, technology, or news. A person confirms the type.", state: "planned" as const },
-      { title: "Account association", detail: "A signal stays attached to one assigned account. Unmatched items do not enter the feed.", state: "planned" as const },
-      { title: "Signal storage", detail: "Planned records: signals and signal_feed_reads.", state: "planned" as const },
+      { title: "Normalize and classify", detail: "Funding, leadership, hiring, technology, or news. A person confirms the type.", state: "planned" as const,
+      },
+      { title: "Account association", detail: "A signal stays attached to one assigned account. Unmatched items do not enter the feed.", state: "planned" as const,
+      },
+      { title: "Signal storage", detail: "Planned records: signals and signal_feed_reads.", state: "planned" as const,
+      },
     ],
   },
   {
     title: "Sales activation",
     body: "The feed and the draft on this page are a browser walkthrough. Copy works locally. Claude is not called, and nothing is sent.",
     nodes: [
-      { title: "Personal feed", detail: "The sample list in the walkthrough above.", state: "demo" as const },
-      { title: "Claude draft", detail: "Planned. The demo swaps two local paragraphs instead.", state: "planned" as const },
-      { title: "Human review", detail: "A rep checks the source before anyone sends.", state: "demo" as const },
-      { title: "Copy", detail: "Copy draft writes the sample text to the clipboard.", state: "demo" as const },
+      { title: "Personal feed", detail: "The sample list in the walkthrough above.", state: "demo" as const,
+      },
+      { title: "Claude draft", detail: "Planned. The demo swaps two local paragraphs instead.", state: "planned" as const,
+      },
+      { title: "Human review", detail: "A rep checks the source before anyone sends.", state: "demo" as const,
+      },
+      { title: "Copy", detail: "Copy draft writes the sample text to the clipboard.", state: "demo" as const,
+      },
     ],
   },
 ];
@@ -179,6 +195,8 @@ export function AccountIntelligenceCase() {
         </div>
       </section>
 
+      <PortfolioExample key="account-intelligence" example={portfolioExamples["account-intelligence"]} />
+
       <ProjectTechnologyStack slug="account-intelligence" />
 
       <section className="border-b border-border py-16" aria-labelledby="problem-title">
@@ -211,7 +229,11 @@ export function AccountIntelligenceCase() {
         </div>
       </section>
 
-      <section id="workflow" className="scroll-mt-24 border-b border-border py-16" aria-labelledby="workflow-title">
+      <DisclosureSection
+        id="workflow"
+        title="Explore the workflow"
+        className="my-6"
+      >
         <SectionLabel index="03">Product experience</SectionLabel>
         <h2 id="workflow-title" className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           From account assignment to a draft a person still has to send.
@@ -222,9 +244,13 @@ export function AccountIntelligenceCase() {
         <div className="mt-8">
           <AccountIntelligenceWorkflow />
         </div>
-      </section>
+      </DisclosureSection>
 
-      <section id="architecture" className="scroll-mt-24 border-b border-border py-16" aria-labelledby="architecture-title">
+      <DisclosureSection
+        id="architecture"
+        title="Architecture and implementation"
+        className="my-6"
+      >
         <SectionLabel index="04">System architecture</SectionLabel>
         <h2 id="architecture-title" className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           How the system would work.
@@ -257,9 +283,13 @@ export function AccountIntelligenceCase() {
             </div>
           ))}
         </div>
-      </section>
+      </DisclosureSection>
 
-      <section className="border-b border-border py-16" aria-labelledby="decisions-title">
+      <DisclosureSection
+        id="design-decisions"
+        title="Design decisions and tradeoffs"
+        className="my-6"
+      >
         <SectionLabel index="05">Product decisions</SectionLabel>
         <h2 id="decisions-title" className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           Designing for a focused MVP.
@@ -289,20 +319,23 @@ export function AccountIntelligenceCase() {
           <summary className="cursor-pointer text-base font-semibold">Technical notes</summary>
           <div className="mt-4 max-w-2xl space-y-4 text-sm leading-6 text-muted">
             <p>
-              <span className="font-medium text-foreground">Planned records. </span>
+              <span className="font-medium text-foreground">Planned records. {" "}
+              </span>
               accounts, rep_assignments, signals, signal_feed_reads, outreach_drafts.
             </p>
             <p>
-              <span className="font-medium text-foreground">MVP question. </span>
+              <span className="font-medium text-foreground">MVP question. {" "}
+              </span>
               Does a personal feed make outreach cite a specific event, or do reps still send the generic note?
             </p>
             <p>
-              <span className="font-medium text-foreground">Out of scope for v1. </span>
+              <span className="font-medium text-foreground">Out of scope for v1. {" "}
+              </span>
               Live Nooks or Outreach, multi-rep admin, and Salesforce IDs.
             </p>
           </div>
         </details>
-      </section>
+      </DisclosureSection>
 
       <section className="border-b border-border py-16" aria-labelledby="outcomes-title">
         <SectionLabel index="06">Outcomes and roadmap</SectionLabel>
@@ -316,15 +349,18 @@ export function AccountIntelligenceCase() {
           {[
             {
               title: "System reliability",
-              items: ["Assignment sync succeeds", "A reviewed signal keeps the right type and account"],
+              items: ["Assignment sync succeeds", "A reviewed signal keeps the right type and account",
+              ],
             },
             {
               title: "Rep adoption",
-              items: ["Reps open the feed", "Drafts copied after a person edits them", "Less time rebuilding the same account brief"],
+              items: ["Reps open the feed", "Drafts copied after a person edits them", "Less time rebuilding the same account brief",
+              ],
             },
             {
               title: "Business outcomes",
-              items: ["Share of notes that cite a signal", "Reply and positive-reply rate", "Meetings from those threads"],
+              items: ["Share of notes that cite a signal", "Reply and positive-reply rate", "Meetings from those threads",
+              ],
             },
           ].map((group) => (
             <article key={group.title} className="rounded-2xl border border-border p-5">
@@ -342,11 +378,13 @@ export function AccountIntelligenceCase() {
           {[
             {
               when: "Designed now",
-              items: ["Personal feed", "Classified signals", "Source kept next to the event", "A draft a person reviews"],
+              items: ["Personal feed", "Classified signals", "Source kept next to the event", "A draft a person reviews",
+              ],
             },
             {
               when: "Next",
-              items: ["Better ranking of signals", "More public sources", "A sequencer only after drafts get used"],
+              items: ["Better ranking of signals", "More public sources", "A sequencer only after drafts get used",
+              ],
             },
             {
               when: "Later",

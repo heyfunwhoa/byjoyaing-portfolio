@@ -1,3 +1,4 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { ArrowRight } from "@/components/icons/arrow-right";
 import { CelestialFrame } from "@/components/celestial-frame";
@@ -10,7 +11,8 @@ import { roles, statusCopy, statusHelp } from "@/lib/portfolio";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata(
+  {
   alternates: { canonical: "/" },
   openGraph: { url: "/" },
   title: {
@@ -18,7 +20,9 @@ export const metadata: Metadata = {
   },
   description:
     "Strategic enterprise cybersecurity selling, people development, go-to-market leadership, and curious independent builds.",
-};
+},
+  "/",
+);
 
 function roleByCompany(company: string) {
   const role = roles.find((item) => item.company === company);
@@ -40,7 +44,8 @@ function supportLine(company: string) {
 export default function Home() {
   const current = roleByCompany("Truffle Security");
   const earlier = [roleByCompany("Rapid7"), roleByCompany("Forcepoint")];
-  const sideQuest = directoryProjects.find((project) => project.slug === "detector-coverage-atlas");
+  const sideQuest = directoryProjects.find((project) => project.slug === "detector-coverage-atlas",
+  );
   if (!sideQuest) {
     throw new Error("Missing detector-coverage-atlas");
   }
@@ -68,21 +73,24 @@ export default function Home() {
               href="/work"
               className="inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-center text-sm font-semibold text-accent-foreground hover:bg-foreground"
             >
-              Explore Work <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
+              Explore Work {" "}
+              <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
             </Link>
             <Link
               href="/about"
               className="inline-flex min-h-12 items-center justify-center rounded-lg border border-[#D4CEC4] px-5 py-3 text-center text-sm font-semibold text-[#F3EFE6] hover:bg-[#4A504B]"
             >
-              About Me <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
+              About Me {" "}
+              <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
             </Link>
           </div>
         </div>
-        <div className="mx-auto w-full max-w-[15rem] sm:max-w-[18rem] lg:max-w-[19rem]">
+        <div className="mx-auto w-full max-w-[10rem] sm:max-w-[15rem] lg:max-w-[19rem]">
           <CelestialFrame>
             <BrandAvatar variant="leader" />
           </CelestialFrame>
           <p className="editorial-subtle mt-3 text-center text-xs leading-5">Curious by nature. Builder by instinct.</p>
+          <Link href="/about#how-i-work" className="mt-3 flex min-h-11 items-center justify-center gap-2 text-center text-sm font-semibold text-[#E6B59A] underline underline-offset-4">Explore how I work <ArrowRight size={16} aria-hidden="true" /></Link>
         </div>
       </section>
 
@@ -112,11 +120,16 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            <nav aria-label="Explore selling and leadership evidence" className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium">
+              <Link href="/work#enterprise-sales" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">Enterprise deal execution →</Link>
+              <Link href="/work#people-leadership" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">Coaching and enablement →</Link>
+            </nav>
             <Link
               href="/experience"
               className="editorial-link mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
             >
-              Read the experience timeline <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
+              Read the experience timeline {" "}
+              <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
             </Link>
           </div>
         </div>
@@ -143,13 +156,15 @@ export default function Home() {
                 href={sideQuest.caseStudyUrl}
                 className="editorial-link inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
               >
-                Read the sample <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
+                Read the sample {" "}
+                <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
               </Link>
               <Link
                 href="/side-quests"
                 className="editorial-link inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
               >
-                All Side Quests <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
+                All Side Quests {" "}
+                <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
               </Link>
             </div>
           </div>
@@ -169,7 +184,8 @@ export default function Home() {
             href="/contact"
             className="inline-flex min-h-12 items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground hover:bg-foreground"
           >
-            Get in touch <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
+            Get in touch {" "}
+            <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
           </Link>
           <Link
             href="/about"

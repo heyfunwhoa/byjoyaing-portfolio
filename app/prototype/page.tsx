@@ -1,14 +1,15 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { designLabAvailable } from "@/lib/design-lab-gate";
 import { robotsNoindex } from "@/lib/indexing";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata({
   title: "Homepage prototype",
   description: "Exploratory homepage layout for design review.",
   robots: robotsNoindex,
-};
+}, "/prototype");
 
 const principles = [
   { label: "People", detail: "Coaching, talent development and practical leadership." },

@@ -26,6 +26,15 @@ Describe the user-facing problem, what changed, and why. Link relevant issue/roa
 - [ ] Content hierarchy, links, SEO metadata and error/empty states checked.
 - [ ] Prototype, proposed content and mock data clearly labeled; no unverified outcomes presented as fact.
 
+## Workbench reuse (UI changes; otherwise N/A)
+
+- [ ] Consulted [reuse contract](../docs/design/workbench-reuse.md), inventory and relevant catalog/source.
+- [ ] Named the existing pattern/source and destination; explained reuse, adaptation or a new implementation.
+- [ ] Recorded mobile/tablet/desktop, keyboard/focus, reduced-motion and applicable state behavior.
+- [ ] Updated the relevant adoption record; distinguished lab/demo availability from shipped use.
+
+Pattern/source and decision (or N/A):
+
 ## Evidence
 
 Automated checks run (with results):

@@ -195,7 +195,7 @@ body {
 .avatar-frame:focus-within .crop-corner-bl { transform: translate(-3px, 3px); }
 .avatar-frame:hover .crop-corner-br,
 .avatar-frame:focus-within .crop-corner-br { transform: translate(3px, 3px); }
-.editorial-panel h3 a:focus-visible { outline: none; }
+.editorial-panel:has(h3 a:focus-visible) { outline: 2px solid var(--ring); outline-offset: 3px; }
 .nudge-link { transition: transform 160ms ease; }
 .group:hover .nudge-link,
 .group:focus-visible .nudge-link,

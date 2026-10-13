@@ -1,14 +1,18 @@
+import { completePageMetadata } from "@/lib/page-metadata";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = completePageMetadata(
+  {
   alternates: { canonical: "/field-notes" },
   openGraph: { url: "/field-notes" },
   title: "Field Notes",
   description: "Playbooks, frameworks, lessons learned, and operating systems for relationships, revenue, and teams.",
-};
+},
+  "/field-notes",
+);
 
 const plannedTopics = [
   "Strategic account planning",
@@ -48,17 +52,20 @@ export default function FieldNotesPage() {
               description: "A transparent walkthrough of the account hypothesis, buying group, technical evaluation, and commercial decision—with seller and leader views.",
               href: "/field-notes/enterprise-deal",
               label: "Illustrative framework",
+              when: "Use when technical evaluation, stakeholder alignment and commercial review need a shared plan.",
             },
             {
               title: "Multithreading & Stakeholder Mapping",
               description: "An interactive buying-committee coverage exercise plus a coaching playbook, connected conceptually to other portfolio research projects.",
               href: "/field-notes/multithreading",
               label: "Interactive playbook",
+              when: "Use when a deal depends on one contact or the buying group is unclear.",
             },
           ].map((note) => (
             <Link key={note.href} href={note.href} className="group block rounded-2xl border border-border bg-surface-clay p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
               <p className="text-xs font-medium text-muted">{note.label}</p>
               <h3 className="mt-3 font-display text-2xl tracking-tight">{note.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-muted"><strong>When to use it:</strong> {note.when}</p>
               <p className="mt-3 text-sm leading-6 text-muted">{note.description}</p>
               <span className="mt-4 inline-block text-sm font-medium text-accent">Explore the guide →</span>
             </Link>
@@ -70,11 +77,16 @@ export default function FieldNotesPage() {
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           These topics are not articles. They are subjects I may write later, each labeled Used in practice, Illustrative model, or Exploring when they exist. Nothing below is clickable on purpose.
         </p>
-        <ul className="mt-6 max-w-xl list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
+        <details className="mt-4 rounded-xl border border-border bg-card p-4">
+          <summary className="cursor-pointer py-1 font-medium">
+            View topics in outline
+          </summary>
+          <ul className="mt-4 max-w-xl list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
           {plannedTopics.map((topic) => (
             <li key={topic}>{topic}</li>
           ))}
         </ul>
+        </details>
       </section>
       <section id="private" className="scroll-mt-24 border-t border-border py-12">
         <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>

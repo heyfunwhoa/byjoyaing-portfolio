@@ -94,7 +94,7 @@ export const gtmSystemsToolkit = [
     id: "github",
     name: "GitHub",
     stance: "built",
-    note: "heyfunwhoa/byjoyaing-portfolio. No other project repo is public.",
+    note: "Source and version history for this portfolio.",
     logo: "/logos/toolkit/github.svg",
     source: "Logoforge",
   },
@@ -134,4 +134,4 @@ export const gtmSystemsToolkit = [
 export type ToolkitId = (typeof gtmSystemsToolkit)[number]["id"];
 
 export const siteHowBuilt =
-  "This site is a Next.js App Router app in heyfunwhoa/byjoyaing-portfolio: React, TypeScript, and Tailwind, hosted on Vercel. I write it in Cursor. GitHub is the only public project repository. The coverage sample is hardcoded here. A logo in the GTM toolkit is a product I have used or am learning — not a live integration.";
+  "This site is a Next.js App Router app in heyfunwhoa/byjoyaing-portfolio: React, TypeScript, and Tailwind, hosted on Vercel. I write it in Cursor. The portfolio source is on GitHub. The coverage sample is hardcoded here. A logo in the GTM toolkit is a product I have used or am learning — not a live integration.";

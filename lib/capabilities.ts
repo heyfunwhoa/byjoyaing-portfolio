@@ -33,35 +33,50 @@ export const capabilityViews = [
     slug: "revenue-strategy",
     title: "Revenue Strategy",
     summary:
-      "Planning, coverage, and pipeline history for a fictional company in gtm-revenue-os, plus the partner design already on this site. The dollars are fixtures. The app is not embedded here.",
+      "Connect account priorities, territory coverage and partner strategy to a clear commercial plan.",
+    professionalHref: "/work#enterprise-sales",
+    professionalLabel: "Enterprise selling and account strategy",
+    boundary: "The planning simulations use fictional companies and figures. They are independent designs, not employer forecasts.",
     slugs: ["revenue-planning-simulator", "gtm-operating-plan", "revenue-intelligence", "partner-gtm-engine"],
   },
   {
     slug: "gtm-engineering",
     title: "GTM Engineering",
     summary:
-      "Hands-on work that turns a field workflow into something a teammate can inspect. The only running sample in this repository is the coverage table.",
+      "Turn recurring sales and research friction into workflows people can inspect, review and reuse.",
+    professionalHref: "/work#gtm-strategy",
+    professionalLabel: "Competitive positioning and field guidance",
+    boundary: "The coverage table is a working portfolio sample. The other linked workflows carry their own prototype or design labels.",
     slugs: ["detector-coverage-atlas", "account-intelligence", "competitive-intelligence-engine"],
   },
   {
     slug: "revenue-operations",
     title: "Revenue Operations",
     summary:
-      "Handoffs between sales, product, partners, and the field. No CRM, forecast model, or POC tracker is connected here.",
+      "Make handoffs between sales, product and customer-facing teams easier to understand and follow through.",
+    professionalHref: "/experience#career-details",
+    professionalLabel: "Cross-functional career contributions",
+    boundary: "These examples illustrate operating approaches. No live CRM, forecast or customer system is connected to this portfolio.",
     slugs: ["customer-feedback-intelligence", "product-release-intelligence", "partner-gtm-engine"],
   },
   {
     slug: "ai-product",
     title: "AI Product & Systems",
     summary:
-      "Where a model would help, and where it would hide the judgment. This repository does not call an LLM. Planned tools stay labeled planned.",
+      "Design research and product workflows that preserve sources, uncertainty and human judgment.",
+    professionalHref: "/work#gtm-strategy",
+    professionalLabel: "Evidence-led field guidance",
+    boundary: "AI-assisted steps are proposed where labeled. These portfolio examples do not call an LLM.",
     slugs: ["detector-coverage-atlas", "competitive-intelligence-engine", "account-intelligence"],
   },
   {
     slug: "sales-enablement",
     title: "Sales Enablement",
     summary:
-      "Frameworks, briefs, and training other people could use. Truffle Camp is the curriculum design. It is not a course that has been deployed.",
+      "Help sellers build product understanding, improve discovery and share useful field knowledge.",
+    professionalHref: "/work#people-leadership",
+    professionalLabel: "Coaching and onboarding experience",
+    boundary: "Professional enablement experience is separate from Truffle Camp, an independent curriculum design that has not been deployed.",
     slugs: ["truffle-camp", "competitive-intelligence-engine", "product-release-intelligence"],
   },
 ] as const;

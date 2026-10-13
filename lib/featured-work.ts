@@ -34,7 +34,7 @@ export function featuredWorkSlides(): FeaturedSlide[] {
     area: story.area,
   }));
 
-  const used = new Set(slides.map((slide) => slide.href));
+  const used = new Set([...slides.map((slide) => slide.href), ...publicStories.flatMap(story => story.related.filter(link => link.category === "Work").map(link => link.href))]);
   for (const entry of portfolioEntries.filter((item) => item.kind === "work")) {
     if (used.has(entry.href)) continue;
     slides.push({
@@ -56,7 +56,6 @@ export const featuredSideQuestSlugs = [
   "account-intelligence",
   "detector-coverage-atlas",
   "truffle-camp",
-  "customer-feedback-intelligence",
 ] as const;
 
 /** Selected independent builds for `/side-quests`. Not used on `/work`. */
