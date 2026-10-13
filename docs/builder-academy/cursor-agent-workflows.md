@@ -27,6 +27,8 @@ A useful assignment contains **goal + context + scope + constraints + expected o
 
 Ask for clarification when product behavior is genuinely ambiguous; require the agent to mark facts, assumptions, and unverified claims separately. Longer prompts are not automatically better.
 
+For bad / okay / best examples across learning, status, implementation, debugging, review, research and coordination, use the [focused prompting companion](focused-prompting-and-context.md). It includes a 15–20 minute practice exercise and handoff guidance; it does not add a scored Academy lesson.
+
 ### Prompt, rule, skill, or PRD?
 
 | Artifact | Use it when | Example |
