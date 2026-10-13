@@ -189,3 +189,8 @@ Local build/typecheck, lint and unit/content checks are recorded in the PR. Brow
 Below 640px, one labeled native selector replaces the five summary tabs. A visible position indicator and full workflow heading preserve orientation. Short option labels fit narrow screens; the selector uses 16px text and a 48px minimum height. Desktop tabs and mobile selection share state without duplicating the workflow panel. The mobile approach steps use a compact numbered list; tools remain collapsed and open into a readable single-column grid. Main example text and product links use 16px on phones. No autoplay, hover-only details, sticky overlays or sideways page scrolling is introduced by this design.
 
 Implementation checks do not prove rendered usability. Verify 320/375/390/430px, portrait/landscape, 200% zoom, native selection, focus, screen-reader labels and reduced motion before calling mobile QA complete.
+
+
+### Proposed Work bento adoption — follow-up to PR #120
+
+`components/work-explorer.tsx` consumes the local `BentoGrid` and installed Radix Collapsible on `/work`, replacing the overview carousel and repeated story sections. This supersedes the historical lab-only bento statement for this single destination when merged. `BentoCard` and Lifeline remain under their existing restrictions. See component-adoption.md for references, motion, responsive behavior and pending browser validation.
