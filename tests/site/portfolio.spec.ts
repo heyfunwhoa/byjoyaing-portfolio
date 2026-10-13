@@ -10,6 +10,14 @@ const routes = [
   "/side-quests",
   "/field-notes",
   "/capabilities",
+  "/capabilities/revenue-strategy",
+  "/capabilities/gtm-engineering",
+  "/capabilities/revenue-operations",
+  "/capabilities/ai-product",
+  "/capabilities/sales-enablement",
+  "/field-notes/enterprise-deal",
+  "/field-notes/multithreading",
+  "/work/truffle-camp",
   "/work/competitive-intelligence-engine",
   "/work/account-intelligence",
   "/work/customer-feedback-intelligence",
@@ -217,4 +225,139 @@ test("the mobile menu confines focus and restores it on Escape", async ({
   await menu.press("Escape");
   await expect(menu).toBeFocused();
   await expect(page.locator("#main-content")).not.toHaveAttribute("inert", "");
+});
+
+for (const slug of [
+  "detector-coverage-atlas",
+  "competitive-intelligence-engine",
+  "account-intelligence",
+  "customer-feedback-intelligence",
+  "truffle-camp",
+]) {
+  test(`${slug} guides one example without sending or collecting data`, async ({
+    page,
+  }) => {
+    await page.goto(`/work/${slug}#guided-example`);
+    const example = page.locator("#guided-example");
+    await expect(example).toHaveAttribute("open", "");
+    await expect(example.getByRole("status").first()).toContainText(
+      "Step 1 of 4",
+    );
+    await expect(
+      example.getByRole("button", { name: "Previous step", exact: true }),
+    ).toBeDisabled();
+    for (const step of [2, 3, 4]) {
+      await example
+        .getByRole("button", { name: "Next step", exact: true })
+        .click();
+      await expect(example.getByRole("status").first()).toContainText(
+        `Step ${step} of 4`,
+      );
+    }
+    await expect(
+      example.getByRole("button", { name: "Next step", exact: true }),
+    ).toBeDisabled();
+    if (slug === "truffle-camp") {
+      await example
+        .getByRole("radio", {
+          name: "The token is active and a breach is confirmed.",
+          exact: true,
+        })
+        .check();
+      await expect(
+        example.getByText("Try again.", { exact: false }),
+      ).toBeVisible();
+      await example
+        .getByRole("radio", {
+          name: "A possible credential was observed; validity and impact still require approved review.",
+          exact: true,
+        })
+        .check();
+      await expect(
+        example.getByText("Correct.", { exact: false }),
+      ).toBeVisible();
+    }
+    await example
+      .getByRole("button", { name: "Previous step", exact: true })
+      .click();
+    await expect(example.getByRole("status").first()).toContainText(
+      "Step 3 of 4",
+    );
+  });
+}
+
+test("professional requests retain context without granting private access", async ({
+  page,
+}) => {
+  await page.goto("/work#people-leadership");
+  const story = page.getByRole("article", {
+    name: "Helping teams ramp and share expertise",
+    exact: true,
+  });
+  await expect(
+    story.getByText("Scope of responsibility", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    story.getByText(
+      "Coaching and onboarding alongside an enterprise-selling role.",
+      { exact: true },
+    ),
+  ).toBeVisible();
+  await story
+    .getByRole("link", { name: "Request more context", exact: false })
+    .click();
+  await expect(page).toHaveURL(/example=team-enablement/);
+  await expect(
+    page.getByText("Requested walkthrough: Coaching and team development", {
+      exact: false,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByText(/Submitting this form does not unlock private files/),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Message", exact: true }).click();
+  await expect(page).toHaveURL(/#write$/);
+  await expect(page.getByText("Requested walkthrough: Coaching and team development", { exact: false })).toHaveCount(0);
+  await page.goBack();
+  await expect(page.getByText("Requested walkthrough: Coaching and team development", { exact: false })).toBeVisible();
+});
+
+test("Academy starting paths select existing lessons and keep navigation usable", async ({
+  page,
+}) => {
+  await page.goto("/ai-academy");
+  await page.getByText("Choose a starting path", { exact: true }).click();
+  await page
+    .getByRole("button", {
+      name: "Start build a research workflow",
+      exact: false,
+    })
+    .click();
+  await expect(
+    page.getByRole("heading", {
+      name: "AI, models and assistants",
+      exact: true,
+    }),
+  ).toBeVisible();
+  const path = page.getByRole("navigation", {
+    name: "Selected learning path",
+    exact: true,
+  });
+  await expect(path).toBeVisible();
+  await path
+    .getByRole("button", {
+      name: "Privacy, security and human oversight",
+      exact: true,
+    })
+    .click();
+  await expect(
+    page.getByRole("heading", {
+      name: "Privacy, security and human oversight",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await path
+    .getByRole("button", { name: "Leave this path", exact: true })
+    .click();
+  await expect(path).toHaveCount(0);
 });

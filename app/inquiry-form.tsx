@@ -32,15 +32,20 @@ function subscribeToHash(onStoreChange: () => void) {
   };
 }
 
-function modeFromHash(): Mode {
-  return window.location.hash === "#access" ? "access" : "message";
+function modeFromHash(defaultMode: Mode): Mode {
+  if (window.location.hash === "#access") return "access";
+  if (window.location.hash === "#write") return "message";
+  return defaultMode;
 }
 
 export function InquiryForm({
   selectedPlaybook,
 }: { selectedPlaybook?: string } = {}) {
-  const mode = useSyncExternalStore(subscribeToHash, modeFromHash, () =>
-    selectedPlaybook ? ("access" as const) : ("message" as const),
+  const defaultMode: Mode = selectedPlaybook ? "access" : "message";
+  const mode = useSyncExternalStore(
+    subscribeToHash,
+    () => modeFromHash(defaultMode),
+    () => defaultMode,
   );
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");

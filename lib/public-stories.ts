@@ -5,6 +5,9 @@
 export const publicStories = [
   {
     id: "enterprise-selling",
+    scope: "Individual contributor: full-cycle strategic selling and account strategy.",
+    collaboration: "Technical and commercial stakeholders across complex enterprise buying groups.",
+    decision: "Keep technical validity, business value and stakeholder alignment connected throughout the evaluation.",
     title: "Navigating complex enterprise cybersecurity sales",
     area: "Enterprise Sales",
     context: "Strategic cybersecurity purchases bring together technical evaluation, business priorities and multiple decision makers.",
@@ -20,6 +23,9 @@ export const publicStories = [
   },
   {
     id: "team-enablement",
+    scope: "Coaching and onboarding alongside an enterprise-selling role.",
+    collaboration: "SDRs, newer sellers, solutions architecture and customer success.",
+    decision: "Turn repeated field questions into resources teammates can reuse; coaching is distinct from direct people management.",
     title: "Helping teams ramp and share expertise",
     area: "People & Leadership",
     context: "At Truffle Security, field expertise and onboarding needed to be easier to reuse across roles.",
@@ -33,6 +39,9 @@ export const publicStories = [
   },
   {
     id:"competitive-evidence",
+    scope: "Competitive positioning and field enablement.",
+    collaboration: "Sales teammates, with field feedback shared across product and marketing.",
+    decision: "Separate confirmed findings from assumptions before turning research into seller guidance.",
     title:"Turning competitive context into usable field guidance",
     area:"GTM Strategy",
     context:"Enterprise security sellers need defensible comparisons without turning unreviewed research into claims.",
@@ -53,7 +62,7 @@ export function validatePublicStories() {
  for(const story of publicStories){
   if(ids.has(story.id))errors.push("Duplicate story: "+story.id);
   ids.add(story.id);
-  const requiredFields: readonly string[] = [story.title, story.context, story.contribution, story.execution, story.evidence, story.takeaway,
+  const requiredFields: readonly string[] = [story.title, story.context, story.contribution, story.execution, story.evidence, story.takeaway, story.scope, story.collaboration, story.decision,
     ];
   if (requiredFields.some((value) => value.trim().length === 0)) errors.push("Incomplete story: " + story.id);
   if(!story.related.length||story.related.some(

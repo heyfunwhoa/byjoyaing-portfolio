@@ -119,6 +119,10 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            <nav aria-label="Explore selling and leadership evidence" className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium">
+              <Link href="/work#enterprise-sales" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">Enterprise deal execution →</Link>
+              <Link href="/work#people-leadership" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">Coaching and enablement →</Link>
+            </nav>
             <Link
               href="/experience"
               className="editorial-link mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"

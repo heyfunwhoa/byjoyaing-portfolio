@@ -34,7 +34,7 @@ export default function AboutPage() {
             Strategist. Leader. Builder.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-            Curious by nature. Builder by instinct. I studied advertising and business foundations at The University of Texas at Austin. That training is how I explain a technical product: one claim, a buyer who can repeat it, and a field that does not invent the rest.
+            Curious by nature. Builder by instinct. I studied advertising and business foundations at The University of Texas at Austin. Advertising taught me to make complex ideas clear and relevant to the audience. Enterprise cybersecurity sales taught me to connect that story to technical evidence and a buying decision.
           </p>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
             My career is grounded in hands-on enterprise cybersecurity selling—from complex buyer conversations and technical evaluations to deal execution. I also coach newer sellers and build practical tools and processes that teams can reuse.

@@ -33,25 +33,24 @@ export function CoverageExplorer() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search sources"
-            className="h-9 w-full rounded-md border border-border bg-background px-3 text-sm text-foreground outline-none placeholder:text-muted focus:border-accent"
+            className="min-h-11 w-full rounded-md border border-border bg-background px-3 text-sm text-foreground outline-none placeholder:text-muted focus:border-accent"
           />
         </label>
         <div
           className="flex flex-wrap gap-1"
-          role="tablist"
+          role="group"
           aria-label="Coverage filter"
         >
           {filters.map((item) => (
             <button
               key={item}
               type="button"
-              role="tab"
-              aria-selected={filter === item}
+              aria-pressed={filter === item}
               onClick={() => setFilter(item)}
               className={
                 filter === item
-                  ? "rounded-md bg-accent px-2.5 py-1.5 text-[11px] font-medium text-accent-foreground"
-                  : "rounded-md px-2.5 py-1.5 text-[11px] font-medium text-muted hover:text-foreground"
+                  ? "min-h-11 rounded-md bg-accent px-2.5 py-1.5 text-[11px] font-medium text-accent-foreground"
+                  : "min-h-11 rounded-md px-2.5 py-1.5 text-[11px] font-medium text-muted hover:text-foreground"
               }
             >
               {item}

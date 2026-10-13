@@ -22,19 +22,20 @@ export const metadata: Metadata = completePageMetadata(
 
 const related: Record<string, { href: string; label: string }[]> = {
   "Truffle Security": [
+    { href: "/work#people-leadership", label: "Professional coaching and enablement" },
     { href: "/work/competitive-intelligence-engine", label: "Competitive briefs",
     },
     { href: "/work/customer-feedback-intelligence", label: "Sales-to-product loop",
     },
     { href: "/work/product-release-intelligence", label: "Release questions" },
   ],
-  Rapid7: [{ href: "/work/security-signal-intelligence", label: "Signal idea, not the playbooks",
+  Rapid7: [{ href: "/work#enterprise-sales", label: "Professional enterprise selling" },{ href: "/work/security-signal-intelligence", label: "Signal idea, not the playbooks",
     },
   ],
-  Darktrace: [{ href: "/work/truffle-camp", label: "Camp is a later design, not this training",
+  Darktrace: [{ href: "/work#people-leadership", label: "Professional coaching approach" },{ href: "/work/truffle-camp", label: "Camp is a later design, not this training",
     },
   ],
-  Forcepoint: [{ href: "/work/competitive-intelligence-engine", label: "Discovery templates",
+  Forcepoint: [{ href: "/work#enterprise-sales", label: "Professional enterprise selling" },{ href: "/work/competitive-intelligence-engine", label: "Discovery templates",
     },
   ],
   Metadot: [{ href: "/work/partner-gtm-engine", label: "Partner design, not the Metadot program",
@@ -52,7 +53,7 @@ export default function ExperiencePage() {
             A decade selling technical security, and teaching the story.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-            Enterprise cycles, the coaching a sales leader does from the field, and the positioning a product marketer owes the team. Portfolio projects are not employer deployments unless a note says a team used a document or a training.
+            Hands-on enterprise selling, coaching newer sellers and translating field knowledge into reusable guidance. Each role shows the contribution first; related independent projects are labeled separately.
           </p>
         </div>
         <div className="mx-auto w-full max-w-[12rem]">

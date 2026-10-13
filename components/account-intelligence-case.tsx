@@ -1,3 +1,5 @@
+import { PortfolioExample } from "@/components/portfolio-example";
+import { portfolioExamples } from "@/lib/portfolio-examples";
 import { DisclosureSection } from "@/components/disclosure-section";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { AccountIntelligenceWorkflow } from "@/components/account-intelligence-workflow";
@@ -192,6 +194,8 @@ export function AccountIntelligenceCase() {
           </div>
         </div>
       </section>
+
+      <PortfolioExample key="account-intelligence" example={portfolioExamples["account-intelligence"]} />
 
       <ProjectTechnologyStack slug="account-intelligence" />
 
