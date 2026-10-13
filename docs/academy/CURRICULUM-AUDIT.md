@@ -3,7 +3,7 @@
 **Reviewed:** 2026-10-12 (America/Chicago)
 **Original source snapshot:** `569c1f5` on `main`; reconciled after merged PR #126 (breadcrumbs) and PR #127 (FinOps walkthrough), through `a9cb44e758cb772ecabd740bbbb5c208b24c3fb2`
 **Owner:** Kristen Aing
-**Status:** Proposed priority order; documentation edits only. The user authorized reconciliation and merging the reviewed documentation PRs. New lesson authoring, UI changes and new labs remain on hold.
+**Status:** Priority order retained. The user authorized the existing-content navigation and metadata foundation (Batch B slice), including its merge before mission work. New lesson authoring and new labs remain on hold. See [mission handoff](MISSION-HANDOFF.md).
 
 ## Decision and scope
 
@@ -24,7 +24,7 @@ No paid providers, model calls, customer records, private research exports, new 
 | Page files | 14 across `app/ai-academy` and `app/builder-academy` | Includes catalog home, overviews and a legacy Git redirect; do not add this count to lesson count |
 | Systems pathway | 13 topic outlines and 7 proposed lab cards | Overview exists; named systems labs are not thereby implemented |
 | Companion documents | 23 in `docs/builder-academy` | Mix of guides, practice material and integration plans; not all independent courses |
-| Curated paths | 3: frontend, research, verification | No complete beginner app-understanding sequence yet |
+| Curated paths | 5: foundations (AI), delivery, frontend, research, verification | Foundation navigation adds independent entry points; no complete beginner app-understanding sequence yet |
 
 **Registered:** short lesson rendered by the catalog. **Guided:** explanation and learner practice/feedback exist in source. **Simulation:** deterministic exercise, not a live integration. **Reference:** longer reading/practice guide. **Planned:** outline/specification only. **Deployment verified:** a separate state not established by this audit.
 
@@ -202,7 +202,7 @@ The seven proposed systems labs remain parked as independent builds. Reuse exist
 | Batch | Scope | Exit criteria | Status |
 | --- | --- | --- | --- |
 | A: audit and prioritization | This record + pointers in existing plans | All surfaces inventoried; reuse/new/planned distinguished; ordered backlog and boundaries reviewed | Documented in this change; review pending |
-| B: connect what exists | BA-01 implementation; prerequisite/companion/source accessibility fixes; preserve merged #126 breadcrumbs | Honest status, existing labs reachable, no duplicate courses, clear starting point | HOLD |
+| B: connect what exists | BA-01 implementation; prerequisite/companion/source accessibility fixes; preserve merged #126 breadcrumbs | Honest status, existing labs reachable, no duplicate courses, clear starting point | Navigation/metadata foundation implemented; see [handoff](MISSION-HANDOFF.md). Broader instructional changes deferred. |
 | C: understand and diagnose | BA-02 through BA-09 in small slices | One fictional task can be traced, its data/request understood, failure located and cost bounded | HOLD; BA-09 written companion already merged in #127 |
 | D: build reliably | BA-10 through BA-14 with existing auth/security/delivery | Permission, data, failure, UI and test reasoning demonstrated | HOLD |
 | E: specialize and operate | BA-15 through BA-18 | Traceable research correction and an outcome-based applied capstone | HOLD |

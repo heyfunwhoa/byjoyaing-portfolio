@@ -1,5 +1,28 @@
 export const learningPaths = [
   {
+    id: "foundations",
+    title: "Start with AI basics",
+    prerequisite: "No experience needed",
+    outcome:
+      "Understand AI, protect your inputs, write a clear prompt and check its claims.",
+    slugs: ["what-is-ai", "privacy", "prompting", "verification"],
+  },
+  {
+    id: "delivery",
+    title: "Build and release safely",
+    prerequisite:
+      "Start with the linked programming and Git references if you are new to code",
+    outcome:
+      "Connect delivery planning, Cursor, dependencies, integrations and cost controls.",
+    slugs: [
+      "idea-to-verified-release",
+      "cursor-workflows",
+      "package-registries",
+      "mcp-vs-rest-api",
+      "integration-registry-finops",
+    ],
+  },
+  {
     id: "frontend",
     title: "Understand the frontend",
     prerequisite: "No coding prerequisite",
@@ -19,10 +42,10 @@ export const learningPaths = [
       "Frame a GTM research task, protect sensitive inputs and verify its output.",
     slugs: [
       "what-is-ai",
-      "prompting",
       "privacy",
-      "gtm-research",
+      "prompting",
       "verification",
+      "gtm-research",
     ],
   },
   {

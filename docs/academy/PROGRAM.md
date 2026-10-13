@@ -7,7 +7,7 @@
 
 ## Current curriculum priorities
 
-Use the [2026-10-12 curriculum audit](CURRICULUM-AUDIT.md) for the complete inventory, observed implementation depth, reuse decisions and current priority order. The audited catalog has 22 registered lessons; Programming Foundations has 2 guided tutorials among 10 module records. This program remains the wider vision. Its older phases below are not the current implementation queue. Lesson/UI implementation is on hold pending explicit authorization.
+Use the [2026-10-12 curriculum audit](CURRICULUM-AUDIT.md) for the complete inventory, observed implementation depth, reuse decisions and current priority order. The audited catalog has 22 registered lessons; Programming Foundations has 2 guided tutorials among 10 module records. This program remains the wider vision. Its older phases below are not the current implementation queue. The existing-content navigation and metadata foundation is authorized; see [mission handoff](MISSION-HANDOFF.md). New lesson authoring and labs remain on hold.
 
 ## Product recommendation
 One learning platform, two coherent entry points:
