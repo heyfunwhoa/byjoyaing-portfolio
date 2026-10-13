@@ -14,11 +14,22 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: "/connect",
+        headers: [
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "X-Frame-Options", value: "DENY" },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'none'; connect-src 'self'",
+          },
+        ],
+      },
     ];
   },
   async redirects() {
-    return [
-      { source: "/approach", destination: "/about", permanent: true }];
+    return [{ source: "/approach", destination: "/about", permanent: true }];
   },
 };
 

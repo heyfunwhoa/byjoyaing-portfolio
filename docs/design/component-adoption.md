@@ -122,6 +122,44 @@ Reuse `InquiryForm` at `/contact` for all inquiries. Remove the message/request 
 
 Verification: scoped lint, TypeScript, navigation/request tests; updated browser coverage mocks the mail endpoint to verify project context without sending email. Hosted browser checks remain required before merge. Personal interests stay on About; a short Contact invitation is a recommendation, not implemented here.
 
+## Conference connection page — proposed, October 2026
+
+Owner: portfolio / Kristen Aing. Destination: `/connect`.
+Reuse `PageMain`, `BrandAvatar` (Leader) and the existing public-profile registry;
+adapt the site's semantic anchor/action styling. No lab primitive import, new
+runtime dependency, animation, carousel or modal is needed for one explicit link.
+Phone, tablet and desktop use one centered column, max-width 28rem, wrapping copy
+and a minimum 48px main action. Native anchor keyboard behavior and global focus
+styles apply. The page is static; loading, form, error and permission states are
+not applicable. Private material remains outside this journey.
+
+The QR contains only `https://www.byjoyaing.com/connect`; query parameters cannot
+choose the LinkedIn destination. Scanning grants no access and verifies no identity.
+The visitor sends a request on LinkedIn; Kristen reviews it there. LinkedIn/app
+sign-in behavior remains outside this site's control. No contact download or
+connection action happens automatically.
+
+`/connect` suppresses PostHog initialization on direct entry and events after
+client navigation. Its response disallows framing, forms, object embeds and
+cross-origin script connections; the outbound link suppresses referrer sharing.
+This is a scoped CSP, not a complete site-wide script policy. Hosting access logs
+may still exist; do not claim anonymous or zero-data hosting. Existing site footer
+and navigation remain. No private access/authentication logic is changed.
+
+QR assets: `public/connect/qr.svg`, `qr.png`, `conference-card.png`. Regeneration:
+`scripts/qr/generate-connect.py` uses offline ReportLab and Pillow, not a QR SaaS.
+Maintain four-module white margin; no logo overlays. Print the visible domain and
+inspect physical cards for replacement stickers. Protect domain, GitHub, hosting
+and LinkedIn accounts with MFA; account settings were not audited or changed.
+
+Verification: production build, lint/typecheck and unit tests; independent ZXing
+QR decode of both PNG assets, plus visual review of the card. Browser installation
+returned corrupt archives, so viewport, keyboard, mobile app handoff, real-device
+scan and 200% zoom remain manual release checks. Automated browser coverage is in
+`tests/site/connect.spec.ts` but must run in a working browser environment. Do not
+print/distribute until the route is deployed and a real-phone scan is verified.
+Rollback: revert this focused PR and retire any distributed QR assets if needed.
+
 ## Context navigation (2026-10-13, proposed)
 
 - Task: orient a reader arriving directly at a nested lesson, lab, case or capability and offer predictable parent links.
