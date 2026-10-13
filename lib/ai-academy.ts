@@ -280,6 +280,9 @@ export const lessons: Lesson[] = [
     summary: "See how priorities, requirements, Linear issues, Cursor, GitHub PRs and CI form one accountable delivery workflow without duplicating project tracking.",
     analogy: "A restaurant order has one ticket, a recipe, a kitchen station and a quality check. You do not need five copies of the same order to know whether dinner is ready.",
     takeaways: [
+      "Commit records a Git snapshot; push uploads it; a PR proposes integration; review inspects it; merge integrates it; deploy publishes it; verify live checks the deployed result.",
+      "For an open PR, say: Review the PR, fix any issues, and merge once required checks pass on the latest commit. Review and CI can run in parallel; fixes repeat the loop.",
+      "A merge is not proof of deployment. Repository-only docs may finish at merge; website lesson updates still need publication verification. Reading a lesson is reviewed, not practiced or passed checks.",
       "A project groups an outcome; milestones divide it; issues specify testable slices. Priority is importance, while status is where the work stands.",
       "Backlog means not yet committed; Todo means selected; In Progress means implementing; In Review means verifying; Done requires acceptance evidence.",
       "Keep the PRD and source code in the owning repository, tasks in Linear, implementation and CI evidence in GitHub, and reusable standards in Technical Docs.",
