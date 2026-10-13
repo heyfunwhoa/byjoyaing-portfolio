@@ -31,7 +31,7 @@ In repository Settings → Rules → Rulesets, inspect existing main protection 
 
 - Require pull requests; restrict deletion and force pushes.
 - Require passing status checks and branches to be up to date.
-- Select the actual emitted check names: `Lint`, `Unit tests`, `Production build + TypeScript`, `Production dependency audit`, `semgrep`, `TruffleHog introduced secrets`, and the Vercel preview check where a preview is required.
+- Select the actual emitted check names: `Lint`, `Unit tests`, `Production build + TypeScript`, `Production dependency audit`, `semgrep`, `TruffleHog introduced secrets`, `Trivy dependency and config review`, and the Vercel preview check where a preview is required.
 - Choose reviewer requirements that work for this sole-owner repository; requiring another approver without an available reviewer can prevent all merges.
 - Do not make the path-filtered Visual QA workflow globally required: GitHub may leave absent path-filtered checks pending. Review its result on applicable UI PRs, or replace path filtering with an always-emitted aggregate check before making it required.
 - Test enforcement on a harmless deliberately failing PR; verify merge is blocked, then close it. Do not bypass checks routinely.
@@ -40,9 +40,9 @@ In repository Settings → Rules → Rulesets, inspect existing main protection 
 
 Project: `byjoyaing-portfolio` (`prj_BWgeuBsxiMKOlGzg193H5O4odb2i`), scope `krusty1`. Keep Node 22 aligned with CI and preview authentication enabled.
 
-Project Settings → Deployment Checks → Add Checks → GitHub: select checks emitted on main: `Lint`, `Unit tests`, `Production build + TypeScript`, `Production dependency audit`, `semgrep`.
+Project Settings → Deployment Checks → Add Checks → GitHub: select checks emitted on main: `Lint`, `Unit tests`, `Production build + TypeScript`, `Production dependency audit`, `semgrep`, `TruffleHog introduced secrets`, `Trivy dependency and config review`.
 
-Do not require PR-only TruffleHog or path-filtered Visual QA as production checks: they do not reliably emit results for the production commit. Do not require `Public production browser smoke` before release: it tests the current public domain, so it is a post-release check.
+After the security-enforcement PR, TruffleHog and Trivy emit checks on main and can be required for production. Do not require path-filtered Visual QA as a production check: it does not reliably emit for every commit. Do not require `Public production browser smoke` before release: it tests the current public domain, so it is a post-release check.
 
 Vercel should build production but hold custom-domain assignment until required checks pass. Verify that behavior on the next authorized release, including matching SHA. If the settings aren't available, retain protected-main checks and reviewed release verification; record the limitation rather than claiming a deployment gate exists.
 
@@ -66,3 +66,7 @@ The current shared engineering baseline was read for this change. These local co
 ## Responsive pilot coverage
 
 The suite includes 768×1024 touch-enabled Chromium tablet emulation alongside phone and desktop. The case count grows with the suite; CI reports the actual executed count. See the [proposed shared responsive standard](https://github.com/heyfunwhoa/technical-docs-platform/blob/c7ae9a18b8045bdad5f729322722343022b13970/engineering/responsive-apps-v1.md) and [review PR](https://github.com/heyfunwhoa/technical-docs-platform/pull/26). This pilot does not claim actual zoom, screen-reader, real-device/Safari or all-page visual verification.
+
+## Security follow-through
+
+[Security release readiness](../security/release-readiness.md) records the blocking Trivy change, weekly/manual security scans, unchanged check names, current settings-access limits and missing alert destination. These branch changes do not configure GitHub/Vercel settings or prove a failing PR is blocked.

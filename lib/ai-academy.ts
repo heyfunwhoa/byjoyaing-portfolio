@@ -9,6 +9,56 @@ export type Lesson = {
 };
 export const lessons: Lesson[] = [
   ...enterpriseEvaluationLessons,
+{
+  "slug": "llms-models-inference-gateways",
+  "title": "LLMs, models, inference, and AI gateways",
+  "track": "Foundations",
+  "minutes": 20,
+  "level": "Beginner",
+  "summary": "Understand the model behind an AI app, follow one inference request, and explain where gateways, costs and privacy controls fit.",
+  "analogy": "Think of the app as a service desk, the model as its prediction engine, and an optional gateway as the dispatcher. The dispatcher chooses a route; it does not verify the answer.",
+  "takeaways": [
+    "A model is a learned computational system; an LLM is a language-focused model. The application supplies the surrounding interface, data and workflow.",
+    "Training changes learned parameters. Inference runs the model on inputs. Supplying context or retrieving documents does not itself retrain the model.",
+    "Tokens are model input/output units; the context window is bounded. Streaming, speed and fluent language do not prove accuracy.",
+    "A gateway can centralize routing and operational controls; an SDK is a code library, and a provider serves inference. A gateway is optional.",
+    "Provider fallback and model fallback differ. Both must preserve approved data handling and required capabilities.",
+    "Evaluate evidence quality, latency, total cost and human rework. Keep tool authorization in the application and review untrusted retrieved content."
+  ],
+  "exercise": "Open the companion guide. Using the fictional Northstar Demo source, trace app → optional gateway → provider/model → validation → human review. Keep unsupported revenue unknown. Calculate the illustrative token cost and explain what should happen when an unapproved fallback is offered. No account, API key or paid call is needed.",
+  "check": {
+    "question": "Your primary provider fails and a gateway offers a different model from an unapproved provider. What should happen?",
+    "choices": [
+      "Use it immediately because a gateway guarantees equivalent privacy and quality",
+      "Use only a policy-approved, compatible and evaluated fallback, or return a controlled failure",
+      "Retrain the primary model by repeating the same prompt"
+    ],
+    "answer": 1,
+    "explanation": "Routing availability does not establish data-handling approval, capability compatibility or answer quality. Inference and training are different operations."
+  },
+  "companion": {
+    "label": "Read the LLMs, inference, and gateways guide",
+    "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/llms-models-inference-gateways.md"
+  },
+  "sources": [
+    {
+      "label": "Hugging Face: Transformer models",
+      "url": "https://huggingface.co/learn/llm-course/chapter1/4"
+    },
+    {
+      "label": "Vercel AI Gateway",
+      "url": "https://vercel.com/docs/ai-gateway"
+    },
+    {
+      "label": "Cloudflare AI Gateway",
+      "url": "https://developers.cloudflare.com/ai-gateway/"
+    },
+    {
+      "label": "OWASP: Prompt injection",
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+    }
+  ]
+},
   {
     slug: "frontend-building-blocks",
     title: "Frontend building blocks: from framework to experience",
