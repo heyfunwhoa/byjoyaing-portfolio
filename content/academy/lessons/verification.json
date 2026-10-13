@@ -1,0 +1,27 @@
+{
+  "id": "verification",
+  "title": "Grounding and source quality",
+  "track": "Responsible AI",
+  "minutes": 10,
+  "level": "Beginner",
+  "summary": "Learn to distinguish sourced facts, hypotheses, stale claims and hallucinations.",
+  "analogy": "Treat AI like a bright research assistant whose footnotes still need checking.",
+  "takeaways": [
+    "Verify links and dates.",
+    "Separate facts from interpretation.",
+    "Never invent evidence for missing information."
+  ],
+  "exercise": "Review a generated vendor comparison, mark each statement Verified, Hypothesis or Unknown.",
+  "sources": [
+    {
+      "label": "NIST AI RMF",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework"
+    }
+  ],
+  "owner": "Kristen Aing",
+  "reviewer": "Pending human PR review",
+  "contentVersion": 1,
+  "reviewDue": "2026-11-13",
+  "classification": "public",
+  "publicationStatus": "pilot"
+}
