@@ -44,7 +44,7 @@
     "shadcn": "^4.21.4",
     "storybook": "^10.6.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^7"
   },
   "registries": {
     "@logoforge": "https://logoforge.terravidhal.me/r/{name}.json"
