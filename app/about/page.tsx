@@ -110,9 +110,9 @@ export default function AboutPage() {
 
       <section id="technologies" className="scroll-mt-24 border-b border-border py-12">
         <p className="editorial-eyebrow text-accent">Systems behind the work</p>
-        <h2 className="font-display mt-3 text-3xl tracking-tight">My toolkit, by purpose.</h2>
+        <h2 className="font-display mt-3 text-3xl tracking-tight">How I work. What supports it.</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          From enterprise selling to independent building. Choose a section to see the tools I use, what they support, and what I am still learning.
+          Start with a workflow. Explore the approach, open the supporting tools, then follow the evidence—from enterprise selling and team development to independent building.
         </p>
         <div className="mt-6">
           <ToolsMap />

@@ -6,6 +6,10 @@ export type ToolkitSection = {
   id: string;
   title: string;
   summary: string;
+  example: string;
+  steps: readonly string[];
+  status: string;
+  evidence: { label: string; href: string };
   tools: {
     id: string;
     name: string;
@@ -25,32 +29,81 @@ const tools = new Map<string, ToolkitSection["tools"][number]>([
 const definitions = [
   {
     id: "revenue",
-    title: "Revenue",
-    summary: "Account strategy, outreach and sales conversations.",
+    title: "Revenue execution",
+    summary: "Move complex buying decisions forward.",
+    example:
+      "I connect discovery, technical evaluation and commercial conversations into a clear account strategy.",
+    steps: [
+      "Understand the buyer",
+      "Align stakeholders",
+      "Advance the decision",
+    ],
+    status: "Professional practice",
+    evidence: {
+      label: "Explore enterprise selling",
+      href: "/work#enterprise-sales",
+    },
     ids: ["salesforce", "attio", "outreach", "nooks", "gong", "commonroom"],
   },
   {
     id: "research",
-    title: "Research",
-    summary: "Account context, source collection and evidence.",
+    title: "Market & account intelligence",
+    summary: "Turn market context into useful field guidance.",
+    example:
+      "I collect competitive evidence, separate observations from assumptions and package findings for sellers.",
+    steps: ["Collect sources", "Assess the evidence", "Shape field guidance"],
+    status: "Professional practice",
+    evidence: {
+      label: "Explore competitive field work",
+      href: "/work#gtm-strategy",
+    },
     ids: ["linkedin", "sheets", "clay", "firecrawl", "exa"],
   },
   {
     id: "collaboration",
-    title: "Collaboration",
-    summary: "Shared knowledge, team handoffs and communication.",
+    title: "Team enablement & collaboration",
+    summary: "Help people ramp and share what they know.",
+    example:
+      "I turn recurring discovery and evaluation questions into shared resources for sellers and customer-facing teams.",
+    steps: [
+      "Find recurring friction",
+      "Create shared guidance",
+      "Coach and refine",
+    ],
+    status: "Professional practice",
+    evidence: {
+      label: "Explore coaching and enablement",
+      href: "/work#people-leadership",
+    },
     ids: ["notion", "slack", "workspace", "resend"],
   },
   {
     id: "build",
-    title: "Build & deploy",
-    summary: "The tools behind this portfolio and my building practice.",
+    title: "Building & automation",
+    summary: "Turn recurring problems into practical experiments.",
+    example:
+      "This portfolio is a live independent build. My Side Quests explore research, account and enablement workflows, with each project's stage labeled.",
+    steps: [
+      "Define the problem",
+      "Build a small example",
+      "Review and iterate",
+    ],
+    status: "Independent building",
+    evidence: {
+      label: "Explore independent Side Quests",
+      href: "/side-quests",
+    },
     ids: ["next", "github", "vercel", "cursor", "aws"],
   },
   {
     id: "ai",
-    title: "AI & data",
-    summary: "Drafting support and the data workflows I am learning.",
+    title: "AI & data practice",
+    summary: "Explore assistance with evidence and human review.",
+    example:
+      "I use AI for drafting support and am learning how structured, source-grounded information could support research workflows.",
+    steps: ["Define the output", "Ground it in sources", "Review the result"],
+    status: "Learning · proposed workflow",
+    evidence: { label: "Explore my AI learning lab", href: "/ai-academy" },
     ids: ["chatgpt", "claude", "postgres", "aisdk", "schema", "ingest"],
   },
 ];

@@ -93,7 +93,8 @@ test("About presents purpose sections with visible names and secure product link
   assert.match(about, /<ToolsMap/);
   assert.match(tools, /<ToolkitExplorer/);
   assert.match(tools, /siteHowBuilt/);
-  assert.match(explorer, /aria-pressed/);
+  assert.match(explorer, /<TabsTrigger/);
+  assert.match(explorer, /<Collapsible.Trigger/);
   assert.match(explorer, /rel="noopener noreferrer"/);
   assert.match(explorer, /tool.name/);
   assert.doesNotMatch(about + tools + explorer, /Joy Index/i);
@@ -115,4 +116,27 @@ test("purpose sections preserve every tool and its evidence without duplicates",
     assert.equal(item.note, existing.get(item.id)?.note);
     assert.equal(item.href, officialToolWebsites[item.id]);
   }
+});
+
+test("workflow examples link to existing evidence with truthful practice labels", () => {
+  for (const section of toolkitSections) {
+    assert.equal(section.steps.length, 3);
+    assert.ok(section.example.length > 30);
+    const [route, anchor] = section.evidence.href.split("#");
+    const page = path.join(root, "app", route, "page.tsx");
+    assert.ok(existsSync(page), section.evidence.href);
+    if (anchor)
+      assert.ok(
+        readFileSync(page, "utf8").includes(`id="${anchor}"`),
+        section.evidence.href,
+      );
+  }
+  assert.match(
+    toolkitSections.find((item) => item.id === "build")!.status,
+    /Independent/,
+  );
+  assert.match(
+    toolkitSections.find((item) => item.id === "ai")!.status,
+    /Learning.*proposed/,
+  );
 });
