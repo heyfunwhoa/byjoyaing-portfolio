@@ -7,7 +7,61 @@
 
 Translate a business idea into a small, verified software change, using a single source of truth for each kind of information. The benefit is less context switching, less duplicate administration, and evidence-based delivery rather than declaring something done because an agent said it finished.
 
-## A simple mental model
+## Start here: save it, check it, publish it
+
+Imagine fixing a typo on a practice website. You want to save your work, check that it is right, and let visitors see the correction.
+
+**Three big steps:**
+1. **Prepare the change:** edit the text and save a recorded version.
+2. **Check and accept it:** review the change and bring it into the main version.
+3. **Publish and confirm it:** put that version on the website and check what visitors see.
+
+The technical words below name smaller steps in that same process. You do not need to memorize them all at once.
+
+### One example, from typo to live website
+
+| What you do | What developers call it |
+| --- | --- |
+| Create a separate place to fix “Welocme” without changing the main version | Create a **branch** |
+| Change it to “Welcome” and inspect the difference | **Edit** and check the **diff** |
+| Record that correction in the project's history | **Commit** |
+| Upload the recorded change so it is available on GitHub | **Push** |
+| Open a proposal showing the correction | Open a **pull request**, or **PR** |
+| Read the change and inspect the relevant automated results | **Review** and **checks** |
+| Accept the correction into the main version | **Merge** |
+| Publish the updated version to the website | **Deploy** |
+| Open the published website and confirm it says “Welcome” | **Verify live** |
+
+Some tools combine steps for you. For example, a browser editor may create the commit directly on GitHub, and merging may automatically start a deployment. The meanings still stay separate.
+
+### What should I say when the PR is ready?
+
+> Review the PR, fix any issues, and merge once the required checks pass.
+
+If it changes a website, add:
+
+> Then confirm the update is live and works as expected.
+
+**Why not just say “commit”?** A commit records work. A merge accepts the proposed work into the main version. A deployment publishes a version for visitors.
+
+### Two examples where you pause
+
+- **A check fails:** investigate the failure, fix the problem, and check the updated PR again before merging.
+- **The PR merged but the typo is still live:** inspect the deployment. The main version may be updated while the website still serves an older version.
+
+### Try explaining it back
+
+Your fictional button-label fix is committed and its PR is open. Someone says, “It is saved, so it must be live.” What would you check?
+
+**Example answer:** “I would check whether the PR was reviewed and merged, whether the updated version deployed, and whether the published button shows the corrected label.”
+
+When that feels familiar, continue below for the more detailed workflow and terminology.
+
+## Add the security layer when you are ready
+
+Continue with [Developer tools and AppSec: follow one change](developer-tooling-appsec-workflow.md). Start with IDEs and AI assistants, then Git history, pre-commit and CI/CD checks. Follow a fictional credential exposure into AppSec controls and specific MITRE ATT&CK techniques. The final layer introduces SSDF, ASVS, SAMM and CWE, with official sources and a practice exercise.
+
+## How the wider project fits together
 
 - **Strategy & prioritization:** Why do this before other work? Evaluate impact, urgency, dependencies, effort, and risk. Treat scoring as a decision aid; security incidents and hard deadlines override it.
 - **Project:** What outcome are we pursuing?
@@ -18,6 +72,38 @@ Translate a business idea into a small, verified software change, using a single
 - **GitHub:** Hold the code and PR review, plus CI/deployment evidence.
 - **Verification:** Check acceptance criteria and the relevant user journey before moving the issue to Done.
 - **Learning:** Retrospect on the process with a synthetic, publishable example; keep private reflections in a private workspace.
+
+## Commit, review, merge and deploy: what to say next
+
+A typical branch workflow is **edit → inspect the diff and run relevant checks → commit → push → open a PR → review and CI → fix issues → merge → deploy when needed → verify the published result**. Review and CI can run in parallel. Repeat commit, push and review when fixes change the PR.
+
+| Term | Plain-language meaning |
+| --- | --- |
+| Commit | Record a snapshot in Git history; saving a file alone is not a commit. |
+| Push | Upload local commits to the remote branch. Web-based tools may commit remotely without a separate local push. |
+| Pull request (PR) | Propose integrating a branch and collect discussion, review and check results. |
+| Review | Inspect the changes for correctness, scope and evidence. Review can happen before committing and again on the PR. |
+| Checks / CI | Automated validation for a particular commit; confirm what ran and what it proves. |
+| Merge | Integrate the approved change into the target branch, commonly main. |
+| Deploy | Publish a revision to an environment; a preview and production are different destinations. |
+| Verify live | Confirm the intended deployed revision and affected user behavior. |
+
+**Useful instruction when a PR already exists:** “Review the PR, fix any issues, and merge once the required checks pass on the latest commit.”
+
+For a deployed application, add: “Then verify the production deployment and affected user journey.” If merge triggers automatic deployment, inspect that deployment rather than starting a duplicate. Preview deployments may happen before merge.
+
+“Review then commit” is appropriate for reviewing uncommitted edits. Once the PR exists, the usual next action is **review then merge**; fixes still require new commits and another check of the updated PR. Green checks do not replace review or authorize bypassing repository rules.
+
+A repository-only Markdown change may be complete after merge and verifying the file on the target branch. Documentation rendered into a website still needs publication/deployment verification. A docs-only commit can also trigger a configured deployment automatically; check the actual workflow.
+
+### Quick practice: identify the next action
+
+1. Your edits are saved locally but absent from Git history. **Inspect the diff, run relevant checks, then commit and push.**
+2. A PR is open but a required check failed. **Investigate and fix it; push the fix and review the latest results before merging.**
+3. A PR merged but production still shows the old version. **Check deployment status and revision, then verify the affected page after publication.**
+4. You read the lesson but did not attempt the exercise. **Record reviewed, not practiced or passed checks.**
+
+Source: [GitHub Docs — GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), checked 2026-10-13. The deployment steps above describe this lesson's delivery convention; each repository determines its own deployment triggers.
 
 ## Follow a fictional revenue-planning product
 
