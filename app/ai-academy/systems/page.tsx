@@ -1,5 +1,5 @@
+import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = completePageMetadata({ title: "Systems Engineering", description: "Learn systems architecture, research pipelines, evidence and operations through applied exercises." }, "/ai-academy/systems");
@@ -31,7 +31,8 @@ const labs = [
 
 export default function SystemsPage() {
  return <main id="main-content" tabIndex={-1} className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
-   <Link href="/ai-academy" className="text-sm text-muted underline underline-offset-4">← Back to Academy</Link>
+    <AcademyBreadcrumb title="Systems Engineering" />
+
    <p className="mt-8 text-xs font-semibold uppercase tracking-widest text-muted">Builder Academy · Learning pathway</p>
    <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground">Engineering connected systems</h1>
    <p className="mt-4 max-w-3xl text-muted">Explore how software, data, research, security and operations fit together. Start with the mental model, try a synthetic exercise, then apply it to a portfolio project.</p>

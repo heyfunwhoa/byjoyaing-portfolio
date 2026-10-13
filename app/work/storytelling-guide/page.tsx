@@ -1,3 +1,4 @@
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { robotsNoindex } from "@/lib/indexing";
@@ -14,7 +15,8 @@ export const metadata: Metadata = completePageMetadata({
 
 export default function StorytellingGuide() {
   return <PageMain><div className="py-12 sm:py-16">
-    <p className="editorial-eyebrow text-accent">Portfolio design / Editorial templates</p>
+    <CollectionBreadcrumb items={[{ href: "/", label: "Home" }, { href: "/work", label: "Work" }, { label: "Storytelling Guide" }]} />
+    <p className="editorial-eyebrow mt-4 text-accent">Portfolio design / Editorial templates</p>
     <h1 className="editorial-title mt-3">Two kinds of work. Two ways to tell the story.</h1>
     <p className="editorial-intro my-6 text-muted">This page demonstrates reusable case-study structures using fictional examples. They are not customer outcomes, employment claims or deployed products.</p>
     <div className="grid gap-8">
@@ -42,6 +44,6 @@ export default function StorytellingGuide() {
         next:["Test source validation","Review the user experience on mobile"],
       }} />
     </div>
-    <Link href="/experience" className="editorial-link mt-8 inline-block text-sm font-semibold text-accent underline">Return to professional work →</Link>
+    <Link href="/work" className="editorial-link mt-8 inline-block text-sm font-semibold text-accent underline">Return to professional work →</Link>
   </div></PageMain>;
 }

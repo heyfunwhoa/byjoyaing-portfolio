@@ -1,3 +1,4 @@
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { ProjectStatusPill } from "@/components/project-status-pill";
@@ -36,11 +37,7 @@ export default async function CapabilityPage({ params }: PageProps) {
   return (
     <PageMain>
       <section className="border-b border-border py-12">
-        <p className="text-sm font-medium text-muted">
-          <Link href="/capabilities" className="hover:text-foreground">Capabilities</Link>
-          {" / "}
-          {view.title}
-        </p>
+        <CollectionBreadcrumb items={[{ href: "/", label: "Home" }, { href: "/capabilities", label: "Capabilities" }, { label: view.title }]} />
         <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">{view.title}</h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">{view.summary}</p>
       </section>

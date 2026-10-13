@@ -1,3 +1,4 @@
+import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
 import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
@@ -97,9 +98,10 @@ export default function DesignLabPage() {
             The header on this page is the public <code className="font-mono text-xs">SiteHeader</code>. Home, About, Work, Field Notes, Side Quests, and Contact stay in that order. Below 1024px the links sit in a panel with <code className="font-mono text-xs">absolute top-full</code>. Escape and the scrim return focus to the menu button. This lab does not render a second header.
           </p>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-            Case-study breadcrumbs are live. Kind work reads Home / Work / title. Kind side-quest reads Home / Side Quests / title. Field Notes guides read Home / Field Notes / title. Filters on this page are pressed buttons, not tabs.
+            Case-study breadcrumbs are live. Kind work reads Home / Work / title. Kind side-quest reads Home / Side Quests / title. Field Notes guides read Home / Field Notes / title. Academy lessons use Home / Builder Academy / lesson; practice labs include Playground. Only real parent pages are linked. Filters on this page are pressed buttons, not tabs.
           </p>
           <div className="mt-5 space-y-3 rounded-xl border border-border bg-card p-4">
+            <AcademyBreadcrumb title="Research Pipeline Simulator" playground />
             <CollectionBreadcrumb
               items={[
                 { href: "/", label: "Home" },

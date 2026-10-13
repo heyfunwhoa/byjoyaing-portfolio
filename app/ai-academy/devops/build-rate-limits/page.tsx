@@ -1,6 +1,6 @@
+import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = completePageMetadata({
   title: "Build Rate Limits",
@@ -33,7 +33,8 @@ const cases = [
 export default function BuildRateLimitsLesson() {
   return (
     <main id="main-content" tabIndex={-1} className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8">
-      <nav className="mb-8 text-sm text-muted"><Link href="/ai-academy" className="underline underline-offset-4 hover:text-foreground">← Builder Academy</Link> / DevOps / Build rate limits</nav>
+    <AcademyBreadcrumb title="Build Rate Limits" />
+
       <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">Builder Academy · DevOps foundations · Beginner</p>
       <h1 className="mb-5 text-4xl font-semibold leading-tight tracking-normal sm:text-5xl">Why did my deployment get rate-limited?</h1>
       <p className="max-w-3xl text-lg leading-relaxed text-muted">A practical lesson inspired by a real portfolio workflow: learn what builds do, why repeated pushes can trigger platform limits, and how to fix the deployment process without disabling your CI safeguards.</p>
