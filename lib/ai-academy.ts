@@ -281,6 +281,7 @@ export const lessons: Lesson[] = [
     analogy: "A restaurant order has one ticket, a recipe, a kitchen station and a quality check. You do not need five copies of the same order to know whether dinner is ready.",
     takeaways: [
       "Start with three steps: prepare a change, check and accept it, then publish and confirm it. Follow a fictional website typo fix in the companion guide.",
+      "Next, learn where IDEs, AI assistants, Git, pre-commit hooks and CI/CD fit. The companion links a worked AppSec example with MITRE ATT&CK techniques, SSDF, ASVS, SAMM and CWE; a framework mapping is not proof of tool coverage."
       "Commit means record your work. Merge means accept it into the main version. Deploy means publish a version for visitors. These are separate steps."
       "For an open PR, say: Review the PR, fix any issues, and merge once required checks pass on the latest commit. Review and CI can run in parallel; fixes repeat the loop.",
       "A merge is not proof of deployment. Repository-only docs may finish at merge; website lesson updates still need publication verification. Reading a lesson is reviewed, not practiced or passed checks.",
