@@ -115,3 +115,9 @@ Task: help a hiring reader understand the person, inspect professional evidence 
 Reuse: existing page sections, `CapabilityOrbit`, `ToolsMap`, `CareerRail`, `ExperienceTimeline`, `FeaturedSideQuestStrip` and `WorkExplorer`. Catalog families: summaries and disclosure. No new component, dependency, motion or upstream source. Source is this repository; owner is the portfolio maintainer. Status: proposed until review/merge.
 
 Responsive composition: the same section DOM order on phone, tablet and desktop; existing inner grids, tabs and disclosures retain their responsive rules. Keyboard and screen-reader traversal follow section order; durable anchors stay in place. Reduced-motion behavior is inherited without new animations. No new loading, error or permission states. No new test is necessary for static section movement; use existing type/build, page smoke and interaction checks. Verification and unrun manual checks are recorded in the PR. Roll back by reverting this focused commit.
+
+## Single contact form (2026-10-13, proposed)
+
+Reuse `InquiryForm` at `/contact` for all inquiries. Remove the message/request mode switch, optional company field and required focus selector. Keep Name, Email, Message and one Send action. Approved project query parameters prefill an editable message; the submitted text is exactly what the visitor can review. Preserve `#write` and `#access` anchors, honeypot, elapsed-time signal, no-autocapture attribute and server validation/rate limits. Keep one compact reviewed-sharing notice. Existing responsive field grid and focus/motion behavior remain. No dependencies or email backend changes.
+
+Verification: scoped lint, TypeScript, navigation/request tests; updated browser coverage mocks the mail endpoint to verify project context without sending email. Hosted browser checks remain required before merge. Personal interests stay on About; a short Contact invitation is a recommendation, not implemented here.
