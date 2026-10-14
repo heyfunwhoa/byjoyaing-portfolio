@@ -82,6 +82,52 @@ export default function WorkPage() {
           .
         </p>
       </section>
+      <section className="border-b border-border py-12 sm:py-16" aria-labelledby="leadership-evidence-heading">
+        <p className="editorial-eyebrow text-accent">Leadership evidence / Three perspectives</p>
+        <h2 id="leadership-evidence-heading" className="mt-2 font-display text-3xl">
+          Decisions, systems, and evidence
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
+          Start with real professional contributions, then inspect two independent
+          demonstrations. The Account Workshop uses entirely fictional records;
+          cybersecurity comparisons document sources and uncertainty, not
+          independently certified vendor performance.
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {[
+            {
+              title: "Commercial leadership",
+              kind: "Professional contribution",
+              description: "Coaching, field enablement, and cross-functional onboarding. Informal leadership, not a claim of direct management.",
+              href: "/experience",
+              action: "Review career evidence",
+            },
+            {
+              title: "Account Workshop",
+              kind: "Synthetic demonstration",
+              description: "Explore evidence lineage, account hypotheses, and why a corrected source must reopen downstream decisions. No real people or customer research.",
+              href: "/work/account-intelligence",
+              action: "Explore the illustrated workflow",
+            },
+            {
+              title: "Cybersecurity research",
+              kind: "Independent research",
+              description: "Compare secrets-detection claims with provenance, licensing caveats, and explicit unknowns. Publisher documentation is not product testing.",
+              href: "/work/detector-coverage-atlas",
+              action: "Explore the research example",
+            },
+          ].map((example) => (
+            <article key={example.title} className="min-w-0 rounded-xl border border-border bg-card p-6">
+              <p className="text-xs font-semibold tracking-wide text-accent">{example.kind}</p>
+              <h3 className="mt-2 text-xl font-semibold">{example.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-muted">{example.description}</p>
+              <Link href={example.href} className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
+                {example.action} →
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="py-12" aria-label="Related professional work">
         <h2 className="font-display text-2xl">Related field systems</h2>
         <div className="mt-5 grid gap-4 md:grid-cols-2">
