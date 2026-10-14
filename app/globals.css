@@ -283,7 +283,24 @@ body {
 .nav-interactive[aria-current]::after {
   transform: scaleX(1);
 }
-/* The signature orbit stays still; the adjacent wordmark communicates hover and focus. */
+/* The open-orbit signature responds to intentional hover and keyboard focus only. */
+.nav-brand-mark svg {
+  transform-origin: center;
+  transition: transform 180ms ease-out;
+}
+.group\/brand:hover .nav-brand-mark svg,
+.group\/brand:focus-visible .nav-brand-mark svg {
+  transform: rotate(8deg) translateY(-1px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-brand-mark svg {
+    transition: none;
+  }
+  .group\/brand:hover .nav-brand-mark svg,
+  .group\/brand:focus-visible .nav-brand-mark svg {
+    transform: none;
+  }
+}
 @keyframes nav-panel-reveal {
   from { opacity: 0.92; transform: translateY(-0.35rem); }
   to { opacity: 1; transform: translateY(0); }
