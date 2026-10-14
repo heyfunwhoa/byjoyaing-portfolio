@@ -262,7 +262,7 @@ body {
   border: 1px solid var(--accent);
   border-right-color: transparent;
   border-radius: 50%;
-  background: radial-gradient(circle at 78% 20%, var(--accent) 0 1.5px, transparent 2px);
+  background: transparent;
 }
 
 /* Navigation gestures: subtle editorial cues, not continuously animated decoration. */
