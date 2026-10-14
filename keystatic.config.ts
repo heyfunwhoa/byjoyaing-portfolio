@@ -53,6 +53,26 @@ export default config({
   storage: { kind: "local" },
   ui: { brand: { name: "joy. · local editorial" } },
   singletons: {
+    home: singleton({
+      label: "Home page",
+      path: "content/home/page",
+      format: "json",
+      schema: {
+        id: fields.select({
+          label: "Stable page ID (fixed)",
+          options: [{ label: "home", value: "home" }],
+          defaultValue: "home",
+        }),
+        metaDescription: text("Meta description", true),
+        eyebrow: text("Cover eyebrow"),
+        headline: text("Headline"),
+        headlineAccent: text("Headline accent"),
+        philosophy: text("Philosophy line"),
+        body: text("Cover body", true),
+        caption: text("Avatar caption"),
+        ...governanceFields(),
+      },
+    }),
     about: singleton({
       label: "About page",
       path: "content/about/page",

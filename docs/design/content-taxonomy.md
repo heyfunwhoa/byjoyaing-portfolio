@@ -72,6 +72,7 @@ Do not rename those query values in the same change as the visible Side Quest he
 | Kind | `lib/portfolio-registry.ts` | `/work`, `/side-quests` |
 | Directory filters | `lib/project-directory.ts` | `/projects`, Side Quest deep links |
 | Narrative stories | `lib/public-stories.ts` | `/work` |
+| Home cover | `content/home/page.json` through `lib/home/editorial.ts`. Role excerpts on Home still read `roles`. | `/` |
 | About sentences and interests | `content/about/page.json` through `lib/about/editorial.ts`. `lib/public-personal.ts` projects the beyond-work fields and is not a second copy. | `/about` |
 | Field note copy | route files and `lib/field-notes.ts` | `/field-notes/*` |
 

@@ -22,7 +22,7 @@ Actions:
 
 | Current | Owner today | Proposed owner | Action |
 | --- | --- | --- | --- |
-| `/` hero, one-line philosophy, Leader avatar | Home | Home | Keep. The second hero action is About, not Side Quests. See [homepage-simplification.md](homepage-simplification.md). |
+| `/` hero, one-line philosophy, Leader avatar | Home | Home | Keep. Cover sentences now live in `content/home/page.json` (2026-10-14). The second hero action is About, not Side Quests. See [homepage-simplification.md](homepage-simplification.md). |
 | `/` People / Problem-driven / Systems list | Home | About | Point. Home keeps the single philosophy line. The three-item list leaves the homepage. |
 | `/` Truffle record | Home | Home, condensed; full points on `/experience` | Condense to one paragraph made from the existing points. |
 | `/` Rapid7 and Forcepoint rows | Home | `/experience` | Point. Home keeps one existing sentence each. Full bullets stay on the timeline. |
