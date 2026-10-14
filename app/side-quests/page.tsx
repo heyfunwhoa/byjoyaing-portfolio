@@ -69,7 +69,7 @@ export default function SideQuestsPage() {
       </section>
 
       <section aria-labelledby="featured-quests-title" className="section-enter border-b border-border py-12">
-        <p className="editorial-eyebrow text-accent">Featured builds</p>
+        <p className="orbital-section-label editorial-eyebrow text-accent">Featured builds</p>
         <h2 id="featured-quests-title" className="mt-2 font-display text-3xl">
           Selected experiments
         </h2>
