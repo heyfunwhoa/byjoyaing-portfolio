@@ -13,7 +13,7 @@ Do not fill the "Current" column with estimates. A blank current value means it 
 | Keyboard, zoom, and viewport pass | UX quality | Record viewport and what failed. Automated scans do not prove WCAG 2.2 AA. |
 | Repository checks | Technical quality | Count only jobs that exist in `.github/workflows/`. |
 | Editorial review | Content integrity | Compare the sentence with the public source. |
-| Product analytics | PostHog public-page analytics is implemented, independently gated and disabled by default. No verified baseline. | See [Analytics decision and privacy plan](./portfolio-analytics-plan.md) and [issue #74](https://github.com/heyfunwhoa/byjoyaing-portfolio/issues/74). A token alone does not activate analytics; live payload and dashboard verification remain required. |
+| Product analytics | PostHog public-page analytics is implemented, independently gated and disabled by default. Vercel Web Analytics is mounted for the same reviewed public routes, with queries stripped. No verified baseline. | See [Analytics decision and privacy plan](./portfolio-analytics-plan.md) and [issue #74](https://github.com/heyfunwhoa/byjoyaing-portfolio/issues/74). A token or installed package alone does not prove live collection; dashboard verification remains required. |
 
 ## Objectives
 
