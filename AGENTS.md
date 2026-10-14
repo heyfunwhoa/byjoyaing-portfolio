@@ -37,6 +37,25 @@ These are **links, not copied policy**. Local branding, privacy, product require
 
 For scoped agent work: inspect existing issues/PRs before starting, map acceptance criteria to actual verification evidence, report checks not run, and stop for human review before merge or deployment. Do not create another source of truth or automatically synchronize documents.
 
+## Risk-based Linear and delivery governance
+
+Classify the change **before** deciding whether to create a Linear issue. This is a tracking/coordination scale, distinct from the shared engineering baseline's security risk tiers A–C; apply both independently. Never lower security, privacy, accessibility, review or verification requirements merely because tracking is skipped.
+
+| Delivery tier | Typical work | Linear decision |
+| --- | --- | --- |
+| **0 — Trivial/editorial** | Approved Keystatic copy, biography, metadata, typo, minor nonbehavioral styling or documentation correction | **Skip new issue.** Reference an existing issue only when useful. Follow editorial review and approved PR/publication gates. |
+| **1 — Small isolated change** | One icon/component, small responsive or accessibility refinement without interface changes | **Optional.** Reuse/create only for meaningful regression risk, dependencies, several consumers, multi-session/PR follow-up, roadmap commitments or durable decisions. When unsure, skip new issue and state why. |
+| **2 — Feature/meaningful enhancement** | New interaction, Academy lesson experience, CMS schema/collection, content migration, shared design subsystem or material information architecture | **Required.** Search and reuse existing issue/parent/project; otherwise create one focused issue with scope, AC, estimate, dependencies, canonical requirements and PR links. |
+| **3 — High-risk/architectural** | Production CMS authentication, private case studies, APIs, migrations, security/privacy boundaries, CI/deployment permissions or cross-repo changes | **Required plus explicit technical, security/privacy, negative-path and rollback review.** Use an ADR for significant durable choices; respect human authorization gates. |
+
+Before creating a ticket, inspect current main, relevant PRs and existing Linear issues/parents, the canonical Notion PRD and repo-specific decisions. Do not duplicate issues, projects, standards or PRs, or inflate work to justify a ticket. Reuse **KRU-75 and merged PR #155** for the Keystatic local Academy pilot; routine editorial edits to its established schema are Tier 0, while **hosted GitHub authentication/publication** is separate Tier 3 scope only after searching for existing coverage and receiving authorization. A merged pilot is not proof hosted publication is configured.
+
+**Tracked delivery:** approved requirements → existing Linear issue (In Progress when implementation starts) → focused branch/PR → applicable CI, accessibility and security checks → human review → approved merge → separately verified deployment → Done only when the agreed AC are met. Link the PR, record material decisions, blockers, effort/dependencies and **AC-to-evidence** in the issue. Distinguish proposed, implemented, tested, merged, deployed and verified; never claim a check, publication or accessibility result that was not observed. Identify the next actionable issue.
+
+**Untracked small change:** follow the established editor/Git workflow, proportional tests/review and deployment verification where applicable; no issue is required just for traceability. **Editorial publishing:** Keystatic save changes local content; it is not Git publication. Follow content review, PR/preview and branch-protected publishing where required. **Research:** keep exploratory questions in Notion/research docs; track only approved deliverables, time-bound dependencies or committed spikes.
+
+**Authority:** Notion owns canonical product requirements/strategy; Linear owns committed work, estimates, blockers and state; GitHub owns code, approved versioned content and PR/test evidence; Keystatic authors structured public content; Vercel reports preview/production deployment. Link instead of copying entire PRDs or mutable plans. No automatic document synchronization. Use the repository's existing PR template and the applicable shared engineering Definition of Done; risk-based tracking never replaces required checks.
+
 ## UI and motion workbench reuse
 
 Before UI, layout, component or animation work, read [the workbench reuse contract](docs/design/workbench-reuse.md), the linked inventory, and relevant workbench/catalog entries. Reuse or adapt suitable existing patterns before creating a parallel implementation. Record the source, destination, reuse decision, responsive/accessibility behavior and verification in the PR. Lab availability is not approval for public use; retain scoped adoption review, brand tokens and existing dependency restrictions. This requirement does not mandate motion or copying portfolio branding into other apps.
