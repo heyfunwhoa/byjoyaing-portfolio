@@ -3,14 +3,14 @@
 **Status:** Adoption record for this repository's Keystatic editor. It does not replace the brand guide, the product requirements, the content model, the route taxonomy, or the URL migration map.  
 **Date:** 2026-10-14  
 **Issue:** [KRU-109](https://linear.app/krusty/issue/KRU-109)  
-**Baseline:** `main` after merged [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155) (KRU-75 verification lesson).  
+**Baseline:** `main` after merged [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155) (KRU-75 verification lesson), then reconciled with merged [PR #171](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/171) (CMS decision guide) and merged [PR #173](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/173) (CMS Fundamentals module, KRU-110).  
 **Editor:** the existing local Keystatic install. Storage remains `{ kind: "local" }`. No second CMS, registry, or cross-repository sync.
 
 Authority that still wins when this note and another file disagree:
 
 - Identity and voice: [brand-guidelines.md](../brand/brand-guidelines.md)
 - Product requirements: [portfolio-experience-v2-prd.md](../product/portfolio-experience-v2-prd.md), with Notion Portfolio Experience 2.0 as the planning page that points here
-- Field and privacy rules: [content-model.md](../content-model.md)
+- Field and privacy rules, plus the cross-repository CMS decision guide: [content-model.md](../content-model.md)
 - Routes and facets: [content-taxonomy.md](../design/content-taxonomy.md)
 - URL moves: [content-migration-map.md](../design/content-migration-map.md)
 - Lesson pilot contract: [KEYSTATIC-PILOT.md](../academy/KEYSTATIC-PILOT.md)
@@ -92,12 +92,14 @@ This is Tier 3. It needs its own issue after a search for an existing one, plus 
 
 Owning repositories stay authoritative. This portfolio does not sync their content, and they should not import this Keystatic config.
 
-Access on 2026-10-14: `heyfunwhoa/security-market-map` is public and its README was read. `gtm-revenue-os`, `account-signal-engine`, `detector-coverage-atlas`, `joy-index`, and `technical-docs-platform` did not resolve with the available GitHub credential. Those five recommendations use this repo's content model, prior source register, and Linear scope. They are not fresh code audits. The shared engineering baseline in technical-docs-platform was **not** readable, so it was not treated as consulted.
+The class labels below are the same labels in the [content model decision guide](../content-model.md). That guide's "Possible later" column is a revisit trigger for the owning repository. It is not a second adoption decision. Notion Portfolio Experience 2.0 keeps About's job as who I am, with public interests only and no Joy Index. This slice does not change that job.
+
+Access rechecked 2026-10-14 after PR #171: `heyfunwhoa/security-market-map` is public and its description was read. `gtm-revenue-os`, `account-signal-engine`, `detector-coverage-atlas`, `joy-index`, and `technical-docs-platform` still did not resolve with the available GitHub credential. Those five recommendations use this repo's content model, prior source register, and Linear scope. They are not fresh code audits. The shared engineering baseline in technical-docs-platform was **not** readable, so it was not treated as consulted.
 
 | Repository | Class | Why |
 | --- | --- | --- |
-| security-market-map | **Later** | The public app's catalog and research jobs in `lib/data` are evidence, not marketing copy. A CMS must not become a second vendor inventory. Revisit only if that repo's maintainers split a small public explainer set from the catalog and choose an editor there. |
-| gtm-revenue-os | **Do Not Adopt** | It is an operating system for commercial decisions. Portfolio pages already label related studies as synthetic. Keystatic is not its store, and this session could not read the repo. |
+| security-market-map | **Later** | The public catalog is evidence, not marketing copy. A CMS must not become a second vendor inventory. Revisit only if that repo's maintainers split a small public explainer set from the catalog and choose an editor there. |
+| gtm-revenue-os | **Do Not Adopt** | Commercial calculations and assumptions stay in the owning system. A future narrative guide would be a new decision in that repo, not this adoption. Portfolio pages already label related studies as synthetic. This session could not read the repo. |
 | account-signal-engine | **Do Not Adopt** | Account signals, review history, and exports are application data. The content model forbids publishing those records. Editor auth would not be reader auth. Repo unread here. |
 | detector-coverage-atlas | **Do Not Adopt** | Generated snapshots need a known-good publication gate, which is application logic. A CMS would be a parallel catalog. Upstream unread here. The public portfolio case study stays in this repo. |
 | joy-index | **Do Not Adopt** | Private. No route, no import, no CMS projection. Unread here, and that absence is not permission to infer its contents. |

@@ -182,7 +182,7 @@ Write the content source, component, styling rule, expected link destination and
 
 ## What to learn next
 
-- [CMS fundamentals: Keystatic versus Sanity](cms-fundamentals.md) — content models, editorial workflows, cost and privacy
+- [CMS fundamentals](cms-fundamentals.md) — architecture, content models, publishing, governance, and selection
 - [Authentication versus authorization](authentication-vs-authorization.md) — separate identity from access decisions
 
 - [Programming Foundations](../ai-academy/programming-foundations.md) — individual language/framework basics

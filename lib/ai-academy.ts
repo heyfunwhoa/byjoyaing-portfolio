@@ -12,22 +12,22 @@ export const lessons: Lesson[] = [
   ...enterpriseEvaluationLessons,
 {
   "slug": "cms-fundamentals",
-  "title": "Content management: Git, Keystatic, and Sanity",
+  "title": "CMS fundamentals: architecture, modeling, and selection",
   "track": "Builder",
-  "minutes": 20,
+  "minutes": 35,
   "level": "Beginner",
-  "summary": "Understand what a CMS does, compare repository-based and hosted content, and decide when an editor is worth adding.",
+  "summary": "Learn CMS terms and overlapping architectures, model content, trace publishing and rollback, and compare Git, Keystatic, TinaCMS, Sanity, Payload, and WordPress.",
   "analogy": "A CMS is the editorial desk: writers organize and revise material, while the website is the place readers experience it. The publishing process connects the two.",
   "takeaways": [
-    "A content management system helps people create, organize, edit and publish content using defined fields and workflows.",
-    "Traditional CMSs often combine editing and website presentation; headless CMSs expose content to a separate frontend. Git-based describes file storage and can overlap with headless delivery.",
-    "A schema defines fields such as lesson ID, title, prerequisites, body and sources; content records fill those fields, while components control presentation and interaction.",
-    "Keystatic edits repository files; Sanity stores structured content in a hosted database. Choose based on editorial workflow, reuse, privacy and total operating cost.",
-    "Free software or a free plan does not remove hosting, build, storage, maintenance or migration costs. Git-based edits may still trigger CI.",
-    "A private page does not protect a public dataset or public repository. Editor login and reader authorization are separate controls.",
-    "A CMS becomes useful when frequent content edits, collaboration or reuse justify its setup. It does not automatically implement learner progress, authentication or source verification."
+    "A CMS helps people create, organize, edit, and publish content. It is not automatically a database, a digital asset manager, a learning system, or a product API.",
+    "Traditional, headless, decoupled, hybrid, Git-backed, and API-first describe overlapping dimensions. One product can match more than one of them.",
+    "A schema defines content types, fields, and references. Keep a stable identifier when titles or URL slugs change.",
+    "Draft, preview, review, publish, and verify are separate steps. A static build or cache can keep showing the previous version after publish.",
+    "Editor login and reader authorization are different controls. A private page does not protect a public dataset, repository, or asset URL.",
+    "Git-only, Keystatic, TinaCMS, Sanity, Payload, and WordPress fit different editing and operating needs. Recheck plan limits before you rely on a price.",
+    "On this portfolio, local Keystatic edits the public verification lesson and the About page sentences. Lesson checks, learner progress, and page interaction stay in application code. Hosted editing is not configured."
   ],
-  "exercise": "Read the CMS fundamentals companion guide. For a fictional three-lesson Academy, define the content fields, choose Git alone, Keystatic or Sanity, and trace draft to review to publication. Explain where private material and learner progress belong. Use the written answer key for self-review; no CMS is installed and no production content is changed.",
+  "exercise": "Use the practice lab on this card for three decisions: architecture, schema, and publishing rollback. Then read docs/builder-academy/cms-fundamentals.md and complete its written self-review. The lab checks choices against the lesson guidance. It does not save progress, grade the written answers, or prove a production CMS is configured safely.",
   "check": {
     "question": "A team already reviews lesson files in Git and wants an editing interface for one site. Which is the most proportionate first experiment?",
     "choices": [
@@ -36,10 +36,10 @@ export const lessons: Lesson[] = [
       "Put confidential lessons in a public dataset and hide their page links"
     ],
     "answer": 1,
-    "explanation": "A small repository-based editing pilot addresses the stated need. Sanity may fit independent publishing or cross-app content reuse, but neither a CMS editor nor a hidden URL establishes reader authorization."
+    "explanation": "A small repository-based editing pilot addresses the stated need. On this portfolio, local Keystatic already edits the public verification lesson and the About page sentences; hosted editing is not configured. Sanity may fit independent publishing or cross-app reuse, but neither an editor nor a hidden URL establishes reader authorization."
   },
   "companion": {
-    "label": "Read the CMS fundamentals and selection guide",
+    "label": "Read the six-chapter CMS fundamentals guide",
     "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/cms-fundamentals.md"
   },
   "sources": [
@@ -48,12 +48,20 @@ export const lessons: Lesson[] = [
       "url": "https://keystatic.com/docs/introduction"
     },
     {
-      "label": "Sanity: platform documentation",
-      "url": "https://www.sanity.io/docs"
+      "label": "Sanity: content modeling",
+      "url": "https://www.sanity.io/content-modeling"
     },
     {
       "label": "Sanity: current plans",
       "url": "https://www.sanity.io/pricing"
+    },
+    {
+      "label": "Payload: what it includes",
+      "url": "https://payloadcms.com/docs/getting-started/what-is-payload"
+    },
+    {
+      "label": "TinaCMS: Git-backed editing",
+      "url": "https://tina.io/docs"
     },
     {
       "label": "WordPress: features",
