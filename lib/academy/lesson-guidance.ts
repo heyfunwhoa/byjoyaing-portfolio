@@ -28,6 +28,11 @@ const availableLesson = {
 } as const;
 
 export const lessonGuidance = {
+  "fde-ai-agent-engineering": {
+    ...availableLesson,
+    prerequisites: [],
+    guide: guide("fde-ai-agent-engineering", "Read the AI agent engineering companion"),
+  },
   "reading-code-and-yaml": {
     ...availableLesson,
     prerequisites: [],
