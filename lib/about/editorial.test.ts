@@ -66,7 +66,7 @@ test("malformed About content and missing required fields fail closed", () => {
   assert.throws(() => readAboutEditorial(badInterest));
 
   const linkedInterest = clone();
-  linkedInterest.interests[0].href = "/side-quests";
+  (linkedInterest.interests[0] as { href?: string }).href = "/side-quests";
   assert.throws(() => readAboutEditorial(linkedInterest));
 
   const blankPrinciple = clone();
