@@ -27,7 +27,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: trufflesecurity/trufflehog@3bcf19f51e91a9655d84ddb623728c7620be482a # main
+      - uses: trufflesecurity/trufflehog@b40e7fe3b76735e0e8a820bf321b2aded8bc82e7 # main
         with:
           version: "3.99.2"
           extra_args: --results=verified,unknown
