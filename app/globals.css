@@ -251,6 +251,20 @@ body {
   }
 }
 
+/* Editorial orbit cue: one small open ring + node in section labels, never in data/status UI. */
+.orbital-section-label::before {
+  content: "";
+  display: inline-block;
+  width: .7rem;
+  height: .7rem;
+  margin-inline-end: .6rem;
+  vertical-align: -.04rem;
+  border: 1px solid var(--accent);
+  border-right-color: transparent;
+  border-radius: 50%;
+  background: radial-gradient(circle at 78% 20%, var(--accent) 0 1.5px, transparent 2px);
+}
+
 /* Navigation gestures: subtle editorial cues, not continuously animated decoration. */
 .nav-interactive::after {
   content: "";
