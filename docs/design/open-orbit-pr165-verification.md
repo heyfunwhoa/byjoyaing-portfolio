@@ -11,11 +11,11 @@ The shared `components/mark.tsx` remains the only navigation signature mark. Exi
 - Larger contextual orbit artwork and semantic relationship diagrams retain their existing components and sizes rather than being forced to share the 16px logo glyph.
 - Use the existing `--background`, `--foreground`, `--accent`, and `--border` palette. Light is the documented site-wide color scheme. Dark panels must explicitly set contrasting inherited text color.
 - Preserve visible `Kristen Aing` and the accessible surrounding home link. The `joy.` signature remains visible on pointer hover and keyboard focus.
-- The brand mark does not animate or rotate. Header link color/focus and menu-state changes communicate interaction instead.
+- The open-arc mark makes a restrained 8° rotation and 1px upward translation on pointer hover or keyboard focus, over 180ms ease-out. It does not animate at rest, and `prefers-reduced-motion: reduce` disables both transition and transform. Link color and focus remain available without motion.
 - Mobile menu remains a separate labeled hamburger/close control with minimum 44 × 44px target. The shared header's Escape handling, focus return, inert overlay, and scroll lock are unchanged.
 
 ## Scope
-Changed `components/mark.tsx` and the mark-specific transition rules in `app/globals.css`; no content, routes, dependencies, menu logic, orbit illustrations, or data schemas changed.
+Changed `components/mark.tsx` and the small hover/focus/reduced-motion rules in `app/globals.css`; no content, routes, dependencies, menu logic, orbit illustrations, or data schemas changed.
 
 ## Evidence and checks
 - [x] Reviewed PR #165 diff and open draft state.
@@ -39,3 +39,7 @@ Keep PR #165 unmerged until updated-head CI and visual/accessibility checks are 
 ## Reconciliation checkpoint — 2026-10-14
 
 PRs #160, #161, and #166 are merged. PR #166 added the static `.orbital-section-label` cue to editorial pages and brand guidelines; it did not change `components/mark.tsx`. This file's automated-check evidence refers to the **previous implementation head** stated above; this documentation-only commit requires fresh branch status before merge. Manual WCAG 2.2 AA, full responsive matrix, live production verification, and explicit human visual approval remain outstanding. No claim of production deployment is made.
+
+## Approved interaction direction — 2026-10-14
+
+Owner clarified the requested visual: replace the copper square beside Kristen Aing with an **open arc with subtle motion**. On branch commit `9e0552c20de6b1358b3f50e11fcfb1890ced39f4`, CSS limits the 8° rotation and 1px rise to brand-link hover/focus-visible, with no idle animation, no added package, and a reduced-motion no-transform override. This implementation must still pass current-head CI and visual/keyboard/reduced-motion browser verification before merge.
