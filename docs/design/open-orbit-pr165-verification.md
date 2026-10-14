@@ -22,16 +22,20 @@ Changed `components/mark.tsx` and the mark-specific transition rules in `app/glo
 - [x] Read `docs/brand/brand-guidelines.md`, `docs/design/celestial-editorial-audit.md`, the shared header and existing orbital components.
 - [x] Confirmed existing menu button declares distinct `aria-label`, `aria-expanded`, `aria-controls`, and `min-h-11 min-w-11` classes (static inspection, not browser testing).
 - [x] Verified the shared mark is decorative (`aria-hidden`, `focusable=false`) and inherits foreground color (static inspection).
-- [ ] `npm test` on this PR's latest head.
-- [ ] `npm run lint` on this PR's latest head.
-- [ ] `npx tsc --noEmit` on this PR's latest head.
-- [ ] `npm run build` on this PR's latest head.
+- [x] Unit tests passed in GitHub Actions CI run 38564152617 for head `2dc54053f5d140a9353d846967d3fb7aab609e0a` (not separately run locally).
+- [x] Lint passed in GitHub Actions CI run 38564152617 for the recorded head.
+- [x] Production build + TypeScript CI job passed in run 38564152617. Standalone `npx tsc --noEmit` was not independently executed.
+- [x] Production build and browser smoke job passed in CI run 38564152617 for the recorded head.
 - [ ] Browser review at 320, 375, 768, 1024, 1440 CSS pixels and 200% zoom.
 - [ ] Keyboard navigation, Escape, focus return, scrim dismissal, and reduced-motion browser verification.
 - [ ] Contrast measurement for actual light and dark surfaces, not just palette tokens.
-- [ ] Confirm automated CI results for the latest commit.
+- [x] GitHub Actions results checked for head `2dc54053f5d140a9353d846967d3fb7aab609e0a`: CI 38564152617, security scans 38564152647, Semgrep 38564152613, bounded visual QA 38564152656 all succeeded; Vercel commit status was success. This does not verify the live production site.
 
 The earlier 2026-10-11 audit's passing checks apply to its historical branch/build, **not** automatically to PR #165. Vercel's original preview deployment succeeded for an earlier PR commit, but cannot establish current-head test or accessibility acceptance.
 
 ## Merge gate
-Keep PR #165 in draft until current-head CI and visual/accessibility checks are recorded. Do not merge an untested branding change or retarget other open PRs as part of this work.
+Keep PR #165 unmerged until updated-head CI and visual/accessibility checks are recorded. PR is currently open and not marked draft; a human review has not been recorded. Do not merge an untested branding change or retarget other open PRs as part of this work.
+
+## Reconciliation checkpoint — 2026-10-14
+
+PRs #160, #161, and #166 are merged. PR #166 added the static `.orbital-section-label` cue to editorial pages and brand guidelines; it did not change `components/mark.tsx`. This file's automated-check evidence refers to the **previous implementation head** stated above; this documentation-only commit requires fresh branch status before merge. Manual WCAG 2.2 AA, full responsive matrix, live production verification, and explicit human visual approval remain outstanding. No claim of production deployment is made.
