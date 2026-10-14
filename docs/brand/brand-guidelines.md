@@ -168,6 +168,7 @@ Follow least-privilege workflows, dependency and secret checks, no credentials o
 ## 9. Source of truth and change control
 
 - **This file:** canonical cross-page brand foundations and guardrails once its PR is approved.
+- **[Brand System v1](./brand-system-v1.md):** implementation layer for brand architecture, abstract visual grammar, product-family inheritance, imagery, motion, data visualization and AI-generation rules. It extends this guide and cannot override these foundations silently.
 - **`app/globals.css`:** actual shipped color and font tokens; synchronize intentionally when changed.
 - **PR #3:** proposed About story, values and leadership philosophy.
 - **PR #8:** proposed research, UX audit, information architecture, wireframes and roadmap.
