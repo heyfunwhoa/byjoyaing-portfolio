@@ -133,7 +133,7 @@ export const lessonGuidance = {
   "cms-fundamentals": {
     ...availableLesson,
     prerequisites: ["frontend-building-blocks"],
-    guide: guide("cms-fundamentals"),
+    guide: guide("cms-fundamentals", "Read the six-chapter CMS fundamentals guide"),
   },
   "llms-models-inference-gateways": {
     ...availableLesson,
