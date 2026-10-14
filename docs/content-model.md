@@ -30,11 +30,15 @@ Words on the site are data with a job. This document defines **content fields an
 
 | Content | File | Public? |
 | --- | --- | --- |
+| About sentences | `content/about/page.json`, read by `lib/about/editorial.ts` | Yes, at `/about`. `lib/public-personal.ts` only projects the beyond-work fields. |
+| Verification lesson prose | `content/academy/lessons/verification.json` | Yes, inside Academy. Checks and progress stay in code. |
 | Project case studies | `lib/portfolio.ts` | Yes, at `/work/[slug]` |
-| Roles, when present | `lib/portfolio.ts` (`roles`) | Yes, once a page renders them |
+| Roles, when present | `lib/portfolio.ts` (`roles`) | Yes, once a page renders them. This remains the only title, date, and company record. |
 | Sales-use-case copy on the redesign branch | `lib/sales.ts` | Yes, but only after pull request #1 merges |
 | Contact and resume request | `app/inquiry-form.tsx`, `app/api/*` | The form is public. The PDF is not in git |
 | Resume file the API looks for | `content/kristen-aing-resume.pdf` | Only if someone adds the file. It is not in the repo |
+
+The table's PR #1 note is historical. The About and verification rows were added 2026-10-14. Which future pages may move into the existing Keystatic editor, and which data must not, is the [editorial foundation](content/editorial-foundation.md). That record does not replace the field rules in this file.
 
 One project should have one status. The vocabulary on the redesign branch is: Prototype, Professional field system, Designed, Concept. Do not add "production" because a page looks finished.
 

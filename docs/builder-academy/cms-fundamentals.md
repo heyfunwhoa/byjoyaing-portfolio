@@ -48,7 +48,9 @@ Both paths need a rollback plan. Reverting a Git commit or restoring a content r
 | What to evaluate | File formats, editor access, branch/review flow and build triggers | Content model, access roles, API usage, preview and cache behavior |
 | Exit planning | Retain files and document how they render | Plan exports and conversion of structured records, references and rich text |
 
-For this Academy, a **three-lesson Keystatic pilot is a recommendation, not an implemented feature**. First measure whether content-only edits are a recurring burden. Preserve stable lesson IDs, prerequisites, source links and availability labels. Keep interactive challenge behavior and learner progress in application code and its appropriate data store.
+For this Academy, preserve stable lesson IDs, prerequisites, source links and availability labels. Keep interactive challenge behavior and learner progress in application code and its appropriate data store.
+
+**Status checked 2026-10-14:** the `verification` lesson has a merged local Keystatic record ([PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155)). The three-lesson migration and any hosted editor are not implemented. The exercise below is still decision practice. It is not a claim that every lesson is editable.
 
 Consider Sanity when independent editorial publishing or recurring content reuse across apps becomes a concrete requirement. Multiple sites alone do not force that choice: shared Git content can also work, and both approaches require integration.
 

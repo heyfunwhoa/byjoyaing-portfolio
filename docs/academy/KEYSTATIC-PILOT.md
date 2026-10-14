@@ -1,8 +1,10 @@
 # Verification lesson: local editorial pilot
 
-Issue: [KRU-75](https://linear.app/krusty/issue/KRU-75). Implementation branch: `codex/kru-75-keystatic-verification`.
+**Reconciled 2026-10-14:** Merged to `main` in [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155). Use current `main` with `KEYSTATIC_LOCAL=true` for the local procedure below. The feature-branch checkout is historical. Hosted GitHub editing is still not configured, so [KRU-75](https://linear.app/krusty/issue/KRU-75) remains In Review in Linear. The portfolio About singleton is separate: [KRU-109](https://linear.app/krusty/issue/KRU-109) and [editorial-foundation.md](../content/editorial-foundation.md).
+
+Issue: [KRU-75](https://linear.app/krusty/issue/KRU-75). Implementation branch at the time: `codex/kru-75-keystatic-verification`.
 Baseline: `3096586` on main, including merged Academy PRs #150, #151 and #152.
-Status: implemented for PR review; not merged, deployed or verified live. Human content approval is pending.
+Status when that branch was opened: implemented for PR review; not yet merged. The 2026-10-14 reconciliation above supersedes the merge claim. Human content approval of later wording changes is still a pull-request review.
 
 ## Ownership and reuse
 
@@ -18,7 +20,9 @@ Reuse decision: `components/ai-academy/academy.tsx` is reused without changes fo
 
 ## Try the lesson and editor
 
-From a clean checkout of this PR branch (Node 22+):
+On current `main`, skip the historical branch checkout below. From the repository root, install dependencies and start the dev server with `KEYSTATIC_LOCAL=true`.
+
+From a clean checkout of the original PR branch (Node 22+):
 
 ```sh
 git fetch origin
