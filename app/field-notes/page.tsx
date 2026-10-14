@@ -28,7 +28,7 @@ export default function FieldNotesPage() {
     <PageMain>
       <header className="grid items-center gap-8 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
         <div className="min-w-0">
-        <p className="text-sm font-medium text-muted">How I think · How I operate</p>
+        <p className="orbital-section-label text-sm font-medium text-muted">How I think · How I operate</p>
         <h1 className="editorial-title mt-3 max-w-3xl">Thinking out loud. Building in practice.</h1>
         <p className="mt-4 text-lg font-medium">Field Notes</p>
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted">

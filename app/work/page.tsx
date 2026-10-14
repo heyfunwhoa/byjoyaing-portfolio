@@ -37,7 +37,7 @@ export default function WorkPage() {
         aria-labelledby="featured-work-heading"
         className="border-b border-border py-12 sm:py-16"
       >
-        <p className="editorial-eyebrow text-accent">Selected work / Explore</p>
+        <p className="orbital-section-label editorial-eyebrow text-accent">Selected work / Explore</p>
         <h2 id="featured-work-heading" className="mt-2 font-display text-3xl">
           Explore professional evidence
         </h2>
