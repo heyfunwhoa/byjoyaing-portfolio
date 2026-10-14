@@ -61,7 +61,7 @@ test("public profile icons use known destinations and clear accessible names", (
   assert.doesNotMatch(links, /from "lucide-react"/);
   const linkedinSvg = readFileSync(new URL("../public/logos/social/linkedin.svg", import.meta.url), "utf8");
   assert.doesNotMatch(linkedinSvg.toLowerCase(), /<script|javascript:|onload=|foreignobject/);
-  const contact = readFileSync(new URL("../app/contact/page.tsx", import.meta.url), "utf8");
+  const contact = readFileSync(new URL("../app/(site)/contact/page.tsx", import.meta.url), "utf8");
   assert.match(contact, /<SocialLinks placement="contact"/);
   assert.match(contact, /<EmailLink placement="contact"/);
   assert.doesNotMatch(contact, />kristen\.aing@gmail\.com</);
@@ -73,13 +73,16 @@ test("public profile icons use known destinations and clear accessible names", (
   assert.match(emailLink, /aria-label="Email Kristen Aing/);
   assert.match(emailLink, /min-h-11 min-w-11/);
   assert.match(emailLink, /<Mail size=\{20\}\s/);
-  const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
-  assert.match(layout, /<SocialLinks placement="footer"/);
-  assert.match(layout, /<EmailLink placement="footer"/);
-  assert.doesNotMatch(layout, />kristen\.aing@gmail\.com</);
-  assert.match(layout, /sameAs: socialProfiles\.map/);
+  const rootLayout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
+  assert.doesNotMatch(rootLayout, />kristen\.aing@gmail\.com</);
+  assert.equal(rootLayout.includes("sameAs"), false);
+  const frame = readFileSync(new URL("../components/site-frame.tsx", import.meta.url), "utf8");
+  assert.match(frame, /<SocialLinks placement="footer"/);
+  assert.match(frame, /<EmailLink placement="footer"/);
+  assert.doesNotMatch(frame, />kristen\.aing@gmail\.com</);
+  assert.match(frame, /sameAs: socialProfiles\.map/);
   const fallback = readFileSync(new URL("../lib/email.ts", import.meta.url), "utf8");
-  const form = readFileSync(new URL("../app/inquiry-form.tsx", import.meta.url), "utf8");
+  const form = readFileSync(new URL("../app/(site)/inquiry-form.tsx", import.meta.url), "utf8");
   const route = readFileSync(new URL("../app/api/contact/route.ts", import.meta.url), "utf8");
   assert.match(fallback, /Email \$\{PUBLIC_CONTACT_EMAIL\} instead/);
   assert.match(form, /Email \$\{PUBLIC_CONTACT_EMAIL\} instead/);
@@ -95,15 +98,15 @@ test("the public name is Kristen Aing and joy. still appears on header hover and
   assert.equal(header.includes("Kristen Joy Aing"), false);
   assert.match(header, /group-hover\/brand:block group-focus-visible\/brand:block/);
   assert.match(header, />\s*joy\.\s*</);
-  const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
-  assert.match(layout, /<span className="font-display text-accent">joy\.<\/span>/);
-  assert.match(layout, /<span>Kristen Aing<\/span>/);
-  assert.equal(layout.includes("Kristen Joy Aing"), false);
+  const frame = readFileSync(new URL("../components/site-frame.tsx", import.meta.url), "utf8");
+  assert.match(frame, /<span className="font-display text-accent">joy\.<\/span>/);
+  assert.match(frame, /<span>Kristen Aing<\/span>/);
+  assert.equal(frame.includes("Kristen Joy Aing"), false);
 });
 
 test("contact offers one form with editable work-example context", () => {
-  const contact = readFileSync(new URL("../app/contact/page.tsx", import.meta.url), "utf8");
-  const form = readFileSync(new URL("../app/inquiry-form.tsx", import.meta.url), "utf8");
+  const contact = readFileSync(new URL("../app/(site)/contact/page.tsx", import.meta.url), "utf8");
+  const form = readFileSync(new URL("../app/(site)/inquiry-form.tsx", import.meta.url), "utf8");
   assert.match(contact, /Let&apos;s talk about the work\./);
   assert.doesNotMatch(contact, /A deeper look, with context/);
   assert.doesNotMatch(contact, /For a quick conversation/);

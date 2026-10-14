@@ -61,10 +61,10 @@ test("the charcoal plate cannot be requested for an ivory surface", () => {
 });
 
 test("public placement keeps the portrait orbit on About and the plate on the charcoal control", () => {
-  const about = read("app/about/page.tsx");
-  const home = read("app/page.tsx");
+  const about = read("app/(site)/about/page.tsx");
+  const home = read("app/(site)/page.tsx");
   const orbit = read("components/capability-orbit.tsx");
-  const lab = read("app/design-lab/page.tsx");
+  const lab = read("app/(site)/design-lab/page.tsx");
   const artwork = read("components/orbit-artwork.tsx");
 
   assert.match(about, /<OrbitPortrait surface="ivory"/);

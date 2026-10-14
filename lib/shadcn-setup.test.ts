@@ -27,7 +27,7 @@ function sourceFiles(directory: string): string[] {
 
 function isDesignLab(file: string) {
   return (
-    file.startsWith("app/design-lab/") ||
+    file.startsWith("app/(site)/design-lab/") ||
     file.startsWith("components/design-lab/")
   );
 }
@@ -85,11 +85,12 @@ test("installed primitives are present and public adoption stays explicitly scop
   }
 
   const layout = read("app/layout.tsx");
-  assert.match(layout, /TooltipProvider/);
   assert.match(layout, /Geist,/);
   assert.equal(layout.includes("Instrument_Serif"), false);
   assert.equal(layout.includes('from "geist"'), false);
   assert.equal(layout.includes("ThemeProvider"), false);
+  const frame = read("components/site-frame.tsx");
+  assert.match(frame, /TooltipProvider/);
 
   // Public adoption is reviewed per component and page rather than globally banned.
   // FeaturedWorkCarousel wraps ui/carousel. Stakeholder map pilot adopts only
@@ -104,6 +105,7 @@ test("installed primitives are present and public adoption stays explicitly scop
   for (const file of [...sourceFiles("app"), ...sourceFiles("components")]) {
     if (
       file === "app/layout.tsx" ||
+      file === "components/site-frame.tsx" ||
       file === "components/featured-work-carousel.tsx" ||
       isDesignLab(file)
     ) {
@@ -115,8 +117,8 @@ test("installed primitives are present and public adoption stays explicitly scop
     if (unreviewed.length) offenders.push(`${file}: ${unreviewed.join(", ")}`);
   }
   assert.deepEqual(offenders, []);
-  assert.match(read("app/work/page.tsx"), /from ["']@\/components\/work-explorer["']/);
-  assert.match(read("app/work/page.tsx"), /<WorkExplorer\b/);
+  assert.match(read("app/(site)/work/page.tsx"), /from ["']@\/components\/work-explorer["']/);
+  assert.match(read("app/(site)/work/page.tsx"), /<WorkExplorer\b/);
   assert.match(read("components/featured-work-carousel.tsx"), /from ["']@\/components\/ui\/carousel["']/);
   assert.match(read("components/featured-work-carousel.tsx"), /<Carousel\b/);
 });

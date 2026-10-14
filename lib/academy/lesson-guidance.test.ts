@@ -60,9 +60,12 @@ test("practice and guide destinations resolve to existing local routes or public
   });
   for (const resource of [...resources, ...academyResources]) {
     assert.ok(resource);
-    if (resource.href.startsWith("/"))
-      assert.ok(existsSync(`app${resource.href}/page.tsx`), resource.href);
-    else {
+    if (resource.href.startsWith("/")) {
+      assert.ok(
+        existsSync(`app/(site)${resource.href}/page.tsx`) || existsSync(`app${resource.href}/page.tsx`),
+        resource.href,
+      );
+    } else {
       assert.match(
         resource.href,
         /^https:\/\/(github\.com|developer\.mozilla\.org)\//,

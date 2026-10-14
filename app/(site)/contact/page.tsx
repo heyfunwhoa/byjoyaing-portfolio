@@ -1,6 +1,6 @@
 import { completePageMetadata } from "@/lib/page-metadata";
 import { resolvePlaybookRequest } from "@/lib/playbook-request";
-import { InquiryForm } from "@/app/inquiry-form";
+import { InquiryForm } from "@/app/(site)/inquiry-form";
 import { EmailLink } from "@/components/email-link";
 import { PageMain } from "@/components/page-main";
 import { SocialLinks } from "@/components/social-links";

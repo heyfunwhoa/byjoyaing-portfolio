@@ -30,15 +30,15 @@ test("Field Notes trails stay on that collection", () => {
 
 test("source guard: case templates and Field Notes guides mount the breadcrumb", () => {
   const files: Record<string, string> = {
-    "app/work/[slug]/page.tsx": "WorkCaseBreadcrumb",
+    "app/(site)/work/[slug]/page.tsx": "WorkCaseBreadcrumb",
     "components/atlas-case.tsx": "WorkCaseBreadcrumb",
     "components/competitive-intelligence-case.tsx": "WorkCaseBreadcrumb",
     "components/account-intelligence-case.tsx": "WorkCaseBreadcrumb",
     "components/customer-feedback-case.tsx": "WorkCaseBreadcrumb",
     "components/field-asset-case.tsx": "WorkCaseBreadcrumb",
     "components/editorial/editorial-article.tsx": "FieldNoteBreadcrumb",
-    "app/field-notes/multithreading/page.tsx": "FieldNoteBreadcrumb",
-    "app/field-notes/enterprise-deal/page.tsx": "EditorialArticle",
+    "app/(site)/field-notes/multithreading/page.tsx": "FieldNoteBreadcrumb",
+    "app/(site)/field-notes/enterprise-deal/page.tsx": "EditorialArticle",
   };
   for (const [file, token] of Object.entries(files)) {
     const source = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
@@ -52,11 +52,11 @@ test("source guard: case templates and Field Notes guides mount the breadcrumb",
 });
 
 test("homepage does not retell the Work field practice; Field Notes does not fake a catalog", () => {
-  const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const home = readFileSync(new URL("../app/(site)/page.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(home, /competitive-evidence|A field practice|featured-title/);
   assert.match(home, /EditorialBento/);
   assert.match(home, /A side quest/);
-  const notes = readFileSync(new URL("../app/field-notes/page.tsx", import.meta.url), "utf8");
+  const notes = readFileSync(new URL("../app/(site)/field-notes/page.tsx", import.meta.url), "utf8");
   assert.match(notes, /The published notes/);
   assert.match(notes, /Notes still in outline/);
   assert.doesNotMatch(notes, /Browse the collections/);

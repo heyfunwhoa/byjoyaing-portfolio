@@ -81,7 +81,7 @@ test("toolkit SVGs do not include active content", () => {
 });
 
 test("About presents purpose sections with visible names and secure product links", () => {
-  const about = readFileSync(path.join(root, "app/about/page.tsx"), "utf8");
+  const about = readFileSync(path.join(root, "app/(site)/about/page.tsx"), "utf8");
   const tools = readFileSync(
     path.join(root, "components/tools-map.tsx"),
     "utf8",
@@ -124,7 +124,7 @@ test("workflow examples link to existing evidence with truthful practice labels"
     assert.ok(section.mobileLabel.length > 0 && section.mobileLabel.length <= 24);
     assert.ok(section.example.length > 30);
     const [route, anchor] = section.evidence.href.split("#");
-    const page = path.join(root, "app", route, "page.tsx");
+    const page = path.join(root, "app/(site)", route, "page.tsx");
     assert.ok(existsSync(page), section.evidence.href);
     if (anchor)
       assert.ok(

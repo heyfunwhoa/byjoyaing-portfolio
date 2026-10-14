@@ -87,10 +87,10 @@ test("source guard: the orbit is static, uses no motion library, and is placed o
   assert.match(source, /aria-pressed=\{selected === "center"\}/);
   assert.doesNotMatch(source, /href=\{orbitCenter\.href\}/);
   assert.doesNotMatch(source, /target="_blank"/);
-  const about = readFileSync(new URL("../app/about/page.tsx", import.meta.url), "utf8");
+  const about = readFileSync(new URL("../app/(site)/about/page.tsx", import.meta.url), "utf8");
   assert.match(about, /<CapabilityOrbit/);
   assert.match(about, /<OrbitPortrait surface="ivory"/);
-  const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const home = readFileSync(new URL("../app/(site)/page.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(home, /CapabilityOrbit|capability-orbit|OrbitPortrait|orbit-artwork|brand\/orbits/);
   // Rendered behavior (keyboard, widths, reduced motion) is checked in a browser, not here.
 });

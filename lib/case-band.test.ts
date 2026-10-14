@@ -24,7 +24,7 @@ test("source guard: Work case studies keep the five fields in order, with no inv
   );
   assert.doesNotMatch(study, /heading: "Outcome"/);
   assert.match(study, /<CaseBandSteps/);
-  assert.match(read("app/work/page.tsx"), /<ProfessionalCaseStudy/);
+  assert.match(read("app/(site)/work/page.tsx"), /<ProfessionalCaseStudy/);
 });
 
 test("source guard: core contribution and limitations are visible, with native disclosure for depth", () => {

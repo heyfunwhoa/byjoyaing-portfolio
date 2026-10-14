@@ -1,4 +1,8 @@
 import { enterpriseEvaluationLessons } from "./academy/enterprise-evaluation.ts";
+import { managedLesson } from "./academy/managed-lessons.ts";
+import cmsFundamentals from "../content/academy/lessons/cms-fundamentals.json" with { type: "json" };
+import frontendBuildingBlocks from "../content/academy/lessons/frontend-building-blocks.json" with { type: "json" };
+import readingCodeAndYaml from "../content/academy/lessons/reading-code-and-yaml.json" with { type: "json" };
 
 export type Track = "Foundations" | "Prompting" | "Responsible AI" | "GTM" | "Builder";
 export type Lesson = {
@@ -9,102 +13,8 @@ export type Lesson = {
 };
 export const lessons: Lesson[] = [
   ...enterpriseEvaluationLessons,
-{
-  "slug": "cms-fundamentals",
-  "title": "Content management: Git, Keystatic, and Sanity",
-  "track": "Builder",
-  "minutes": 20,
-  "level": "Beginner",
-  "summary": "Understand what a CMS does, compare repository-based and hosted content, and decide when an editor is worth adding.",
-  "analogy": "A CMS is the editorial desk: writers organize and revise material, while the website is the place readers experience it. The publishing process connects the two.",
-  "takeaways": [
-    "A content management system helps people create, organize, edit and publish content using defined fields and workflows.",
-    "Traditional CMSs often combine editing and website presentation; headless CMSs expose content to a separate frontend. Git-based describes file storage and can overlap with headless delivery.",
-    "A schema defines fields such as lesson ID, title, prerequisites, body and sources; content records fill those fields, while components control presentation and interaction.",
-    "Keystatic edits repository files; Sanity stores structured content in a hosted database. Choose based on editorial workflow, reuse, privacy and total operating cost.",
-    "Free software or a free plan does not remove hosting, build, storage, maintenance or migration costs. Git-based edits may still trigger CI.",
-    "A private page does not protect a public dataset or public repository. Editor login and reader authorization are separate controls.",
-    "A CMS becomes useful when frequent content edits, collaboration or reuse justify its setup. It does not automatically implement learner progress, authentication or source verification."
-  ],
-  "exercise": "Read the CMS fundamentals companion guide. For a fictional three-lesson Academy, define the content fields, choose Git alone, Keystatic or Sanity, and trace draft to review to publication. Explain where private material and learner progress belong. Use the written answer key for self-review; no CMS is installed and no production content is changed.",
-  "check": {
-    "question": "A team already reviews lesson files in Git and wants an editing interface for one site. Which is the most proportionate first experiment?",
-    "choices": [
-      "Migrate all research, user accounts and lessons into a CMS immediately",
-      "Pilot Keystatic on a few public lessons while preserving review and build checks",
-      "Put confidential lessons in a public dataset and hide their page links"
-    ],
-    "answer": 1,
-    "explanation": "A small repository-based editing pilot addresses the stated need. Sanity may fit independent publishing or cross-app content reuse, but neither a CMS editor nor a hidden URL establishes reader authorization."
-  },
-  "companion": {
-    "label": "Read the CMS fundamentals and selection guide",
-    "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/cms-fundamentals.md"
-  },
-  "sources": [
-    {
-      "label": "Keystatic: introduction",
-      "url": "https://keystatic.com/docs/introduction"
-    },
-    {
-      "label": "Sanity: platform documentation",
-      "url": "https://www.sanity.io/docs"
-    },
-    {
-      "label": "Sanity: current plans",
-      "url": "https://www.sanity.io/pricing"
-    },
-    {
-      "label": "WordPress: features",
-      "url": "https://wordpress.org/about/features/"
-    }
-  ]
-},
-{
-  "slug": "reading-code-and-yaml",
-  "title": "Reading code, files, JSON and YAML",
-  "track": "Builder",
-  "minutes": 25,
-  "level": "Beginner",
-  "summary": "Recognize common file types, trace a small function, and read configuration with plain-language definitions.",
-  "analogy": "A repository is a project folder: some files explain the work, some hold information, and others tell tools what to do.",
-  "takeaways": [
-    "Read a file by asking its purpose, inputs, decisions, outputs and which tool interprets it.",
-    "HTML describes structure; CSS presentation; JavaScript and TypeScript program behavior; JSON and YAML represent structured information.",
-    "YAML indentation changes nesting. Valid syntax can still put a setting in the wrong place.",
-    "Configuration can instruct tools to execute commands. Inspect triggers, permissions and effects before running anything.",
-    "Reading, practicing and passing a check are different evidence of learning."
-  ],
-  "exercise": "Read docs/builder-academy/reading-code-and-yaml.md. Using the synthetic snippets, predict the function output, identify JSON value types, repair YAML nesting and explain which tool interprets a workflow. Compare your five-line note with the answer key; no commands or live services are required.",
-  "check": {
-    "question": "A YAML file parses, but verified is at the root instead of inside account. What does that tell you?",
-    "choices": [
-      "Parsing proves the application will behave correctly.",
-      "Syntax is valid, but the structure can still violate application expectations.",
-      "YAML executes each line like a shell script."
-    ],
-    "answer": 1,
-    "explanation": "A parser checks syntax. Nesting determines structure; the consuming application and its schema determine whether that structure is meaningful and valid."
-  },
-  "companion": {
-    "label": "Read the full lesson, glossary and answer key",
-    "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/reading-code-and-yaml.md"
-  },
-  "sources": [
-    {
-      "label": "YAML 1.2.2 specification",
-      "url": "https://yaml.org/spec/1.2.2/"
-    },
-    {
-      "label": "MDN: Working with JSON",
-      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON"
-    },
-    {
-      "label": "GitHub Actions workflow syntax",
-      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
-    }
-  ]
-},
+  managedLesson("cms-fundamentals", cmsFundamentals),
+  managedLesson("reading-code-and-yaml", readingCodeAndYaml),
 {
   "slug": "llms-models-inference-gateways",
   "title": "LLMs, models, inference, and AI gateways",
@@ -155,43 +65,7 @@ export const lessons: Lesson[] = [
     }
   ]
 },
-  {
-    slug: "frontend-building-blocks",
-    title: "Frontend building blocks: from framework to experience",
-    track: "Builder",
-    minutes: 25,
-    level: "Beginner",
-    summary: "Learn how structure, components, styling, behavior, data, accessibility and UX combine to make a frontend; identify the role of Next.js, React, Tailwind and shadcn/ui.",
-    analogy: "Building a house requires a floor plan, reusable rooms, finishes, working controls and useful information. Accessibility and UX influence the entire design, not just the final coat of paint.",
-    takeaways: [
-      "Frontend = Structure + Components + Styling + Behavior + Data + Accessibility + User Experience.",
-      "Semantic HTML gives content structure; React creates reusable components and state; Next.js organizes routing, rendering and server capabilities.",
-      "Tailwind generates CSS for styling and responsive layouts; shadcn/ui provides customizable component code. Neither replaces React or Next.js.",
-      "Components can handle layout, display, navigation, interaction, forms, data displays, visualizations or feedback; a single component can span several categories.",
-      "Data comes from props, local objects or APIs; React state changes what's displayed. A component looking correct does not guarantee accurate data.",
-      "Accessible keyboard navigation, focus states, readable content and reduced-motion support are frontend requirements, not optional polish.",
-      "UX asks whether visitors can reach their goals; GitHub and Vercel manage code and deployment rather than defining frontend structure or style."
-    ],
-    exercise: "Read docs/builder-academy/frontend-building-blocks.md. Use a synthetic project card to label structure (HTML), component (React), styling (Tailwind), behavior (click/focus), data (props), accessibility (semantic link and keyboard focus) and UX (can a reader find the project?). Then compare a mobile layout bug with a data bug and explain which layer you would fix first. Do not edit production content during this reading exercise.",
-    check: {
-      question: "A project carousel looks polished but visitors cannot navigate it with a keyboard. What is missing?",
-      choices: [
-        "Nothing; styling is the entire frontend",
-        "Accessibility and user experience must be improved alongside the other frontend layers",
-        "Install a different application framework to fix the colors"
-      ],
-      answer: 1,
-      explanation: "Frontend work includes semantics, keyboard/focus behavior and a usable journey. React, Tailwind and a carousel library alone do not guarantee accessibility or task success."
-    },
-    companion: { label: "Read the complete frontend building-blocks guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/frontend-building-blocks.md" },
-    sources: [
-      { label: "MDN: Learn web development", url: "https://developer.mozilla.org/en-US/docs/Learn_web_development" },
-      { label: "React: Your first component", url: "https://react.dev/learn/your-first-component" },
-      { label: "Next.js: App Router", url: "https://nextjs.org/docs/app" },
-      { label: "Tailwind CSS: Styling with utility classes", url: "https://tailwindcss.com/docs/styling-with-utility-classes" },
-      { label: "W3C WAI accessibility fundamentals", url: "https://www.w3.org/WAI/fundamentals/accessibility-intro/" }
-    ]
-  },
+  managedLesson("frontend-building-blocks", frontendBuildingBlocks),
   {
     slug: "evaluate-ai-models",
     title: "Evaluate AI models with evidence",

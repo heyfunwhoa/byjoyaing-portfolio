@@ -39,7 +39,7 @@ test("Side Quest slides stay on /side-quests and are not mixed into Work", () =>
 });
 
 test("source guard: Work uses the bento explorer, homepage omits it, and lab carousel has no autoplay", () => {
-  const work = readFileSync(new URL("../app/work/page.tsx", import.meta.url), "utf8");
+  const work = readFileSync(new URL("../app/(site)/work/page.tsx", import.meta.url), "utf8");
   assert.match(work, /<WorkExplorer/);
   const explorer = readFileSync(new URL("../components/work-explorer.tsx", import.meta.url), "utf8");
   assert.match(work, /href="\/side-quests"/);
@@ -52,13 +52,13 @@ test("source guard: Work uses the bento explorer, homepage omits it, and lab car
   assert.doesNotMatch(carousel, /Autoplay|autoplay|loop:\s*true/);
   assert.match(carousel, /prefers-reduced-motion/);
   assert.match(carousel, /basis-full pl-4 md:basis-1\/2 lg:basis-1\/3/);
-  const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const home = readFileSync(new URL("../app/(site)/page.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(home, /FeaturedWorkCarousel|featured-work-carousel/);
   assert.doesNotMatch(work, /FeaturedSideQuestStrip|featured-side-quest-strip/);
 });
 
 test("source guard: Side Quests mounts a snap strip, not Embla", () => {
-  const quests = readFileSync(new URL("../app/side-quests/page.tsx", import.meta.url), "utf8");
+  const quests = readFileSync(new URL("../app/(site)/side-quests/page.tsx", import.meta.url), "utf8");
   assert.match(quests, /<FeaturedSideQuestStrip/);
   assert.match(quests, /featuredSideQuestSlides\(\)/);
   assert.match(quests, /featuredSideQuestSlugs/);

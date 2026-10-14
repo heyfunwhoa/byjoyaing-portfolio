@@ -13,7 +13,7 @@ test("the design lab is available outside production", () => {
 });
 
 test("the design lab page returns 404 before rendering a preview", () => {
-  const page = readFileSync(path.join(root, "app/design-lab/page.tsx"), "utf8");
+  const page = readFileSync(path.join(root, "app/(site)/design-lab/page.tsx"), "utf8");
   const notFoundAt = page.indexOf("notFound()");
   const suspenseAt = page.indexOf("<Suspense");
   assert.ok(notFoundAt > -1);
@@ -27,7 +27,7 @@ test("the design lab page returns 404 before rendering a preview", () => {
 });
 
 test("the homepage prototype 404s in production before the retired headline", () => {
-  const page = readFileSync(path.join(root, "app/prototype/page.tsx"), "utf8");
+  const page = readFileSync(path.join(root, "app/(site)/prototype/page.tsx"), "utf8");
   const notFoundAt = page.indexOf("notFound()");
   const headlineAt = page.indexOf("Commercial Leader");
   assert.ok(notFoundAt > -1);

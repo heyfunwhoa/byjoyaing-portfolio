@@ -2,7 +2,7 @@
 
 Beginner · 20 minutes · Builder track · Sources checked 2026-10-13
 
-Status: educational content and an adoption recommendation. No CMS integration is installed by this lesson. Complete Frontend building blocks first. The scenario and decision criteria below are original teaching synthesis, not a vendor benchmark.
+Status: educational content, plus a local Keystatic pilot for three public Academy lesson cards. Complete Frontend building blocks first. The scenario and decision criteria below are original teaching synthesis, not a vendor benchmark.
 
 ## What you will learn
 
@@ -48,7 +48,7 @@ Both paths need a rollback plan. Reverting a Git commit or restoring a content r
 | What to evaluate | File formats, editor access, branch/review flow and build triggers | Content model, access roles, API usage, preview and cache behavior |
 | Exit planning | Retain files and document how they render | Plan exports and conversion of structured records, references and rich text |
 
-For this Academy, a **three-lesson Keystatic pilot is a recommendation, not an implemented feature**. First measure whether content-only edits are a recurring burden. Preserve stable lesson IDs, prerequisites, source links and availability labels. Keep interactive challenge behavior and learner progress in application code and its appropriate data store.
+This Academy runs a **three-lesson Keystatic pilot** for `cms-fundamentals`, `reading-code-and-yaml`, and `frontend-building-blocks`. Start it with `KEYSTATIC_LOCAL=true npm run dev` and open `/keystatic`. The editor writes JSON files under `content/academy/lessons/`. The slug is the filename and stays stable. Publish by committing those files and passing the existing pull-request checks. `/keystatic` responds with 404 unless `KEYSTATIC_LOCAL=true`, and that variable stays off on Vercel. Interactive challenge behavior and learner progress stay in application code.
 
 Consider Sanity when independent editorial publishing or recurring content reuse across apps becomes a concrete requirement. Multiple sites alone do not force that choice: shared Git content can also work, and both approaches require integration.
 

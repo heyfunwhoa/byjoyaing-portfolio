@@ -62,7 +62,7 @@ function sample() {
 }
 
 test("production notFound runs before the gallery Suspense boundary", () => {
-  const source = readFileSync(new URL("../app/design-lab/page.tsx", import.meta.url), "utf8");
+  const source = readFileSync(new URL("../app/(site)/design-lab/page.tsx", import.meta.url), "utf8");
   const gate = source.indexOf("if (!designLabAvailable()) notFound();");
   const suspense = source.indexOf("<Suspense");
   assert.equal(gate > 0, true);

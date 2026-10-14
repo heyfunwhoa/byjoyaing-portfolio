@@ -18,10 +18,13 @@ function pageFiles(dir: string): string[] {
 test("page titles are topics so the layout template can add the name once", () => {
   const layout = readFileSync(path.join(root, "app/layout.tsx"), "utf8");
   assert.match(layout, /template: "%s — Kristen Aing"/);
-  const home = readFileSync(path.join(root, "app/page.tsx"), "utf8");
+  const home = readFileSync(path.join(root, "app/(site)/page.tsx"), "utf8");
   assert.match(home, /absolute: "Revenue & GTM Leader · Curious Builder — Kristen Aing"/);
   for (const file of pageFiles(path.join(root, "app"))) {
-    if (file.endsWith(`${path.sep}app${path.sep}page.tsx`)) continue;
+    if (
+      file.endsWith(`${path.sep}app${path.sep}page.tsx`) ||
+      file.endsWith(`${path.sep}(site)${path.sep}page.tsx`)
+    ) continue;
     const titleLines = readFileSync(file, "utf8")
       .split("\n")
       .filter((line) => /^\s*title\s*:/.test(line));
@@ -34,7 +37,7 @@ test("page titles are topics so the layout template can add the name once", () =
 
 test("case-study templates render the registry kind", () => {
   const files: Record<string, string> = {
-    "app/work/[slug]/page.tsx": "slug={slug}",
+    "app/(site)/work/[slug]/page.tsx": "slug={slug}",
     "components/atlas-case.tsx": 'slug="detector-coverage-atlas"',
     "components/competitive-intelligence-case.tsx": 'slug="competitive-intelligence-engine"',
     "components/account-intelligence-case.tsx": 'slug="account-intelligence"',

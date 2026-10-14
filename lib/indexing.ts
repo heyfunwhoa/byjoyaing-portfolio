@@ -40,6 +40,7 @@ export const noindexPaths = [
   "/private-work",
   "/account-signal",
   "/design-lab",
+  "/keystatic",
 ] as const;
 
 export const robotsNoindex = { index: false, follow: false } as const;
