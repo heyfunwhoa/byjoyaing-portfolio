@@ -35,7 +35,7 @@ export const cmsExercises: readonly CmsExercise[] = [
     objective:
       "Match an editing need to a proportionate architecture, and keep operational data out of the public content store.",
     scenario:
-      "Portfolio example, as implemented on 2026-10-14. This public site reviews changes in Git. A local Keystatic editor can change the public verification lesson when a developer opts in on loopback. Hosted GitHub editing is not configured. Interactive checks and learner progress stay in application code. The author now wants a form for public lesson wording. Confidential notes and completion records must stay out.",
+      "Portfolio example, as implemented on 2026-10-14. This public site reviews changes in Git. A local Keystatic editor can change the public verification lesson and the About page sentences when a developer opts in on loopback. Hosted GitHub editing is not configured. Interactive checks and learner progress stay in application code. The author now wants a form for public lesson wording. Confidential notes and completion records must stay out.",
     question: "Which next step fits that stated need?",
     choices: [
       {

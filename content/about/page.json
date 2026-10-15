@@ -1,0 +1,74 @@
+{
+  "id": "about",
+  "metaDescription": "Revenue & GTM Leader · Curious Builder. Enterprise cybersecurity, relationships, people development, and repeatable systems.",
+  "eyebrow": "About · Leader",
+  "headline": "Strategist. Leader. Builder.",
+  "lead": [
+    "Curious by nature. Builder by instinct. I studied advertising and business foundations at The University of Texas at Austin. Advertising taught me to make complex ideas clear and relevant to the audience. Enterprise cybersecurity sales taught me to connect that story to technical evidence and a buying decision.",
+    "My career is grounded in hands-on enterprise cybersecurity selling—from complex buyer conversations and technical evaluations to deal execution. I also coach newer sellers and build practical tools and processes that teams can reuse."
+  ],
+  "philosophyLabel": "My guiding philosophy",
+  "philosophyHeading": "People first. Problem-driven. Systems-minded.",
+  "principles": [
+    {
+      "name": "People first",
+      "body": "I listen, coach and share context so a teammate can succeed without depending on one person for every answer."
+    },
+    {
+      "name": "Problem-driven",
+      "body": "I begin with customer or team friction, test assumptions and identify what would actually help before suggesting a tool."
+    },
+    {
+      "name": "Systems-minded",
+      "body": "I document repeatable processes, define ownership and build small workflows that others can improve."
+    }
+  ],
+  "leadershipApproach": "My approach to leadership combines accountability with curiosity: clear expectations, thoughtful feedback, evidence-based decisions and room for people to develop their own strengths.",
+  "approachEyebrow": "The approach behind the work",
+  "approachHeading": "How I work",
+  "approachIntro": "Enterprise selling sits at the center. Strategy, leadership and building are the ways I connect people, decisions and practical systems. Choose a pillar to explore the evidence.",
+  "careerHeading": "Career progression",
+  "careerIntro": "Quantcast was advertising sales in a new market. Websense was the first cybersecurity book. Metadot was channel. Forcepoint, Rapid7, Darktrace, and Truffle Security are the enterprise security years. Dates and what was individual versus team are on Experience.",
+  "educationHeading": "Education and continued learning",
+  "education": [
+    "B.S. Advertising, Business Foundations. The University of Texas at Austin.",
+    "MBA, IT Management. Western Governors University, in progress.",
+    "AWS Cloud Practitioner and AI Practitioner, foundational."
+  ],
+  "practiceEyebrow": "Systems behind the work",
+  "practiceHeading": "From approach to practice.",
+  "practiceIntro": "Start with a workflow. Explore the approach, open the supporting tools, then follow the evidence—from enterprise selling and team development to independent building.",
+  "exploreHeading": "Explore the work behind the approach",
+  "beyondLabel": "Beyond work",
+  "beyondHeading": "The things that keep me curious.",
+  "beyondIntro": "I enjoy the process of discovering, making, and learning—whether I'm exploring a new sound, figuring out how something works, or trying a creative project for the first time. Those interests are part of my story, not just a list of hobbies.",
+  "interests": [
+    {
+      "id": "music",
+      "title": "Electronic music",
+      "detail": "House, techno, trance and the energy of discovering a great set.",
+      "connection": "Creativity, energy and connection."
+    },
+    {
+      "id": "making",
+      "title": "Making and fixing things",
+      "detail": "Hands-on DIY, working on cars and learning woodworking.",
+      "connection": "Patience, experimentation and understanding how things work."
+    },
+    {
+      "id": "creative",
+      "title": "Creative exploration",
+      "detail": "Trying unfamiliar creative projects.",
+      "connection": "A reminder that curiosity isn't limited to a job title."
+    }
+  ],
+  "valuesLabel": "What matters to me",
+  "values": ["Curiosity", "Authenticity", "Connection", "Growth", "Independence"],
+  "contactHeading": "Contact",
+  "owner": "Kristen Aing",
+  "reviewer": "Pending human review of the CMS move",
+  "contentVersion": 1,
+  "reviewDue": "2026-11-14",
+  "classification": "public",
+  "publicationStatus": "published"
+}

@@ -32,7 +32,7 @@ Actions:
 | `/` private-work tile and second private button | Home | `/private-work` | Remove from Home. The route stays. |
 | `/` one competitive field practice | Home | `/work/competitive-intelligence-engine` | Keep one story. The case study owns the detail. The monitor stays a design. |
 | `/` connect | Home | Contact | Keep one contact action in the close, plus About. The form stays on `/contact`. |
-| `/about` origin, philosophy, values, interests | About | About | Keep. Interests stay the curated set in `lib/public-personal.ts`. |
+| `/about` origin, philosophy, values, interests | About | About | Keep. The curated sentences now live in `content/about/page.json` (2026-10-14). `lib/public-personal.ts` projects them. |
 | `/about` four-company title list | About | `/experience` | Point. About names the arc in one paragraph. |
 | `/about` "GTM and product work" cards | About | Split by kind | Relabel. Competitive evidence stays Work. Atlas, account workflows, and Truffle Camp stay Side Quests. |
 | `/about` toolkit | About | About | Keep, behind the story. It is not the lead. |

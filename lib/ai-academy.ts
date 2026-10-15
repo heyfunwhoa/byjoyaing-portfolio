@@ -25,7 +25,7 @@ export const lessons: Lesson[] = [
     "Draft, preview, review, publish, and verify are separate steps. A static build or cache can keep showing the previous version after publish.",
     "Editor login and reader authorization are different controls. A private page does not protect a public dataset, repository, or asset URL.",
     "Git-only, Keystatic, TinaCMS, Sanity, Payload, and WordPress fit different editing and operating needs. Recheck plan limits before you rely on a price.",
-    "On this portfolio, local Keystatic edits the public verification lesson only. Checks and learner progress stay in application code."
+    "On this portfolio, local Keystatic edits the public verification lesson and the About page sentences. Lesson checks, learner progress, and page interaction stay in application code. Hosted editing is not configured."
   ],
   "exercise": "Use the practice lab on this card for three decisions: architecture, schema, and publishing rollback. Then read docs/builder-academy/cms-fundamentals.md and complete its written self-review. The lab checks choices against the lesson guidance. It does not save progress, grade the written answers, or prove a production CMS is configured safely.",
   "check": {
@@ -36,7 +36,7 @@ export const lessons: Lesson[] = [
       "Put confidential lessons in a public dataset and hide their page links"
     ],
     "answer": 1,
-    "explanation": "A small repository-based editing pilot addresses the stated need. On this portfolio, local Keystatic already edits the public verification lesson; hosted editing is not configured. Sanity may fit independent publishing or cross-app reuse, but neither an editor nor a hidden URL establishes reader authorization."
+    "explanation": "A small repository-based editing pilot addresses the stated need. On this portfolio, local Keystatic already edits the public verification lesson and the About page sentences; hosted editing is not configured. Sanity may fit independent publishing or cross-app reuse, but neither an editor nor a hidden URL establishes reader authorization."
   },
   "companion": {
     "label": "Read the six-chapter CMS fundamentals guide",

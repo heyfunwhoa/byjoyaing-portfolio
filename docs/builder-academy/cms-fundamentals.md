@@ -4,7 +4,7 @@ Beginner to intermediate · about 35 minutes · Builder track · Sources checked
 
 This is the canonical CMS Fundamentals lesson. Chapters 1 and 2 orient a beginner. Chapters 3 through 6 ask for intermediate judgment. Complete [Frontend building blocks](frontend-building-blocks.md) first.
 
-**Status of this portfolio.** A local Keystatic editor can change the public `verification` lesson when a developer opts in on loopback. That pilot is [KRU-75](https://linear.app/krusty/issue/KRU-75). Hosted GitHub editing is not configured. Production `/keystatic` stays off. This lesson does not install a CMS, expand that schema, or move more lessons into the editor. Interactive checks and learner progress stay in application code.
+**Status of this portfolio.** A local Keystatic editor can change the public `verification` lesson, and the About page sentences, when a developer opts in on loopback. The lesson pilot is [KRU-75](https://linear.app/krusty/issue/KRU-75). The About record is the [editorial foundation](../content/editorial-foundation.md). It is a page singleton, not a lesson, and it is not part of this module. Hosted GitHub editing is not configured. Production `/keystatic` stays off. This lesson does not install a CMS, expand the lesson schema, or move more lessons into the editor. Interactive checks and learner progress stay in application code.
 
 Portfolio-specific adoption choices for other repositories belong in the content model, not in a second curriculum. This guide teaches the concepts. It does not authorize a migration.
 
