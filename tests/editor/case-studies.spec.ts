@@ -25,8 +25,9 @@ test("edit and save a case-study summary, render it, then restore the sentence",
       .toBe(edited);
     const reader = await context.newPage();
     await reader.goto("/projects");
-    await expect(reader.getByText(edited, { exact: true })).toBeVisible();
-    await expect(reader.getByRole("link", { name: "Detector Coverage Atlas" }).first()).toBeVisible();
+    const directory = reader.locator("#directory");
+    await expect(directory.getByText(edited, { exact: true })).toBeVisible();
+    await expect(directory.getByRole("link", { name: "Detector Coverage Atlas" })).toBeVisible();
     await page.reload();
     await expect(summary).toHaveValue(edited);
     await summary.fill(original.summary);
@@ -35,8 +36,8 @@ test("edit and save a case-study summary, render it, then restore the sentence",
       .poll(() => JSON.parse(readFileSync(path, "utf8")).summary)
       .toBe(original.summary);
     await reader.reload();
-    await expect(reader.getByText(original.summary, { exact: true })).toBeVisible();
-    await expect(reader.getByText("Local editorial check.", { exact: false })).toHaveCount(0);
+    await expect(directory.getByText(original.summary, { exact: true })).toBeVisible();
+    await expect(reader.getByText("Local editorial check.")).toHaveCount(0);
     const restored = JSON.parse(readFileSync(path, "utf8"));
     expect(restored.summary).toBe(original.summary);
     expect(restored.owner).toBe(original.owner);
