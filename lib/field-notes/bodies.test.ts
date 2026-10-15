@@ -101,11 +101,18 @@ test("a changed id, new href, or empty sentence fails closed", () => {
       ),
     }),
   );
-  const omitted = structuredClone(enterprise);
-  delete omitted.sections[0].kicker;
-  delete omitted.sections[0].heading;
-  delete omitted.sections[0].note;
-  assert.equal(readFieldNote("enterprise-deal", omitted).sections["use-when"].body, enterprise.sections[0].body);
+  const { kicker, heading, note, ...useWhen } = enterprise.sections[0];
+  assert.equal(kicker, "");
+  assert.equal(heading, "");
+  assert.equal(note, "");
+  const omitted = {
+    ...enterprise,
+    sections: [useWhen, ...enterprise.sections.slice(1)],
+  };
+  assert.equal(
+    readFieldNote("enterprise-deal", omitted).sections["use-when"].body,
+    enterprise.sections[0].body,
+  );
 
   const edited = readFieldNote("multithreading", {
     ...multithreading,
