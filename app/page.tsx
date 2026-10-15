@@ -6,6 +6,7 @@ import { EditorialBento } from "@/components/editorial-bento";
 import { Marginalia } from "@/components/marginalia";
 import { PageMain } from "@/components/page-main";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
+import { homePage } from "@/lib/home/editorial";
 import { directoryProjects } from "@/lib/project-directory";
 import { roles, statusCopy, statusHelp } from "@/lib/portfolio";
 import type { Metadata } from "next";
@@ -18,8 +19,7 @@ export const metadata: Metadata = completePageMetadata(
   title: {
     absolute: "Revenue & GTM Leader · Curious Builder — Kristen Aing",
   },
-  description:
-    "Strategic enterprise cybersecurity selling, people development, go-to-market leadership, and curious independent builds.",
+  description: homePage.metaDescription,
 },
   "/",
 );
@@ -57,16 +57,16 @@ export default function Home() {
         className="editorial-dark -mx-5 grid min-w-0 items-center gap-8 px-5 py-12 sm:-mx-8 sm:px-8 sm:py-16 lg:grid-cols-[minmax(0,1.45fr)_minmax(13rem,0.55fr)] lg:gap-12 lg:py-20"
       >
         <div className="min-w-0">
-          <p className="editorial-eyebrow text-[#DFC1A9]">Enterprise cybersecurity · Revenue & GTM</p>
+          <p className="editorial-eyebrow text-[#DFC1A9]">{homePage.eyebrow}</p>
           <h1 id="home-title" className="editorial-title mt-5 max-w-[15ch]">
-            Revenue & GTM Leader.
-            <span className="mt-2 block italic text-[#E6B59A]">Curious Builder.</span>
+            {homePage.headline}
+            <span className="mt-2 block italic text-[#E6B59A]">{homePage.headlineAccent}</span>
           </h1>
           <p className="mt-5 max-w-[38rem] text-base font-medium leading-7 sm:text-lg sm:leading-8">
-            People first. Problem-driven. Systems-minded.
+            {homePage.philosophy}
           </p>
           <p className="editorial-subtle mt-3 max-w-[38rem] text-base leading-7">
-            I&apos;m Kristen Aing. I sell into complex enterprise security decisions, coach the people around the deal, and build practical systems when the same friction shows up again.
+            {homePage.body}
           </p>
           <div className="mt-7 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap">
             <Link
@@ -89,7 +89,7 @@ export default function Home() {
           <CelestialFrame>
             <BrandAvatar variant="leader" />
           </CelestialFrame>
-          <p className="editorial-subtle mt-3 text-center text-xs leading-5">Curious by nature. Builder by instinct.</p>
+          <p className="editorial-subtle mt-3 text-center text-xs leading-5">{homePage.caption}</p>
           <Link href="/about#how-i-work" className="mt-3 flex min-h-11 items-center justify-center gap-2 text-center text-sm font-semibold text-[#E6B59A] underline underline-offset-4">Explore how I work <ArrowRight size={16} aria-hidden="true" /></Link>
         </div>
       </section>
