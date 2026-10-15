@@ -2,7 +2,7 @@
 
 **Status:** Adoption record for this repository's Keystatic editor. It does not replace the brand guide, the product requirements, the content model, the route taxonomy, or the URL migration map.  
 **Date:** 2026-10-14  
-**Issue:** [KRU-109](https://linear.app/krusty/issue/KRU-109) for About. [KRU-111](https://linear.app/krusty/issue/KRU-111) for the Home cover. [KRU-112](https://linear.app/krusty/issue/KRU-112) for Work narratives.  
+**Issue:** [KRU-109](https://linear.app/krusty/issue/KRU-109) for About. [KRU-111](https://linear.app/krusty/issue/KRU-111) for the Home cover. [KRU-112](https://linear.app/krusty/issue/KRU-112) for Work narratives. [KRU-116](https://linear.app/krusty/issue/KRU-116) for case-study summaries.  
 **Baseline:** `main` after merged [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155) (KRU-75 verification lesson), then reconciled with merged [PR #171](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/171) (CMS decision guide) and merged [PR #173](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/173) (CMS Fundamentals module, KRU-110).  
 **Editor:** the existing local Keystatic install. Storage remains `{ kind: "local" }`. No second CMS, registry, or cross-repository sync.
 
@@ -25,6 +25,7 @@ Local only. Set `KEYSTATIC_LOCAL=true`, run `npm run dev` on loopback, open `/ke
 | Home cover | `content/home/page.json` | Cover eyebrow, two-part headline, philosophy line, short body, avatar caption, and the homepage meta description | Bento, celestial frame, role lookup, side-quest choice, links, credibility copy, closing note, document title |
 | About page | `content/about/page.json` | Visible About sentences, principles, education lines, interests, values, and the meta description | Portrait, capability orbit, career rail, tools map, link destinations, link labels, section ids, layout |
 | Verification lesson | `content/academy/lessons/verification.json` | Title, summary, analogy, takeaways, exercise, sources, track, level, minutes, and editorial metadata | Slug, answer key, prerequisites, practice links, availability, path order, progress |
+| Case-study summaries | `content/work/studies/*.json` | The public directory summary | Slug, kind, route, status, directory filters, role, technologies, preview, and URLs |
 
 Each file is read by a build-time adapter. Unknown keys, a changed id, empty required text, and invalid metadata fail the build. There is no second copy to fall back to. React renders the text as text. The Open Graph image reads the Home eyebrow and headline from that same record.
 
@@ -56,16 +57,16 @@ Career dates, titles, and companies stay in `lib/portfolio.ts` `roles`. The Abou
 
 ## Migration matrix
 
-"CMS" means a future Keystatic singleton or collection in **this** repository, using the same local editor until hosted editing is explicitly approved. "Now" is implemented for About in KRU-109, the Home cover in KRU-111, and Work narratives in KRU-112. Everything else is a decision, not a build.
+"CMS" means a future Keystatic singleton or collection in **this** repository, using the same local editor until hosted editing is explicitly approved. "Now" is implemented for About in KRU-109, the Home cover in KRU-111, Work narratives in KRU-112, and the case-study directory summaries in KRU-116. Everything else is a decision, not a build.
 
 | Surface | Shape | CMS-editable when migrated | Application-owned | Private — do not put in the CMS | Decision |
 | --- | --- | --- | --- | --- | --- |
 | Home | Singleton `content/home/page.json` | Cover eyebrow, two-part headline, philosophy line, short body, avatar caption, and meta description | Bento layout, celestial frame, role lookup, side-quest selection, links, status labels, credibility copy, closing note, document title | Joy Index, compensation, customer names | **Now.** Do not lengthen Home. |
 | About | Singleton `content/about/page.json` | Sentences listed above | Orbit, rail, tools map, routes | Same private boundary | **Now** |
 | Work narratives | Collection, one entry per existing `publicStories` id | Title, scope, collaboration, decision, context, contribution, execution, evidence limits, takeaway | `id`, area, related hrefs, kind, page composition, anchor map | Employer documents, revenue, quota, customer identities | **Now.** Validator stays in code. |
-| Work and case studies | Collection keyed by existing slug | Public summary and redacted narrative fields that already exist on the case study | `kind`, slug, route `/work/[slug]`, status vocabulary, live/repo URLs only when already true | Unreviewed metrics, private walkthroughs, access grants | One record per slug. Do not copy a project into a second collection. |
-| Projects directory | Not a separate collection | Nothing, until a case-study field moves | `lib/project-directory.ts` filters, category query values, lifecycle | Account data inside demos | Leave the directory as code. `/projects` stays. |
-| Side Quests | Same records as case studies, `kind: "side-quest"` | Public summary, honest limitation, status sentence | Kind, maturity, subject group, "what runs today" checks | Upstream private repos, detector data, credentials | Edit the case-study record. The index only links. |
+| Work and case studies | Collection keyed by existing slug | Public summary and redacted narrative fields that already exist on the case study | `kind`, slug, route `/work/[slug]`, status vocabulary, live/repo URLs only when already true | Unreviewed metrics, private walkthroughs, access grants | **Now** for the directory summary only. One record per existing slug. Page narratives stay in code. |
+| Projects directory | Not a separate collection | Nothing further; the summary is read from the case-study record | `lib/project-directory.ts` filters, category query values, lifecycle, role, technologies, preview | Account data inside demos | Leave the directory as code. `/projects` stays. Do not add a second collection. |
+| Side Quests | Same records as case studies, `kind: "side-quest"` | Public summary, honest limitation, status sentence | Kind, maturity, subject group, "what runs today" checks | Upstream private repos, detector data, credentials | The public summary is the case-study record. Limitation and status sentences stay in code. |
 | Field Notes | Collection for a published note; index copy can be a singleton later | Title, standfirst, body paragraphs, evidence label, related links that already exist | Routes, illustrative/synthetic labeling rules, the source registry in `lib/field-notes.ts` | Live imports from Account Signal Engine, territory maps, customer records | Two live guides first. Unpublished titles stay labeled unpublished. |
 | Academy lessons | One singleton per approved lesson id, as verification already is | Editorial fields in the KRU-75 contract | Check answers, prerequisites, routes, progress keys | Learner progress, employer overlays, answer keys | KRU-77 owns `reading-code-and-yaml` and `mcp-vs-rest-api`. Do not add a second editor. |
 | Career history | Do not duplicate `roles` | A later prose field may point at Experience | `lib/portfolio.ts` `roles` is the only title/date/company record. Home excerpts and the rail read it. | Compensation, quota, private performance notes | Keep. A CMS copy of employers would split one fact. |
@@ -123,13 +124,26 @@ Access rechecked 2026-10-14 after PR #171: `heyfunwhoa/security-market-map` is p
 
 No repository in this table is **Adopt**.
 
+## Case-study summary slice
+
+Each existing directory slug keeps its route. The public summary sentence moves into `content/work/studies`. The directory, the project cards, and the related-work list read that sentence. Kind, status, categories, role, technologies, preview, featured order, demo URLs, and GitHub URLs stay in `lib/project-directory.ts`. Titles and the case-study page narratives stay in code. There is no second collection for `/projects`.
+
+Field Notes bodies are [PR #184](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/184). The Academy lesson sentences are [PR #182](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/182). Neither is part of this slice.
+
 ## Next three implementation tasks
 
-1. **KRU-77 lessons.** Migrate `reading-code-and-yaml` and `mcp-vs-rest-api` through the existing adapter. Do not take the route-group rewrite from draft PR #170.
-2. **Field Notes bodies.** Move the two published guides' public paragraphs into the existing editor. Leave the source registry and unpublished titles in code.
-3. **Case-study summaries.** Move public summary fields that already exist on a case study into one record per slug. Do not create a second collection for the projects directory.
+1. **Field Notes bodies.** The two published guides are the open pull request above. Leave the source registry and unpublished titles in code. Do not rebuild that collection here.
+2. **KRU-77 remainder.** The guided journey, badge, and beginner observation. The two lesson sentence files are the open lesson pull request. Do not take the route-group rewrite from draft PR #170.
+3. **Field Notes index.** A later singleton for the index introduction. Unpublished titles stay labeled unpublished.
 
-Hosted editing is not one of the three. Career-prose cleanup comes after these, still without copying `roles`.
+Hosted editing is not one of the three. Career-prose cleanup comes after these, still without copying `roles`. Case-study page narratives, sales profiles, and metrics stay in code.
+
+## Rollback for the case-study summaries
+
+- Unsaved edit: reload the editor.
+- Saved local experiment: `git restore --source=HEAD -- content/work/studies`, then reload `/projects` and the editor.
+- After a reviewed content commit: revert that commit and review the rollback PR.
+- Remove the slice: revert the implementation commit so the summary sentences return to `lib/project-directory.ts` together with the reader. Do not delete only the JSON files while the adapter import remains.
 
 ## Rollback for the Work narratives
 
