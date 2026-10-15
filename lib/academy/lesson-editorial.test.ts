@@ -59,6 +59,16 @@ test("a changed id, answer key, or empty sentence fails closed", () => {
   assert.throws(() => readLessonEditorial("reading-code-and-yaml", null));
 });
 
+test("Storybook strips the JSON import attribute from both lesson adapters", () => {
+  const storybook = readFileSync(
+    new URL("../../.storybook/main.ts", import.meta.url),
+    "utf8",
+  );
+  assert.match(storybook, /verification-editorial\.ts/);
+  assert.match(storybook, /lesson-editorial\.ts/);
+  assert.match(storybook, /replaceAll\(' with \{ type: "json" \}'/);
+});
+
 test("Follow one click progress stays on the existing mcp lesson id", () => {
   const fixture = {
     version: 1,
