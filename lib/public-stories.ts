@@ -1,74 +1,59 @@
 /**
  * Public editorial relationships, not a personal data warehouse or a deployed knowledge graph.
+ * Prose is read from content/work/stories. Ids, areas, and related links stay here.
  * No private Joy Index records or automated cross-repository sync.
  */
-export const publicStories = [
-  {
-    id: "enterprise-selling",
-    scope: "Individual contributor: full-cycle strategic selling and account strategy.",
-    collaboration: "Technical and commercial stakeholders across complex enterprise buying groups.",
-    decision: "Keep technical validity, business value and stakeholder alignment connected throughout the evaluation.",
-    title: "Navigating complex enterprise cybersecurity sales",
-    area: "Enterprise Sales",
-    context: "Strategic cybersecurity purchases bring together technical evaluation, business priorities and multiple decision makers.",
-    contribution: "Led full-cycle strategic sales at Rapid7, including opportunities across large enterprise accounts. At Forcepoint, owned new-logo and expansion work across a multi-state enterprise territory.",
-    execution: "Built account strategy around discovery and technical stakeholder requirements, coordinated commercial conversations and translated technical value for different buyers.",
-    evidence: "Public experience timeline describes strategic sales through Fortune 100 accounts, a major 2022 threat-intelligence agreement at Rapid7, and Forcepoint\u2019s largest team web-security agreement in 2021. Customer identities and contractual details are intentionally withheld.",
-    takeaway: "Enterprise execution depends on aligning technical validity, the business case and stakeholder decisions without assuming a uniform procurement sequence.",
-    related: [{label:"Experience and career history",href:"/experience",category:"Work",
-      },{label:"Deal anatomy illustration",href:"/field-notes/enterprise-deal",category:"Field Notes",
-      },{label:"Stakeholder mapping exercise",href:"/field-notes/multithreading",category:"Field Notes",
-      },
-    ],
-  },
-  {
-    id: "team-enablement",
-    scope: "Coaching and onboarding alongside an enterprise-selling role.",
-    collaboration: "SDRs, newer sellers, solutions architecture and customer success.",
-    decision: "Turn repeated field questions into resources teammates can reuse; coaching is distinct from direct people management.",
-    title: "Helping teams ramp and share expertise",
-    area: "People & Leadership",
-    context: "At Truffle Security, field expertise and onboarding needed to be easier to reuse across roles.",
-    contribution: "Coached SDRs and newer sellers, created shared discovery and POC resources, and supported onboarding across sales and customer-facing teams.",
-    execution: "Converted recurring discovery and evaluation questions into shared resources, and supported cross-functional onboarding across sales, solutions architecture and customer success.",
-    evidence: "The career timeline describes SDR coaching and onboarding across customer-facing roles; confidential onboarding materials are not reproduced here.",
-    takeaway: "Good enablement reduces dependence on one person holding all the context.",
-    related: [{label:"Career timeline",href:"/experience",category:"Work"},{label:"Truffle Camp — independent curriculum design",href:"/work/truffle-camp",category:"Side Quests",
-      },
-    ],
-  },
-  {
-    id:"competitive-evidence",
-    scope: "Competitive positioning and field enablement.",
-    collaboration: "Sales teammates, with field feedback shared across product and marketing.",
-    decision: "Separate confirmed findings from assumptions before turning research into seller guidance.",
-    title:"Turning competitive context into usable field guidance",
-    area:"GTM Strategy",
-    context:"Enterprise security sellers need defensible comparisons without turning unreviewed research into claims.",
-    contribution:"Developed competitive briefs and field playbooks, organized source-backed positioning, and shared that guidance with teammates.",
-    execution:"Collected relevant evidence, separated validated observations from assumptions, and packaged comparisons into repeatable guidance for sellers.",
-    evidence:"Professional artifacts are summarized in the competitive-intelligence case study; underlying employer documents aren't reproduced publicly.",
-    takeaway:"Useful GTM narratives distinguish confirmed findings from hypotheses.",
-    related:[{label:"Competitive evidence field approach",href:"/work/competitive-intelligence-engine",category:"Work",
-      },{label:"Career timeline",href:"/experience",category:"Work"},{label:"Explore independent research systems",href:"/side-quests",category:"Side Quests",
-      },
-    ],
-  },
-] as const;
+import { workNarratives } from "./work/editorial.ts";
+import { storyFacts } from "./work/story-facts.ts";
+
+export const publicStories = storyFacts.map((fact) => {
+  const prose = workNarratives[fact.id];
+  return {
+    id: fact.id,
+    area: fact.area,
+    title: prose.title,
+    scope: prose.scope,
+    collaboration: prose.collaboration,
+    decision: prose.decision,
+    context: prose.context,
+    contribution: prose.contribution,
+    execution: prose.execution,
+    evidence: prose.evidence,
+    takeaway: prose.takeaway,
+    related: fact.related,
+  };
+});
 
 export function validatePublicStories() {
- const ids=new Set<string>();
- const errors:string[]=[];
- for(const story of publicStories){
-  if(ids.has(story.id))errors.push("Duplicate story: "+story.id);
-  ids.add(story.id);
-  const requiredFields: readonly string[] = [story.title, story.context, story.contribution, story.execution, story.evidence, story.takeaway, story.scope, story.collaboration, story.decision,
+  const ids = new Set<string>();
+  const errors: string[] = [];
+  for (const story of publicStories) {
+    if (ids.has(story.id)) errors.push("Duplicate story: " + story.id);
+    ids.add(story.id);
+    const requiredFields: readonly string[] = [
+      story.title,
+      story.context,
+      story.contribution,
+      story.execution,
+      story.evidence,
+      story.takeaway,
+      story.scope,
+      story.collaboration,
+      story.decision,
     ];
-  if (requiredFields.some((value) => value.trim().length === 0)) errors.push("Incomplete story: " + story.id);
-  if(!story.related.length||story.related.some(
-        (link) =>!link.href.startsWith("/") || !["Work", "Field Notes", "Side Quests", "Builder Academy"].includes(link.category,
+    if (requiredFields.some((value) => value.trim().length === 0))
+      errors.push("Incomplete story: " + story.id);
+    if (
+      !story.related.length ||
+      story.related.some(
+        (link) =>
+          !link.href.startsWith("/") ||
+          !["Work", "Field Notes", "Side Quests", "Builder Academy"].includes(
+            link.category,
           ),
-      ))errors.push("Invalid internal reference: "+story.id);
- }
- return errors;
+      )
+    )
+      errors.push("Invalid internal reference: " + story.id);
+  }
+  return errors;
 }

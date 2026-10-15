@@ -1,4 +1,4 @@
-import { config, fields, singleton } from "@keystatic/core";
+import { collection, config, fields, singleton } from "@keystatic/core";
 
 const text = (label: string, multiline = false) =>
   fields.text({ label, multiline, validation: { isRequired: true } });
@@ -48,10 +48,52 @@ function governanceFields() {
   };
 }
 
-// Singletons fix file identity: no create/delete/rename for these records.
+// Singletons fix file identity: no create/delete/rename for those records.
+// The Work collection keeps one file per existing id. The reader rejects any other file.
 export default config({
   storage: { kind: "local" },
   ui: { brand: { name: "joy. · local editorial" } },
+  collections: {
+    workStories: collection({
+      label: "Work narratives",
+      slugField: "id",
+      path: "content/work/stories/*",
+      format: { data: "json" },
+      entryLayout: "form",
+      previewUrl: "/work",
+      columns: ["title"],
+      schema: {
+        id: fields.slug({
+          name: {
+            label: "Story ID",
+            description:
+              "Fixed id. The filename is this slug. A new or renamed file fails the reader.",
+            validation: {
+              isRequired: true,
+              pattern: {
+                regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                message: "Use the existing lowercase story id",
+              },
+            },
+          },
+          slug: {
+            label: "Filename",
+            description: "Must match the story id.",
+          },
+        }),
+        title: text("Title"),
+        scope: text("Scope of responsibility", true),
+        collaboration: text("Who the work involved", true),
+        decision: text("Judgment behind the approach", true),
+        context: text("Context", true),
+        contribution: text("My contribution", true),
+        execution: text("Execution", true),
+        evidence: text("Evidence and limitations", true),
+        takeaway: text("What I learned", true),
+        ...governanceFields(),
+      },
+    }),
+  },
   singletons: {
     home: singleton({
       label: "Home page",

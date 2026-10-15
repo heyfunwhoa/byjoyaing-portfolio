@@ -1,20 +1,13 @@
-import type { ProjectStatus } from "./portfolio.ts";
 import { portfolioEntries } from "./portfolio-registry.ts";
 import { publicStories } from "./public-stories.ts";
+import type { FeaturedSlide } from "./featured-source.ts";
 
-export type FeaturedCollection = "Work" | "Side Quests";
-export type FeaturedSource = "employer" | "independent";
-
-export type FeaturedSlide = {
-  id: string;
-  title: string;
-  summary: string;
-  href: string;
-  collection: FeaturedCollection;
-  source: FeaturedSource;
-  area: string;
-  status?: ProjectStatus;
-};
+export type {
+  FeaturedCollection,
+  FeaturedSlide,
+  FeaturedSource,
+} from "./featured-source.ts";
+export { featuredSourceLabel } from "./featured-source.ts";
 
 const storyAnchors: Record<(typeof publicStories)[number]["id"], string> = {
   "enterprise-selling": "/work#enterprise-sales",
@@ -34,7 +27,14 @@ export function featuredWorkSlides(): FeaturedSlide[] {
     area: story.area,
   }));
 
-  const used = new Set([...slides.map((slide) => slide.href), ...publicStories.flatMap(story => story.related.filter(link => link.category === "Work").map(link => link.href))]);
+  const used = new Set([
+    ...slides.map((slide) => slide.href),
+    ...publicStories.flatMap((story) =>
+      story.related
+        .filter((link) => link.category === "Work")
+        .map((link) => link.href),
+    ),
+  ]);
   for (const entry of portfolioEntries.filter((item) => item.kind === "work")) {
     if (used.has(entry.href)) continue;
     slides.push({
@@ -61,7 +61,9 @@ export const featuredSideQuestSlugs = [
 /** Selected independent builds for `/side-quests`. Not used on `/work`. */
 export function featuredSideQuestSlides(): FeaturedSlide[] {
   return featuredSideQuestSlugs.flatMap((slug) => {
-    const entry = portfolioEntries.find((item) => item.slug === slug && item.kind === "side-quest");
+    const entry = portfolioEntries.find(
+      (item) => item.slug === slug && item.kind === "side-quest",
+    );
     if (!entry) return [];
     return [
       {
@@ -77,8 +79,3 @@ export function featuredSideQuestSlides(): FeaturedSlide[] {
     ];
   });
 }
-
-export const featuredSourceLabel: Record<FeaturedSource, string> = {
-  employer: "Employer work",
-  independent: "Independent · Side Quest",
-};
