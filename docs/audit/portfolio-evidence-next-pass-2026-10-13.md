@@ -37,3 +37,9 @@ Human review should compare phone/tablet/desktop and 200% zoom, inspect expanded
 4. Verify inbox delivery with an explicitly approved synthetic send/recipient. Code tests use mocks or blocked mail routes.
 5. Implement durable distributed rate limiting through an approved configured service. No paid infrastructure is provisioned by this content/UI change.
 6. Build real account/competitive monitoring in the appropriate separate application with access and evidence controls. These public walkthroughs do not create that backend or expose private research.
+
+## KRU-65 review — 2026-10-15
+
+[PR #167](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/167) is not the publication path. It is 39 commits behind current `main`, and its cards do not match the pages they link to. Commercial leadership is already the public coaching story. `/work/account-intelligence` is a designed fictional sample, not the private Account Workshop correction flow. `/work/detector-coverage-atlas` is a prototype coverage sample, not the Security Market Map comparison.
+
+The Work page now links those two existing Side Quests by their directory summaries, after the professional stories, and keeps the Side Quests index. It does not mount the Side Quest strip. The private Revenue OS walkthrough stays off this site.
