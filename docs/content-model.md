@@ -78,7 +78,7 @@ Create a typed registry defining `kind: "work" | "side-quest"` with stable `slug
 
 **Status:** Working adoption guidance, not an approved cross-repository implementation or authorization to migrate data. This section is portfolio-specific. See [CMS fundamentals](builder-academy/cms-fundamentals.md) for general concepts, alternatives, and source links. Inspect current repository states and vendor terms before a future adoption decision.
 
-**Default:** The local editor has the merged verification lesson, the About singleton, the Home cover singleton, and the Work narrative collection in [editorial-foundation.md](content/editorial-foundation.md). About is in review on KRU-109. The Home cover is in review on KRU-111. Work narratives are in review on KRU-112. None of those three are merged or deployed, and none is permission to migrate Field Notes, case studies, or the rest of Academy. Keystatic authors reviewable, structured **public editorial content** in the owning repository. GitHub review, CI, and Vercel deployment remain separate publishing gates. Neither record is evidence of hosted GitHub authentication.
+**Default:** The local editor on `main` has the verification lesson, the About singleton, the Home cover, and the Work narrative collection. This slice adds the two published Field Notes guides. See [editorial-foundation.md](content/editorial-foundation.md). Hosted editing is not enabled. This is not permission to migrate the Field Notes index, case-study summaries, or the remaining Academy lessons. Keystatic authors reviewable, structured **public editorial content** in the owning repository. GitHub review, CI, and Vercel deployment remain separate publishing gates. None of these records is evidence of hosted GitHub authentication.
 
 ### Which system owns what?
 
@@ -98,7 +98,7 @@ These are **recommendations to validate**, not implementation status claims:
 
 | Repository/product | Now | Possible later | Boundary |
 | --- | --- | --- | --- |
-| byjoyaing-portfolio | **Adopt, local About singleton, Home cover, and Work narratives.** Side Quests, Field Notes, case studies, and further Academy lessons stay proposed | Authenticated hosted editing after a separate Tier 3 review | Do not move UI logic, branding tokens, protected content, or the private Joy Index |
+| byjoyaing-portfolio | **Adopt, local About singleton, Home cover, Work narratives, and the two published Field Notes guides.** Side Quests, the Field Notes index, case studies, and further Academy lessons stay proposed | Authenticated hosted editing after a separate Tier 3 review | Do not move UI logic, branding tokens, protected content, or the private Joy Index |
 | security-market-map | **Do not migrate evidence catalog** | Human-reviewed market explainers, category guides, vendor-neutral editorial articles | Source IDs, original URLs, confidence, licensing and observation dates remain owned by research schema |
 | gtm-revenue-os | **Keep model and calculations in code/data** | Synthetic scenario narratives, usage guides, decision exercises | ARR/bookings/revenue/cash math and numerical assumptions are validated separately |
 | account-signal-engine / Research Hub | **Keep collection and source review out of CMS** | Curated public-safe methodology or help articles | Versioned evidence, consent, authorization, erasure and signals stay in owning system |

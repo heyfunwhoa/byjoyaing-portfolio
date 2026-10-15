@@ -1,0 +1,106 @@
+{
+  "title": "Multithreading & Stakeholder Mapping",
+  "headline": "Map the people behind the decision.",
+  "eyebrow": "Field practice · Illustrative model · Short read",
+  "standfirst": "Complex deals depend on more than a strong champion. My approach is to map decision roles, validate influence, and give each stakeholder a relevant reason to join the conversation.",
+  "metaDescription": "How I think about complex buying groups: a short field note, an interactive stakeholder example, and a deeper walkthrough by request.",
+  "limitations": "Stakeholders, relationships and access states are fictional. This preview does not read private account systems. Coverage does not prove influence, budget approval or purchase intent.",
+  "sections": [
+    {
+      "key": "seller",
+      "kicker": "",
+      "heading": "",
+      "body": "For the seller, that means a clearer next conversation. For the sales leader, it means a practical way to coach gaps in access and alignment.",
+      "note": ""
+    },
+    {
+      "key": "use-when",
+      "kicker": "",
+      "heading": "",
+      "body": "the opportunity relies on one contact or the decision roles are unclear. Try one gap in the synthetic map, then decide which conversation would test it.",
+      "note": ""
+    },
+    {
+      "key": "principles",
+      "kicker": "",
+      "heading": "Three questions guide the work.",
+      "body": "",
+      "note": ""
+    },
+    {
+      "key": "who",
+      "kicker": "",
+      "heading": "Who matters?",
+      "body": "Map decision roles and affected teams, beyond the people already in the meeting.",
+      "note": ""
+    },
+    {
+      "key": "validated",
+      "kicker": "",
+      "heading": "What is validated?",
+      "body": "Separate access from influence. A responsive contact is not automatically a champion or budget owner.",
+      "note": ""
+    },
+    {
+      "key": "conversation",
+      "kicker": "",
+      "heading": "Why another conversation?",
+      "body": "Connect each introduction to a stakeholder’s priorities and the decision the group needs to make.",
+      "note": ""
+    },
+    {
+      "key": "coaching",
+      "kicker": "",
+      "heading": "What the example reveals",
+      "body": "The security champion and technical evaluator are engaged, but budget authority is still unvalidated. I would use the next conversation to understand the approval path and earn a business-outcome discussion. As a coach, I would ask what evidence supports that introduction and who owns the next action.",
+      "note": ""
+    },
+    {
+      "key": "access",
+      "kicker": "A closer look · Reviewed individually",
+      "heading": "Go deeper into the approach.",
+      "body": "Request a conversation about stakeholder planning, champion validation, and how I would coach the next move. I’ll review the request and confirm which walkthrough or sanitized materials I can share.",
+      "note": "Requests do not automatically unlock files. Detailed materials are shared separately after review, where available."
+    },
+    {
+      "key": "research",
+      "kicker": "",
+      "heading": "",
+      "body": "Account research can suggest who to involve; customer conversations validate their priorities and influence.",
+      "note": ""
+    }
+  ],
+  "links": [
+    {
+      "key": "experience",
+      "label": "See my enterprise-selling experience →",
+      "href": "/work#enterprise-sales"
+    },
+    {
+      "key": "request",
+      "label": "Request a deeper walkthrough →",
+      "href": "/contact?playbook=multithreading#access"
+    },
+    {
+      "key": "deal",
+      "label": "See where this fits in an enterprise deal →",
+      "href": "/field-notes/enterprise-deal"
+    },
+    {
+      "key": "related-note",
+      "label": "Enterprise deal anatomy",
+      "href": "/field-notes/enterprise-deal"
+    },
+    {
+      "key": "related-work",
+      "label": "Enterprise sales and team leadership",
+      "href": "/work"
+    }
+  ],
+  "owner": "Kristen Aing",
+  "reviewer": "Pending human review of the CMS move",
+  "contentVersion": 1,
+  "reviewDue": "2026-11-15",
+  "classification": "public",
+  "publicationStatus": "published"
+}
