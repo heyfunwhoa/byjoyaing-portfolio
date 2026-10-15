@@ -37,7 +37,7 @@ Actions:
 | `/about` "GTM and product work" cards | About | Split by kind | Relabel. Competitive evidence stays Work. Atlas, account workflows, and Truffle Camp stay Side Quests. |
 | `/about` toolkit | About | About | Keep, behind the story. It is not the lead. |
 | `/work` three collection labels | Work | Work | Relabel the bodies so each collection has its own evidence. |
-| `/work` People stories in `lib/public-stories.ts` | Work | Work → People & Leadership | Keep. Hold further numeric detail. The page already says to verify before adding more. |
+| `/work` People stories in `lib/public-stories.ts` | Work | Work → People & Leadership | Keep. The sentences now live in `content/work/stories` (2026-10-14). Ids and links stay in `lib/public-stories.ts`. Hold further numeric detail. |
 | `/work` `kind: "work"` registry item | Work | Work → GTM Strategy | Keep `competitive-intelligence-engine` here. |
 | `/experience` role timeline | Experience | Experience, linked from Work and About | Leave. Do not redirect to `/work`. The timeline and the collection index do different jobs. |
 | `/field-notes` two guides | Field Notes | Field Notes featured | Keep. Labels stay illustrative / synthetic. |

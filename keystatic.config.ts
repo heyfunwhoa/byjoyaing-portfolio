@@ -1,4 +1,4 @@
-import { config, fields, singleton } from "@keystatic/core";
+import { collection, config, fields, singleton } from "@keystatic/core";
 
 const text = (label: string, multiline = false) =>
   fields.text({ label, multiline, validation: { isRequired: true } });
@@ -49,9 +49,43 @@ function governanceFields() {
 }
 
 // Singletons fix file identity: no create/delete/rename for these records.
+// The Work collection keeps one file per existing story id. The reader rejects any other id.
 export default config({
   storage: { kind: "local" },
   ui: { brand: { name: "joy. · local editorial" } },
+  collections: {
+    workNarratives: collection({
+      label: "Work narratives",
+      slugField: "title",
+      path: "content/work/stories/*",
+      format: { data: "json" },
+      schema: {
+        title: fields.slug({
+          name: { label: "Title", validation: { isRequired: true } },
+          slug: {
+            label: "Stable story id",
+            description:
+              "Leave the existing id. The site accepts only enterprise-selling, team-enablement, and competitive-evidence.",
+            validation: {
+              pattern: {
+                regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                message: "Use the existing story id",
+              },
+            },
+          },
+        }),
+        scope: text("Scope", true),
+        collaboration: text("Collaboration", true),
+        decision: text("Decision", true),
+        context: text("Context", true),
+        contribution: text("Contribution", true),
+        execution: text("Execution", true),
+        evidence: text("Evidence and limitations", true),
+        takeaway: text("Takeaway", true),
+        ...governanceFields(),
+      },
+    }),
+  },
   singletons: {
     home: singleton({
       label: "Home page",

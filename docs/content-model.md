@@ -30,6 +30,7 @@ Words on the site are data with a job. This document defines **content fields an
 
 | Content | File | Public? |
 | --- | --- | --- |
+| Work narrative prose | `content/work/stories/*.json`, joined by `lib/public-stories.ts` | Yes, at `/work`. Id, area, and related links stay in that module. |
 | Home cover | `content/home/page.json`, read by `lib/home/editorial.ts` | Yes, at `/`. The Open Graph image reads the same eyebrow and headline. Role facts stay in `roles`. |
 | About sentences | `content/about/page.json`, read by `lib/about/editorial.ts` | Yes, at `/about`. `lib/public-personal.ts` only projects the beyond-work fields. |
 | Verification lesson prose | `content/academy/lessons/verification.json` | Yes, inside Academy. Checks and progress stay in code. |
@@ -77,7 +78,7 @@ Create a typed registry defining `kind: "work" | "side-quest"` with stable `slug
 
 **Status:** Working adoption guidance, not an approved cross-repository implementation or authorization to migrate data. This section is portfolio-specific. See [CMS fundamentals](builder-academy/cms-fundamentals.md) for general concepts, alternatives, and source links. Inspect current repository states and vendor terms before a future adoption decision.
 
-**Default:** The local editor has the merged verification lesson, the About singleton, and the Home cover singleton in [editorial-foundation.md](content/editorial-foundation.md). About is in review on KRU-109. The Home cover is in review on KRU-111. Neither is merged or deployed, and neither is permission to migrate Work, Field Notes, or the rest of Academy. Keystatic authors reviewable, structured **public editorial content** in the owning repository. GitHub review, CI, and Vercel deployment remain separate publishing gates. Neither record is evidence of hosted GitHub authentication.
+**Default:** The local editor has the merged verification lesson, the About singleton, the Home cover singleton, and the Work narrative collection in [editorial-foundation.md](content/editorial-foundation.md). About is in review on KRU-109. The Home cover is in review on KRU-111. Work narratives are in review on KRU-112. None of those three are merged or deployed, and none is permission to migrate Field Notes, case studies, or the rest of Academy. Keystatic authors reviewable, structured **public editorial content** in the owning repository. GitHub review, CI, and Vercel deployment remain separate publishing gates. Neither record is evidence of hosted GitHub authentication.
 
 ### Which system owns what?
 
@@ -97,7 +98,7 @@ These are **recommendations to validate**, not implementation status claims:
 
 | Repository/product | Now | Possible later | Boundary |
 | --- | --- | --- | --- |
-| byjoyaing-portfolio | **Adopt, local About singleton and Home cover.** Work, Side Quests, Field Notes, and further Academy lessons stay proposed | Authenticated hosted editing after a separate Tier 3 review | Do not move UI logic, branding tokens, protected content, or the private Joy Index |
+| byjoyaing-portfolio | **Adopt, local About singleton, Home cover, and Work narratives.** Side Quests, Field Notes, case studies, and further Academy lessons stay proposed | Authenticated hosted editing after a separate Tier 3 review | Do not move UI logic, branding tokens, protected content, or the private Joy Index |
 | security-market-map | **Do not migrate evidence catalog** | Human-reviewed market explainers, category guides, vendor-neutral editorial articles | Source IDs, original URLs, confidence, licensing and observation dates remain owned by research schema |
 | gtm-revenue-os | **Keep model and calculations in code/data** | Synthetic scenario narratives, usage guides, decision exercises | ARR/bookings/revenue/cash math and numerical assumptions are validated separately |
 | account-signal-engine / Research Hub | **Keep collection and source review out of CMS** | Curated public-safe methodology or help articles | Versioned evidence, consent, authorization, erasure and signals stay in owning system |
@@ -107,7 +108,7 @@ These are **recommendations to validate**, not implementation status claims:
 | channel-territory-mapping / Partner Workspace | **Parked; no new integration** | Approved partner collateral or enablement articles | Never move customer, partner, contact or territory operational data to public CMS |
 | truffle-camp / secret-safari | **Evaluate after portfolio pilot** | Human-authored lessons, quizzes' explanatory copy and game narratives | Learner state, scoring and game logic remain in application systems |
 
-**KRU-109 class.** The six repositories named in the editorial foundation use one label each. **Later:** security-market-map. **Do Not Adopt:** gtm-revenue-os, account-signal-engine, detector-coverage-atlas, joy-index, and technical-docs-platform. byjoyaing-portfolio is **Adopt** for the local About singleton and, in KRU-111, the local Home cover. A "Possible later" cell is a revisit trigger for that repository's maintainers. It is not a decision to install Keystatic, and this portfolio does not copy or sync their content. The same labels are restated in [editorial-foundation.md](content/editorial-foundation.md).
+**KRU-109 class.** The six repositories named in the editorial foundation use one label each. **Later:** security-market-map. **Do Not Adopt:** gtm-revenue-os, account-signal-engine, detector-coverage-atlas, joy-index, and technical-docs-platform. byjoyaing-portfolio is **Adopt** for the local About singleton, the Home cover in KRU-111, and the Work narratives in KRU-112. A "Possible later" cell is a revisit trigger for that repository's maintainers. It is not a decision to install Keystatic, and this portfolio does not copy or sync their content. The same labels are restated in [editorial-foundation.md](content/editorial-foundation.md).
 
 ### Adjacent use cases to assess before adopting a CMS
 
