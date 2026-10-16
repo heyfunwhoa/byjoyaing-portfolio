@@ -102,8 +102,8 @@ export default function Home() {
           </h2>
           <div className="min-w-0">
             <article className="border-t border-foreground pt-5">
-              <p className="editorial-eyebrow text-accent">{current.period}</p>
-              <h3 className="mt-2 font-display text-[clamp(2rem,4vw,3.25rem)] leading-tight">{current.company}</h3>
+              <p className="editorial-eyebrow text-accent">Current role</p>
+              <h3 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-tight">{current.company}</h3>
               <p className="mt-2 text-sm leading-6">{current.title}</p>
               <p className="mt-4 max-w-xl text-base leading-7">{current.points.join(" ")}</p>
             </article>
