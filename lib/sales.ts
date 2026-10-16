@@ -242,7 +242,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
       "A reviewed note: the event, the source, the date, the accounts it might affect, and whether we should use it. Unreviewed items do not go out.",
     decision: "Whether to open a conversation, and what we are allowed to say.",
     myRole:
-      "At Rapid7 I was the threat-intelligence resource across 500+ accounts, partners, and customers, and I wrote playbooks the portfolio team used. At Darktrace I built industry-knowledge training. A shared signal product is still an idea.",
+      "At Rapid7 I was a threat-intelligence resource for enterprise accounts, partners, and customers, and I wrote playbooks the portfolio team used. At Darktrace I built industry-knowledge training. A shared signal product is still an idea.",
     maturityDetail:
       "Concept. The playbooks and the training were real. I have not completed a design for this product, and I have not built it.",
     fieldAsset:
@@ -530,7 +530,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
     pipeline:
       "A partner row with no website → I refuse to treat a similar name as a match → a human review state before anyone co-sells.",
     workingToday:
-      "One fictional match on the case study. No spreadsheet upload, domain search, or CRM sync. Metadot growth numbers are from that job, not from this design.",
+      "One fictional match on the case study. No spreadsheet upload, domain search, or CRM sync. Metadot's channel program is historical context, not a result of this design.",
     plannedNext:
       "Upload a sheet, match on domain, and leave uncertain rows for a person.",
     implementedTech:
