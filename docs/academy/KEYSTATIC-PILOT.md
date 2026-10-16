@@ -1,6 +1,6 @@
 # Verification lesson: local editorial pilot
 
-**Reconciled 2026-10-14:** Merged to `main` in [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155). Use current `main` with `KEYSTATIC_LOCAL=true` for the local procedure below. The feature-branch checkout is historical. Hosted GitHub editing is still not configured, so [KRU-75](https://linear.app/krusty/issue/KRU-75) remains In Review in Linear. The portfolio About singleton is separate: [KRU-109](https://linear.app/krusty/issue/KRU-109) and [editorial-foundation.md](../content/editorial-foundation.md).
+**Reconciled 2026-10-16:** Merged to `main` in [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155). Use current `main` with `KEYSTATIC_LOCAL=true` for the local procedure below. Hosted GitHub-mode implementation is tracked separately in [KRU-124](https://linear.app/krusty/issue/KRU-124/portfolio-host-keystatic-with-github-backed-editing); it remains disabled until GitHub App credentials and Vercel settings are configured and the authenticated preview is verified. The portfolio About singleton is separate: [KRU-109](https://linear.app/krusty/issue/KRU-109) and [editorial-foundation.md](../content/editorial-foundation.md).
 
 Issue: [KRU-75](https://linear.app/krusty/issue/KRU-75). Implementation branch at the time: `codex/kru-75-keystatic-verification`.
 Baseline: `3096586` on main, including merged Academy PRs #150, #151 and #152.
@@ -55,7 +55,7 @@ Run this local-only suite in an isolated worktree. It starts its own development
 
 For a real editorial change, first make a feature branch, edit/save, inspect the content diff, increment `contentVersion` when appropriate, run checks, commit and push that branch, then open a PR. Review the diff and render from the **same head SHA**. Required repository checks and human review are the publishing gate. Keystatic's branch selection, a Save action, and `publicationStatus: published` do not enforce branch protection. This implementation PR demonstrates the branch/PR boundary; it does not claim a human approval or completed publication.
 
-GitHub mode, GitHub App credentials, hosted editor authentication and hosted preview publication are **not configured or verified**. The local UI requires `KEYSTATIC_LOCAL=true` and development mode. API access also checks loopback Host and same-origin requests. Production UI/API return 404 even if the opt-in variable is set; do not enable unauthenticated local filesystem mode on a host. A separately authorized GitHub App and deployment review is required for hosted editing. No credentials or paid services were enabled.
+GitHub mode, GitHub App credentials, hosted editor authentication and hosted preview publication are **not yet configured or verified**. The local UI requires `KEYSTATIC_LOCAL=true` and development mode. API access also checks loopback Host and same-origin requests. Production UI/API return 404 unless complete GitHub-mode configuration is present; `KEYSTATIC_LOCAL` cannot enable hosted filesystem writes. Hosted enablement remains a separate Vercel and GitHub setup/review step. No credentials or paid services were enabled by the implementation PR.
 
 ## Rollback
 
