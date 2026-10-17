@@ -213,7 +213,7 @@ export const lessons: Lesson[] = [
       "Accessible keyboard navigation, focus states, readable content and reduced-motion support are frontend requirements, not optional polish.",
       "UX asks whether visitors can reach their goals; GitHub and Vercel manage code and deployment rather than defining frontend structure or style.",
       "Choose an application framework by whether the product is content-led or interactive, the team’s existing skills, needed server features and maintenance cost.",
-      "Next.js is the most widely used of these options in the 2026 Stack Overflow survey; adoption is evidence about ecosystem size, not proof of best fit."
+      "Next.js has the most reported use among listed options with a separate response in the 2026 Stack Overflow survey; SolidStart is not ranked separately. Adoption is evidence about ecosystem size, not proof of best fit."
     ],
     exercise: "Read docs/builder-academy/frontend-building-blocks.md. Use a synthetic project card to label structure (HTML), component (React), styling (Tailwind), behavior (click/focus), data (props), accessibility (semantic link and keyboard focus) and UX. Then choose frameworks for a content-led event site and an authenticated research workspace; explain the tradeoffs and why survey popularity alone cannot decide. Do not edit production content during this reading exercise.",
     check: {
