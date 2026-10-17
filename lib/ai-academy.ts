@@ -9,6 +9,38 @@ export type Lesson = {
   companion?: { label: string; url: string };
 };
 export const lessons: Lesson[] = [
+{
+  "slug": "database-branching-recovery",
+  "title": "Databases: branching, backups, and platform decisions",
+  "track": "Builder",
+  "minutes": 35,
+  "level": "Beginner",
+  "summary": "Understand relational data, RSS ingestion, safe recovery, and when to choose Neon, Supabase, Railway, Turso, or Cloudflare D1.",
+  "analogy": "A database is a filing system with constraints. A database branch is a test copy, while a verified backup is an escape route if a change goes wrong.",
+  "takeaways": [
+    "Schemas define tables; foreign keys and uniqueness prevent missing references and duplicate records.",
+    "A scheduled RSS worker fetches and normalizes content, but source articles are not automatically verified market claims.",
+    "Git branches, database branches, snapshots, backups, and point-in-time restore solve different problems.",
+    "A restore can change primary identity or compute routing; compare IDs, endpoints, and data before and after.",
+    "Neon and Supabase support PostgreSQL; SQLite-oriented Turso and Cloudflare D1 require SQL and application portability review.",
+    "Choose by workload, access control, recovery requirements, operations, exit costs, and measured usage, not free-tier price alone."
+  ],
+  "exercise": "Read the companion database guide, then complete its synthetic branch-recovery and cost labs. No live credentials, database mutations, or provider calls are needed.",
+  "check": {
+    "question": "A snapshot restore creates a new branch with the same 16 tables. Is it safe to assume your application still connects to the original primary?",
+    "choices": ["Yes: identical table counts prove connectivity is unchanged.", "No: verify default/primary flags, stable branch IDs, and compute endpoint routing independently.", "Yes: branch names always determine connection routing."],
+    "answer": 1,
+    "explanation": "Equivalent table counts establish only a narrow schema fact. Restore finalization can change branch identity and endpoints; explicitly verify both."
+  },
+  "companion": {"label":"Read the database decision and recovery guide","url":"https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/databases-branching-recovery-and-selection.md"},
+  "sources": [
+    {"label":"Neon API: restore snapshot","url":"https://api-docs.neon.tech/reference/restoresnapshot"},
+    {"label":"Neon API: finalize branch restore","url":"https://api-docs.neon.tech/reference/finalizerestorebranch"},
+    {"label":"Supabase plans and backups","url":"https://supabase.com/pricing"},
+    {"label":"Cloudflare D1 overview","url":"https://developers.cloudflare.com/d1/"}
+  ]
+},
+
   ...enterpriseEvaluationLessons,
 {
   "slug": "cms-fundamentals",
