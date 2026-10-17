@@ -1,8 +1,8 @@
 # Builder Academy — Frontend building blocks: from framework to experience
 
-**Track:** Builder · **Level:** Beginner · **Estimated time:** 25–30 minutes  
+**Track:** Builder · **Level:** Beginner · **Estimated time:** 35–40 minutes  
 **Status:** Source lesson; Academy lesson card is registered in `lib/ai-academy.ts`. The lesson is not considered deployed until its PR is reviewed, merged and a production deployment is verified.  
-**Reviewed:** 2026-10-13
+**Reviewed:** 2026-10-17
 **Prerequisites:** [Programming Foundations](../ai-academy/programming-foundations.md) (HTML/CSS, JavaScript and the React/Next.js profiles); [From idea to verified release](idea-to-verified-release.md) for publishing changes.
 
 ## The mental model
@@ -34,6 +34,43 @@ This is a practical checklist, not a formula for measuring frontend quality. The
 - **Motion** or CSS transitions can animate an interaction; neither is required for every feature. Recraft assets / SVGs are media, not app frameworks.
 - **GitHub** holds source/version history; **Vercel** builds and hosts deployments; **Cloudflare DNS** helps the domain resolve. These are delivery infrastructure, not frontend UI components.
 - **UI** describes visible controls and presentation; **UX** covers the whole journey, comprehension, feedback and ability to finish a task.
+
+## Choose an application framework for the job
+
+An **application framework** organizes how pages, data, rendering, server work and deployment fit together. The five choices below are application frameworks. They are not CSS frameworks, databases, CMSs or hosting providers. Your current app may already have the right framework; popularity alone is not a reason to rewrite it.
+
+Use this order when choosing:
+
+1. **Describe the product.** Is it mainly published content, or an interactive app with accounts, saved data and frequent state changes?
+2. **Use the framework your team can support.** Existing skills, components, hiring needs and examples matter.
+3. **Check the runtime and deployment needs.** Identify server work, static output, background jobs, database access and hosting limits.
+4. **Compare maintenance costs.** Include migrations, debugging, upgrades and the number of ecosystems the team must learn.
+5. **Keep a working stack unless a concrete need justifies change.** A new framework does not fix a content, styling, data or usability problem by itself.
+
+| Framework | Strongest fit | Advantages | Tradeoffs |
+| --- | --- | --- | --- |
+| **Next.js (React)** | Interactive full-stack apps, dashboards, public sites that also need server features | Largest adoption among these five in the 2026 Stack Overflow survey; large React component and learning ecosystem; includes routing, rendering and server capabilities. | More concepts to manage, especially the boundaries between server and client code and rendering/caching choices. The broad feature set can be extra work for a site that only publishes content. |
+| **SvelteKit (Svelte)** | Full-stack apps for a team that prefers Svelte's component model | Integrated routing, data loading and form actions; it is a cohesive way to build Svelte apps. | Requires learning Svelte if the team knows React or Vue. The survey shows a smaller user pool than Next.js, so expect fewer people and third-party examples than in the React ecosystem. |
+| **Astro** | Content-led sites such as documentation, editorial, event and marketing sites | Designed for content sites; static HTML is the default, and interactive components can be loaded as separate “islands.” Can use components from other UI frameworks when needed. | A highly interactive application can make the islands and server-rendering model harder to reason about. Mixing UI frameworks adds more concepts and dependencies. |
+| **SolidStart (Solid)** | Interactive full-stack apps when the team specifically wants Solid | Solid's fine-grained reactivity can update targeted parts of an interface; SolidStart supplies the app-level structure. | Smallest adoption signal here: the 2026 Stack Overflow survey does not list SolidStart as a separate response. SolidJS has a 2.5% response, but that is the UI library, not the SolidStart framework. Expect a smaller pool of examples and experienced hires. |
+| **Nuxt (Vue)** | Full-stack apps for teams that use or prefer Vue | Adds application structure to Vue, with server-rendering and other full-stack capabilities; a good choice when Vue knowledge and modules are already part of the team. | Requires Vue-specific knowledge and conventions. Its measured adoption in the same survey is smaller than Next.js, Astro and SvelteKit. |
+
+### How popular are they?
+
+The 2026 Stack Overflow Developer Survey asked whether respondents had done **extensive development work** with each technology in the past year. Among all respondents who answered the question (10,281 people), the reported shares were Next.js **20.6%**, Astro **6.2%**, SvelteKit **5.6%** and Nuxt.js **4.4%**. SolidStart was not a separate response; SolidJS was reported at **2.5%**.[1]
+
+These are multiple-choice survey shares, not market share, job-posting counts or a head-to-head test. The numbers do not add up to 100%. The result supports this limited conclusion: Next.js is the most widely used of the listed options among respondents to this survey. Its React foundation and broad ecosystem are plausible reasons for its reach, but the survey does not ask why people choose it. Popularity is useful evidence about ecosystem size; it is not a quality score or proof that a framework is best for a particular project.
+
+### Apply the choice to a project
+
+- **Mostly articles, guides, release notes, event pages and a few embedded interactive tools:** consider Astro. It is designed to send mostly content as HTML and add client-side JavaScript only where the page needs it.
+- **A logged-in research workspace, simulator or dashboard with search, saved state and server-side data access:** consider Next.js if the team already uses React. SvelteKit or Nuxt can fit if the team is already invested in Svelte or Vue. Background collection and scheduled jobs can remain separate services.
+- **A working application already uses Next.js and meets the product needs:** keep it. Rebuild only if you can name the user or operating problem the change solves and show that the benefits outweigh migration and retraining costs.
+- **SolidStart:** learn it or prototype with it when Solid's interaction model is a deliberate requirement. Its adoption evidence does not currently justify making it the default for this project portfolio.
+
+**Practice (synthetic):** A small team is planning (A) a public event-and-learning site with articles, videos and two interactive demos, and (B) a private account-research workspace with login, saved notes and database-backed search. Pick a framework for each. Explain what makes Astro a plausible fit for A, why a full-stack application framework such as Next.js may fit B, and one condition that could make SvelteKit or Nuxt the better B choice. Then name one reason popularity alone is insufficient.
+
+**Suggested reasoning:** Astro is a candidate for A because most of the site is content and only two areas need interactivity. Next.js is a candidate for B if the team already knows React and needs an interactive app with server capabilities. A team experienced in Svelte or Vue could reasonably select SvelteKit or Nuxt instead. The scenario does not establish actual performance, cost or security; those require testing the chosen implementation.
 
 ## Different kinds of components
 
@@ -192,9 +229,18 @@ Write the content source, component, styling rule, expected link destination and
 
 ## Primary references
 
+Framework capabilities and survey data were checked 2026-10-17. The table's pros, cons and project scenarios are teaching synthesis, not benchmark results. Popularity figures use Stack Overflow's all-respondent web-framework dataset; its selection/share definition is described above.
+
 - [MDN: Learn web development](https://developer.mozilla.org/en-US/docs/Learn_web_development)
 - [React: Your first component](https://react.dev/learn/your-first-component)
 - [Next.js: App Router](https://nextjs.org/docs/app)
+- [Next.js: framework overview](https://nextjs.org/docs)
+- [SvelteKit: introduction](https://svelte.dev/docs/kit)
+- [Astro: Why Astro?](https://docs.astro.build/en/concepts/why-astro/)
+- [SolidStart: overview](https://docs.solidjs.com/solid-start/v2)
+- [SolidJS: fine-grained reactivity](https://docs.solidjs.com/advanced-concepts/fine-grained-reactivity)
+- [Nuxt: concepts](https://learn.nuxt.com/en/concepts)
+- [Stack Overflow Developer Survey 2026: web frameworks and technologies](https://survey.stackoverflow.co/2026/technology/data/web-framework)
 - [Tailwind: Styling with utility classes](https://tailwindcss.com/docs/styling-with-utility-classes)
 - [W3C WAI: Accessibility fundamentals](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
 
