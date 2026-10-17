@@ -18,7 +18,7 @@ test("frontend building-blocks lesson teaches the seven-part model and tool boun
   assert.match(lesson.check.choices[lesson.check.answer], /Accessibility and user experience/);
   assert.ok(lesson.sources.some((source) => source.url.includes("w3.org/WAI")));
   assert.equal(lesson.minutes, 35);
-  assert.ok(lesson.takeaways.some((point) => /Next.js, SvelteKit, Astro, SolidStart and Nuxt/.test(point)));
+  assert.match(lesson.summary, /Next.js, SvelteKit, Astro, SolidStart and Nuxt/);
   assert.ok(lesson.sources.some((source) => source.url === "https://survey.stackoverflow.co/2026/technology/data/web-framework"));
   assert.equal(JSON.stringify(lesson).includes("API_KEY="), false);
 });
