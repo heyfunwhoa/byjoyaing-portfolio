@@ -200,9 +200,9 @@ export const lessons: Lesson[] = [
     slug: "frontend-building-blocks",
     title: "Frontend building blocks: from framework to experience",
     track: "Builder",
-    minutes: 25,
+    minutes: 35,
     level: "Beginner",
-    summary: "Learn how structure, components, styling, behavior, data, accessibility and UX combine to make a frontend; identify the role of Next.js, React, Tailwind and shadcn/ui.",
+    summary: "Understand frontend layers and compare Next.js, SvelteKit, Astro, SolidStart and Nuxt by use case, tradeoffs, ecosystem and adoption evidence.",
     analogy: "Building a house requires a floor plan, reusable rooms, finishes, working controls and useful information. Accessibility and UX influence the entire design, not just the final coat of paint.",
     takeaways: [
       "Frontend = Structure + Components + Styling + Behavior + Data + Accessibility + User Experience.",
@@ -211,9 +211,11 @@ export const lessons: Lesson[] = [
       "Components can handle layout, display, navigation, interaction, forms, data displays, visualizations or feedback; a single component can span several categories.",
       "Data comes from props, local objects or APIs; React state changes what's displayed. A component looking correct does not guarantee accurate data.",
       "Accessible keyboard navigation, focus states, readable content and reduced-motion support are frontend requirements, not optional polish.",
-      "UX asks whether visitors can reach their goals; GitHub and Vercel manage code and deployment rather than defining frontend structure or style."
+      "UX asks whether visitors can reach their goals; GitHub and Vercel manage code and deployment rather than defining frontend structure or style.",
+      "Choose an application framework by whether the product is content-led or interactive, the team’s existing skills, needed server features and maintenance cost.",
+      "Next.js has the most reported use among listed options with a separate response in the 2026 Stack Overflow survey; SolidStart is not ranked separately. Adoption is evidence about ecosystem size, not proof of best fit."
     ],
-    exercise: "Read docs/builder-academy/frontend-building-blocks.md. Use a synthetic project card to label structure (HTML), component (React), styling (Tailwind), behavior (click/focus), data (props), accessibility (semantic link and keyboard focus) and UX (can a reader find the project?). Then compare a mobile layout bug with a data bug and explain which layer you would fix first. Do not edit production content during this reading exercise.",
+    exercise: "Read docs/builder-academy/frontend-building-blocks.md. Use a synthetic project card to label structure (HTML), component (React), styling (Tailwind), behavior (click/focus), data (props), accessibility (semantic link and keyboard focus) and UX. Then choose frameworks for a content-led event site and an authenticated research workspace; explain the tradeoffs and why survey popularity alone cannot decide. Do not edit production content during this reading exercise.",
     check: {
       question: "A project carousel looks polished but visitors cannot navigate it with a keyboard. What is missing?",
       choices: [
@@ -229,6 +231,11 @@ export const lessons: Lesson[] = [
       { label: "MDN: Learn web development", url: "https://developer.mozilla.org/en-US/docs/Learn_web_development" },
       { label: "React: Your first component", url: "https://react.dev/learn/your-first-component" },
       { label: "Next.js: App Router", url: "https://nextjs.org/docs/app" },
+      { label: "SvelteKit: introduction", url: "https://svelte.dev/docs/kit" },
+      { label: "Astro: Why Astro?", url: "https://docs.astro.build/en/concepts/why-astro/" },
+      { label: "SolidStart: overview", url: "https://docs.solidjs.com/solid-start/v2" },
+      { label: "Nuxt: concepts", url: "https://learn.nuxt.com/en/concepts" },
+      { label: "Stack Overflow Developer Survey 2026: web framework data", url: "https://survey.stackoverflow.co/2026/technology/data/web-framework" },
       { label: "Tailwind CSS: Styling with utility classes", url: "https://tailwindcss.com/docs/styling-with-utility-classes" },
       { label: "W3C WAI accessibility fundamentals", url: "https://www.w3.org/WAI/fundamentals/accessibility-intro/" }
     ]
