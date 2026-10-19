@@ -62,7 +62,7 @@ test("source guard: Side Quests mounts a snap strip, not Embla", () => {
   assert.match(quests, /<FeaturedSideQuestStrip/);
   assert.match(quests, /featuredSideQuestSlides\(\)/);
   assert.match(quests, /featuredSideQuestSlugs/);
-  assert.match(quests, /BrandAvatar variant="builder"/);
+  assert.match(quests, /<OrbitStudyIllustration variant="side-quests" \/>/);
   assert.doesNotMatch(quests, /FeaturedWorkCarousel|@\/components\/ui\/carousel|embla-carousel-react/);
   const strip = readFileSync(new URL("../components/featured-side-quest-strip.tsx", import.meta.url), "utf8");
   assert.match(strip, /snap-x snap-mandatory/);

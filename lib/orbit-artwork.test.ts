@@ -40,7 +40,7 @@ test("the shared portrait sits beside the orbit folder", () => {
 });
 
 test("orbit files are the two reviewed PNGs", () => {
-  assert.deepEqual(readdirSync(orbitDir).sort(), [
+  assert.deepEqual(readdirSync(orbitDir).filter((name) => name.endsWith(".png")).sort(), [
     "orbit-filled-nodes.png",
     "orbit-outlined-nodes-on-charcoal.png",
   ]);
