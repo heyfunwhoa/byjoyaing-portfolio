@@ -57,7 +57,7 @@ Primitives already in the repo: links, buttons in the header and filters, `Proje
 | Navigation | Notes on the live header. No second header. Breadcrumb is not built. | `SiteHeader` from the root layout |
 | Cards | `EditorialProjectCard`, `ProjectBento`, `ProjectFilter` | Directory facts |
 | Motion | Interactive workbench: four scoped transitions, eleven component previews, replay, timing, and motion-off controls. | Existing Radix/Embla primitives plus a CSS module |
-| Visual identity | Homepage orbit and Work-tile motif, labeled as those placements | `CelestialFrame`, `BrandAvatar`, `GeometricMotif`, `/brand/avatar/illustrated-portrait.png` |
+| Visual identity | Homepage-only portrait, homepage orbit, and Work-tile motif, labeled by placement | `CelestialFrame`, `BrandAvatar`, `GeometricMotif`, `/brand/avatar/home-portrait.webp`, `/brand/avatar/illustrated-portrait.png` |
 | Orbit artwork | Compare the transparent drawing, the charcoal plate, and the live pillar controls before changing the homepage | `OrbitPortrait`, `OrbitArtwork`, `CapabilityOrbit` |
 | Data visualization | Status pills and the experience constellation | `ProjectStatusPill`, `ProjectConstellation` |
 | Interactions | Filter URL state, plus a native disclosure listing the timeline button and the joy. tooltip | None new |

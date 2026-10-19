@@ -22,12 +22,20 @@ function pngSize(buffer: Buffer) {
 
 test("the shared portrait sits beside the orbit folder", () => {
   const avatarDir = path.join(root, "public/brand/avatar");
-  assert.deepEqual(readdirSync(avatarDir).sort(), ["illustrated-portrait.png"]);
+  assert.deepEqual(readdirSync(avatarDir).sort(), ["home-portrait.webp", "illustrated-portrait.png"]);
   const buffer = readFileSync(path.join(avatarDir, "illustrated-portrait.png"));
   assert.deepEqual(pngSize(buffer), { width: 824, height: 1024 });
   assert.equal(buffer.includes(scriptMarker), false);
+  const homePortrait = readFileSync(path.join(avatarDir, "home-portrait.webp"));
+  assert.equal(homePortrait.toString("ascii", 0, 4), "RIFF");
+  assert.equal(homePortrait.toString("ascii", 8, 12), "WEBP");
+  assert.ok(homePortrait.length < 150_000);
+  assert.equal(homePortrait.includes(scriptMarker), false);
   const avatar = read("components/brand-avatar.tsx");
   assert.match(avatar, /\/brand\/avatar\/illustrated-portrait\.png/);
+  assert.match(avatar, /\/brand\/avatar\/home-portrait\.webp/);
+  const homePage = read("app/page.tsx");
+  assert.match(homePage, /<BrandAvatar variant="leader" portrait={homeBrandAvatarPortrait} \/>/);
   assert.doesNotMatch(avatar, /src="\/avatar\.png"/);
 });
 
