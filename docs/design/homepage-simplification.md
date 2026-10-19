@@ -8,7 +8,7 @@
 
 The homepage is an editorial cover. It introduces Kristen Aing, shows enterprise-selling credibility, and points to Work, Field Notes, Side Quests, About, and Contact. It does not retell those pages.
 
-Positioning stays **Revenue & GTM Leader · Curious Builder.** Philosophy stays one line: **People first. Problem-driven. Systems-minded.** Signature stays **joy.** Fonts stay Geist Sans and Geist Mono. Palette, Leader avatar (`/brand/avatar/illustrated-portrait.png`), and the six-item navigation stay.
+Positioning stays **Revenue & GTM Leader · Curious Builder.** Philosophy stays one line: **People first. Problem-driven. Systems-minded.** Signature stays **joy.** Fonts stay Geist Sans and Geist Mono. Palette, homepage portrait (`/brand/avatar/home-portrait.webp`), and the six-item navigation stay.
 
 Supporting role links go to `/experience`. The Work index on this baseline does not yet carry the full Enterprise Sales chapter. That chapter is on the unmerged branch `cursor/p0-content-structure-560c`. This homepage does not depend on it.
 

@@ -1,5 +1,5 @@
 import { completePageMetadata } from "@/lib/page-metadata";
-import { BrandAvatar } from "@/components/brand-avatar";
+import { BrandAvatar, homeBrandAvatarPortrait } from "@/components/brand-avatar";
 import { ArrowRight } from "@/components/icons/arrow-right";
 import { CelestialFrame } from "@/components/celestial-frame";
 import { EditorialBento } from "@/components/editorial-bento";
@@ -87,7 +87,7 @@ export default function Home() {
         </div>
         <div className="mx-auto w-full max-w-[10rem] sm:max-w-[15rem] lg:max-w-[19rem]">
           <CelestialFrame>
-            <BrandAvatar variant="leader" />
+            <BrandAvatar variant="leader" portrait={homeBrandAvatarPortrait} />
           </CelestialFrame>
           <p className="editorial-subtle mt-3 text-center text-xs leading-5">{homePage.caption}</p>
           <Link href="/about#how-i-work" className="mt-3 flex min-h-11 items-center justify-center gap-2 text-center text-sm font-semibold text-[#E6B59A] underline underline-offset-4">Explore how I work <ArrowRight size={16} aria-hidden="true" /></Link>
