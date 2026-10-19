@@ -61,8 +61,8 @@ test("collection index pages use distinct reviewed orbit studies instead of port
   const fieldNotesArt = read("public/brand/orbits/studies/orbit-study-03.svg");
   const sideQuestsArt = read("public/brand/orbits/studies/orbit-study-02.svg");
 
-  assert.match(illustration, /field-notes.*orbit-study-03\\.svg/);
-  assert.match(illustration, /side-quests.*orbit-study-02\\.svg/);
+  assert.match(illustration, /field-notes.*orbit-study-03\.svg/);
+  assert.match(illustration, /side-quests.*orbit-study-02\.svg/);
   assert.match(illustration, /alt=""/);
   assert.match(fieldNotes, /<OrbitStudyIllustration variant="field-notes" \/>/);
   assert.match(sideQuests, /<OrbitStudyIllustration variant="side-quests" \/>/);
@@ -70,7 +70,7 @@ test("collection index pages use distinct reviewed orbit studies instead of port
   assert.doesNotMatch(sideQuests, /BrandAvatar/);
   for (const svg of [fieldNotesArt, sideQuestsArt]) {
     assert.match(svg, /<svg[^>]*viewBox="0 0 1024 1024"/);
-    assert.doesNotMatch(svg, /<script|on[a-z]+\\s*=|foreignObject|href=["']https?:/i);
+    assert.doesNotMatch(svg, /<script|on[a-z]+\s*=|foreignObject|href=["']https?:/i);
   }
 });
 
