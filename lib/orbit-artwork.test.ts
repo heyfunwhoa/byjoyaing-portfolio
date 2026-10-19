@@ -54,6 +54,26 @@ test("orbit files are the two reviewed PNGs", () => {
   }
 });
 
+test("collection index pages use distinct reviewed orbit studies instead of portraits", () => {
+  const illustration = read("components/orbit-study-illustration.tsx");
+  const fieldNotes = read("app/field-notes/page.tsx");
+  const sideQuests = read("app/side-quests/page.tsx");
+  const fieldNotesArt = read("public/brand/orbits/studies/orbit-study-03.svg");
+  const sideQuestsArt = read("public/brand/orbits/studies/orbit-study-02.svg");
+
+  assert.match(illustration, /field-notes.*orbit-study-03\\.svg/);
+  assert.match(illustration, /side-quests.*orbit-study-02\\.svg/);
+  assert.match(illustration, /alt=""/);
+  assert.match(fieldNotes, /<OrbitStudyIllustration variant="field-notes" \/>/);
+  assert.match(sideQuests, /<OrbitStudyIllustration variant="side-quests" \/>/);
+  assert.doesNotMatch(fieldNotes, /BrandAvatar/);
+  assert.doesNotMatch(sideQuests, /BrandAvatar/);
+  for (const svg of [fieldNotesArt, sideQuestsArt]) {
+    assert.match(svg, /<svg[^>]*viewBox="0 0 1024 1024"/);
+    assert.doesNotMatch(svg, /<script|on[a-z]+\\s*=|foreignObject|href=["']https?:/i);
+  }
+});
+
 test("the charcoal plate cannot be requested for an ivory surface", () => {
   assert.deepEqual(orbitArtwork.transparent.surfaces, ["ivory", "charcoal"]);
   assert.deepEqual(orbitArtwork.charcoal.surfaces, ["charcoal"]);
