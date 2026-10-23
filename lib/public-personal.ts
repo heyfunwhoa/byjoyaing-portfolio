@@ -1,12 +1,10 @@
-/** Public, deliberately curated interests. Never sourced automatically from private Joy Index.
+import { aboutPage } from "./about/editorial.ts";
+
+/** Public, deliberately curated interests. Never sourced from the private Joy Index.
+ * The sentences live in content/about/page.json. This module only projects them.
  * Keep "creative" where the sentence is about a creative project or music.
- * A travel interest needs its own approved sentence before it appears here.
+ * A travel interest needs its own approved sentence before it is added to that record.
  */
-export const beyondWorkIntro =
-  "I enjoy the process of discovering, making, and learning—whether I'm exploring a new sound, figuring out how something works, or trying a creative project for the first time. Those interests are part of my story, not just a list of hobbies.";
-export const personalInterests=[
- {id:"music",title:"Electronic music",detail:"House, techno, trance and the energy of discovering a great set.",connection:"Creativity, energy and connection."},
- {id:"making",title:"Making and fixing things",detail:"Hands-on DIY, working on cars and learning woodworking.",connection:"Patience, experimentation and understanding how things work."},
- {id:"creative",title:"Creative exploration",detail:"Trying unfamiliar creative projects.",connection:"A reminder that curiosity isn't limited to a job title."},
-] as const;
-export const personalValues=["Curiosity","Authenticity","Connection","Growth","Independence"] as const;
+export const beyondWorkIntro = aboutPage.beyondIntro;
+export const personalInterests = aboutPage.interests;
+export const personalValues = aboutPage.values;

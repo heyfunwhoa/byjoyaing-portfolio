@@ -12,7 +12,7 @@ Templates are compositions of the components below. Do not add a template compon
 | Template | Used by | Composition | Build note |
 | --- | --- | --- | --- |
 | T1 Preview | Home | Hero, condensed proof, three-tile `EditorialBento`, one side quest, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
-| T2 Collection index | Work, Field Notes, Side Quests | Hero with the matching avatar, in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
+| T2 Collection index | Work, Field Notes, Side Quests | Hero with its matching visual (Work portrait, Field Notes / Side Quests orbit study), in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
 | T3 Profile | About | Leader portrait, origin, philosophy, orbit, career/education, toolkit, evidence links, interests, contact | Toolkit precedes personal interests |
 | T4 Utility | Contact | Headline, links, `InquiryForm` | Work-example requests add a focus select. The general message does not. |
 | T5 Article | Field Notes guides | Evidence label, title, body, related links | Optional contents only when the guide is long |
@@ -20,7 +20,7 @@ Templates are compositions of the components below. Do not add a template compon
 | T7 Timeline | `/experience` | Role rows from `roles` | Not a primary nav template |
 | T8 Directory | `/projects` | Filters plus `projects-directory` | Supporting. Side Quests is the introduction |
 
-Avatar by template: T1, T3, and Work use Leader. Field Notes uses Explorer. Side Quests and the directory use Builder. All of them render `/brand/avatar/illustrated-portrait.png`.
+Avatar by template: Home uses `/brand/avatar/home-portrait.webp`. About, Work, and the directory use `/brand/avatar/illustrated-portrait.png`. The `/field-notes` and `/side-quests` collection headers use decorative orbit studies; Leader, Explorer, and Builder remain contextual labels.
 
 This inventory does not prescribe a rebuild. Names in the "Possible later role" column are the shared pieces the product plan may need. If an existing component already does the job, extend it.
 
@@ -38,7 +38,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `orbit-artwork.tsx` | Decorative PNG from `public/brand/orbits`. Empty alt. | Orbit drawing | Transparent file on ivory or charcoal. Charcoal plate on charcoal only. Not a control. |
 | `orbit-portrait.tsx` | Transparent orbit around the shared portrait | Portrait framing | Public use is the About hero. The homepage keeps `CelestialFrame`. |
 | `marginalia.tsx` | One short aside | Annotation | One per section at most. |
-| `crop-frame.tsx` | Crop marks around the portrait | Avatar frame | Marks may ease outward. The portrait file stays `/brand/avatar/illustrated-portrait.png`. |
+| `crop-frame.tsx` | Crop marks around either portrait | Avatar frame | Marks may ease outward. The shared portrait is `/brand/avatar/illustrated-portrait.png`; Home uses `/brand/avatar/home-portrait.webp`. |
 | `kicker.tsx` | Small label | Eyebrow | Exists. Editorial pages often use `.editorial-eyebrow` instead. |
 | `rail.tsx` | Supporting rail | Section divider or margin note | Exists. Confirm before a new divider. |
 
@@ -64,7 +64,7 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 
 | Component | What it does now | Action |
 | --- | --- | --- |
-| `brand-avatar.tsx` | `leader`, `explorer`, `builder`. All render `/brand/avatar/illustrated-portrait.png`. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. |
+| `brand-avatar.tsx` | Shared portrait is the default; Home passes `/brand/avatar/home-portrait.webp` explicitly. | Keep. Do not point at `/avatar-leader.webp` until that file is approved and committed. Collection index orbit studies are handled by `orbit-study-illustration.tsx`. |
 | `celestial-frame.tsx` | Static orbit and nodes around the homepage portrait | Public use is the homepage hero. The design lab may preview it. `aria-hidden` geometry. No spin, no face motion. |
 | `project-constellation.tsx` | Three linked projects plus a sentence for each edge | Public use is `/experience`. The design lab previews the same component. Not a live integration diagram. |
 | `capability-orbit.tsx` | Enterprise selling at the center opens a short About panel; Strategist, Leader, and Builder are ARIA tabs with arrow, Home, and End keys. The selling panel offers a same-tab deeper dive to `/work#enterprise-sales`. Pillar panels show evidence tagged employer or independent, plus links. | Public use is `/about`. The charcoal orbit PNG sits behind the same controls. CSS color and reveal transitions only, collapsed by reduced motion. No Motion package. Only Builder may link to Side Quests. |

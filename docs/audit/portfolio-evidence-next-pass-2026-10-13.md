@@ -37,3 +37,45 @@ Human review should compare phone/tablet/desktop and 200% zoom, inspect expanded
 4. Verify inbox delivery with an explicitly approved synthetic send/recipient. Code tests use mocks or blocked mail routes.
 5. Implement durable distributed rate limiting through an approved configured service. No paid infrastructure is provisioned by this content/UI change.
 6. Build real account/competitive monitoring in the appropriate separate application with access and evidence controls. These public walkthroughs do not create that backend or expose private research.
+
+
+## KRU-65 — first four-hour implementation slice (2026-10-14)
+
+Status: **proposed for review, not published, browser-verified, merged or deployed**. This first slice reuses the existing Work page, WorkExplorer/ProfessionalCaseStudy, and independent project pages. It connects exactly three leadership-relevant stories without adding a fourth case, a new component, an auth system, or a simulator. The existing public Work page has other professional stories; this is a **curated evidence path**, not a claim that those were replaced.
+
+### The three case-study narratives and provenance
+
+| Story | Problem / role | Decision and implementation | Evidence / honest outcome | Limitation and links |
+| --- | --- | --- | --- | --- |
+| Commercial leadership | Complex technical selling and uneven access to field knowledge; individual enterprise seller who also coached and supported onboarding | Translate recurring discovery/evaluation issues into repeatable field guidance; balance consistency against account-specific judgment; coordinate with sales, solutions architecture and CS | Existing public professional case and experience timeline support described contributions, not a verified quantified team productivity result | Do not claim formal Head of Sales tenure or direct management; no employer POCs, customer identities or internal enablement assets. [/work](/work), [/experience](/experience), [public-stories.ts](../../lib/public-stories.ts) |
+| Account Workshop | An account hypothesis can outlive evidence that supports it; independent synthetic workflow design | Version dependencies and invalidate downstream brief/person/draft recommendations when a correction or revocation arrives, instead of silently overwriting | Existing offline fixture demonstrates correction propagation, deterministic replay/conflict behavior and immutability; tests were recorded in the owning repository, **not rerun for this portfolio PR** | Fictional Northwind/Avery records only; not a live research, CRM, person verification or sending product. [synthetic story](https://github.com/heyfunwhoa/account-signal-engine/blob/main/docs/account-workshop/SYNTHETIC-STORY.md), [/work/account-intelligence](/work/account-intelligence) |
+| Cybersecurity evidence research | Product comparisons conflate category membership, vendor statements and independently tested support; independent researcher/system designer | Preserve claim-level source links, timestamps and Unknown vs Not supported; favor bounded defensible comparisons over universal coverage or proprietary scoring | KRU-76 verification document reports local build/tests and 375/768/1280/640px browser behavior for the secrets detection comparison in the **owning repo**; those results do **not** verify this portfolio change | Publisher claims are not measured detection performance, snapshot is not a live freshness guarantee, and KRU-76 is pending human review. [KRU-76 evidence](https://github.com/heyfunwhoa/security-market-map/blob/main/docs/verification/kru-76-comparison.md), [comparison source](https://github.com/heyfunwhoa/security-market-map/blob/main/components/comparison-evidence.tsx), [/work/detector-coverage-atlas](/work/detector-coverage-atlas) |
+
+Source paths under /work are existing portfolio routes; confirm they match the intended narrative in a rendered browser before approving publication. Each case still needs owner-approved final editorial copy for **problem, role, decision/tradeoff, implementation, evidence/outcome, limitations** before calling KRU-65 Done.
+
+### Five-minute private interview walkthrough — Revenue OS
+
+Use the **existing** `heyfunwhoa/gtm-revenue-os` leadership scenario and comparison engine; do not embed a live simulator or its target-company-inspired fixture into public portfolio assets. Run the walkthrough in an appropriately private local environment or reviewed private access context. All numbers are editable **illustrative assumptions**, never actual ARR, quota, compensation, conversion, company financials or achievements.
+
+- **0:00–0:45 — Decision and ICP.** “I am testing whether a small technical-security company should prioritize a service-provider wedge or enterprise/platform buyers.” State this as a hypothesis; discuss required customer interviews and stage conversion data.
+- **0:45–1:30 — Pipeline assumptions.** Inspect annual new-ARR bridge, average contract size, win rate, pipeline coverage and cycle length. Call out that pipeline creation, pipeline-constrained bookings, contractual ARR, recognized revenue and cash are separate measurements.
+- **1:30–2:30 — Capacity.** Show the existing fractional player-coach roster and quota-attainment assumptions. Distinguish theoretical selling capacity from realistic sourcing and pipeline availability. Avoid counting the named roster twice.
+- **2:30–3:45 — Hiring economics.** Compare no hire / first AE in month six / first AE in month twelve using `compareRosterFirstHire`. Inspect ramp, loaded hiring/department costs **only where actually implemented and verified**. No automatic best-hire answer.
+- **3:45–5:00 — Leadership decision.** Offer a conditional hire/no-hire position, a credible counterargument, source gaps, an outbound or ICP experiment, inspection cadence and the earliest trigger for revisiting the choice.
+
+[Existing Revenue OS scenario code](https://github.com/heyfunwhoa/gtm-revenue-os/blob/main/lib/leadership/scenarios.ts) · [Revenue OS canonical PRD](https://github.com/heyfunwhoa/gtm-revenue-os/blob/main/docs/product/prd.md) · [KRU-36 verification gate](https://linear.app/krusty/issue/KRU-36).
+
+The scenario's current source includes an identifiable company-inspired label. **Do not show that company name, source file contents, private notes or hypothetical figures on the public portfolio.** Before sharing a live private interview, review the environment and anonymize the displayed name, and verify all demonstrated cost functionality on the selected head. The walkthrough is a script, not evidence that a five-minute test was completed.
+
+### Four-hour timebox and gates
+
+| Budget | Work | Status on this first pass |
+| --- | --- | --- |
+| 0:00–0:45 | Inspect main, local governance, existing work, related issues/PRs and Revenue OS | Partial repository and issue inspection completed |
+| 0:45–2:00 | Curate three stories and route to existing examples | Work navigation edit committed; final editorial review pending |
+| 2:00–3:00 | Private Revenue OS five-minute guide with source and privacy boundaries | Written here; no private live demo verified |
+| 3:00–4:00 | Phone/tablet/desktop, keyboard, reduced-motion, 200% zoom, overflow, contact/evidence navigation and checks | **Not run** in this connector-only session; required before review approval |
+
+**Verify on the PR head:** package unit tests, lint, TypeScript/build, relevant browser tests, hosted CI/security checks, link destinations and privacy string search of rendered HTML/client assets. Manual widths: 320, 375, 768, 1024, 1440; actual 200% zoom; keyboard and focus, reduced motion, touch targets, overflow, evidence/contact. Reconcile the existing tablet browser PR #116 instead of adding overlapping tests. Record command outputs, browser artifacts, reviewer and commit SHA; source code inspection is not test evidence.
+
+**Next three tasks:** (1) Review final wording and permissions for each of three stories, including whether the Atlas route represents the chosen secrets-comparison evidence accurately; (2) run current-head automated/browser/manual checks and record real observations; (3) rehearse the genuinely private Revenue OS five-minute flow with a neutral label, verify financial/ramp math and capture decision memo and limitations. No merge or deployment without human review.

@@ -22,17 +22,25 @@ function pngSize(buffer: Buffer) {
 
 test("the shared portrait sits beside the orbit folder", () => {
   const avatarDir = path.join(root, "public/brand/avatar");
-  assert.deepEqual(readdirSync(avatarDir).sort(), ["illustrated-portrait.png"]);
+  assert.deepEqual(readdirSync(avatarDir).sort(), ["home-portrait.webp", "illustrated-portrait.png"]);
   const buffer = readFileSync(path.join(avatarDir, "illustrated-portrait.png"));
   assert.deepEqual(pngSize(buffer), { width: 824, height: 1024 });
   assert.equal(buffer.includes(scriptMarker), false);
+  const homePortrait = readFileSync(path.join(avatarDir, "home-portrait.webp"));
+  assert.equal(homePortrait.toString("ascii", 0, 4), "RIFF");
+  assert.equal(homePortrait.toString("ascii", 8, 12), "WEBP");
+  assert.ok(homePortrait.length < 150_000);
+  assert.equal(homePortrait.includes(scriptMarker), false);
   const avatar = read("components/brand-avatar.tsx");
   assert.match(avatar, /\/brand\/avatar\/illustrated-portrait\.png/);
+  assert.match(avatar, /\/brand\/avatar\/home-portrait\.webp/);
+  const homePage = read("app/page.tsx");
+  assert.match(homePage, /<BrandAvatar variant="leader" portrait={homeBrandAvatarPortrait} \/>/);
   assert.doesNotMatch(avatar, /src="\/avatar\.png"/);
 });
 
 test("orbit files are the two reviewed PNGs", () => {
-  assert.deepEqual(readdirSync(orbitDir).sort(), [
+  assert.deepEqual(readdirSync(orbitDir).filter((name) => name.endsWith(".png")).sort(), [
     "orbit-filled-nodes.png",
     "orbit-outlined-nodes-on-charcoal.png",
   ]);
@@ -43,6 +51,26 @@ test("orbit files are the two reviewed PNGs", () => {
     assert.equal(buffer.includes(Buffer.from("javascript:")), false);
     const text = buffer.toString("latin1");
     assert.doesNotMatch(text, /<svg|onload=|foreignObject/i);
+  }
+});
+
+test("collection index pages use distinct reviewed orbit studies instead of portraits", () => {
+  const illustration = read("components/orbit-study-illustration.tsx");
+  const fieldNotes = read("app/field-notes/page.tsx");
+  const sideQuests = read("app/side-quests/page.tsx");
+  const fieldNotesArt = read("public/brand/orbits/studies/orbit-study-03.svg");
+  const sideQuestsArt = read("public/brand/orbits/studies/orbit-study-02.svg");
+
+  assert.match(illustration, /field-notes.*orbit-study-03\.svg/);
+  assert.match(illustration, /side-quests.*orbit-study-02\.svg/);
+  assert.match(illustration, /alt=""/);
+  assert.match(fieldNotes, /<OrbitStudyIllustration variant="field-notes" \/>/);
+  assert.match(sideQuests, /<OrbitStudyIllustration variant="side-quests" \/>/);
+  assert.doesNotMatch(fieldNotes, /BrandAvatar/);
+  assert.doesNotMatch(sideQuests, /BrandAvatar/);
+  for (const svg of [fieldNotesArt, sideQuestsArt]) {
+    assert.match(svg, /<svg[^>]*viewBox="0 0 1024 1024"/);
+    assert.doesNotMatch(svg, /<script|on[a-z]+\s*=|foreignObject|href=["']https?:/i);
   }
 });
 

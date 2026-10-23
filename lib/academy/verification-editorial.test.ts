@@ -1,11 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import record from "../../content/academy/lessons/verification.json" with { type: "json" };
 import { lessons } from "../ai-academy.ts";
 import { readVerificationEditorial } from "./verification-editorial.ts";
 import {
+  githubEditorEnabled,
+  keystaticMode,
   localEditorEnabled,
   localEditorRequestAllowed,
+  privateNoStore,
 } from "./keystatic-access.ts";
 import { getLessonGuidance } from "./lesson-guidance.ts";
 import { parseProgress, progressKey } from "./click-mission.ts";
@@ -101,4 +105,67 @@ test("local editor needs explicit development opt-in and a same-origin loopback 
     localEditorRequestAllowed(request("127.0.0.1:3001", "https://example.com")),
     false,
   );
+});
+
+test("hosted editor requires explicit GitHub mode and complete strong credentials", () => {
+  const hostedEnv = {
+    NODE_ENV: "production",
+    NEXT_PUBLIC_KEYSTATIC_STORAGE: "github",
+    NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: "joy-portfolio-editor",
+    KEYSTATIC_GITHUB_CLIENT_ID: "client-id",
+    KEYSTATIC_GITHUB_CLIENT_SECRET: "client-secret",
+    KEYSTATIC_SECRET: "s".repeat(32),
+  };
+  assert.equal(githubEditorEnabled(hostedEnv), true);
+  assert.equal(keystaticMode(hostedEnv), "github");
+  assert.equal(keystaticMode({ ...hostedEnv, NODE_ENV: "development" }), null);
+  assert.equal(
+    keystaticMode({ ...hostedEnv, NEXT_PUBLIC_KEYSTATIC_STORAGE: "local" }),
+    null,
+  );
+  assert.equal(
+    keystaticMode({ ...hostedEnv, KEYSTATIC_GITHUB_CLIENT_SECRET: "" }),
+    null,
+  );
+  assert.equal(
+    keystaticMode({ ...hostedEnv, KEYSTATIC_SECRET: "short" }),
+    null,
+  );
+  assert.equal(
+    keystaticMode({ NODE_ENV: "production", KEYSTATIC_LOCAL: "true" }),
+    null,
+  );
+});
+
+test("Keystatic API responses cannot be cached across editor sessions", async () => {
+  const headers = new Headers({ Vary: "Accept-Encoding" });
+  headers.append("Set-Cookie", "first=one; Path=/; HttpOnly");
+  headers.append("Set-Cookie", "second=two; Path=/; HttpOnly");
+  const response = privateNoStore(
+    new Response("editor response", {
+      headers,
+    }),
+  );
+  assert.equal(
+    response.headers.get("Cache-Control"),
+    "private, no-store, max-age=0",
+  );
+  assert.equal(
+    response.headers.get("Vary"),
+    "Accept-Encoding, Cookie, Authorization",
+  );
+  assert.match(response.headers.get("Set-Cookie") ?? "", /first=one/);
+  assert.match(response.headers.get("Set-Cookie") ?? "", /second=two/);
+  assert.equal(await response.text(), "editor response");
+});
+
+test("hosted Keystatic is fixed to this repository and a CMS branch prefix", () => {
+  const config = readFileSync(
+    new URL("../../keystatic.config.ts", import.meta.url),
+    "utf8",
+  );
+  assert.match(config, /NODE_ENV === "production"/);
+  assert.match(config, /NEXT_PUBLIC_KEYSTATIC_STORAGE === "github"/);
+  assert.match(config, /owner: "heyfunwhoa", name: "byjoyaing-portfolio"/);
+  assert.match(config, /branchPrefix: "cms\/"/);
 });
