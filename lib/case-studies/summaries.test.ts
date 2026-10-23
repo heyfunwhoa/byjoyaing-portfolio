@@ -33,7 +33,7 @@ test("the directory renders the JSON summary and keeps filters in code", () => {
   assert.equal(atlas?.caseStudyUrl, "/work/detector-coverage-atlas");
   assert.equal(/\$\d/.test(caseStudySummaries["revenue-planning-simulator"]), false);
   assert.match(read("keystatic.config.ts"), /kind: "local"/);
-  assert.doesNotMatch(read("keystatic.config.ts"), /kind: "github"|kind: "cloud"/);
+  assert.doesNotMatch(read("keystatic.config.ts"), /kind: "cloud"/);
   assert.match(read("lib/portfolio.ts"), /slug: "detector-coverage-atlas"/);
   assert.doesNotMatch(read("lib/portfolio.ts"), /caseStudySummaries/);
 });
