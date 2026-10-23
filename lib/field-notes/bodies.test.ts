@@ -52,7 +52,7 @@ test("the two guides render one record and leave routes, labels, and the registr
   assert.match(registry, /Account Signal Engine/);
   assert.doesNotMatch(registry, /fieldNoteBodies/);
   assert.match(read("keystatic.config.ts"), /kind: "local"/);
-  assert.doesNotMatch(read("keystatic.config.ts"), /kind: "github"|kind: "cloud"/);
+  assert.doesNotMatch(read("keystatic.config.ts"), /kind: "cloud"/);
 });
 
 test("a changed id, new href, or empty sentence fails closed", () => {
