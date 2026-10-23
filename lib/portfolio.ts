@@ -44,7 +44,7 @@ export const strengths = [
   },
   {
     title: "Commercial judgment in technical markets",
-    body: "Ten-plus years in enterprise AppSec, cloud, data, threat intelligence, network, and developer security. I know how technical buyers actually decide, and I design GTM around that — not around slides.",
+    body: "Enterprise cybersecurity experience across application, cloud, data, threat intelligence, network, and developer security. I know how technical buyers actually decide, and I design GTM around that — not around slides.",
   },
   {
     title: "Knowledge that other people can use",
@@ -203,7 +203,7 @@ export const aiLoop = [
 ];
 
 export const bio =
-  "I have sold enterprise cybersecurity for 10+ years — application security, cloud, data security, threat intelligence, network security, and now developer security and machine identity. I own complex cycles with security, engineering, and partner stakeholders, and I turn the questions that repeat into briefs, playbooks, and tools the next person can run. Some of that work is material a team already used. Some of it is a working prototype. Some of it is a design I have not shipped as software.";
+  "I sell enterprise cybersecurity across application security, cloud, data, threat intelligence, network security, and developer security. I own complex cycles with security, engineering, and partner stakeholders, and turn recurring questions into briefs, playbooks, and tools other people can use. Some of that work is material a team already used. Some of it is a working prototype. Some of it is a design I have not shipped as software.";
 
 export const targetRolesPrimary = [
   "Enterprise sales",
@@ -252,18 +252,16 @@ export const roles = [
   {
     company: "Truffle Security",
     title: "Senior Enterprise Account Executive",
-    period: "Dec 2024 – Present",
     category: "Developer security, secrets, machine identity",
     points: [
       "Full-cycle enterprise sales for developer-first secrets detection, across security, engineering, and executive buyers.",
-      "Coach SDRs and newer sellers. Two SDRs moved into closing roles. Onboarded seven GTM hires across sales, solutions architecture, and customer success.",
+      "Coach newer sellers and contribute to onboarding across sales, solutions architecture, and customer success.",
       "Built shared discovery, ICP, competitive, and POC resources the sales team adopted, and carried field feedback into product and marketing.",
     ],
   },
   {
     company: "Darktrace",
     title: "Senior Enterprise Account Executive",
-    period: "Dec 2023 – May 2024",
     category: "Threat intelligence and network / AI security",
     points: [
       "Greenfield territory, and a coach for newer sellers on discovery, competitive positioning, and value-based selling.",
@@ -273,27 +271,24 @@ export const roles = [
   {
     company: "Rapid7",
     title: "Enterprise Account Executive, Strategic",
-    period: "Oct 2021 – Aug 2023",
     category: "Threat intelligence, cloud, and application security",
     points: [
-      "Full-cycle strategic sales from mid-market enterprise through Fortune 100, including one of the team’s largest threat-intelligence agreements in 2022.",
+      "Full-cycle strategic sales across complex enterprise accounts, including significant threat-intelligence opportunities.",
       "Wrote threat-intelligence playbooks the portfolio team used, and served as the field resource for that motion.",
     ],
   },
   {
     company: "Forcepoint",
     title: "Senior Account Executive, Lead",
-    period: "Sep 2018 – Oct 2021",
     category: "Web security and data protection",
     points: [
       "Mid-Atlantic and Southeast enterprise: new logo, expansion, and a field lead for discovery and account strategy.",
-      "Closed the team’s largest web-security agreement in 2021.",
+      "Closed strategic web-security opportunities and supported broader field execution.",
     ],
   },
   {
     company: "Metadot",
     title: "Global Channel Account Manager",
-    period: "Sep 2016 – Sep 2018",
     category: "Channel, partners, and new-category GTM",
     points: [
       "Helped stand up a global channel program with executive leadership, including national distributors.",
@@ -302,16 +297,14 @@ export const roles = [
   {
     company: "Quantcast",
     title: "Corporate Account Executive",
-    period: "Dec 2015 – Jul 2016",
     category: "New-market GTM",
     points: [
-      "One of the first Austin sales hires. Co-created a GTM playbook for agency targeting and repeatable outreach.",
+      "Early member of the Austin sales team. Co-created a GTM playbook for agency targeting and repeatable outreach.",
     ],
   },
   {
     company: "Websense",
     title: "Regional Account Manager",
-    period: "May 2014 – Dec 2015",
     category: "Web, email, and data security",
     points: [
       "Northeast accounts. Built cybersecurity ramp resources for new hires, then moved into a strategic account territory.",

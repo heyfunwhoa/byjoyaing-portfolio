@@ -50,7 +50,7 @@ export default function ExperiencePage() {
         <div className="min-w-0">
           <p className="editorial-eyebrow text-accent">Work · Revenue & GTM</p>
           <h1 className="editorial-title mt-3 max-w-[16ch]">
-            A decade selling technical security, and teaching the story.
+            Selling technical security, and teaching the story.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
             Hands-on enterprise selling, coaching newer sellers and translating field knowledge into reusable guidance. Each role shows the contribution first; related independent projects are labeled separately.
@@ -64,7 +64,7 @@ export default function ExperiencePage() {
       <section aria-labelledby="career-glance-title" className="border-b border-border py-12">
         <h2 id="career-glance-title" className="font-display text-3xl tracking-tight">Career at a glance</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Seven roles, oldest to newest. The timeline below has what each role covered.
+          A career across enterprise cybersecurity, technical sales, channel strategy, and new-market GTM.
         </p>
         <details className="mt-5 rounded-xl border border-border bg-card p-4">
           <summary className="cursor-pointer py-1 font-medium">
