@@ -82,7 +82,7 @@ Colors above describe the **existing implementation**, not guaranteed accessibil
 
 ### Character and avatar system
 
-Maintain one consistent illustrated personal identity across three treatments: Leader (default professional portrait), Explorer (research and Field Notes), and Builder (Side Quests and Builder Academy). The current shared portrait is `/brand/avatar/illustrated-portrait.png`. All variants use that one file until separate Leader, Explorer, and Builder exports are approved. Follow [avatar-system.md](./avatar-system.md) for sizing, naming, likeness approval, accessible alt text, reduced motion and asset review. The variants must not imply real-world work or titles that cannot be substantiated.
+Maintain one consistent illustrated personal identity across three treatments: Leader (professional portrait), Explorer (research and Field Notes), and Builder (Side Quests and Builder Academy). Home uses the separately approved `/brand/avatar/home-portrait.webp`; About, Work, and Builder Academy use `/brand/avatar/illustrated-portrait.png`. The `/field-notes` and `/side-quests` collection headers use decorative orbit studies. The role treatments remain contextual labels until separate Leader, Explorer, and Builder exports are approved. Follow [avatar-system.md](./avatar-system.md) for sizing, naming, likeness approval, accessible alt text, reduced motion and asset review. The variants must not imply real-world work or titles that cannot be substantiated.
 
 ### Logo, shapes and imagery
 
@@ -99,7 +99,7 @@ Celestial geometry is a supporting line language. It is not a space theme, a gam
 - Use a few static orbital lines, nodes, and simple connectors. They may frame the homepage portrait, sit on the Work tile, or connect projects on `/experience`. They do not replace headlines, evidence, or the bento.
 - Draw them in ivory `#F3EFE6`, charcoal `#1B211D`, copper `#8A4B2A`, or the border `#CFC3B3`. On a charcoal surface, a line may use the same warm copper highlight as the “Curious Builder.” italic. Do not introduce a green, star field, or planet palette for these marks.
 - Rings do not spin. Nodes do not encode data. If a drawing shows a relationship, a visible sentence and a keyboard link say the same thing.
-- One portrait file, `/brand/avatar/illustrated-portrait.png`, remains the Leader, Explorer, and Builder image until approved variants exist. Geometry around that file does not change the face. Portrait rules stay in [avatar-system.md](./avatar-system.md).
+- `/brand/avatar/home-portrait.webp` is the approved homepage portrait. `/brand/avatar/illustrated-portrait.png` remains the shared portrait for About, Work, Builder Academy and other portrait placements until approved variants exist. The Field Notes and Side Quests collection headers use orbit studies. Geometry around either portrait does not change the face. Portrait rules stay in [avatar-system.md](./avatar-system.md).
 
 
 ### Orbital editorial rollout (October 14, 2026; review pending)
