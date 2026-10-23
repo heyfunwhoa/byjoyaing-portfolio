@@ -1,5 +1,5 @@
 import { completePageMetadata } from "@/lib/page-metadata";
-import { BrandAvatar } from "@/components/brand-avatar";
+import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -41,7 +41,7 @@ export default function FieldNotesPage() {
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#private">Private work</a>
         </nav>
         </div>
-        <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="explorer" /><p className="editorial-eyebrow mt-3 text-center text-muted">Explorer / Field Notes</p></div>
+        <div className="mx-auto w-full max-w-[12rem]"><OrbitStudyIllustration variant="field-notes" /></div>
       </header>
       <section id="featured" className="section-enter scroll-mt-24 border-b border-border py-12">
         <div className="flex flex-wrap items-end justify-between gap-4"><h2 className="font-display text-3xl tracking-tight">The published notes</h2><span className="text-xs text-muted">Guides and toolkit · Synthetic demonstrations</span></div>

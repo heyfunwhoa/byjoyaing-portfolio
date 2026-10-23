@@ -1,5 +1,15 @@
 import { collection, config, fields, singleton } from "@keystatic/core";
 
+const storage =
+  process.env.NODE_ENV === "production" &&
+  process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github"
+    ? {
+        kind: "github" as const,
+        repo: { owner: "heyfunwhoa", name: "byjoyaing-portfolio" },
+        branchPrefix: "cms/",
+      }
+    : { kind: "local" as const };
+
 const text = (label: string, multiline = false) =>
   fields.text({ label, multiline, validation: { isRequired: true } });
 
@@ -52,8 +62,8 @@ function governanceFields() {
 // The Work collection keeps one file per existing story id. The reader rejects any other id.
 // Case-study summaries are one file per existing directory slug. The reader rejects any other slug.
 export default config({
-  storage: { kind: "local" },
-  ui: { brand: { name: "joy. · local editorial" } },
+  storage,
+  ui: { brand: { name: "joy. · content editor" } },
   collections: {
     workNarratives: collection({
       label: "Work narratives",

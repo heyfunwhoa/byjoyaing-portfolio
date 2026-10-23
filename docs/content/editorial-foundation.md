@@ -1,10 +1,10 @@
 # Portfolio editorial foundation
 
 **Status:** Adoption record for this repository's Keystatic editor. It does not replace the brand guide, the product requirements, the content model, the route taxonomy, or the URL migration map.  
-**Date:** 2026-10-14  
+**Date:** 2026-10-16<br>
 **Issue:** [KRU-109](https://linear.app/krusty/issue/KRU-109) for About. [KRU-111](https://linear.app/krusty/issue/KRU-111) for the Home cover. [KRU-112](https://linear.app/krusty/issue/KRU-112) for Work narratives. [KRU-116](https://linear.app/krusty/issue/KRU-116) for case-study summaries.  
 **Baseline:** `main` after merged [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155) (KRU-75 verification lesson), then reconciled with merged [PR #171](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/171) (CMS decision guide) and merged [PR #173](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/173) (CMS Fundamentals module, KRU-110).  
-**Editor:** the existing local Keystatic install. Storage remains `{ kind: "local" }`. No second CMS, registry, or cross-repository sync.
+**Editor:** the existing Keystatic install. Local loopback mode remains available. KRU-124 prepares an optional hosted GitHub mode; it is not enabled until the GitHub App and host environment are configured and the authenticated preview is verified. No second CMS, registry, or cross-repository sync.
 
 Authority that still wins when this note and another file disagree:
 
@@ -17,7 +17,7 @@ Authority that still wins when this note and another file disagree:
 
 ## What can be edited today
 
-Local only. Set `KEYSTATIC_LOCAL=true`, run `npm run dev` on loopback, open `/keystatic`, edit, and save. Save writes the worktree. It does not open a pull request, deploy, or change who can read the public site.
+Local editing remains available. Set `KEYSTATIC_LOCAL=true`, run `npm run dev` on loopback, open `/keystatic`, edit, and save. Save writes the worktree. It does not open a pull request or deploy. Hosted editing is only available after KRU-124's GitHub App and Vercel configuration is complete.
 
 | Record | File | What an editor may change | What stays in code |
 | --- | --- | --- | --- |
@@ -31,7 +31,7 @@ Each file is read by a build-time adapter. Unknown keys, a changed id, empty req
 
 `lib/public-personal.ts` projects the About record's beyond-work fields for the existing interest tests. It is not an independent editable copy.
 
-Production `/keystatic` and `/api/keystatic/*` return 404 even if `KEYSTATIC_LOCAL` is set. That guard is unchanged.
+Production `/keystatic` and `/api/keystatic/*` return 404 unless GitHub mode is explicitly selected and all required credentials are configured. `KEYSTATIC_LOCAL` cannot enable filesystem mode outside development. API responses use private no-store headers.
 
 ## Work narrative slice
 
@@ -76,34 +76,47 @@ Draft [PR #170](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/170) is n
 
 ## Hosted editing
 
-Checked against [Keystatic GitHub mode](https://keystatic.com/docs/github-mode) and [Keystatic Cloud](https://keystatic.com/docs/cloud) on 2026-10-14, plus this repo's merged local pilot. **Neither mode is enabled.** No GitHub App, Cloud project, or secret was created.
+Checked against [Keystatic GitHub mode](https://keystatic.com/docs/github-mode) and [Keystatic Cloud](https://keystatic.com/docs/cloud) on 2026-10-14, plus this repo's merged local pilot. GitHub mode is the selected hosted path under KRU-124; Cloud remains out of scope. **Neither mode is enabled yet.** No GitHub App, Cloud project, or secret was created.
 
 | Requirement | Local mode today | GitHub mode | Keystatic Cloud |
 | --- | --- | --- | --- |
 | Authentication | Development plus `KEYSTATIC_LOCAL=true`. No login. Loopback same-origin API only. | GitHub login through a custom GitHub App. Collaborators need write access to the repo. | Cloud account. Docs say teammates can edit without their own GitHub account. Team membership grants every project in that team. |
 | Repository access | The developer's worktree only. | App installed on `heyfunwhoa/byjoyaing-portfolio`. | A Cloud project connected to that repository. |
-| Branches | Save writes the current branch's files. A human then commits and opens a PR. | Branch dropdown. `branchPrefix` can limit which branches the UI lists and creates. | Content still lands in Git. Confirm branch behavior in a future authorized spike. The Cloud docs reviewed here emphasize login and images, not a review policy. |
+| Branches | Save writes the current branch's files. A human then commits and opens a PR. | Branch dropdown scoped to `cms/`. `branchPrefix` limits listed/created branches; it is not a GitHub branch-protection rule. GitHub reported `main` unprotected on 2026-10-16, so a required-PR ruleset is a hard enablement prerequisite. | Content still lands in Git. Confirm branch behavior in a future authorized spike. The Cloud docs reviewed here emphasize login and images, not a review policy. |
 | Pull request review | Required by this repo's delivery rules. The editor does not open the PR. | A save is not branch protection. `publicationStatus: published` is not a merge. | Same. Cloud is not the review gate. |
 | Previews | The local dev server. | A Vercel preview of the pushed branch. Not configured or verified for this mode. | Same preview dependency, plus experimental multiplayer on Pro. |
-| Secrets | No editor secret. | `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`, and `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`. They belong in the host environment, never in git. | `storage.kind: "cloud"` and `cloud.project`. The Cloud account is the control plane. No image library is needed for this text. |
+| Secrets | No editor secret. | `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`, `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`, and `NEXT_PUBLIC_KEYSTATIC_STORAGE=github`. They belong in the host environment, never in git. | `storage.kind: "cloud"` and `cloud.project`. The Cloud account is the control plane. No image library is needed for this text. |
 | Cost | MIT packages already installed. Existing CI. | No Keystatic subscription is listed in the GitHub mode doc. Each pushed save can spend CI minutes. | Free account, up to 3 users per team. Pro starts at $10/month for that team, then $5/month per additional user. Multiplayer and Cloud Images are Pro. Recheck before any purchase. |
 | Deployment | Production returns 404 for the editor and its API. | Docs say copy the environment variables to the host and run Node for the API. The same page still says deploying is "Coming soon." Re-verify against Next.js 16.4.0 before enabling. | A config change to Cloud storage. The site must still serve the editor routes. Not verified here. |
 | Rollback | Restore the JSON file, or revert the content commit. | Revert the content commit. Uninstalling the App removes editor login. It does not rewrite content. | Disconnect the Cloud project, then revert the content commit the same way. |
 
-**Recommendation:** keep local mode. If a later review approves hosted editing, prefer **GitHub mode** over Cloud. This site already publishes through GitHub review, and the people who may edit it are the people who can open a pull request. Cloud's extra abilities — editors without GitHub accounts, shared image hosting, multiplayer — are not current requirements. Cloud team access is also a wider trust boundary than repository write access.
+**Decision:** implement optional **GitHub mode** under KRU-124; keep local loopback mode for development. This site already publishes through GitHub review, and the editor uses repository permissions. Cloud's extra abilities — editors without GitHub accounts, shared image hosting, multiplayer — are not current requirements. Cloud team access is also a wider trust boundary than repository write access.
 
 ### Prerequisites before anyone enables hosted editing
 
-This is Tier 3. It needs its own issue after a search for an existing one, plus explicit approval. Do not treat this document as that approval.
+This is Tier 3. KRU-124 is the dedicated issue, and the user explicitly requested implementation. The implementation PR still stops before merge or deployment. Hosted editing remains disabled until the setup below is completed and verified.
 
-1. Prove a save cannot commit to the protected default branch. Set `branchPrefix` and test it.
-2. Install a GitHub App on this repository only. Store the four GitHub-mode secrets in the deployment environment, separate from Resend, auth, and PostHog values.
-3. Register callback URLs for the exact preview and production hosts.
+1. Prove a save uses a `cms/` branch. Configure and verify GitHub rules to require a pull request and passing checks for `main`; the repository reported no branch protection on 2026-10-16, and `branchPrefix` alone does not protect it.
+2. Install a Keystatic GitHub App on this repository only, granting only required repository metadata read and content write access. Store its client ID, client secret, app slug and a separate 32+ character Keystatic secret in Vercel Preview, separate from Resend, Better Auth, and PostHog values.
+3. Register callback URLs for the exact editor hosts being used, including the stable authenticated preview host and production host.
 4. Confirm production editor routes require the GitHub session and that `KEYSTATIC_LOCAL` still cannot turn on filesystem mode.
 5. Push one content branch, let the existing checks run, and open the preview. Record the SHA that was read.
-6. Reheck the Keystatic deploy notes against the installed Next.js version. The guide consulted for the pilot already lagged Next 16.
+
+6. Recheck the Keystatic deploy notes against the installed Next.js version. The guide consulted for the pilot already lagged Next 16.
 7. Drill rollback: revert the content commit and, separately, remove the App credentials.
 8. Keep private case studies, the Joy Index, resumes, and learner progress out of the repository first. Editor login does not make public files private.
+
+KRU-124 implementation status is separate from deployment readiness. Before enabling: create/install a GitHub App for this repository only, add the generated secrets in Vercel Preview first, verify authenticated edit and anonymous denial on the preview, and then make a separate production enablement decision. Keep Vercel Production unset until that review is complete.
+
+### Hosted editor threat model
+
+- **Protected assets:** GitHub write access to this portfolio repository, GitHub OAuth sessions, and the GitHub App client secret and Keystatic cookie secret.
+- **Trust path:** editor browser → Keystatic Next.js routes on Vercel → GitHub OAuth/API → content branch → reviewed pull request → production build.
+- **Authorized editors:** GitHub users who already have write access to this repository. The installed App must be limited to this repository. Anyone with write access can affect repository contents through GitHub; the Keystatic schema and `cms/` branch prefix are usability constraints, not a path-level authorization boundary.
+- **Anonymous visitors:** may reach the public site and editor login screen, but cannot obtain an editor session without GitHub authorization. Editor/API responses must not be shared-cached.
+- **Data classification:** only already-approved public or synthetic portfolio content is editable. Do not add resumes, Joy Index records, employer notes, private case studies, or learner progress.
+- **Primary mitigations:** fail closed unless production GitHub mode and all secrets are present; preserve loopback-only local filesystem mode; use GitHub authorization, repository-limited App installation, `cms/` branches, no-store API responses, and a required-PR ruleset on `main`; review and test the same preview SHA before publishing.
+- **Residual risk and response:** a compromised GitHub App session or repository writer can alter content/code on an editable branch. Revoke or uninstall the App, remove Vercel editor variables, invalidate the Keystatic secret, and revert the affected commit through a reviewed PR. GitHub `main` branch protection is currently absent and must be fixed before any hosted writes are enabled.
 
 ## Cross-repository adoption
 
