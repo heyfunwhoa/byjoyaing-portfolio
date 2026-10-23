@@ -3,30 +3,39 @@ import { CropFrame } from "@/components/crop-frame";
 
 export type BrandAvatarVariant = "leader" | "explorer" | "builder";
 
-/** One shared portrait for every variant until separate exports are approved. */
+/** Shared portrait for About, Work, Explorer, and Builder contexts. */
 export const brandAvatarSrc = "/brand/avatar/illustrated-portrait.png";
+
+/** User-approved, homepage-only portrait. */
+export const homeBrandAvatarPortrait = {
+  src: "/brand/avatar/home-portrait.webp",
+  width: 928,
+  height: 1152,
+} as const;
 
 type BrandAvatarProps = {
   className?: string;
   variant?: BrandAvatarVariant;
   decorative?: boolean;
+  portrait?: { src: string; width: number; height: number };
 };
 
 /**
- * Shared illustration for Leader, Explorer, and Builder until separate files are approved.
+ * The shared portrait is the default. The homepage passes its own approved portrait.
  */
 export function BrandAvatar({
   className = "",
   variant = "leader",
   decorative = false,
+  portrait = { src: brandAvatarSrc, width: 824, height: 1024 },
 }: BrandAvatarProps) {
   return (
     <CropFrame>
       <Image
-        src={brandAvatarSrc}
+        src={portrait.src}
         alt={decorative ? "" : "Illustrated portrait of Kristen Aing"}
-        width={824}
-        height={1024}
+        width={portrait.width}
+        height={portrait.height}
         data-avatar-variant={variant}
         className={`aspect-square w-full bg-card object-cover ${className}`}
       />

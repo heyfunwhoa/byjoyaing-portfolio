@@ -28,6 +28,11 @@ const availableLesson = {
 } as const;
 
 export const lessonGuidance = {
+  "database-branching-recovery": {
+    ...availableLesson,
+    prerequisites: ["reading-code-and-yaml"],
+    guide: guide("databases-branching-recovery-and-selection", "Read the database choices and recovery guide"),
+  },
   "reading-code-and-yaml": {
     ...availableLesson,
     prerequisites: [],

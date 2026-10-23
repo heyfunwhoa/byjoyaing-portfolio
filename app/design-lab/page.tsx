@@ -134,7 +134,7 @@ export default function DesignLabPage() {
         <section aria-labelledby="identity-title">
           <h2 id="identity-title" className="font-display text-2xl tracking-tight">Visual identity</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-            Geometry is a line language. Public pages keep the orbit on the homepage hero and the motif on the Work tile. Every avatar variant still uses <code className="font-mono text-xs">/brand/avatar/illustrated-portrait.png</code>. Rings do not spin, and the face does not animate.
+            Geometry is a line language. Public pages keep the orbit on the homepage hero and the motif on the Work tile. About, Work, and other portrait placements use <code className="font-mono text-xs">/brand/avatar/illustrated-portrait.png</code>; Home uses the warmer portrait at <code className="font-mono text-xs">/brand/avatar/home-portrait.webp</code>. Field Notes and Side Quests use their orbit study illustrations. Rings do not spin, and the face does not animate.
           </p>
           <div className="relative mt-5 overflow-hidden rounded-2xl bg-foreground p-6 text-background sm:p-8">
             <GeometricMotif className="inset-0" />
