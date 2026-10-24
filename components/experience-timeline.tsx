@@ -17,10 +17,9 @@ export function ExperienceTimeline({
       <ol className="mt-6 divide-y divide-border">
         {roles.map((role) => (
           <li
-            key={`${role.company}-${role.period}`}
-            className="grid gap-3 py-6 md:grid-cols-[12rem_minmax(0,1fr)]"
+            key={role.company}
+            className="grid gap-3 py-6"
           >
-            <p className="text-sm text-muted">{role.period}</p>
             <div>
               <h3 className="text-lg font-semibold">{role.company}</h3>
               <p className="mt-1 font-medium">{role.title}</p>

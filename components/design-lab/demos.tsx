@@ -89,13 +89,13 @@ const surfaces = [
 ] as const
 
 function careerMarkers(): LifelineMarker[] {
-  return [...roles].reverse().map((role) => {
-    const year = Number(role.period.match(/\d{4}/)?.[0])
+  return [...roles].reverse().map((role, index) => {
+    const stage = index + 1
     return {
       id: role.company.toLowerCase().replace(/\s+/g, "-"),
-      year,
-      age: role.company.slice(0, 3),
-      label: role.period.split("–")[0]?.trim() ?? String(year),
+      year: stage,
+      age: "",
+      label: role.company,
       companies: [
         {
           id: role.company.toLowerCase().replace(/\s+/g, "-"),
