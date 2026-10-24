@@ -48,8 +48,11 @@ test("cursor workflows is a Builder lesson without private personal data", () =>
   assert.equal(cursor.title, "Cursor modes, rules, and safe handoffs");
   assert.match(cursor.exercise, /docs\/builder-academy\/cursor-agent-workflows\.md/);
   assert.match(cursor.exercise, /From idea to verified release/);
-  assert.match(verified.exercise, /docs\/builder-academy\/cursor-agent-workflows\.md/);
-  assert.match(verified.exercise, /docs\/builder-academy\/idea-to-verified-release\.md/);
+  assert.match(verified.exercise, /Stop after the core/);
+  assert.match(
+    verified.companion?.url ?? "",
+    /docs\/builder-academy\/idea-to-verified-release\.md#choose-a-short-learning-path/,
+  );
   const choices = cursor.check.choices.join(" ");
   assert.match(choices, /Ask/);
   assert.match(choices, /Plan/);
