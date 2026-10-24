@@ -72,13 +72,13 @@ Start with [LLMs, models, inference and gateways](llms-models-inference-gateways
 
 ### Model candidates: a dated snapshot
 
-These are vendor-described roles, not Academy benchmark results or an exhaustive catalog. Availability in ChatGPT, Claude, Cursor or an API can differ. Log the displayed version; if automatic routing hides it, record unknown. Check the linked catalog before using an example.
+These are vendor-described roles, not Academy benchmark results or an exhaustive catalog. Availability in ChatGPT, Claude, Cursor or an API can differ. Log the displayed version; if automatic routing hides it, record unknown. Check the linked catalog before using an example. Model names and vendor-described roles in the OpenAI rows were rechecked against the official catalog on 2026-10-24.
 
 | Model candidate | Vendor-described role | Academy task to test | Acceptance evidence |
 | --- | --- | --- | --- |
-| OpenAI Luna | Scoped tasks and triage [1] | Extract fields from short synthetic descriptions | Correct fields and preserved unknowns |
-| OpenAI GPT-6.1 Sol | Complex tasks with time/cost tradeoffs [1] | Implement a bounded change from a clear issue | Relevant tests and inspected diff |
-| OpenAI Astra | Ambiguous problems and deep analysis [1] | Compare architecture options and assumptions | Supported tradeoffs and unresolved questions |
+| GPT-6 Luna | Scoped tasks and triage [1, 5] | Extract fields from short synthetic descriptions | Correct fields and preserved unknowns |
+| GPT-6.1 Sol | Complex tasks with time/cost tradeoffs [1, 5] | Implement a bounded change from a clear issue | Relevant tests and inspected diff |
+| GPT-6 Astra | Ambiguous problems and deep analysis [1, 5] | Compare architecture options and assumptions | Supported tradeoffs and unresolved questions |
 | Claude Haiku 5.5 | High-volume classification/extraction [2] | Label public snippets using a fixed taxonomy | Labels checked against an answer key |
 | Claude Sonnet 5.5 | Speed/intelligence balance [2] | Draft a sourced lesson or scoped code change | Rubric, source review and tests where relevant |
 | Claude Opus 5.5 | Long-running coding and knowledge work [2] | Investigate a bug across modules | Reproduction, fix and regression evidence |
@@ -153,10 +153,12 @@ Suggested exercise gate: zero invented facts/citations, all missing fields prese
 | [2] Claude catalog | Provider's current lineup and roles | Independent cross-vendor ranking |
 | [3] Gemini catalog | Listed versions and preview/stable distinctions | Availability in every app or account |
 | [4] OpenAI prompting | Prompt organization and evaluation practice | Guaranteed correctness from a template |
+| [5] OpenAI GPT-6.1 Sol announcement | Current GPT-6 model names and vendor-described roles | Academy task outcomes or cross-vendor ranking |
 
 1. [OpenAI — Model selection](https://developers.openai.com/api/docs/guides/model-selection)
 2. [Anthropic — Models overview](https://platform.claude.com/docs/en/models/overview)
 3. [Google — Gemini models](https://ai.google.dev/gemini-api/docs/models)
 4. [OpenAI — Prompting](https://developers.openai.com/api/docs/guides/prompting)
+5. [OpenAI — GPT-6.1 Sol and GPT-6 model overview](https://openai.com/index/introducing-gpt-6-1-sol/)
 
 Next: [Agent organization learning sequence](agent-organization-learning-sequence.md). Owner: Academy editorial review. Recheck model examples before publication and whenever a catalog changes. No automatic monitoring or provider calls are configured.
