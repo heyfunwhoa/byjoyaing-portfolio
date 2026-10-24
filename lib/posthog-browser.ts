@@ -1,4 +1,5 @@
 import type { CaptureResult, PostHogConfig } from "posthog-js";
+import { isReviewedPublicPage } from "./analytics-routes.ts";
 import {
   createErrorBudget,
   monitoringEnabled,
@@ -8,14 +9,6 @@ import {
 type Environment = Parameters<typeof monitoringEnabled>[0] & {
   analyticsEnabled?: string;
 };
-const publicPaths = new Set([
-  "/",
-  "/about",
-  "/work",
-  "/contact",
-  "/side-quests",
-  "/academy",
-]);
 
 /** Both capabilities require explicit production enablement; a token alone is insufficient. */
 export function posthogCapabilities(env: Environment) {
@@ -30,13 +23,7 @@ export function sanitizePageview(event: CaptureResult): CaptureResult | null {
   if (event.event !== "$pageview") return null;
   try {
     const url = new URL(String(event.properties.$current_url));
-    if (
-      !["https://byjoyaing.com", "https://www.byjoyaing.com"].includes(
-        url.origin,
-      ) ||
-      !publicPaths.has(url.pathname)
-    )
-      return null;
+    if (!isReviewedPublicPage(url)) return null;
     return {
       uuid: event.uuid,
       event: "$pageview",
