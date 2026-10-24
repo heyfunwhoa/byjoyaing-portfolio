@@ -2,7 +2,7 @@
 
 **Status:** Adoption record for this repository's Keystatic editor. It does not replace the brand guide, the product requirements, the content model, the route taxonomy, or the URL migration map.  
 **Date:** 2026-10-16<br>
-**Issue:** [KRU-109](https://linear.app/krusty/issue/KRU-109) for About. [KRU-111](https://linear.app/krusty/issue/KRU-111) for the Home cover. [KRU-112](https://linear.app/krusty/issue/KRU-112) for Work narratives.  
+**Issue:** [KRU-109](https://linear.app/krusty/issue/KRU-109) for About. [KRU-111](https://linear.app/krusty/issue/KRU-111) for the Home cover. [KRU-112](https://linear.app/krusty/issue/KRU-112) for Work narratives. [KRU-77](https://linear.app/krusty/issue/KRU-77) for the two Academy lesson singletons.  
 **Baseline:** `main` after merged [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155) (KRU-75 verification lesson), then reconciled with merged [PR #171](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/171) (CMS decision guide) and merged [PR #173](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/173) (CMS Fundamentals module, KRU-110).  
 **Editor:** the existing Keystatic install. Local loopback mode remains available. KRU-124 prepares an optional hosted GitHub mode; it is not enabled until the GitHub App and host environment are configured and the authenticated preview is verified. No second CMS, registry, or cross-repository sync.
 
@@ -25,6 +25,8 @@ Local editing remains available. Set `KEYSTATIC_LOCAL=true`, run `npm run dev` o
 | Home cover | `content/home/page.json` | Cover eyebrow, two-part headline, philosophy line, short body, avatar caption, and the homepage meta description | Bento, celestial frame, role lookup, side-quest choice, links, credibility copy, closing note, document title |
 | About page | `content/about/page.json` | Visible About sentences, principles, education lines, interests, values, and the meta description | Portrait, capability orbit, career rail, tools map, link destinations, link labels, section ids, layout |
 | Verification lesson | `content/academy/lessons/verification.json` | Title, summary, analogy, takeaways, exercise, sources, track, level, minutes, and editorial metadata | Slug, answer key, prerequisites, practice links, availability, path order, progress |
+| Reading code and YAML | `content/academy/lessons/reading-code-and-yaml.json` | Same editorial fields as verification | Same code boundary as verification, including the companion guide |
+| MCP versus REST | `content/academy/lessons/mcp-vs-rest-api.json` | Same editorial fields as verification | Same code boundary, including Follow one click progress |
 
 Each file is read by a build-time adapter. Unknown keys, a changed id, empty required text, and invalid metadata fail the build. There is no second copy to fall back to. React renders the text as text. The Open Graph image reads the Home eyebrow and headline from that same record.
 
@@ -56,7 +58,7 @@ Career dates, titles, and companies stay in `lib/portfolio.ts` `roles`. The Abou
 
 ## Migration matrix
 
-"CMS" means a future Keystatic singleton or collection in **this** repository, using the same local editor until hosted editing is explicitly approved. "Now" is implemented for About in KRU-109, the Home cover in KRU-111, and Work narratives in KRU-112. Everything else is a decision, not a build.
+"CMS" means a future Keystatic singleton or collection in **this** repository, using the same local editor until hosted editing is explicitly approved. "Now" is implemented for About in KRU-109, the Home cover in KRU-111, Work narratives in KRU-112, and the two KRU-77 lesson singletons. Everything else is a decision, not a build.
 
 | Surface | Shape | CMS-editable when migrated | Application-owned | Private — do not put in the CMS | Decision |
 | --- | --- | --- | --- | --- | --- |
@@ -67,7 +69,7 @@ Career dates, titles, and companies stay in `lib/portfolio.ts` `roles`. The Abou
 | Projects directory | Not a separate collection | Nothing, until a case-study field moves | `lib/project-directory.ts` filters, category query values, lifecycle | Account data inside demos | Leave the directory as code. `/projects` stays. |
 | Side Quests | Same records as case studies, `kind: "side-quest"` | Public summary, honest limitation, status sentence | Kind, maturity, subject group, "what runs today" checks | Upstream private repos, detector data, credentials | Edit the case-study record. The index only links. |
 | Field Notes | Collection for a published note; index copy can be a singleton later | Title, standfirst, body paragraphs, evidence label, related links that already exist | Routes, illustrative/synthetic labeling rules, the source registry in `lib/field-notes.ts` | Live imports from Account Signal Engine, territory maps, customer records | Two live guides first. Unpublished titles stay labeled unpublished. |
-| Academy lessons | One singleton per approved lesson id, as verification already is | Editorial fields in the KRU-75 contract | Check answers, prerequisites, routes, progress keys | Learner progress, employer overlays, answer keys | KRU-77 owns `reading-code-and-yaml` and `mcp-vs-rest-api`. Do not add a second editor. |
+| Academy lessons | One singleton per approved lesson id, as verification already is | Editorial fields in the KRU-75 contract | Check answers, prerequisites, routes, progress keys | Learner progress, employer overlays, answer keys | **Now** for `reading-code-and-yaml` and `mcp-vs-rest-api` on KRU-77. Other lessons stay in code. Do not add a second editor. |
 | Career history | Do not duplicate `roles` | A later prose field may point at Experience | `lib/portfolio.ts` `roles` is the only title/date/company record. Home excerpts and the rail read it. | Compensation, quota, private performance notes | Keep. A CMS copy of employers would split one fact. |
 | Supporting evidence | Not a CMS collection | Public, already approved evidence sentences inside the owning story | Provenance, review state, access policy | Joy Index rows, selected-work tokens, resumes, inboxes | Evidence stays attached to its public story. |
 
@@ -136,13 +138,24 @@ Access rechecked 2026-10-14 after PR #171: `heyfunwhoa/security-market-map` is p
 
 No repository in this table is **Adopt**.
 
+## Academy lesson slice
+
+`reading-code-and-yaml` and `mcp-vs-rest-api` use the same singleton contract as verification. The sentences move. The slug, knowledge check, companion link, prerequisites, path order, and Follow one click progress key stay in code. Draft PR #170 is not this slice. The rest of KRU-77, including the guided journey and beginner observation, stays out.
+
 ## Next three implementation tasks
 
-1. **KRU-77 lessons.** Migrate `reading-code-and-yaml` and `mcp-vs-rest-api` through the existing adapter. Do not take the route-group rewrite from draft PR #170.
-2. **Field Notes bodies.** Move the two published guides' public paragraphs into the existing editor. Leave the source registry and unpublished titles in code.
-3. **Case-study summaries.** Move public summary fields that already exist on a case study into one record per slug. Do not create a second collection for the projects directory.
+1. **Field Notes bodies.** Move the two published guides' public paragraphs into the existing editor. Leave the source registry and unpublished titles in code.
+2. **Case-study summaries.** Move public summary fields that already exist on a case study into one record per slug. Do not create a second collection for the projects directory.
+3. **KRU-77 remainder.** The guided journey, badge, and beginner observation. The two lesson sentence files are already in this editor. Do not take the route-group rewrite from draft PR #170.
 
 Hosted editing is not one of the three. Career-prose cleanup comes after these, still without copying `roles`.
+
+## Rollback for the Academy lesson slice
+
+- Unsaved edit: reload the editor.
+- Saved local experiment: `git restore --source=HEAD -- content/academy/lessons/reading-code-and-yaml.json content/academy/lessons/mcp-vs-rest-api.json`, then reload `/ai-academy` and the editor.
+- After a reviewed content commit: revert that commit and review the rollback PR.
+- Remove the slice: revert the implementation commit so the lesson literals return to `lib/ai-academy.ts` together with the verification-only config. Do not delete only the JSON files while the adapter imports remain.
 
 ## Rollback for the Work narratives
 

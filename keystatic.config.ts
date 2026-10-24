@@ -58,6 +58,77 @@ function governanceFields() {
   };
 }
 
+function lessonSingleton(
+  id: string,
+  label: string,
+  defaultTrack:
+    | "Foundations"
+    | "Prompting"
+    | "Responsible AI"
+    | "GTM"
+    | "Builder",
+) {
+  return singleton({
+    label,
+    path: `content/academy/lessons/${id}`,
+    format: "json",
+    schema: {
+      id: fields.select({
+        label: "Stable lesson ID (fixed)",
+        options: [{ label: id, value: id }],
+        defaultValue: id,
+      }),
+      title: text("Title"),
+      track: fields.select({
+        label: "Track",
+        options: [
+          "Foundations",
+          "Prompting",
+          "Responsible AI",
+          "GTM",
+          "Builder",
+        ].map((value) => ({ label: value, value })),
+        defaultValue: defaultTrack,
+      }),
+      minutes: fields.integer({
+        label: "Minutes",
+        validation: { isRequired: true, min: 1 },
+      }),
+      level: fields.select({
+        label: "Level",
+        options: [
+          { label: "Beginner", value: "Beginner" },
+          { label: "Intermediate", value: "Intermediate" },
+        ],
+        defaultValue: "Beginner",
+      }),
+      summary: text("Summary", true),
+      analogy: text("Analogy", true),
+      takeaways: fields.array(text("Takeaway", true), {
+        label: "Takeaways",
+        itemLabel: (props) => props.value,
+        validation: { length: { min: 1 } },
+      }),
+      exercise: text("Exercise", true),
+      sources: fields.array(
+        fields.object({
+          label: text("Source label"),
+          url: fields.url({
+            label: "Source URL",
+            validation: { isRequired: true },
+          }),
+        }),
+        {
+          label: "Sources",
+          itemLabel: (props) => props.fields.label.value,
+          validation: { length: { min: 1 } },
+        },
+      ),
+      ...governanceFields(),
+    },
+  });
+}
+
 // Singletons fix file identity: no create/delete/rename for these records.
 // The Work collection keeps one file per existing story id. The reader rejects any other id.
 export default config({
@@ -190,64 +261,20 @@ export default config({
         ...governanceFields(),
       },
     }),
-    verification: singleton({
-      label: "Verification lesson",
-      path: "content/academy/lessons/verification",
-      format: "json",
-      schema: {
-        id: fields.select({
-          label: "Stable lesson ID (fixed)",
-          options: [{ label: "verification", value: "verification" }],
-          defaultValue: "verification",
-        }),
-        title: text("Title"),
-        track: fields.select({
-          label: "Track",
-          options: [
-            "Foundations",
-            "Prompting",
-            "Responsible AI",
-            "GTM",
-            "Builder",
-          ].map((value) => ({ label: value, value })),
-          defaultValue: "Responsible AI",
-        }),
-        minutes: fields.integer({
-          label: "Minutes",
-          validation: { isRequired: true, min: 1 },
-        }),
-        level: fields.select({
-          label: "Level",
-          options: [
-            { label: "Beginner", value: "Beginner" },
-            { label: "Intermediate", value: "Intermediate" },
-          ],
-          defaultValue: "Beginner",
-        }),
-        summary: text("Summary", true),
-        analogy: text("Analogy", true),
-        takeaways: fields.array(text("Takeaway", true), {
-          label: "Takeaways",
-          itemLabel: (props) => props.value,
-          validation: { length: { min: 1 } },
-        }),
-        exercise: text("Exercise", true),
-        sources: fields.array(
-          fields.object({
-            label: text("Source label"),
-            url: fields.url({
-              label: "Source URL",
-              validation: { isRequired: true },
-            }),
-          }),
-          {
-            label: "Sources",
-            itemLabel: (props) => props.fields.label.value,
-            validation: { length: { min: 1 } },
-          },
-        ),
-        ...governanceFields(),
-      },
-    }),
+    verification: lessonSingleton(
+      "verification",
+      "Verification lesson",
+      "Responsible AI",
+    ),
+    readingCodeAndYaml: lessonSingleton(
+      "reading-code-and-yaml",
+      "Reading code and YAML",
+      "Builder",
+    ),
+    mcpVersusRest: lessonSingleton(
+      "mcp-vs-rest-api",
+      "MCP versus REST",
+      "Builder",
+    ),
   },
 });
