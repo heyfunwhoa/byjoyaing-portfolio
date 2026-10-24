@@ -43,6 +43,38 @@ export const lessons: Lesson[] = [
 
   ...enterpriseEvaluationLessons,
 {
+  slug: "fde-ai-agent-engineering",
+  title: "How AI agents become engineers",
+  track: "Builder",
+  minutes: 20,
+  level: "Intermediate",
+  summary: "Distinguish human forward-deployed engineers, AI SOC investigators, and AI systems that build and supervise security agents.",
+  analogy: "A human field engineer builds with a customer; an AI investigator works a case; an AI engineering supervisor configures workers and checks their output.",
+  takeaways: [
+    "Human FDEs are customer-embedded technical implementers, not a particular AI model.",
+    "An AI investigator performs a scoped task, while an AI FDE may plan, build and supervise multiple agents and workflows.",
+    "An agent system combines a model, tools, runtime, state, evaluation and independently enforced authorization.",
+    "BYOK means supported customer credentials, not universal compatibility with every foundation model.",
+    "Human review and scoped permissions matter before any disruptive security action."
+  ],
+  exercise: "Use only the fictional three-customer MSSP scenario in the companion. Draw the human operator, AI FDE, investigator worker, security tools and human approval gate. Mark tenant boundaries and separate model costs from platform costs.",
+  check: {
+    question: "An AI investigator's prompt says it may disable accounts. What is still needed before a disruptive action?",
+    choices: ["Nothing; its prompt is enough", "Independent permission enforcement and any required human approval", "A larger LLM"],
+    answer: 1,
+    explanation: "Prompts do not independently grant authority. Scoped credentials and approval policies must govern actions."
+  },
+  companion: {
+    label: "Read the AI agent engineering companion",
+    url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/fde-ai-agent-engineering.md"
+  },
+  sources: [
+    {label: "LimaCharlie Grid documentation (vendor-described example)", url: "https://docs.limacharlie.io/9-ai-sessions/grid/"},
+    {label: "LimaCharlie AI Sessions architecture", url: "https://docs.limacharlie.io/9-ai-sessions/architecture/"},
+    {label: "NIST AI risk management framework", url: "https://www.nist.gov/itl/ai-risk-management-framework"}
+  ]
+},
+{
   "slug": "cms-fundamentals",
   "title": "CMS fundamentals: architecture, modeling, and selection",
   "track": "Builder",
