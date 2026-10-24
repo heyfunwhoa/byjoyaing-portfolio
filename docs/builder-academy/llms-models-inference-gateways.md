@@ -83,7 +83,7 @@ The following is a recommended evaluation method, not a universal ranking:
 
 Embeddings produce numerical representations useful for retrieval. Rerankers reorder candidates by relevance. Generative models draft outputs. A workflow can use several types; buying access to one model does not supply the entire workflow.
 
-Continue with [Evaluate AI models with evidence](evaluate-ai-models.md).
+Continue with [Evaluate AI models with evidence](evaluate-ai-models.md) for a dated model-candidate table, task-selection guide, reusable prompt and no-key comparison exercise. Then preview the [agent organization learning sequence](agent-organization-learning-sequence.md).
 
 ## 6. Read a cost estimate
 
