@@ -58,6 +58,77 @@ function governanceFields() {
   };
 }
 
+function lessonSingleton(
+  id: string,
+  label: string,
+  defaultTrack:
+    | "Foundations"
+    | "Prompting"
+    | "Responsible AI"
+    | "GTM"
+    | "Builder",
+) {
+  return singleton({
+    label,
+    path: `content/academy/lessons/${id}`,
+    format: "json",
+    schema: {
+      id: fields.select({
+        label: "Stable lesson ID (fixed)",
+        options: [{ label: id, value: id }],
+        defaultValue: id,
+      }),
+      title: text("Title"),
+      track: fields.select({
+        label: "Track",
+        options: [
+          "Foundations",
+          "Prompting",
+          "Responsible AI",
+          "GTM",
+          "Builder",
+        ].map((value) => ({ label: value, value })),
+        defaultValue: defaultTrack,
+      }),
+      minutes: fields.integer({
+        label: "Minutes",
+        validation: { isRequired: true, min: 1 },
+      }),
+      level: fields.select({
+        label: "Level",
+        options: [
+          { label: "Beginner", value: "Beginner" },
+          { label: "Intermediate", value: "Intermediate" },
+        ],
+        defaultValue: "Beginner",
+      }),
+      summary: text("Summary", true),
+      analogy: text("Analogy", true),
+      takeaways: fields.array(text("Takeaway", true), {
+        label: "Takeaways",
+        itemLabel: (props) => props.value,
+        validation: { length: { min: 1 } },
+      }),
+      exercise: text("Exercise", true),
+      sources: fields.array(
+        fields.object({
+          label: text("Source label"),
+          url: fields.url({
+            label: "Source URL",
+            validation: { isRequired: true },
+          }),
+        }),
+        {
+          label: "Sources",
+          itemLabel: (props) => props.fields.label.value,
+          validation: { length: { min: 1 } },
+        },
+      ),
+      ...governanceFields(),
+    },
+  });
+}
+
 // Singletons fix file identity: no create/delete/rename for these records.
 // The Work collection keeps one file per existing story id. The reader rejects any other id.
 // Case-study summaries are one file per existing directory slug. The reader rejects any other slug.
@@ -93,6 +164,64 @@ export default config({
         execution: text("Execution", true),
         evidence: text("Evidence and limitations", true),
         takeaway: text("Takeaway", true),
+        ...governanceFields(),
+      },
+    }),
+    fieldNotes: collection({
+      label: "Field Notes",
+      slugField: "title",
+      path: "content/field-notes/guides/*",
+      format: { data: "json" },
+      schema: {
+        title: fields.slug({
+          name: { label: "Title", validation: { isRequired: true } },
+          slug: {
+            label: "Stable guide id",
+            description:
+              "Leave the existing id. The site accepts only enterprise-deal and multithreading.",
+            validation: {
+              pattern: {
+                regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                message: "Use the existing guide id",
+              },
+            },
+          },
+        }),
+        headline: text("Headline"),
+        eyebrow: text("Eyebrow"),
+        standfirst: text("Standfirst", true),
+        metaDescription: text("Meta description", true),
+        limitations: text("Evidence limitations", true),
+        sections: fields.array(
+          fields.object({
+            key: slug("Section key"),
+            kicker: fields.text({ label: "Kicker" }),
+            heading: fields.text({ label: "Heading" }),
+            body: fields.text({ label: "Body", multiline: true }),
+            note: fields.text({ label: "Note", multiline: true }),
+          }),
+          {
+            label: "Sections",
+            itemLabel: (props) => props.fields.key.value || "Section",
+          },
+        ),
+        links: fields.array(
+          fields.object({
+            key: slug("Link key"),
+            label: text("Link label"),
+            href: fields.text({
+              label: "Existing path",
+              description:
+                "Leave the current path. A new destination fails the build.",
+              validation: { isRequired: true },
+            }),
+          }),
+          {
+            label: "Links",
+            itemLabel: (props) => props.fields.label.value || "Link",
+            validation: { length: { min: 5, max: 5 } },
+          },
+        ),
         ...governanceFields(),
       },
     }),
@@ -217,64 +346,20 @@ export default config({
         ...governanceFields(),
       },
     }),
-    verification: singleton({
-      label: "Verification lesson",
-      path: "content/academy/lessons/verification",
-      format: "json",
-      schema: {
-        id: fields.select({
-          label: "Stable lesson ID (fixed)",
-          options: [{ label: "verification", value: "verification" }],
-          defaultValue: "verification",
-        }),
-        title: text("Title"),
-        track: fields.select({
-          label: "Track",
-          options: [
-            "Foundations",
-            "Prompting",
-            "Responsible AI",
-            "GTM",
-            "Builder",
-          ].map((value) => ({ label: value, value })),
-          defaultValue: "Responsible AI",
-        }),
-        minutes: fields.integer({
-          label: "Minutes",
-          validation: { isRequired: true, min: 1 },
-        }),
-        level: fields.select({
-          label: "Level",
-          options: [
-            { label: "Beginner", value: "Beginner" },
-            { label: "Intermediate", value: "Intermediate" },
-          ],
-          defaultValue: "Beginner",
-        }),
-        summary: text("Summary", true),
-        analogy: text("Analogy", true),
-        takeaways: fields.array(text("Takeaway", true), {
-          label: "Takeaways",
-          itemLabel: (props) => props.value,
-          validation: { length: { min: 1 } },
-        }),
-        exercise: text("Exercise", true),
-        sources: fields.array(
-          fields.object({
-            label: text("Source label"),
-            url: fields.url({
-              label: "Source URL",
-              validation: { isRequired: true },
-            }),
-          }),
-          {
-            label: "Sources",
-            itemLabel: (props) => props.fields.label.value,
-            validation: { length: { min: 1 } },
-          },
-        ),
-        ...governanceFields(),
-      },
-    }),
+    verification: lessonSingleton(
+      "verification",
+      "Verification lesson",
+      "Responsible AI",
+    ),
+    readingCodeAndYaml: lessonSingleton(
+      "reading-code-and-yaml",
+      "Reading code and YAML",
+      "Builder",
+    ),
+    mcpVersusRest: lessonSingleton(
+      "mcp-vs-rest-api",
+      "MCP versus REST",
+      "Builder",
+    ),
   },
 });
