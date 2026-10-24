@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
 import { officialToolWebsites, socialProfiles } from "./portfolio/external-links.ts";
-import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "./portfolio/public-contact.ts";
+import { PUBLIC_BOOKING_URL, PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "./portfolio/public-contact.ts";
 import { isActive, menuPanelClass, navCurrent, primaryNav } from "./site-nav.ts";
 
 test("primary navigation keeps the six public destinations", () => {
@@ -64,6 +64,9 @@ test("public profile icons use known destinations and clear accessible names", (
   const contact = readFileSync(new URL("../app/contact/page.tsx", import.meta.url), "utf8");
   assert.match(contact, /<SocialLinks placement="contact"/);
   assert.match(contact, /<EmailLink placement="contact"/);
+  assert.match(contact, /href=\{PUBLIC_BOOKING_URL\}/);
+  assert.equal(PUBLIC_BOOKING_URL, "https://cal.com/kristen-aing-8l0rws");
+  assert.match(contact, /rel="noopener noreferrer"/);
   assert.doesNotMatch(contact, />kristen\.aing@gmail\.com</);
   const emailLink = readFileSync(new URL("../components/email-link.tsx", import.meta.url), "utf8");
   assert.equal(PUBLIC_CONTACT_EMAIL, "kristen@byjoyaing.com");
