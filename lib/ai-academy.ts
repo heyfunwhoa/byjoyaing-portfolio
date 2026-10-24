@@ -43,6 +43,38 @@ export const lessons: Lesson[] = [
 
   ...enterpriseEvaluationLessons,
 {
+  slug: "fde-ai-agent-engineering",
+  title: "How AI agents become engineers",
+  track: "Builder",
+  minutes: 20,
+  level: "Intermediate",
+  summary: "Distinguish human forward-deployed engineers, AI SOC investigators, and AI systems that build and supervise security agents.",
+  analogy: "A human field engineer builds with a customer; an AI investigator works a case; an AI engineering supervisor configures workers and checks their output.",
+  takeaways: [
+    "Human FDEs are customer-embedded technical implementers, not a particular AI model.",
+    "An AI investigator performs a scoped task, while an AI FDE may plan, build and supervise multiple agents and workflows.",
+    "An agent system combines a model, tools, runtime, state, evaluation and independently enforced authorization.",
+    "BYOK means supported customer credentials, not universal compatibility with every foundation model.",
+    "Human review and scoped permissions matter before any disruptive security action."
+  ],
+  exercise: "Use only the fictional three-customer MSSP scenario in the companion. Draw the human operator, AI FDE, investigator worker, security tools and human approval gate. Mark tenant boundaries and separate model costs from platform costs.",
+  check: {
+    question: "An AI investigator's prompt says it may disable accounts. What is still needed before a disruptive action?",
+    choices: ["Nothing; its prompt is enough", "Independent permission enforcement and any required human approval", "A larger LLM"],
+    answer: 1,
+    explanation: "Prompts do not independently grant authority. Scoped credentials and approval policies must govern actions."
+  },
+  companion: {
+    label: "Read the AI agent engineering companion",
+    url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/fde-ai-agent-engineering.md"
+  },
+  sources: [
+    {label: "LimaCharlie Grid documentation (vendor-described example)", url: "https://docs.limacharlie.io/9-ai-sessions/grid/"},
+    {label: "LimaCharlie AI Sessions architecture", url: "https://docs.limacharlie.io/9-ai-sessions/architecture/"},
+    {label: "NIST AI risk management framework", url: "https://www.nist.gov/itl/ai-risk-management-framework"}
+  ]
+},
+{
   "slug": "cms-fundamentals",
   "title": "CMS fundamentals: architecture, modeling, and selection",
   "track": "Builder",
@@ -323,29 +355,21 @@ export const lessons: Lesson[] = [
     slug: "idea-to-verified-release",
     title: "From idea to verified release",
     track: "Builder",
-    minutes: 25,
+    minutes: 45,
     level: "Beginner",
     summary: "See how priorities, requirements, Linear issues, Cursor, GitHub PRs and CI form one accountable delivery workflow without duplicating project tracking.",
     analogy: "A restaurant order has one ticket, a recipe, a kitchen station and a quality check. You do not need five copies of the same order to know whether dinner is ready.",
     takeaways: [
-      "Start with three steps: prepare a change, check and accept it, then publish and confirm it. Follow a fictional website typo fix in the companion guide.",
-      "Next, learn where IDEs, AI assistants, Git, pre-commit hooks and CI/CD fit. The companion links a worked AppSec example with MITRE ATT&CK techniques, SSDF, ASVS, SAMM and CWE; a framework mapping is not proof of tool coverage.",
-      "Commit means record your work. Merge means accept it into the main version. Deploy means publish a version for visitors. These are separate steps.",
-      "For an open PR, say: Review the PR, fix any issues, and merge once required checks pass on the latest commit. Review and CI can run in parallel; fixes repeat the loop.",
-      "A merge is not proof of deployment. Repository-only docs may finish at merge; website lesson updates still need publication verification. Reading a lesson is reviewed, not practiced or passed checks.",
-      "A project groups an outcome; milestones divide it; issues specify testable slices. Priority is importance, while status is where the work stands.",
-      "Backlog means not yet committed; Todo means selected; In Progress means implementing; In Review means verifying; Done requires acceptance evidence.",
-      "Keep the PRD and source code in the owning repository, tasks in Linear, implementation and CI evidence in GitHub, and reusable standards in Technical Docs.",
-      "Link a Linear issue ID in branches and PRs. PR linking does not require GitHub Issues synchronization or duplicate tickets.",
-      "Use test results, code review and explicit acceptance criteria before declaring delivery complete. Do not equate a passing build with product correctness.",
-      "Adopt the workflow gradually for active initiatives; no separate Linear team or duplicated status page is required for every repository.",
-      "Security scanners look for leaked secrets, vulnerable dependencies, risky code and configuration. Permission tests prove that a denied request cannot read data, change data or schedule work.",
-      "A configured check, a passing check and a required merge gate are different states. Review the latest commit; a manual checklist cannot technically prevent someone bypassing it.",
-      "Pre-commit helps catch local mistakes but can be absent, bypassed or limited in scope. The AppSec companion links a deep dive: Did it run? What did it scan? Did a finding actually block the action? Blocking merge does not undo a secret already pushed.",
-      "Use deeper security review for auth, account permissions, imports, exports, fetching and automation. Green CI is not proof of a protected deployment or permission to use employer data."
+      "Follow three core stops: save/check/publish, define a small change, then justify a release decision. The 45-minute core is a suggested study budget; optional extensions are separate.",
+      "Commit records a version, merge accepts a change and deployment publishes a version. Verify the intended revision and actual user journey before calling a release complete.",
+      "Define the problem, user, owner, requirement, non-goal and dependency before assigning implementation. Keep the PRD in the owning repository and delivery work in Linear.",
+      "Checks apply to a particular commit and prove only the behaviors they test. Code review and acceptance evidence still matter; new changes need relevant checks again.",
+      "Use one fictional lesson-edit example throughout the core. Detailed PRD/team material is reference reading; revenue planning is an alternative exercise.",
+      "First-deployment settings, security review and agent coordination are optional companions. Add services when implemented behavior needs them, with appropriate access and cost controls.",
+      "Reading, attempting an exercise and demonstrating its criteria are different. Paper exercises do not submit data to another app or automatically award progress."
     ],
-    exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Then use the companion guide’s fictional security review: classify the change, choose scanners and denied-path tests, and explain why passing CI alone does not authorize release. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md. When you choose a Cursor mode for that branch, continue with docs/builder-academy/cursor-agent-workflows.md.",
-    companion: { label: "Read the full delivery and PR security guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/idea-to-verified-release.md" },
+    exercise: "Open the companion guide and follow its three core stops using one fictional lesson edit. Explain save/check/publish; write a problem, owner, requirement, non-goal and dependency; then complete the worked exercise's five-line handoff and recovery decision. Write fictional answers in a practice note you control and compare with the guide's answer key. Stop after the core; choose first-deployment settings, security review or agent coordination only when useful. Never enter confidential information. The guide's paper exercises have no submission or storage mechanism of their own.",
+    companion: { label: "Open the three-stop learning path and optional companions", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/idea-to-verified-release.md#choose-a-short-learning-path" },
     check: {
       question: "Your implementation PR passes CI but the expected calculation has not been checked. What should happen?",
       choices: ["Mark Done because all green checks prove the feature works", "Keep the issue In Review until its acceptance criteria and user journey are verified", "Copy the issue into GitHub Issues and Notion to increase visibility"],

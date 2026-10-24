@@ -102,7 +102,7 @@ Task: help a hiring reader understand the person, inspect professional evidence 
 | --- | --- |
 | `/` | Keep positioning → credibility → Work-led destination bento → labeled independent example → conversation. |
 | `/about` | Reorder to introduction → philosophy → capability orbit → career and compact education → workflow toolkit → evidence destinations → personal interests → contact. Rename toolkit heading to “From approach to practice.” Keep interests on About; omit their repeated professional-connection captions here. |
-| `/work` | Keep introduction → professional evidence → related field systems → career context. Move the About approach link after the evidence explorer so it does not precede the page's main task. |
+| `/work` | Keep introduction → professional evidence → related field systems and career context → labeled Side Quest demonstrations. Keep account intelligence and detector coverage visibly separate from employer work, then move the About approach link after the evidence explorer so it does not precede the page's main task. |
 | `/experience` | Keep introduction and compact career overview; move the role timeline before optional independent systems; retain the materials invitation last. |
 | `/side-quests` | Introduction → selected experiments → browse by focus → other explorations → directory close. Preserve `#look-closer`, remove the duplicate “legacy project directory” link. |
 | `/field-notes` | Keep published guides first, optional outlined topics second, related work/private access/contact last. |
@@ -112,7 +112,7 @@ Task: help a hiring reader understand the person, inspect professional evidence 
 | `/private-work` | Keep access boundaries before requesting material. No access-control changes. |
 | Field Note and `/work/[slug]` detail templates | Retain introductory context/status → guided body/evidence → related work. This pass does not reorder individual interactive lessons or project-specific case bodies. |
 
-Reuse: existing page sections, `CapabilityOrbit`, `ToolsMap`, `CareerRail`, `ExperienceTimeline`, `FeaturedSideQuestStrip` and `WorkExplorer`. Catalog families: summaries and disclosure. No new component, dependency, motion or upstream source. Source is this repository; owner is the portfolio maintainer. Status: proposed until review/merge.
+Reuse: existing page sections, `CapabilityOrbit`, `ToolsMap`, `CareerRail`, `ExperienceTimeline`, `FeaturedSideQuestStrip`, `WorkExplorer`, and `ProjectStatusPill`. Catalog families: summaries and disclosure. No new component, dependency, motion or upstream source. Source is this repository; owner is the portfolio maintainer. The two demonstrations use the existing public directory registry and are labeled as Side Quests after professional evidence. Status: proposed until review/merge.
 
 Responsive composition: the same section DOM order on phone, tablet and desktop; existing inner grids, tabs and disclosures retain their responsive rules. Keyboard and screen-reader traversal follow section order; durable anchors stay in place. Reduced-motion behavior is inherited without new animations. No new loading, error or permission states. No new test is necessary for static section movement; use existing type/build, page smoke and interaction checks. Verification and unrun manual checks are recorded in the PR. Roll back by reverting this focused commit.
 

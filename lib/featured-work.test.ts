@@ -38,11 +38,20 @@ test("Side Quest slides stay on /side-quests and are not mixed into Work", () =>
   for (const slide of quests) assert.equal(workIds.has(slide.id), false);
 });
 
+test("Work page demonstrations are the account sample and coverage prototype", () => {
+  assert.equal(kindBySlug["account-intelligence"], "side-quest");
+  assert.equal(kindBySlug["detector-coverage-atlas"], "side-quest");
+});
+
 test("source guard: Work uses the bento explorer, homepage omits it, and lab carousel has no autoplay", () => {
   const work = readFileSync(new URL("../app/work/page.tsx", import.meta.url), "utf8");
   assert.match(work, /<WorkExplorer/);
   const explorer = readFileSync(new URL("../components/work-explorer.tsx", import.meta.url), "utf8");
   assert.match(work, /href="\/side-quests"/);
+  assert.match(work, /account-intelligence/);
+  assert.match(work, /detector-coverage-atlas/);
+  assert.match(work, /Side Quest/);
+  assert.doesNotMatch(work, /Account Workshop|publisher documentation|corrected source/);
   assert.match(explorer, /id: "enterprise-sales"/);
   assert.match(explorer, /id: "people-leadership"/);
   assert.match(explorer, /id: "gtm-strategy"/);
