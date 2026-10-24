@@ -19,7 +19,7 @@ Do not read every reference in one sitting. These suggested times are study budg
 | 3 — Make a release decision (20 minutes) | [The worked exercise](#worked-exercise-one-lesson-edit-with-controls) below | Complete the handoff and recovery decision; compare with the answer key |
 | Optional — Research and organization | PRD deep dive, team/persona maps and [evidence practice](#use-evidence-to-improve-a-product-decision) | Identify what a source supports and what still needs local evidence |
 | Optional — Add agents (15 minutes) | [Agent companion](cursor-agent-workflows.md#11-add-agents-to-the-delivery-loop) | Give a worker permitted files, evidence requirements and a stop condition |
-| Optional — First deployment (15 minutes) | [Deployment settings companion](first-deployment-settings.md) | Explain the settings, choose required integrations and write a verification checklist |
+| Optional — First deployment (25 minutes) | [Deployment settings companion](first-deployment-settings.md) | Explain the settings, choose required integrations and write a verification checklist |
 | Optional — Security decision (10-minute exercise) | [Release security companion](release-security-review.md) | Choose one control and identify its owner, implementation and test |
 
 ### How this curriculum is organized
