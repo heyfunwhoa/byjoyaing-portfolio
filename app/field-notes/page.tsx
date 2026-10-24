@@ -62,6 +62,13 @@ export default function FieldNotesPage() {
               when: "Use when technical evaluation, stakeholder alignment and commercial review need a shared plan.",
             },
             {
+              title: "How I'd Build a Motion at Your Stage",
+              description: "A sell-first plan in three gated phases: prove the deal, make it repeatable, then scale what is proven. I keep carrying a number throughout.",
+              href: "/field-notes/build-the-motion",
+              label: "Illustrative model",
+              when: "Use when an early team needs its first repeatable sales motion and has to decide when to add headcount.",
+            },
+            {
               title: "Multithreading & Stakeholder Mapping",
               description: "An interactive buying-committee coverage exercise plus a coaching playbook, connected conceptually to other portfolio research projects.",
               href: "/field-notes/multithreading",

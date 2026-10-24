@@ -4,6 +4,7 @@ import { InquiryForm } from "@/app/inquiry-form";
 import { EmailLink } from "@/components/email-link";
 import { PageMain } from "@/components/page-main";
 import { SocialLinks } from "@/components/social-links";
+import { PUBLIC_BOOKING_URL } from "@/lib/portfolio/public-contact";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = completePageMetadata({
@@ -28,13 +29,22 @@ export default async function ContactPage({
           <h1 className="max-w-xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
             Let&apos;s talk about the work.
           </h1>
-          <p className="max-w-xl text-base leading-7 text-muted">For hiring conversations, collaboration or a closer look at an example, send a message.</p>
+          <p className="max-w-xl text-base leading-7 text-muted">For hiring conversations, collaboration or a closer look at an example, send a message or book a time on my calendar.</p>
 
           <div
             role="group"
             aria-label="Contact links"
             className="flex flex-wrap items-center gap-3"
           >
+            <a
+              href={PUBLIC_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Book a time with Kristen Aing (opens Cal.com in a new tab)"
+              className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-accent-foreground transition-transform duration-200 hover:-translate-y-0.5"
+            >
+              Book a time
+            </a>
             <EmailLink placement="contact" />
             <SocialLinks placement="contact" />
           </div>
