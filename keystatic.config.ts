@@ -166,6 +166,64 @@ export default config({
         ...governanceFields(),
       },
     }),
+    fieldNotes: collection({
+      label: "Field Notes",
+      slugField: "title",
+      path: "content/field-notes/guides/*",
+      format: { data: "json" },
+      schema: {
+        title: fields.slug({
+          name: { label: "Title", validation: { isRequired: true } },
+          slug: {
+            label: "Stable guide id",
+            description:
+              "Leave the existing id. The site accepts only enterprise-deal and multithreading.",
+            validation: {
+              pattern: {
+                regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                message: "Use the existing guide id",
+              },
+            },
+          },
+        }),
+        headline: text("Headline"),
+        eyebrow: text("Eyebrow"),
+        standfirst: text("Standfirst", true),
+        metaDescription: text("Meta description", true),
+        limitations: text("Evidence limitations", true),
+        sections: fields.array(
+          fields.object({
+            key: slug("Section key"),
+            kicker: fields.text({ label: "Kicker" }),
+            heading: fields.text({ label: "Heading" }),
+            body: fields.text({ label: "Body", multiline: true }),
+            note: fields.text({ label: "Note", multiline: true }),
+          }),
+          {
+            label: "Sections",
+            itemLabel: (props) => props.fields.key.value || "Section",
+          },
+        ),
+        links: fields.array(
+          fields.object({
+            key: slug("Link key"),
+            label: text("Link label"),
+            href: fields.text({
+              label: "Existing path",
+              description:
+                "Leave the current path. A new destination fails the build.",
+              validation: { isRequired: true },
+            }),
+          }),
+          {
+            label: "Links",
+            itemLabel: (props) => props.fields.label.value || "Link",
+            validation: { length: { min: 5, max: 5 } },
+          },
+        ),
+        ...governanceFields(),
+      },
+    }),
   },
   singletons: {
     home: singleton({
