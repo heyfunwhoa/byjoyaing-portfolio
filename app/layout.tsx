@@ -1,4 +1,5 @@
 import { Mark } from "@/components/mark";
+import { VercelAnalytics } from "@/components/vercel-analytics";
 import { EmailLink } from "@/components/email-link";
 import { SiteHeader } from "@/components/site-header";
 import { SocialLinks } from "@/components/social-links";
@@ -45,8 +46,14 @@ const publicIdentity = {
   "@type": "Person",
   name: "Kristen Aing",
   url: "https://www.byjoyaing.com/",
-  description: "Enterprise cybersecurity seller, revenue and GTM leader, and independent builder.",
-  knowsAbout: ["Enterprise cybersecurity sales", "Go-to-market strategy", "Sales enablement", "Security research"],
+  description:
+    "Enterprise cybersecurity seller, revenue and GTM leader, and independent builder.",
+  knowsAbout: [
+    "Enterprise cybersecurity sales",
+    "Go-to-market strategy",
+    "Sales enablement",
+    "Security research",
+  ],
   sameAs: socialProfiles.map((profile) => profile.href),
 };
 
@@ -79,7 +86,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                   Revenue & GTM Leader · Curious Builder · 2026
                 </p>
               </div>
-              <nav aria-label="Footer" className="flex max-w-sm flex-wrap gap-x-4 sm:justify-end">
+              <nav
+                aria-label="Footer"
+                className="flex max-w-sm flex-wrap gap-x-4 sm:justify-end"
+              >
                 {[
                   ["/about", "About"],
                   ["/work", "Work"],
@@ -102,6 +112,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </div>
           </footer>
         </TooltipProvider>
+        <VercelAnalytics />
       </body>
     </html>
   );

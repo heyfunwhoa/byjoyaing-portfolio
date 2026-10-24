@@ -2,6 +2,8 @@
 
 **Reconciled 2026-10-16:** Merged to `main` in [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155). Use current `main` with `KEYSTATIC_LOCAL=true` for the local procedure below. Hosted GitHub-mode implementation is tracked separately in [KRU-124](https://linear.app/krusty/issue/KRU-124/portfolio-host-keystatic-with-github-backed-editing); it remains disabled until GitHub App credentials and Vercel settings are configured and the authenticated preview is verified. The portfolio About singleton is separate: [KRU-109](https://linear.app/krusty/issue/KRU-109) and [editorial-foundation.md](../content/editorial-foundation.md).
 
+**2026-10-15:** [KRU-77](https://linear.app/krusty/issue/KRU-77) adds `reading-code-and-yaml` and `mcp-vs-rest-api` as two more singletons on this same contract. The original pilot text below still describes only `verification`.
+
 Issue: [KRU-75](https://linear.app/krusty/issue/KRU-75). Implementation branch at the time: `codex/kru-75-keystatic-verification`.
 Baseline: `3096586` on main, including merged Academy PRs #150, #151 and #152.
 Status when that branch was opened: implemented for PR review; not yet merged. The 2026-10-14 reconciliation above supersedes the merge claim. Human content approval of later wording changes is still a pull-request review.
