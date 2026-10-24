@@ -28,11 +28,13 @@ npm ci          # install the exact versions in package-lock.json
 npm run dev     # local site at http://localhost:3000
 npm run lint    # ESLint
 npm run build   # production build
-npm test        # currently Account Signal pipeline tests
+npm test        # Node.js unit and repository-contract tests
 npm run start   # serve the production build
 ```
 
-`npm test` currently runs the Account Signal pipeline tests only. Other pages, content links, and API endpoints still need appropriate automated coverage; see the [rebuild roadmap](docs/rebuild-roadmap.md).
+`npm test` uses the built-in Node.js test runner with TypeScript stripping and the explicit file list in `package.json`. Coverage includes Account Signal, portfolio data and navigation, Builder Academy, identity and credential exercises, privacy, email, metadata, and repository contracts. Academy coverage includes `lib/ai-academy-labs.test.ts`, `lib/ai-academy-advanced-labs.test.ts`, and `lib/ai-prompt-journey.test.ts`. New test files must be added to the command to run in this suite.
+
+The `Unit tests` job in `.github/workflows/ci.yml` runs `npm test` on Node.js 22 for pull requests targeting `main` and pushes to `main`. Browser checks are separate: `npm run test:site` tests the production build, `npm run test:visual` runs the Playwright visual suite, and `npm run test:editor` tests the Keystatic editor. Passing unit tests does not establish coverage of every page or endpoint.
 
 ## Read next
 
@@ -46,7 +48,9 @@ npm run start   # serve the production build
 
 ## Stack
 
-Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, and Resend for contact email. Those are the only runtime dependencies. The public contact form no longer offers a resume request. `/api/request-resume` remains in the codebase and is not linked from the interface. Do not add a package for something the standard library or the framework already does.
+Next.js 16 (App Router) and React 19 power the app, with TypeScript and Tailwind CSS 4 as development/build tooling. Runtime dependencies declared in `package.json` also include Keystatic (`@keystatic/core`, `@keystatic/next`), Radix (`radix-ui`, `@radix-ui/react-icons`), Lucide (`lucide-react`), Embla (`embla-carousel-react`), `next-themes`, `class-variance-authority`, `cn`, PostHog (`posthog-js`, `posthog-node`), and Resend. `package.json` is the dependency inventory; `package-lock.json` pins the installed versions. ESLint, Prettier, Storybook, Playwright, and the shadcn CLI are development tooling.
+
+The public contact form no longer offers a resume request. `/api/request-resume` remains in the codebase and is not linked from the interface. Do not add a package for something the standard library or the framework already does.
 
 ## Canonical portfolio brand and changes
 
