@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.64.0",
-    "@storybook/nextjs-vite": "^10.6.1",
+    "@storybook/nextjs-vite": "^10.6.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -45,7 +45,7 @@
     "prettier": "^3.9.9",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "shadcn": "^4.21.4",
-    "storybook": "^10.6.1",
+    "storybook": "^10.6.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
