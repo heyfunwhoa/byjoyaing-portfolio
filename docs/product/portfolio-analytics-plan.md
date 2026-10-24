@@ -1,6 +1,6 @@
 # Portfolio analytics — bounded rollout
 
-**Status:** PostHog page analytics is implemented but disabled by default and not production-verified. No baseline exists. Vercel Web Analytics is not installed. [Tracking issue #74](https://github.com/heyfunwhoa/byjoyaing-portfolio/issues/74).
+**Status:** PostHog page analytics is implemented but disabled by default and not production-verified. No baseline exists. Vercel Web Analytics is mounted with the same public-route allowlist and query stripping; dashboard activation and collected results are not verified. [Tracking issue #74](https://github.com/heyfunwhoa/byjoyaing-portfolio/issues/74).
 
 ## Purpose and limits
 
@@ -16,7 +16,9 @@ Only `$pageview` events on reviewed production origins and paths are admitted fo
 
 Click autocapture, pageleave, replay, heatmaps, surveys and performance capture remain off. Browser storage is disabled and identity is transient in memory; no person profiles are created. This is not a claim that network requests are anonymous: vendor/network metadata and billing/retention settings require review. Repeat-visitor and acquisition attribution are not supported by this bounded pilot.
 
-Ingestion uses the configured PostHog host directly. The proposed `/relay` rewrite and global trailing-slash proxy were removed during reconciliation; site redirects and security headers stay unchanged. No additional SDK or lockfile change is needed because main already includes PostHog.
+Ingestion uses the configured PostHog host directly. The proposed `/relay` rewrite and global trailing-slash proxy were removed during reconciliation; site redirects and security headers stay unchanged. No additional PostHog SDK change is needed because main already includes PostHog.
+
+Vercel Web Analytics is a separate aggregate pageview path. `components/vercel-analytics.tsx` mounts `<Analytics />` from `@vercel/analytics/next` in the root layout. `beforeSend` admits only the reviewed origins and paths above, rebuilds the URL without a query string or fragment, and drops custom events. The script does not collect in development. Preview hosts are rejected by the origin allowlist. Enabling the Vercel project dashboard, reviewing the public notice, and recording a real payload remain separate from this mount.
 
 ## Activation and verification
 
