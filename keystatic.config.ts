@@ -131,6 +131,7 @@ function lessonSingleton(
 
 // Singletons fix file identity: no create/delete/rename for these records.
 // The Work collection keeps one file per existing story id. The reader rejects any other id.
+// Case-study summaries are one file per existing directory slug. The reader rejects any other slug.
 export default config({
   storage,
   ui: { brand: { name: "joy. · content editor" } },
@@ -221,6 +222,32 @@ export default config({
             validation: { length: { min: 5, max: 5 } },
           },
         ),
+        ...governanceFields(),
+      },
+    }),
+    caseStudies: collection({
+      label: "Case study summaries",
+      slugField: "summary",
+      path: "content/work/studies/*",
+      format: { data: "json" },
+      schema: {
+        summary: fields.slug({
+          name: {
+            label: "Public summary",
+            validation: { isRequired: true },
+          },
+          slug: {
+            label: "Stable case-study slug",
+            description:
+              "Leave the existing slug. Kind, route, status, directory filters, and URLs stay in code.",
+            validation: {
+              pattern: {
+                regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                message: "Use the existing case-study slug",
+              },
+            },
+          },
+        }),
         ...governanceFields(),
       },
     }),
