@@ -458,3 +458,7 @@ Homepage deduplication (EPIC-03) waits until PR A shows which sentences Work now
 4. **Slice D (measurement):** Search Console + Lighthouse baseline and consent-aware analytics; no success claims until measured.
 
 A slice is *implemented* when its files are committed, *validated* when lint/tests/build and the actual browser acceptance checks pass, *released* when the matching Vercel production deployment is READY and the routes work. These states must not be conflated.
+
+## 32. Editorial mechanism note (2026-10-14)
+
+About keeps the job in section 10. The visible sentences on that page can be edited through the existing local Keystatic editor, in one file, without moving interactive components or career facts. The homepage cover sentences can be edited the same way, in `content/home/page.json`, without moving the bento, role facts, or links. The three Work narrative sentences can be edited in `content/work/stories`, without moving ids, areas, or related links. The public sentences for `reading-code-and-yaml` and `mcp-vs-rest-api` can be edited as two more lesson singletons, without moving answer keys, prerequisites, or learner progress. Hosted editing is not a requirement of this PRD. The field-by-field decision, including what must stay in code, is [editorial-foundation.md](../content/editorial-foundation.md). This note does not authorize a site-wide migration or a second content system.

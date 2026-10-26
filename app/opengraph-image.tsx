@@ -1,3 +1,4 @@
+import { homePage } from "@/lib/home/editorial";
 import { ImageResponse } from "next/og";
 
 export const alt = "Kristen Aing — Revenue & GTM Leader · Curious Builder";
@@ -36,11 +37,11 @@ export default function OpenGraphImage() {
             border: "1.5px solid #8a4b2a",
           }}
         />
-        Enterprise cybersecurity · Revenue & GTM
+        {homePage.eyebrow}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
         <div style={{ fontSize: 56, lineHeight: 1.1, maxWidth: 980 }}>
-          Revenue & GTM Leader. Curious Builder.
+          {`${homePage.headline} ${homePage.headlineAccent}`}
         </div>
         <div style={{ fontSize: 28, color: "#4a504b" }}>Kristen Aing</div>
       </div>

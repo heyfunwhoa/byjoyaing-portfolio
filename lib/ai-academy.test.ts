@@ -17,6 +17,9 @@ test("frontend building-blocks lesson teaches the seven-part model and tool boun
   assert.match(lesson.exercise, /synthetic/i);
   assert.match(lesson.check.choices[lesson.check.answer], /Accessibility and user experience/);
   assert.ok(lesson.sources.some((source) => source.url.includes("w3.org/WAI")));
+  assert.equal(lesson.minutes, 35);
+  assert.match(lesson.summary, /Next.js, SvelteKit, Astro, SolidStart and Nuxt/);
+  assert.ok(lesson.sources.some((source) => source.url === "https://survey.stackoverflow.co/2026/technology/data/web-framework"));
   assert.equal(JSON.stringify(lesson).includes("API_KEY="), false);
 });
 
@@ -45,8 +48,11 @@ test("cursor workflows is a Builder lesson without private personal data", () =>
   assert.equal(cursor.title, "Cursor modes, rules, and safe handoffs");
   assert.match(cursor.exercise, /docs\/builder-academy\/cursor-agent-workflows\.md/);
   assert.match(cursor.exercise, /From idea to verified release/);
-  assert.match(verified.exercise, /docs\/builder-academy\/cursor-agent-workflows\.md/);
-  assert.match(verified.exercise, /docs\/builder-academy\/idea-to-verified-release\.md/);
+  assert.match(verified.exercise, /Stop after the core/);
+  assert.match(
+    verified.companion?.url ?? "",
+    /docs\/builder-academy\/idea-to-verified-release\.md#choose-a-short-learning-path/,
+  );
   const choices = cursor.check.choices.join(" ");
   assert.match(choices, /Ask/);
   assert.match(choices, /Plan/);

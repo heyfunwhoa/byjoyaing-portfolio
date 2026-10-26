@@ -22,7 +22,7 @@ Actions:
 
 | Current | Owner today | Proposed owner | Action |
 | --- | --- | --- | --- |
-| `/` hero, one-line philosophy, Leader avatar | Home | Home | Keep. The second hero action is About, not Side Quests. See [homepage-simplification.md](homepage-simplification.md). |
+| `/` hero, one-line philosophy, Leader avatar | Home | Home | Keep. Cover sentences now live in `content/home/page.json` (2026-10-14). The second hero action is About, not Side Quests. See [homepage-simplification.md](homepage-simplification.md). |
 | `/` People / Problem-driven / Systems list | Home | About | Point. Home keeps the single philosophy line. The three-item list leaves the homepage. |
 | `/` Truffle record | Home | Home, condensed; full points on `/experience` | Condense to one paragraph made from the existing points. |
 | `/` Rapid7 and Forcepoint rows | Home | `/experience` | Point. Home keeps one existing sentence each. Full bullets stay on the timeline. |
@@ -32,12 +32,12 @@ Actions:
 | `/` private-work tile and second private button | Home | `/private-work` | Remove from Home. The route stays. |
 | `/` one competitive field practice | Home | `/work/competitive-intelligence-engine` | Keep one story. The case study owns the detail. The monitor stays a design. |
 | `/` connect | Home | Contact | Keep one contact action in the close, plus About. The form stays on `/contact`. |
-| `/about` origin, philosophy, values, interests | About | About | Keep. Interests stay the curated set in `lib/public-personal.ts`. |
+| `/about` origin, philosophy, values, interests | About | About | Keep. The curated sentences now live in `content/about/page.json` (2026-10-14). `lib/public-personal.ts` projects them. |
 | `/about` four-company title list | About | `/experience` | Point. About names the arc in one paragraph. |
 | `/about` "GTM and product work" cards | About | Split by kind | Relabel. Competitive evidence stays Work. Atlas, account workflows, and Truffle Camp stay Side Quests. |
 | `/about` toolkit | About | About | Keep, behind the story. It is not the lead. |
 | `/work` three collection labels | Work | Work | Relabel the bodies so each collection has its own evidence. |
-| `/work` People stories in `lib/public-stories.ts` | Work | Work → People & Leadership | Keep. Hold further numeric detail. The page already says to verify before adding more. |
+| `/work` People stories in `lib/public-stories.ts` | Work | Work → People & Leadership | Keep. The sentences now live in `content/work/stories` (2026-10-14). Ids and links stay in `lib/public-stories.ts`. Hold further numeric detail. |
 | `/work` `kind: "work"` registry item | Work | Work → GTM Strategy | Keep `competitive-intelligence-engine` here. |
 | `/experience` role timeline | Experience | Experience, linked from Work and About | Leave. Do not redirect to `/work`. The timeline and the collection index do different jobs. |
 | `/field-notes` two guides | Field Notes | Field Notes featured | Keep. Labels stay illustrative / synthetic. |

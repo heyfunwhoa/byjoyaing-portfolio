@@ -1,98 +1,365 @@
-import { config, fields, singleton } from "@keystatic/core";
+import { collection, config, fields, singleton } from "@keystatic/core";
+
+const storage =
+  process.env.NODE_ENV === "production" &&
+  process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github"
+    ? {
+        kind: "github" as const,
+        repo: { owner: "heyfunwhoa", name: "byjoyaing-portfolio" },
+        branchPrefix: "cms/",
+      }
+    : { kind: "local" as const };
 
 const text = (label: string, multiline = false) =>
   fields.text({ label, multiline, validation: { isRequired: true } });
 
-// A singleton fixes the file identity: no create/delete/rename curriculum UI.
-export default config({
-  storage: { kind: "local" },
-  ui: { brand: { name: "Academy · local editorial pilot" } },
-  singletons: {
-    verification: singleton({
-      label: "Verification lesson",
-      path: "content/academy/lessons/verification",
-      format: "json",
-      schema: {
-        id: fields.select({
-          label: "Stable lesson ID (fixed)",
-          options: [{ label: "verification", value: "verification" }],
-          defaultValue: "verification",
+const slug = (label: string) =>
+  fields.text({
+    label,
+    validation: {
+      isRequired: true,
+      pattern: {
+        regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+        message: "Use a lowercase slug",
+      },
+    },
+  });
+
+function governanceFields() {
+  return {
+    owner: text("Owner"),
+    reviewer: text("Reviewer / pending review"),
+    contentVersion: fields.integer({
+      label: "Content version",
+      validation: { isRequired: true, min: 1 },
+    }),
+    lastReviewed: fields.date({
+      label: "Last reviewed (blank until reviewed)",
+    }),
+    reviewDue: fields.date({
+      label: "Review due",
+      validation: { isRequired: true },
+    }),
+    classification: fields.select({
+      label: "Classification",
+      options: [
+        { label: "Public", value: "public" },
+        { label: "Synthetic", value: "synthetic" },
+      ],
+      defaultValue: "public",
+    }),
+    publicationStatus: fields.select({
+      label: "Editorial status (not deployment approval)",
+      options: ["draft", "review", "pilot", "published", "retired"].map(
+        (value) => ({ label: value, value }),
+      ),
+      defaultValue: "pilot",
+    }),
+  };
+}
+
+function lessonSingleton(
+  id: string,
+  label: string,
+  defaultTrack:
+    | "Foundations"
+    | "Prompting"
+    | "Responsible AI"
+    | "GTM"
+    | "Builder",
+) {
+  return singleton({
+    label,
+    path: `content/academy/lessons/${id}`,
+    format: "json",
+    schema: {
+      id: fields.select({
+        label: "Stable lesson ID (fixed)",
+        options: [{ label: id, value: id }],
+        defaultValue: id,
+      }),
+      title: text("Title"),
+      track: fields.select({
+        label: "Track",
+        options: [
+          "Foundations",
+          "Prompting",
+          "Responsible AI",
+          "GTM",
+          "Builder",
+        ].map((value) => ({ label: value, value })),
+        defaultValue: defaultTrack,
+      }),
+      minutes: fields.integer({
+        label: "Minutes",
+        validation: { isRequired: true, min: 1 },
+      }),
+      level: fields.select({
+        label: "Level",
+        options: [
+          { label: "Beginner", value: "Beginner" },
+          { label: "Intermediate", value: "Intermediate" },
+        ],
+        defaultValue: "Beginner",
+      }),
+      summary: text("Summary", true),
+      analogy: text("Analogy", true),
+      takeaways: fields.array(text("Takeaway", true), {
+        label: "Takeaways",
+        itemLabel: (props) => props.value,
+        validation: { length: { min: 1 } },
+      }),
+      exercise: text("Exercise", true),
+      sources: fields.array(
+        fields.object({
+          label: text("Source label"),
+          url: fields.url({
+            label: "Source URL",
+            validation: { isRequired: true },
+          }),
         }),
-        title: text("Title"),
-        track: fields.select({
-          label: "Track",
-          options: [
-            "Foundations",
-            "Prompting",
-            "Responsible AI",
-            "GTM",
-            "Builder",
-          ].map((value) => ({ label: value, value })),
-          defaultValue: "Responsible AI",
-        }),
-        minutes: fields.integer({
-          label: "Minutes",
-          validation: { isRequired: true, min: 1 },
-        }),
-        level: fields.select({
-          label: "Level",
-          options: [
-            { label: "Beginner", value: "Beginner" },
-            { label: "Intermediate", value: "Intermediate" },
-          ],
-          defaultValue: "Beginner",
-        }),
-        summary: text("Summary", true),
-        analogy: text("Analogy", true),
-        takeaways: fields.array(text("Takeaway", true), {
-          label: "Takeaways",
-          itemLabel: (props) => props.value,
+        {
+          label: "Sources",
+          itemLabel: (props) => props.fields.label.value,
           validation: { length: { min: 1 } },
+        },
+      ),
+      ...governanceFields(),
+    },
+  });
+}
+
+// Singletons fix file identity: no create/delete/rename for these records.
+// The Work collection keeps one file per existing story id. The reader rejects any other id.
+// Case-study summaries are one file per existing directory slug. The reader rejects any other slug.
+export default config({
+  storage,
+  ui: { brand: { name: "joy. · content editor" } },
+  collections: {
+    workNarratives: collection({
+      label: "Work narratives",
+      slugField: "title",
+      path: "content/work/stories/*",
+      format: { data: "json" },
+      schema: {
+        title: fields.slug({
+          name: { label: "Title", validation: { isRequired: true } },
+          slug: {
+            label: "Stable story id",
+            description:
+              "Leave the existing id. The site accepts only enterprise-selling, team-enablement, and competitive-evidence.",
+            validation: {
+              pattern: {
+                regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                message: "Use the existing story id",
+              },
+            },
+          },
         }),
-        exercise: text("Exercise", true),
-        sources: fields.array(
+        scope: text("Scope", true),
+        collaboration: text("Collaboration", true),
+        decision: text("Decision", true),
+        context: text("Context", true),
+        contribution: text("Contribution", true),
+        execution: text("Execution", true),
+        evidence: text("Evidence and limitations", true),
+        takeaway: text("Takeaway", true),
+        ...governanceFields(),
+      },
+    }),
+    fieldNotes: collection({
+      label: "Field Notes",
+      slugField: "title",
+      path: "content/field-notes/guides/*",
+      format: { data: "json" },
+      schema: {
+        title: fields.slug({
+          name: { label: "Title", validation: { isRequired: true } },
+          slug: {
+            label: "Stable guide id",
+            description:
+              "Leave the existing id. The site accepts only enterprise-deal and multithreading.",
+            validation: {
+              pattern: {
+                regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                message: "Use the existing guide id",
+              },
+            },
+          },
+        }),
+        headline: text("Headline"),
+        eyebrow: text("Eyebrow"),
+        standfirst: text("Standfirst", true),
+        metaDescription: text("Meta description", true),
+        limitations: text("Evidence limitations", true),
+        sections: fields.array(
           fields.object({
-            label: text("Source label"),
-            url: fields.url({
-              label: "Source URL",
+            key: slug("Section key"),
+            kicker: fields.text({ label: "Kicker" }),
+            heading: fields.text({ label: "Heading" }),
+            body: fields.text({ label: "Body", multiline: true }),
+            note: fields.text({ label: "Note", multiline: true }),
+          }),
+          {
+            label: "Sections",
+            itemLabel: (props) => props.fields.key.value || "Section",
+          },
+        ),
+        links: fields.array(
+          fields.object({
+            key: slug("Link key"),
+            label: text("Link label"),
+            href: fields.text({
+              label: "Existing path",
+              description:
+                "Leave the current path. A new destination fails the build.",
               validation: { isRequired: true },
             }),
           }),
           {
-            label: "Sources",
-            itemLabel: (props) => props.fields.label.value,
+            label: "Links",
+            itemLabel: (props) => props.fields.label.value || "Link",
+            validation: { length: { min: 5, max: 5 } },
+          },
+        ),
+        ...governanceFields(),
+      },
+    }),
+    caseStudies: collection({
+      label: "Case study summaries",
+      slugField: "summary",
+      path: "content/work/studies/*",
+      format: { data: "json" },
+      schema: {
+        summary: fields.slug({
+          name: {
+            label: "Public summary",
+            validation: { isRequired: true },
+          },
+          slug: {
+            label: "Stable case-study slug",
+            description:
+              "Leave the existing slug. Kind, route, status, directory filters, and URLs stay in code.",
+            validation: {
+              pattern: {
+                regex: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                message: "Use the existing case-study slug",
+              },
+            },
+          },
+        }),
+        ...governanceFields(),
+      },
+    }),
+  },
+  singletons: {
+    home: singleton({
+      label: "Home page",
+      path: "content/home/page",
+      format: "json",
+      schema: {
+        id: fields.select({
+          label: "Stable page ID (fixed)",
+          options: [{ label: "home", value: "home" }],
+          defaultValue: "home",
+        }),
+        metaDescription: text("Meta description", true),
+        eyebrow: text("Cover eyebrow"),
+        headline: text("Headline"),
+        headlineAccent: text("Headline accent"),
+        philosophy: text("Philosophy line"),
+        body: text("Cover body", true),
+        caption: text("Avatar caption"),
+        ...governanceFields(),
+      },
+    }),
+    about: singleton({
+      label: "About page",
+      path: "content/about/page",
+      format: "json",
+      schema: {
+        id: fields.select({
+          label: "Stable page ID (fixed)",
+          options: [{ label: "about", value: "about" }],
+          defaultValue: "about",
+        }),
+        metaDescription: text("Meta description", true),
+        eyebrow: text("Eyebrow"),
+        headline: text("Headline"),
+        lead: fields.array(text("Lead paragraph", true), {
+          label: "Lead paragraphs",
+          itemLabel: (props) => props.value,
+          validation: { length: { min: 1 } },
+        }),
+        philosophyLabel: text("Philosophy label"),
+        philosophyHeading: text("Philosophy heading"),
+        principles: fields.array(
+          fields.object({
+            name: text("Principle name"),
+            body: text("Principle body", true),
+          }),
+          {
+            label: "Principles",
+            itemLabel: (props) => props.fields.name.value,
+            validation: { length: { min: 3 } },
+          },
+        ),
+        leadershipApproach: text("Leadership approach", true),
+        approachEyebrow: text("Approach eyebrow"),
+        approachHeading: text("Approach heading"),
+        approachIntro: text("Approach introduction", true),
+        careerHeading: text("Career heading"),
+        careerIntro: text("Career introduction", true),
+        educationHeading: text("Education heading"),
+        education: fields.array(text("Education item"), {
+          label: "Education",
+          itemLabel: (props) => props.value,
+          validation: { length: { min: 1 } },
+        }),
+        practiceEyebrow: text("Practice eyebrow"),
+        practiceHeading: text("Practice heading"),
+        practiceIntro: text("Practice introduction", true),
+        exploreHeading: text("Explore heading"),
+        beyondLabel: text("Beyond label"),
+        beyondHeading: text("Beyond heading"),
+        beyondIntro: text("Beyond introduction", true),
+        interests: fields.array(
+          fields.object({
+            id: slug("Interest ID"),
+            title: text("Interest title"),
+            detail: text("Interest detail", true),
+            connection: text("Interest connection", true),
+          }),
+          {
+            label: "Interests",
+            itemLabel: (props) => props.fields.title.value,
             validation: { length: { min: 1 } },
           },
         ),
-        owner: text("Owner"),
-        reviewer: text("Reviewer / pending review"),
-        contentVersion: fields.integer({
-          label: "Content version",
-          validation: { isRequired: true, min: 1 },
+        valuesLabel: text("Values label"),
+        values: fields.array(text("Value"), {
+          label: "Values",
+          itemLabel: (props) => props.value,
+          validation: { length: { min: 3 } },
         }),
-        lastReviewed: fields.date({
-          label: "Last reviewed (blank until reviewed)",
-        }),
-        reviewDue: fields.date({
-          label: "Review due",
-          validation: { isRequired: true },
-        }),
-        classification: fields.select({
-          label: "Classification",
-          options: [
-            { label: "Public", value: "public" },
-            { label: "Synthetic", value: "synthetic" },
-          ],
-          defaultValue: "public",
-        }),
-        publicationStatus: fields.select({
-          label: "Editorial status (not deployment approval)",
-          options: ["draft", "review", "pilot", "published", "retired"].map(
-            (value) => ({ label: value, value }),
-          ),
-          defaultValue: "pilot",
-        }),
+        contactHeading: text("Contact heading"),
+        ...governanceFields(),
       },
     }),
+    verification: lessonSingleton(
+      "verification",
+      "Verification lesson",
+      "Responsible AI",
+    ),
+    readingCodeAndYaml: lessonSingleton(
+      "reading-code-and-yaml",
+      "Reading code and YAML",
+      "Builder",
+    ),
+    mcpVersusRest: lessonSingleton(
+      "mcp-vs-rest-api",
+      "MCP versus REST",
+      "Builder",
+    ),
   },
 });

@@ -1,23 +1,13 @@
 import { roles } from "./portfolio.ts";
 
-type RoleSource = { company: string; title: string; period: string };
+type RoleSource = { company: string; title: string };
 
 export type CareerRailNode = {
   company: string;
   title: string;
-  startYear: string;
-  endLabel: string;
 };
 
-/** Oldest role first, so the current role ends the line. Facts come only from `roles`. */
+/** Oldest role first. Employer and title remain visible without role dates. */
 export function careerRailNodes(source: readonly RoleSource[] = roles): CareerRailNode[] {
-  return [...source].reverse().map((role) => {
-    const [start = "", end = ""] = role.period.split("–").map((part) => part.trim());
-    return {
-      company: role.company,
-      title: role.title,
-      startYear: start.split(" ").at(-1) ?? "",
-      endLabel: end === "Present" ? "Present" : (end.split(" ").at(-1) ?? ""),
-    };
-  });
+  return [...source].reverse().map(({ company, title }) => ({ company, title }));
 }

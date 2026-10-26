@@ -28,6 +28,16 @@ const availableLesson = {
 } as const;
 
 export const lessonGuidance = {
+  "fde-ai-agent-engineering": {
+    ...availableLesson,
+    prerequisites: [],
+    guide: guide("fde-ai-agent-engineering", "Read the AI agent engineering companion"),
+  },
+  "database-branching-recovery": {
+    ...availableLesson,
+    prerequisites: ["reading-code-and-yaml"],
+    guide: guide("databases-branching-recovery-and-selection", "Read the database choices and recovery guide"),
+  },
   "reading-code-and-yaml": {
     ...availableLesson,
     prerequisites: [],
@@ -133,7 +143,7 @@ export const lessonGuidance = {
   "cms-fundamentals": {
     ...availableLesson,
     prerequisites: ["frontend-building-blocks"],
-    guide: guide("cms-fundamentals"),
+    guide: guide("cms-fundamentals", "Read the six-chapter CMS fundamentals guide"),
   },
   "llms-models-inference-gateways": {
     ...availableLesson,

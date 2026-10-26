@@ -251,6 +251,10 @@ Source snapshot: main at `c7e4018f5d3129f530c90c38343aea7528ed05f0`. The catalog
 
 Open PR #150 is a separate delivery/AppSec content change; its three-comma repair and corrected scope are at `7d2a681`. PR #151 is a separate ownership-reference change; its private/public boundary repair is at `5cc6e65`. Check their latest heads before integration. This note is source/PR reconciliation only: no current production, learner-outcome, browser or accessibility verification. Hosted checks and merge state can change after this snapshot.
 
+## Dated source reconciliation — 2026-10-14
+
+`main` includes merged PR #155. `package.json` depends on `@keystatic/core` and `@keystatic/next`. Storage remains local and opt-in. The 2026-10-13 sentence that main has no Keystatic dependencies describes that day's snapshot. Draft PR #170 reimplements the lesson pilot and is not the About slice. KRU-77 still owns `reading-code-and-yaml` and `mcp-vs-rest-api`. Hosted GitHub mode is not configured. The portfolio editor boundary is [editorial-foundation.md](../content/editorial-foundation.md).
+
 ## Current evidence and limitations
 
 Read 2026-10-13: root AGENTS.md, brand guidelines, PROGRAM.md, LEARNING-DEPTH.md, CURRICULUM-AUDIT.md, docs/ai-academy.md and CMS fundamentals. Existing counts and “hold” language are historical snapshots, not current runtime measurements.

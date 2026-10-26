@@ -1,8 +1,12 @@
 # Verification lesson: local editorial pilot
 
-Issue: [KRU-75](https://linear.app/krusty/issue/KRU-75). Implementation branch: `codex/kru-75-keystatic-verification`.
+**Reconciled 2026-10-16:** Merged to `main` in [PR #155](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/155). Use current `main` with `KEYSTATIC_LOCAL=true` for the local procedure below. Hosted GitHub-mode implementation is tracked separately in [KRU-124](https://linear.app/krusty/issue/KRU-124/portfolio-host-keystatic-with-github-backed-editing); it remains disabled until GitHub App credentials and Vercel settings are configured and the authenticated preview is verified. The portfolio About singleton is separate: [KRU-109](https://linear.app/krusty/issue/KRU-109) and [editorial-foundation.md](../content/editorial-foundation.md).
+
+**2026-10-15:** [KRU-77](https://linear.app/krusty/issue/KRU-77) adds `reading-code-and-yaml` and `mcp-vs-rest-api` as two more singletons on this same contract. The original pilot text below still describes only `verification`.
+
+Issue: [KRU-75](https://linear.app/krusty/issue/KRU-75). Implementation branch at the time: `codex/kru-75-keystatic-verification`.
 Baseline: `3096586` on main, including merged Academy PRs #150, #151 and #152.
-Status: implemented for PR review; not merged, deployed or verified live. Human content approval is pending.
+Status when that branch was opened: implemented for PR review; not yet merged. The 2026-10-14 reconciliation above supersedes the merge claim. Human content approval of later wording changes is still a pull-request review.
 
 ## Ownership and reuse
 
@@ -18,7 +22,9 @@ Reuse decision: `components/ai-academy/academy.tsx` is reused without changes fo
 
 ## Try the lesson and editor
 
-From a clean checkout of this PR branch (Node 22+):
+On current `main`, skip the historical branch checkout below. From the repository root, install dependencies and start the dev server with `KEYSTATIC_LOCAL=true`.
+
+From a clean checkout of the original PR branch (Node 22+):
 
 ```sh
 git fetch origin
@@ -51,7 +57,7 @@ Run this local-only suite in an isolated worktree. It starts its own development
 
 For a real editorial change, first make a feature branch, edit/save, inspect the content diff, increment `contentVersion` when appropriate, run checks, commit and push that branch, then open a PR. Review the diff and render from the **same head SHA**. Required repository checks and human review are the publishing gate. Keystatic's branch selection, a Save action, and `publicationStatus: published` do not enforce branch protection. This implementation PR demonstrates the branch/PR boundary; it does not claim a human approval or completed publication.
 
-GitHub mode, GitHub App credentials, hosted editor authentication and hosted preview publication are **not configured or verified**. The local UI requires `KEYSTATIC_LOCAL=true` and development mode. API access also checks loopback Host and same-origin requests. Production UI/API return 404 even if the opt-in variable is set; do not enable unauthenticated local filesystem mode on a host. A separately authorized GitHub App and deployment review is required for hosted editing. No credentials or paid services were enabled.
+GitHub mode, GitHub App credentials, hosted editor authentication and hosted preview publication are **not yet configured or verified**. The local UI requires `KEYSTATIC_LOCAL=true` and development mode. API access also checks loopback Host and same-origin requests. Production UI/API return 404 unless complete GitHub-mode configuration is present; `KEYSTATIC_LOCAL` cannot enable hosted filesystem writes. Hosted enablement remains a separate Vercel and GitHub setup/review step. No credentials or paid services were enabled by the implementation PR.
 
 ## Rollback
 

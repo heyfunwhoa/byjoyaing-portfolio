@@ -1,10 +1,14 @@
 import {
+  caseStudySummaries,
+  type CaseStudySlug,
+} from "./case-studies/summaries.ts";
+import {
   getProject,
   statusCopy,
   statusHelp,
   type LifecyclePhase,
   type ProjectStatus,
-} from "@/lib/portfolio";
+} from "./portfolio.ts";
 
 export const directoryCategories = [
   "All work",
@@ -42,8 +46,7 @@ export const lifecycleStages = [
 export type DirectoryPreview = "atlas" | "competitive" | "account" | "note";
 
 type DirectorySource = {
-  slug: string;
-  summary: string;
+  slug: CaseStudySlug;
   categories: Exclude<DirectoryCategory, "All work">[];
   role: string;
   technologies: string;
@@ -56,8 +59,6 @@ type DirectorySource = {
 const sources: DirectorySource[] = [
   {
     slug: "detector-coverage-atlas",
-    summary:
-      "Compare secret-detection coverage in a source-backed sample. A larger catalog and live monitoring are not in this repository.",
     categories: ["Technical Systems & AI"],
     role: "I built the 3-by-3 sample and the rule that an unreviewed cell stays gray.",
     technologies: "Next.js, React, and TypeScript. The rows live in this repository.",
@@ -68,8 +69,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "competitive-intelligence-engine",
-    summary:
-      "Turn competitor research into a source-backed brief and field guidance. Monitoring and automatic updates are designed, not running.",
     categories: ["Account & Market Intelligence", "Sales Enablement & Productivity"],
     role: "I wrote the briefs and taught them. The monitor on the case study is a sample.",
     technologies: "Field documents, Salesforce, and Slack. This page is a Next.js sample, not a crawler.",
@@ -80,8 +79,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "account-intelligence",
-    summary:
-      "Watch assigned accounts, separate a business change from a hypothesis, and draft outreach a person still has to send.",
     categories: ["Account & Market Intelligence"],
     role: "I designed the personal feed. The walkthrough uses fictional accounts and does not call a data source.",
     technologies: "Next.js sample. Supabase, Exa, Sumble, and Claude are planned, not installed.",
@@ -92,8 +89,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "customer-feedback-intelligence",
-    summary:
-      "Group customer requests into themes with the account still attached. Intake from CRM and tickets is not connected.",
     categories: ["Customer & Product Intelligence"],
     role: "I run the sales-to-product loop in the field. The workspace is a browser sample.",
     technologies: "Next.js sample. No CRM, ticket system, or model.",
@@ -104,8 +99,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "product-release-intelligence",
-    summary:
-      "Turn a release into reviewed lines for Sales, Customer Success, and customers. The hub itself is not built.",
     categories: ["Customer & Product Intelligence", "Sales Enablement & Productivity"],
     role: "I designed the question set I use with the field. There is no release application.",
     technologies: "The questions. No release hub in this repository.",
@@ -116,8 +109,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "truffle-camp",
-    summary:
-      "A designed secrets-security learning path with a written module and one synthetic practice question. No course platform or saved progress.",
     categories: ["Sales Enablement & Productivity"],
     role: "I designed the curriculum on top of enablement I have already done with teams.",
     technologies: "A written module and session-only practice question in this Next.js page. No course platform.",
@@ -128,8 +119,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "partner-gtm-engine",
-    summary:
-      "Match partner account lists on domain, leave uncertain rows for a person, and show whitespace. Not deployed.",
     categories: ["Revenue Strategy & Operations", "Account & Market Intelligence"],
     role: "I designed this from channel work. The page shows one fictional match.",
     technologies: "A written design. No spreadsheet upload or CRM sync.",
@@ -140,7 +129,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "product-prioritization-simulator",
-    summary: "A scoring sheet for a short list of bets. Not designed past this note, and not software.",
     categories: ["Customer & Product Intelligence"],
     role: "I have not scored a bet in software.",
     technologies: "None.",
@@ -151,8 +139,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "revenue-planning-simulator",
-    summary:
-      "An editable planning year for a fictional company. Retention, expansion, and the new-ARR residual are formulas. The dollars are fixtures.",
     categories: ["Revenue Strategy & Operations"],
     role: "I built the planner in gtm-revenue-os. It is not embedded here, and it is not an employer plan.",
     technologies: "Next.js, TypeScript, and Postgres. No language model in the calculation.",
@@ -163,8 +149,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "revenue-intelligence",
-    summary:
-      "Pipeline health from stage history, then planned new ARR against bookings and what is still required. The book is synthetic.",
     categories: ["Revenue Strategy & Operations"],
     role: "I wrote the SQL. Win rate comes from the close, not the current stage.",
     technologies: "Next.js and PostgreSQL in gtm-revenue-os. Not embedded on this site.",
@@ -175,8 +159,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "gtm-operating-plan",
-    summary:
-      "Territory coverage and AE capacity for the same fictional company. Potential is an estimate. Headcount does not create bookings.",
     categories: ["Revenue Strategy & Operations"],
     role: "I built the operating plan in gtm-revenue-os. The $25M view is capacity math, not a result.",
     technologies: "Next.js and PostgreSQL. Same capacity formulas as the revenue planner.",
@@ -187,7 +169,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "gtm-campaign-lab",
-    summary: "One segment, one message, and a readout of what to change. Not built.",
     categories: ["Revenue Strategy & Operations"],
     role: "I have written outbound plays. I have not built a system that measures them.",
     technologies: "None.",
@@ -198,7 +179,6 @@ const sources: DirectorySource[] = [
   },
   {
     slug: "security-signal-intelligence",
-    summary: "A reviewed weekly note from a fixed list of public sources. The product is still an idea.",
     categories: ["Account & Market Intelligence", "Technical Systems & AI"],
     role: "Playbooks and industry training were field work. They are not this product.",
     technologies: "None in this repository.",
@@ -211,6 +191,7 @@ const sources: DirectorySource[] = [
 
 export type DirectoryProject = DirectorySource & {
   title: string;
+  summary: string;
   phase: LifecyclePhase;
   status: ProjectStatus;
   caseStudyUrl: string;
@@ -224,6 +205,7 @@ function hydrate(source: DirectorySource): DirectoryProject {
   return {
     ...source,
     title: project.title,
+    summary: caseStudySummaries[source.slug],
     phase: project.phase,
     status: project.status,
     caseStudyUrl: `/work/${project.slug}`,

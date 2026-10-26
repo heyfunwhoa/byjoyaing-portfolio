@@ -1,5 +1,5 @@
 import { completePageMetadata } from "@/lib/page-metadata";
-import { BrandAvatar } from "@/components/brand-avatar";
+import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -28,7 +28,7 @@ export default function FieldNotesPage() {
     <PageMain>
       <header className="grid items-center gap-8 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
         <div className="min-w-0">
-        <p className="text-sm font-medium text-muted">How I think · How I operate</p>
+        <p className="orbital-section-label text-sm font-medium text-muted">How I think · How I operate</p>
         <h1 className="editorial-title mt-3 max-w-3xl">Thinking out loud. Building in practice.</h1>
         <p className="mt-4 text-lg font-medium">Field Notes</p>
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted">
@@ -41,7 +41,7 @@ export default function FieldNotesPage() {
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#private">Private work</a>
         </nav>
         </div>
-        <div className="mx-auto w-full max-w-[12rem]"><BrandAvatar variant="explorer" /><p className="editorial-eyebrow mt-3 text-center text-muted">Explorer / Field Notes</p></div>
+        <div className="mx-auto w-full max-w-[12rem]"><OrbitStudyIllustration variant="field-notes" /></div>
       </header>
       <section id="featured" className="section-enter scroll-mt-24 border-b border-border py-12">
         <div className="flex flex-wrap items-end justify-between gap-4"><h2 className="font-display text-3xl tracking-tight">The published notes</h2><span className="text-xs text-muted">Guides and toolkit · Synthetic demonstrations</span></div>
@@ -60,6 +60,13 @@ export default function FieldNotesPage() {
               href: "/field-notes/enterprise-deal",
               label: "Illustrative framework",
               when: "Use when technical evaluation, stakeholder alignment and commercial review need a shared plan.",
+            },
+            {
+              title: "How I'd Build a Motion at Your Stage",
+              description: "A sell-first plan in three gated phases: prove the deal, make it repeatable, then scale what is proven. I keep carrying a number throughout.",
+              href: "/field-notes/build-the-motion",
+              label: "Illustrative model",
+              when: "Use when an early team needs its first repeatable sales motion and has to decide when to add headcount.",
             },
             {
               title: "Multithreading & Stakeholder Mapping",

@@ -39,6 +39,7 @@ test("source guard: case templates and Field Notes guides mount the breadcrumb",
     "components/editorial/editorial-article.tsx": "FieldNoteBreadcrumb",
     "app/field-notes/multithreading/page.tsx": "FieldNoteBreadcrumb",
     "app/field-notes/enterprise-deal/page.tsx": "EditorialArticle",
+    "app/field-notes/build-the-motion/page.tsx": "FieldNoteBreadcrumb",
   };
   for (const [file, token] of Object.entries(files)) {
     const source = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");

@@ -1,5 +1,5 @@
 import { completePageMetadata } from "@/lib/page-metadata";
-import { BrandAvatar } from "@/components/brand-avatar";
+import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { FeaturedSideQuestStrip } from "@/components/featured-side-quest-strip";
 import { PageMain } from "@/components/page-main";
 import { ProjectStatusPill } from "@/components/project-status-pill";
@@ -53,7 +53,7 @@ export default function SideQuestsPage() {
     <PageMain>
       <section className="grid items-center gap-10 border-b border-border py-12 sm:py-16 lg:grid-cols-[minmax(0,14rem)_minmax(0,1fr)]">
         <div className="order-2 mx-auto w-full max-w-[9rem] lg:order-1 lg:mx-0 lg:max-w-[14rem]">
-          <BrandAvatar variant="builder" />
+          <OrbitStudyIllustration variant="side-quests" />
         </div>
         <div className="order-1 lg:order-2">
           <p className="editorial-eyebrow text-accent">Side Quests / Independent builds</p>
@@ -69,7 +69,7 @@ export default function SideQuestsPage() {
       </section>
 
       <section aria-labelledby="featured-quests-title" className="section-enter border-b border-border py-12">
-        <p className="editorial-eyebrow text-accent">Featured builds</p>
+        <p className="orbital-section-label editorial-eyebrow text-accent">Featured builds</p>
         <h2 id="featured-quests-title" className="mt-2 font-display text-3xl">
           Selected experiments
         </h2>

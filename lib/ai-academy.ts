@@ -1,3 +1,7 @@
+import {
+  mcpRestEditorial,
+  readingCodeEditorial,
+} from "./academy/lesson-editorial.ts";
 import { verificationEditorial } from "./academy/verification-editorial.ts";
 import { enterpriseEvaluationLessons } from "./academy/enterprise-evaluation.ts";
 
@@ -9,25 +13,89 @@ export type Lesson = {
   companion?: { label: string; url: string };
 };
 export const lessons: Lesson[] = [
+{
+  "slug": "database-branching-recovery",
+  "title": "Databases: branching, backups, and platform decisions",
+  "track": "Builder",
+  "minutes": 35,
+  "level": "Beginner",
+  "summary": "Understand relational data, RSS ingestion, safe recovery, and when to choose Neon, Supabase, Railway, Turso, or Cloudflare D1.",
+  "analogy": "A database is a filing system with constraints. A database branch is a test copy, while a verified backup is an escape route if a change goes wrong.",
+  "takeaways": [
+    "Schemas define tables; foreign keys and uniqueness prevent missing references and duplicate records.",
+    "A scheduled RSS worker fetches and normalizes content, but source articles are not automatically verified market claims.",
+    "Git branches, database branches, snapshots, backups, and point-in-time restore solve different problems.",
+    "A restore can change primary identity or compute routing; compare IDs, endpoints, and data before and after.",
+    "Neon and Supabase support PostgreSQL; SQLite-oriented Turso and Cloudflare D1 require SQL and application portability review.",
+    "Choose by workload, access control, recovery requirements, operations, exit costs, and measured usage, not free-tier price alone."
+  ],
+  "exercise": "Read the companion database guide, then complete its synthetic branch-recovery and cost labs. No live credentials, database mutations, or provider calls are needed.",
+  "check": {
+    "question": "A snapshot restore creates a new branch with the same 16 tables. Is it safe to assume your application still connects to the original primary?",
+    "choices": ["Yes: identical table counts prove connectivity is unchanged.", "No: verify default/primary flags, stable branch IDs, and compute endpoint routing independently.", "Yes: branch names always determine connection routing."],
+    "answer": 1,
+    "explanation": "Equivalent table counts establish only a narrow schema fact. Restore finalization can change branch identity and endpoints; explicitly verify both."
+  },
+  "companion": {"label":"Read the database decision and recovery guide","url":"https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/databases-branching-recovery-and-selection.md"},
+  "sources": [
+    {"label":"Neon API: restore snapshot","url":"https://api-docs.neon.tech/reference/restoresnapshot"},
+    {"label":"Neon API: finalize branch restore","url":"https://api-docs.neon.tech/reference/finalizerestorebranch"},
+    {"label":"Supabase plans and backups","url":"https://supabase.com/pricing"},
+    {"label":"Cloudflare D1 overview","url":"https://developers.cloudflare.com/d1/"}
+  ]
+},
+
   ...enterpriseEvaluationLessons,
 {
+  slug: "fde-ai-agent-engineering",
+  title: "How AI agents become engineers",
+  track: "Builder",
+  minutes: 20,
+  level: "Intermediate",
+  summary: "Distinguish human forward-deployed engineers, AI SOC investigators, and AI systems that build and supervise security agents.",
+  analogy: "A human field engineer builds with a customer; an AI investigator works a case; an AI engineering supervisor configures workers and checks their output.",
+  takeaways: [
+    "Human FDEs are customer-embedded technical implementers, not a particular AI model.",
+    "An AI investigator performs a scoped task, while an AI FDE may plan, build and supervise multiple agents and workflows.",
+    "An agent system combines a model, tools, runtime, state, evaluation and independently enforced authorization.",
+    "BYOK means supported customer credentials, not universal compatibility with every foundation model.",
+    "Human review and scoped permissions matter before any disruptive security action."
+  ],
+  exercise: "Use only the fictional three-customer MSSP scenario in the companion. Draw the human operator, AI FDE, investigator worker, security tools and human approval gate. Mark tenant boundaries and separate model costs from platform costs.",
+  check: {
+    question: "An AI investigator's prompt says it may disable accounts. What is still needed before a disruptive action?",
+    choices: ["Nothing; its prompt is enough", "Independent permission enforcement and any required human approval", "A larger LLM"],
+    answer: 1,
+    explanation: "Prompts do not independently grant authority. Scoped credentials and approval policies must govern actions."
+  },
+  companion: {
+    label: "Read the AI agent engineering companion",
+    url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/fde-ai-agent-engineering.md"
+  },
+  sources: [
+    {label: "LimaCharlie Grid documentation (vendor-described example)", url: "https://docs.limacharlie.io/9-ai-sessions/grid/"},
+    {label: "LimaCharlie AI Sessions architecture", url: "https://docs.limacharlie.io/9-ai-sessions/architecture/"},
+    {label: "NIST AI risk management framework", url: "https://www.nist.gov/itl/ai-risk-management-framework"}
+  ]
+},
+{
   "slug": "cms-fundamentals",
-  "title": "Content management: Git, Keystatic, and Sanity",
+  "title": "CMS fundamentals: architecture, modeling, and selection",
   "track": "Builder",
-  "minutes": 20,
+  "minutes": 35,
   "level": "Beginner",
-  "summary": "Understand what a CMS does, compare repository-based and hosted content, and decide when an editor is worth adding.",
+  "summary": "Learn CMS terms and overlapping architectures, model content, trace publishing and rollback, and compare Git, Keystatic, TinaCMS, Sanity, Payload, and WordPress.",
   "analogy": "A CMS is the editorial desk: writers organize and revise material, while the website is the place readers experience it. The publishing process connects the two.",
   "takeaways": [
-    "A content management system helps people create, organize, edit and publish content using defined fields and workflows.",
-    "Traditional CMSs often combine editing and website presentation; headless CMSs expose content to a separate frontend. Git-based describes file storage and can overlap with headless delivery.",
-    "A schema defines fields such as lesson ID, title, prerequisites, body and sources; content records fill those fields, while components control presentation and interaction.",
-    "Keystatic edits repository files; Sanity stores structured content in a hosted database. Choose based on editorial workflow, reuse, privacy and total operating cost.",
-    "Free software or a free plan does not remove hosting, build, storage, maintenance or migration costs. Git-based edits may still trigger CI.",
-    "A private page does not protect a public dataset or public repository. Editor login and reader authorization are separate controls.",
-    "A CMS becomes useful when frequent content edits, collaboration or reuse justify its setup. It does not automatically implement learner progress, authentication or source verification."
+    "A CMS helps people create, organize, edit, and publish content. It is not automatically a database, a digital asset manager, a learning system, or a product API.",
+    "Traditional, headless, decoupled, hybrid, Git-backed, and API-first describe overlapping dimensions. One product can match more than one of them.",
+    "A schema defines content types, fields, and references. Keep a stable identifier when titles or URL slugs change.",
+    "Draft, preview, review, publish, and verify are separate steps. A static build or cache can keep showing the previous version after publish.",
+    "Editor login and reader authorization are different controls. A private page does not protect a public dataset, repository, or asset URL.",
+    "Git-only, Keystatic, TinaCMS, Sanity, Payload, and WordPress fit different editing and operating needs. Recheck plan limits before you rely on a price.",
+    "On this portfolio, local Keystatic edits the public verification, reading-code-and-yaml, and mcp-vs-rest-api lessons, plus the About page, Home cover, and Work narrative sentences. Lesson checks, learner progress, and page interaction stay in application code. Hosted editing is not configured."
   ],
-  "exercise": "Read the CMS fundamentals companion guide. For a fictional three-lesson Academy, define the content fields, choose Git alone, Keystatic or Sanity, and trace draft to review to publication. Explain where private material and learner progress belong. Use the written answer key for self-review; no CMS is installed and no production content is changed.",
+  "exercise": "Use the practice lab on this card for three decisions: architecture, schema, and publishing rollback. Then read docs/builder-academy/cms-fundamentals.md and complete its written self-review. The lab checks choices against the lesson guidance. It does not save progress, grade the written answers, or prove a production CMS is configured safely.",
   "check": {
     "question": "A team already reviews lesson files in Git and wants an editing interface for one site. Which is the most proportionate first experiment?",
     "choices": [
@@ -36,10 +104,10 @@ export const lessons: Lesson[] = [
       "Put confidential lessons in a public dataset and hide their page links"
     ],
     "answer": 1,
-    "explanation": "A small repository-based editing pilot addresses the stated need. Sanity may fit independent publishing or cross-app content reuse, but neither a CMS editor nor a hidden URL establishes reader authorization."
+    "explanation": "A small repository-based editing pilot addresses the stated need. On this portfolio, local Keystatic already edits the public verification, reading-code-and-yaml, and mcp-vs-rest-api lessons, plus the About page, Home cover, and Work narrative sentences; hosted editing is not configured. Sanity may fit independent publishing or cross-app reuse, but neither an editor nor a hidden URL establishes reader authorization."
   },
   "companion": {
-    "label": "Read the CMS fundamentals and selection guide",
+    "label": "Read the six-chapter CMS fundamentals guide",
     "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/cms-fundamentals.md"
   },
   "sources": [
@@ -48,12 +116,20 @@ export const lessons: Lesson[] = [
       "url": "https://keystatic.com/docs/introduction"
     },
     {
-      "label": "Sanity: platform documentation",
-      "url": "https://www.sanity.io/docs"
+      "label": "Sanity: content modeling",
+      "url": "https://www.sanity.io/content-modeling"
     },
     {
       "label": "Sanity: current plans",
       "url": "https://www.sanity.io/pricing"
+    },
+    {
+      "label": "Payload: what it includes",
+      "url": "https://payloadcms.com/docs/getting-started/what-is-payload"
+    },
+    {
+      "label": "TinaCMS: Git-backed editing",
+      "url": "https://tina.io/docs"
     },
     {
       "label": "WordPress: features",
@@ -62,49 +138,24 @@ export const lessons: Lesson[] = [
   ]
 },
 {
-  "slug": "reading-code-and-yaml",
-  "title": "Reading code, files, JSON and YAML",
-  "track": "Builder",
-  "minutes": 25,
-  "level": "Beginner",
-  "summary": "Recognize common file types, trace a small function, and read configuration with plain-language definitions.",
-  "analogy": "A repository is a project folder: some files explain the work, some hold information, and others tell tools what to do.",
-  "takeaways": [
-    "Read a file by asking its purpose, inputs, decisions, outputs and which tool interprets it.",
-    "HTML describes structure; CSS presentation; JavaScript and TypeScript program behavior; JSON and YAML represent structured information.",
-    "YAML indentation changes nesting. Valid syntax can still put a setting in the wrong place.",
-    "Configuration can instruct tools to execute commands. Inspect triggers, permissions and effects before running anything.",
-    "Reading, practicing and passing a check are different evidence of learning."
-  ],
-  "exercise": "Read docs/builder-academy/reading-code-and-yaml.md. Using the synthetic snippets, predict the function output, identify JSON value types, repair YAML nesting and explain which tool interprets a workflow. Compare your five-line note with the answer key; no commands or live services are required.",
-  "check": {
-    "question": "A YAML file parses, but verified is at the root instead of inside account. What does that tell you?",
-    "choices": [
+  slug: "reading-code-and-yaml",
+  ...readingCodeEditorial,
+  check: {
+    question:
+      "A YAML file parses, but verified is at the root instead of inside account. What does that tell you?",
+    choices: [
       "Parsing proves the application will behave correctly.",
       "Syntax is valid, but the structure can still violate application expectations.",
-      "YAML executes each line like a shell script."
+      "YAML executes each line like a shell script.",
     ],
-    "answer": 1,
-    "explanation": "A parser checks syntax. Nesting determines structure; the consuming application and its schema determine whether that structure is meaningful and valid."
+    answer: 1,
+    explanation:
+      "A parser checks syntax. Nesting determines structure; the consuming application and its schema determine whether that structure is meaningful and valid.",
   },
-  "companion": {
-    "label": "Read the full lesson, glossary and answer key",
-    "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/reading-code-and-yaml.md"
+  companion: {
+    label: "Read the full lesson, glossary and answer key",
+    url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/reading-code-and-yaml.md",
   },
-  "sources": [
-    {
-      "label": "YAML 1.2.2 specification",
-      "url": "https://yaml.org/spec/1.2.2/"
-    },
-    {
-      "label": "MDN: Working with JSON",
-      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON"
-    },
-    {
-      "label": "GitHub Actions workflow syntax",
-      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
-    }
-  ]
 },
 {
   "slug": "llms-models-inference-gateways",
@@ -160,9 +211,9 @@ export const lessons: Lesson[] = [
     slug: "frontend-building-blocks",
     title: "Frontend building blocks: from framework to experience",
     track: "Builder",
-    minutes: 25,
+    minutes: 35,
     level: "Beginner",
-    summary: "Learn how structure, components, styling, behavior, data, accessibility and UX combine to make a frontend; identify the role of Next.js, React, Tailwind and shadcn/ui.",
+    summary: "Understand frontend layers and compare Next.js, SvelteKit, Astro, SolidStart and Nuxt by use case, tradeoffs, ecosystem and adoption evidence.",
     analogy: "Building a house requires a floor plan, reusable rooms, finishes, working controls and useful information. Accessibility and UX influence the entire design, not just the final coat of paint.",
     takeaways: [
       "Frontend = Structure + Components + Styling + Behavior + Data + Accessibility + User Experience.",
@@ -171,9 +222,11 @@ export const lessons: Lesson[] = [
       "Components can handle layout, display, navigation, interaction, forms, data displays, visualizations or feedback; a single component can span several categories.",
       "Data comes from props, local objects or APIs; React state changes what's displayed. A component looking correct does not guarantee accurate data.",
       "Accessible keyboard navigation, focus states, readable content and reduced-motion support are frontend requirements, not optional polish.",
-      "UX asks whether visitors can reach their goals; GitHub and Vercel manage code and deployment rather than defining frontend structure or style."
+      "UX asks whether visitors can reach their goals; GitHub and Vercel manage code and deployment rather than defining frontend structure or style.",
+      "Choose an application framework by whether the product is content-led or interactive, the team’s existing skills, needed server features and maintenance cost.",
+      "Next.js has the most reported use among listed options with a separate response in the 2026 Stack Overflow survey; SolidStart is not ranked separately. Adoption is evidence about ecosystem size, not proof of best fit."
     ],
-    exercise: "Read docs/builder-academy/frontend-building-blocks.md. Use a synthetic project card to label structure (HTML), component (React), styling (Tailwind), behavior (click/focus), data (props), accessibility (semantic link and keyboard focus) and UX (can a reader find the project?). Then compare a mobile layout bug with a data bug and explain which layer you would fix first. Do not edit production content during this reading exercise.",
+    exercise: "Read docs/builder-academy/frontend-building-blocks.md. Use a synthetic project card to label structure (HTML), component (React), styling (Tailwind), behavior (click/focus), data (props), accessibility (semantic link and keyboard focus) and UX. Then choose frameworks for a content-led event site and an authenticated research workspace; explain the tradeoffs and why survey popularity alone cannot decide. Do not edit production content during this reading exercise.",
     check: {
       question: "A project carousel looks polished but visitors cannot navigate it with a keyboard. What is missing?",
       choices: [
@@ -189,6 +242,11 @@ export const lessons: Lesson[] = [
       { label: "MDN: Learn web development", url: "https://developer.mozilla.org/en-US/docs/Learn_web_development" },
       { label: "React: Your first component", url: "https://react.dev/learn/your-first-component" },
       { label: "Next.js: App Router", url: "https://nextjs.org/docs/app" },
+      { label: "SvelteKit: introduction", url: "https://svelte.dev/docs/kit" },
+      { label: "Astro: Why Astro?", url: "https://docs.astro.build/en/concepts/why-astro/" },
+      { label: "SolidStart: overview", url: "https://docs.solidjs.com/solid-start/v2" },
+      { label: "Nuxt: concepts", url: "https://learn.nuxt.com/en/concepts" },
+      { label: "Stack Overflow Developer Survey 2026: web framework data", url: "https://survey.stackoverflow.co/2026/technology/data/web-framework" },
       { label: "Tailwind CSS: Styling with utility classes", url: "https://tailwindcss.com/docs/styling-with-utility-classes" },
       { label: "W3C WAI accessibility fundamentals", url: "https://www.w3.org/WAI/fundamentals/accessibility-intro/" }
     ]
@@ -276,29 +334,21 @@ export const lessons: Lesson[] = [
     slug: "idea-to-verified-release",
     title: "From idea to verified release",
     track: "Builder",
-    minutes: 25,
+    minutes: 45,
     level: "Beginner",
     summary: "See how priorities, requirements, Linear issues, Cursor, GitHub PRs and CI form one accountable delivery workflow without duplicating project tracking.",
     analogy: "A restaurant order has one ticket, a recipe, a kitchen station and a quality check. You do not need five copies of the same order to know whether dinner is ready.",
     takeaways: [
-      "Start with three steps: prepare a change, check and accept it, then publish and confirm it. Follow a fictional website typo fix in the companion guide.",
-      "Next, learn where IDEs, AI assistants, Git, pre-commit hooks and CI/CD fit. The companion links a worked AppSec example with MITRE ATT&CK techniques, SSDF, ASVS, SAMM and CWE; a framework mapping is not proof of tool coverage.",
-      "Commit means record your work. Merge means accept it into the main version. Deploy means publish a version for visitors. These are separate steps.",
-      "For an open PR, say: Review the PR, fix any issues, and merge once required checks pass on the latest commit. Review and CI can run in parallel; fixes repeat the loop.",
-      "A merge is not proof of deployment. Repository-only docs may finish at merge; website lesson updates still need publication verification. Reading a lesson is reviewed, not practiced or passed checks.",
-      "A project groups an outcome; milestones divide it; issues specify testable slices. Priority is importance, while status is where the work stands.",
-      "Backlog means not yet committed; Todo means selected; In Progress means implementing; In Review means verifying; Done requires acceptance evidence.",
-      "Keep the PRD and source code in the owning repository, tasks in Linear, implementation and CI evidence in GitHub, and reusable standards in Technical Docs.",
-      "Link a Linear issue ID in branches and PRs. PR linking does not require GitHub Issues synchronization or duplicate tickets.",
-      "Use test results, code review and explicit acceptance criteria before declaring delivery complete. Do not equate a passing build with product correctness.",
-      "Adopt the workflow gradually for active initiatives; no separate Linear team or duplicated status page is required for every repository.",
-      "Security scanners look for leaked secrets, vulnerable dependencies, risky code and configuration. Permission tests prove that a denied request cannot read data, change data or schedule work.",
-      "A configured check, a passing check and a required merge gate are different states. Review the latest commit; a manual checklist cannot technically prevent someone bypassing it.",
-      "Pre-commit helps catch local mistakes but can be absent, bypassed or limited in scope. The AppSec companion links a deep dive: Did it run? What did it scan? Did a finding actually block the action? Blocking merge does not undo a secret already pushed.",
-      "Use deeper security review for auth, account permissions, imports, exports, fetching and automation. Green CI is not proof of a protected deployment or permission to use employer data."
+      "Follow three core stops: save/check/publish, define a small change, then justify a release decision. The 45-minute core is a suggested study budget; optional extensions are separate.",
+      "Commit records a version, merge accepts a change and deployment publishes a version. Verify the intended revision and actual user journey before calling a release complete.",
+      "Define the problem, user, owner, requirement, non-goal and dependency before assigning implementation. Keep the PRD in the owning repository and delivery work in Linear.",
+      "Checks apply to a particular commit and prove only the behaviors they test. Code review and acceptance evidence still matter; new changes need relevant checks again.",
+      "Use one fictional lesson-edit example throughout the core. Detailed PRD/team material is reference reading; revenue planning is an alternative exercise.",
+      "First-deployment settings, security review and agent coordination are optional companions. Add services when implemented behavior needs them, with appropriate access and cost controls.",
+      "Reading, attempting an exercise and demonstrating its criteria are different. Paper exercises do not submit data to another app or automatically award progress."
     ],
-    exercise: "Using a fictional revenue simulator: create one project, then three connected milestones—correct the calculation, compare hiring choices, and verify the release. Write one acceptance criterion for each. Move only the current issue to Todo, sketch the branch/PR link, and explain what evidence would justify Done. Then use the companion guide’s fictional security review: classify the change, choose scanners and denied-path tests, and explain why passing CI alone does not authorize release. Read the companion lesson at docs/builder-academy/idea-to-verified-release.md. When you choose a Cursor mode for that branch, continue with docs/builder-academy/cursor-agent-workflows.md.",
-    companion: { label: "Read the full delivery and PR security guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/idea-to-verified-release.md" },
+    exercise: "Open the companion guide and follow its three core stops using one fictional lesson edit. Explain save/check/publish; write a problem, owner, requirement, non-goal and dependency; then complete the worked exercise's five-line handoff and recovery decision. Write fictional answers in a practice note you control and compare with the guide's answer key. Stop after the core; choose first-deployment settings, security review or agent coordination only when useful. Never enter confidential information. The guide's paper exercises have no submission or storage mechanism of their own.",
+    companion: { label: "Open the three-stop learning path and optional companions", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/idea-to-verified-release.md#choose-a-short-learning-path" },
     check: {
       question: "Your implementation PR passes CI but the expected calculation has not been checked. What should happen?",
       choices: ["Mark Done because all green checks prove the feature works", "Keep the issue In Review until its acceptance criteria and user journey are verified", "Copy the issue into GitHub Issues and Notion to increase visibility"],
@@ -414,37 +464,23 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "mcp-vs-rest-api",
-    title: "MCP versus REST APIs: how integrations work",
-    track: "Builder",
-    minutes: 25,
-    level: "Beginner",
-    summary: "Compare REST APIs, MCP tools, webhooks and SDKs through a fictional account-research workflow. Understand what each does and why none grants data permissions by itself.",
-    analogy: "An API is an ordering contract, REST is a structured order form, MCP is a discoverable menu for AI assistants, and a webhook is a notification when the order changes.",
-    takeaways: [
-      "API is the broader concept. REST is a common HTTP resource-interface style using methods such as GET and POST; MCP is a tool/context protocol for AI clients and may call an existing REST API.",
-      "MCP hosts and clients discover tools, resources and prompts through a server using JSON-RPC; transport may be local stdio or remote HTTP.",
-      "Use deterministic REST/SDK calls for routine application sync, MCP for assistant-initiated approved tools, and verified webhooks for change notifications.",
-      "A tool listing or successful request does not grant authorization, billing rights, data retention rights or permission to export contacts.",
-      "Enforce credential scoping, server-side account authorization, human approval for consequential writes, budgets, error handling and event deduplication.",
-      "A provider-neutral research service can support both REST and MCP without creating two databases."
-    ],
-    exercise: "Read docs/builder-academy/mcp-vs-rest-api.md and diagram a synthetic account lookup three ways: app-to-CRM REST request, AI assistant-to-MCP research tool, and CRM-to-app webhook. Then add a mock access-denied test and explain how to handle an HTTP 429 response without spending paid credits.",
+    ...mcpRestEditorial,
     check: {
-      question: "A Sumble-like provider offers an MCP tool that reveals contact details. What does MCP access prove?",
+      question:
+        "A Sumble-like provider offers an MCP tool that reveals contact details. What does MCP access prove?",
       choices: [
         "That the contact list can be bulk copied into a personal warehouse",
         "Only that a compatible client may invoke a tool subject to permissions, licensing and processing restrictions",
-        "That there is no need for a REST API, security review or provider agreement"
+        "That there is no need for a REST API, security review or provider agreement",
       ],
       answer: 1,
-      explanation: "MCP makes capabilities discoverable to an assistant. It does not waive tenant authorization, source licensing, credit budgets or data protection responsibilities."
+      explanation:
+        "MCP makes capabilities discoverable to an assistant. It does not waive tenant authorization, source licensing, credit budgets or data protection responsibilities.",
     },
-    companion: { label: "Open the full lesson and practice guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/mcp-vs-rest-api.md" },
-    sources: [
-      { label: "Model Context Protocol architecture", url: "https://modelcontextprotocol.io/docs/learn/architecture" },
-      { label: "MDN HTTP methods", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods" },
-      { label: "Microsoft Learn MCP overview", url: "https://learn.microsoft.com/en-us/azure/api-management/mcp-server-overview" }
-    ]
+    companion: {
+      label: "Open the full lesson and practice guide",
+      url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/mcp-vs-rest-api.md",
+    },
   },
   {
     slug: "enterprise-contracts-sales-cycle",

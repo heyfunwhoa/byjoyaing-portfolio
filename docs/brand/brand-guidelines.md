@@ -82,7 +82,7 @@ Colors above describe the **existing implementation**, not guaranteed accessibil
 
 ### Character and avatar system
 
-Maintain one consistent illustrated personal identity across three treatments: Leader (default professional portrait), Explorer (research and Field Notes), and Builder (Side Quests and Builder Academy). The current shared portrait is `/brand/avatar/illustrated-portrait.png`. All variants use that one file until separate Leader, Explorer, and Builder exports are approved. Follow [avatar-system.md](./avatar-system.md) for sizing, naming, likeness approval, accessible alt text, reduced motion and asset review. The variants must not imply real-world work or titles that cannot be substantiated.
+Maintain one consistent illustrated personal identity across three treatments: Leader (professional portrait), Explorer (research and Field Notes), and Builder (Side Quests and Builder Academy). Home uses the separately approved `/brand/avatar/home-portrait.webp`; About, Work, and Builder Academy use `/brand/avatar/illustrated-portrait.png`. The `/field-notes` and `/side-quests` collection headers use decorative orbit studies. The role treatments remain contextual labels until separate Leader, Explorer, and Builder exports are approved. Follow [avatar-system.md](./avatar-system.md) for sizing, naming, likeness approval, accessible alt text, reduced motion and asset review. The variants must not imply real-world work or titles that cannot be substantiated.
 
 ### Logo, shapes and imagery
 
@@ -99,7 +99,17 @@ Celestial geometry is a supporting line language. It is not a space theme, a gam
 - Use a few static orbital lines, nodes, and simple connectors. They may frame the homepage portrait, sit on the Work tile, or connect projects on `/experience`. They do not replace headlines, evidence, or the bento.
 - Draw them in ivory `#F3EFE6`, charcoal `#1B211D`, copper `#8A4B2A`, or the border `#CFC3B3`. On a charcoal surface, a line may use the same warm copper highlight as the “Curious Builder.” italic. Do not introduce a green, star field, or planet palette for these marks.
 - Rings do not spin. Nodes do not encode data. If a drawing shows a relationship, a visible sentence and a keyboard link say the same thing.
-- One portrait file, `/brand/avatar/illustrated-portrait.png`, remains the Leader, Explorer, and Builder image until approved variants exist. Geometry around that file does not change the face. Portrait rules stay in [avatar-system.md](./avatar-system.md).
+- `/brand/avatar/home-portrait.webp` is the approved homepage portrait. `/brand/avatar/illustrated-portrait.png` remains the shared portrait for About, Work, Builder Academy and other portrait placements until approved variants exist. The Field Notes and Side Quests collection headers use orbit studies. Geometry around either portrait does not change the face. Portrait rules stay in [avatar-system.md](./avatar-system.md).
+
+
+### Orbital editorial rollout (October 14, 2026; review pending)
+
+- **Signature mark:** the open-orbit replacement for the square `Mark` is owned by draft PR #165. Do not copy or independently redefine it on individual pages. Until that PR passes review and merges, the production header/footer continue using their existing shared component.
+- **Existing compositions:** the homepage `CelestialFrame` frames the portrait; About already uses `OrbitPortrait` and `CapabilityOrbit`; Experience has `CareerRail` and `ProjectConstellation`. Preserve their explanatory text and links. No additional hero rings or diagram nodes are justified simply to achieve consistency.
+- **Section cue:** a small static, flat, open circular stroke in `.orbital-section-label` is reserved for occasional editorial section labels. The CSS pseudo-element is decorative and contributes no readable text or meaning. Current proposed locations: About philosophy / approach; Work selected evidence; Side Quests featured builds; Field Notes introductory label. It inherits the copper token; no image, JS, animation or package is added.
+- **Intentional exceptions:** plain professional cards, screenshots, portrait crops, project-status pills, form controls, active navigation, progress indicators and Builder Academy lesson controls retain their functional shapes. Do not turn them into orbit symbols. Side Quests categories and Experience chronology continue to rely on words, structure and links rather than unlabeled geometry.
+- **Responsive/contrast gates:** verify at 320, 375, 768, 1024, and 1440 CSS pixels, at 200% zoom, light and any supported dark context; inspect 44px targets, keyboard/focus, screen-reader reading order and no horizontal overflow. The decorative cue never encodes information; CSS adds no motion. These checks remain pending until run and recorded in the PR.
+- **Sequence:** review PR #165 before shipping shared-mark changes; reconcile proposed brand-system PR #160 and related brand-toolkit PR #161 before finalizing documentation; do not merge a conflicting definition of the mark.
 
 ## 5. Information architecture
 
@@ -168,6 +178,7 @@ Follow least-privilege workflows, dependency and secret checks, no credentials o
 ## 9. Source of truth and change control
 
 - **This file:** canonical cross-page brand foundations and guardrails once its PR is approved.
+- **[Brand System v1](./brand-system-v1.md):** implementation layer for brand architecture, abstract visual grammar, product-family inheritance, imagery, motion, data visualization and AI-generation rules. It extends this guide and cannot override these foundations silently.
 - **`app/globals.css`:** actual shipped color and font tokens; synchronize intentionally when changed.
 - **PR #3:** proposed About story, values and leadership philosophy.
 - **PR #8:** proposed research, UX audit, information architecture, wireframes and roadmap.
