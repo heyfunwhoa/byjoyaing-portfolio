@@ -1,3 +1,7 @@
+import {
+  mcpRestEditorial,
+  readingCodeEditorial,
+} from "./academy/lesson-editorial.ts";
 import { verificationEditorial } from "./academy/verification-editorial.ts";
 import { enterpriseEvaluationLessons } from "./academy/enterprise-evaluation.ts";
 
@@ -89,7 +93,7 @@ export const lessons: Lesson[] = [
     "Draft, preview, review, publish, and verify are separate steps. A static build or cache can keep showing the previous version after publish.",
     "Editor login and reader authorization are different controls. A private page does not protect a public dataset, repository, or asset URL.",
     "Git-only, Keystatic, TinaCMS, Sanity, Payload, and WordPress fit different editing and operating needs. Recheck plan limits before you rely on a price.",
-    "On this portfolio, local Keystatic edits the public verification lesson and the About page sentences. Lesson checks, learner progress, and page interaction stay in application code. Hosted editing is not configured."
+    "On this portfolio, local Keystatic edits the public verification, reading-code-and-yaml, and mcp-vs-rest-api lessons, plus the About page, Home cover, and Work narrative sentences. Lesson checks, learner progress, and page interaction stay in application code. Hosted editing is not configured."
   ],
   "exercise": "Use the practice lab on this card for three decisions: architecture, schema, and publishing rollback. Then read docs/builder-academy/cms-fundamentals.md and complete its written self-review. The lab checks choices against the lesson guidance. It does not save progress, grade the written answers, or prove a production CMS is configured safely.",
   "check": {
@@ -100,7 +104,7 @@ export const lessons: Lesson[] = [
       "Put confidential lessons in a public dataset and hide their page links"
     ],
     "answer": 1,
-    "explanation": "A small repository-based editing pilot addresses the stated need. On this portfolio, local Keystatic already edits the public verification lesson and the About page sentences; hosted editing is not configured. Sanity may fit independent publishing or cross-app reuse, but neither an editor nor a hidden URL establishes reader authorization."
+    "explanation": "A small repository-based editing pilot addresses the stated need. On this portfolio, local Keystatic already edits the public verification, reading-code-and-yaml, and mcp-vs-rest-api lessons, plus the About page, Home cover, and Work narrative sentences; hosted editing is not configured. Sanity may fit independent publishing or cross-app reuse, but neither an editor nor a hidden URL establishes reader authorization."
   },
   "companion": {
     "label": "Read the six-chapter CMS fundamentals guide",
@@ -134,49 +138,24 @@ export const lessons: Lesson[] = [
   ]
 },
 {
-  "slug": "reading-code-and-yaml",
-  "title": "Reading code, files, JSON and YAML",
-  "track": "Builder",
-  "minutes": 25,
-  "level": "Beginner",
-  "summary": "Recognize common file types, trace a small function, and read configuration with plain-language definitions.",
-  "analogy": "A repository is a project folder: some files explain the work, some hold information, and others tell tools what to do.",
-  "takeaways": [
-    "Read a file by asking its purpose, inputs, decisions, outputs and which tool interprets it.",
-    "HTML describes structure; CSS presentation; JavaScript and TypeScript program behavior; JSON and YAML represent structured information.",
-    "YAML indentation changes nesting. Valid syntax can still put a setting in the wrong place.",
-    "Configuration can instruct tools to execute commands. Inspect triggers, permissions and effects before running anything.",
-    "Reading, practicing and passing a check are different evidence of learning."
-  ],
-  "exercise": "Read docs/builder-academy/reading-code-and-yaml.md. Using the synthetic snippets, predict the function output, identify JSON value types, repair YAML nesting and explain which tool interprets a workflow. Compare your five-line note with the answer key; no commands or live services are required.",
-  "check": {
-    "question": "A YAML file parses, but verified is at the root instead of inside account. What does that tell you?",
-    "choices": [
+  slug: "reading-code-and-yaml",
+  ...readingCodeEditorial,
+  check: {
+    question:
+      "A YAML file parses, but verified is at the root instead of inside account. What does that tell you?",
+    choices: [
       "Parsing proves the application will behave correctly.",
       "Syntax is valid, but the structure can still violate application expectations.",
-      "YAML executes each line like a shell script."
+      "YAML executes each line like a shell script.",
     ],
-    "answer": 1,
-    "explanation": "A parser checks syntax. Nesting determines structure; the consuming application and its schema determine whether that structure is meaningful and valid."
+    answer: 1,
+    explanation:
+      "A parser checks syntax. Nesting determines structure; the consuming application and its schema determine whether that structure is meaningful and valid.",
   },
-  "companion": {
-    "label": "Read the full lesson, glossary and answer key",
-    "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/reading-code-and-yaml.md"
+  companion: {
+    label: "Read the full lesson, glossary and answer key",
+    url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/reading-code-and-yaml.md",
   },
-  "sources": [
-    {
-      "label": "YAML 1.2.2 specification",
-      "url": "https://yaml.org/spec/1.2.2/"
-    },
-    {
-      "label": "MDN: Working with JSON",
-      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON"
-    },
-    {
-      "label": "GitHub Actions workflow syntax",
-      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
-    }
-  ]
 },
 {
   "slug": "llms-models-inference-gateways",
@@ -485,37 +464,23 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "mcp-vs-rest-api",
-    title: "MCP versus REST APIs: how integrations work",
-    track: "Builder",
-    minutes: 25,
-    level: "Beginner",
-    summary: "Compare REST APIs, MCP tools, webhooks and SDKs through a fictional account-research workflow. Understand what each does and why none grants data permissions by itself.",
-    analogy: "An API is an ordering contract, REST is a structured order form, MCP is a discoverable menu for AI assistants, and a webhook is a notification when the order changes.",
-    takeaways: [
-      "API is the broader concept. REST is a common HTTP resource-interface style using methods such as GET and POST; MCP is a tool/context protocol for AI clients and may call an existing REST API.",
-      "MCP hosts and clients discover tools, resources and prompts through a server using JSON-RPC; transport may be local stdio or remote HTTP.",
-      "Use deterministic REST/SDK calls for routine application sync, MCP for assistant-initiated approved tools, and verified webhooks for change notifications.",
-      "A tool listing or successful request does not grant authorization, billing rights, data retention rights or permission to export contacts.",
-      "Enforce credential scoping, server-side account authorization, human approval for consequential writes, budgets, error handling and event deduplication.",
-      "A provider-neutral research service can support both REST and MCP without creating two databases."
-    ],
-    exercise: "Read docs/builder-academy/mcp-vs-rest-api.md and diagram a synthetic account lookup three ways: app-to-CRM REST request, AI assistant-to-MCP research tool, and CRM-to-app webhook. Then add a mock access-denied test and explain how to handle an HTTP 429 response without spending paid credits.",
+    ...mcpRestEditorial,
     check: {
-      question: "A Sumble-like provider offers an MCP tool that reveals contact details. What does MCP access prove?",
+      question:
+        "A Sumble-like provider offers an MCP tool that reveals contact details. What does MCP access prove?",
       choices: [
         "That the contact list can be bulk copied into a personal warehouse",
         "Only that a compatible client may invoke a tool subject to permissions, licensing and processing restrictions",
-        "That there is no need for a REST API, security review or provider agreement"
+        "That there is no need for a REST API, security review or provider agreement",
       ],
       answer: 1,
-      explanation: "MCP makes capabilities discoverable to an assistant. It does not waive tenant authorization, source licensing, credit budgets or data protection responsibilities."
+      explanation:
+        "MCP makes capabilities discoverable to an assistant. It does not waive tenant authorization, source licensing, credit budgets or data protection responsibilities.",
     },
-    companion: { label: "Open the full lesson and practice guide", url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/mcp-vs-rest-api.md" },
-    sources: [
-      { label: "Model Context Protocol architecture", url: "https://modelcontextprotocol.io/docs/learn/architecture" },
-      { label: "MDN HTTP methods", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods" },
-      { label: "Microsoft Learn MCP overview", url: "https://learn.microsoft.com/en-us/azure/api-management/mcp-server-overview" }
-    ]
+    companion: {
+      label: "Open the full lesson and practice guide",
+      url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/mcp-vs-rest-api.md",
+    },
   },
   {
     slug: "enterprise-contracts-sales-cycle",

@@ -1,10 +1,10 @@
 # CMS fundamentals
 
-Beginner to intermediate · about 35 minutes · Builder track · Sources checked 2026-10-14
+Beginner to intermediate · about 35 minutes · Builder track · Sources checked 2026-10-17
 
 This is the canonical CMS Fundamentals lesson. Chapters 1 and 2 orient a beginner. Chapters 3 through 6 ask for intermediate judgment. Complete [Frontend building blocks](frontend-building-blocks.md) first.
 
-**Status of this portfolio.** A local Keystatic editor can change the public `verification` lesson, and the About page sentences, when a developer opts in on loopback. The lesson pilot is [KRU-75](https://linear.app/krusty/issue/KRU-75). The About record is the [editorial foundation](../content/editorial-foundation.md). It is a page singleton, not a lesson, and it is not part of this module. Hosted GitHub editing is not configured. Production `/keystatic` stays off. This lesson does not install a CMS, expand the lesson schema, or move more lessons into the editor. Interactive checks and learner progress stay in application code.
+**Status of this portfolio.** A local Keystatic editor can change the public `verification`, `reading-code-and-yaml`, and `mcp-vs-rest-api` lessons, plus the About page, Home cover, and Work narrative sentences, when a developer opts in on loopback. The lesson pilot is [KRU-75](https://linear.app/krusty/issue/KRU-75). The two later lessons are [KRU-77](https://linear.app/krusty/issue/KRU-77). The page records are the [editorial foundation](../content/editorial-foundation.md). Hosted GitHub editing is not configured. Production `/keystatic` stays off. This lesson does not install a CMS. Interactive checks and learner progress stay in application code.
 
 Portfolio-specific adoption choices for other repositories belong in the content model, not in a second curriculum. This guide teaches the concepts. It does not authorize a migration.
 
@@ -17,7 +17,7 @@ The portfolio example below describes that implemented pilot. Harbor Notes and F
 - Sketch a content model with types, fields, references, and a stable identifier.
 - Trace draft, preview, publish, delivery, cache, and rollback.
 - Separate editor authentication from reader authorization.
-- Compare Git-only authoring, Keystatic, TinaCMS, Sanity, Payload, and WordPress, including exit cost.
+- Compare Git-only authoring, Keystatic, TinaCMS, Sanity, Payload, WordPress, ButterCMS, and Agility CMS, including exit cost.
 
 ## How progress is recorded
 
@@ -123,7 +123,7 @@ On this portfolio, merging reviewed files is the publication decision. An editor
 
 ## 6. CMS selection and build versus buy
 
-Choose from the workflow you have, the number of channels, who edits, what must stay private, and how you would leave. Recheck prices and plan limits on the linked pages before you adopt anything. Figures below were observed on **2026-10-14**.
+Choose from the workflow you have, the number of channels, who edits, what must stay private, and how you would leave. Recheck prices and plan limits on the linked pages before you adopt anything. Price figures below were observed on **2026-10-14**. ButterCMS and Agility CMS are examples for comparing editorial workflows, not recommendations to adopt either product.
 
 | Option           | Architectural approach, from the vendor                                                                                                                   | Illustrative fit (teaching synthesis, not a benchmark)                                    | Operational limit to plan for                                                                                                                                                         |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -132,6 +132,8 @@ Choose from the workflow you have, the number of channels, who edits, what must 
 | TinaCMS          | Open-source and Git-backed. Content is Markdown, MDX, and JSON. TinaCloud is an optional hosted data layer and login; self-hosting is documented.[3][12]  | Git content plus a hosted editing login so editors need not all have GitHub accounts.     | The hosted free plan lists 2 users and 2 roles. Editorial workflow is on higher hosted plans.[13] Self-hosting still needs a database, auth, and a Git provider.[12]                  |
 | Sanity           | Hosted content platform: schemas, Studio, APIs, and a content database, with the frontend separate.[5]                                                    | The same structured records feed several apps, and editors publish without a site deploy. | Free includes up to 20 seats, 2 roles, and 2 public datasets. Growth starts at $15 per seat per month and allows private datasets.[8] Budget API and asset usage, and plan an export. |
 | Payload          | Open-source Next.js framework: admin, database, REST and GraphQL, auth, access control, and uploads. MIT licensed and self-hosted.[14][15]                | You want to own the app and can operate a database and hosting.                           | You run the database, file storage, upgrades, and backups. Hosted enterprise features are a separate commercial offer.[15]                                                            |
+| ButterCMS        | Hosted headless CMS with structured content, a content API, a prebuilt blog engine, page components, preview, and scheduling.[16]                         | A team wants to publish blog or marketing content through an editor and preview it outside its code workflow. | Verify current plan limits, export options, and whether its API and preview flow fit your site.                                                                                       |
+| Agility CMS       | Headless CMS with page and sitemap management, a hosted REST Content Fetch API, and Web Studio for visual editing in a preview of the site.[17][18]         | Editors need to arrange website pages and review the rendered result in context.         | The frontend must support the page and component model; verify preview setup, plan limits, and publishing steps.                                                                       |
 | WordPress        | Integrated publishing: drafts, scheduling, revisions, themes, and plugins.[1][7] A REST API can serve a separate frontend.[2]                             | Editors and the site live together, and you accept theme and plugin maintenance.          | You operate hosting, updates, and extensions. A plugin's behavior is not core WordPress.                                                                                              |
 
 ### A decision record, not a score
@@ -159,7 +161,7 @@ The on-card lab gives immediate feedback for A, B, and C. The written prompts be
 
 **Prompt.** A solo author maintains three public lessons, reviews pull requests, and edits wording weekly. There is no second app. A confidential appendix and learner completion records are also proposed.
 
-**Self-review.** Git alone remains valid if editing is easy. A Git-backed editor such as Keystatic is a proportionate next step when the form is the missing piece, with review and builds kept. Sanity needs an additional reason, such as independent publishing or repeated reuse. Keep the confidential appendix out of public storage until an access-controlled design exists. Store learner records in the application system that already owns progress.
+**Self-review.** Git alone remains valid if editing is easy. A Git-backed editor such as Keystatic is a proportionate next step when the form is the missing piece, with review and builds kept. Sanity, ButterCMS, or Agility CMS need a concrete reason such as independent publishing, repeated reuse, a content API, or editor-managed page composition. ButterCMS is an example to investigate for a blog or marketing workflow; Agility CMS is an example when visual page editing matters. Check the product's current plan and publishing flow. Keep the confidential appendix out of public storage until an access-controlled design exists. Store learner records in the application system that already owns progress.
 
 **What this verifies.** That you can match a tool to a stated workflow and refuse to put private or learner data in a public content store. It does not verify a live editor.
 
@@ -189,7 +191,7 @@ Example: revisit the tool choice if a second editor joins, a second app needs th
 
 ## Sources
 
-Primary pages checked 2026-10-14. Product pages support capabilities and the prices named above. Scenarios, the decision record, and the exercises are original teaching synthesis.
+Primary pages checked 2026-10-17. The dated price observations above were checked 2026-10-14. Product pages support stated capabilities; scenarios, the decision record, and the exercises are original teaching synthesis.
 
 1. [WordPress features](https://wordpress.org/about/features/), including drafts, scheduling, and revisions as described there. Revision behavior in detail: [WordPress revisions](https://wordpress.org/documentation/article/revisions/).
 2. [WordPress REST API handbook](https://developer.wordpress.org/rest-api/).
@@ -206,3 +208,6 @@ Primary pages checked 2026-10-14. Product pages support capabilities and the pri
 13. [TinaCMS pricing](https://tina.io/pricing). Free: 2 users and 2 roles. Observed 2026-10-14. Higher plans and their workflow features change; use the live page.
 14. [What is Payload?](https://payloadcms.com/docs/getting-started/what-is-payload)
 15. [Payload get started](https://payloadcms.com/get-started), including the MIT license and self-hosting statement.
+16. [ButterCMS features](https://buttercms.com/features/), including structured content types, a blog engine, pages/components, preview, scheduling, and a Content API.
+17. [Agility CMS Web Studio](https://agilitycms.com/docs/web-studio), including in-context visual editing and previews against a front end.
+18. [Agility CMS Content Fetch API](https://agilitycms.com/docs/developers/content-fetch-api), documenting the hosted REST API for content and pages.
