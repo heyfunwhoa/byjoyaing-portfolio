@@ -58,6 +58,9 @@
   "overrides": {
     "@keystatic/next": {
       "chokidar": "4.0.3"
+    },
+    "tsconfck": {
+      "typescript": "npm:@typescript/typescript6@^6.0.2"
     }
   }
 }
