@@ -5,7 +5,7 @@ Use this small-team workflow for all meaningful product changes.
 ## 1. Start safely
 - In Cursor, open the **existing** repository and inspect `git status` before fetching or switching branches. Do not discard local work.
 - Update local `main` from remote before starting a new feature. Never commit secrets, `.env.local`, or generated files.
-- Optional local secrets via Infisical Cloud + CLI: see [infisical-local-tryout.md](./operations/infisical-local-tryout.md). Use `npm run dev:infisical` after `infisical login` and `infisical init`. Vercel stays the source of truth for deployed env until a reviewed sync is approved.
+- Optional local secrets via Infisical Cloud + CLI: see the plain-language [infisical-local-tryout.md](./operations/infisical-local-tryout.md) (what the repo already ships, laptop signup/CLI steps, and what stays deferred). Use `npm run dev:infisical` after `infisical login` and `infisical init`. Vercel stays the source of truth for deployed env until a reviewed sync is approved.
 - Create one branch per cohesive feature or milestone, named `feature/<topic>`, `fix/<topic>`, or `chore/<topic>`.
 - **If a branch/PR already exists for the milestone, use it; do not create another.**
 
