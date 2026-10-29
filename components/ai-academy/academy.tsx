@@ -21,10 +21,16 @@ const tracks = [
   "GTM",
   "Builder",
 ] as const;
+const academyTabs = [
+  ["learn", "01 / Learn"],
+  ["apply", "02 / Apply AI"],
+  ["skills", "03 / Build skills"],
+] as const;
+type AcademyTab = (typeof academyTabs)[number][0];
 const button =
   "rounded-lg border border-border px-3 py-2 text-sm transition hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 export function Academy({ resources }: { resources?: ReactNode }) {
-  const [tab, setTab] = useState<"learn" | "apply" | "skills">("learn");
+  const [tab, setTab] = useState<AcademyTab>("learn");
   const [pathId, setPathId] = useState<string | null>(null);
   const [track, setTrack] = useState<(typeof tracks)[number]>("All");
   const [active, setActive] = useState("what-is-ai");
@@ -56,6 +62,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
   );
   const workflow = matches.find((w) => w.title === selected) ?? matches[0];
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const selectedPath = learningPaths.find((path) => path.id === pathId);
   const guidance = getLessonGuidance(lesson.slug);
   const sequence = selectedPath
@@ -84,6 +91,19 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         ? s.filter((slug) => slug !== lesson.slug)
         : [...s, lesson.slug],
     );
+  }
+  function moveTabFocus(current: AcademyTab, key: string) {
+    const currentIndex = academyTabs.findIndex(([id]) => id === current);
+    const nextIndex =
+      key === "Home"
+        ? 0
+        : key === "End"
+          ? academyTabs.length - 1
+          : (currentIndex + (key === "ArrowRight" ? 1 : -1) + academyTabs.length) %
+            academyTabs.length;
+    const nextTab = academyTabs[nextIndex][0];
+    setTab(nextTab);
+    tabRefs.current[nextIndex]?.focus();
   }
   const [copyStatus, setCopyStatus] = useState("");
   async function copy(s: string) {
@@ -222,47 +242,37 @@ export function Academy({ resources }: { resources?: ReactNode }) {
       <p className="mb-8 text-xs leading-5 text-muted">
         Review tracking is temporary and resets when you leave this page.
       </p>
-      <nav
+      <div
         id="academy-sections"
+        role="tablist"
         aria-label="Academy sections"
         className="mb-7 flex flex-wrap gap-2 border-b border-border pb-4"
       >
-        {(
-          [
-            ["learn", "01 / Learn"],
-            ["apply", "02 / Apply AI"],
-            ["skills", "03 / Build skills"],
-          ] as const
-        ).map(([id, name]) => (
+        {academyTabs.map(([id, name], index) => (
           <button
             key={id}
             type="button"
-            aria-current={tab === id ? "page" : undefined}
+            id={`academy-tab-${id}`}
+            role="tab"
+            aria-selected={tab === id}
+            aria-controls="academy-panel"
+            tabIndex={tab === id ? 0 : -1}
+            ref={(element) => {
+              tabRefs.current[index] = element;
+            }}
             className={`${button} ${tab === id ? "bg-foreground text-background" : ""}`}
             onClick={() => setTab(id)}
+            onKeyDown={(event) => {
+              if (["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) {
+                event.preventDefault();
+                moveTabFocus(id, event.key);
+              }
+            }}
           >
             {name}
           </button>
         ))}
-      </nav>
-      {tab === "learn" ? (
-        <label className="mb-4 flex flex-col gap-2 text-sm font-medium lg:hidden">
-          Choose a lesson
-          <select
-            value={lesson.slug}
-            onChange={(event) => {
-              selectLesson(event.target.value);
-            }}
-            className="min-h-12 w-full rounded-lg border border-border bg-card px-3 py-2 text-base"
-          >
-            {filtered.map((l) => (
-              <option key={l.slug} value={l.slug}>
-                {l.title}
-              </option>
-            ))}
-          </select>
-        </label>
-      ) : null}
+      </div>
       {tab === "learn" && (
         <div className="grid gap-7 lg:grid-cols-[18rem_minmax(0,1fr)]">
           <aside aria-label="Lessons" className="space-y-3">
@@ -309,9 +319,28 @@ export function Academy({ resources }: { resources?: ReactNode }) {
             </div>
           </aside>
           <article
-            aria-labelledby="academy-lesson-heading"
+            id="academy-panel"
+            role="tabpanel"
+            aria-labelledby="academy-tab-learn academy-lesson-heading"
+            tabIndex={0}
             className="min-w-0 rounded-xl border border-border bg-card p-5 sm:p-9"
           >
+            <label className="mb-4 flex flex-col gap-2 text-sm font-medium lg:hidden">
+              Choose a lesson
+              <select
+                value={lesson.slug}
+                onChange={(event) => {
+                  selectLesson(event.target.value);
+                }}
+                className="min-h-12 w-full rounded-lg border border-border bg-card px-3 py-2 text-base"
+              >
+                {filtered.map((l) => (
+                  <option key={l.slug} value={l.slug}>
+                    {l.title}
+                  </option>
+                ))}
+              </select>
+            </label>
             <p className="text-xs font-semibold tracking-widest text-accent uppercase">
               {lesson.level} · {lesson.track} · {lesson.minutes} minutes
             </p>
@@ -540,9 +569,16 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         </div>
       )}
       {tab === "apply" && (
-        <section aria-label="Workflow finder">
+        <section
+          id="academy-panel"
+          role="tabpanel"
+          aria-labelledby="academy-tab-apply academy-apply-heading"
+          tabIndex={0}
+        >
           <div className="mb-6 max-w-2xl">
-            <h2 className="font-display text-4xl">Start with your task</h2>
+            <h2 id="academy-apply-heading" className="font-display text-4xl">
+              Start with your task
+            </h2>
             <p className="mt-2 text-muted">
               Choose the problem first. The tool, prompt and eventual skill come
               second. These are starting recommendations—not validated winners.
@@ -635,8 +671,14 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         </section>
       )}
       {tab === "skills" && (
-        <section className="max-w-4xl">
-          <h2 className="font-display text-4xl">
+        <section
+          id="academy-panel"
+          role="tabpanel"
+          aria-labelledby="academy-tab-skills academy-skills-heading"
+          tabIndex={0}
+          className="max-w-4xl"
+        >
+          <h2 id="academy-skills-heading" className="font-display text-4xl">
             Turn useful work into reusable skills
           </h2>
           <p className="mt-3 leading-7 text-muted">
