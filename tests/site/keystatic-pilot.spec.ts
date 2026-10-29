@@ -4,7 +4,7 @@ test("verification keeps its source, keyboard navigation and independent review/
   page,
 }) => {
   await page.goto("/ai-academy");
-  await page.getByText("Choose a starting path", { exact: true }).click();
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   const start = page.getByRole("button", {
     name: "Start verify an ai output →",
     exact: true,
@@ -81,7 +81,7 @@ test("pre-migration mission storage survives Academy reading and reload", async 
     passedCheckIds: ["denied-message"],
   };
   await page.goto("/ai-academy");
-  await page.getByText("Choose a starting path", { exact: true }).click();
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page.evaluate(
     ({ key, fixture }) => localStorage.setItem(key, JSON.stringify(fixture)),
     { key, fixture },

@@ -4,6 +4,7 @@ test("review is independent of checks and practice, and does not gate navigation
   page,
 }) => {
   await page.goto("/ai-academy");
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
     .getByRole("button", { name: "Start the AI path", exact: true })
     .click();
@@ -46,6 +47,7 @@ test("builder paths, prerequisites and planned resources remain independently re
   page,
 }) => {
   await page.goto("/ai-academy");
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
     .getByRole("button", { name: "Start the frontend path", exact: true })
     .click();
@@ -97,6 +99,7 @@ test("path switching clears stale answers and links to existing practice", async
   page,
 }) => {
   await page.goto("/ai-academy");
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
     .getByRole("button", { name: "Start the AI path", exact: true })
     .click();
@@ -119,6 +122,7 @@ test("path switching clears stale answers and links to existing practice", async
     .getByRole("navigation", { name: "Breadcrumb", exact: true })
     .getByRole("link", { name: "Builder Academy", exact: true })
     .click();
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
     .getByRole("button", { name: "Start the delivery path", exact: true })
     .click();

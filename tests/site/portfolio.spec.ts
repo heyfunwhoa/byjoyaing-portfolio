@@ -319,7 +319,7 @@ test("Academy starting paths select existing lessons and keep navigation usable"
   page,
 }) => {
   await page.goto("/ai-academy");
-  await page.getByText("Choose a starting path", { exact: true }).click();
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
     .getByRole("button", {
       name: "Start build a research workflow",

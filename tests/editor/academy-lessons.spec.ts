@@ -30,7 +30,7 @@ test("edit and save the reading-code lesson, render it, then roll back through t
     expect(saved).not.toHaveProperty("companion");
     const reader = await context.newPage();
     await reader.goto("/ai-academy");
-    await reader.getByText("Choose a starting path", { exact: true }).click();
+    await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
       .getByRole("button", { name: "Start build and release safely →", exact: true })
       .click();
@@ -54,7 +54,7 @@ test("edit and save the reading-code lesson, render it, then roll back through t
       .poll(() => JSON.parse(readFileSync(path, "utf8")).summary)
       .toBe(original.summary);
     await reader.reload();
-    await reader.getByText("Choose a starting path", { exact: true }).click();
+    await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
       .getByRole("button", { name: "Start build and release safely →", exact: true })
       .click();

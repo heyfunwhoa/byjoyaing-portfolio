@@ -30,7 +30,7 @@ test("edit and save the singleton, render the change, then roll back through the
     expect(saved).not.toHaveProperty("reviewed");
     const reader = await context.newPage();
     await reader.goto("/ai-academy");
-    await reader.getByText("Choose a starting path", { exact: true }).click();
+    await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
       .getByRole("button", { name: "Start verify an ai output →", exact: true })
       .click();
@@ -49,7 +49,7 @@ test("edit and save the singleton, render the change, then roll back through the
       .poll(() => JSON.parse(readFileSync(path, "utf8")).summary)
       .toBe(original.summary);
     await reader.reload();
-    await reader.getByText("Choose a starting path", { exact: true }).click();
+    await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
       .getByRole("button", { name: "Start verify an ai output →", exact: true })
       .click();
