@@ -89,7 +89,8 @@ test("source guard: the orbit is static, uses no motion library, and is placed o
   assert.doesNotMatch(source, /target="_blank"/);
   const about = readFileSync(new URL("../app/about/page.tsx", import.meta.url), "utf8");
   assert.match(about, /<CapabilityOrbit/);
-  assert.match(about, /<OrbitPortrait surface="ivory"/);
+  assert.match(about, /<OrbitArtwork[\s\S]*?treatment="transparent"[\s\S]*?surface="ivory"/);
+  assert.doesNotMatch(about, /OrbitPortrait|BrandAvatar/);
   const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
   assert.doesNotMatch(home, /CapabilityOrbit|capability-orbit|OrbitPortrait|orbit-artwork|brand\/orbits/);
   // Rendered behavior (keyboard, widths, reduced motion) is checked in a browser, not here.
