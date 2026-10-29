@@ -194,35 +194,29 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         </nav>
       ) : null}
       {resources}
-      <dl className="mb-8 grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
+      <dl className="mb-2 grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
         <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5">
-          <dt className="text-xs font-medium text-muted">Short lessons</dt>
+          <dt className="text-xs font-medium text-muted">Lessons</dt>
           <dd className="mt-2 text-xl font-semibold sm:text-3xl">
             {lessons.length}
           </dd>
-          <p className="mt-1 text-xs leading-5 text-muted sm:text-sm">
-            Available to read
-          </p>
         </div>
         <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5">
           <dt className="text-xs font-medium text-muted">Reviewed</dt>
           <dd className="mt-2 text-xl font-semibold sm:text-3xl">
             {reviewed.length} / {lessons.length}
           </dd>
-          <p className="mt-1 text-xs leading-5 text-muted sm:text-sm">
-            Self-reported · this page only
-          </p>
         </div>
         <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5">
           <dt className="text-xs font-medium text-muted">Workflows</dt>
           <dd className="mt-2 text-xl font-semibold sm:text-3xl">
             {workflows.length}
           </dd>
-          <p className="mt-1 text-xs leading-5 text-muted sm:text-sm">
-            Prompts and tasks
-          </p>
         </div>
       </dl>
+      <p className="mb-8 text-xs leading-5 text-muted">
+        Review tracking is temporary and resets when you leave this page.
+      </p>
       <nav
         aria-label="Academy sections"
         className="mb-7 flex flex-wrap gap-2 border-b border-border pb-4"
