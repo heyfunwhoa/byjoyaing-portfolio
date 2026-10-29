@@ -90,7 +90,7 @@ export default function SideQuestsPage() {
       </nav>
 
       <section className="border-b border-border py-8">
-        <details>
+        <details className="rounded-xl border border-border bg-surface-mist p-4 sm:p-5">
           <summary className="min-h-11 cursor-pointer py-2 font-display text-2xl">
             Other explorations ({more.length})
           </summary>

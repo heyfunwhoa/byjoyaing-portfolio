@@ -183,20 +183,22 @@ export default function AboutPage() {
           <summary className="min-h-11 cursor-pointer py-3 font-medium">
             {aboutPage.beyondHeading}
           </summary>
-          <ul className="mt-2 space-y-3 leading-6">
-            {aboutPage.interests.map((interest) => (
-              <li key={interest.id}>
-                <span className="font-medium text-foreground">
-                  {interest.title}.
-                </span>{" "}
-                {interest.detail}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 leading-6">
-            <span className="font-medium">{aboutPage.valuesLabel}:</span>{" "}
-            {aboutPage.values.join(" · ")}
-          </p>
+          <div className="mt-2 rounded-xl bg-surface-clay p-4">
+            <ul className="space-y-3 leading-6">
+              {aboutPage.interests.map((interest) => (
+                <li key={interest.id}>
+                  <span className="font-medium text-foreground">
+                    {interest.title}.
+                  </span>{" "}
+                  {interest.detail}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 leading-6">
+              <span className="font-medium">{aboutPage.valuesLabel}:</span>{" "}
+              {aboutPage.values.join(" · ")}
+            </p>
+          </div>
         </details>
       </section>
 

@@ -72,7 +72,7 @@ export function ProjectsDirectory({
   }
   return (
     <div>
-      <div className="flex min-w-0 flex-col gap-4">
+      <div className="flex min-w-0 flex-col gap-4 rounded-xl border border-border bg-surface-sage p-4 sm:p-5">
         <label className="flex min-w-0 flex-col gap-2 text-sm font-medium sm:max-w-md">
           Search projects
           <input
