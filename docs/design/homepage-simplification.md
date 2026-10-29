@@ -36,8 +36,7 @@ On `main` before this change, `app/page.tsx` had seven blocks:
 | Explore Side Quests as the hero’s second action | Remove from the hero | Side Quests stays in the bento |
 | About as a hero action | Keep | Hero secondary action |
 | Philosophy list (People, Problem-driven, Systems-minded) | Move | About already holds the long version. Home keeps the one line. |
-| Truffle Security points | Condense | One paragraph on Home, from the existing `roles` points. Full bullets stay on `/experience`. |
-| Rapid7 and Forcepoint bullets | Condense | One existing sentence each, linking to `/experience`. |
+| Truffle Security, Rapid7, and Forcepoint experience | Keep selected proof | Three responsive role cards. Each shows the existing title and a short supported contribution, with a direct evidence or timeline link. Full role detail stays on `/experience`. |
 | Career timeline | Move | `/experience`. Home links to it. |
 | Bento: Work, Field Notes, Side Quests | Keep | Three tiles. Shorter labels. Work remains the large tile. |
 | Bento private-work tile and philosophy quote | Remove from Home | `/private-work` stays a route. The philosophy line stays in the hero. |
@@ -51,8 +50,8 @@ Nothing public was deleted from the site. Sentences that left the homepage still
 
 ## 3. Cover layout
 
-1. **Hero.** Who I am. Positioning, one philosophy line, one short description, Leader avatar, Explore Work, About Me.
-2. **Credibility.** Truffle Security as one paragraph. Rapid7 and Forcepoint as two supporting links to `/experience`.
+1. **Hero.** Who I am. Positioning, one philosophy line, one short description, Leader avatar, Explore Work, About Me. The avatar caption stays; there are only two hero actions.
+2. **Credibility.** Three comparable, responsive role cards for Truffle Security, Rapid7, and Forcepoint. Each links directly to related Work proof or the full Experience timeline.
 3. **Bento.** Work, Field Notes, Side Quests. Work is visually dominant. DOM order is the mobile order.
 4. **One Side Quest.** Detector Coverage Atlas, with its existing Prototype label and summary. Not a project grid. The competitive field practice lives on `/work`, not here.
 5. **Close.** A short note. Get in touch, and About.
@@ -77,13 +76,22 @@ Employment revenue figures stay off the homepage and off the rest of the site. N
 
 ## 5. Wireframe outline
 
-**Desktop, 1280.** Hero is type on the left and the Leader portrait on the right. Credibility is a headline on the left and the Truffle paragraph plus two links on the right. The bento gives Work seven columns and two rows; Field Notes and Side Quests share the other five columns. The field practice is title left, paragraph and link right. The close is one quotation, one paragraph, two actions, on the paper background.
+**Desktop, 1280.** Hero is type on the left and the Leader portrait on the right. Credibility uses three comparable cards in one row, with one direct evidence link per card. The bento gives Work seven columns and two rows; Field Notes and Side Quests share the other five columns. The close is one quotation, one paragraph, and two actions on the paper background.
 
 **Mobile, 375 and 390.** The same DOM order stacks. Hero actions are full width until 420px, then sit side by side. The portrait stays under the actions and within `max-w-[15rem]`. Bento tiles stack Work, Field Notes, Side Quests. No horizontal scroll. Heading sizes use the existing `editorial-title` and `editorial-section-title` clamps.
 
 **768.** Hero can sit in one column until `lg`. The bento’s Work tile spans the two-column grid. Field Notes and Side Quests sit beside each other only from the `sm` breakpoint, still after Work.
 
 **200% zoom.** Sections use `min-w-0`, wrapping text, and the page `max-w-5xl` padding. No fixed-width row forces overflow.
+
+## Homepage scanability refinement — 2026-10-29
+
+- Reformat the credibility block as three responsive proof cards so readers can compare current and earlier roles without scanning one dense paragraph and a separate link list.
+- Keep the work evidence links attached to the relevant role: current role to coaching and enablement, Rapid7 to enterprise deal execution, and Forcepoint to the full career timeline.
+- Keep the primary path to Work and the secondary path to About in the hero. The portrait caption remains, while its third, overlapping About link is removed.
+- Make the three large destinations more specific in `components/editorial-bento.tsx`; describe the Work, Field Notes, and Side Quests content rather than using only broad category lists.
+- Reuse the existing `roles` data, card/border tokens, `EditorialBento`, and direct Work anchors. No new interaction, component, dependency, palette, or claim is introduced.
+- The cards stack on phones, use two columns from 640px, and use three columns from 768px. Between 640px and 767px, the final card spans the second row. Each has its own heading, readable evidence, direct link, and visible focus treatment. Manual viewport, keyboard, and zoom review remain pending.
 
 ## 6. Components reused
 
