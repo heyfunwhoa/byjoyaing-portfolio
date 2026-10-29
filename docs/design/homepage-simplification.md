@@ -91,7 +91,7 @@ Employment revenue figures stay off the homepage and off the rest of the site. N
 - Keep the primary path to Work and the secondary path to About in the hero. The portrait caption remains, while its third, overlapping About link is removed.
 - Make the three large destinations more specific in `components/editorial-bento.tsx`; describe the Work, Field Notes, and Side Quests content rather than using only broad category lists.
 - Reuse the existing `roles` data, card/border tokens, `EditorialBento`, and direct Work anchors. No new interaction, component, dependency, palette, or claim is introduced.
-- The cards stack on phones, use two columns from 640px, and use three columns from 768px. Between 640px and 767px, the final card spans the second row. Each has its own heading, readable evidence, direct link, and visible focus treatment. Manual viewport, keyboard, and zoom review remain pending.
+- The cards stack on phones, use two columns from 640px with the final card centered at half width, and use three columns from 1024px. Each has its own heading, readable evidence, direct link, and visible focus treatment. Manual viewport, keyboard, and zoom review remain pending.
 
 ## 6. Components reused
 

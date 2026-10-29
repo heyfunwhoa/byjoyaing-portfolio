@@ -113,12 +113,14 @@ export default function Home() {
         <h2 id="credibility-title" className="editorial-section-title mt-3 max-w-[24ch]">
           Enterprise sales, team development, and practical systems.
         </h2>
-        <div className="mt-7 grid min-w-0 gap-3 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-7 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {roleProofs.map(({ role, label, detail, href, action }, index) => (
             <article
               key={role.company}
               className={`flex min-w-0 flex-col rounded-2xl border border-border bg-card p-5 sm:p-6 ${
-                index === 2 ? "sm:col-span-2 md:col-span-1" : ""
+                index === 2
+                  ? "sm:col-span-2 sm:w-1/2 sm:justify-self-center lg:col-span-1 lg:w-full"
+                  : ""
               }`}
             >
               <p className="editorial-eyebrow text-accent">{label}</p>
