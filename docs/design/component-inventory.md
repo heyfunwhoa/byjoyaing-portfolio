@@ -13,14 +13,14 @@ Templates are compositions of the components below. Do not add a template compon
 | --- | --- | --- | --- |
 | T1 Preview | Home | Hero, condensed proof, three-tile `EditorialBento`, one side quest, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
 | T2 Collection index | Work, Field Notes, Side Quests | Hero with its matching visual (Work portrait, Field Notes / Side Quests orbit study), in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
-| T3 Profile | About | Leader portrait, origin, philosophy, orbit, career/education, toolkit, evidence links, interests, contact | Toolkit precedes personal interests |
+| T3 Profile | About | Decorative orbit, origin, philosophy, capability orbit, career/education, toolkit, evidence links, compact interests, contact | Toolkit precedes the travel-led note; interest details use native disclosure |
 | T4 Utility | Contact | Headline, links, `InquiryForm` | Work-example requests add a focus select. The general message does not. |
 | T5 Article | Field Notes guides | Evidence label, title, body, related links | Optional contents only when the guide is long |
 | T6 Case study | `/work/[slug]` | `work-story-template` or `build-story-template` by kind | Do not invent a third template |
 | T7 Timeline | `/experience` | Role rows from `roles` | Not a primary nav template |
 | T8 Directory | `/projects` | Filters plus `projects-directory` | Supporting. Side Quests is the introduction |
 
-Avatar by template: Home uses `/brand/avatar/home-portrait.webp`. About, Work, and the directory use `/brand/avatar/illustrated-portrait.png`. The `/field-notes` and `/side-quests` collection headers use decorative orbit studies; Leader, Explorer, and Builder remain contextual labels.
+Avatar by template: Home uses `/brand/avatar/home-portrait.webp`. Work and the directory use `/brand/avatar/illustrated-portrait.png`. About uses the existing transparent orbit artwork without a portrait. The `/field-notes` and `/side-quests` collection headers use decorative orbit studies; Leader, Explorer, and Builder remain contextual labels.
 
 This inventory does not prescribe a rebuild. Names in the "Possible later role" column are the shared pieces the product plan may need. If an existing component already does the job, extend it.
 
@@ -35,8 +35,8 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `editorial-section.tsx` | Section framing | Editorial section header | Partial. Prefer this over a new header component. |
 | `editorial-bento.tsx` | Three links: Work, Field Notes, Side Quests | Editorial bento | Implemented. Work stays the large tile. Do not wrap every section in a bento. |
 | `geometric-motif.tsx` | Decorative orbits and three nodes, `aria-hidden` | Geometric decoration | Public use is the Work tile. The About capability card uses it only when the Recraft plate is off. The design lab may preview it. Static. Do not spin it. |
-| `orbit-artwork.tsx` | Decorative PNG from `public/brand/orbits`. Empty alt. | Orbit drawing | Transparent file on ivory or charcoal. Charcoal plate on charcoal only. Not a control. |
-| `orbit-portrait.tsx` | Transparent orbit around the shared portrait | Portrait framing | Public use is the About hero. The homepage keeps `CelestialFrame`. |
+| `orbit-artwork.tsx` | Decorative PNG from `public/brand/orbits`. Empty alt. | Orbit drawing | About uses the transparent file on ivory without a portrait. Transparent artwork also supports charcoal; the charcoal plate stays on charcoal inside `CapabilityOrbit`. Not a control. |
+| `orbit-portrait.tsx` | Transparent orbit around the shared portrait | Portrait framing | Retained in the Design Lab. About uses the orbit artwork without a portrait. The homepage keeps `CelestialFrame`. |
 | `marginalia.tsx` | One short aside | Annotation | One per section at most. |
 | `crop-frame.tsx` | Crop marks around either portrait | Avatar frame | Marks may ease outward. The shared portrait is `/brand/avatar/illustrated-portrait.png`; Home uses `/brand/avatar/home-portrait.webp`. |
 | `kicker.tsx` | Small label | Eyebrow | Exists. Editorial pages often use `.editorial-eyebrow` instead. |

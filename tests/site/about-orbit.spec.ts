@@ -16,7 +16,7 @@ test("About orbit is discoverable and keyboard selection reveals the matching ev
     }),
   ).toBeVisible();
   await expect(
-    page.getByText("The things that keep me curious."),
+    page.getByRole("heading", { level: 2, name: "Beyond work", exact: true }),
   ).toBeVisible();
   await expect(page.getByText("Career at a glance")).toBeVisible();
   await expect(

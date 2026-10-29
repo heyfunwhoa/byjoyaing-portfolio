@@ -320,9 +320,9 @@ export default config({
         practiceHeading: text("Practice heading"),
         practiceIntro: text("Practice introduction", true),
         exploreHeading: text("Explore heading"),
-        beyondLabel: text("Beyond label"),
-        beyondHeading: text("Beyond heading"),
-        beyondIntro: text("Beyond introduction", true),
+        beyondLabel: text("Beyond work heading"),
+        beyondHeading: text("Interest details toggle"),
+        beyondIntro: text("Beyond work summary", true),
         interests: fields.array(
           fields.object({
             id: slug("Interest ID"),

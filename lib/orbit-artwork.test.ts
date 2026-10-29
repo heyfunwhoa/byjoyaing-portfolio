@@ -88,14 +88,15 @@ test("the charcoal plate cannot be requested for an ivory surface", () => {
   assert.throws(() => orbitArtFor("charcoal", "ivory"), /charcoal/);
 });
 
-test("public placement keeps the portrait orbit on About and the plate on the charcoal control", () => {
+test("public placement keeps only the orbit on About and the plate on the charcoal control", () => {
   const about = read("app/about/page.tsx");
   const home = read("app/page.tsx");
   const orbit = read("components/capability-orbit.tsx");
   const lab = read("app/design-lab/page.tsx");
   const artwork = read("components/orbit-artwork.tsx");
 
-  assert.match(about, /<OrbitPortrait surface="ivory"/);
+  assert.match(about, /<OrbitArtwork[\s\S]*?treatment="transparent"[\s\S]*?surface="ivory"/);
+  assert.doesNotMatch(about, /OrbitPortrait|BrandAvatar/);
   assert.doesNotMatch(about, /treatment="charcoal"/);
   assert.match(orbit, /treatment="charcoal"[\s\S]*?surface="charcoal"/);
   assert.match(orbit, /bg-foreground/);

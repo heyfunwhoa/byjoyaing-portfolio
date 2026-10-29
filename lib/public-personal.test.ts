@@ -7,6 +7,7 @@ test("creative stays where a creative project or music supports it",()=>{
  assert.equal(music?.connection,"Creativity, energy and connection.");
  assert.equal(creative?.title,"Creative exploration");
  assert.equal(creative?.detail,"Trying unfamiliar creative projects.");
- assert.match(beyondWorkIntro,/trying a creative project for the first time/);
+ assert.match(beyondWorkIntro,/traveling, discovering new music/);
+ assert.match(beyondWorkIntro,/DIY and creative projects/);
  assert.deepEqual([...personalValues],["Curiosity","Authenticity","Connection","Growth","Independence"]);
 });

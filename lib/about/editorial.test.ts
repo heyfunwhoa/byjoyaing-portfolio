@@ -15,13 +15,14 @@ test("the About page renders one validated record and keeps interaction in code"
     "People first. Problem-driven. Systems-minded.",
   );
   assert.equal(page.principles.length, 3);
-  assert.equal(page.interests.length, 3);
+  assert.equal(page.interests.length, 4);
   assert.equal(page.metaDescription, record.metaDescription);
   assert.equal("owner" in page, false);
   assert.equal("publicationStatus" in page, false);
   const source = read("app/about/page.tsx");
   assert.match(source, /aboutPage/);
-  assert.match(source, /<OrbitPortrait/);
+  assert.match(source, /<OrbitArtwork/);
+  assert.doesNotMatch(source, /OrbitPortrait|BrandAvatar/);
   assert.match(source, /<CapabilityOrbit/);
   assert.match(source, /<CareerRail/);
   assert.match(source, /<ToolsMap/);
