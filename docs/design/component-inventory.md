@@ -13,7 +13,7 @@ Templates are compositions of the components below. Do not add a template compon
 | --- | --- | --- | --- |
 | T1 Preview | Home | Hero, three responsive role-proof cards, three-tile `EditorialBento`, one side quest, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
 | T2 Collection index | Work, Field Notes, Side Quests | Hero with its matching visual (Work portrait, Field Notes / Side Quests orbit study), in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
-| T3 Profile | About | Decorative orbit, origin, philosophy, capability orbit, career/education, toolkit, evidence links, compact interests, contact | Toolkit precedes the travel-led note; interest details use native disclosure |
+| T3 Profile | About | Decorative orbit, origin, in-page section links, philosophy, capability orbit, career/education, toolkit, evidence links, compact interests, contact | Toolkit precedes the travel-led note; interest details use native disclosure |
 | T4 Utility | Contact | Headline, links, `InquiryForm` | Work-example requests add a focus select. The general message does not. |
 | T5 Article | Field Notes guides | Evidence label, title, body, related links | Optional contents only when the guide is long |
 | T6 Case study | `/work/[slug]` | `work-story-template` or `build-story-template` by kind | Do not invent a third template |

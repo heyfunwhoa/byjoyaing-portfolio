@@ -208,3 +208,11 @@ Verification: metadata integrity and navigation browser regression tests added f
 - Adapt the existing Work card/border treatment and `roles` data into three role-proof cards for Truffle Security, Rapid7, and Forcepoint. Link each card to an existing Work section or the Experience timeline. Keep the established three-destination `EditorialBento` and make its descriptions more specific. Remove a third hero link that duplicates the About action. No new component, dependency, animation, or palette is needed.
 - Phone uses one stacked column; from 640px it uses two columns with the last card centered at half width; from 1024px it uses three equal columns. Cards use semantic articles/headings, visible 44px links, and the source order Truffle Security, Rapid7, Forcepoint. Cards remain separately clickable only through their explicit links.
 - Verification: source review and `git diff --check` only. Local browser, 375/768/1280px viewport, keyboard/focus, and 200% zoom review remain pending. Revert the credibility-grid markup and copy changes to roll back.
+
+## About page section navigation — KRU-150 (proposed)
+
+- Owner: portfolio maintainer. Destination: `/about` (`app/about/page.tsx`). Status: proposed until review/merge.
+- Task: help readers jump to the philosophy, working approach, career and education, or tools sections on the long About page.
+- Adapt the existing text-link and wrapping-navigation pattern; keep it in normal document flow directly below the orbit hero. Use existing section IDs or add scroll-aware IDs. No sticky behavior, client state, new component, dependency, color, or animation.
+- Phone and tablet links wrap; desktop keeps one compact row. Native anchors have descriptive names, 44px minimum height, visible focus, and `scroll-mt-24` destinations. No loading or error states apply.
+- Verification: source review and `git diff --check` only. Browser, keyboard, 375/768/1280px viewport, and 200% zoom checks remain pending. Revert the nav and the two section IDs to roll back.
