@@ -1,6 +1,6 @@
 import { completePageMetadata } from "@/lib/page-metadata";
 import { CapabilityOrbit } from "@/components/capability-orbit";
-import { OrbitPortrait } from "@/components/orbit-portrait";
+import { OrbitArtwork } from "@/components/orbit-artwork";
 import { CareerRail } from "@/components/career-rail";
 import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
@@ -24,7 +24,11 @@ export default function AboutPage() {
     <PageMain>
       <section className="grid items-center gap-10 border-b border-border py-12 sm:py-16 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
         <div className="order-2 mx-auto w-full max-w-[12rem] lg:order-1 lg:mx-0 lg:max-w-none">
-          <OrbitPortrait surface="ivory" variant="leader" />
+          <OrbitArtwork
+            treatment="transparent"
+            surface="ivory"
+            sizes="(min-width: 1024px) 22rem, 12rem"
+          />
         </div>
         <div className="order-1 lg:order-2">
           <p className="editorial-eyebrow text-accent">{aboutPage.eyebrow}</p>
@@ -165,40 +169,35 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-border py-12">
-        <p className="text-sm font-medium text-muted">
+      <section
+        aria-labelledby="beyond-work-heading"
+        className="border-b border-border py-8"
+      >
+        <h2 id="beyond-work-heading" className="text-lg font-semibold">
           {aboutPage.beyondLabel}
-        </p>
-        <h2 className="mt-3 font-display text-3xl">
-          {aboutPage.beyondHeading}
         </h2>
-        <p className="mt-4 max-w-2xl leading-7 text-muted">
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           {aboutPage.beyondIntro}
         </p>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {aboutPage.interests.map((interest) => (
-            <article
-              key={interest.id}
-              className="rounded-xl border border-border bg-card p-5"
-            >
-              <h3 className="text-lg font-semibold">{interest.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">
+        <details className="mt-2 max-w-2xl text-sm text-muted">
+          <summary className="min-h-11 cursor-pointer py-3 font-medium">
+            {aboutPage.beyondHeading}
+          </summary>
+          <ul className="mt-2 space-y-3 leading-6">
+            {aboutPage.interests.map((interest) => (
+              <li key={interest.id}>
+                <span className="font-medium text-foreground">
+                  {interest.title}.
+                </span>{" "}
                 {interest.detail}
-              </p>
-            </article>
-          ))}
-        </div>
-        <p className="mt-6 text-sm font-medium">{aboutPage.valuesLabel}</p>
-        <ul className="mt-3 flex flex-wrap gap-2">
-          {aboutPage.values.map((value) => (
-            <li
-              key={value}
-              className="rounded-full border border-border px-3 py-1 text-sm"
-            >
-              {value}
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 leading-6">
+            <span className="font-medium">{aboutPage.valuesLabel}:</span>{" "}
+            {aboutPage.values.join(" · ")}
+          </p>
+        </details>
       </section>
 
       <section className="py-12">

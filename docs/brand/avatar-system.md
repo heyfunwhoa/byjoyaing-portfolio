@@ -8,7 +8,7 @@ The illustrated character supports a real person's professional identity; it mus
 ## Variants
 | Variant | Placement | Expression/props | Relative emphasis |
 | --- | --- | --- | --- |
-| Leader (default) | Home, About, Work | Open, confident, welcoming editorial portrait; no gimmicky props | Secondary to evidence and headline |
+| Leader (default) | Home, Work | Open, confident, welcoming editorial portrait; no gimmicky props | Secondary to evidence and headline |
 | Explorer | Field Notes, research, security market maps | Curious; notebook, map, optional binoculars | Supporting editorial motif |
 | Builder | Side Quests, Builder Academy | Creating or arranging modules, components and diagrams | Supporting learning/lab motif |
 
@@ -23,14 +23,14 @@ The illustrated character supports a real person's professional identity; it mus
 - Master source: a separately reviewed editable vector source stored in an approved design workflow; do not commit fonts or personal reference photos.
 - Export optimized SVG when safe and supported; use raster WebP/PNG fallbacks for complex illustration or unsupported features.
 - Approved future variants: `/avatar-leader.webp`, `/avatar-explorer.webp`, `/avatar-builder.webp`. Optional circular crop `/avatar-icon.webp`.
-- The existing shared portrait is `/brand/avatar/illustrated-portrait.png`. The homepage uses `/brand/avatar/home-portrait.webp` through an explicit per-instance source. About and Work use the shared portrait. The `/field-notes` and `/side-quests` collection headers use separate decorative orbit studies; individual guides and project detail pages retain their own page-specific treatment. Leader, Explorer, and Builder remain contextual labels, not separate files. Never point production markup at hypothetical `/avatar-leader.webp`, `/avatar-explorer.webp`, or `/avatar-builder.webp` files.
+- The existing shared portrait is `/brand/avatar/illustrated-portrait.png`. The homepage uses `/brand/avatar/home-portrait.webp` through an explicit per-instance source. Work uses the shared portrait. At Kristen's request, About uses the existing transparent orbit artwork without a portrait. The `/field-notes` and `/side-quests` collection headers use separate decorative orbit studies; individual guides and project detail pages retain their own page-specific treatment. Leader, Explorer, and Builder remain contextual labels, not separate files. Never point production markup at hypothetical `/avatar-leader.webp`, `/avatar-explorer.webp`, or `/avatar-builder.webp` files.
 - Do not embed scripts, remote resources, event handlers, or untrusted markup in SVG. Review SVG before inclusion.
 - Preserve natural aspect ratio; avoid face clipping at 375, 768 and 1280px and at 200% zoom. Ensure optimized image dimensions and no layout shift.
 - Simple static illustration by default. Do not animate facial movement. A hover or focus state may move the crop marks around the shared portrait. It may not swap the face, tilt the portrait, or point at an unapproved file. Respect `prefers-reduced-motion`.
 - The homepage hero may wrap that same file in static orbital lines. The lines are the celestial geometry in [brand-guidelines.md](./brand-guidelines.md). They are not a new illustration, they do not spin, and they are not a Leader, Explorer, or Builder variant.
 
 ## Component rules
-`<BrandAvatar variant="leader" />`, `variant="explorer"`, and `variant="builder"` are valid. The default is Leader. The Field Notes and Side Quests collection index headers use `OrbitStudyIllustration` instead of `BrandAvatar`.
+`<BrandAvatar variant="leader" />`, `variant="explorer"`, and `variant="builder"` are valid. The default is Leader. About uses `OrbitArtwork` with the transparent treatment on ivory, empty alt text and no portrait overlay. The Field Notes and Side Quests collection index headers use `OrbitStudyIllustration` instead of `BrandAvatar`.
 - The shared portrait remains the default. Home explicitly passes its separately approved portrait source. Other variant props remain contextual labels, not distinct image files.
 - Provide a meaningful description when the portrait establishes identity. For repeat purely decorative illustrations, pass `decorative` to use empty alt text.
 - The full name must remain visible in text where required; image alt is not a substitute for identifying copy.

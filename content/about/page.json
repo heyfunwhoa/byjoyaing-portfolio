@@ -40,9 +40,15 @@
   "practiceIntro": "Start with a workflow. Explore the approach, open the supporting tools, then follow the evidence—from enterprise selling and team development to independent building.",
   "exploreHeading": "Explore the work behind the approach",
   "beyondLabel": "Beyond work",
-  "beyondHeading": "The things that keep me curious.",
-  "beyondIntro": "I enjoy the process of discovering, making, and learning—whether I'm exploring a new sound, figuring out how something works, or trying a creative project for the first time. Those interests are part of my story, not just a list of hobbies.",
+  "beyondHeading": "A little more about me",
+  "beyondIntro": "Outside of work, I enjoy traveling, discovering new music, and getting hands-on with DIY and creative projects.",
   "interests": [
+    {
+      "id": "travel",
+      "title": "Travel",
+      "detail": "Traveling and discovering new places.",
+      "connection": "Curiosity and a change of perspective."
+    },
     {
       "id": "music",
       "title": "Electronic music",
@@ -66,9 +72,9 @@
   "values": ["Curiosity", "Authenticity", "Connection", "Growth", "Independence"],
   "contactHeading": "Contact",
   "owner": "Kristen Aing",
-  "reviewer": "Pending human review of the CMS move",
-  "contentVersion": 1,
+  "reviewer": "Pending human review of the compact Beyond work section",
+  "contentVersion": 2,
   "reviewDue": "2026-11-14",
   "classification": "public",
-  "publicationStatus": "published"
+  "publicationStatus": "review"
 }
