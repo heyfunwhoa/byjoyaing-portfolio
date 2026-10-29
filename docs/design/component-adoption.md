@@ -190,3 +190,11 @@ Verification: metadata integrity and navigation browser regression tests added f
 - No imported third-party code, package, version or attribution obligation added. Hirael/Seam remain reference candidates, not installed libraries.
 - Verification: isolated TypeScript, esbuild and React/JSDOM interaction checks passed for all three states, keyboard radio movement, reading-state separation and unchanged saved progress. Full repository checks, 375/768/1280px browser review and 200% zoom remain pending; browser installation returned corrupt archives.
 - Production Design Lab 404 gate is retained. Roll back by removing the preview import/mount and file. Do not mount it publicly as real learner progress.
+
+## Page hierarchy adjustments — KRU-150 (proposed)
+
+- Owner: portfolio maintainer. Destinations: `/projects` (`components/projects-directory.tsx`), `/side-quests` (`app/side-quests/page.tsx`), and `/ai-academy` (`components/ai-academy/academy.tsx`). Status: proposed until review and merge.
+- Task: let readers find a project by topic or stage, keep featured independent work ahead of the long tail, and choose a learning path once with enough context to start confidently.
+- Reuse existing `ProjectsDirectory` filter controls, public project registry/status labels, learning-path data, tokenized card styles, and native HTML disclosure. Adapt the local filter group to wrap and add a labeled search; render the existing learning paths as one responsive summary grid; put only supporting Side Quest items behind a disclosure. No new component family, dependency, animation, or imported primitive.
+- Phone: stacked project selectors/search and one-column path/Side Quest cards. Tablet: existing grid breakpoints; desktop: wrapped filter buttons and three-column learning-path cards. Native inputs, buttons, and `details/summary` preserve keyboard access and visible focus; no motion is added. Search has a polite result count and clear action; the no-match message remains explicit. Loading, network, error, and permission states do not apply to these local collections.
+- Verification: `git diff --check` only. Automated tests/build, browser interaction, 375/768/1280px layout, keyboard, and 200% zoom checks remain pending and must be reviewed before merge. Revert the focused page/component changes to roll back.

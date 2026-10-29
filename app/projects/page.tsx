@@ -22,9 +22,9 @@ export const metadata: Metadata = completePageMetadata(
 export default async function ProjectsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string; stage?: string }>;
+  searchParams: Promise<{ category?: string; stage?: string; q?: string }>;
 }) {
-  const { category, stage } = await searchParams;
+  const { category, stage, q } = await searchParams;
   const initialStage =
     lifecycleStages.find((value) => value === stage) ?? "All";
   const roadmap = roadmapProjects();
@@ -51,11 +51,15 @@ export default async function ProjectsPage({
       <section id="directory" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Explore all projects</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Lifecycle stages are a second filter. A project can sit in more than one functional category. Revenue Intelligence is the Measure prototype. The other case studies still carry their own metrics. A hypothesis is not a measured outcome.
+          Filter by focus or lifecycle stage, then open a project to see what exists today, your contribution, and the supporting evidence.
         </p>
         <div className="mt-6">
-          <ProjectsDirectory key={`${category ?? "all"}-${stage ?? "All"}`} initialCategory={categoryFromSlug(category)}
-            initialStage={initialStage} />
+          <ProjectsDirectory
+            key={`${category ?? "all"}-${stage ?? "All"}-${q ?? ""}`}
+            initialCategory={categoryFromSlug(category)}
+            initialStage={initialStage}
+            initialQuery={q}
+          />
         </div>
       </section>
 

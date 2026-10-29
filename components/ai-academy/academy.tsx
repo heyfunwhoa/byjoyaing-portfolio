@@ -127,56 +127,32 @@ export function Academy({ resources }: { resources?: ReactNode }) {
           Choose the path that fits your goal.
         </h2>
         <p className="mt-2 text-sm leading-6 text-muted">
-          For AI learning, start with four short lessons. For building, begin
-          with the frontend or delivery path. AI basics is not a prerequisite
-          for every path.
+          Pick a topic to see its lessons in order. AI basics is not a
+          prerequisite for every path.
         </p>
-        <button
-          type="button"
-          className={`${button} mt-3 min-h-11`}
-          onClick={() => startPath("foundations")}
-        >
-          Start the AI path
-        </button>
-        <button
-          type="button"
-          className={`${button} mt-3 min-h-11 sm:ml-3`}
-          onClick={() => startPath("frontend")}
-        >
-          Start the frontend path
-        </button>
-        <button
-          type="button"
-          className={`${button} mt-3 min-h-11 sm:ml-3`}
-          onClick={() => startPath("delivery")}
-        >
-          Start the delivery path
-        </button>
-      </section>
-      <details className="mb-6 rounded-xl border border-border bg-card p-4">
-        <summary className="min-h-11 cursor-pointer py-2 font-semibold">
-          Choose a starting path
-        </summary>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           {learningPaths.map((path) => (
-            <div
+            <li
               key={path.id}
               className="rounded-xl border border-border bg-background p-4"
             >
-              <h2 className="font-semibold">{path.title}</h2>
-              <p className="mt-2 text-xs text-muted">{path.prerequisite}</p>
+              <h3 className="font-semibold">{path.title}</h3>
+              <p className="mt-2 text-xs leading-5 text-muted">
+                {path.prerequisite}
+              </p>
               <p className="mt-2 text-sm leading-6">{path.outcome}</p>
               <button
                 type="button"
-                className="mt-3 min-h-11 text-left text-sm font-semibold text-accent underline underline-offset-4"
+                className={`${button} mt-3 min-h-11`}
+                aria-label={`Start ${path.title}`}
                 onClick={() => startPath(path.id)}
               >
-                Start {path.title.toLowerCase()} →
+                Start this path
               </button>
-            </div>
+            </li>
           ))}
-        </div>
-      </details>
+        </ul>
+      </section>
       {selectedPath && tab === "learn" ? (
         <nav
           aria-label="Selected learning path"

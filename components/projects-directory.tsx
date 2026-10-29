@@ -6,6 +6,7 @@ import { ProjectStatusPill } from "@/components/project-status-pill";
 import {
   activeProjects,
   categorySlugs,
+  directoryStatus,
   directoryCategories,
   lifecycleStages,
   type DirectoryCategory,
@@ -18,25 +19,43 @@ import { useRouter } from "next/navigation";
 export function ProjectsDirectory({
   initialCategory = "All work",
   initialStage = "All",
+  initialQuery = "",
 }: {
   initialCategory?: DirectoryCategory;
   initialStage?: LifecyclePhase | "All";
+  initialQuery?: string;
 }) {
   const router = useRouter();
   const [category, setCategory] = useState<DirectoryCategory>(initialCategory);
   const [stage, setStage] = useState<LifecyclePhase | "All">(initialStage);
+  const [query, setQuery] = useState(initialQuery);
   const projects = useMemo(() => {
+    const normalizedQuery = query.trim().toLocaleLowerCase();
     return activeProjects().filter((project) => {
       const categoryMatch =
         category === "All work" || project.categories.includes(category);
       const stageMatch = stage === "All" || project.phase === stage;
-      return categoryMatch && stageMatch;
+      const searchMatch =
+        normalizedQuery.length === 0 ||
+        [
+          project.title,
+          project.summary,
+          project.role,
+          directoryStatus(project.status).label,
+          project.phase,
+          ...project.categories,
+        ]
+          .join(" ")
+          .toLocaleLowerCase()
+          .includes(normalizedQuery);
+      return categoryMatch && stageMatch && searchMatch;
     });
-  }, [category, stage]);
+  }, [category, stage, query]);
 
   function updateFilters(
     nextCategory: DirectoryCategory,
     nextStage: LifecyclePhase | "All",
+    nextQuery = query,
   ) {
     setCategory(nextCategory);
     setStage(nextStage);
@@ -46,6 +65,7 @@ export function ProjectsDirectory({
     )?.[0];
     if (slug) params.set("category", slug);
     if (nextStage !== "All") params.set("stage", nextStage);
+    if (nextQuery.trim()) params.set("q", nextQuery.trim());
     router.replace(`/projects${params.size ? `?${params}` : ""}#directory`, {
       scroll: false,
     });
@@ -53,6 +73,16 @@ export function ProjectsDirectory({
   return (
     <div>
       <div className="flex min-w-0 flex-col gap-4">
+        <label className="flex min-w-0 flex-col gap-2 text-sm font-medium sm:max-w-md">
+          Search projects
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search by name, keyword, or role"
+            className="min-h-11 w-full rounded-lg border border-border bg-card px-3 text-base font-normal"
+          />
+        </label>
         <div className="grid gap-3 sm:hidden">
           <label className="flex flex-col gap-2 text-sm font-medium">
             Project focus
@@ -91,7 +121,7 @@ export function ProjectsDirectory({
         <div
           role="group"
           aria-label="Project categories"
-          className="hidden min-w-0 gap-2 overflow-x-auto pb-1 sm:flex"
+          className="hidden min-w-0 flex-wrap gap-2 sm:flex"
         >
           {directoryCategories.map((item) => {
             const selected = category === item;
@@ -115,7 +145,7 @@ export function ProjectsDirectory({
         <div
           role="group"
           aria-label="Lifecycle stage"
-          className="hidden min-w-0 gap-2 overflow-x-auto pb-1 sm:flex"
+          className="hidden min-w-0 flex-wrap gap-2 sm:flex"
         >
           {(["All", ...lifecycleStages] as const).map((item) => {
             const selected = stage === item;
@@ -137,14 +167,25 @@ export function ProjectsDirectory({
           })}
         </div>
       </div>
+      {category !== "All work" || stage !== "All" || query.trim() ? (
+        <button
+          type="button"
+          onClick={() => {
+            setQuery("");
+            updateFilters("All work", "All", "");
+          }}
+          className="mt-4 inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-sm font-medium hover:border-accent"
+        >
+          Clear filters
+        </button>
+      ) : null}
       <p role="status" aria-live="polite" className="mt-5 text-sm text-muted">
         {projects.length} matching{" "}
         {projects.length === 1 ? "project" : "projects"}
       </p>
       {projects.length === 0 ? (
         <p className="mt-8 rounded-2xl border border-dashed border-foreground/30 p-5 text-sm leading-6 text-muted">
-          No active project is tagged {stage === "All" ? category : stage}.
-          Concepts stay in the roadmap below.
+          No projects match these filters. Try a different search or clear the filters to see all projects.
         </p>
       ) : (
         <ul className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">

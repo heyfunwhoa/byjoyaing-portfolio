@@ -89,44 +89,57 @@ export default function SideQuestsPage() {
         ))}
       </nav>
 
-      <section className="py-12">
-        <h2 className="font-display text-3xl">Other explorations</h2>
-        <p className="mt-2 text-sm text-muted">These are supporting experiments or concepts. They are not all active priorities.</p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          {more.map((item) => (
-            <Link href={item.href} key={item.slug} className="rounded-lg border border-border p-4 hover:border-accent">
-              <span className="block font-semibold">{item.title}</span>
-              <span className="mt-2 block">
-                <ProjectStatusPill status={item.status} />
-              </span>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-9 rounded-xl border border-border bg-card p-6">
-          <h3 className="text-lg font-semibold">Research and tools still taking shape</h3>
-          <p className="mt-2 text-sm leading-6 text-muted">
-            These repositories are part of the longer-term roadmap. They are intentionally not represented as finished
-            portfolio applications.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-4 text-sm">
-            <a
-              href="https://github.com/heyfunwhoa/security-market-map"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent underline"
-            >
-              Security Market Map ↗
-            </a>
-            <a
-              href="https://github.com/heyfunwhoa/technical-docs-platform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent underline"
-            >
-              Technical Documentation Foundation ↗
-            </a>
+      <section className="border-b border-border py-8">
+        <details>
+          <summary className="min-h-11 cursor-pointer py-2 font-display text-2xl">
+            Other explorations ({more.length})
+          </summary>
+          <div className="pt-3">
+            <p className="text-sm text-muted">
+              Supporting experiments and concepts; not all are active priorities.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {more.map((item) => (
+                <Link
+                  href={item.href}
+                  key={item.slug}
+                  className="rounded-lg border border-border p-4 hover:border-accent"
+                >
+                  <span className="block font-semibold">{item.title}</span>
+                  <span className="mt-2 block">
+                    <ProjectStatusPill status={item.status} />
+                  </span>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-9 rounded-xl border border-border bg-card p-6">
+              <h3 className="text-lg font-semibold">Research and tools still taking shape</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">
+                These repositories are part of the longer-term roadmap. They are
+                intentionally not represented as finished portfolio
+                applications.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-4 text-sm">
+                <a
+                  href="https://github.com/heyfunwhoa/security-market-map"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent underline"
+                >
+                  Security Market Map ↗
+                </a>
+                <a
+                  href="https://github.com/heyfunwhoa/technical-docs-platform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent underline"
+                >
+                  Technical Documentation Foundation ↗
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
+        </details>
       </section>
       <section id="look-closer" className="scroll-mt-24 border-b border-border py-8"
       >
