@@ -6,6 +6,7 @@ import { CompetitiveIntelligenceWorkflow } from "@/components/competitive-intell
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
+import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { providers } from "@/lib/competitive-intelligence-demo";
@@ -193,13 +194,23 @@ export function CompetitiveIntelligenceCase() {
         </div>
       </section>
 
+      <CaseStudyContents
+        sections={[
+          { id: "problem-title", label: "Problem" },
+          { id: "workflow", label: "Workflow" },
+          { id: "architecture", label: "Architecture" },
+          { id: "design-decisions", label: "Decisions" },
+          { id: "outcomes-title", label: "Outcomes" },
+        ]}
+      />
+
       <PortfolioExample key="competitive-intelligence-engine" example={portfolioExamples["competitive-intelligence-engine"]} />
 
       <ProjectTechnologyStack slug="competitive-intelligence-engine" />
 
       <section className="border-b border-border py-16">
         <Label index="02">The intelligence problem</Label>
-        <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
+        <h2 id="problem-title" className="scroll-mt-24 mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           Competitive knowledge changes. Static battlecards do not.
         </h2>
         <div className="mt-8 grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
@@ -333,7 +344,7 @@ export function CompetitiveIntelligenceCase() {
 
       <section className="border-b border-border py-16">
         <Label index="06">Outcomes and roadmap</Label>
-        <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
+        <h2 id="outcomes-title" className="scroll-mt-24 mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           Measuring intelligence quality and field adoption.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">

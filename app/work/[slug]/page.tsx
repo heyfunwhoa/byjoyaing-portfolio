@@ -1,5 +1,6 @@
 import { completePageMetadata } from "@/lib/page-metadata";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
+import { DisclosureSection } from "@/components/disclosure-section";
 import { AccountIntelligenceCase } from "@/components/account-intelligence-case";
 import { AtlasCase } from "@/components/atlas-case";
 import { CompetitiveIntelligenceCase } from "@/components/competitive-intelligence-case";
@@ -9,6 +10,7 @@ import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { SampleRecordView } from "@/components/sample-record";
 import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
+import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { projects } from "@/lib/portfolio";
@@ -43,9 +45,17 @@ export async function generateMetadata({
   );
 }
 
-function Block({ title, children }: { title: string; children: ReactNode }) {
+function Block({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: ReactNode;
+}) {
   return (
-    <section className="flex flex-col gap-3 border-t border-border py-8">
+    <section id={id} className="scroll-mt-24 flex flex-col gap-3 border-t border-border py-8">
       <h2 className="text-lg font-semibold tracking-tight text-foreground">
         {title}
       </h2>
@@ -173,6 +183,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           <ProjectTechnologyStack slug={project.slug} />
 
+          <CaseStudyContents
+            sections={[
+              { id: "where-it-stands", label: "Current status" },
+              { id: "my-role", label: "My role" },
+              { id: "outcome", label: "Evidence" },
+              { id: "links", label: "Sources and links" },
+              { id: "how-it-works", label: "How it works" },
+            ]}
+          />
+
           <div className="grid gap-4">
             {sales.fieldAsset ? (
               <section className="border border-accent/50 bg-card p-5">
@@ -196,15 +216,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             ) : null}
           </div>
 
-          <Block title="Where it stands">
+          <Block id="where-it-stands" title="Where it stands">
             <p>{sales.maturityDetail}</p>
           </Block>
 
-          <Block title="My role">
+          <Block id="my-role" title="My role">
             <p>{sales.myRole}</p>
           </Block>
 
           <Block
+            id="outcome"
             title={
               sales.result.kind === "measured"
                 ? "What is on record"
@@ -214,7 +235,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <p>{sales.result.text}</p>
           </Block>
 
-          <Block title="Links">
+          <Block id="links" title="Links">
             {sales.links.length === 0 ? (
               <p>No public demo or repository beyond this page.</p>
             ) : (
@@ -244,11 +265,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           {sample ? <SampleRecordView sample={sample} /> : null}
 
-          <details className="border-t border-border py-5">
-            <summary className="cursor-pointer text-lg font-semibold tracking-tight text-foreground">
-              How it works
-            </summary>
-            <div className="mt-6 flex flex-col gap-6 text-base leading-7 text-muted">
+          <DisclosureSection
+            id="how-it-works"
+            title="How it works"
+            className="my-6"
+          >
+            <div className="flex flex-col gap-6 text-base leading-7 text-muted">
               <section className="flex flex-col gap-2">
                 <h3 className="font-medium text-foreground">
                   The problem I kept seeing
@@ -346,7 +368,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </ul>
               </section>
             </div>
-          </details>
+          </DisclosureSection>
 
           <RelatedWork slug={slug} />
         </article>
