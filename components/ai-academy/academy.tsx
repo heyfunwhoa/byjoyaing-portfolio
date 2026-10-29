@@ -108,9 +108,15 @@ export function Academy({ resources }: { resources?: ReactNode }) {
           </h1>
           <p className="mt-4 text-lg leading-8 text-muted">
             Learn AI basics, understand the tools behind an app, or practice a
-            research task. Choose a path, read a short lesson, then try its
-            linked guide or lab.
+            research task. Read a short lesson, then try its linked guide or
+            lab.
           </p>
+          <a
+            href="#academy-sections"
+            className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Browse lessons
+          </a>
         </div>
         <div className="mx-auto w-full max-w-[9rem] md:mx-0">
           <BrandAvatar variant="builder" />
@@ -119,40 +125,39 @@ export function Academy({ resources }: { resources?: ReactNode }) {
           </p>
         </div>
       </div>
-      <section
-        aria-labelledby="academy-start"
-        className="mb-4 rounded-xl border border-border bg-card p-5"
-      >
-        <h2 id="academy-start" className="font-semibold">
-          Choose the path that fits your goal.
-        </h2>
-        <p className="mt-2 text-sm leading-6 text-muted">
-          Pick a topic to see its lessons in order. AI basics is not a
-          prerequisite for every path.
-        </p>
-        <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-          {learningPaths.map((path) => (
-            <li
-              key={path.id}
-              className="rounded-xl border border-border bg-background p-4"
-            >
-              <h3 className="font-semibold">{path.title}</h3>
-              <p className="mt-2 text-xs leading-5 text-muted">
-                {path.prerequisite}
-              </p>
-              <p className="mt-2 text-sm leading-6">{path.outcome}</p>
-              <button
-                type="button"
-                className={`${button} mt-3 min-h-11`}
-                aria-label={`Start ${path.title}`}
-                onClick={() => startPath(path.id)}
+      <details className="mb-4 rounded-xl border border-border bg-card">
+        <summary className="min-h-11 cursor-pointer px-5 py-3 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          Explore learning paths ({learningPaths.length})
+        </summary>
+        <div className="px-5 pb-5">
+          <p className="text-sm leading-6 text-muted">
+            Pick a topic to see its lessons in order. AI basics is not a
+            prerequisite for every path.
+          </p>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {learningPaths.map((path) => (
+              <li
+                key={path.id}
+                className="rounded-xl border border-border bg-background p-4"
               >
-                Start this path
-              </button>
-            </li>
-          ))}
-        </ul>
-      </section>
+                <h2 className="font-semibold">{path.title}</h2>
+                <p className="mt-2 text-xs leading-5 text-muted">
+                  {path.prerequisite}
+                </p>
+                <p className="mt-2 text-sm leading-6">{path.outcome}</p>
+                <button
+                  type="button"
+                  className={`${button} mt-3 min-h-11`}
+                  aria-label={`Start ${path.title}`}
+                  onClick={() => startPath(path.id)}
+                >
+                  Start this path
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
       {selectedPath && tab === "learn" ? (
         <nav
           aria-label="Selected learning path"
@@ -218,6 +223,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         Review tracking is temporary and resets when you leave this page.
       </p>
       <nav
+        id="academy-sections"
         aria-label="Academy sections"
         className="mb-7 flex flex-wrap gap-2 border-b border-border pb-4"
       >
