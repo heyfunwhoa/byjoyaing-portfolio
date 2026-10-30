@@ -221,3 +221,39 @@ Owner: portfolio maintainer. Extend PR #224 rather than create a competing About
 - Delivery tier 1: isolated refinement of existing UI states and styling, no new integration or product journey; no new Linear issue.
 - Verification: source reviewed; synthetic browser tests added for pending focus, duplicate-submit suppression, HTTP failure, retry success and network failure. Every mail request is intercepted and tests skip remote production runs. Full CI and actual viewport/zoom/screen-reader checks are pending. Local dependencies/installed Next docs unavailable; official current Next server/client documentation reviewed instead. No merge or production verification.
 - Rollback: revert the scoped ToolsMap/InquiryForm changes and contact-feedback test. Preserve append-only adoption notes from other open drafts when merging.
+
+## Systems Engineering illustrations · 2026-10-30
+
+Owner: portfolio maintainer. Status: draft implementation, not merged or deployed.
+Destination: /ai-academy/systems, components/academy/systems-illustrations.tsx.
+
+- Task: give readers three concrete visual entry points before the existing planned module outlines. Reuse the page's figure/card conventions, responsive grid and canonical ivory/charcoal/copper/sage tokens. No new interaction or template system.
+- References: https://devl.dev/illustrations/webhook-relay, https://devl.dev/illustrations/server-rack and https://devl.dev/illustrations/shield-lock. Their pages identify MIT licensing and Motion dependencies. Webhook registry source was inspected at https://devl.dev/r/webhook-relay.json; downloaded JSON SHA-256 29fd06f44e8266853bf5e242874182345efe07bc3b0dedf438b1b3672875a8ac. The web reader could not retrieve the registry but a subsequent HTTP download succeeded.
+- Decision: original, static SVG interpretations of these concepts, not imports or copies of devl code/assets. No Motion, Base UI, registry installation or additional package. No upstream source copied, so no copied-code license notice is introduced.
+- Webhook scene explains source/relay/receivers, bounded retries and duplicate-event handling; receipt does not establish downstream completion. Server scene is explicitly a metaphor for API/worker/database roles. Access scene distinguishes authentication from authorization and states that enforcement belongs on the server.
+- Illustrations are explicitly examples, not telemetry, security results, a scanner or working infrastructure. Planned modules/labs retain their existing labels and content.
+- Phone: all figures stack; SVGs scale to the container. Tablet: webhook image/caption sit side by side. Desktop: webhook spans the row, with infrastructure/access cards below. No fixed text heights or fixed-width SVGs.
+- Decorative SVGs are aria-hidden and non-focusable; all meaning is in visible HTML captions. No hover-only information, timers, autoplay, animation, motion package, network request, persistence or controls. Reduced motion therefore shows the same complete content. Loading/error/permission states are N/A.
+- Delivery tier 1: isolated illustrative presentation addition, not a new Academy lesson journey. No new Linear issue.
+- Verification: isolated strict TypeScript, Vite/Tailwind component build, and static React render check passed (three figures/SVGs and visible explanatory/scope text). Full repository CI and actual route browser review pending, including 375/768/1280px, 200% zoom, contrast and screen-reader reading order.
+- Rollback: remove the page import/mount and component. No data migration. Preserve independent append-only adoption notes from other drafts.
+
+## Interactive systems examples · KRU-168 · 2026-10-30
+
+This supersedes the static-only scope above for the two selected examples. Status: implemented in PR #225, not merged. User explicitly approved this narrow extension; the other planned labs remain planned. Delivery tier 2, baseline tier A. Tracking: https://linear.app/krusty/issue/KRU-168
+
+- Existing WebhookScene and access illustration are reused inside the same component. New pure fixture logic lives in lib/academy/systems-demo.ts. No third-party source copied, additional package, real webhook, auth check, model call, timer or persistent state.
+- Explicit advance controls teach initial failure, backoff, successful retry and repeated delivery of demo-001. Business actions stay at one across duplicates. Reset restores all counters. The middle receiver changes from a waiting symbol to a check; the illustration remains decorative and the complete state is visible in text.
+- Native radio group distinguishes simulated 401, 403 and 200 outcomes. Every explanation states the relevant identity/record-permission scope. No real permissions change. Page reload resets both examples.
+- Existing verified routes /ai-academy/journeys/follow-one-click and /ai-academy/programming provide next learning steps. No new catalog or private source publication.
+- Buttons and radio-label targets are at least 44px; status regions announce changes. Focus stays on the activated control; radio keys are native. No animation, autoplay, delays or hover-only content. Existing responsive layout retained.
+- Verified locally: four node tests for transitions, repeated duplicate suppression, initial fixture immutability and distinct access outcomes; isolated strict TypeScript and Vite/Tailwind component build. Added tests/site/systems-illustrations.spec.ts for real-route keyboard, reset, repeated duplicates, access choices, links and overflow at 375/768/1280px.
+- Browser execution remains pending: local Chromium installation failed with a corrupt/empty archive. Prior static head 2bc24ebb5547cc324c27abb182e28e9631dbaa6d passed CI, Security scans, Semgrep and bounded Visual QA; those results do not certify this new interaction.
+- Full current-head CI and manual zoom/contrast/screen-reader review required before release. Rollback this interaction commit to retain the prior static figures.
+
+
+## Explanatory systems graphics · KRU-168 · October 29, 2026
+
+Extends PR #225 after user approval. Adapt the existing systems component, state helper, semantic lists and card tokens; no third-party source, new package or motion. Destination remains /ai-academy/systems. The webhook gains an ordered delivery timeline with explicit Upcoming/Current step/Completed text and aria-current. The access illustration becomes a branching HTML decision diagram reflecting the existing radio choice, with a textual Selected outcome marker. Infrastructure becomes a labeled API → worker → database example, explicitly one possible flow. No new app or simulated production telemetry.
+
+Phone: vertically stacked steps and decision branches. Tablet: access branches may sit side by side; at narrower desktop card widths they stack again. No fixed text heights, canvas or SVG text. Native controls and polite status regions retain keyboard behavior; diagram updates add no live regions or motion. Extend existing route tests to assert timeline and selected branch states at all existing widths. Prior commit dcf39d4 passed full CI (206 browser tests passed, one skipped) and manual interaction review; new-commit checks pending. Manual zoom, contrast and screen-reader review remain separate outstanding checks. Rollback this graphics commit to restore prior illustrations and controls.
