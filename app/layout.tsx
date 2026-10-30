@@ -23,14 +23,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.byjoyaing.com"),
   title: {
-    default: "Revenue & GTM Leader · Curious Builder — Kristen Aing",
+    default: "Kristen Aing | Cybersecurity Sales & GTM Leadership",
     template: "%s — Kristen Aing",
   },
   description:
-    "Enterprise cybersecurity sales, GTM leadership, coaching and independent technical systems — the work and thinking of Kristen Aing.",
+    "Enterprise cybersecurity sales, team development and practical GTM systems from Kristen Aing.",
   openGraph: {
     siteName: "joy. — Kristen Aing",
-    title: "Revenue & GTM Leader · Curious Builder — Kristen Aing",
+    title: "Kristen Aing | Cybersecurity Sales & GTM Leadership",
     description:
       "Curious by nature. Builder by instinct. Revenue, relationships, teams and repeatable GTM systems.",
     type: "website",
