@@ -39,6 +39,8 @@ const guidedExamples = [
       "No introduction or buyer response is assumed. This is a proposed next move, not a claimed customer interaction.",
     sellerQuestion:
       "Could we include the person accountable for the business outcome and budget in a short conversation? We want to understand their priorities before recommending next steps.",
+    sampleAsk:
+      "Would you be open to introducing us to the person who owns the business outcome and budget? I would like to understand their priorities and required review steps before we propose an evaluation.",
     evidence:
       "Record whether the champion accepts, redirects, or declines the request, then agree on the next action. Do not infer a response.",
     leaderQuestion:
@@ -180,6 +182,19 @@ export function StakeholderPlayground() {
             <p className="mt-2 text-sm leading-6 text-muted">{guidance.evidence}</p>
           </div>
         </div>
+        {perspective === "seller" && "sampleAsk" in guidance && (
+          <div className="mt-3 rounded-xl border border-border bg-surface-mist p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+              Suggested wording to adapt
+            </p>
+            <blockquote className="mt-2 max-w-3xl text-sm leading-6">
+              {guidance.sampleAsk}
+            </blockquote>
+            <p className="mt-2 text-xs leading-5 text-muted">
+              Example copy only. It is not sent or saved.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
