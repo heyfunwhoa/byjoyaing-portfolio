@@ -1,12 +1,14 @@
 import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
+import { robotsNoindex } from "@/lib/indexing";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = completePageMetadata(
   {
-    title: "Systems Engineering",
+    title: "Connected Systems Learning Roadmap",
+    robots: robotsNoindex,
     description:
-      "Learn systems architecture, research pipelines, evidence and operations through applied exercises.",
+      "Explore a planned learning roadmap covering software, research, security and operations, with outlines for future lessons and practice labs.",
   },
   "/ai-academy/systems",
 );
@@ -119,15 +121,15 @@ export default function SystemsPage() {
       <AcademyBreadcrumb title="Systems Engineering" />
 
       <p className="mt-8 text-xs font-semibold tracking-widest text-muted uppercase">
-        Builder Academy · Learning pathway
+        Builder Academy · Planned learning pathway
       </p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground">
         Engineering connected systems
       </h1>
       <p className="mt-4 max-w-3xl text-muted">
-        Explore how software, data, research, security and operations fit
-        together. Start with the mental model, try a synthetic exercise, then
-        apply it to a portfolio project.
+        Explore the planned connections between software, data, research,
+        security and operations. This roadmap outlines future lessons and
+        exercises; guided systems lessons and interactive labs are not available yet.
       </p>
       <section className="mt-12" aria-labelledby="modules-heading">
         <h2 id="modules-heading" className="text-2xl font-semibold">

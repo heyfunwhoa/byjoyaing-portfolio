@@ -7,6 +7,8 @@ import { indexableStaticPaths, noindexPaths } from "./indexing.ts";
 const root = path.resolve(import.meta.dirname, "..");
 
 const noindexSource: Record<string, string> = {
+  "/ai-academy/systems": "app/ai-academy/systems/page.tsx",
+  "/ai-academy/journeys/follow-one-click": "app/ai-academy/journeys/layout.tsx",
   "/ai-academy/programming": "app/ai-academy/programming/page.tsx",
   "/ai-academy/playground": "app/ai-academy/playground/layout.tsx",
   "/ai-academy/playground/skill-builder": "app/ai-academy/playground/layout.tsx",
@@ -16,8 +18,6 @@ const noindexSource: Record<string, string> = {
   "/ai-academy/journeys/source-verification": "app/ai-academy/journeys/layout.tsx",
   "/ai-academy/devops/build-rate-limits": "app/ai-academy/devops/layout.tsx",
   "/ai-academy/dependencies/lockfiles": "app/ai-academy/dependencies/layout.tsx",
-  "/builder-academy/identity-journey": "app/builder-academy/layout.tsx",
-  "/builder-academy/credential-risk": "app/builder-academy/layout.tsx",
   "/work/storytelling-guide": "app/work/storytelling-guide/page.tsx",
   "/prototype": "app/prototype/page.tsx",
   "/private-work": "app/private-work/page.tsx",
@@ -46,4 +46,14 @@ test("every noindex route sets robotsNoindex in its page or a parent layout", ()
     const source = readFileSync(path.join(root, file), "utf8");
     assert.match(source, /robotsNoindex/, route);
   }
+});
+
+test("selected public security lessons override the excluded parent and enter the sitemap", () => {
+  for (const route of ["/builder-academy/identity-journey", "/builder-academy/credential-risk"]) {
+    assert.ok(new Set<string>(indexableStaticPaths).has(route), route);
+    const source = readFileSync(path.join(root, `app${route}/page.tsx`), "utf8");
+    assert.match(source, /robots: \{ index: true, follow: true \}/, route);
+  }
+  assert.ok(noindexPaths.includes("/ai-academy/systems"));
+  assert.ok(noindexPaths.includes("/private-work"));
 });
