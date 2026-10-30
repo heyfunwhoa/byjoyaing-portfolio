@@ -16,7 +16,7 @@ This document extends the canonical [brand guidelines](brand-guidelines.md). Whe
 - **Professional positioning:** **Revenue & GTM Leader · Curious Builder**
 - **Brand expression:** *Curious by nature. Builder by instinct.*
 - **Guiding philosophy:** **People first. Problem-driven. Systems-minded.**
-- **Purpose:** Empower people to turn curiosity into confident action.
+- **Purpose:** Help people see what’s possible and give them the clarity, confidence, and tools to move forward.
 - **Practical promise:** Make complex work clearer and reduce unnecessary friction so people can build, buy, and adopt security with confidence. Apply the evidence and message-use rules in the canonical [brand guidelines](brand-guidelines.md).
 - **Learning practice:** **Learn → Build → Iterate**
 
