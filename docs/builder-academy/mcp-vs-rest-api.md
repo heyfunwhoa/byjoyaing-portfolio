@@ -2,7 +2,7 @@
 
 **Track:** Builder / APIs & Integrations · **Level:** Beginner → Intermediate · **Time:** 20–25 minutes  
 **Status:** Public educational lesson with fictional account examples, not a connected vendor integration  
-**Reviewed:** 2026-10-11 · **Prerequisites:** [HTTP/API basics](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview), [From idea to verified release](idea-to-verified-release.md).
+**Reviewed:** 2026-10-11 · **Companion linked and architecture page re-checked:** 2026-10-30 · **Prerequisites:** [HTTP/API basics](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview), [From idea to verified release](idea-to-verified-release.md).
 
 ## Learning goals
 
@@ -15,14 +15,14 @@ Explain what an API is, where REST fits, why MCP is a different integration inte
 - **MCP (Model Context Protocol):** A discoverable menu of tools and information intended for AI assistants. The assistant can discover `research_company` and ask the connected tool to perform it.
 - **Webhook:** The kitchen calls you when the order is ready instead of making you ask repeatedly.
 - **SDK:** A convenient programming-language wrapper around an API, not a separate source of permission.
-- **MCP server versus source system:** The MCP tool often calls an underlying REST API. MCP is *not* a replacement for the vendor's database, licensing agreement or access controls.
+- **MCP server versus source system:** The MCP tool should call the same approved service the application already uses. That service may be an in-process function or an existing HTTP API. MCP is not a second database, and it does not replace the vendor's licensing agreement or access controls. The [progressive companion](api-mcp-progressive-lab.md) traces one fictional brief through four doors.
 
 ## Comparison
 
 | Question | REST-style API | MCP server | Webhook |
 | --- | --- | --- | --- |
 | Who starts? | A deterministic app, script, or job makes an HTTP request | A compatible AI host/client discovers a tool and invokes it | The source sends an event when something happens |
-| Shape | HTTP methods such as GET/POST/PATCH on resource URLs, typically JSON | JSON-RPC messages; tools/resources/prompts; can use stdio locally or HTTP remotely | HTTP POST sent to a registered callback URL |
+| Shape | HTTP methods such as GET/POST/PATCH on resource URLs, typically JSON | JSON-RPC messages; tools/resources/prompts; stdio locally or Streamable HTTP remotely | HTTP POST sent to a registered callback URL |
 | Good use | Fetch CRM ownership, run bounded enrichment, approved writeback | Help an agent retrieve context or request a bounded research action | Notify a system that a CRM status changed |
 | Weakness | Each integration needs mapping, error and credential handling | Model-initiated tools need strong approval boundaries, tool descriptions and untrusted-input handling | Delivery may repeat, arrive late, or fail |
 | Security | Credential scope, server-side tenant checks, rate limits, audit and provider contract | The same underlying permissions **plus** agent tool approval, prompt-injection resistance and tool-call tracing | Authenticate sender/signature, replay protection, idempotency, authz |
@@ -69,19 +69,27 @@ Using fictional account records and **mock responses only**:
 **Which statement is accurate?**
 
 A. MCP replaces REST APIs, so the agent no longer needs provider permissions.  
-B. REST and MCP can coexist: MCP makes tools discoverable to AI clients and may call an existing REST API, with the same underlying access and licensing restrictions.  
+B. REST and MCP can coexist: MCP makes tools discoverable to AI clients and may call the same approved service or an existing HTTP API, with the same underlying access and licensing restrictions.  
 C. A webhook is a database and automatically preserves all history.
 
 **Answer:** B. The assistant's user-facing prompt never supersedes tenant authorization, provider subscription, retention rules or human approval.
+
+## Continue with one service and four doors
+
+Read [One account brief, four interfaces](api-mcp-progressive-lab.md) after this comparison. It defines API, REST-style HTTP, function tool, MCP, and agent harness, then sketches the same fictional brief behind each door. Every code block there is illustrative pseudocode. The companion does not add a lesson id, an API key, a live integration, or an MCP server.
+
+The paper exercise in that file is the next practice. Come back to the failure table above when an HTTP call returns 401, 403, or 429.
 
 ## What this means in enterprise sales and leadership
 
 - **AE / solution evaluation:** Ask which operations are REST, MCP or webhook-enabled and which have actual entitlement. Avoid promising that the buyer can bulk export or persist data just because the interface exists.
 - **Head of Sales:** Evaluate repeatable CRM/provider integration economics, supportability, compliance, tool auditability and ownership before standardizing the GTM stack. Prefer replaceable adapters instead of coupling your methodology to one vendor.
 
-## Sources (reviewed 2026-10-11)
+## Sources
 
-- [Model Context Protocol — architecture overview](https://modelcontextprotocol.io/docs/learn/architecture) — hosts, clients, servers, tools/resources/prompts, JSON-RPC and transport.
+Reviewed 2026-10-11, except the architecture page, which was opened again on 2026-10-30. That re-check is the source for "Streamable HTTP" and for the statement that MCP exchanges context and does not dictate how the host uses a model. The other three links were not re-fetched on 2026-10-30.
+
+- [Model Context Protocol — architecture overview](https://modelcontextprotocol.io/docs/learn/architecture) — hosts, clients, servers, tools/resources/prompts, JSON-RPC, stdio, and Streamable HTTP. Re-checked 2026-10-30.
 - [MDN — HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) — GET/POST/PATCH semantics and method properties.
 - [MDN — Overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) — client/server requests and responses.
 - [Microsoft Learn — MCP servers in API Management](https://learn.microsoft.com/en-us/azure/api-management/mcp-server-overview) — MCP as a facade around underlying APIs.

@@ -53,7 +53,7 @@ The interactive security-review lab has source references for *each decision*, w
 
 The existing Academy route renders lessons from `lib/ai-academy.ts`, rather than just publishing Markdown sources. The recommended sequence is:
 
-1. [MCP versus REST APIs](builder-academy/mcp-vs-rest-api.md) — learn how tools can reach data and why access does not grant retention or export rights.
+1. [MCP versus REST APIs](builder-academy/mcp-vs-rest-api.md) — learn how tools can reach data and why access does not grant retention or export rights. The [progressive companion](builder-academy/api-mcp-progressive-lab.md) keeps one fictional brief behind a function, an HTTP handler, a function tool, and an MCP adapter. It does not add a lesson id.
 2. [NDA versus MNDA, DPA, MSA and deal reviews](builder-academy/enterprise-contracts-sales-cycle.md) — distinguish confidentiality, privacy, legal and procurement decision owners.
 3. [Security assessments by buyer size and risk](builder-academy/security-assessments-by-buyer-size.md) — review SOC 2, ISO 27001, pen-testing evidence, subprocessors and the buyer's risk-tiered approval process.
 
