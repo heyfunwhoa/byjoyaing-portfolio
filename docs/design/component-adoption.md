@@ -214,3 +214,16 @@ Destination: /ai-academy/systems, components/academy/systems-illustrations.tsx.
 - Delivery tier 1: isolated illustrative presentation addition, not a new Academy lesson journey. No new Linear issue.
 - Verification: isolated strict TypeScript, Vite/Tailwind component build, and static React render check passed (three figures/SVGs and visible explanatory/scope text). Full repository CI and actual route browser review pending, including 375/768/1280px, 200% zoom, contrast and screen-reader reading order.
 - Rollback: remove the page import/mount and component. No data migration. Preserve independent append-only adoption notes from other drafts.
+
+## Interactive systems examples · KRU-168 · 2026-10-30
+
+This supersedes the static-only scope above for the two selected examples. Status: implemented in PR #225, not merged. User explicitly approved this narrow extension; the other planned labs remain planned. Delivery tier 2, baseline tier A. Tracking: https://linear.app/krusty/issue/KRU-168
+
+- Existing WebhookScene and access illustration are reused inside the same component. New pure fixture logic lives in lib/academy/systems-demo.ts. No third-party source copied, additional package, real webhook, auth check, model call, timer or persistent state.
+- Explicit advance controls teach initial failure, backoff, successful retry and repeated delivery of demo-001. Business actions stay at one across duplicates. Reset restores all counters. The middle receiver changes from a waiting symbol to a check; the illustration remains decorative and the complete state is visible in text.
+- Native radio group distinguishes simulated 401, 403 and 200 outcomes. Every explanation states the relevant identity/record-permission scope. No real permissions change. Page reload resets both examples.
+- Existing verified routes /ai-academy/journeys/follow-one-click and /ai-academy/programming provide next learning steps. No new catalog or private source publication.
+- Buttons and radio-label targets are at least 44px; status regions announce changes. Focus stays on the activated control; radio keys are native. No animation, autoplay, delays or hover-only content. Existing responsive layout retained.
+- Verified locally: four node tests for transitions, repeated duplicate suppression, initial fixture immutability and distinct access outcomes; isolated strict TypeScript and Vite/Tailwind component build. Added tests/site/systems-illustrations.spec.ts for real-route keyboard, reset, repeated duplicates, access choices, links and overflow at 375/768/1280px.
+- Browser execution remains pending: local Chromium installation failed with a corrupt/empty archive. Prior static head 2bc24ebb5547cc324c27abb182e28e9631dbaa6d passed CI, Security scans, Semgrep and bounded Visual QA; those results do not certify this new interaction.
+- Full current-head CI and manual zoom/contrast/screen-reader review required before release. Rollback this interaction commit to retain the prior static figures.

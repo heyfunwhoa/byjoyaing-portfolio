@@ -1,9 +1,14 @@
+"use client";
+
+import { useState } from "react";
+import { accessExamples, advanceDelivery, initialDelivery, type AccessExample } from "@/lib/academy/systems-demo";
+
 /**
  * Static editorial illustrations inspired by devl's Webhook Relay, Server Rack
  * and Shield Lock concepts. Original SVG markup; no upstream code or assets copied.
  * See docs/design/component-adoption.md for source review and scope.
  */
-function WebhookScene() {
+function WebhookScene({ phase }: { phase: string }) {
   return (
     <svg aria-hidden="true" focusable="false" viewBox="0 0 480 200" className="h-auto w-full">
       <path d="M92 100H178M234 100C290 100 290 42 354 42M234 100H354M234 100C290 100 290 158 354 158"
@@ -17,7 +22,7 @@ function WebhookScene() {
         <g key={y}>
           <rect x="354" y={y} width="92" height="48" rx="12" className="fill-card stroke-border" />
           <circle cx="375" cy={y+24} r="8" className="fill-none stroke-accent" strokeWidth="2" />
-          {index === 1
+          {index === 1 && phase !== "delivered"
             ? <path d={`M375 ${y+19}v6l4 2`} className="fill-none stroke-accent" strokeWidth="2" />
             : <path d={`M371 ${y+24}l3 3 5-6`} className="fill-none stroke-accent" strokeWidth="2" />}
           <path d={`M393 ${y+21}h35m-35 7h23`} className="fill-none stroke-border" strokeWidth="2" />
@@ -60,6 +65,18 @@ function AccessScene() {
 }
 
 export function SystemsIllustrations() {
+  const [delivery, setDelivery] = useState(initialDelivery);
+  const [access, setAccess] = useState<AccessExample>("anonymous");
+  const action = delivery.phase === "ready" ? "Send sample event"
+    : delivery.phase === "failed" ? "Show retry wait"
+    : delivery.phase === "waiting" ? "Retry delivery"
+    : "Deliver same event again";
+  const message = delivery.phase === "ready" ? "Ready. No requests have been made. Follow the middle receiver in the illustration."
+    : delivery.phase === "failed" ? "Attempt 1 failed before processing. The middle receiver returned a simulated 500 error. No business work happened there."
+    : delivery.phase === "waiting" ? "Backoff means waiting before retrying. This demo skips the timer; choose Retry delivery when you are ready."
+    : delivery.duplicates > 0 ? "Duplicate recognized. The receiver has already processed event demo-001, so it acknowledges the delivery without repeating the business action."
+    : "Attempt 2 succeeded. The receiver processed event demo-001 once and returned a simulated 200 acknowledgment.";
+  const control = "min-h-11 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
   return (
     <section aria-labelledby="systems-illustrations-title" className="mt-12">
       <p className="text-sm font-medium text-accent">Three visual starting points</p>
@@ -72,13 +89,26 @@ export function SystemsIllustrations() {
       <div className="mt-6 grid min-w-0 gap-4 lg:grid-cols-2">
         <figure className="min-w-0 rounded-2xl border border-border bg-surface-sage p-5 sm:p-6 lg:col-span-2">
           <div className="grid items-center gap-6 md:grid-cols-2">
-            <div className="min-w-0"><WebhookScene /></div>
+            <div className="min-w-0"><WebhookScene phase={delivery.phase} /></div>
             <figcaption className="min-w-0">
               <p className="text-xs font-medium text-accent">01 / Webhook delivery</p>
               <h3 className="mt-2 text-xl font-semibold">One event. Several destinations.</h3>
               <p className="mt-3 text-sm leading-6 text-muted">
-                A source reports a change. A relay forwards it to several receivers. In this illustration, two receivers acknowledge it and one needs another attempt.
+                A source reports a change. Follow one fictional receiver through a failed delivery, a retry, and the same event arriving again.
               </p>
+              <div className="mt-4 rounded-xl border border-border bg-card p-4">
+                <p className="text-xs font-medium text-muted">Local simulation · event demo-001 · no network calls</p>
+                <p role="status" aria-live="polite" aria-atomic="true" className="mt-2 text-sm leading-6">{message}</p>
+                <dl className="mt-4 grid grid-cols-3 gap-3 text-sm">
+                  <div><dt className="text-xs text-muted">Attempts</dt><dd className="mt-1 font-semibold tabular-nums">{delivery.attempts}</dd></div>
+                  <div><dt className="text-xs text-muted">Business actions</dt><dd className="mt-1 font-semibold tabular-nums">{delivery.workCount}</dd></div>
+                  <div><dt className="text-xs text-muted">Duplicates skipped</dt><dd className="mt-1 font-semibold tabular-nums">{delivery.duplicates}</dd></div>
+                </dl>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <button type="button" className={control} onClick={() => setDelivery(advanceDelivery)}>{action}</button>
+                  <button type="button" className={control} onClick={() => setDelivery(initialDelivery)}>Reset delivery example</button>
+                </div>
+              </div>
               <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-6">
                 <li>Send the event to the intended endpoint.</li>
                 <li>If delivery fails, wait before a limited retry.</li>
@@ -87,6 +117,7 @@ export function SystemsIllustrations() {
               <p className="mt-4 text-xs leading-5 text-muted">
                 An acknowledgment confirms receipt, not that every downstream task finished. Retries can still fail and need review.
               </p>
+              <a href="/ai-academy/journeys/follow-one-click" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">Follow a request through an app →</a>
             </figcaption>
           </div>
         </figure>
@@ -111,6 +142,26 @@ export function SystemsIllustrations() {
             <p className="mt-3 text-sm leading-6 text-muted">
               Authentication checks who is making a request. Authorization checks whether that identity can perform this action on this record.
             </p>
+            <fieldset className="mt-4">
+              <legend className="text-sm font-medium">Try a fictional access check</legend>
+              <div className="mt-2 grid gap-2">
+                {(Object.keys(accessExamples) as AccessExample[]).map(key => (
+                  <label key={key} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border border-border p-3 text-sm">
+                    <input type="radio" name="systems-access" value={key} checked={access === key}
+                      onChange={() => setAccess(key)} className="size-4 shrink-0 accent-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" />
+                    {accessExamples[key].label}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+            <div role="status" aria-live="polite" aria-atomic="true" className="mt-3 rounded-xl bg-surface-sage p-4">
+              <p className="text-sm font-semibold">{accessExamples[access].result}</p>
+              <p className="mt-2 text-sm leading-6">{accessExamples[access].explanation}</p>
+            </div>
+            <p className="mt-3 text-xs leading-5 text-muted">
+              Simulated responses only; choosing an option changes no real permissions. Reloading resets both examples.
+            </p>
+            <a href="/ai-academy/programming" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">Explore programming foundations →</a>
             <p className="mt-3 text-xs leading-5 text-muted">
               A lock icon is not evidence of protection. The application must enforce the checks on the server.
             </p>
