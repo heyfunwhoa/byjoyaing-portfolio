@@ -198,3 +198,19 @@ Owner: portfolio maintainer. Source/destination: existing components/tools-map.t
 Phone/tablet/desktop: existing one/two-column container; badges and links wrap without fixed heights. Native summary and anchors remain keyboard-operable, with global focus styles and 44px summary/link targets. Text stays visible when motion is disabled because no animation is added. Static content has no loading/error/permission state. Public copy claims neither email delivery nor paid-product adoption.
 
 Verification: source reviewed against package.json, toolkit registry and About call site. Full CI and manual viewport/zoom/keyboard checks pending. PR #218 changes parent About layout and PR #223 appends to this adoption document; preserve both at merge. Rollback removes this scoped disclosure expansion and adoption note.
+
+## Systems Engineering illustrations · 2026-10-30
+
+Owner: portfolio maintainer. Status: draft implementation, not merged or deployed.
+Destination: /ai-academy/systems, components/academy/systems-illustrations.tsx.
+
+- Task: give readers three concrete visual entry points before the existing planned module outlines. Reuse the page's figure/card conventions, responsive grid and canonical ivory/charcoal/copper/sage tokens. No new interaction or template system.
+- References: https://devl.dev/illustrations/webhook-relay, https://devl.dev/illustrations/server-rack and https://devl.dev/illustrations/shield-lock. Their pages identify MIT licensing and Motion dependencies. Webhook registry source was inspected at https://devl.dev/r/webhook-relay.json; downloaded JSON SHA-256 29fd06f44e8266853bf5e242874182345efe07bc3b0dedf438b1b3672875a8ac. The web reader could not retrieve the registry but a subsequent HTTP download succeeded.
+- Decision: original, static SVG interpretations of these concepts, not imports or copies of devl code/assets. No Motion, Base UI, registry installation or additional package. No upstream source copied, so no copied-code license notice is introduced.
+- Webhook scene explains source/relay/receivers, bounded retries and duplicate-event handling; receipt does not establish downstream completion. Server scene is explicitly a metaphor for API/worker/database roles. Access scene distinguishes authentication from authorization and states that enforcement belongs on the server.
+- Illustrations are explicitly examples, not telemetry, security results, a scanner or working infrastructure. Planned modules/labs retain their existing labels and content.
+- Phone: all figures stack; SVGs scale to the container. Tablet: webhook image/caption sit side by side. Desktop: webhook spans the row, with infrastructure/access cards below. No fixed text heights or fixed-width SVGs.
+- Decorative SVGs are aria-hidden and non-focusable; all meaning is in visible HTML captions. No hover-only information, timers, autoplay, animation, motion package, network request, persistence or controls. Reduced motion therefore shows the same complete content. Loading/error/permission states are N/A.
+- Delivery tier 1: isolated illustrative presentation addition, not a new Academy lesson journey. No new Linear issue.
+- Verification: isolated strict TypeScript, Vite/Tailwind component build, and static React render check passed (three figures/SVGs and visible explanatory/scope text). Full repository CI and actual route browser review pending, including 375/768/1280px, 200% zoom, contrast and screen-reader reading order.
+- Rollback: remove the page import/mount and component. No data migration. Preserve independent append-only adoption notes from other drafts.
