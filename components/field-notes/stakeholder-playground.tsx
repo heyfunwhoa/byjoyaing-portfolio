@@ -13,6 +13,12 @@ const steps = [
   "Plan the conversation",
 ] as const;
 
+const accessSummary = [
+  { label: "Engaged", access: "engaged" },
+  { label: "Developing", access: "developing" },
+  { label: "Unknown", access: "unknown" },
+] as const;
+
 export function StakeholderPlayground() {
   const [step, setStep] = useState(0);
   const [selectedId, setSelectedId] = useState("champion");
@@ -34,7 +40,9 @@ export function StakeholderPlayground() {
         <div>
           <h2 className="font-display text-2xl">Explore a buying group</h2>
           <p className="mt-2 text-sm text-muted">
-            Fictional example. No account data or changes are saved.
+            Fictional example. No account data or changes are saved. This is
+            the same software-company scenario used in the enterprise deal
+            walkthrough.
           </p>
         </div>
         <button
@@ -48,6 +56,25 @@ export function StakeholderPlayground() {
           Reset example
         </button>
       </div>
+      <p className="mt-4 max-w-3xl text-sm leading-6 text-muted">
+        A security champion and technical evaluator are engaged. Engineering
+        impact, budget authority, and approval paths still need validation.
+        Access describes conversation status, not influence, authority, or
+        purchase intent.
+      </p>
+      <dl
+        aria-label="Fictional stakeholder access summary"
+        className="mt-4 grid grid-cols-3 gap-2"
+      >
+        {accessSummary.map(({ label, access }) => (
+          <div key={access} className="rounded-xl border border-border p-3">
+            <dt className="text-xs leading-5 text-muted">{label}</dt>
+            <dd className="mt-1 font-display text-2xl">
+              {exampleMapPeople.filter((person) => person.access === access).length}
+            </dd>
+          </div>
+        ))}
+      </dl>
       <div
         className="mt-5 grid gap-2 sm:grid-cols-3"
         role="group"
@@ -101,7 +128,7 @@ export function StakeholderPlayground() {
         <h3 className="font-semibold">{steps[step]}</h3>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
           {step === 0
-            ? "Two of six roles are engaged in this example. Select a stakeholder to inspect priorities and access; coverage alone is not a deal score."
+            ? `${exampleMapPeople.filter((person) => person.access === "engaged").length} of ${exampleMapPeople.length} roles have engaged access in this example. Select a stakeholder to inspect priorities and evidence; coverage alone is not a deal score.`
             : step === 1
               ? "The economic buyer is not yet engaged. A champion’s enthusiasm does not establish budget authority or an approval path."
               : perspective === "seller"

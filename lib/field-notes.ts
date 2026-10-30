@@ -29,12 +29,80 @@ export const connectedSources = [
 ] as const;
 
 export const dealStages = [
-  { name: "Account hypothesis", question: "Why this account, and why now?", evidence: "ICP fit, public trigger, likely business issue", leader: "Challenge assumptions and territory priority" },
-  { name: "Discovery", question: "Who owns the problem, who feels it, and what changes if nothing happens?", evidence: "Buyer-confirmed pain, impact, owners, next steps", leader: "Coach depth and quality of discovery" },
-  { name: "Stakeholder alignment", question: "Who decides, who influences, and who could block progress?", evidence: "Coverage by role, champion validation, executive engagement", leader: "Inspect relationship gaps, not contact counts" },
-  { name: "Technical evaluation", question: "What constitutes success for each evaluating group?", evidence: "Joint evaluation criteria, proof, mutual commitments", leader: "Review resources, technical risks and exit criteria" },
-  { name: "Commercial path", question: "How do budget, security review, procurement and legal connect?", evidence: "Budget owner, paper process, approval path, dates", leader: "Identify slippage and forecast uncertainty" },
-  { name: "Decision and expansion", question: "What decision was made, why, and what happens next?", evidence: "Signed outcome or recorded loss reason; agreed success handoff", leader: "Review forecast quality and share lessons without leaking details" },
+  {
+    name: "Account hypothesis",
+    question: "Why this account, and why now?",
+    example:
+      "A fictional software company asks how its security team could find exposed credentials across development teams. The question is a starting point, not proof of urgency or purchase intent.",
+    evidence:
+      "Confirm product fit, affected workflows, the current process, and the buyer's reason for exploring now.",
+    nextMove:
+      "Test one account hypothesis in discovery. Separate what the buyer said from what research suggests.",
+    leader:
+      "Challenge the assumptions behind the opportunity. What evidence makes this worth prioritizing now?",
+  },
+  {
+    name: "Discovery",
+    question:
+      "Who owns the problem, who feels it, and what changes if nothing happens?",
+    example:
+      "The security lead describes manual triage across repositories, but the team has not established a baseline for frequency, effort, or business impact.",
+    evidence:
+      "Buyer-confirmed workflow, affected teams, impact, problem owner, and an agreed next step. No impact is assumed in this example.",
+    nextMove:
+      "Ask how the current process works and what a better result would change. Record unknowns instead of filling them in.",
+    leader:
+      "Coach for depth. Did the buyer describe the impact, or did the seller infer it?",
+  },
+  {
+    name: "Stakeholder alignment",
+    question: "Who decides, who influences, and who could block progress?",
+    example:
+      "A security champion and technical evaluator are engaged. Engineering impact, budget authority, security assurance, and procurement paths are not yet validated.",
+    evidence:
+      "Validate influence through stakeholder conversations and introductions. Confirm who owns the business outcome, budget, technical review, and approval steps.",
+    nextMove:
+      "Ask the champion for a relevant introduction and explain why that stakeholder's perspective matters.",
+    leader:
+      "Inspect relationship evidence and decision roles, not contact counts or assumed reporting lines.",
+  },
+  {
+    name: "Technical evaluation",
+    question: "What constitutes success for each evaluating group?",
+    example:
+      "The evaluator asks to review a limited workflow. The sample boundary, success criteria, false-positive handling, and closeout are still undecided.",
+    evidence:
+      "Agreed scope, criteria, owners, data handling, and a buyer-confirmed review point. A completed evaluation is not represented.",
+    nextMove:
+      "Write down what the evaluation will answer and what evidence will support a decision before work starts.",
+    leader:
+      "Review technical risk, required resources, and exit criteria. Is the evaluation testing a decision or creating activity?",
+  },
+  {
+    name: "Commercial path",
+    question:
+      "How do budget, security review, procurement, and legal connect?",
+    example:
+      "Technical fit remains under evaluation. No budget owner, approval sequence, or contracting timeline has been confirmed.",
+    evidence:
+      "Buyer-confirmed budget ownership, required reviews, procurement and legal steps, and timing. Dates are unknown until the buyer validates them.",
+    nextMove:
+      "Map the approval path with the buyer. Keep vendor assumptions separate from customer commitments.",
+    leader:
+      "Separate customer-confirmed timing from seller estimates and identify the next unverified dependency.",
+  },
+  {
+    name: "Decision and expansion",
+    question: "What decision was made, why, and what happens next?",
+    example:
+      "The example ends with a decision review. It does not claim a purchase, a win, a loss, an expansion, or a measured outcome.",
+    evidence:
+      "Record the buyer's decision and reason, which criteria were met or not met, remaining gaps, and any mutually agreed handoff.",
+    nextMove:
+      "Close the loop with the participants. If no decision is made, record the blocker and agree on the next check-in.",
+    leader:
+      "Review forecast quality and learning against evidence. Do not turn a pending decision into an outcome claim.",
+  },
 ] as const;
 
 export type Stakeholder = {

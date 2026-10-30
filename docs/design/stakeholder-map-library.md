@@ -29,6 +29,12 @@ Three responsive groups replace absolute-positioned cards. At narrow widths, gro
 
 Stories: Overview, Access Gap, Unknown Access, Empty, Invalid Relationship, Long Labels. Graph-integrity unit tests cover evidence, endpoints and identifiers. Playwright tests cover keyboard selection, labeled hypothesis details, empty/invalid states and horizontal overflow across configured desktop/mobile projects. Browser checks run in CI; local browser tooling is unavailable in this session.
 
+## Shared deal walkthrough — October 30, 2026
+
+The public `/field-notes/enterprise-deal` and `/field-notes/multithreading` examples share one invented software-company security evaluation. The existing `DealJourney` and `StakeholderPlayground` remain the only interactive patterns. Each deal stage separates the fictional signal from evidence to validate, a next seller move, and a sales-leader coaching question. The stakeholder exercise shows access counts derived from its local fixture and states that access does not establish influence, authority, or purchase intent. No real account, completed deal, customer result, or metric is represented.
+
+Phone/tablet use the existing wrapping buttons and stacked map groups; wider layouts retain the current two-column deal panel and three-group stakeholder map. Keyboard control remains native buttons with `aria-pressed`; no new motion, persistence, network access, data import, or dependency is introduced. Content and source review completed; CI and manual responsive/keyboard/200% zoom review remain pending for the implementing change.
+
 ## Reuse boundaries
 
 Keep public fixtures separate from private account adapters. This public library is presentation code, not a place to store customer/contact records. A private app may adopt the component contract only after defining its own authorization and data ownership. Do not add contact discovery, scoring, persistence or drag-and-drop just to expand the component library.

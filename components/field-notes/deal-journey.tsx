@@ -10,9 +10,26 @@ export function DealJourney() {
     <section aria-label="Interactive enterprise deal journey">
       <h2 className="font-display text-3xl">Six decisions to navigate</h2>
       <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-        Explore a seller decision and the corresponding coaching question. The sequence is illustrative:
-        buying groups often revisit earlier decisions.
+        Follow one fictional software company through six deal decisions. Each
+        step separates the scenario from evidence a seller would still need to
+        validate. Real buying groups may revisit earlier decisions.
       </p>
+      <div className="mt-5 rounded-xl border border-border bg-surface-mist p-4 sm:p-5">
+        <p className="text-xs font-semibold tracking-wide text-accent uppercase">
+          Fictional scenario
+        </p>
+        <p className="mt-2 max-w-3xl text-sm leading-6">
+          A software company is exploring a developer-security tool after its
+          security lead asks how exposed credentials could be found across
+          development teams. A security champion and technical evaluator are
+          engaged. The business impact, budget owner, engineering fit, and
+          approval path remain unvalidated.
+        </p>
+        <p className="mt-2 text-xs leading-5 text-muted">
+          This is an original teaching example. It does not describe a real
+          account, customer conversation, completed evaluation, or result.
+        </p>
+      </div>
       <div className="mt-6 grid grid-cols-2 gap-2 md:grid-cols-3" role="group" aria-label="Choose deal decision">
         {dealStages.map((item, index) => (
           <button
@@ -34,11 +51,30 @@ export function DealJourney() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-muted">Seller lens</p>
             <p className="mt-2 text-base leading-7">{stage.question}</p>
-            <p className="mt-3 text-sm leading-6 text-muted"><strong className="text-foreground">Evidence:</strong> {stage.evidence}</p>
+            <div className="mt-4 rounded-xl border border-border bg-surface-mist p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                Worked example
+              </p>
+              <p className="mt-2 text-sm leading-6">{stage.example}</p>
+            </div>
+            <div className="mt-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                Evidence to verify
+              </p>
+              <p className="mt-2 text-sm leading-6 text-muted">{stage.evidence}</p>
+            </div>
           </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted">Sales leader lens</p>
-            <p className="mt-2 text-base leading-7">{stage.leader}</p>
+          <div className="flex flex-col gap-5">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">Sales leader lens</p>
+              <p className="mt-2 text-base leading-7">{stage.leader}</p>
+            </div>
+            <div className="border-t border-border pt-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                Next seller move
+              </p>
+              <p className="mt-2 text-sm leading-6 text-muted">{stage.nextMove}</p>
+            </div>
           </div>
         </div>
         <div className="mt-6 flex items-center justify-between gap-3 border-t border-border pt-4">
