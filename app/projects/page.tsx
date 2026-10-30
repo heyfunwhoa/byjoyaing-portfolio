@@ -55,7 +55,6 @@ export default async function ProjectsPage({
         </p>
         <div className="mt-6">
           <ProjectsDirectory
-            key={`${category ?? "all"}-${stage ?? "All"}-${q ?? ""}`}
             initialCategory={categoryFromSlug(category)}
             initialStage={initialStage}
             initialQuery={q}

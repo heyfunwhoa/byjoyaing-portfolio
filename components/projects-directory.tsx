@@ -6,6 +6,7 @@ import { ProjectStatusPill } from "@/components/project-status-pill";
 import {
   activeProjects,
   categorySlugs,
+  categoryFromSlug,
   directoryStatus,
   directoryCategories,
   lifecycleStages,
@@ -13,8 +14,8 @@ import {
 } from "@/lib/project-directory";
 import type { LifecyclePhase } from "@/lib/portfolio";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 
 export function ProjectsDirectory({
   initialCategory = "All work",
@@ -25,10 +26,15 @@ export function ProjectsDirectory({
   initialStage?: LifecyclePhase | "All";
   initialQuery?: string;
 }) {
-  const router = useRouter();
-  const [category, setCategory] = useState<DirectoryCategory>(initialCategory);
-  const [stage, setStage] = useState<LifecyclePhase | "All">(initialStage);
-  const [query, setQuery] = useState(initialQuery);
+  const searchParams = useSearchParams();
+  const category = searchParams
+    ? categoryFromSlug(searchParams.get("category") ?? undefined)
+    : initialCategory;
+  const stage = searchParams
+    ? lifecycleStages.find((value) => value === searchParams.get("stage")) ?? "All"
+    : initialStage;
+  const query = searchParams ? searchParams.get("q") ?? "" : initialQuery;
+  const hasFilters = category !== "All work" || stage !== "All" || !!query.trim();
   const projects = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
     return activeProjects().filter((project) => {
@@ -57,18 +63,18 @@ export function ProjectsDirectory({
     nextStage: LifecyclePhase | "All",
     nextQuery = query,
   ) {
-    setCategory(nextCategory);
-    setStage(nextStage);
-    const params = new URLSearchParams();
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    for (const key of ["category", "stage", "q"]) params.delete(key);
     const slug = Object.entries(categorySlugs).find(
       ([, value]) => value === nextCategory,
     )?.[0];
     if (slug) params.set("category", slug);
     if (nextStage !== "All") params.set("stage", nextStage);
-    if (nextQuery.trim()) params.set("q", nextQuery.trim());
-    router.replace(`/projects${params.size ? `?${params}` : ""}#directory`, {
-      scroll: false,
-    });
+    if (nextQuery) params.set("q", nextQuery);
+    // Next syncs useSearchParams with native history without a route transition.
+    // Preserve the current fragment, focus, scroll and mounted card disclosures.
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
   }
   return (
     <div>
@@ -78,7 +84,7 @@ export function ProjectsDirectory({
           <input
             type="search"
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => updateFilters(category, stage, event.target.value)}
             placeholder="Search by name, keyword, or role"
             className="min-h-11 w-full rounded-lg border border-border bg-card px-3 text-base font-normal"
           />
@@ -167,18 +173,16 @@ export function ProjectsDirectory({
           })}
         </div>
       </div>
-      {category !== "All work" || stage !== "All" || query.trim() ? (
-        <button
+      <button
           type="button"
+          aria-disabled={!hasFilters}
           onClick={() => {
-            setQuery("");
-            updateFilters("All work", "All", "");
+            if (hasFilters) updateFilters("All work", "All", "");
           }}
-          className="mt-4 inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-sm font-medium hover:border-accent"
+          className="mt-4 inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-sm font-medium hover:border-accent aria-disabled:cursor-default aria-disabled:opacity-50"
         >
           Clear filters
-        </button>
-      ) : null}
+      </button>
       <p role="status" aria-live="polite" className="mt-5 text-sm text-muted">
         {projects.length} matching{" "}
         {projects.length === 1 ? "project" : "projects"}

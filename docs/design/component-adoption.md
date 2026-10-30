@@ -238,3 +238,9 @@ Owner: portfolio maintainer. Source/destination: existing components/tools-map.t
 Phone/tablet/desktop: existing one/two-column container; badges and links wrap without fixed heights. Native summary and anchors remain keyboard-operable, with global focus styles and 44px summary/link targets. Text stays visible when motion is disabled because no animation is added. Static content has no loading/error/permission state. Public copy claims neither email delivery nor paid-product adoption.
 
 Verification: source reviewed against package.json, toolkit registry and About call site. Full CI and manual viewport/zoom/keyboard checks pending. PR #218 changes parent About layout and PR #223 appends to this adoption document; preserve both at merge. Rollback removes this scoped disclosure expansion and adoption note.
+
+## Projects directory scroll stability · 2026-10-30
+
+Reused ProjectsDirectory, the existing wrapping filter groups, mobile native selects, and native preview disclosures. Filter/search edits now replace browser history through Next's native-history integration instead of starting server navigation. The URL is the shared filter source and retains existing unrelated query parameters and fragments. Removed the query-dependent component key so retained cards keep their disclosure state. Clear filters remains mounted and uses aria-disabled with a guarded handler when inactive, preserving focus and layout after clearing.
+
+No dependency or motion added. Browser regression coverage includes focus/scroll stability, retained disclosures, no filter-triggered route requests, overflow, typed search spaces, reload, browser back, and clearing. Desktop/tablet/mobile use the existing site-test projects.
