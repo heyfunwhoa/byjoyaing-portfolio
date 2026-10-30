@@ -36,7 +36,7 @@ export function ToolsMap({ compact = false }: { compact?: boolean }) {
                 <dd className="mt-2 text-muted">GitHub holds the source and change history. Vercel hosts the portfolio.</dd>
               </div>
             </dl>
-            <details className="mt-4 border-t border-border pt-2">
+            <details className="mt-4 rounded-xl border border-border bg-background px-4 open:border-accent">
               <summary className="min-h-11 cursor-pointer rounded-sm py-3 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
                 Build notes and integration boundaries
               </summary>
@@ -53,12 +53,12 @@ export function ToolsMap({ compact = false }: { compact?: boolean }) {
           </section>
           <details
             id="ai"
-            className="scroll-mt-24 rounded-2xl border border-border bg-card p-4"
+            className="scroll-mt-24 rounded-2xl border border-border bg-card px-4 open:border-accent"
           >
             <summary className="min-h-11 cursor-pointer rounded-sm py-3 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
               My approach to AI · Learning
             </summary>
-            <div className="mt-4">
+            <div className="pb-4 pt-2">
               <AiLoop embedded />
             </div>
           </details>
