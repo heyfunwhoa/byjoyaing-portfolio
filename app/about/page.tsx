@@ -6,8 +6,16 @@ import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
 import { aboutPage } from "@/lib/about/editorial";
 import { careerRailNodes } from "@/lib/career-rail";
+import { Headphones, Palette, Plane, Wrench } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+
+const interestIcons = new Map([
+  ["travel", Plane],
+  ["music", Headphones],
+  ["making", Wrench],
+  ["creative", Palette],
+]);
 
 export const metadata: Metadata = completePageMetadata(
   {
@@ -206,14 +214,26 @@ export default function AboutPage() {
           </summary>
           <div className="mt-2 rounded-xl bg-surface-clay p-4">
             <ul className="space-y-3 leading-6">
-              {aboutPage.interests.map((interest) => (
-                <li key={interest.id}>
-                  <span className="font-medium text-foreground">
-                    {interest.title}.
-                  </span>{" "}
-                  {interest.detail}
-                </li>
-              ))}
+              {aboutPage.interests.map((interest) => {
+                const InterestIcon = interestIcons.get(interest.id);
+                return (
+                  <li key={interest.id} className="flex items-start gap-3">
+                    {InterestIcon ? (
+                      <InterestIcon
+                        aria-hidden="true"
+                        focusable="false"
+                        className="mt-0.5 size-5 shrink-0 text-muted"
+                      />
+                    ) : null}
+                    <span className="min-w-0">
+                      <span className="font-medium text-foreground">
+                        {interest.title}.
+                      </span>{" "}
+                      {interest.detail}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
             <p className="mt-4 leading-6">
               <span className="font-medium">{aboutPage.valuesLabel}:</span>{" "}

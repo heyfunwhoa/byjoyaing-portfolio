@@ -13,7 +13,7 @@ Templates are compositions of the components below. Do not add a template compon
 | --- | --- | --- | --- |
 | T1 Preview | Home | Hero, three responsive role-proof cards, three-tile `EditorialBento`, one side quest, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
 | T2 Collection index | Work, Field Notes, Side Quests | Hero with its matching treatment (Work text-first, Field Notes layers, Side Quests branching path), in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
-| T3 Profile | About | Decorative orbit, origin, in-page section links, philosophy, capability orbit, career/education, toolkit, evidence links, compact interests, contact | Toolkit precedes the travel-led note; interest details use native disclosure |
+| T3 Profile | About | Decorative orbit, origin, in-page section links, philosophy, capability orbit, career/education, toolkit, evidence links, compact interests, contact | Toolkit precedes the travel-led note; interest details use native disclosure with small Lucide symbols |
 | T4 Utility | Contact | Headline, links, `InquiryForm` | Work-example requests add a focus select. The general message does not. |
 | T5 Article | Field Notes guides | Evidence label, title, body, related links | Optional contents only when the guide is long |
 | T6 Case study | `/work/[slug]` | `work-story-template` or `build-story-template` by kind | Do not invent a third template |
@@ -21,6 +21,8 @@ Templates are compositions of the components below. Do not add a template compon
 | T8 Directory | `/projects` | Filters plus `projects-directory` | Supporting. Side Quests is the introduction |
 
 Artwork by template: Home retains its existing portrait and is outside this change. Work is text-first. Projects uses connected nodes; Field Notes uses stacked shapes; Side Quests uses a branching path. Experience uses a milestone path and Builder Academy uses an open book. About retains its transparent orbit. Connection cards retain portraits for recognition. Detail pages keep their existing explanatory visuals rather than new decorative header art.
+
+About interest symbols: `app/about/page.tsx` reuses the installed `lucide-react` package for Plane (travel), Headphones (electronic music), Wrench (making and fixing), and Palette (creative exploration). The 20px static outlines use the existing muted token beside visible text inside the native disclosure. One wrapping column at every width, no icon focus stops, and `aria-hidden` / `focusable="false"` keep the symbols decorative. Unknown future interest IDs retain their text without an icon. No new dependency, CMS field, interaction, or motion. Lucide's [ISC license and retained MIT notices](https://lucide.dev/license) stay with the existing package. Scoped implementation; verification and release status are recorded in the adopting PR.
 
 This inventory does not prescribe a rebuild. Names in the "Possible later role" column are the shared pieces the product plan may need. If an existing component already does the job, extend it.
 
