@@ -103,6 +103,12 @@ export const dealStages = [
       "Buyer-confirmed budget ownership, required reviews, procurement and legal steps, and timing. Dates are unknown until the buyer validates them.",
     nextMove:
       "Map the approval path with the buyer. Keep vendor assumptions separate from customer commitments.",
+    approvalPath: [
+      { label: "Budget owner", detail: "Who owns the outcome and budget source?", status: "To validate" },
+      { label: "Security review", detail: "Which assurance steps and evidence are required?", status: "To validate" },
+      { label: "Procurement and legal", detail: "Who owns the process, terms, and lead times?", status: "To validate" },
+      { label: "Decision timing", detail: "What date and dependencies does the buyer confirm?", status: "No date confirmed" },
+    ],
     decisionGate:
       "Forecast timing only when the buyer confirms an owner, approval steps, and dates. Otherwise keep timing uncertain and name the next validation action.",
     leader:
