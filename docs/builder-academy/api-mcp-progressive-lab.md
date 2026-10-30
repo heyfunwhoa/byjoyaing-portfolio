@@ -55,6 +55,25 @@ function getAccountBrief(actor: Actor, accountId: string): AccountBrief {
 
 This is a **teaching function, not production-ready code**. In reality, reuse Account Workshop's current evidence graph, source/version rules, identity resolution and server-side account authorization. Never accept the actor's `allowedAccounts` from an untrusted browser or model request. Do not present example.org as an actual verifying source. Revoked source versions must invalidate dependent recommendations and drafts.
 
+## Real portfolio exercise: V1 reuse in Account Signal Engine
+
+**Implementation candidate:** [Account Signal Engine V1 branch](https://github.com/heyfunwhoa/account-signal-engine/tree/feat/academy-v1-synthetic-brief-projection) (feature branch, not merged or deployed).
+
+The actual teaching implementation reuses `createNorthwindStory` and `artifactReadiness` from `lib/account-workshop/synthetic-story.ts`. The adapter `lib/account-workshop/synthetic-brief-projection.ts` produces a read-only result containing the fictional account, exact source versions, review status, interpretation text, and evidence references. It contains no network, AI, MCP, persistent state or live identity.
+
+**What to try:**
+
+```bash
+npx vitest run tests/account-workshop-synthetic-brief-projection.test.ts
+npm run typecheck
+npm run lint
+npm run build
+```
+
+These are **commands to run**, not claimed passing results. The fixture scope array is a teaching stand-in, not real authentication. The production adapter must derive actor permissions server-side. A corrected source leaves its old version visible and marks the brief `needs_review`, rather than silently substituting the pending replacement.
+
+**Reflection:** The code already has a reliable evidence graph. We reuse it and add a projection instead of another source registry. Later HTTP, function-tool and MCP wrappers should invoke the same validated service only after actual authorization boundaries are reviewed.
+
 ## Version 1: call the function in the same application
 
 ```ts
