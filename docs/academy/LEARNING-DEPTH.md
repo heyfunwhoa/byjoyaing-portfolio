@@ -4,7 +4,7 @@ Reviewed: 2026-10-10. Applies to existing AI Academy lessons and five playground
 
 ## Current prioritization
 
-The [curriculum audit](CURRICULUM-AUDIT.md) inventories current cards, guides and simulations and sequences the remaining work. Use this file as the instructional quality contract, not proof that its proposed extensions are implemented. Several journeys and simulations now exist; inspect the linked audit before creating a new one. The 2026-10-30 audit and organization plus one background-job recovery lesson are authorized in KRU-174. Broader expansions remain separate scope; inspect current source and the audit before claiming implementation.
+The [curriculum audit](CURRICULUM-AUDIT.md) inventories current cards, guides and simulations and sequences the remaining work. Use this file as the instructional quality contract, not proof that its proposed extensions are implemented. Several journeys and simulations now exist; inspect the linked audit before creating a new one. The 2026-10-30 audit and organization plus one background-job recovery lesson are authorized in KRU-174. KRU-176–178 now authorize a bounded comparison, one Frontend pilot and validation, as sequenced in PROGRAM.md. KRU-182–185 cover additional AI learning content with new UI gated by pilot validation. Other expansions remain separate scope; inspect current source and the audit before claiming implementation.
 
 ## Instructional design contract
 
