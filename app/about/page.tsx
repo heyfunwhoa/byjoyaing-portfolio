@@ -27,14 +27,14 @@ const educationMarks = [
     src: "/logos/education/ut-austin.svg",
     width: 1037,
     height: 298,
-    widthClass: "w-52",
+    widthClass: "w-32",
   },
   {
     name: "Western Governors University",
     src: "/logos/education/wgu.svg",
     width: 133,
     height: 30,
-    widthClass: "w-40",
+    widthClass: "w-[6.5rem]",
   },
 ] as const;
 
@@ -166,17 +166,17 @@ export default function AboutPage() {
             See capabilities
           </Link>
         </div>
-        <div className="mt-8 border-t border-border pt-6">
+        <div className="mt-6 border-t border-border pt-5">
           <h3 className="text-lg font-semibold">
             {aboutPage.educationHeading}
           </h3>
-          <ul className="mt-4 grid gap-6 text-sm leading-6 text-muted sm:grid-cols-2">
+          <ul className="mt-3 grid gap-x-6 gap-y-3 text-sm leading-6 text-muted sm:grid-cols-2">
             {aboutPage.education.map((item) => {
               const school = educationMarks.find((mark) => item.includes(mark.name));
               return (
                 <li key={item} className={school ? "min-w-0" : "sm:col-span-2"}>
                   {school ? (
-                    <div aria-hidden="true" className="mb-3 flex h-20 items-center px-3">
+                    <div aria-hidden="true" className="mb-1 flex h-12 items-center px-3">
                       <Image
                         src={school.src}
                         alt=""
