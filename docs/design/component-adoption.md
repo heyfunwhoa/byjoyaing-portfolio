@@ -198,3 +198,13 @@ Owner: portfolio maintainer. Source/destination: existing components/tools-map.t
 Phone/tablet/desktop: existing one/two-column container; badges and links wrap without fixed heights. Native summary and anchors remain keyboard-operable, with global focus styles and 44px summary/link targets. Text stays visible when motion is disabled because no animation is added. Static content has no loading/error/permission state. Public copy claims neither email delivery nor paid-product adoption.
 
 Verification: source reviewed against package.json, toolkit registry and About call site. Full CI and manual viewport/zoom/keyboard checks pending. PR #218 changes parent About layout and PR #223 appends to this adoption document; preserve both at merge. Rollback removes this scoped disclosure expansion and adoption note.
+
+## Visible build cards: proposed refinement, October 29, 2026
+
+Source/destination: components/tools-map.tsx in the existing About toolkit; owner: portfolio maintainer. Reuse decision: adapt the just-merged PR #222 content into a visible summary and three native definition-list cards. ShieldCN badge grouping and Magic UI feature-card composition are references; all code is original and uses existing tokens. No paid source, asset, dependency, motion or new component family.
+
+Option A retains the entire explanation inside a disclosure; option B exposes the four tool labels and three roles, keeping the longer siteHowBuilt boundary note in a native disclosure. Choose B so readers can understand the stack without opening a panel. Compact mode remains unchanged.
+
+Phone: one card column with wrapping labels/links. Tablet/desktop: three equal role cards at md and above. Natural heights, min-width zero, no hover-only content or autoplay. Definition terms/descriptions preserve reading order; summary and links retain focus styles and 44px targets. The AI disclosure stays separate. Static content has no new data/loading/error states.
+
+Verification: source review confirms preserved toolkit, siteHowBuilt, compact mode and destinations. CI and actual browser/zoom/keyboard review pending. This is a tier 1 presentation refinement, not a new product journey. PRs #218 and #223 also append adoption notes; reconcile those notes without overwriting. Rollback restores the prior disclosure layout.
