@@ -34,7 +34,7 @@ export function ProjectsDirectory({
     ? lifecycleStages.find((value) => value === searchParams.get("stage")) ?? "All"
     : initialStage;
   const query = searchParams ? searchParams.get("q") ?? "" : initialQuery;
-  const hasFilters = category !== "All work" || stage !== "All" || !!query.trim();
+  const hasFilters = category !== "All work" || stage !== "All" || query.length > 0;
   const projects = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
     return activeProjects().filter((project) => {
@@ -174,14 +174,14 @@ export function ProjectsDirectory({
         </div>
       </div>
       <button
-          type="button"
-          aria-disabled={!hasFilters}
-          onClick={() => {
-            if (hasFilters) updateFilters("All work", "All", "");
-          }}
-          className="mt-4 inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-sm font-medium hover:border-accent aria-disabled:cursor-default aria-disabled:opacity-50"
-        >
-          Clear filters
+        type="button"
+        aria-disabled={!hasFilters}
+        onClick={() => {
+          if (hasFilters) updateFilters("All work", "All", "");
+        }}
+        className="mt-4 inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-sm font-medium hover:border-accent aria-disabled:cursor-default aria-disabled:opacity-50"
+      >
+        Clear filters
       </button>
       <p role="status" aria-live="polite" className="mt-5 text-sm text-muted">
         {projects.length} matching{" "}
