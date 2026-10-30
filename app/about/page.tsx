@@ -38,6 +38,23 @@ const educationMarks = [
   },
 ] as const;
 
+const certificationMarks = [
+  {
+    name: "AWS Certified Cloud Practitioner",
+    src: "/badges/aws-certified-cloud-practitioner.png",
+    width: 500,
+    height: 500,
+    widthClass: "w-20",
+  },
+  {
+    name: "AWS Certified AI Practitioner",
+    src: "/badges/aws-certified-ai-practitioner.png",
+    width: 500,
+    height: 500,
+    widthClass: "w-20",
+  },
+] as const;
+
 export const metadata: Metadata = completePageMetadata(
   {
     alternates: { canonical: "/about" },
@@ -173,17 +190,37 @@ export default function AboutPage() {
           <ul className="mt-3 grid gap-x-6 gap-y-3 text-sm leading-6 text-muted sm:grid-cols-2">
             {aboutPage.education.map((item) => {
               const school = educationMarks.find((mark) => item.includes(mark.name));
+              const certification = certificationMarks.find((mark) =>
+                item.includes(mark.name),
+              );
+              const mark = school ?? certification;
               return (
-                <li key={item} className={school ? "min-w-0" : "sm:col-span-2"}>
-                  {school ? (
-                    <div aria-hidden="true" className="mb-1 flex h-12 items-center px-3">
+                <li
+                  key={item}
+                  className={
+                    certification
+                      ? "flex min-w-0 items-center gap-3"
+                      : school
+                        ? "min-w-0"
+                        : "sm:col-span-2"
+                  }
+                >
+                  {mark ? (
+                    <div
+                      aria-hidden="true"
+                      className={
+                        school
+                          ? "mb-1 flex h-12 items-center px-3"
+                          : "shrink-0"
+                      }
+                    >
                       <Image
-                        src={school.src}
+                        src={mark.src}
                         alt=""
-                        width={school.width}
-                        height={school.height}
+                        width={mark.width}
+                        height={mark.height}
                         unoptimized
-                        className={`h-auto max-w-full ${school.widthClass}`}
+                        className={`h-auto max-w-full ${mark.widthClass}`}
                       />
                     </div>
                   ) : null}

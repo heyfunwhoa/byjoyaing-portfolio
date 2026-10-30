@@ -33,7 +33,8 @@
   "education": [
     "B.S. Advertising, Business Foundations. The University of Texas at Austin.",
     "MBA, IT Management. Western Governors University, in progress.",
-    "AWS Cloud Practitioner and AI Practitioner, foundational."
+    "AWS Certified Cloud Practitioner. Foundational.",
+    "AWS Certified AI Practitioner. Foundational."
   ],
   "practiceEyebrow": "Systems behind the work",
   "practiceHeading": "How I turn ideas into useful work.",
@@ -79,7 +80,7 @@
   "contactHeading": "Let's build something useful.",
   "owner": "Kristen Aing",
   "reviewer": "Pending human review of purpose, search, and About content copy",
-  "contentVersion": 4,
+  "contentVersion": 5,
   "reviewDue": "2026-11-14",
   "classification": "public",
   "publicationStatus": "review"
