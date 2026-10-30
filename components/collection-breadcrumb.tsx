@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { ProjectResultsReturn } from "@/components/project-results-return";
 import { fieldNoteTrail, workCaseTrail, type TrailItem } from "@/lib/collection-trail";
 import { salesProject } from "@/lib/sales";
 import Link from "next/link";
@@ -31,7 +33,14 @@ export function CollectionBreadcrumb({ items }: { items: readonly TrailItem[] })
 
 export function WorkCaseBreadcrumb({ slug }: { slug: string }) {
   const title = salesProject(slug)?.title ?? slug;
-  return <CollectionBreadcrumb items={workCaseTrail(slug, title)} />;
+  return (
+    <>
+      <CollectionBreadcrumb items={workCaseTrail(slug, title)} />
+      <Suspense fallback={null}>
+        <ProjectResultsReturn />
+      </Suspense>
+    </>
+  );
 }
 
 export function FieldNoteBreadcrumb({ title }: { title: string }) {

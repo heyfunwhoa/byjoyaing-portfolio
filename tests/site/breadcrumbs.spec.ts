@@ -79,3 +79,28 @@ test("primary destinations do not repeat the header hierarchy", async ({ page })
     await expect(page.getByRole("navigation", { name: "Breadcrumb", exact: true })).toHaveCount(0);
   }
 });
+
+test("case studies restore directory filters after reload", async ({ page }) => {
+  await page.goto("/projects?category=technical&q=Atlas#directory");
+  const openCase = page.getByRole("link", { name: "Read case study: Detector Coverage Atlas", exact: true });
+  await openCase.click();
+  await expect(page).toHaveURL(/from=projects/);
+  await page.reload();
+  const back = page.getByRole("link", { name: "Back to your project results" });
+  await expect(back).toHaveAttribute("href", "/projects?category=technical&q=Atlas#directory");
+  await back.press("Enter");
+  await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("Atlas");
+  await expect(page.getByRole("status")).toContainText("1 matching project");
+  await page.getByRole("button", { name: "Clear filters", exact: true }).click();
+  await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("");
+});
+
+test("direct case links have no stale return context and return targets stay local", async ({ page }) => {
+  await page.goto("/work/detector-coverage-atlas");
+  await expect(page.getByRole("link", { name: "Back to your project results" })).toHaveCount(0);
+  await page.goto("/work/detector-coverage-atlas?from=projects&stage=Build&q=hello%26world&returnTo=https://example.com");
+  const back = page.getByRole("link", { name: "Back to your project results" });
+  await expect(back).toHaveAttribute("href", "/projects?stage=Build&q=hello%26world#directory");
+  await back.click();
+  await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("hello&world");
+});
