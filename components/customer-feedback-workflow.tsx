@@ -64,6 +64,7 @@ export function CustomerFeedbackWorkflow() {
   const record = feedbackRecords.find((item) => item.id === recordId) ?? feedbackRecords[0];
   const theme = themes.find((item) => item.id === themeId) ?? themes[0];
   const themeRecords = recordsForTheme(theme.name);
+  const maxSignalCount = Math.max(1, ...themes.map((item) => item.signalCount));
 
   const visibleThemes = useMemo(() => {
     if (filter === "Signal volume") return themes.filter((theme) => theme.signalCount >= 2);
@@ -81,6 +82,7 @@ export function CustomerFeedbackWorkflow() {
     setConfirmed(false);
     setDecision("pending");
     setStage("normalize");
+    requestAnimationFrame(() => document.getElementById("feedback-panel-normalize")?.focus());
   }
 
   function openTheme(nextId: string, name: string) {
@@ -91,6 +93,7 @@ export function CustomerFeedbackWorkflow() {
     setEditing(false);
     setCopied(false);
     setStage("decision");
+    requestAnimationFrame(() => document.getElementById("feedback-panel-decision")?.focus());
   }
 
   function onTabKeyDown(event: KeyboardEvent<HTMLDivElement>) {
@@ -123,6 +126,33 @@ export function CustomerFeedbackWorkflow() {
   }
 
   return (
+    <div className="space-y-6">
+      <section aria-label="Feedback demo overview" className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="rounded-2xl border border-border bg-surface-clay p-5 sm:col-span-2">
+          <p className="text-xs font-medium text-accent">Illustrative workflow</p>
+          <h3 className="mt-2 text-xl font-semibold">Keep the original request in view.</h3>
+          <p className="mt-2 text-sm leading-6 text-muted">
+            Capture feedback, review the evidence together, then prepare a human-reviewed reply.
+          </p>
+          <ol className="mt-4 flex flex-wrap gap-2 text-xs font-medium">
+            {["Capture", "Review", "Follow up"].map((label, index) => (
+              <li key={label} className="rounded-full border border-border bg-card px-3 py-2">
+                <span className="mr-2 text-accent">{index + 1}.</span>{label}
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div className="rounded-2xl border border-border bg-card p-5">
+          <p className="text-3xl font-semibold tabular-nums">{feedbackRecords.length}</p>
+          <p className="mt-2 text-sm font-medium">Fictional requests</p>
+          <p className="mt-2 text-xs leading-5 text-muted">Local examples with original wording and account context.</p>
+        </div>
+        <div className="rounded-2xl border border-border bg-card p-5">
+          <p className="text-3xl font-semibold tabular-nums">{themes.length}</p>
+          <p className="mt-2 text-sm font-medium">Sample themes</p>
+          <p className="mt-2 text-xs leading-5 text-muted">Grouping supports review. It does not establish product priority.</p>
+        </div>
+      </section>
     <div className="grid gap-6 lg:grid-cols-[14rem_minmax(0,1fr)]">
       <div
         role="tablist"
@@ -154,7 +184,7 @@ export function CustomerFeedbackWorkflow() {
           );
         })}
       </div>
-      <div role="tabpanel" id={`feedback-panel-${stage}`} aria-labelledby={`feedback-tab-${stage}`} className="min-w-0">
+      <div tabIndex={-1} role="tabpanel" id={`feedback-panel-${stage}`} aria-labelledby={`feedback-tab-${stage}`} className="min-w-0">
         {stage === "inbox" ? (
           <Frame title="Feedback inbox">
             <ul className="flex flex-col gap-3">
@@ -254,6 +284,31 @@ export function CustomerFeedbackWorkflow() {
                 </button>
               ))}
             </div>
+            <figure className="mb-5 rounded-xl border border-border bg-card p-4">
+              <figcaption className="text-sm font-medium">Feedback volume by theme</figcaption>
+              <p className="mt-1 text-xs leading-5 text-muted">
+                Fictional signal counts across all sample themes. Bars share the same scale;
+                volume alone is not urgency, revenue or a roadmap commitment. Select a theme to inspect its supporting feedback.
+              </p>
+              <ul className="mt-4 space-y-3">
+                {themes.map((item) => (
+                  <li key={item.id}>
+                    <button type="button" onClick={() => openTheme(item.id, item.name)}
+                      aria-label={`Review ${item.name}: ${item.signalCount} signals`}
+                      className="min-h-11 w-full rounded-lg p-2 text-left hover:bg-surface-clay focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+                    <div className="flex items-start justify-between gap-3 text-xs">
+                      <span className="min-w-0 break-words">{item.name}</span>
+                      <span className="shrink-0 tabular-nums">{item.signalCount} signals</span>
+                    </div>
+                    <div aria-hidden="true" className="mt-1 h-2 overflow-hidden rounded-full bg-surface-clay">
+                      <div className="h-full rounded-full bg-accent"
+                        style={{ width: `${(item.signalCount / maxSignalCount) * 100}%` }} />
+                    </div>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </figure>
             <ul className="grid gap-3">
               {visibleThemes.length === 0 ? (
                 <li className="rounded-xl border border-dashed border-border p-4 text-sm text-muted">
@@ -391,6 +446,7 @@ export function CustomerFeedbackWorkflow() {
           </Frame>
         ) : null}
       </div>
+    </div>
     </div>
   );
 }

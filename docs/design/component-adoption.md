@@ -190,3 +190,23 @@ Verification: metadata integrity and navigation browser regression tests added f
 - No imported third-party code, package, version or attribution obligation added. Hirael/Seam remain reference candidates, not installed libraries.
 - Verification: isolated TypeScript, esbuild and React/JSDOM interaction checks passed for all three states, keyboard radio movement, reading-state separation and unchanged saved progress. Full repository checks, 375/768/1280px browser review and 200% zoom remain pending; browser installation returned corrupt archives.
 - Production Design Lab 404 gate is retained. Roll back by removing the preview import/mount and file. Do not mount it publicly as real learner progress.
+
+
+## Feedback overview and theme comparison · 2026-10-29
+
+Owner: portfolio maintainer. Status: draft implementation, not merged or deployed.
+Destination: existing `CustomerFeedbackWorkflow` inside `CustomerFeedbackCase` at
+`/work/customer-feedback-intelligence`.
+
+- Task: understand the fictional workflow before entering it and compare theme volume without treating it as urgency or a product commitment.
+- Adapted references: [Magic UI Bento Grid](https://magicui.design/docs/components/bento-grid) for the asymmetric overview; [Mantine stats](https://ui.mantine.dev/category/stats/) for number/label/explanation hierarchy; [Tremor BarList](https://www.tremor.so/docs/visualizations/barlist) for horizontal category comparison.
+- Reuse decision: extend the existing local workflow, frames and synthetic fixtures. These are layout-pattern adaptations, not imports or installations of those libraries. No third-party source copied; no new package, motion dependency or license notice required. Existing workbench families: summaries and measurement.
+- The workflow overview uses one wide explanatory card plus two compact fixture counts, derived from existing arrays. Counts are explicitly fictional. Theme bars use existing sample signal counts, with a common maximum across all themes. The comparison stays labeled as all themes when the detailed card filter changes.
+- Text labels and counts carry every value; bars are decorative to assistive technology. No hover-only information, animation, live feed, model call, persistence or send action added.
+- Phone: stacked overview and wrapping copy. Tablet: two-column overview. Desktop: four-column layout with the explanatory card spanning two columns. Existing tab controls and keyboard handling are retained.
+- Delivery tier 1: isolated presentation refinement of an existing demo; no new journey, data interface or dependency. No new Linear issue.
+- Verification: strict isolated TypeScript passes; isolated Vite/Tailwind component build passes; two synthetic React-render tests pass for derived/fictional counts, theme labels and interpretation caveats. This is not a full Next.js application build or repository lockfile validation.
+- Added `tests/site/customer-feedback-summary.spec.ts` for 375/768/1280px, stable comparison under filtering, keyboard navigation and visibility with reduced motion. Browser execution blocked: Playwright Chromium executable is absent. Full repository CI, real route, 200% zoom, contrast and screen-reader verification remain pending.
+- No overlap with open PR #218's workflow source; that PR also appends to this adoption document, so reconcile append-only documentation changes before merge. Rollback: revert the workflow, browser test and this entry.
+
+Follow-up: theme bars now act as 44px review buttons opening the existing decision view. The selected theme and its supporting feedback stay linked through the existing openTheme function. Both theme review and inbox record selection request focus on the destination panel; arrow-key tab navigation retains its existing focus behavior. The common bar maximum is computed once. Three isolated tests now pass, including invoking the real theme handler with mocked DOM focus to verify destination and selected theme; this is not browser focus verification. Strict isolated TypeScript and component build pass. The browser test now covers drill-down focus; execution remains pending.
