@@ -19,5 +19,8 @@ for (const width of [375, 768, 1280]) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.getByRole("tab", { name: "Theme intelligence", exact: true }).click();
     await expect(comparison).toBeVisible();
+    await comparison.getByRole("button", { name: /^Review / }).first().click();
+    await expect(page.locator("#feedback-panel-decision")).toBeFocused();
+    await expect(page.locator("#feedback-panel-decision")).toContainText("Supporting feedback");
   });
 }
