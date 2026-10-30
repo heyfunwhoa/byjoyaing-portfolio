@@ -13,7 +13,7 @@ test("curated options retain valid destinations and official source links", () =
     componentOptions.length,
   );
   for (const option of componentOptions) {
-    assert.equal(new URL(option.source).hostname, "ui.shadcn.com");
+    assert.ok(["ui.shadcn.com", "visx.airbnb.tech"].includes(new URL(option.source).hostname));
     assert.ok(option.apps.length > 0);
     assert.ok(option.apps.every((app) => componentApps.includes(app)));
   }
@@ -69,4 +69,12 @@ test("empty and whitespace searches have predictable recovery behavior", () => {
     ),
     true,
   );
+});
+
+test("visx recommendations stay candidates with focused destination filters", () => {
+  const visx = componentOptions.filter((option) => option.id.startsWith("visx-"));
+  assert.equal(visx.length, 4);
+  assert.ok(visx.every((option) => option.availability === "Candidate"));
+  assert.deepEqual(optionsForApp("Detector Coverage Atlas", "heatmap", "Candidate").map((option) => option.id), ["visx-coverage"]);
+  assert.equal(optionsForApp("Portfolio", "Heatmap").length, 0);
 });
