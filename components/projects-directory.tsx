@@ -191,7 +191,7 @@ export function ProjectsDirectory({
         <ul className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <li key={project.slug} className="flex min-w-0">
-              <article className="flex w-full min-w-0 flex-col gap-4 rounded-2xl border border-border bg-card p-4">
+              <article className="flex w-full min-w-0 flex-col gap-4 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-accent focus-within:border-accent motion-reduce:transition-none sm:p-5">
                 <div className="flex flex-wrap items-center gap-2">
                   <ProjectStatusPill status={project.status} />
                   <span className="text-xs text-muted">
@@ -210,10 +210,10 @@ export function ProjectsDirectory({
                   <p className="text-sm leading-6 text-muted">
                     {project.summary}
                   </p>
-                  <p className="text-sm leading-6">{project.role}</p>
+                  <p className="text-sm leading-6"><span className="font-medium">My role: </span>{project.role}</p>
                 </div>
                 <details className="rounded-xl border border-border bg-background p-3">
-                  <summary className="cursor-pointer py-1 text-sm font-medium">
+                  <summary className="min-h-11 cursor-pointer content-center rounded-sm py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
                     Preview and tools
                   </summary>
                   <div className="mt-3">
@@ -227,9 +227,10 @@ export function ProjectsDirectory({
                 </details>
                 <Link
                   href={project.caseStudyUrl}
-                  className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4"
+                  className="inline-flex min-h-11 items-center justify-between gap-3 rounded-lg border border-border bg-background px-3 py-2 text-sm font-medium text-accent hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
-                  View case study
+                  <span>Read case study<span className="sr-only">: {project.title}</span></span>
+                  <span aria-hidden="true">→</span>
                 </Link>
               </article>
             </li>
