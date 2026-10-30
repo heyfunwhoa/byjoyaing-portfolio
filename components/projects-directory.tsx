@@ -14,7 +14,7 @@ import {
 } from "@/lib/project-directory";
 import type { LifecyclePhase } from "@/lib/portfolio";
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 export function ProjectsDirectory({
@@ -33,7 +33,15 @@ export function ProjectsDirectory({
   const stage = searchParams
     ? lifecycleStages.find((value) => value === searchParams.get("stage")) ?? "All"
     : initialStage;
-  const query = searchParams ? searchParams.get("q") ?? "" : initialQuery;
+  const urlQuery = searchParams ? searchParams.get("q") ?? "" : initialQuery;
+  const [query, setQuery] = useState(urlQuery);
+  const [previousUrlQuery, setPreviousUrlQuery] = useState(urlQuery);
+  // Text entry must update synchronously; Next's history notification is a transition.
+  // Reconcile external URL changes (including Back) without remounting the input.
+  if (urlQuery !== previousUrlQuery) {
+    setPreviousUrlQuery(urlQuery);
+    setQuery(urlQuery);
+  }
   const hasFilters = category !== "All work" || stage !== "All" || query.length > 0;
   const projects = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase();
@@ -63,6 +71,7 @@ export function ProjectsDirectory({
     nextStage: LifecyclePhase | "All",
     nextQuery = query,
   ) {
+    setQuery(nextQuery);
     const url = new URL(window.location.href);
     const params = url.searchParams;
     for (const key of ["category", "stage", "q"]) params.delete(key);
