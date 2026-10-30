@@ -1,5 +1,194 @@
 # Builder Academy curriculum audit and priorities
 
+## Current audit: 2026-10-30
+
+**Source snapshot:** `62d0037c809893a48408d32b4c7a0df4c8b642db` on main, plus this proposed KRU-174 change.
+**Scope:** complete registered-lesson and route inventory, prerequisite/path structure, instructional fields, companion-document inventory and availability labeling. This is not a claim that every external citation, live route, exercise outcome or accessibility behavior was independently revalidated.
+**Authorization:** user requested the lesson audit, organization and background-job recovery follow-up. This supersedes older holds only for this bounded slice. Broader labs, persistent progress and badges remain separate work.
+**State:** proposed in a review branch; merge and production verification are separate.
+
+### Findings and changes
+
+| Finding at the snapshot | Action in this change | Remaining limit |
+| --- | --- | --- |
+| 38 registered short lessons, but older program/audit count says 22 | Reconcile inventory; add one recovery lesson, for 39 | Catalog registration does not equal a complete course |
+| 12 existing lessons absent from all six paths | Nine goal-based paths cover all 39; retain stable IDs | Repeated IDs intentionally share content across paths |
+| Evaluation path omitted commercial/security prerequisites; model evaluation omitted preparation | Include all declared prerequisites before dependents; enforce in tests | Prerequisites guide, never gate, navigation |
+| Catalog array starts with a database lesson | Browse in first-appearance path order, beginning with AI basics | Builder paths remain direct independent entry points |
+| Connected Systems labeled entirely planned despite working examples | Mark partial; name existing demos and separate future outlines | Background-job exercise is written, not a queue simulator |
+| All catalog cards expose one check | Keep card interface; add two-plus reasoning prompts in the new companion | One card check does not meet the two-question instructional target by itself |
+| Several “short lessons” estimate 25–45 minutes and include broad guides | Inventory duration as an estimate; recommend short stops and optional depth | No learner timing study or blanket duration rewrite |
+| Current progress and assessment scopes differ | Preserve reviewed/practiced/passed distinctions | No new progress store, certification, account or grading service |
+
+Previously unpathed lessons: `database-branching-recovery`, `fde-ai-agent-engineering`, `cms-fundamentals`, `llms-models-inference-gateways`, `better-auth-gtm-workspace`, `measure-product-use-safely`, `enterprise-contracts-sales-cycle`, `security-assessments-buyer-size`, `evolution`, `skills`, `security-hardening-release-gates`, `secure-account-import-research`.
+
+### Recommended learner organization
+
+- **Start with AI basics** (`foundations`): Explain AI, protect inputs, prompt clearly and check claims.
+- **Build and release safely** (`delivery`): Read project files, plan a release, manage dependencies and measure safely.
+- **Understand the frontend** (`frontend`): Connect accessible interfaces, reusable components, visual checks and content publishing.
+- **Connect systems and recover failures** (`systems`): Trace requests, data, integration costs and bounded background-job recovery.
+- **Protect identity and data** (`security`): Explain authorization, release gates and safe import, research and export boundaries.
+- **Build toward skills and agents** (`agents`): Move from prompting to evaluated reusable skills and scoped agent systems.
+- **Build a research workflow** (`research`): Turn public evidence into a research brief and a justified product request.
+- **Verify an AI output** (`verification`): Check a claim, learn model-comparison prerequisites and document a justified decision.
+- **Enterprise evaluation and buying process** (`enterprise-evaluation`): Build a fictional POC, mutual action plan, executive readout and buying-readiness packet.
+
+AI basics is the default catalog entry. A learner building an interface can start with Frontend; a learner handling a deal can start with Enterprise evaluation. Shared privacy and verification lessons recur by stable ID, not cloned content.
+
+UI/UX libraries, reusable blocks, design systems, iconography and illustration selection belong in **Understand the frontend**, followed by **Build and test your Design Lab**. Graphics used to teach requests, access and retries belong in **Connect systems and recover failures**. Prefer a labeled sequence, state table or diagram when it explains an outcome; decorative illustration is optional. Review each asset's license before adoption.
+
+### Every registered lesson
+
+Each row is an available short card with one knowledge check. “Companion” means longer reading or written practice; it does not imply automatically graded mastery. Times are author estimates. The new job lesson is available only after this branch is published.
+
+| Stable lesson ID | Learning paths | Current format and estimate | Instructional follow-up |
+| --- | --- | --- | --- |
+| `background-job-recovery` | systems | 15 min; Card + companion; linked practice | New written exercise and answer key; a working queue simulator remains future scope. |
+| `database-branching-recovery` | systems | 35 min; Card + companion | Split the 35-minute guide into data, recovery and selection stops; recheck changing provider claims. |
+| `sales-frameworks` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-discovery` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-value` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-deployment` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-poc` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-map` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-procurement` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-security` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-negotiation` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-readout` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `evaluation-handoff` | enterprise-evaluation | 20 min; Card + companion | Use the shared fictional toolkit; review the learner's decision artifact, not reading completion. |
+| `fde-ai-agent-engineering` | agents | 20 min; Card + companion | Keep vendor examples explicitly vendor-described; follow skills and evaluations. |
+| `cms-fundamentals` | frontend | 35 min; Card + companion | Keep the six chapters optional; distinguish local editing from hosted publication. |
+| `reading-code-and-yaml` | delivery, systems | 25 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `llms-models-inference-gateways` | foundations, agents, verification | 20 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `frontend-building-blocks` | frontend | 35 min; Card + companion; linked practice | Place UI libraries, design systems and explanatory graphics here; use the existing project-card exercise. |
+| `evaluate-ai-models` | agents, verification | 18 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `storybook-visual-regression` | frontend | 18 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `integration-registry-finops` | systems, security | 16 min; Card + companion; linked practice | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `evidence-based-product-request` | research, verification | 20 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `idea-to-verified-release` | delivery, security | 45 min; Card + companion | Retain three core stops and optional depth; 45-minute estimate is not a measured duration. |
+| `cursor-workflows` | delivery | 30 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `better-auth-gtm-workspace` | security | 25 min; Card + companion; linked practice | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `measure-product-use-safely` | delivery | 20 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `mcp-vs-rest-api` | systems, security | 25 min; Card + companion; linked practice | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `enterprise-contracts-sales-cycle` | enterprise-evaluation | 30 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `security-assessments-buyer-size` | enterprise-evaluation | 35 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `what-is-ai` | foundations, agents, research, verification | 8 min; Card | Add a second reasoning check and a supplied example before requiring an external assistant. |
+| `evolution` | foundations | 10 min; Card | Use a concrete rule/model/agent comparison; validate transfer to a different task. |
+| `prompting` | foundations, agents, research, verification | 12 min; Card; linked practice | Reuse Prompting Journey; distinguish filled fields from output quality. |
+| `verification` | foundations, security, agents, research, verification | 10 min; Card; linked practice | Reuse Source Verification Journey; teach refuted versus unsupported. |
+| `privacy` | foundations, delivery, systems, security, agents, research, verification, enterprise-evaluation | 10 min; Card | Add supplied data-classification fixtures and an answer rubric. |
+| `gtm-research` | research | 15 min; Card; linked practice | Reuse Research Pipeline; distinguish evidence from buying-intent hypotheses. |
+| `skills` | agents | 15 min; Card; linked practice | Reuse Skill Builder; check an independent failure case. |
+| `package-registries` | delivery | 15 min; Card; linked practice | Use the lockfile guide; pin any version-specific examples before teaching. |
+| `security-hardening-release-gates` | security | 25 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `secure-account-import-research` | security | 25 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+
+### Every Academy route
+
+| Route / source | Observed implementation classification |
+| --- | --- |
+| [/ai-academy/dependencies/lockfiles](../../app/ai-academy/dependencies/lockfiles/page.tsx) | Reference guide |
+| [/ai-academy/devops/build-rate-limits](../../app/ai-academy/devops/build-rate-limits/page.tsx) | Reference guide |
+| [/ai-academy/git-lab](../../app/ai-academy/git-lab/page.tsx) | Legacy redirect to version-control |
+| [/ai-academy/journeys/follow-one-click](../../app/ai-academy/journeys/follow-one-click/page.tsx) | Existing practice surface; no new capability asserted |
+| [/ai-academy/journeys/prompting](../../app/ai-academy/journeys/prompting/page.tsx) | Existing practice surface; no new capability asserted |
+| [/ai-academy/journeys/source-verification](../../app/ai-academy/journeys/source-verification/page.tsx) | Existing practice surface; no new capability asserted |
+| [/ai-academy](../../app/ai-academy/page.tsx) | Catalog and path entry |
+| [/ai-academy/playground](../../app/ai-academy/playground/page.tsx) | Existing practice surface; no new capability asserted |
+| [/ai-academy/playground/research-pipeline](../../app/ai-academy/playground/research-pipeline/page.tsx) | Existing practice surface; no new capability asserted |
+| [/ai-academy/playground/skill-builder](../../app/ai-academy/playground/skill-builder/page.tsx) | Existing practice surface; no new capability asserted |
+| [/ai-academy/programming](../../app/ai-academy/programming/page.tsx) | Partial: 2 guided tutorials, 8 planned module records |
+| [/ai-academy/systems](../../app/ai-academy/systems/page.tsx) | Partial: 2 interactive examples, infrastructure explainer, 13 planned module outlines and 7 future lab ideas |
+| [/ai-academy/version-control](../../app/ai-academy/version-control/page.tsx) | Existing practice surface; no new capability asserted |
+| [/builder-academy/credential-risk](../../app/builder-academy/credential-risk/page.tsx) | Existing practice surface; no new capability asserted |
+| [/builder-academy/identity-journey](../../app/builder-academy/identity-journey/page.tsx) | Existing practice surface; no new capability asserted |
+
+Programming has 10 module records, only two guided tutorials, and an 11-entry technology explorer. Systems has 13 planned outlines and seven proposed labs alongside the implemented examples. These records must not inflate the completed lesson count. The catalog also has five workflow recipes, not five additional courses.
+
+### Companion and supporting document inventory
+
+The existing 35 Builder Academy documents and 17 enterprise-evaluation documents were inventoried by source, heading and relationship. The new recovery guide adds one Builder companion. Plans, architecture and publishing documents are maintained as supporting references, not promoted to completed lessons. This inventory does not certify every paragraph or external link as current.
+
+| Document | Catalog relationship / disposition |
+| --- | --- |
+| [From model choice to organized agent work](../builder-academy/agent-organization-learning-sequence.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Builder Academy: AI agent harnesses, from prompts to verified execution](../builder-academy/ai-agent-harnesses.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Builder Academy lesson — Authentication vs. Authorization](../builder-academy/authentication-vs-authorization.md) | `better-auth-gtm-workspace` |
+| [Builder Academy — Build a private GTM workspace with Better Auth](../builder-academy/better-auth-gtm-workspace.md) | `better-auth-gtm-workspace`, `security-hardening-release-gates`, `secure-account-import-research` |
+| [CMS fundamentals](../builder-academy/cms-fundamentals.md) | `cms-fundamentals` |
+| [Builder Academy — cross-project evidence integration plan](../builder-academy/cross-project-evidence-integration.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Builder Academy — Cursor: from first prompt to verified pull request](../builder-academy/cursor-agent-workflows.md) | `cursor-workflows` |
+| [Databases, branching, backups, and choosing your data platform](../builder-academy/databases-branching-recovery-and-selection.md) | `database-branching-recovery` |
+| [Developer tools and AppSec: follow one change](../builder-academy/developer-tooling-appsec-workflow.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Lesson: Editorial ProjectCard](../builder-academy/editorial-project-card.md) | `frontend-building-blocks` |
+| [Builder Academy — Enterprise sales contracts: NDA/MNDA, ToS, DPA, MSA and security review](../builder-academy/enterprise-contracts-sales-cycle.md) | `evaluation-procurement`, `enterprise-contracts-sales-cycle`, `security-assessments-buyer-size` |
+| [Evaluate AI models before adopting them](../builder-academy/evaluate-ai-models.md) | `evaluate-ai-models` |
+| [Builder Academy — Evidence-backed commercial and security decisions](../builder-academy/evidence-backed-sales-and-security-decisions.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Evidence-based product requests — Builder Academy](../builder-academy/evidence-based-product-requests.md) | `evidence-based-product-request` |
+| [How AI agents become engineers — Builder Academy companion](../builder-academy/fde-ai-agent-engineering.md) | `fde-ai-agent-engineering` |
+| [Builder Academy: Integration registries and FinOps guardrails](../builder-academy/finops-and-integration-registry.md) | `integration-registry-finops` |
+| [Builder Academy — First deployment: settings and integrations](../builder-academy/first-deployment-settings.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Prompting with a clear outcome: bad, okay and best examples](../builder-academy/focused-prompting-and-context.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Builder Academy — Frontend building blocks: from framework to experience](../builder-academy/frontend-building-blocks.md) | `cms-fundamentals`, `frontend-building-blocks`, `storybook-visual-regression` |
+| [Builder Academy — From idea to verified release](../builder-academy/idea-to-verified-release.md) | `idea-to-verified-release`, `cursor-workflows`, `measure-product-use-safely`, `security-hardening-release-gates` |
+| [Identity across channels — Builder Academy](../builder-academy/identity-across-channels.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Builder Academy — Identity & Access Management track](../builder-academy/identity-and-access-management.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Builder Academy lab — identity lifecycle simulator](../builder-academy/identity-lifecycle-lab.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [LLMs, models, inference, and AI gateways](../builder-academy/llms-models-inference-gateways.md) | `llms-models-inference-gateways`, `evaluate-ai-models` |
+| [Builder Academy — API, REST API, webhook and MCP: what is different?](../builder-academy/mcp-vs-rest-api.md) | `background-job-recovery`, `integration-registry-finops`, `better-auth-gtm-workspace`, `mcp-vs-rest-api` |
+| [Builder Academy — Measure product use safely](../builder-academy/measure-product-usage-safely.md) | `measure-product-use-safely` |
+| [Why pre-commit alone cannot stop every secret](../builder-academy/pre-commit-secrets-defense-in-depth.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Reading code, files, JSON and YAML](../builder-academy/reading-code-and-yaml.md) | `database-branching-recovery`, `reading-code-and-yaml` |
+| [Builder Academy — Review release evidence and security boundaries](../builder-academy/release-security-review.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Why secrets, non-human identities, and IAM belong together](../builder-academy/secrets-non-human-identity.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Builder Academy — Secure a CSV → research → export workflow](../builder-academy/secure-account-import-research.md) | `secure-account-import-research` |
+| [Builder Academy — Security assessments in B2B sales: startup to enterprise](../builder-academy/security-assessments-by-buyer-size.md) | `security-assessments-buyer-size` |
+| [Builder Academy learning plan — reusable intelligence foundation](../builder-academy/security-gtm-intelligence-plan.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Builder Academy — Security hardening: from standard to verified release](../builder-academy/security-hardening-release-gates.md) | `security-hardening-release-gates` |
+| [Builder Academy: Storybook and visual regression testing](../builder-academy/storybook-visual-regression.md) | `storybook-visual-regression` |
+| [From technical evaluation to buying decision](../enterprise-evaluation/README.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Deployment decision and reference architecture](../enterprise-evaluation/architecture.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [From technical evaluation to buying decision](../enterprise-evaluation/case-study.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Choose deployment and prepare the architecture](../enterprise-evaluation/evaluation-deployment.md) | `evaluation-deployment`, `evaluation-poc`, `evaluation-security` |
+| [Qualify the problem and map the decision](../enterprise-evaluation/evaluation-discovery.md) | `evaluation-discovery`, `evaluation-value`, `evaluation-deployment` |
+| [Transition to production or close out responsibly](../enterprise-evaluation/evaluation-handoff.md) | `evaluation-handoff` |
+| [Coordinate a mutual action plan](../enterprise-evaluation/evaluation-map.md) | `evaluation-map`, `evaluation-procurement`, `evaluation-security` |
+| [Prepare a commercial proposal and negotiate responsibly](../enterprise-evaluation/evaluation-negotiation.md) | `evaluation-negotiation`, `evaluation-handoff` |
+| [Design and run a decision-ready POC](../enterprise-evaluation/evaluation-poc.md) | `evaluation-poc`, `evaluation-map`, `evaluation-readout` |
+| [Navigate procurement, MNDA and commercial terms](../enterprise-evaluation/evaluation-procurement.md) | `evaluation-procurement`, `evaluation-negotiation`, `evaluation-readout` |
+| [Deliver the executive readout and inspect buying readiness](../enterprise-evaluation/evaluation-readout.md) | `evaluation-readout`, `evaluation-handoff` |
+| [Coordinate security and privacy reviews](../enterprise-evaluation/evaluation-security.md) | `evaluation-security`, `evaluation-readout` |
+| [Build a value hypothesis and executive brief](../enterprise-evaluation/evaluation-value.md) | `evaluation-value`, `evaluation-poc`, `evaluation-negotiation` |
+| [Implementation and review handoff](../enterprise-evaluation/implementation.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Maintain and publish the playbooks](../enterprise-evaluation/publishing-workflow.md) | Supplemental reference / plan; not an additional catalog lesson |
+| [Choose a sales framework for the job](../enterprise-evaluation/sales-frameworks.md) | `sales-frameworks`, `evaluation-discovery` |
+| [Evaluation toolkit: Alderworks and Sentinel Orchard](../enterprise-evaluation/toolkit.md) | `sales-frameworks`, `evaluation-discovery`, `evaluation-value`, `evaluation-deployment`, `evaluation-poc`, `evaluation-map`, `evaluation-procurement`, `evaluation-security`, `evaluation-negotiation`, `evaluation-readout`, `evaluation-handoff` |
+| [Background-job recovery](../builder-academy/background-job-recovery.md) | `background-job-recovery`; new written practice |
+
+The three CMS records (`reading-code-and-yaml`, `mcp-vs-rest-api`, `verification`) are editorial sources for existing lessons, not additional lessons. Preserve their schema and IDs. Keep code-owned checks and guidance separate.
+
+### Priorities after organization
+
+1. Review this path organization and recovery lesson using the existing CI and a real browser; validate phone/tablet/desktop, keyboard, zoom and long path labels.
+2. Complete the beginner bridge: terminal/repository reading, HTTP status/body diagnosis and structured-data runtime validation. Reuse existing Follow one click and code-reading material.
+3. Deepen existing lessons with a second reasoning check, worked example, counterexample and independent transfer task. Use [LEARNING-DEPTH.md](LEARNING-DEPTH.md) as the rubric; do not equate one quiz with mastery.
+4. Improve discoverability of Prompting, Source Verification, Research Pipeline and Skill Builder through current guidance before creating more labs. Audit URL-based lesson linking separately; current selection is component state.
+5. Test with intended business/sales beginners; record actual task outcomes and timing. KRU-77 retains the broader journey/progress work. A complete source inventory is not learning-effectiveness evidence.
+6. Refresh time-sensitive provider, pricing, security and version references in the longer guides before using them operationally. This audit only freshly checked the two primary sources for the new background-job lesson.
+
+### Verification and boundaries
+
+Data-level review confirms all 39 IDs are covered and all included prerequisites precede dependents. Repository unit and browser tests enforce this contract and the updated Systems label. See the focused PR for actual CI results; this document does not predeclare a pass. Local execution and manual browser review were unavailable in the current session.
+
+No routes, lesson IDs, CMS records, credentials, dependencies, persistence or live integrations are added. Revert the focused commit to restore previous organization. No private source content is copied into this public audit.
+
+## Historical audit, retained for decision history
+
+The following 2026-10-12 inventory and status statements describe their dated snapshots. The current section above supersedes conflicting counts, availability and sequencing; historical authorization language is not the current queue.
+
+# Builder Academy curriculum audit and priorities
+
 **Reviewed:** 2026-10-12 (America/Chicago)
 **Original source snapshot:** `569c1f5` on `main`; reconciled after merged PR #126 (breadcrumbs) and PR #127 (FinOps walkthrough), through `a9cb44e758cb772ecabd740bbbb5c208b24c3fb2`
 **Owner:** Kristen Aing
