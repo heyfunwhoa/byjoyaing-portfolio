@@ -159,5 +159,5 @@ test("systems path reaches the recovery lesson and its written practice", async 
   await expect(page.getByRole("heading", { name: "What happens when a background job fails?", exact: true })).toBeFocused();
   await expect(page.getByRole("region", { name: "Lesson prerequisites" })).toContainText("Databases: branching, backups, and platform decisions");
   await expect(page.getByRole("link", { name: "Explore related webhook and access demos", exact: true })).toHaveAttribute("href", "/ai-academy/systems");
-  await expect(page.getByRole("link", { name: "Read the recovery exercise and answer key", exact: true }).first()).toHaveAttribute("href", /background-job-recovery\.md$/);
+  await expect(page.getByRole("link", { name: "Read the recovery exercise and answer key ↗", exact: true })).toHaveAttribute("href", /background-job-recovery\.md$/);
 });
