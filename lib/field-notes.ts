@@ -81,6 +81,13 @@ export const dealStages = [
       "Agreed scope, criteria, owners, data handling, and a buyer-confirmed review point. A completed evaluation is not represented.",
     nextMove:
       "Write down what the evaluation will answer and what evidence will support a decision before work starts.",
+    evaluationPlan: [
+      { label: "Scope", detail: "Choose one workflow and agree on the sample boundary." },
+      { label: "Success criteria", detail: "Define buyer-approved signal quality and operational fit." },
+      { label: "Owners", detail: "Name the technical evaluator and affected stakeholder roles." },
+      { label: "Data handling", detail: "Agree on approved inputs, access, retention, and deletion." },
+      { label: "Decision review", detail: "Set the review date, participants, and next step for either result." },
+    ],
     decisionGate:
       "Start only after the buyer agrees on scope, success criteria, owners, and a review point. If those are missing, align before investing resources.",
     leader:
