@@ -165,6 +165,8 @@ export function StakeholderMap({
   }, [people, person?.id, emphasizedId, onSelect]);
 
   const edges = useMemo<Edge[]>(() => {
+    // Invalid endpoints must reach the validation message before graph lookup.
+    if (error) return [];
     const groupPositions = new Map(
       mapGroups.map((group, index) => [group.id, index]),
     );
@@ -206,7 +208,7 @@ export function StakeholderMap({
         },
       };
     });
-  }, [people, relationships, person?.id]);
+  }, [people, relationships, person?.id, error]);
 
   if (error)
     return (
@@ -227,7 +229,7 @@ export function StakeholderMap({
         <div
           className="grid min-w-0 gap-5 lg:hidden"
           role="group"
-          aria-label="Stakeholder map grouped by role"
+          aria-label="Interactive stakeholder map"
           aria-describedby={legendId}
         >
           {mapGroups.map((group) => (
@@ -258,7 +260,7 @@ export function StakeholderMap({
         <div
           className={`hidden h-[35rem] min-w-0 overflow-hidden rounded-xl border border-border bg-surface-mist lg:block ${styles.canvas}`}
           role="group"
-          aria-label="Interactive stakeholder relationship graph"
+          aria-label="Interactive stakeholder map"
           aria-describedby={legendId}
         >
           <ReactFlow
