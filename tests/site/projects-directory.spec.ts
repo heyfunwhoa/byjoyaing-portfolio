@@ -57,7 +57,7 @@ test("search and clear keep focus and share their state across reload and histor
   await expect(search).toHaveValue("");
   await expect(page).toHaveURL(/\/projects#directory$/);
   await search.fill("detector");
-  await page.getByRole("link", { name: "Read case study: Detector Coverage Atlas", exact: true }).click();
+  await page.locator('#directory a[href^="/work/detector-coverage-atlas?"]').last().click();
   await expect(page).toHaveURL(/\/work\/detector-coverage-atlas\?from=projects&q=detector$/);
   await page.goBack();
   await expect(search).toHaveValue("detector");
