@@ -171,7 +171,7 @@ The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 
 
 ### Scoped stakeholder-map adoption pilot
 
-`/field-notes/multithreading` now proposes Button and Card adoption through `components/stakeholder-map/stakeholder-node.tsx` and `stakeholder-detail.tsx`. The map composition also appears in local Design Lab and Storybook. This is an explicit, reviewed exception to the earlier lab-only inventory, limited to these wrappers. See [stakeholder-map-library.md](stakeholder-map-library.md); other public primitive imports still require their own review.
+`/field-notes/multithreading` uses Button and Card adoption through `components/stakeholder-map/stakeholder-node.tsx` and `stakeholder-detail.tsx`. The desktop relationship graph adapts the MIT-licensed `@xyflow/react` 12.12.0 package; phone/tablet retain grouped native buttons. The map composition also appears in local Design Lab and Storybook. This is scoped to the named map; other public primitive or graph-library imports still require their own review. See [stakeholder-map-library.md](stakeholder-map-library.md).
 
 
 ## About workflow toolkit · PR #112
