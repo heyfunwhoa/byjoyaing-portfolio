@@ -261,3 +261,21 @@ Follow with a compact technology row and links to the site and project documenta
 - [ ] Record actual lint/build/tests and preview review in the implementation PR.
 
 This checklist is a proposed implementation brief. No check is marked complete by this documentation edit.
+
+## Magic UI Pro: selective layout reference
+
+Requested October 29, 2026. Sources: [catalog](https://pro.magicui.design/) and [license](https://pro.magicui.design/license).
+Pro is a paid offering, separate from the free Magic UI collection. Its license restricts sharing and redistribution of original or modified products. No Pro code/assets were downloaded, copied or purchased for this change. Do not commit Pro source to this public repository without confirming permission for that distribution.
+
+| Reference | Portfolio use to evaluate | Local approach |
+| --- | --- | --- |
+| Portfolio template | Clear project, skills and contact hierarchy | Preserve current professional-first structure and About toolkit. |
+| Feature Cards | Explain a build in small, readable groups | Reuse existing card surfaces and native disclosures. |
+| Changelog template | Explain meaningful project updates | Candidate only; requires real dated updates and links. |
+| Blog template | Improve long-form Field Notes reading | Keep existing article routes, typography and source labels. |
+
+Keep joy. tokens, static orbital artwork and readable content without animation. No Motion dependency, autoplay, invented testimonials or imported template is proposed.
+
+### First implementation in PR #222
+
+The existing ToolsMap build disclosure now contains four wrapping text badges, three short explanation groups, and source/Side Quests links. Existing siteHowBuilt copy and compact mode are preserved. This is original JSX using current tokens; no ShieldCN embed or Magic UI Pro source. Status: implemented on the feature branch, not merged or deployed. Manual viewport, zoom and keyboard review remain pending.
