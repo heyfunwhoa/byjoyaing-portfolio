@@ -199,6 +199,29 @@ Phone/tablet/desktop: existing one/two-column container; badges and links wrap w
 
 Verification: source reviewed against package.json, toolkit registry and About call site. Full CI and manual viewport/zoom/keyboard checks pending. PR #218 changes parent About layout and PR #223 appends to this adoption document; preserve both at merge. Rollback removes this scoped disclosure expansion and adoption note.
 
+## Visible build cards: proposed refinement, October 29, 2026
+
+Source/destination: components/tools-map.tsx in the existing About toolkit; owner: portfolio maintainer. Reuse decision: adapt the just-merged PR #222 content into a visible summary and three native definition-list cards. ShieldCN badge grouping and Magic UI feature-card composition are references; all code is original and uses existing tokens. No paid source, asset, dependency, motion or new component family.
+
+Option A retains the entire explanation inside a disclosure; option B exposes the four tool labels and three roles, keeping the longer siteHowBuilt boundary note in a native disclosure. Choose B so readers can understand the stack without opening a panel. Compact mode remains unchanged.
+
+Phone: one card column with wrapping labels/links. Tablet/desktop: three equal role cards at md and above. Natural heights, min-width zero, no hover-only content or autoplay. Definition terms/descriptions preserve reading order; summary and links retain focus styles and 44px targets. The AI disclosure stays separate. Static content has no new data/loading/error states.
+
+Verification: source review confirms preserved toolkit, siteHowBuilt, compact mode and destinations. CI and actual browser/zoom/keyboard review pending. This is a tier 1 presentation refinement, not a new product journey. PRs #218 and #223 also append adoption notes; reconcile those notes without overwriting. Rollback restores the prior disclosure layout.
+
+## Cnippet and Stealth selective adaptation — proposed, October 30, 2026
+
+Owner: portfolio maintainer. Extend PR #224 rather than create a competing About draft.
+- Cnippet reference: https://ui.cnippet.dev/ui/data/accordion (bordered and in-card examples). Adapt native ToolsMap details with bordered surfaces, open-state copper border, preserved summary markers, 44px targets and visible keyboard focus. Essential build cards remain visible; AI detail remains separate.
+- Stealth references: https://www.stealth.pm/ui/async-button and https://www.stealth.pm/ui/empty-state. Adapt InquiryForm's existing status handling: stable full-width action, pending announcement, focusable aria-disabled button with synchronous submission guard, durable outcome panel and direct email recovery on failure. HTTP non-success remains an error; failed drafts are retained. No new send workflow or email configuration change.
+- Empty/no-match recovery is already covered by ProjectsDirectory in draft PR #218, including Clear filters and its recorded interaction check. ToolkitExplorer has fixed workflow tabs, not search; do not introduce an irrelevant no-results view.
+- Error-summary reference https://www.stealth.pm/ui/error-summary is deferred: the three-field contact form retains native validation. Longer forms may justify summary-to-field focus later.
+- Both sources publish MIT licensing. This change uses original local code and patterns only; no upstream source/assets copied, no Base UI, Motion or NumberFlow installation. Existing Radix configuration, tokens and validation/backend remain.
+- Phone/tablet/desktop: wrapping native disclosures, existing one/two-column field grid and full-width 44px submit. No new animation or hidden initial content; motion-reduce disables button transition. Persistent live region announces progress/outcome; native summary handles keyboard expansion. Server configuration errors remain visible and are not interpreted as success.
+- Delivery tier 1: isolated refinement of existing UI states and styling, no new integration or product journey; no new Linear issue.
+- Verification: source reviewed; synthetic browser tests added for pending focus, duplicate-submit suppression, HTTP failure, retry success and network failure. Every mail request is intercepted and tests skip remote production runs. Full CI and actual viewport/zoom/screen-reader checks are pending. Local dependencies/installed Next docs unavailable; official current Next server/client documentation reviewed instead. No merge or production verification.
+- Rollback: revert the scoped ToolsMap/InquiryForm changes and contact-feedback test. Preserve append-only adoption notes from other open drafts when merging.
+
 ## Systems Engineering illustrations · 2026-10-30
 
 Owner: portfolio maintainer. Status: draft implementation, not merged or deployed.
