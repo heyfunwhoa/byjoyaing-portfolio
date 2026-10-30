@@ -1,5 +1,5 @@
 import { completePageMetadata } from "@/lib/page-metadata";
-import { BrandAvatar } from "@/components/brand-avatar";
+import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { ExperienceTimeline } from "@/components/experience-timeline";
 import { MaterialsInvitation } from "@/components/materials-invitation";
 import { PageMain } from "@/components/page-main";
@@ -55,7 +55,7 @@ export default function ExperiencePage() {
           </p>
         </div>
         <div className="mx-auto w-full max-w-[12rem]">
-          <BrandAvatar variant="leader" />
+          <OrbitStudyIllustration variant="experience" />
           <p className="editorial-eyebrow mt-3 text-center text-muted">Leader / Work</p>
         </div>
       </section>

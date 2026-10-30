@@ -1,6 +1,8 @@
 import Image from "next/image";
 
 const orbitStudySources = {
+  experience: "/brand/page-art/milestone-path.svg",
+  academy: "/brand/page-art/open-book.svg",
   projects: "/brand/page-art/connected-nodes.svg",
   "field-notes": "/brand/page-art/stacked-shapes.svg",
   "side-quests": "/brand/page-art/branching-path.svg",
@@ -13,7 +15,7 @@ type OrbitStudyIllustrationProps = {
   className?: string;
 };
 
-/** Decorative geometric artwork for the Projects, Field Notes and Side Quests collection headers. */
+/** Decorative geometric artwork for portfolio collection and learning headers. */
 export function OrbitStudyIllustration({
   variant,
   className = "",

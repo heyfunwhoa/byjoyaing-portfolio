@@ -5,7 +5,7 @@ import {
   getLessonGuidance,
   availabilityLabels,
 } from "@/lib/academy/lesson-guidance";
-import { BrandAvatar } from "@/components/brand-avatar";
+import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { DeliveryLifecycleLab } from "@/components/ai-academy/delivery-lifecycle-lab";
 import { PortfolioOsCaseStudy } from "@/components/ai-academy/portfolio-os-case-study";
 import { ProductRequestLab } from "@/components/ai-academy/product-request-lab";
@@ -139,7 +139,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
           </a>
         </div>
         <div className="mx-auto w-full max-w-[9rem] md:mx-0">
-          <BrandAvatar variant="builder" />
+          <OrbitStudyIllustration variant="academy" />
           <p className="editorial-eyebrow mt-3 text-center text-muted">
             Builder
           </p>
