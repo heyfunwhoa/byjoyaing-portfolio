@@ -97,6 +97,17 @@ export const componentOptions: ComponentOption[] = [
       "Pull into the data app when needed. Define row identifiers, server permissions, query behavior, and mobile summaries first.",
   },
   {
+    id: "relationship-map",
+    name: "Map relationships",
+    purpose: "Trace people and evidence-bearing relationships across a decision group.",
+    availability: "Available here",
+    parts: ["Node-and-edge graph", "Pan and zoom", "Relationship detail"],
+    apps: ["Portfolio"],
+    source: "https://reactflow.dev/",
+    adoption:
+      "The portfolio uses MIT-licensed @xyflow/react for the desktop stakeholder graph, with a grouped native-button layout on phone/tablet. Keep graph data read-only and show relationship evidence in text.",
+  },
+  {
     id: "search",
     name: "Find & choose",
     purpose: "Search a growing collection or select a specific entity.",
