@@ -190,3 +190,116 @@ Verification: metadata integrity and navigation browser regression tests added f
 - No imported third-party code, package, version or attribution obligation added. Hirael/Seam remain reference candidates, not installed libraries.
 - Verification: isolated TypeScript, esbuild and React/JSDOM interaction checks passed for all three states, keyboard radio movement, reading-state separation and unchanged saved progress. Full repository checks, 375/768/1280px browser review and 200% zoom remain pending; browser installation returned corrupt archives.
 - Production Design Lab 404 gate is retained. Roll back by removing the preview import/mount and file. Do not mount it publicly as real learner progress.
+
+## Page hierarchy adjustments — KRU-150 (proposed)
+
+- Owner: portfolio maintainer. Destinations: `/projects` (`components/projects-directory.tsx`), `/side-quests` (`app/side-quests/page.tsx`), `/ai-academy` (`components/ai-academy/academy.tsx`), `/about` (`app/about/page.tsx`), `/experience` (`app/experience/page.tsx`), and long `/work/*` case-study routes. Status: proposed until review and merge.
+- Task: let readers find a project by topic or stage, keep featured independent work ahead of the long tail, and choose a learning path once with enough context to start confidently.
+- Reuse existing `ProjectsDirectory` filter controls, public project registry/status labels, learning-path data, tokenized card styles, and native HTML disclosure. Adapt the local filter group to wrap and add a labeled search; keep the six learning paths in an optional disclosure so lesson readers can start directly, and add a jump link to the lesson catalog; put only supporting Side Quest items behind a disclosure. Add one small shared `CaseStudyContents` component because multiple long case pages need the same responsive anchor navigation and disclosure-fragment behavior. No dependency, animation, or imported primitive.
+- Use existing brand surface tokens by context: sage groups project controls, mist marks supporting research explorations, and clay appears only inside the expanded personal-interest disclosure. These are existing palette roles, not new brand colors; copper remains for actions and links.
+- On `/experience`, remove the expandable `CareerRail` overview because the detailed role-by-role timeline immediately repeats its seven roles. On long case studies, reuse the existing breadcrumb, project kind, status, title, summary, and role/stage facts, then add shared `CaseStudyContents` links to real section IDs. Native disclosure sections already open on fragment navigation; the common contents row wraps on small screens and keeps links keyboard accessible.
+- Phone: stacked project selectors/search and one-column path/Side Quest cards. The learning-path disclosure preserves the full descriptions without pushing the lesson catalog below six cards. A keyboard-accessible anchor jumps directly to the lesson tabs. Academy sections use a roving tab stop with Left/Right and Home/End keys, `aria-selected`, and a labeled tab panel. Tablet: existing grid breakpoints; desktop: wrapped filter buttons and three-column learning-path cards. Native inputs, buttons, and `details/summary` preserve keyboard access and visible focus; no motion is added. Search has a polite result count and clear action; the no-match message remains explicit. Loading, network, error, and permission states do not apply to these local collections.
+- Verification: `git diff --check` only. Automated tests/build, browser interaction, 375/768/1280px layout, keyboard, and 200% zoom checks remain pending and must be reviewed before merge. Revert the focused page/component changes to roll back.
+
+## Homepage proof-card layout — KRU-150 (proposed)
+
+- Owner: portfolio maintainer. Destination: `/` (`app/page.tsx` and `components/editorial-bento.tsx`). Status: proposed until review/merge.
+- Task: help hiring readers scan current and earlier experience, then open the most relevant public evidence directly.
+- Adapt the existing Work card/border treatment and `roles` data into three role-proof cards for Truffle Security, Rapid7, and Forcepoint. Link each card to an existing Work section or the Experience timeline. Keep the established three-destination `EditorialBento` and make its descriptions more specific. Remove a third hero link that duplicates the About action. No new component, dependency, animation, or palette is needed.
+- Phone uses one stacked column; from 640px it uses two columns with the last card centered at half width; from 1024px it uses three equal columns. Cards use semantic articles/headings, visible 44px links, and the source order Truffle Security, Rapid7, Forcepoint. Cards remain separately clickable only through their explicit links.
+- Verification: source review and `git diff --check` only. Local browser, 375/768/1280px viewport, keyboard/focus, and 200% zoom review remain pending. Revert the credibility-grid markup and copy changes to roll back.
+
+## About page section navigation — KRU-150 (proposed)
+
+- Owner: portfolio maintainer. Destination: `/about` (`app/about/page.tsx`). Status: proposed until review/merge.
+- Task: help readers jump to the philosophy, working approach, career and education, or tools sections on the long About page.
+- Adapt the existing text-link and wrapping-navigation pattern; keep it in normal document flow directly below the orbit hero. Use existing section IDs or add scroll-aware IDs. No sticky behavior, client state, new component, dependency, color, or animation.
+- Phone and tablet links wrap; desktop keeps one compact row. Native anchors have descriptive names, 44px minimum height, visible focus, and `scroll-mt-24` destinations. No loading or error states apply.
+- Verification: source review and `git diff --check` only. Browser, keyboard, 375/768/1280px viewport, and 200% zoom checks remain pending. Revert the nav and the two section IDs to roll back.
+
+## Case-study and card polish · 2026-10-30
+
+Status: implemented in draft PR #218, not merged. Owner: portfolio maintainer.
+
+- Task: identify a project's destination and personal contribution in /projects, and scan evidence in the shared ProfessionalCaseStudy on /work.
+- Reuse/adapt: existing ProjectsDirectory cards and editorial/CaseBandSteps, with the existing sage, ivory and copper tokens. Shadcnblocks case-study/card compositions and Emerald card affordances were references, not source imports. Neither library was installed; no paid block or upstream source copied, no new dependency.
+- Cards retain current status, summaries and destinations. The footer names the case study, role has a visible label, hover and keyboard focus both accent the border. Preview/tools stays a native disclosure with a 44px summary target.
+- Case-study evidence gets a separate sage surface and long-text wrapping. All five existing fields remain; optional story depth uses the existing native disclosure with a 44px target. No invented outcome, demo destination or screenshot.
+- Existing one/two/three-column directory breakpoints retained; evidence spans both columns on wider screens. Reduced motion disables the card transition. No loading or network state added; existing search/no-match recovery retained.
+- Delivery tier 1: presentation and accessibility refinement of existing components, not a new template system. No new issue.
+- Verification: three isolated React static-render tests passed using synthetic directory data and mocked unrelated components/navigation. They check destination/role, no-match recovery, visible evidence and preservation of all story fields. CaseBandSteps also passed isolated strict TypeScript. These are not browser tests or a full app build. Existing previous-head PR checks do not certify this revision.
+- Pending: fresh repository CI and browser review at 375/768/1280px, keyboard native disclosure/focus, contrast, 200% zoom and screen reader.
+- Rollback: revert this refinement's two component commits and this record.
+
+## Site-build explanation: proposed adoption, October 29, 2026
+
+Owner: portfolio maintainer. Source/destination: existing components/tools-map.tsx, mounted by About. Adapt the existing native build disclosure and preserve siteHowBuilt and compact mode. Catalog family: disclosure. Four plain-text technology badges and three explanation groups keep the build understandable; no new badge component or status vocabulary. ShieldCN is a grouping reference; Magic UI Pro remains a layout reference only. No third-party source, asset, remote request or dependency added.
+
+Phone/tablet/desktop: existing one/two-column container; badges and links wrap without fixed heights. Native summary and anchors remain keyboard-operable, with global focus styles and 44px summary/link targets. Text stays visible when motion is disabled because no animation is added. Static content has no loading/error/permission state. Public copy claims neither email delivery nor paid-product adoption.
+
+Verification: source reviewed against package.json, toolkit registry and About call site. Full CI and manual viewport/zoom/keyboard checks pending. PR #218 changes parent About layout and PR #223 appends to this adoption document; preserve both at merge. Rollback removes this scoped disclosure expansion and adoption note.
+
+## Projects directory scroll stability · 2026-10-30
+
+Reused ProjectsDirectory, the existing wrapping filter groups, mobile native selects, and native preview disclosures. Filter/search edits now replace browser history through Next's native-history integration instead of starting server navigation. The URL is the shared filter source and retains existing unrelated query parameters and fragments. Removed the query-dependent component key so retained cards keep their disclosure state. Clear filters remains mounted and uses aria-disabled with a guarded handler when inactive, preserving focus and layout after clearing.
+
+No dependency or motion added. Browser regression coverage includes focus/scroll stability, retained disclosures, no filter-triggered route requests, overflow, typed search spaces, reload, browser back, and clearing. Desktop/tablet/mobile use the existing site-test projects.
+
+## Visible build cards: proposed refinement, October 29, 2026
+
+Source/destination: components/tools-map.tsx in the existing About toolkit; owner: portfolio maintainer. Reuse decision: adapt the just-merged PR #222 content into a visible summary and three native definition-list cards. ShieldCN badge grouping and Magic UI feature-card composition are references; all code is original and uses existing tokens. No paid source, asset, dependency, motion or new component family.
+
+Option A retains the entire explanation inside a disclosure; option B exposes the four tool labels and three roles, keeping the longer siteHowBuilt boundary note in a native disclosure. Choose B so readers can understand the stack without opening a panel. Compact mode remains unchanged.
+
+Phone: one card column with wrapping labels/links. Tablet/desktop: three equal role cards at md and above. Natural heights, min-width zero, no hover-only content or autoplay. Definition terms/descriptions preserve reading order; summary and links retain focus styles and 44px targets. The AI disclosure stays separate. Static content has no new data/loading/error states.
+
+Verification: source review confirms preserved toolkit, siteHowBuilt, compact mode and destinations. CI and actual browser/zoom/keyboard review pending. This is a tier 1 presentation refinement, not a new product journey. PRs #218 and #223 also append adoption notes; reconcile those notes without overwriting. Rollback restores the prior disclosure layout.
+
+## Cnippet and Stealth selective adaptation — proposed, October 30, 2026
+
+Owner: portfolio maintainer. Extend PR #224 rather than create a competing About draft.
+- Cnippet reference: https://ui.cnippet.dev/ui/data/accordion (bordered and in-card examples). Adapt native ToolsMap details with bordered surfaces, open-state copper border, preserved summary markers, 44px targets and visible keyboard focus. Essential build cards remain visible; AI detail remains separate.
+- Stealth references: https://www.stealth.pm/ui/async-button and https://www.stealth.pm/ui/empty-state. Adapt InquiryForm's existing status handling: stable full-width action, pending announcement, focusable aria-disabled button with synchronous submission guard, durable outcome panel and direct email recovery on failure. HTTP non-success remains an error; failed drafts are retained. No new send workflow or email configuration change.
+- Empty/no-match recovery is already covered by ProjectsDirectory in draft PR #218, including Clear filters and its recorded interaction check. ToolkitExplorer has fixed workflow tabs, not search; do not introduce an irrelevant no-results view.
+- Error-summary reference https://www.stealth.pm/ui/error-summary is deferred: the three-field contact form retains native validation. Longer forms may justify summary-to-field focus later.
+- Both sources publish MIT licensing. This change uses original local code and patterns only; no upstream source/assets copied, no Base UI, Motion or NumberFlow installation. Existing Radix configuration, tokens and validation/backend remain.
+- Phone/tablet/desktop: wrapping native disclosures, existing one/two-column field grid and full-width 44px submit. No new animation or hidden initial content; motion-reduce disables button transition. Persistent live region announces progress/outcome; native summary handles keyboard expansion. Server configuration errors remain visible and are not interpreted as success.
+- Delivery tier 1: isolated refinement of existing UI states and styling, no new integration or product journey; no new Linear issue.
+- Verification: source reviewed; synthetic browser tests added for pending focus, duplicate-submit suppression, HTTP failure, retry success and network failure. Every mail request is intercepted and tests skip remote production runs. Full CI and actual viewport/zoom/screen-reader checks are pending. Local dependencies/installed Next docs unavailable; official current Next server/client documentation reviewed instead. No merge or production verification.
+- Rollback: revert the scoped ToolsMap/InquiryForm changes and contact-feedback test. Preserve append-only adoption notes from other open drafts when merging.
+
+## Systems Engineering illustrations · 2026-10-30
+
+Owner: portfolio maintainer. Status: draft implementation, not merged or deployed.
+Destination: /ai-academy/systems, components/academy/systems-illustrations.tsx.
+
+- Task: give readers three concrete visual entry points before the existing planned module outlines. Reuse the page's figure/card conventions, responsive grid and canonical ivory/charcoal/copper/sage tokens. No new interaction or template system.
+- References: https://devl.dev/illustrations/webhook-relay, https://devl.dev/illustrations/server-rack and https://devl.dev/illustrations/shield-lock. Their pages identify MIT licensing and Motion dependencies. Webhook registry source was inspected at https://devl.dev/r/webhook-relay.json; downloaded JSON SHA-256 29fd06f44e8266853bf5e242874182345efe07bc3b0dedf438b1b3672875a8ac. The web reader could not retrieve the registry but a subsequent HTTP download succeeded.
+- Decision: original, static SVG interpretations of these concepts, not imports or copies of devl code/assets. No Motion, Base UI, registry installation or additional package. No upstream source copied, so no copied-code license notice is introduced.
+- Webhook scene explains source/relay/receivers, bounded retries and duplicate-event handling; receipt does not establish downstream completion. Server scene is explicitly a metaphor for API/worker/database roles. Access scene distinguishes authentication from authorization and states that enforcement belongs on the server.
+- Illustrations are explicitly examples, not telemetry, security results, a scanner or working infrastructure. Planned modules/labs retain their existing labels and content.
+- Phone: all figures stack; SVGs scale to the container. Tablet: webhook image/caption sit side by side. Desktop: webhook spans the row, with infrastructure/access cards below. No fixed text heights or fixed-width SVGs.
+- Decorative SVGs are aria-hidden and non-focusable; all meaning is in visible HTML captions. No hover-only information, timers, autoplay, animation, motion package, network request, persistence or controls. Reduced motion therefore shows the same complete content. Loading/error/permission states are N/A.
+- Delivery tier 1: isolated illustrative presentation addition, not a new Academy lesson journey. No new Linear issue.
+- Verification: isolated strict TypeScript, Vite/Tailwind component build, and static React render check passed (three figures/SVGs and visible explanatory/scope text). Full repository CI and actual route browser review pending, including 375/768/1280px, 200% zoom, contrast and screen-reader reading order.
+- Rollback: remove the page import/mount and component. No data migration. Preserve independent append-only adoption notes from other drafts.
+
+## Interactive systems examples · KRU-168 · 2026-10-30
+
+This supersedes the static-only scope above for the two selected examples. Status: implemented in PR #225, not merged. User explicitly approved this narrow extension; the other planned labs remain planned. Delivery tier 2, baseline tier A. Tracking: https://linear.app/krusty/issue/KRU-168
+
+- Existing WebhookScene and access illustration are reused inside the same component. New pure fixture logic lives in lib/academy/systems-demo.ts. No third-party source copied, additional package, real webhook, auth check, model call, timer or persistent state.
+- Explicit advance controls teach initial failure, backoff, successful retry and repeated delivery of demo-001. Business actions stay at one across duplicates. Reset restores all counters. The middle receiver changes from a waiting symbol to a check; the illustration remains decorative and the complete state is visible in text.
+- Native radio group distinguishes simulated 401, 403 and 200 outcomes. Every explanation states the relevant identity/record-permission scope. No real permissions change. Page reload resets both examples.
+- Existing verified routes /ai-academy/journeys/follow-one-click and /ai-academy/programming provide next learning steps. No new catalog or private source publication.
+- Buttons and radio-label targets are at least 44px; status regions announce changes. Focus stays on the activated control; radio keys are native. No animation, autoplay, delays or hover-only content. Existing responsive layout retained.
+- Verified locally: four node tests for transitions, repeated duplicate suppression, initial fixture immutability and distinct access outcomes; isolated strict TypeScript and Vite/Tailwind component build. Added tests/site/systems-illustrations.spec.ts for real-route keyboard, reset, repeated duplicates, access choices, links and overflow at 375/768/1280px.
+- Browser execution remains pending: local Chromium installation failed with a corrupt/empty archive. Prior static head 2bc24ebb5547cc324c27abb182e28e9631dbaa6d passed CI, Security scans, Semgrep and bounded Visual QA; those results do not certify this new interaction.
+- Full current-head CI and manual zoom/contrast/screen-reader review required before release. Rollback this interaction commit to retain the prior static figures.
+
+
+## Explanatory systems graphics · KRU-168 · October 29, 2026
+
+Extends PR #225 after user approval. Adapt the existing systems component, state helper, semantic lists and card tokens; no third-party source, new package or motion. Destination remains /ai-academy/systems. The webhook gains an ordered delivery timeline with explicit Upcoming/Current step/Completed text and aria-current. The access illustration becomes a branching HTML decision diagram reflecting the existing radio choice, with a textual Selected outcome marker. Infrastructure becomes a labeled API → worker → database example, explicitly one possible flow. No new app or simulated production telemetry.
+
+Phone: vertically stacked steps and decision branches. Tablet: access branches may sit side by side; at narrower desktop card widths they stack again. No fixed text heights, canvas or SVG text. Native controls and polite status regions retain keyboard behavior; diagram updates add no live regions or motion. Extend existing route tests to assert timeline and selected branch states at all existing widths. Prior commit dcf39d4 passed full CI (206 browser tests passed, one skipped) and manual interaction review; new-commit checks pending. Manual zoom, contrast and screen-reader review remain separate outstanding checks. Rollback this graphics commit to restore prior illustrations and controls.

@@ -5,6 +5,7 @@ import { CoverageExplorer } from "@/components/coverage-explorer";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
+import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 
@@ -51,6 +52,15 @@ export function AtlasCase() {
         </div>
       </section>
 
+      <CaseStudyContents
+        sections={[
+          { id: "comparison", label: "Compare coverage" },
+          { id: "read-the-cell", label: "Read a cell" },
+          { id: "attribution", label: "Sources and attribution" },
+          { id: "not-in-repository", label: "Scope limits" },
+        ]}
+      />
+
       <PortfolioExample key="detector-coverage-atlas" example={portfolioExamples["detector-coverage-atlas"]} />
 
       <ProjectTechnologyStack slug="detector-coverage-atlas" />
@@ -66,7 +76,7 @@ export function AtlasCase() {
         </div>
       </section>
 
-      <section className="border-b border-border py-16">
+      <section id="read-the-cell" className="scroll-mt-24 border-b border-border py-16">
         <p className="text-sm font-medium text-muted">03 / How to read a cell</p>
         <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-5xl">Gray is not a gap.</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -83,7 +93,7 @@ export function AtlasCase() {
         </div>
       </section>
 
-      <section className="border-b border-border py-12">
+      <section id="attribution" className="scroll-mt-24 border-b border-border py-12">
         <p className="text-sm font-medium text-muted">04 / Open-source attribution and original contribution</p>
         <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">Independent catalog, credited upstream source.</h2>
         <p className="mt-4 max-w-2xl leading-7 text-muted">
@@ -99,7 +109,7 @@ export function AtlasCase() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section id="not-in-repository" className="scroll-mt-24 py-16">
         <p className="text-sm font-medium text-muted">05 / Not in this repository</p>
         <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-5xl">The parser is a note, not a job.</h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">

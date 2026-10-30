@@ -5,6 +5,7 @@ import { PageMain } from "@/components/page-main";
 import { RelatedWork } from "@/components/related-work";
 import { SampleRecordView } from "@/components/sample-record";
 import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
+import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { salesProject, sampleFor } from "@/lib/sales";
@@ -33,10 +34,18 @@ export function FieldAssetCase({
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">{project.sales.salesQuestion}</p>
       </section>
+      <CaseStudyContents
+        sections={[
+          { id: "used-in-field", label: "Field evidence" },
+          { id: "where-it-stands", label: "Current status" },
+          { id: "outcome", label: "Outcome" },
+        ]}
+      />
+
       {slug === "truffle-camp" ? <PortfolioExample key={slug} example={portfolioExamples[slug]} /> : null}
       <ProjectTechnologyStack slug={slug} />
 
-      <section className="grid gap-4 border-b border-border py-12 md:grid-cols-2">
+      <section id="used-in-field" className="scroll-mt-24 grid gap-4 border-b border-border py-12 md:grid-cols-2">
         <article className="rounded-2xl border border-border bg-card p-5">
           <h2 className="text-sm font-medium">What was used in the field</h2>
           <p className="mt-3 text-sm leading-6 text-muted">
@@ -51,7 +60,7 @@ export function FieldAssetCase({
         </article>
       </section>
 
-      <section className="border-b border-border py-12">
+      <section id="where-it-stands" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="text-lg font-semibold">Where it stands</h2>
         <p className="mt-3 max-w-2xl text-base leading-7 text-muted">{project.sales.maturityDetail}</p>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-muted">{project.sales.workingToday}</p>
@@ -62,7 +71,7 @@ export function FieldAssetCase({
         ) : null}
       </section>
 
-      <section className="py-12">
+      <section id="outcome" className="scroll-mt-24 py-12">
         <p className="max-w-2xl text-sm leading-6 text-muted">{project.sales.result.text}</p>
         <RelatedWork slug={slug} />
       </section>
