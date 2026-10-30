@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { accessExamples, advanceDelivery, initialDelivery, type AccessExample } from "@/lib/academy/systems-demo";
+import { accessExamples, advanceDelivery, initialDelivery, type AccessExample, type DeliveryState } from "@/lib/academy/systems-demo";
 
 /**
- * Static editorial illustrations inspired by devl's Webhook Relay, Server Rack
- * and Shield Lock concepts. Original SVG markup; no upstream code or assets copied.
+ * Original explanatory graphics, extending the devl-inspired webhook scene.
+ * Semantic HTML diagrams reflect local fixture state; no upstream assets copied.
  * See docs/design/component-adoption.md for source review and scope.
  */
 function WebhookScene({ phase }: { phase: string }) {
@@ -34,33 +34,85 @@ function WebhookScene({ phase }: { phase: string }) {
   );
 }
 
-function ServerScene() {
+function DeliveryTimeline({ delivery }: { delivery: DeliveryState }) {
+  const current = delivery.phase === "ready" ? -1 : delivery.phase === "failed" ? 0
+    : delivery.phase === "waiting" ? 1 : delivery.duplicates > 0 ? 3 : 2;
+  const steps = [
+    ["First attempt fails", "No business action was performed."],
+    ["Wait before retrying", "Backoff avoids immediately repeating a failed request."],
+    ["Retry succeeds", "Event demo-001 is processed once."],
+    ["Duplicate is skipped", "The event ID prevents repeating the business action."],
+  ];
   return (
-    <svg aria-hidden="true" focusable="false" viewBox="0 0 280 180" className="mx-auto h-auto w-full max-w-72">
-      <ellipse cx="140" cy="155" rx="82" ry="12" className="fill-background" />
-      <rect x="65" y="19" width="150" height="132" rx="16" className="fill-background stroke-border" />
-      {[32,69,106].map(y => (
-        <g key={y}>
-          <rect x="77" y={y} width="126" height="31" rx="8" className="fill-card stroke-border" />
-          <circle cx="94" cy={y+15} r="4" className="fill-accent" />
-          <path d={`M108 ${y+11}h48m-48 8h32m33-11v13m6-13v13m6-13v13`} className="fill-none stroke-muted" strokeWidth="2" />
-        </g>
-      ))}
-      <path d="M116 151v13m48-13v13" className="stroke-foreground" strokeWidth="3" />
-    </svg>
+    <div className="mt-5">
+      <p className="text-sm font-semibold">Delivery timeline</p>
+      <ol aria-label="Delivery timeline" className="mt-3 space-y-3 border-l-2 border-border pl-4">
+        {steps.map(([title, detail], index) => (
+          <li key={title} aria-current={index === current ? "step" : undefined}
+            className={`rounded-xl border p-3 ${index === current ? "border-accent bg-card" : "border-border"}`}>
+            <p className="text-xs font-medium text-accent">
+              {index + 1} / {index === current ? "Current step" : index < current ? "Completed" : "Upcoming"}
+            </p>
+            <p className="mt-1 text-sm font-semibold">{title}</p>
+            <p className="mt-1 text-xs leading-5 text-muted">{detail}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }
 
-function AccessScene() {
+function ServerScene() {
   return (
-    <svg aria-hidden="true" focusable="false" viewBox="0 0 280 180" className="mx-auto h-auto w-full max-w-72">
-      <path d="M140 19l65 25v43c0 35-26 58-65 76-39-18-65-41-65-76V44z" className="fill-background stroke-accent" strokeWidth="2" />
-      <path d="M140 30l54 21v36c0 28-20 48-54 64-34-16-54-36-54-64V51z" className="fill-none stroke-border" />
-      <rect x="114" y="77" width="52" height="42" rx="10" className="fill-accent" />
-      <path d="M125 77V64a15 15 0 0130 0v13" className="fill-none stroke-foreground" strokeWidth="4" />
-      <circle cx="140" cy="94" r="4" className="fill-accent-foreground" />
-      <path d="M140 97v9" className="stroke-accent-foreground" strokeWidth="3" />
-    </svg>
+    <ol aria-label="Example background job flow" className="mb-5 space-y-2">
+      {[
+        ["API", "Receives and validates a request, then queues a job."],
+        ["Worker", "Picks up the queued job and performs the background work."],
+        ["Database", "Stores the result so the application can retrieve it."],
+      ].map(([name, detail], index) => (
+        <li key={name}>
+          {index > 0 && <p aria-hidden="true" className="mb-2 text-center text-accent">↓</p>}
+          <div className="rounded-xl border border-border bg-surface-sage p-4">
+            <p className="text-sm font-semibold">{index + 1}. {name}</p>
+            <p className="mt-1 text-sm leading-6 text-muted">{detail}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function AccessScene({ access }: { access: AccessExample }) {
+  const branch = (selected: boolean) => `rounded-lg border p-3 ${selected ? "border-accent bg-surface-sage" : "border-border bg-card"}`;
+  return (
+    <div role="group" aria-label="Access decision diagram" className="mt-4 rounded-xl border border-border bg-background p-4">
+      <p className="text-sm font-semibold">Request to edit a record</p>
+      <p aria-hidden="true" className="my-2 text-accent">↓</p>
+      <p className="text-sm font-semibold">1. Is the requester signed in?</p>
+      <div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+        <div className={branch(access === "anonymous")} data-selected={access === "anonymous"}>
+          <p className="text-xs font-medium">No → 401</p>
+          <p className="mt-1 text-sm">Sign in first.</p>
+          {access === "anonymous" && <p className="mt-2 text-xs font-semibold text-accent">Selected outcome</p>}
+        </div>
+        <div className={branch(access !== "anonymous")}>
+          <p className="text-xs font-medium">Yes → check permission</p>
+          <p className="mt-2 text-sm font-semibold">2. Can they edit this record?</p>
+          <div className="mt-3 space-y-3">
+            <div className={branch(access === "member")} data-selected={access === "member"}>
+              <p className="text-xs font-medium">No → 403</p>
+              <p className="mt-1 text-sm">Permission required.</p>
+              {access === "member" && <p className="mt-2 text-xs font-semibold text-accent">Selected outcome</p>}
+            </div>
+            <div className={branch(access === "editor")} data-selected={access === "editor"}>
+              <p className="text-xs font-medium">Yes → 200</p>
+              <p className="mt-1 text-sm">Sample edit allowed.</p>
+              {access === "editor" && <p className="mt-2 text-xs font-semibold text-accent">Selected outcome</p>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -89,7 +141,7 @@ export function SystemsIllustrations() {
       <div className="mt-6 grid min-w-0 gap-4 lg:grid-cols-2">
         <figure className="min-w-0 rounded-2xl border border-border bg-surface-sage p-5 sm:p-6 lg:col-span-2">
           <div className="grid items-center gap-6 md:grid-cols-2">
-            <div className="min-w-0"><WebhookScene phase={delivery.phase} /></div>
+            <div className="min-w-0"><WebhookScene phase={delivery.phase} /><DeliveryTimeline delivery={delivery} /></div>
             <figcaption className="min-w-0">
               <p className="text-xs font-medium text-accent">01 / Webhook delivery</p>
               <h3 className="mt-2 text-xl font-semibold">One event. Several destinations.</h3>
@@ -130,12 +182,11 @@ export function SystemsIllustrations() {
               An API receives requests, a worker handles background jobs, and a database stores records. These roles can share infrastructure or run separately.
             </p>
             <p className="mt-3 text-xs leading-5 text-muted">
-              The rack is a visual metaphor. It does not imply that each role needs its own physical server.
+              One possible background-job flow, not a required architecture. These roles do not each need a separate physical server.
             </p>
           </figcaption>
         </figure>
         <figure className="min-w-0 rounded-2xl border border-border bg-card p-5 sm:p-6">
-          <AccessScene />
           <figcaption>
             <p className="text-xs font-medium text-accent">03 / Access checks</p>
             <h3 className="mt-2 text-xl font-semibold">Identity first. Permission next.</h3>
@@ -154,6 +205,7 @@ export function SystemsIllustrations() {
                 ))}
               </div>
             </fieldset>
+            <AccessScene access={access} />
             <div role="status" aria-live="polite" aria-atomic="true" className="mt-3 rounded-xl bg-surface-sage p-4">
               <p className="text-sm font-semibold">{accessExamples[access].result}</p>
               <p className="mt-2 text-sm leading-6">{accessExamples[access].explanation}</p>
@@ -163,7 +215,7 @@ export function SystemsIllustrations() {
             </p>
             <a href="/ai-academy/programming" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">Explore programming foundations →</a>
             <p className="mt-3 text-xs leading-5 text-muted">
-              A lock icon is not evidence of protection. The application must enforce the checks on the server.
+              This diagram explains a decision; the application must enforce both checks on the server.
             </p>
           </figcaption>
         </figure>
