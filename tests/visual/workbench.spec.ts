@@ -63,7 +63,7 @@ test("library preserves filters across cards/table and resets an empty result", 
     page.getByRole("heading", { name: "No matching components" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Reset library filters" }).click();
-  await expect(page.getByRole("status")).toContainText("10 options");
+  await expect(page.getByRole("status")).toContainText("16 options");
   await expect(page.getByRole("table")).toBeVisible();
 });
 
