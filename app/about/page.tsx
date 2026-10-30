@@ -46,7 +46,28 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-border py-12">
+      <nav aria-label="On this page" className="border-b border-border py-4">
+        <p className="editorial-eyebrow text-muted">On this page</p>
+        <ul className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+          {[
+            { href: "#philosophy", label: "Philosophy" },
+            { href: "#how-i-work", label: "How I work" },
+            { href: "#career-progression", label: "Career & education" },
+            { href: "#technologies", label: "Tools & systems" },
+          ].map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className="inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-accent underline underline-offset-4 hover:bg-surface-sage focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <section id="philosophy" className="scroll-mt-24 border-b border-border py-12">
         <p className="orbital-section-label text-sm font-medium text-muted">
           {aboutPage.philosophyLabel}
         </p>
@@ -88,7 +109,7 @@ export default function AboutPage() {
         <CapabilityOrbit />
       </section>
 
-      <section className="border-b border-border py-12">
+      <section id="career-progression" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">
           {aboutPage.careerHeading}
         </h2>
@@ -183,20 +204,22 @@ export default function AboutPage() {
           <summary className="min-h-11 cursor-pointer py-3 font-medium">
             {aboutPage.beyondHeading}
           </summary>
-          <ul className="mt-2 space-y-3 leading-6">
-            {aboutPage.interests.map((interest) => (
-              <li key={interest.id}>
-                <span className="font-medium text-foreground">
-                  {interest.title}.
-                </span>{" "}
-                {interest.detail}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 leading-6">
-            <span className="font-medium">{aboutPage.valuesLabel}:</span>{" "}
-            {aboutPage.values.join(" · ")}
-          </p>
+          <div className="mt-2 rounded-xl bg-surface-clay p-4">
+            <ul className="space-y-3 leading-6">
+              {aboutPage.interests.map((interest) => (
+                <li key={interest.id}>
+                  <span className="font-medium text-foreground">
+                    {interest.title}.
+                  </span>{" "}
+                  {interest.detail}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 leading-6">
+              <span className="font-medium">{aboutPage.valuesLabel}:</span>{" "}
+              {aboutPage.values.join(" · ")}
+            </p>
+          </div>
         </details>
       </section>
 

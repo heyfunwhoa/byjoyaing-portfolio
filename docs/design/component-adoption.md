@@ -191,6 +191,46 @@ Verification: metadata integrity and navigation browser regression tests added f
 - Verification: isolated TypeScript, esbuild and React/JSDOM interaction checks passed for all three states, keyboard radio movement, reading-state separation and unchanged saved progress. Full repository checks, 375/768/1280px browser review and 200% zoom remain pending; browser installation returned corrupt archives.
 - Production Design Lab 404 gate is retained. Roll back by removing the preview import/mount and file. Do not mount it publicly as real learner progress.
 
+## Page hierarchy adjustments — KRU-150 (proposed)
+
+- Owner: portfolio maintainer. Destinations: `/projects` (`components/projects-directory.tsx`), `/side-quests` (`app/side-quests/page.tsx`), `/ai-academy` (`components/ai-academy/academy.tsx`), `/about` (`app/about/page.tsx`), `/experience` (`app/experience/page.tsx`), and long `/work/*` case-study routes. Status: proposed until review and merge.
+- Task: let readers find a project by topic or stage, keep featured independent work ahead of the long tail, and choose a learning path once with enough context to start confidently.
+- Reuse existing `ProjectsDirectory` filter controls, public project registry/status labels, learning-path data, tokenized card styles, and native HTML disclosure. Adapt the local filter group to wrap and add a labeled search; keep the six learning paths in an optional disclosure so lesson readers can start directly, and add a jump link to the lesson catalog; put only supporting Side Quest items behind a disclosure. Add one small shared `CaseStudyContents` component because multiple long case pages need the same responsive anchor navigation and disclosure-fragment behavior. No dependency, animation, or imported primitive.
+- Use existing brand surface tokens by context: sage groups project controls, mist marks supporting research explorations, and clay appears only inside the expanded personal-interest disclosure. These are existing palette roles, not new brand colors; copper remains for actions and links.
+- On `/experience`, remove the expandable `CareerRail` overview because the detailed role-by-role timeline immediately repeats its seven roles. On long case studies, reuse the existing breadcrumb, project kind, status, title, summary, and role/stage facts, then add shared `CaseStudyContents` links to real section IDs. Native disclosure sections already open on fragment navigation; the common contents row wraps on small screens and keeps links keyboard accessible.
+- Phone: stacked project selectors/search and one-column path/Side Quest cards. The learning-path disclosure preserves the full descriptions without pushing the lesson catalog below six cards. A keyboard-accessible anchor jumps directly to the lesson tabs. Academy sections use a roving tab stop with Left/Right and Home/End keys, `aria-selected`, and a labeled tab panel. Tablet: existing grid breakpoints; desktop: wrapped filter buttons and three-column learning-path cards. Native inputs, buttons, and `details/summary` preserve keyboard access and visible focus; no motion is added. Search has a polite result count and clear action; the no-match message remains explicit. Loading, network, error, and permission states do not apply to these local collections.
+- Verification: `git diff --check` only. Automated tests/build, browser interaction, 375/768/1280px layout, keyboard, and 200% zoom checks remain pending and must be reviewed before merge. Revert the focused page/component changes to roll back.
+
+## Homepage proof-card layout — KRU-150 (proposed)
+
+- Owner: portfolio maintainer. Destination: `/` (`app/page.tsx` and `components/editorial-bento.tsx`). Status: proposed until review/merge.
+- Task: help hiring readers scan current and earlier experience, then open the most relevant public evidence directly.
+- Adapt the existing Work card/border treatment and `roles` data into three role-proof cards for Truffle Security, Rapid7, and Forcepoint. Link each card to an existing Work section or the Experience timeline. Keep the established three-destination `EditorialBento` and make its descriptions more specific. Remove a third hero link that duplicates the About action. No new component, dependency, animation, or palette is needed.
+- Phone uses one stacked column; from 640px it uses two columns with the last card centered at half width; from 1024px it uses three equal columns. Cards use semantic articles/headings, visible 44px links, and the source order Truffle Security, Rapid7, Forcepoint. Cards remain separately clickable only through their explicit links.
+- Verification: source review and `git diff --check` only. Local browser, 375/768/1280px viewport, keyboard/focus, and 200% zoom review remain pending. Revert the credibility-grid markup and copy changes to roll back.
+
+## About page section navigation — KRU-150 (proposed)
+
+- Owner: portfolio maintainer. Destination: `/about` (`app/about/page.tsx`). Status: proposed until review/merge.
+- Task: help readers jump to the philosophy, working approach, career and education, or tools sections on the long About page.
+- Adapt the existing text-link and wrapping-navigation pattern; keep it in normal document flow directly below the orbit hero. Use existing section IDs or add scroll-aware IDs. No sticky behavior, client state, new component, dependency, color, or animation.
+- Phone and tablet links wrap; desktop keeps one compact row. Native anchors have descriptive names, 44px minimum height, visible focus, and `scroll-mt-24` destinations. No loading or error states apply.
+- Verification: source review and `git diff --check` only. Browser, keyboard, 375/768/1280px viewport, and 200% zoom checks remain pending. Revert the nav and the two section IDs to roll back.
+
+## Case-study and card polish · 2026-10-30
+
+Status: implemented in draft PR #218, not merged. Owner: portfolio maintainer.
+
+- Task: identify a project's destination and personal contribution in /projects, and scan evidence in the shared ProfessionalCaseStudy on /work.
+- Reuse/adapt: existing ProjectsDirectory cards and editorial/CaseBandSteps, with the existing sage, ivory and copper tokens. Shadcnblocks case-study/card compositions and Emerald card affordances were references, not source imports. Neither library was installed; no paid block or upstream source copied, no new dependency.
+- Cards retain current status, summaries and destinations. The footer names the case study, role has a visible label, hover and keyboard focus both accent the border. Preview/tools stays a native disclosure with a 44px summary target.
+- Case-study evidence gets a separate sage surface and long-text wrapping. All five existing fields remain; optional story depth uses the existing native disclosure with a 44px target. No invented outcome, demo destination or screenshot.
+- Existing one/two/three-column directory breakpoints retained; evidence spans both columns on wider screens. Reduced motion disables the card transition. No loading or network state added; existing search/no-match recovery retained.
+- Delivery tier 1: presentation and accessibility refinement of existing components, not a new template system. No new issue.
+- Verification: three isolated React static-render tests passed using synthetic directory data and mocked unrelated components/navigation. They check destination/role, no-match recovery, visible evidence and preservation of all story fields. CaseBandSteps also passed isolated strict TypeScript. These are not browser tests or a full app build. Existing previous-head PR checks do not certify this revision.
+- Pending: fresh repository CI and browser review at 375/768/1280px, keyboard native disclosure/focus, contrast, 200% zoom and screen reader.
+- Rollback: revert this refinement's two component commits and this record.
+
 ## Site-build explanation: proposed adoption, October 29, 2026
 
 Owner: portfolio maintainer. Source/destination: existing components/tools-map.tsx, mounted by About. Adapt the existing native build disclosure and preserve siteHowBuilt and compact mode. Catalog family: disclosure. Four plain-text technology badges and three explanation groups keep the build understandable; no new badge component or status vocabulary. ShieldCN is a grouping reference; Magic UI Pro remains a layout reference only. No third-party source, asset, remote request or dependency added.
@@ -198,6 +238,12 @@ Owner: portfolio maintainer. Source/destination: existing components/tools-map.t
 Phone/tablet/desktop: existing one/two-column container; badges and links wrap without fixed heights. Native summary and anchors remain keyboard-operable, with global focus styles and 44px summary/link targets. Text stays visible when motion is disabled because no animation is added. Static content has no loading/error/permission state. Public copy claims neither email delivery nor paid-product adoption.
 
 Verification: source reviewed against package.json, toolkit registry and About call site. Full CI and manual viewport/zoom/keyboard checks pending. PR #218 changes parent About layout and PR #223 appends to this adoption document; preserve both at merge. Rollback removes this scoped disclosure expansion and adoption note.
+
+## Projects directory scroll stability · 2026-10-30
+
+Reused ProjectsDirectory, the existing wrapping filter groups, mobile native selects, and native preview disclosures. Filter/search edits now replace browser history through Next's native-history integration instead of starting server navigation. The URL is the shared filter source and retains existing unrelated query parameters and fragments. Removed the query-dependent component key so retained cards keep their disclosure state. Clear filters remains mounted and uses aria-disabled with a guarded handler when inactive, preserving focus and layout after clearing.
+
+No dependency or motion added. Browser regression coverage includes focus/scroll stability, retained disclosures, no filter-triggered route requests, overflow, typed search spaces, reload, browser back, and clearing. Desktop/tablet/mobile use the existing site-test projects.
 
 ## Visible build cards: proposed refinement, October 29, 2026
 
