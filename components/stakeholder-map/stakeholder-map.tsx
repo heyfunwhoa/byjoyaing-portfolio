@@ -5,6 +5,7 @@ import {
   Background,
   Controls,
   Handle,
+  Panel,
   Position,
   ReactFlow,
   type Edge,
@@ -284,6 +285,28 @@ export function StakeholderMap({
             }}
           >
             <Background gap={18} size={1} color="var(--border)" />
+            <Panel position="bottom-left">
+              <div
+                className={styles.legend}
+                role="group"
+                aria-label="Relationship map legend"
+              >
+                <span className={styles.legendItem}>
+                  <span
+                    className={`${styles.legendLine} ${styles.hypothesis}`}
+                    aria-hidden="true"
+                  />
+                  Hypothesis
+                </span>
+                <span className={styles.legendItem}>
+                  <span
+                    className={`${styles.legendLine} ${styles.validated}`}
+                    aria-hidden="true"
+                  />
+                  Validated
+                </span>
+              </div>
+            </Panel>
             <Controls
               showInteractive={false}
               position="bottom-right"
