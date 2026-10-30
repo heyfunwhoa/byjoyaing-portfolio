@@ -130,6 +130,32 @@ export function DealJourney() {
             </dl>
           </section>
         )}
+        {"decisionRecord" in stage && (
+          <section
+            className="mt-6 rounded-xl border border-border bg-surface-mist p-4 sm:p-5"
+            aria-label="Illustrative pending decision record"
+          >
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h4 className="text-sm font-semibold">Decision record example</h4>
+              <span className="rounded-full border border-border bg-card px-2 py-1 text-xs font-medium text-muted">
+                Pending
+              </span>
+            </div>
+            <p className="mt-2 text-xs leading-5 text-muted">
+              A practice template for an undecided deal. It reports no buyer response or outcome.
+            </p>
+            <dl className="mt-4 grid gap-3 sm:grid-cols-2">
+              {stage.decisionRecord.map((item) => (
+                <div key={item.label} className="rounded-lg border border-border bg-card p-3">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-muted">
+                    {item.label}
+                  </dt>
+                  <dd className="mt-2 text-sm leading-6">{item.detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
         <div className="mt-6 flex items-center justify-between gap-3 border-t border-border pt-4">
           <button type="button" disabled={selected === 0} onClick={() => setSelected((value) => Math.max(0, value - 1))}
             className="min-h-11 rounded-md border border-border px-4 py-2 text-sm font-medium disabled:opacity-40">← Previous</button>

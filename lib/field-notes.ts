@@ -123,6 +123,12 @@ export const dealStages = [
       "Record the buyer's decision and reason, which criteria were met or not met, remaining gaps, and any mutually agreed handoff.",
     nextMove:
       "Close the loop with the participants. If no decision is made, record the blocker and agree on the next check-in.",
+    decisionRecord: [
+      { label: "Buyer decision", detail: "Not recorded; wait for an explicit buyer decision." },
+      { label: "Rationale", detail: "Not provided in this example." },
+      { label: "Criteria and gaps", detail: "Review with the buyer; do not infer what was met." },
+      { label: "Follow-up", detail: "Agree on an owner and next check-in if the decision is still pending." },
+    ],
     decisionGate:
       "Record an outcome only after the buyer makes it explicit. If no decision arrives, capture the blocker and agreed follow-up instead of inferring a result.",
     leader:
