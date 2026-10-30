@@ -216,3 +216,17 @@ Verification: metadata integrity and navigation browser regression tests added f
 - Adapt the existing text-link and wrapping-navigation pattern; keep it in normal document flow directly below the orbit hero. Use existing section IDs or add scroll-aware IDs. No sticky behavior, client state, new component, dependency, color, or animation.
 - Phone and tablet links wrap; desktop keeps one compact row. Native anchors have descriptive names, 44px minimum height, visible focus, and `scroll-mt-24` destinations. No loading or error states apply.
 - Verification: source review and `git diff --check` only. Browser, keyboard, 375/768/1280px viewport, and 200% zoom checks remain pending. Revert the nav and the two section IDs to roll back.
+
+## Case-study and card polish · 2026-10-30
+
+Status: implemented in draft PR #218, not merged. Owner: portfolio maintainer.
+
+- Task: identify a project's destination and personal contribution in /projects, and scan evidence in the shared ProfessionalCaseStudy on /work.
+- Reuse/adapt: existing ProjectsDirectory cards and editorial/CaseBandSteps, with the existing sage, ivory and copper tokens. Shadcnblocks case-study/card compositions and Emerald card affordances were references, not source imports. Neither library was installed; no paid block or upstream source copied, no new dependency.
+- Cards retain current status, summaries and destinations. The footer names the case study, role has a visible label, hover and keyboard focus both accent the border. Preview/tools stays a native disclosure with a 44px summary target.
+- Case-study evidence gets a separate sage surface and long-text wrapping. All five existing fields remain; optional story depth uses the existing native disclosure with a 44px target. No invented outcome, demo destination or screenshot.
+- Existing one/two/three-column directory breakpoints retained; evidence spans both columns on wider screens. Reduced motion disables the card transition. No loading or network state added; existing search/no-match recovery retained.
+- Delivery tier 1: presentation and accessibility refinement of existing components, not a new template system. No new issue.
+- Verification: three isolated React static-render tests passed using synthetic directory data and mocked unrelated components/navigation. They check destination/role, no-match recovery, visible evidence and preservation of all story fields. CaseBandSteps also passed isolated strict TypeScript. These are not browser tests or a full app build. Existing previous-head PR checks do not certify this revision.
+- Pending: fresh repository CI and browser review at 375/768/1280px, keyboard native disclosure/focus, contrast, 200% zoom and screen reader.
+- Rollback: revert this refinement's two component commits and this record.
