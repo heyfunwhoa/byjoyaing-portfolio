@@ -156,7 +156,7 @@ export default function Home() {
             <h2 id="build-title" className="editorial-section-title mt-3 max-w-[16ch]">
               {sideQuest.title}
             </h2>
-            <Marginalia>Independent of the roles above. The label is the limit of what runs.</Marginalia>
+            <Marginalia>An independent project. See the walkthrough for its scope and limitations.</Marginalia>
           </div>
           <div className="min-w-0">
             <p className="max-w-xl text-base leading-7">{sideQuest.summary}</p>
@@ -209,3 +209,4 @@ export default function Home() {
     </PageMain>
   );
 }
+

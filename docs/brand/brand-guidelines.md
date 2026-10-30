@@ -131,7 +131,9 @@ Celestial geometry is a supporting line language. It is not a space theme, a gam
 
 Target primary destinations: **Home / About / Work / Field Notes / Side Quests / Contact**. Do not break live URLs.
 
-- **Home:** professional positioning → condensed credibility → three destinations (Work, Field Notes, Side Quests) → one field practice → one labeled Side Quest → About and Contact. See [homepage-simplification.md](../design/homepage-simplification.md).
+**Page-flow review:** Evaluate each page with its likely entry point and next destinations. State the reader question, the new context this page contributes, its primary action, and the path onward. Repeat identity and essential brand language consistently; give each page distinct supporting detail. Home establishes fit and routes the reader. About adds background, values and working approach. Verify the reading order and actual links, then update the documented sequence when an approved flow changes. Visitors may enter on any page and should not need a prescribed tour.
+
+- **Home:** professional positioning → selected professional credibility → three destinations (Work, Field Notes, Side Quests) → one labeled Side Quest → contact close. Its task is to introduce, establish credibility and route the reader. About remains the secondary hero and closing path. See [homepage-simplification.md](../design/homepage-simplification.md).
 - **About:** professional introduction and purpose → working philosophy → enterprise selling and supporting capabilities → career and education → tools and systems → work and writing → compact personal interests and values → contact.
 - **Work:** professional outcomes, team development, sales/GTM strategy, enablement, collaboration and relevant impact.
 - **Field Notes:** editorial home for how I operate. Content types: Playbooks (practical repeatable methods), Frameworks (decision tools), Lessons Learned (grounded reflections), and **Operating Systems** (revenue/team cadences and processes that make practices repeatable). Never present planned methods as proven practice.
@@ -142,7 +144,7 @@ Target primary destinations: **Home / About / Work / Field Notes / Side Quests /
 
 **Navigation (verified):** Home, About, Work (`/work`), Field Notes (`/field-notes`), Side Quests (`/side-quests`), and Contact are in the header. Keep the private Joy Index entirely outside the public portfolio. Do not redirect `/experience` or `/projects` until a reviewed change adds tests for every inbound link.
 
-**Homepage direction:** The homepage is a cover: positioning, condensed enterprise credibility, a Work-led bento with Field Notes and Side Quests, one field practice, one labeled Side Quest, and a short close. Detail lives on Work, Experience, Field Notes, Side Quests, and About. See [homepage-simplification.md](../design/homepage-simplification.md) and [personality-interactions.md](../design/personality-interactions.md). `/prototype` is an exploratory page, not an approved replacement for `/`.
+**Homepage direction:** The homepage is a cover: positioning, condensed enterprise credibility, a Work-led bento with Field Notes and Side Quests, one labeled Side Quest, and a short close. Detail lives on Work, Experience, Field Notes, Side Quests, and About. See [homepage-simplification.md](../design/homepage-simplification.md) and [personality-interactions.md](../design/personality-interactions.md). `/prototype` is an exploratory page, not an approved replacement for `/`.
 
 ## 6. Case study patterns
 

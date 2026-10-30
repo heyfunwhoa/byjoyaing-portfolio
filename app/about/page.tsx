@@ -83,6 +83,7 @@ export default function AboutPage() {
             { href: "#how-i-work", label: "How I work" },
             { href: "#career-progression", label: "Career & education" },
             { href: "#technologies", label: "Tools & systems" },
+            { href: "#work-and-writing", label: "Work & writing" },
           ].map((item) => (
             <li key={item.href}>
               <a
@@ -212,8 +213,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-border py-8">
-        <h2 className="font-display text-2xl">{aboutPage.exploreHeading}</h2>
+      <section
+        id="work-and-writing"
+        aria-labelledby="work-and-writing-heading"
+        className="scroll-mt-24 border-b border-border py-8"
+      >
+        <h2 id="work-and-writing-heading" className="font-display text-2xl">
+          {aboutPage.exploreHeading}
+        </h2>
         <ul
           aria-label="Featured illustrative guides"
           className="mt-5 divide-y divide-border border-y border-border"
