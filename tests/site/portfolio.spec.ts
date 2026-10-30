@@ -322,8 +322,8 @@ test("Academy starting paths select existing lessons and keep navigation usable"
   await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
     .getByRole("button", {
-      name: "Start build a research workflow",
-      exact: false,
+      name: "Start this path: Build a research workflow",
+      exact: true,
     })
     .click();
   await expect(

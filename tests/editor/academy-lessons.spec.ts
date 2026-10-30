@@ -32,7 +32,10 @@ test("edit and save the reading-code lesson, render it, then roll back through t
     await reader.goto("/ai-academy");
     await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
-      .getByRole("button", { name: "Start build and release safely →", exact: true })
+      .getByRole("button", {
+        name: "Start this path: Build and release safely",
+        exact: true,
+      })
       .click();
     const article = reader.getByRole("article", {
       name: "Reading code, files, JSON and YAML",
@@ -56,7 +59,10 @@ test("edit and save the reading-code lesson, render it, then roll back through t
     await reader.reload();
     await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
-      .getByRole("button", { name: "Start build and release safely →", exact: true })
+      .getByRole("button", {
+        name: "Start this path: Build and release safely",
+        exact: true,
+      })
       .click();
     await expect(
       reader.getByRole("article", {

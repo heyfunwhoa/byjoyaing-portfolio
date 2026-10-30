@@ -6,7 +6,10 @@ test("review is independent of checks and practice, and does not gate navigation
   await page.goto("/ai-academy");
   await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
-    .getByRole("button", { name: "Start the AI path", exact: true })
+    .getByRole("button", {
+      name: "Start this path: Start with AI basics",
+      exact: true,
+    })
     .click();
   const article = page.getByRole("article", {
     name: "AI, models and assistants",
@@ -49,7 +52,10 @@ test("builder paths, prerequisites and planned resources remain independently re
   await page.goto("/ai-academy");
   await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
-    .getByRole("button", { name: "Start the frontend path", exact: true })
+    .getByRole("button", {
+      name: "Start this path: Understand the frontend",
+      exact: true,
+    })
     .click();
   await expect(
     page.getByRole("heading", {
@@ -101,7 +107,10 @@ test("path switching clears stale answers and links to existing practice", async
   await page.goto("/ai-academy");
   await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
-    .getByRole("button", { name: "Start the AI path", exact: true })
+    .getByRole("button", {
+      name: "Start this path: Start with AI basics",
+      exact: true,
+    })
     .click();
   const path = page.getByRole("navigation", { name: "Selected learning path" });
   await path
@@ -124,7 +133,10 @@ test("path switching clears stale answers and links to existing practice", async
     .click();
   await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
-    .getByRole("button", { name: "Start the delivery path", exact: true })
+    .getByRole("button", {
+      name: "Start this path: Build and release safely",
+      exact: true,
+    })
     .click();
   await expect(
     page.getByRole("heading", {

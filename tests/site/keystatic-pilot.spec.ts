@@ -6,7 +6,7 @@ test("verification keeps its source, keyboard navigation and independent review/
   await page.goto("/ai-academy");
   await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   const start = page.getByRole("button", {
-    name: "Start verify an ai output →",
+    name: "Start this path: Verify an AI output",
     exact: true,
   });
   await start.focus();
@@ -87,7 +87,10 @@ test("pre-migration mission storage survives Academy reading and reload", async 
     { key, fixture },
   );
   await page
-    .getByRole("button", { name: "Start verify an ai output →", exact: true })
+    .getByRole("button", {
+      name: "Start this path: Verify an AI output",
+      exact: true,
+    })
     .click();
   await page.goto("/ai-academy/journeys/follow-one-click");
   await page.reload();

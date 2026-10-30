@@ -32,7 +32,10 @@ test("edit and save the singleton, render the change, then roll back through the
     await reader.goto("/ai-academy");
     await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
-      .getByRole("button", { name: "Start verify an ai output →", exact: true })
+      .getByRole("button", {
+        name: "Start this path: Verify an AI output",
+        exact: true,
+      })
       .click();
     await expect(
       reader.getByRole("article", { name: "Grounding and source quality" }),
@@ -51,7 +54,10 @@ test("edit and save the singleton, render the change, then roll back through the
     await reader.reload();
     await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
-      .getByRole("button", { name: "Start verify an ai output →", exact: true })
+      .getByRole("button", {
+        name: "Start this path: Verify an AI output",
+        exact: true,
+      })
       .click();
     await expect(reader.getByRole("article")).not.toContainText(
       "Local editorial acceptance check.",

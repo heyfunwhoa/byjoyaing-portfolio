@@ -36,7 +36,7 @@ KEYSTATIC_LOCAL=true npm run dev -- --hostname 127.0.0.1
 If the branch already exists locally, use `git switch codex/kru-75-keystatic-verification` instead. Keep this editor on loopback; do not expose or tunnel the development server. Do not run an editing test while another editor is saving the same record.
 
 1. Open `http://127.0.0.1:3000/ai-academy`.
-2. Expand **Explore learning paths**. Choose **Start verify an ai output →**. The existing lesson **Grounding and source quality** appears, with its NIST source and practice link.
+2. Expand **Explore learning paths**. In the **Verify an AI output** card, choose **Start this path**. The existing lesson **Grounding and source quality** appears, with its NIST source and practice link.
 3. Choose **False** in the knowledge check. **Correct.** appears independently of **Mark as reviewed**. Navigate next/back: reading review survives within the mounted Academy; quiz selection clears as before.
 4. Open `http://127.0.0.1:3000/keystatic`. Choose **Verification lesson**. Change **Summary**, then **Save**. This writes your current worktree only; it does not publish or create a PR.
 5. Refresh the Academy tab, select the verification path again, and confirm the changed summary. A refresh resets the session-only reading flag as before. The separate saved mission remains intact.

@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 7601)
+Total output lines: 754
+
 "use client";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
@@ -168,7 +171,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
                 <button
                   type="button"
                   className={`${button} mt-3 min-h-11`}
-                  aria-label={`Start ${path.title}`}
+                  aria-label={`Start this path: ${path.title}`}
                   onClick={() => startPath(path.id)}
                 >
                   Start this path
@@ -351,62 +354,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
               · Short lesson
             </p>
             <h2
-              id="academy-lesson-heading"
-              ref={headingRef}
-              tabIndex={-1}
-              className="mt-2 font-display text-3xl sm:text-4xl"
-            >
-              {lesson.title}
-            </h2>
-            <p className="mt-4 leading-7 text-muted">{lesson.summary}</p>
-            <section
-              aria-label="Lesson prerequisites"
-              className="mt-5 rounded-lg border border-border p-4"
-            >
-              <h3 className="text-sm font-semibold">Before you start</h3>
-              <p className="mt-2 text-sm text-muted">
-                {guidance?.prerequisites.length
-                  ? "Suggested preparation — you can still read this lesson now."
-                  : "No earlier Academy lesson required."}
-              </p>
-              {guidance?.prerequisites.length ? (
-                <ul className="mt-2">
-                  {guidance.prerequisites.map((slug) => {
-                    const prerequisite = lessons.find(
-                      (item) => item.slug === slug,
-                    );
-                    return prerequisite ? (
-                      <li key={slug}>
-                        <button
-                          type="button"
-                          className="min-h-11 text-left text-sm text-accent underline underline-offset-4"
-                          onClick={() => {
-                            setTrack("All");
-                            selectLesson(slug);
-                          }}
-                        >
-                          {prerequisite.title}
-                        </button>
-                      </li>
-                    ) : null;
-                  })}
-                </ul>
-              ) : null}
-              {guidance?.preparation ? (
-                <a
-                  href={guidance.preparation.href}
-                  className="mt-1 inline-flex min-h-11 items-center text-sm text-accent underline underline-offset-4"
-                >
-                  {guidance.preparation.label}
-                </a>
-              ) : null}
-            </section>
-            <div className="my-7 rounded-lg bg-background p-5">
-              <h3 className="font-semibold">Think of it like this</h3>
-              <p className="mt-2 leading-7">{lesson.analogy}</p>
-            </div>
-            <h3 className="font-semibold">What you should remember</h3>
-            <ul className="mt-3 list-disc space-y-2 pl-5">
+          …601 tokens truncated…-disc space-y-2 pl-5">
               {lesson.takeaways.map((t) => (
                 <li key={t}>{t}</li>
               ))}
