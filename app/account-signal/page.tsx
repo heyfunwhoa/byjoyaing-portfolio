@@ -1,3 +1,4 @@
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { Kicker } from "@/components/kicker";
 import { PageMain } from "@/components/page-main";
@@ -20,6 +21,7 @@ export default function AccountSignalPage() {
     return (
       <PageMain>
         <section className="py-16">
+          <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/side-quests","label":"Side Quests"},{"label":"LimaCharlie research brief"}]} />
           <h1 className="font-display text-4xl text-foreground">Research brief unavailable</h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
             {result.status === "rejected" ? result.reason : "The snapshot did not store."}
@@ -35,6 +37,7 @@ export default function AccountSignalPage() {
     <PageMain>
       <article className="flex flex-col gap-12 py-16">
         <header className="flex flex-col gap-4">
+          <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/side-quests","label":"Side Quests"},{"label":"LimaCharlie research brief"}]} />
           <Kicker>Prototype</Kicker>
           <h1 className="font-display max-w-3xl text-4xl leading-[1.12] tracking-tight text-foreground sm:text-5xl">
             LimaCharlie, from one public documentation page
