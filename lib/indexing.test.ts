@@ -7,15 +7,22 @@ import { indexableStaticPaths, noindexPaths } from "./indexing.ts";
 const root = path.resolve(import.meta.dirname, "..");
 
 const noindexSource: Record<string, string> = {
+  "/ai-academy/sign-in": "app/ai-academy/sign-in/page.tsx",
+  "/ai-academy/my-learning": "app/ai-academy/my-learning/page.tsx",
+  "/ai-academy/account-privacy": "app/ai-academy/account-privacy/page.tsx",
   "/ai-academy/programming": "app/ai-academy/programming/page.tsx",
   "/ai-academy/playground": "app/ai-academy/playground/layout.tsx",
-  "/ai-academy/playground/skill-builder": "app/ai-academy/playground/layout.tsx",
-  "/ai-academy/playground/research-pipeline": "app/ai-academy/playground/layout.tsx",
+  "/ai-academy/playground/skill-builder":
+    "app/ai-academy/playground/layout.tsx",
+  "/ai-academy/playground/research-pipeline":
+    "app/ai-academy/playground/layout.tsx",
   "/ai-academy/version-control": "app/ai-academy/version-control/page.tsx",
   "/ai-academy/journeys/prompting": "app/ai-academy/journeys/layout.tsx",
-  "/ai-academy/journeys/source-verification": "app/ai-academy/journeys/layout.tsx",
+  "/ai-academy/journeys/source-verification":
+    "app/ai-academy/journeys/layout.tsx",
   "/ai-academy/devops/build-rate-limits": "app/ai-academy/devops/layout.tsx",
-  "/ai-academy/dependencies/lockfiles": "app/ai-academy/dependencies/layout.tsx",
+  "/ai-academy/dependencies/lockfiles":
+    "app/ai-academy/dependencies/layout.tsx",
   "/builder-academy/identity-journey": "app/builder-academy/layout.tsx",
   "/builder-academy/credential-risk": "app/builder-academy/layout.tsx",
   "/work/storytelling-guide": "app/work/storytelling-guide/page.tsx",

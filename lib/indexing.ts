@@ -25,6 +25,9 @@ export const indexableStaticPaths = [
 ] as const;
 
 export const noindexPaths = [
+  "/ai-academy/sign-in",
+  "/ai-academy/my-learning",
+  "/ai-academy/account-privacy",
   "/ai-academy/programming",
   "/ai-academy/playground",
   "/ai-academy/playground/skill-builder",

@@ -11,6 +11,7 @@ import { PortfolioOsCaseStudy } from "@/components/ai-academy/portfolio-os-case-
 import { ProductRequestLab } from "@/components/ai-academy/product-request-lab";
 import { SecurityReviewLab } from "@/components/ai-academy/security-review-lab";
 import { CmsLab } from "@/components/ai-academy/cms-lab";
+import { LessonAccountActions } from "@/components/academy-account/lesson-actions";
 import { learningPaths } from "@/lib/academy/learning-paths";
 import { lessons, workflows } from "@/lib/ai-academy";
 const tracks = [
@@ -29,11 +30,19 @@ const academyTabs = [
 type AcademyTab = (typeof academyTabs)[number][0];
 const button =
   "rounded-lg border border-border px-3 py-2 text-sm transition hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
-export function Academy({ resources }: { resources?: ReactNode }) {
+export function Academy({
+  resources,
+  accountsEnabled = false,
+  initialLesson = "what-is-ai",
+}: {
+  resources?: ReactNode;
+  accountsEnabled?: boolean;
+  initialLesson?: string;
+}) {
   const [tab, setTab] = useState<AcademyTab>("learn");
   const [pathId, setPathId] = useState<string | null>(null);
   const [track, setTrack] = useState<(typeof tracks)[number]>("All");
-  const [active, setActive] = useState("what-is-ai");
+  const [active, setActive] = useState(initialLesson);
   const [answer, setAnswer] = useState<number | null>(null);
   const [reviewed, setReviewed] = useState<string[]>([]);
   const [query, setQuery] = useState("");
@@ -99,7 +108,9 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         ? 0
         : key === "End"
           ? academyTabs.length - 1
-          : (currentIndex + (key === "ArrowRight" ? 1 : -1) + academyTabs.length) %
+          : (currentIndex +
+              (key === "ArrowRight" ? 1 : -1) +
+              academyTabs.length) %
             academyTabs.length;
     const nextTab = academyTabs[nextIndex][0];
     setTab(nextTab);
@@ -145,6 +156,14 @@ export function Academy({ resources }: { resources?: ReactNode }) {
           </p>
         </div>
       </div>
+      {accountsEnabled && (
+        <Link
+          href="/ai-academy/my-learning"
+          className="mb-5 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
+        >
+          My learning
+        </Link>
+      )}
       <details className="mb-4 rounded-xl border border-border bg-card">
         <summary className="min-h-11 cursor-pointer px-5 py-3 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
           Explore learning paths ({learningPaths.length})
@@ -263,7 +282,9 @@ export function Academy({ resources }: { resources?: ReactNode }) {
             className={`${button} ${tab === id ? "bg-foreground text-background" : ""}`}
             onClick={() => setTab(id)}
             onKeyDown={(event) => {
-              if (["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) {
+              if (
+                ["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)
+              ) {
                 event.preventDefault();
                 moveTabFocus(id, event.key);
               }
@@ -466,6 +487,9 @@ export function Academy({ resources }: { resources?: ReactNode }) {
                 </p>
               )}
             </fieldset>
+            {accountsEnabled && (
+              <LessonAccountActions key={lesson.slug} slug={lesson.slug} />
+            )}
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <button
                 className="rounded-lg bg-accent px-5 py-3 font-semibold text-accent-foreground disabled:opacity-50"
@@ -477,8 +501,9 @@ export function Academy({ resources }: { resources?: ReactNode }) {
                   : "Mark as reviewed"}
               </button>
               <span className="text-xs leading-5 text-muted">
-                Your reading review is self-reported. Quiz answers and practice
-                are separate; neither is marked passed by this button.
+                This session-only reading review is self-reported. Quiz answers
+                and practice are separate; neither is marked passed by this
+                button.
               </span>
             </div>
             {!lesson.companion && guidance?.guide ? (

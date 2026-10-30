@@ -1,6 +1,8 @@
 import { completePageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { academyConfig } from "@/lib/academy-account/config";
+import { validLesson } from "@/lib/academy-account/policy";
 import { Academy } from "@/components/ai-academy/academy";
 import {
   academyResources,
@@ -16,9 +18,16 @@ export const metadata: Metadata = completePageMetadata(
   "/ai-academy",
 );
 
-export default function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ lesson?: string }>;
+}) {
+  const { lesson } = await searchParams;
   return (
     <Academy
+      accountsEnabled={Boolean(academyConfig())}
+      initialLesson={validLesson(lesson) ? lesson : undefined}
       resources={
         <details className="mb-6 rounded-xl border border-border bg-card p-4">
           <summary className="min-h-11 cursor-pointer py-2 font-medium">
