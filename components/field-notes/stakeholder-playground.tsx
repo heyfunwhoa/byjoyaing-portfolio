@@ -7,10 +7,43 @@ import {
   exampleMapRelationships,
 } from "@/lib/stakeholder-map-demo";
 
-const steps = [
-  "Understand the group",
-  "Find the gap",
-  "Plan the conversation",
+const guidedExamples = [
+  {
+    label: "Understand the group",
+    focusId: "champion",
+    scenario:
+      "The security champion and technical evaluator are engaged. Their influence, decision rights, and internal advocacy are not yet validated.",
+    sellerQuestion:
+      "Which outcomes are you accountable for, and who else evaluates the risk or developer workflow?",
+    evidence:
+      "The champion explains priorities in their own words and identifies who owns the business outcome and technical review.",
+    leaderQuestion:
+      "Which claims come from a buyer conversation, and what evidence would confirm the champion's influence?",
+  },
+  {
+    label: "Find the gap",
+    focusId: "buyer",
+    scenario:
+      "The economic buyer is not engaged in this fictional example. Budget authority and the approval path remain unknown.",
+    sellerQuestion:
+      "Who owns the business outcome and budget decision? Could you introduce us so we can understand their priorities?",
+    evidence:
+      "A relevant introduction and a direct conversation. A job title or org chart alone does not confirm decision authority.",
+    leaderQuestion:
+      "Are decision rights supported by conversations, or inferred from titles and reporting lines?",
+  },
+  {
+    label: "Plan the conversation",
+    focusId: "buyer",
+    scenario:
+      "No introduction or buyer response is assumed. This is a proposed next move, not a claimed customer interaction.",
+    sellerQuestion:
+      "Could we include the person accountable for the business outcome and budget in a short conversation? We want to understand their priorities before recommending next steps.",
+    evidence:
+      "Record whether the champion accepts, redirects, or declines the request, then agree on the next action. Do not infer a response.",
+    leaderQuestion:
+      "Is the request relevant to that stakeholder, and did the buyer confirm the next action?",
+  },
 ] as const;
 
 const accessSummary = [
@@ -23,12 +56,13 @@ export function StakeholderPlayground() {
   const [step, setStep] = useState(0);
   const [selectedId, setSelectedId] = useState("champion");
   const [perspective, setPerspective] = useState<"seller" | "leader">("seller");
+  const guidance = guidedExamples[step];
   const controlClass =
     "min-h-11 rounded-lg border px-3 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 
   function chooseStep(index: number) {
     setStep(index);
-    setSelectedId(index === 0 ? "champion" : "buyer");
+    setSelectedId(guidedExamples[index].focusId);
   }
 
   return (
@@ -80,7 +114,7 @@ export function StakeholderPlayground() {
         role="group"
         aria-label="Guided example steps"
       >
-        {steps.map((label, index) => (
+        {guidedExamples.map(({ label }, index) => (
           <button
             key={label}
             type="button"
@@ -125,16 +159,27 @@ export function StakeholderPlayground() {
         aria-live="polite"
         aria-atomic="true"
       >
-        <h3 className="font-semibold">{steps[step]}</h3>
+        <h3 className="font-semibold">{guidance.label}</h3>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-          {step === 0
-            ? `${exampleMapPeople.filter((person) => person.access === "engaged").length} of ${exampleMapPeople.length} roles have engaged access in this example. Select a stakeholder to inspect priorities and evidence; coverage alone is not a deal score.`
-            : step === 1
-              ? "The economic buyer is not yet engaged. A champion’s enthusiasm does not establish budget authority or an approval path."
-              : perspective === "seller"
-                ? "Ask the champion who owns the business outcome and budget decision, then propose an introduction with a relevant reason to meet."
-                : "Ask what evidence supports champion influence, what the buyer needs to decide, and who owns the introduction and follow-up."}
+          {guidance.scenario} Select a stakeholder in the map to inspect the
+          fictional priorities and evidence gaps.
         </p>
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
+          <div className="rounded-xl border border-border bg-surface-mist p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+              {perspective === "seller" ? "Illustrative question" : "Leader coaching question"}
+            </p>
+            <p className="mt-2 text-sm leading-6">
+              {perspective === "seller" ? guidance.sellerQuestion : guidance.leaderQuestion}
+            </p>
+          </div>
+          <div className="rounded-xl border border-border p-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+              Evidence to confirm
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted">{guidance.evidence}</p>
+          </div>
+        </div>
       </div>
     </section>
   );
