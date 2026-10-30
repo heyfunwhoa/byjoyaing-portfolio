@@ -50,7 +50,7 @@ test("verification keeps its source, keyboard navigation and independent review/
     .getByRole("button", { name: /Previous:/ })
     .click();
   await expect(
-    article.getByRole("button", { name: "Reviewed this session" }),
+    lessonPanel.getByRole("button", { name: "Reviewed this session" }),
   ).toHaveAttribute("aria-pressed", "true");
   await expect(lessonPanel.locator('input[type="radio"]:checked')).toHaveCount(0);
   expect(
