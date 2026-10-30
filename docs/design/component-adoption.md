@@ -308,3 +308,10 @@ Phone: vertically stacked steps and decision branches. Tablet: access branches m
 ## Projects header orbit · 2026-10-30
 
 At the owner's request, replace the Projects builder portrait with the existing orbit-study-01.svg through OrbitStudyIllustration. Add a projects variant to that shared component; retain the existing 8rem mobile / 12rem desktop container and Builder / Side Quests caption. This is decorative supporting artwork, not a visualization of live data. Empty alt and aria-hidden, intrinsic square sizing, no focus target or animation. No new asset, dependency, interaction or content claim. Tier 1 isolated presentation change; no new tracking issue. CI and preview review are recorded in the PR. Rollback restores the BrandAvatar import and mount on /projects.
+
+
+## Distinct collection header illustrations · 2026-10-30
+
+Supersedes the Projects orbit selection above after owner review. Projects uses three connected nodes for systems; Field Notes uses stacked geometric planes for accumulated ideas; Side Quests uses a branching path for exploration. Original repository-native SVGs in public/brand/page-art, using existing charcoal/copper/sage/clay tokens, transparent backgrounds and a shared 1024-square canvas. No third-party art, new dependency, animation, diagram semantics or live-data claim. The joy. site mark and About orbit are unchanged.
+
+Adapt the existing OrbitStudyIllustration wrapper and retain its exported name for compatibility. Existing page containers handle phone/tablet/desktop scaling. Decorative empty alt, aria-hidden and no focus target. Update existing SVG safety checks for the new sources. Tier 1 static presentation refinement to PR #227; no new interaction or tracking issue. Preview and CI evidence in the PR. Rollback restores the wrapper's prior artwork sources.
