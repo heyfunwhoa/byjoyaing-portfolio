@@ -168,3 +168,29 @@ This is how stage 1 and 2 would start for the future Side Quests index. It is a 
 - **One criterion.** `/projects` resolves, and a card still opens the existing case-study URL.
 
 Stages 3 through 5 for that page happen in the pull request that builds it, with two real layout options. They do not happen in this file.
+
+## ShieldCN reference for project metadata
+
+Added at Kristen's request on October 29, 2026. Reference: [ShieldCN showcase](https://shieldcn.dev/showcase).
+
+Status: design reference only. No ShieldCN package, remote image service, public badge, chart or new page is adopted by this documentation change. This reference supplements the existing workbench and canonical brand guide.
+
+Use the showcase when designing compact technology attribution, project metadata and repository presentation. Its badge groups, charts and README headers are examples to evaluate, not evidence of this portfolio's capabilities.
+
+| Placement | Candidate use | Decision rule |
+| --- | --- | --- |
+| Side Quest detail | Small “Built with” row after the project explanation | Include only technology verified in that project's current implementation; keep the business problem and outcome first. |
+| Project cards | One readable lifecycle label | Reuse existing status components and vocabulary; never imply a prototype is live. |
+| Repository README | Restrained stack, license or CI badge group and optional header | Confirm license and source. Dynamic status must identify its repository/workflow and remain accurate; static “passing” claims are not substitutes for live checks. |
+| Build/process explanation | Concise technology labels beside plain-language descriptions | Explain what each tool contributes; avoid a wall of logos or implying sponsorship. |
+| Project activity | Optional sourced chart | Use only when it answers a reader question, with dates, units, source and a text alternative; never use decorative metrics as proof of impact. |
+
+Implementation approach:
+- Check the existing workbench inventory and shared badge/status components first. Prefer native text and local components for public site labels; ShieldCN is a visual reference, not a requirement to embed its service.
+- Adapt spacing, fine borders and grouping to the existing warm ivory, charcoal and copper tokens and Geist typography. Do not adopt an unrelated showcase palette or replace the joy. identity.
+- Keep badges secondary to Work and project evidence. Avoid adding a technical badge strip to the homepage hero by default.
+- Use readable text, wrapping at narrow widths and 200% zoom, adequate contrast, and visible focus for genuine links. A noninteractive badge must not look like a button. Do not convey status through color alone.
+- Before copying source/assets or embedding remote images, review the specific license/attribution, privacy, availability and caching implications. Do not place secrets or private repository information in badge URLs.
+- A future implementation PR must name its destination, verified labels, source/adaptation decision and actual responsive/accessibility checks. Record adoption in the existing inventory rather than creating a parallel catalog.
+
+First candidate: a small “Built with” section on a named Side Quest detail page, using verified technology and existing local components. Public implementation remains a separate scoped change.
