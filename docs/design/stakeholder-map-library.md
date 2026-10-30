@@ -45,6 +45,12 @@ Phone/tablet use the existing wrapping buttons and stacked map groups; wider lay
 - **Verification:** `git diff --check` passed locally. CI, dependency audit, production build, browser, keyboard and responsive review for this integration are pending. Existing prior-head evidence does not verify this revision.
 - **Rollback:** Remove the `@xyflow/react` import and desktop canvas, restore the previous measured SVG connector layout, and remove the package and lockfile entries. Keep the mobile grouped map and detail panel.
 
+## Embedded viewport refinement — October 29, 2026
+
+Adapt the [React Flow viewport guidance](https://reactflow.dev/learn/concepts/the-viewport) for an embedded reading experience in the existing desktop map. Explicitly disable scroll panning, wheel zoom and double-click zoom, and set `preventScrolling={false}` so ordinary wheel input can scroll the surrounding article. Preserve pinch zoom, background drag and named zoom/fit controls. The node wrapper uses the library's `nodrag nopan` utility classes to keep card interaction separate from background panning. Visible instructions explain pan, zoom and recovery. No editor selection mode, new package, motion or data behavior is introduced. Phone/tablet keep the existing grouped buttons.
+
+This is a Tier 1 refinement within existing PR #221/KRU-166; no new issue. Source reviewed against the official ReactFlow prop documentation. Local TSX transpilation could not run because TypeScript is unavailable; local clone authentication also failed. Full typecheck, build, CI and browser validation remain required. Before merge, verify page scrolling over the canvas, background drag, pinch/buttons, fit recovery, keyboard stakeholder selection, and phone/tablet fallback. This note is not runtime verification. Roll back only the new viewport props, wrapper classes and explanatory sentence to undo this refinement.
+
 ## Reuse boundaries
 
 Keep public fixtures separate from private account adapters. This public library is presentation code, not a place to store customer/contact records. A private app may adopt the component contract only after defining its own authorization and data ownership. Do not add contact discovery, scoring, persistence or drag-and-drop just to expand the component library.
