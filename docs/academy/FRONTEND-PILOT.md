@@ -1,6 +1,6 @@
 # Frontend lesson pilot: diagnose one project card
 
-Status: concrete instructional brief and provisional source comparison; not implemented UI or a completed KRU-176 experiment.
+Status: single-lesson implementation and runnable comparison prepared on a feature branch; not merged or deployed. See the dated checkpoint below for current evidence; earlier provisional/environment notes are historical.
 Reviewed: 2026-10-30.
 Owner: byjoyaing-portfolio. Tracking: [KRU-176](https://linear.app/krusty/issue/KRU-176), [KRU-177](https://linear.app/krusty/issue/KRU-177), [KRU-178](https://linear.app/krusty/issue/KRU-178).
 Scope: `frontend-building-blocks` only. This is an implementation brief under [PROGRAM](PROGRAM.md), not another PRD.
@@ -187,3 +187,51 @@ manual checks not run and attributable actual effort/cost only if available.
 Update existing Linear issues and open/update a focused PR. Stop before
 merge/deploy; KRU-178 owns validation and release evidence.
 ```
+
+## Runnable comparison and implementation checkpoint — 2026-10-30
+
+This section supersedes the earlier environment limitation and provisional recommendation. The brief above remains the instructional contract. Work is implemented locally on a focused branch based on PR #233, not merged or deployed. Linear issue details could not be refreshed: this session has no Linear connector and `linear.app` is denied by the network policy. Acceptance here is traced to the supplied resume brief; do not infer a Linear status update.
+
+### Revision and scope
+
+- Main inspected: `60a799285f746cc38f9806d4cefb4532fabd8026`.
+- PR #233: draft, head `7b5c22e80114c9b5c86d0bc1704a73ba94b6bc57`; this branch preserves that curriculum work and should be reviewed as a focused stacked diff against `feat/academy-curriculum-audit-kru-174`.
+- PR #234: draft, head `51cf817c1afdc691d13b8949a01c9c20889ad211`. Its optional account action is inserted beside the existing knowledge check. The pilot leaves account/save and reading state ownership in Academy, passes only the existing lesson-selection callback, and never writes assessment answers to saved reading. Its renderer edits require integration review when those branches combine; account behavior is not claimed tested here.
+- PR #235: open, head `e9449dbf86a7945da1137e97df394614cdd09cbe`. No release scripts or workflow changes imported.
+- Delivery tier 2, incremental security tier A: local deterministic lesson, no new endpoint, persistence, account boundary or paid inference. Parent application integration/security CI still applies.
+
+### Reproducible experiment
+
+See [the comparison harness](../../scripts/frontend-comparison/README.md) and [recorded measurements](../../scripts/frontend-comparison/results.json). It generates a disposable, built Next app outside the portfolio checkout, using exactly the same lesson component for both variants. Native composition is compared with Fumadocs UI/Core **16.17.9**, Next **16.4.3**, React/React DOM **19.3.1**. Fumadocs UI is explicitly the Radix version. Package MIT license and exact package source were inspected (copyright 2023 Fuma); no third-party source is copied into the portfolio.
+
+The candidate uses RootProvider, DocsLayout, DocsPage/Body and Steps; its local token adapter maps background, foreground, card, border, primary/focus and muted colors to the portfolio tokens. Theme persistence and unused search are disabled. Existing content imports as TSX without MDX conversion, catalog migration or a new CMS record. Neither variant implements progress; production compatibility is verified separately against Academy's unchanged reading controls. The candidate's callbacks are inert in the layout harness; real next-lesson navigation is exercised by the production browser test.
+
+Both variants rendered at 375/768/1280 with no page overflow or browser exceptions. Keyboard Space/arrow selection retained focus and announced explanatory feedback; wrong and correct answers, reset and rubric disclosure passed. Screenshots were inspected in this session. The candidate adds a docs navigation layer in addition to Academy's existing picker/sidebar; it needs further navigation and layout integration before adoption. Its package graph has 311 resolved entries including optional platforms and Next/React/tooling, with 246 actually installed; this is not a marginal package count over the portfolio. The portfolio root manifest and lockfile remain unchanged.
+
+Cold built route JS+CSS (uncompressed decoded bytes, fresh browser context; excludes HTML/images/fonts, not a total app size or timing benchmark): native **482,172 bytes**, Fumadocs **808,751 bytes**, a **326,579-byte** increase for this tested composition. All three widths produced the same totals. Initial trial numbers changed after disabling unused candidate services and adding the final rendered card; these are the final measurements. The root portfolio's generated `.next/static` directory was 5,058,440 bytes at the baseline and 5,068,704 bytes after final integration; directory totals include unrelated shared assets and are secondary to the measured route comparison.
+
+**Decision: adapt the existing Academy/native composition; defer Fumadocs adoption.** Both can display the content, but Fumadocs does not supply the assessment, transfer rubric, reading semantics or CMS integration. The tested native option solves this single lesson without new portfolio runtime dependencies or a global theme/provider change. This is a measured engineering recommendation for this scope, not a framework-wide benchmark or a learner effectiveness finding.
+
+A read-only `git merge-tree --write-tree HEAD origin/pr-234` integration simulation confirmed one content conflict in `components/ai-academy/academy.tsx` at the generic knowledge-check/account-action boundary. No working-tree merge or account changes were applied. Resolution for the eventual integration: keep the pilot's conditional generic knowledge check, then render `accountsEnabled && <LessonAccountActions key={lesson.slug} slug={lesson.slug} />` **after** that conditional and before the session review controls. Do not place account actions inside the non-Frontend condition. Run account/privacy tests on the combined branch before review; this branch does not claim that combined test result.
+
+### KRU-177 consuming implementation
+
+`components/ai-academy/frontend-lesson.tsx` adapts the inspected guided-programming lesson's native structure, React state and fieldsets. It adds per-choice feedback, explicit reset, section links, a rendered fictional card plus selectable companion code, vocabulary, independent response prompt/rubric and selection callbacks for existing next lessons. The existing guided-programming renderer cannot directly express this section/transfer composition and has shared rather than per-choice feedback, so it is not expanded into a universal renderer.
+
+The only consuming call site is the stable `frontend-building-blocks` branch in `components/ai-academy/academy.tsx`. Other lessons keep their existing summary/exercise/check. Sources, companion links, prerequisites, catalog ID, session reading review and existing lesson-sequence controls remain owned by Academy. No `content/academy/lessons` records, catalog record, CMS schema or persistent state were changed. Answers disappear on leaving the lesson; correct choices never mark reading reviewed.
+
+### Evidence and limits
+
+- Repository tests: 211 passed after integration.
+- Production build and TypeScript: passed, including Google Fonts after the published network allowance.
+- ESLint: passed with zero warnings after the new script warning was corrected.
+- Production dependency audit: zero vulnerabilities.
+- Comparison: six built browser cases (two variants × three widths) passed with system Chromium. Playwright's browser CDN was denied; the available system Chromium was used, with no download verification bypass.
+- Integrated browser journeys: six final cases passed, including 320px reflow, answer retention on resize, ordinary motion, and no local/session storage writes. The pilot's wrong/correct explanations, radio keyboard/focus, reset, independent review, transfer disclosure, next lesson and answer reset passed at phone/tablet/desktop. Existing Academy foundation journeys passed at all three widths. The first pilot test used an incorrect expected destination title; corrected to the real catalog title, then reran successfully.
+- Reduced motion was enabled in the browser runs; this component introduces no motion. Loading/error/permission states are N/A for the deterministic lesson.
+- Manual 200% browser zoom, physical-device checks, screen-reader announcements, comprehensive contrast/accessibility audit and learner understanding observations are **not run**. Automated focus/status/viewport checks are not substitutes. KRU-178 still owns learner validation and release evidence.
+- Remaining production site browser suite: 212 passed, one skipped (the mobile-menu focus test skips at the desktop breakpoint); Academy foundation: 12 passed. These are separate from the focused pilot journey.
+- Hosted CI (including TruffleHog, Trivy, Semgrep) and remote PR/Linear updates are not established by these local results. GitHub Git access works, but both REST and GraphQL API requests returned Forbidden. Do not mark KRU-176/177 Done or claim hosted checks/release evidence.
+- Model/workspace: Codex in the managed cloud environment; exact displayed model, billable usage, task-only elapsed effort and monetary cost are unavailable and not estimated.
+
+Rollback: remove the single Frontend renderer branch/import and the new component, restoring the previous generic rendering for that slug. The comparison directory is development evidence only and can be removed independently. Do not merge/deploy from this checkpoint.

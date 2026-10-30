@@ -1,0 +1,61 @@
+{
+  "measured": "2026-10-30",
+  "method": "Cold document load; sum decodedBodySize of JS and CSS resource timing entries; excludes HTML, images, fonts and compressed transfer size; isolated Next app, not total portfolio size.",
+  "runs": [
+    {
+      "variant": "native",
+      "width": 375,
+      "overflow": false,
+      "keyboardAndFeedback": "passed",
+      "resourceBytes": 482172,
+      "javascriptBytes": 466254,
+      "cssBytes": 15918
+    },
+    {
+      "variant": "native",
+      "width": 768,
+      "overflow": false,
+      "keyboardAndFeedback": "passed",
+      "resourceBytes": 482172,
+      "javascriptBytes": 466254,
+      "cssBytes": 15918
+    },
+    {
+      "variant": "native",
+      "width": 1280,
+      "overflow": false,
+      "keyboardAndFeedback": "passed",
+      "resourceBytes": 482172,
+      "javascriptBytes": 466254,
+      "cssBytes": 15918
+    },
+    {
+      "variant": "fumadocs",
+      "width": 375,
+      "overflow": false,
+      "keyboardAndFeedback": "passed",
+      "resourceBytes": 808751,
+      "javascriptBytes": 694037,
+      "cssBytes": 114714
+    },
+    {
+      "variant": "fumadocs",
+      "width": 768,
+      "overflow": false,
+      "keyboardAndFeedback": "passed",
+      "resourceBytes": 808751,
+      "javascriptBytes": 694037,
+      "cssBytes": 114714
+    },
+    {
+      "variant": "fumadocs",
+      "width": 1280,
+      "overflow": false,
+      "keyboardAndFeedback": "passed",
+      "resourceBytes": 808751,
+      "javascriptBytes": 694037,
+      "cssBytes": 114714
+    }
+  ],
+  "lesson_sha256": "e25378fdee764400e304dfe8ce6ee7f322e53e3317d48c985f7e9b69769e3144"
+}
