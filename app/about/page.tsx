@@ -42,15 +42,15 @@ const certificationMarks = [
   {
     name: "AWS Certified Cloud Practitioner",
     src: "/badges/aws-certified-cloud-practitioner.png",
-    width: 500,
-    height: 500,
+    width: 600,
+    height: 600,
     widthClass: "w-20",
   },
   {
     name: "AWS Certified AI Practitioner",
     src: "/badges/aws-certified-ai-practitioner.png",
-    width: 500,
-    height: 500,
+    width: 600,
+    height: 600,
     widthClass: "w-20",
   },
 ] as const;
