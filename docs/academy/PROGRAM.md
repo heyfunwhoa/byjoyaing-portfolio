@@ -1,7 +1,7 @@
 # Unified Learning Platform — AI Foundations + Builder Academy
 
 **Status:** proposed curriculum and product architecture (not an assertion that labs are implemented).
-**Last reviewed:** 2026-10-10.
+**Last reviewed:** 2026-10-30 (current inventory section; wider vision remains proposed).
 **Canonical implementation:** `/ai-academy` in this repository. Preserve the existing catalog and Version Control Playground; do not create a competing app/repo. The seven-lesson MVP below is historical context, not the current catalog count.
 **Other references:** [AI Command Center](https://app.notion.com/p/3f3cdefaec758139a149ef6b77d14f03), [existing academy MVP](../ai-academy.md).
 
@@ -11,7 +11,7 @@ The [Revenue enablement program and Trusted Handoff mission](REVENUE-ENABLEMENT-
 
 ## Current curriculum priorities
 
-Use the [2026-10-12 curriculum audit](CURRICULUM-AUDIT.md) for the complete inventory, observed implementation depth, reuse decisions and current priority order. The audited catalog has 22 registered lessons; Programming Foundations has 2 guided tutorials among 10 module records. This program remains the wider vision. Its older phases below are not the current implementation queue. The existing-content navigation and metadata foundation is authorized; see [mission handoff](MISSION-HANDOFF.md). The beginner reading-code/files/JSON/YAML slice is now authorized; see the focused re-audit for scope. Broader lesson expansion and new labs remain on hold.
+Use the [2026-10-30 curriculum audit](CURRICULUM-AUDIT.md) for the complete lesson/route inventory, source limits and priorities. The audited main snapshot contains 38 registered lessons; KRU-174 proposes 39 with background-job recovery and nine goal-based paths. Programming has two guided tutorials among ten module records. Systems already has two interactive examples and an infrastructure explainer alongside planned modules. The user authorized this audit, organization and one written recovery lesson. Broader new labs remain separate scope. This program is the wider vision; older phases below are historical proposals, not the current implementation queue.
 
 ## Product recommendation
 One learning platform, two coherent entry points:
