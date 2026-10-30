@@ -24,7 +24,7 @@ export function AtlasCase() {
             Compare coverage without calling a gray cell a gap.
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted">
-            A working sample of a detector catalog. Three sources, five credential types, and a filter. AWS keys and GitHub PATs are Covered for TruffleHog. Slack, GitLab, and GCP are Observed because those public detector folders exist. Verification for those three was not fully reviewed. Betterleaks and Kingfisher stay Not evaluated.
+            For security practitioners and technical sellers comparing secret-detection coverage, this sample makes the evidence easier to inspect. Compare three sources across five credential types, distinguish reviewed coverage from observations, and see what still needs investigation. My aim is to help people ask better security questions without turning missing evidence into a product claim.
           </p>
           <dl className="grid gap-4 text-sm sm:grid-cols-2">
             <div>
@@ -120,3 +120,4 @@ export function AtlasCase() {
     </PageMain>
   );
 }
+

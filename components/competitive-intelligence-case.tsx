@@ -142,12 +142,12 @@ export function CompetitiveIntelligenceCase() {
             </h1>
           </div>
           <p className="max-w-xl text-base leading-7 text-muted">
-            A competitive system that would track product and market changes, keep the source on the claim, and turn that into guidance a seller can use. Sales, Product, and Product Marketing would share one reviewed loop. The briefs were used in the field. Monitoring is designed, not running.
+            For sellers answering technical comparison questions, I developed briefs and field guidance that connect a claim to its source and a useful discovery question. This example explores how Sales, Product, and Product Marketing could share that review process. The aim is to make expertise easier to reuse and help buyers understand the tradeoffs. Field briefs were used with teams; the monitoring workflow here is a design.
           </p>
           <dl className="grid gap-4 text-sm sm:grid-cols-2">
             <div>
               <dt className="font-medium">Role</dt>
-              <dd className="mt-1 leading-6 text-muted">Competitive strategy, GTM enablement, and product systems.</dd>
+              <dd className="mt-1 leading-6 text-muted">I wrote competitive briefs and taught the guidance; this page illustrates the proposed software workflow.</dd>
             </div>
             <div>
               <dt className="font-medium">Stage</dt>
@@ -401,3 +401,4 @@ export function CompetitiveIntelligenceCase() {
     </PageMain>
   );
 }
+

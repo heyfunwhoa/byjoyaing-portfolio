@@ -19,6 +19,7 @@ Before editing branding, copy, layout, navigation, portfolio examples or public 
 - Do not fabricate metrics, titles, technical functionality or research findings; never expose private Joy Index or employer/customer-sensitive information.
 - Keep proposed route/navigation changes and the `/prototype` experiment separate from the live homepage until reviewed and tested.
 - Use existing tokens, accessible/responsive UI, and verifiable project status labels. Preserve legacy links.
+- Review portfolio pages as connected journeys: state the reader question and intended next step; compare with Home, About and relevant entry/destination pages; preserve shared identity while giving each page distinct supporting detail. Check section order, appropriate repetition, evidence, calls to action and return paths. Home introduces and routes; About explains background and approach. Update the documented page sequence when an approved flow changes. See [homepage-simplification.md](docs/design/homepage-simplification.md).
 - Follow the risk-based engineering Definition of Done, CI and security guidance already in this repository. Feature branch → focused PR → automated checks → manual accessibility/content review → merge.
 - Every portfolio design PR must complete [.github/pull_request_template.md](.github/pull_request_template.md), documenting brand alignment, evidence, impact, tests, and exceptions.
 - Change brand fundamentals only through an explicit reviewed update to the canonical guide; do not create competing brand guidelines in other files.
@@ -68,3 +69,4 @@ For new UI journeys and material interface changes, consult the [proposed respon
 ## Focused agent sessions
 
 For scoped agent work, use the proposed [focused-session procedure](https://github.com/heyfunwhoa/technical-docs-platform/blob/c749cc5c859472e2d8bdb982f0d6f346a5ad4c25/ai/agent-harness/focused-sessions.md) ([review status: PR #38](https://github.com/heyfunwhoa/technical-docs-platform/pull/38)). Start from the issue and latest checkpoint, verify current revisions, inspect relevant changes, and expand discovery for concrete dependencies. Record evidence and next action at handoff; preserve required checks and local privacy/release rules. This is a pinned proposed reference, not automatic synchronization or token/spend enforcement.
+

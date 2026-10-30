@@ -2,22 +2,22 @@
   "title": "Strategic Enterprise Deal Anatomy",
   "headline": "Strategic Enterprise Deal Anatomy",
   "eyebrow": "Field Notes / Enterprise deal strategy",
-  "standfirst": "A worked, fully fictional enterprise software security example. Follow one buying group from account hypothesis to decision review while separating seller assumptions from evidence to validate. Steps can overlap; no deal outcome is claimed.",
-  "metaDescription": "A structured illustrative approach to enterprise deal execution and sales-leader coaching.",
+  "standfirst": "A useful security evaluation should help buyers decide with confidence. This fully fictional walkthrough connects technical evidence, adoption effort and commercial judgment. Follow one buying group from account hypothesis to decision review, separating assumptions from evidence to validate. Steps can overlap; no deal outcome is claimed.",
+  "metaDescription": "Connect cybersecurity evaluations to buying decisions: technical evidence, adoption effort, stakeholder ownership and practical sales coaching.",
   "limitations": "Synthetic method and buying journey; no live customer deal, completed procurement, or numerical outcome is represented. No external research sources are claimed for this original exercise.",
   "sections": [
     {
       "key": "use-when",
       "kicker": "",
       "heading": "",
-      "body": "a technical evaluation needs a shared view of the business case, buying group and commercial decision.",
+      "body": "a technical evaluation needs a clear decision, agreed evidence and shared ownership across the buying group.",
       "note": ""
     },
     {
       "key": "orientation",
       "kicker": "",
       "heading": "",
-      "body": "Start with the account hypothesis, then inspect one stakeholder or evaluation gap. The goal is a better next conversation, not a fixed sequence for every deal.",
+      "body": "Start with the account hypothesis and ask: What decision should this evaluation help us make? Explore one stakeholder or evaluation gap below. Match the depth of the process to the risk and complexity of the purchase.",
       "note": ""
     },
     {
@@ -30,8 +30,8 @@
     {
       "key": "learning",
       "kicker": "",
-      "heading": "From deal execution to team learning",
-      "body": "A verified case study would explain the actual problem, my responsibilities, collaborators, stakeholder dynamics, evaluation and decision process, supported outcome, and lessons. This page deliberately does not claim a deal result.",
+      "heading": "Give the buyer a clear next step",
+      "body": "Before the next evaluation, agree on what the evidence needs to establish and who will use it. Include the work of adoption: permissions, integrations, response ownership and changes to daily workflows. At the readout, make clear what worked, what remains uncertain, what adoption would require and who owns the next decision. Proceeding, stopping or resolving a specific gap can each be a useful outcome. For coaching, ask which evidence changed the team's understanding and which conversation would resolve the most important unknown.",
       "note": ""
     }
   ],
@@ -63,9 +63,9 @@
     }
   ],
   "owner": "Kristen Aing",
-  "reviewer": "Pending human review of the CMS move",
-  "contentVersion": 1,
+  "reviewer": "Pending human review of reconciled brand and fictional walkthrough copy",
+  "contentVersion": 3,
   "reviewDue": "2026-11-15",
   "classification": "public",
-  "publicationStatus": "published"
+  "publicationStatus": "review"
 }

@@ -16,19 +16,21 @@ This document extends the canonical [brand guidelines](brand-guidelines.md). Whe
 - **Professional positioning:** **Revenue & GTM Leader · Curious Builder**
 - **Brand expression:** *Curious by nature. Builder by instinct.*
 - **Guiding philosophy:** **People first. Problem-driven. Systems-minded.**
+- **Purpose:** Help people see what’s possible and give them the clarity, confidence, and tools to move forward.
+- **Practical promise:** Make complex work clearer and reduce unnecessary friction so people can build, buy, and adopt security with confidence. Apply the evidence and message-use rules in the canonical [brand guidelines](brand-guidelines.md).
 - **Learning practice:** **Learn → Build → Iterate**
 
 ### Three operating modes
 
 These are modes of operating, not separate job titles or sub-brands.
 
-1. **Strategist** — understand markets and buyers, identify patterns, ask better questions.
+1. **Strategist:** understand buyers and markets, identify useful patterns, and turn that insight into clear messaging and practical resources.
 2. **Leader** — align people, decisions and execution; coach and develop others.
 3. **Builder** — turn ideas into useful experiments, tools and repeatable systems.
 
 ### Content themes
 
-**People · Strategy · Systems** remain the durable content lenses.
+**People · Strategy · Systems** remain the durable content lenses. Content marketing follows the supporting-capability and evidence rules in the canonical [brand guidelines](brand-guidelines.md).
 
 ### Product-family model
 
@@ -141,12 +143,7 @@ These are conceptual directions, not required literal assets:
 
 The avatar remains an optional personal-brand asset, not the primary visual system.
 
-Use it primarily for:
-- About;
-- selected homepage/editorial moments;
-- personal learning or reflection where a human presence helps.
-
-Do not require avatar variants across every product. Existing likeness and accessibility rules remain in [avatar-system.md](avatar-system.md).
+Use the avatar where a human presence helps, including approved homepage and connection-card placements. About currently uses orbit artwork without a portrait. Follow the current [placement inventory](../design/component-inventory.md) and existing likeness and accessibility rules in [avatar-system.md](avatar-system.md). Do not require avatar variants across every product.
 
 ## 7. Signature and lockups
 
@@ -170,7 +167,7 @@ Default direction:
 - no decorative icon if text is clearer;
 - icons never replace accessible labels.
 
-Lucide or an equivalent existing library may remain the implementation default. Brand distinction should come primarily from composition, tokens and geometry rather than a custom icon library today.
+Lucide or an equivalent existing library may remain the implementation default. Brand distinction should come primarily from composition, tokens and geometry rather than a custom icon library today. Institution logos are separate identifying marks, not generic icons. Follow the canonical brand guide and the [education asset provenance](../../public/logos/education/README.md); retain official proportions and colors.
 
 ## 9. Motion identity
 
@@ -336,3 +333,4 @@ Before a public brand change:
 - [ ] Keyboard, responsive, contrast and reduced-motion behavior are checked.
 - [ ] Generated imagery contains no fabricated claims or misleading UI.
 - [ ] Brand-guide and implementation tokens are updated together when fundamentals change.
+

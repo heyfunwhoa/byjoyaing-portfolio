@@ -24,6 +24,7 @@ Describe the user-facing problem, what changed, and why. Link relevant issue/roa
 - [ ] Responsive layout checked at 375px / 768px / 1280px and 200% zoom.
 - [ ] Keyboard navigation, focus, headings, accessible names, contrast and reduced motion checked.
 - [ ] Content hierarchy, links, SEO metadata and error/empty states checked.
+- [ ] Reviewed the page with its entry and next destinations: distinct reader question, useful supporting detail, appropriate repetition, coherent section order and clear next action. Updated the documented sequence if it changed.
 - [ ] Prototype, proposed content and mock data clearly labeled; no unverified outcomes presented as fact.
 
 ## Workbench reuse (UI changes; otherwise N/A)
@@ -46,3 +47,4 @@ Known risks, exceptions, follow-ups, and whether this is safe to ship:
 ## Brand exceptions (only if applicable)
 
 Explain the rationale, trade-offs and corresponding proposed edit to the canonical guidelines. Unapproved deviations must not silently ship.
+
