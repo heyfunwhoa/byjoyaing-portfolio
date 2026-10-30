@@ -168,3 +168,114 @@ This is how stage 1 and 2 would start for the future Side Quests index. It is a 
 - **One criterion.** `/projects` resolves, and a card still opens the existing case-study URL.
 
 Stages 3 through 5 for that page happen in the pull request that builds it, with two real layout options. They do not happen in this file.
+
+## ShieldCN reference for project metadata
+
+Added at Kristen's request on October 29, 2026. Reference: [ShieldCN showcase](https://shieldcn.dev/showcase).
+
+Status: design reference only. No ShieldCN package, remote image service, public badge, chart or new page is adopted by this documentation change. This reference supplements the existing workbench and canonical brand guide.
+
+Use the showcase when designing compact technology attribution, project metadata and repository presentation. Its badge groups, charts and README headers are examples to evaluate, not evidence of this portfolio's capabilities.
+
+| Placement | Candidate use | Decision rule |
+| --- | --- | --- |
+| Side Quest detail | Small “Built with” row after the project explanation | Include only technology verified in that project's current implementation; keep the business problem and outcome first. |
+| Project cards | One readable lifecycle label | Reuse existing status components and vocabulary; never imply a prototype is live. |
+| Repository README | Restrained stack, license or CI badge group and optional header | Confirm license and source. Dynamic status must identify its repository/workflow and remain accurate; static “passing” claims are not substitutes for live checks. |
+| Build/process explanation | Concise technology labels beside plain-language descriptions | Explain what each tool contributes; avoid a wall of logos or implying sponsorship. |
+| Project activity | Optional sourced chart | Use only when it answers a reader question, with dates, units, source and a text alternative; never use decorative metrics as proof of impact. |
+
+Implementation approach:
+- Check the existing workbench inventory and shared badge/status components first. Prefer native text and local components for public site labels; ShieldCN is a visual reference, not a requirement to embed its service.
+- Adapt spacing, fine borders and grouping to the existing warm ivory, charcoal and copper tokens and Geist typography. Do not adopt an unrelated showcase palette or replace the joy. identity.
+- Keep badges secondary to Work and project evidence. Avoid adding a technical badge strip to the homepage hero by default.
+- Use readable text, wrapping at narrow widths and 200% zoom, adequate contrast, and visible focus for genuine links. A noninteractive badge must not look like a button. Do not convey status through color alone.
+- Before copying source/assets or embedding remote images, review the specific license/attribution, privacy, availability and caching implications. Do not place secrets or private repository information in badge URLs.
+- A future implementation PR must name its destination, verified labels, source/adaptation decision and actual responsive/accessibility checks. Record adoption in the existing inventory rather than creating a parallel catalog.
+
+First candidate: a small “Built with” section on a named Side Quest detail page, using verified technology and existing local components. Public implementation remains a separate scoped change.
+
+### Filled-out first composition: how this site is made
+
+Proposed content for the existing About/build explanation; not a new route. Reuse the existing `siteHowBuilt` content and toolkit structures in [toolkit-registry.ts](../lib/portfolio/toolkit-registry.ts) during implementation rather than introducing another live data registry.
+
+**Heading:** How this site is made
+
+**Intro:** A personal portfolio built to connect the work, the thinking, and the things I am learning to make. The site uses Next.js, React, TypeScript, and Tailwind CSS, with source on GitHub and hosting on Vercel.
+
+**Primary badge row:** Next.js · React · TypeScript · Tailwind CSS
+
+**Supporting links:** View portfolio source · Explore Side Quests
+
+The source link should point to the existing public portfolio repository. The second link uses `/side-quests`. Preserve the existing About hierarchy and keep this section below the professional story.
+
+| Label | Plain-language explanation | Evidence and display treatment |
+| --- | --- | --- |
+| Next.js | Organizes the pages and how the site is served. | Declared in package.json; primary badge. |
+| React | Builds the reusable interface pieces. | Declared in package.json; primary badge. |
+| TypeScript | Helps catch mismatched data and code assumptions while building. | Declared in package.json; primary badge. Do not claim it prevents every bug. |
+| Tailwind CSS | Provides the styling utilities for layout and visual consistency. | Declared in package.json; primary badge. |
+| Vercel | Hosts the portfolio. | Existing toolkit registry identifies hosting; supporting text/link. |
+| GitHub | Holds the source, change history, and pull requests. | Existing toolkit registry and repository; supporting text/link. |
+| Keystatic | Provides content-editing tooling. | Packages declared; describe as tooling, not proof hosted editing is configured. |
+| Storybook | Provides a workspace for inspecting components. | Declared development tooling and scripts; optional expanded detail. |
+| Playwright | Provides browser-testing tooling. | Declared development tooling and scripts; no claim all pages passed. |
+| Resend | Provides the email integration used by the contact implementation. | Dependency and contact code exist; omit delivery-success claims until the configuration problem is resolved and delivery is verified. |
+
+These descriptions were checked against the portfolio's package.json and existing toolkit records on October 29, 2026. Installed packages establish tooling availability, not proof of successful runtime behavior.
+
+### Visual and interaction specification
+
+- Use a warm card surface, fine border, charcoal text and restrained copper link emphasis from existing tokens. Badge labels use Geist Sans; technical metadata may use Geist Mono.
+- Keep the primary row to the four verified framework/tooling labels above. The existing card logo limit is four in [verified-stacks.ts](../lib/portfolio/verified-stacks.ts); preserve it for project cards.
+- On phones, wrap badges into natural rows with no fixed height, clipping, horizontal page scrolling, or forced single-line text. On larger screens, keep the row close to its explanatory copy.
+- Plain badges are text, not controls. Put explanations in visible text or an existing accessible disclosure; do not require hover to understand a label.
+- Keep hosting/source links separate from badges so the reader knows what is clickable. Use the site's existing focus treatment and link signifiers.
+- Use existing reviewed local icons only where available and useful. Decorative icons have no duplicate accessible name; the visible label provides meaning.
+- No animation is needed. No charts, follower counts or build-health numbers are needed for this first composition.
+
+### Project-specific adaptation
+
+For a Side Quest, the content order is: purpose → current capability and limitations → evidence/demo → built-with details. Use that project's verified stack, not this portfolio's stack by default.
+
+The current `verifiedTechnologyStacks` implementation contains a shared `portfolioPage` stack. That proves the presentation page's technology only; do not relabel it as the separate project's backend or architecture without inspecting that repository.
+
+Use the existing lifecycle vocabulary: **Idea**, **Prototype**, **In progress**, or **Live**, backed by the project's actual evidence. Keep technology, lifecycle and workflow-check status separate. A live page is not proof of working email, authentication or every integration.
+
+### Proposed README header
+
+**Title:** joy. / Kristen Aing  
+**Subtitle:** Revenue & GTM Leader. Curious Builder.  
+**Supporting line:** People first. Problem-driven. Systems-minded.
+
+Follow with a compact technology row and links to the site and project documentation. Use the same verified labels as the site. Do not add MIT, coverage percentages, uptime, or a static “Build passing” badge without supporting evidence. ShieldCN remains a design reference until a specific asset or service is reviewed and adopted.
+
+### Implementation acceptance checks
+
+- [ ] Update the existing About/build explanation and existing components rather than adding a competing toolkit.
+- [ ] Confirm every rendered label against the current repository and distinguish personal tooling from live integrations.
+- [ ] Review at 375px, 768px, 1280px and 200% zoom with long labels.
+- [ ] Confirm readable contrast, logical heading order, keyboard focus and source-link destinations.
+- [ ] Keep the section secondary to professional evidence; no homepage hero badge strip.
+- [ ] Confirm blocked email delivery is not presented as working.
+- [ ] Record actual lint/build/tests and preview review in the implementation PR.
+
+This checklist is a proposed implementation brief. No check is marked complete by this documentation edit.
+
+## Magic UI Pro: selective layout reference
+
+Requested October 29, 2026. Sources: [catalog](https://pro.magicui.design/) and [license](https://pro.magicui.design/license).
+Pro is a paid offering, separate from the free Magic UI collection. Its license restricts sharing and redistribution of original or modified products. No Pro code/assets were downloaded, copied or purchased for this change. Do not commit Pro source to this public repository without confirming permission for that distribution.
+
+| Reference | Portfolio use to evaluate | Local approach |
+| --- | --- | --- |
+| Portfolio template | Clear project, skills and contact hierarchy | Preserve current professional-first structure and About toolkit. |
+| Feature Cards | Explain a build in small, readable groups | Reuse existing card surfaces and native disclosures. |
+| Changelog template | Explain meaningful project updates | Candidate only; requires real dated updates and links. |
+| Blog template | Improve long-form Field Notes reading | Keep existing article routes, typography and source labels. |
+
+Keep joy. tokens, static orbital artwork and readable content without animation. No Motion dependency, autoplay, invented testimonials or imported template is proposed.
+
+### First implementation in PR #222
+
+The existing ToolsMap build disclosure now contains four wrapping text badges, three short explanation groups, and source/Side Quests links. Existing siteHowBuilt copy and compact mode are preserved. This is original JSX using current tokens; no ShieldCN embed or Magic UI Pro source. Status: implemented on the feature branch, not merged or deployed. Manual viewport, zoom and keyboard review remain pending.

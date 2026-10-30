@@ -230,3 +230,11 @@ Status: implemented in draft PR #218, not merged. Owner: portfolio maintainer.
 - Verification: three isolated React static-render tests passed using synthetic directory data and mocked unrelated components/navigation. They check destination/role, no-match recovery, visible evidence and preservation of all story fields. CaseBandSteps also passed isolated strict TypeScript. These are not browser tests or a full app build. Existing previous-head PR checks do not certify this revision.
 - Pending: fresh repository CI and browser review at 375/768/1280px, keyboard native disclosure/focus, contrast, 200% zoom and screen reader.
 - Rollback: revert this refinement's two component commits and this record.
+
+## Site-build explanation: proposed adoption, October 29, 2026
+
+Owner: portfolio maintainer. Source/destination: existing components/tools-map.tsx, mounted by About. Adapt the existing native build disclosure and preserve siteHowBuilt and compact mode. Catalog family: disclosure. Four plain-text technology badges and three explanation groups keep the build understandable; no new badge component or status vocabulary. ShieldCN is a grouping reference; Magic UI Pro remains a layout reference only. No third-party source, asset, remote request or dependency added.
+
+Phone/tablet/desktop: existing one/two-column container; badges and links wrap without fixed heights. Native summary and anchors remain keyboard-operable, with global focus styles and 44px summary/link targets. Text stays visible when motion is disabled because no animation is added. Static content has no loading/error/permission state. Public copy claims neither email delivery nor paid-product adoption.
+
+Verification: source reviewed against package.json, toolkit registry and About call site. Full CI and manual viewport/zoom/keyboard checks pending. PR #218 changes parent About layout and PR #223 appends to this adoption document; preserve both at merge. Rollback removes this scoped disclosure expansion and adoption note.
