@@ -56,3 +56,7 @@ This is a Tier 1 refinement within existing PR #221/KRU-166; no new issue. Sourc
 Keep public fixtures separate from private account adapters. This public library is presentation code, not a place to store customer/contact records. A private app may adopt the component contract only after defining its own authorization and data ownership. Do not add contact discovery, scoring, persistence or drag-and-drop just to expand the component library.
 
 The named React Flow adoption is scoped to the public stakeholder map. Do not generalize it to other maps unless a task needs graph navigation or editing. Do not create a published shared package until a second consuming app demonstrates the need and compatibility requirements.
+
+## Release verification
+
+The user requested merge and production deployment. Head `088b51e` passed CI (unit tests, lint, dependency audit, build/TypeScript and production-browser tests), Visual QA, Security scans and Semgrep. The visual failures were fixed by preserving the accessible map label and returning no edges for invalid data before graph lookup. Exact-head preview was READY and returned HTTP 200 with the map instructions and fictional-data labels. Full manual accessibility review remains unclaimed. GitHub requested fresh required checks on the current merge candidate after readiness; this documentation commit triggers that validation. Production status must be verified separately after merge.
