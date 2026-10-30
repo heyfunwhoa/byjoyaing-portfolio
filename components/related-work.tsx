@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { ProjectSequence } from "@/components/project-case-navigation";
 import { MaterialsInvitation } from "@/components/materials-invitation";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { directoryProjects } from "@/lib/project-directory";
@@ -29,6 +31,7 @@ export function RelatedWork({ slug }: { slug: string }) {
 
   return (
     <section className="border-t border-border py-16">
+      <Suspense fallback={null}><ProjectSequence slug={slug} /></Suspense>
       <MaterialsInvitation tone="build" />
       {items.length === 0 ? null : (
         <>

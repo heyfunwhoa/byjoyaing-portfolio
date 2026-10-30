@@ -1,3 +1,4 @@
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { ExperienceTimeline } from "@/components/experience-timeline";
@@ -46,6 +47,7 @@ export default function ExperiencePage() {
     <PageMain>
       <section className="grid items-center gap-8 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
         <div className="min-w-0">
+          <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/work","label":"Work"},{"label":"Experience"}]} />
           <p className="editorial-eyebrow text-accent">Work · Revenue & GTM</p>
           <h1 className="editorial-title mt-3 max-w-[16ch]">
             Selling technical security, and teaching the story.

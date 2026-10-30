@@ -46,7 +46,7 @@ test("source guard: case templates and Field Notes guides mount the breadcrumb",
     assert.match(source, new RegExp(token), file);
     assert.doesNotMatch(source, /@\/components\/ui\//, file);
   }
-  const crumb = readFileSync(new URL("../components/collection-breadcrumb.tsx", import.meta.url), "utf8");
+  const crumb = readFileSync(new URL("../components/breadcrumb-trail.tsx", import.meta.url), "utf8");
   assert.match(crumb, /aria-label="Breadcrumb"/);
   assert.match(crumb, /aria-current="page"/);
   assert.doesNotMatch(crumb, /@\/components\/ui\//);

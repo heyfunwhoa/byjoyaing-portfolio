@@ -1,3 +1,4 @@
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
 import { PageMain } from "@/components/page-main";
@@ -12,7 +13,8 @@ export default function BuilderGuidePage() {
   return (
     <PageMain>
       <section className="py-12 sm:py-16">
-        <p className="text-sm font-medium text-muted">joy. / a curious way in</p>
+        <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"label":"Builder Guide"}]} />
+          <p className="text-sm font-medium text-muted">joy. / a curious way in</p>
         <h1 className="mt-3 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">
           A little curiosity goes a long way.
         </h1>
