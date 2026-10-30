@@ -86,7 +86,7 @@ test("case studies restore directory filters after reload", async ({ page }) => 
   await openCase.click();
   await expect(page).toHaveURL(/from=projects/);
   await page.reload();
-  const back = page.getByRole("link", { name: "Back to your project results" });
+  const back = page.getByRole("navigation", { name: "Breadcrumb", exact: true }).getByRole("link", { name: "Projects", exact: true });
   await expect(back).toHaveAttribute("href", "/projects?category=technical&q=Atlas#directory");
   await back.press("Enter");
   await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("Atlas");
@@ -95,12 +95,29 @@ test("case studies restore directory filters after reload", async ({ page }) => 
   await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("");
 });
 
-test("direct case links have no stale return context and return targets stay local", async ({ page }) => {
+test("direct case links return to all projects and return targets stay local", async ({ page }) => {
   await page.goto("/work/detector-coverage-atlas");
-  await expect(page.getByRole("link", { name: "Back to your project results" })).toHaveCount(0);
+  await expect(page.getByRole("navigation", { name: "Breadcrumb", exact: true }).getByRole("link", { name: "Projects", exact: true })).toHaveAttribute("href", "/projects#directory");
   await page.goto("/work/detector-coverage-atlas?from=projects&stage=Build&q=hello%26world&returnTo=https://example.com");
-  const back = page.getByRole("link", { name: "Back to your project results" });
+  const back = page.getByRole("navigation", { name: "Breadcrumb", exact: true }).getByRole("link", { name: "Projects", exact: true });
   await expect(back).toHaveAttribute("href", "/projects?stage=Build&q=hello%26world#directory");
   await back.click();
   await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("hello&world");
+});
+
+test("project sequence follows filtered results and preserves context in both directions", async ({ page }) => {
+  await page.goto("/projects?category=customer#directory");
+  const destinations = await page.locator('#directory h3 a').evaluateAll(links => links.map(link => link.getAttribute("href")!));
+  expect(destinations.length).toBeGreaterThan(1);
+  await page.locator('#directory h3 a').first().click();
+  let sequence = page.getByRole("navigation", { name: "Project results", exact: true });
+  await expect(sequence.getByRole("link", { name: /^Previous/ })).toHaveCount(0);
+  await expect(sequence.getByRole("link", { name: /^Next/ })).toHaveAttribute("href", destinations[1]);
+  await sequence.getByRole("link", { name: /^Next/ }).press("Enter");
+  sequence = page.getByRole("navigation", { name: "Project results", exact: true });
+  await expect(sequence.getByRole("link", { name: /^Previous/ })).toHaveAttribute("href", destinations[0]);
+  await sequence.getByRole("link", { name: /^Previous/ }).press("Enter");
+  await expect(page).toHaveURL(new RegExp(destinations[0].replace(/[?]/g, "\\?") + "$"));
+  await page.goto("/work/detector-coverage-atlas?from=projects&q=Atlas");
+  await expect(page.getByRole("navigation", { name: "Project results", exact: true })).toHaveCount(0);
 });

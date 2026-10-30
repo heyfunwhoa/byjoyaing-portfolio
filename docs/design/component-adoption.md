@@ -336,3 +336,10 @@ Extend PR #230 with a bounded navigation refinement: ProjectsDirectory includes 
 The Academy already provides Previous/Next within its learning-path sequence and moves focus to the selected lesson heading. Retain it; add a keyboard round-trip check instead of inventing a sequence across unrelated standalone labs. Keep wrapping breadcrumbs on small screens because all parents remain usable without opening a menu. Existing subtle link nudge respects reduced motion.
 
 Verification: new production-browser cases cover return after reload, encoded search, fixed local destination, no stale direct-entry context and lesson keyboard navigation. Fresh CI pending. Phone/tablet/desktop use the same native link, 44px target and global focus styles. Rollback removes the new return component and directory query context. Tier 1 refinement of existing navigation; no new tracking issue.
+
+## Simplified case navigation (supersedes separate return link above)
+Adapt the shared breadcrumb into Home / Projects / title for directory cases. Projects is the single top-level return action, preserving encoded category, stage and search only when from=projects. Direct entry returns to the full directory. Remove the duplicate contextual back link. Retain collection trails for non-directory cases.
+
+Reuse the existing related-work footer for Previous/Next in directory result order. Share the exact directory matching function; preserve filters in both directions and reloads. Hide the sequence for direct entry, one/no matching result, an unmatched current case and absent endpoints. No wraparound. Phone links stack; tablet/desktop use two columns with wrapping labels, native keyboard links, 44px targets and existing focus styles. No extra motion or dependency. Academy retains its existing sequence.
+
+This is a bounded refinement in PR #230. Browser coverage checks contextual breadcrumb reload/return, direct-entry/local destinations and filtered previous/next keyboard round trips across desktop/tablet/mobile. Manual zoom and screen-reader checks remain unclaimed. Rollback restores the previous return component and removes sequence/filter helper changes.

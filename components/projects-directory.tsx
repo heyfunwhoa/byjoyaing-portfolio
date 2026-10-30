@@ -4,7 +4,7 @@ import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack"
 import { ProjectEvidence } from "@/components/project-evidence";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import {
-  activeProjects,
+  filterDirectoryProjects,
   categorySlugs,
   categoryFromSlug,
   directoryStatus,
@@ -43,28 +43,10 @@ export function ProjectsDirectory({
     setQuery(urlQuery);
   }
   const hasFilters = category !== "All work" || stage !== "All" || query.length > 0;
-  const projects = useMemo(() => {
-    const normalizedQuery = query.trim().toLocaleLowerCase();
-    return activeProjects().filter((project) => {
-      const categoryMatch =
-        category === "All work" || project.categories.includes(category);
-      const stageMatch = stage === "All" || project.phase === stage;
-      const searchMatch =
-        normalizedQuery.length === 0 ||
-        [
-          project.title,
-          project.summary,
-          project.role,
-          directoryStatus(project.status).label,
-          project.phase,
-          ...project.categories,
-        ]
-          .join(" ")
-          .toLocaleLowerCase()
-          .includes(normalizedQuery);
-      return categoryMatch && stageMatch && searchMatch;
-    });
-  }, [category, stage, query]);
+  const projects = useMemo(
+    () => filterDirectoryProjects(category, stage, query),
+    [category, stage, query],
+  );
 
   // Carry only directory controls, not unrelated URL parameters or arbitrary return URLs.
   const directoryContext = new URLSearchParams({ from: "projects" });
