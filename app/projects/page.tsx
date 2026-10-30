@@ -1,6 +1,6 @@
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { completePageMetadata } from "@/lib/page-metadata";
-import { BrandAvatar } from "@/components/brand-avatar";
+import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { PageMain } from "@/components/page-main";
 import { ProjectsDirectory } from "@/components/projects-directory";
 import { ProjectsSystems } from "@/components/projects-systems";
@@ -44,7 +44,7 @@ export default async function ProjectsPage({
           Each project is a prototype, professional field system, design, or concept. The label is the implementation status, not a production claim.
         </p>
         </div>
-        <div className="mx-auto w-full max-w-[8rem] md:max-w-[12rem]"><BrandAvatar variant="builder" /><p className="editorial-eyebrow mt-3 text-center text-muted">Builder / Side Quests</p>
+        <div className="mx-auto w-full max-w-[8rem] md:max-w-[12rem]"><OrbitStudyIllustration variant="projects" /><p className="editorial-eyebrow mt-3 text-center text-muted">Builder / Side Quests</p>
         </div>
       </section>
 
