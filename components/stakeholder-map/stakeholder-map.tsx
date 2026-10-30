@@ -69,7 +69,7 @@ function StakeholderFlowNodeView({
   data,
 }: NodeProps<StakeholderFlowNode>) {
   return (
-    <div className="w-56">
+    <div className="nodrag nopan w-56">
       <p className="mb-2 ml-1 text-[11px] font-medium tracking-wide text-muted uppercase">
         {data.groupLabel}
       </p>
@@ -270,6 +270,10 @@ export function StakeholderMap({
             minZoom={0.45}
             maxZoom={1.6}
             zoomOnScroll={false}
+            panOnScroll={false}
+            preventScrolling={false}
+            zoomOnDoubleClick={false}
+            zoomOnPinch
             panOnDrag
             nodesDraggable={false}
             nodesConnectable={false}
@@ -317,8 +321,9 @@ export function StakeholderMap({
         <p id={legendId} className="mt-4 text-xs leading-5 text-muted">
           Dashed = hypothesis; solid = validated relationship. These are
           relationship paths, not reporting lines. Select a stakeholder button
-          to review its evidence. On larger screens, pan the map and use the
-          zoom controls; the map is read-only.
+          to review its evidence. On larger screens, drag the empty background
+          to pan, pinch or use the + / − controls to zoom, and use Fit view to
+          see the whole map again. Scrolling moves the page. The map is read-only.
         </p>
       </div>
       <StakeholderDetail
