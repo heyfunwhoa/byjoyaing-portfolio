@@ -61,7 +61,9 @@ export function posthogClientOptions(env: Environment): Partial<PostHogConfig> {
       // Also suppress events after client-side navigation from another page.
       if (
         typeof window !== "undefined" &&
-        /^\/connect(?:\/|$)/.test(window.location.pathname)
+        /^(?:\/connect(?:\/|$)|\/ai-academy(?:\/|$))/.test(
+          window.location.pathname,
+        )
       )
         return null;
       if (event.event === "$exception") {

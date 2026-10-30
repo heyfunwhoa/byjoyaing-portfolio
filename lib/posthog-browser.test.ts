@@ -157,3 +157,37 @@ test("connection page rejects pageviews and all browser events", () => {
     else Reflect.deleteProperty(globalThis, "window");
   }
 });
+
+test("Academy account pages drop browser telemetry including error events", () => {
+  const originalWindow = Object.getOwnPropertyDescriptor(globalThis, "window");
+  try {
+    Object.defineProperty(globalThis, "window", {
+      configurable: true,
+      value: { location: { pathname: "/ai-academy/sign-in" } },
+    });
+    const options = posthogClientOptions({
+      ...env,
+      enabled: "true",
+      analyticsEnabled: "true",
+    });
+    const beforeSend = options.before_send;
+    assert.equal(typeof beforeSend, "function");
+    if (typeof beforeSend !== "function") throw new Error("Missing filter");
+    assert.equal(
+      beforeSend(event("$exception", { email: "private", otp: "private" })),
+      null,
+    );
+    assert.equal(
+      beforeSend(
+        event("$pageview", {
+          $current_url: "https://www.byjoyaing.com/ai-academy/my-learning",
+        }),
+      ),
+      null,
+    );
+  } finally {
+    if (originalWindow)
+      Object.defineProperty(globalThis, "window", originalWindow);
+    else Reflect.deleteProperty(globalThis, "window");
+  }
+});

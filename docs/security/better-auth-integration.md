@@ -61,3 +61,7 @@ Use official references:
 ## Release discipline
 
 This document does not authorize connecting an arbitrary Neon account, running migrations in production, or emailing live users. After the user selects the Neon connection, implement this on a new feature branch based on the reviewed security foundation, with working lockfile and automated CI. The public homepage and Builder Guide remain independent.
+
+## Separate Academy learner increment (2026-10-30)
+
+KRU-173 adds an optional self-service **learner-only** realm, disabled by default. See [Academy learner accounts](academy-learner-accounts.md) for its scoped email-code decision, separate database/configuration, migration review, privacy and test evidence. This does not activate or relax the invitation/approval requirements for Selected Work described above. A learner account conveys no selected-work or CMS permission.
