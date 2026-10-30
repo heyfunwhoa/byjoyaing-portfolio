@@ -14,7 +14,15 @@
 - **Guiding philosophy:** **People first. Problem-driven. Systems-minded.**
 - **Core domains:** Enterprise cybersecurity, technical sales and GTM strategy, people development, product thinking, AI-assisted research and practical systems.
 
-**Brand promise:** Show how commercial judgment, curiosity, and practical building make complex technical markets easier to understand, and help people and teams grow.
+**Purpose:** Empower people to turn curiosity into confident action.
+
+**Brand promise:** Make complex work clearer and reduce unnecessary friction so people can build, buy, and adopt security with confidence.
+
+Empowerment is the aspiration; clarity, learning, coaching and useful systems are how it becomes practical. Security and GTM are the primary domains, not a requirement to frame every independent project as a security product. Commercial experience remains the anchor, with projects showing how I think and solve problems.
+
+**Message use:** Keep the full hierarchy in this guide. Public pages need only the positioning and a short relevant purpose statement, with the existing brand expression as supporting personality. Do not stack every brand line into the homepage hero.
+
+**Evidence rule:** Describe the person being helped and the specific obstacle: unclear permissions, difficult comparisons, manual steps, fragmented discovery or handoffs. Treat empowerment and reduced friction as intended benefits unless observed outcomes support a stronger claim. Avoid promises of seamless security or eliminating necessary checks.
 
 **Foundational themes (preserved):** **People** (mentorship, collaboration and development), **Strategy** (buyers, market understanding and decisions), and **Systems** (repeatable workflows, useful tools and thoughtful automation). These are the enduring substance of the original brand, not superseded by the identity framing below.
 
@@ -44,10 +52,11 @@ Sound confident but not corporate, curious but grounded, warm but concise, credi
 
 **Message hierarchy:**
 1. Who: Revenue & GTM Leader · Curious Builder, grounded in enterprise cybersecurity.
-2. How: people, strategy and systems.
-3. Proof: professional outcomes and transparent project artifacts.
-4. Personality: joy., thoughtful curiosity and experimentation.
-5. Invitation: explore Work, Field Notes or Builds, then connect.
+2. Why: empower people to turn curiosity into confident action.
+3. How: people, strategy and systems make complex work clearer and reduce unnecessary friction.
+4. Proof: professional outcomes and transparent project artifacts.
+5. Personality: joy., thoughtful curiosity and experimentation.
+6. Invitation: explore Work, Field Notes or Builds, then connect.
 
 **Do:** “I developed onboarding resources to help teammates ramp,” if supported.
 **Avoid:** unverified metrics, invented customer use, claiming independent demos are production products, or conflating proprietary employer work with personal projects.
@@ -136,6 +145,8 @@ Target primary destinations: **Home / About / Work / Field Notes / Side Quests /
 Context → specific problem → your role and collaborators → decision/approach → execution → **verified** outcome/evidence → reflection. Share only public or approved details; redact employer/customer-sensitive information. Separate your own work from team results.
 
 ### Side Quests
+
+For relevant repository introductions, use: **Who it helps → What gets in their way → How it helps → What works today → Evidence and limitations**. Adapt the language to each project's users. Link to this canonical guide when brand context is useful; do not copy a competing brand policy into each repo. Future project descriptions should identify the intended benefit and its evidence without inventing capabilities or measured savings.
 Motivation → intended user → problem → design and architecture decisions → current implementation → real demonstration/source → known limitations → lessons and next iteration. Label **idea / prototype / in progress / live** based on observable evidence. Clearly distinguish synthetic/demo data from real customer data.
 
 Show what a tool genuinely does **today**, not simply its planned architecture. Distinguish hypotheses from sourced facts and link research sources or footnotes where appropriate.
