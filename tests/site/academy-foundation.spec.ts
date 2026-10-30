@@ -11,26 +11,26 @@ test("review is independent of checks and practice, and does not gate navigation
       exact: true,
     })
     .click();
-  const article = page.getByRole("article", {
-    name: "AI, models and assistants",
+  const lessonPanel = page.getByRole("tabpanel", {
+    name: /AI, models and assistants/,
   });
-  await article
+  await lessonPanel
     .getByRole("button", { name: "Mark as reviewed", exact: true })
     .click();
   await expect(
-    article.getByRole("button", { name: "Reviewed this session" }),
+    lessonPanel.getByRole("button", { name: "Reviewed this session" }),
   ).toHaveAttribute("aria-pressed", "true");
-  await expect(article.locator('input[type="radio"]:checked')).toHaveCount(0);
-  await article
+  await expect(lessonPanel.locator('input[type="radio"]:checked')).toHaveCount(0);
+  await lessonPanel
     .getByLabel("An interface that can combine models, context and tools", {
       exact: true,
     })
     .check();
-  await article.getByRole("button", { name: "Reviewed this session" }).click();
+  await lessonPanel.getByRole("button", { name: "Reviewed this session" }).click();
   await expect(
-    article.getByRole("button", { name: "Mark as reviewed", exact: true }),
+    lessonPanel.getByRole("button", { name: "Mark as reviewed", exact: true }),
   ).toHaveAttribute("aria-pressed", "false");
-  await expect(article.getByRole("status")).toContainText("Correct.");
+  await expect(lessonPanel.getByRole("status")).toContainText("Correct.");
   await page
     .getByRole("navigation", { name: "Lesson sequence" })
     .getByRole("button", { name: /^Next:/ })

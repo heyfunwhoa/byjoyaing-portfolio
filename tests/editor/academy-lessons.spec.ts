@@ -37,15 +37,15 @@ test("edit and save the reading-code lesson, render it, then roll back through t
         exact: true,
       })
       .click();
-    const article = reader.getByRole("article", {
-      name: "Reading code, files, JSON and YAML",
+    const lessonPanel = reader.getByRole("tabpanel", {
+      name: /Reading code, files, JSON and YAML/,
     });
-    await expect(article).toContainText(edited);
-    await expect(article).toContainText(
+    await expect(lessonPanel).toContainText(edited);
+    await expect(lessonPanel).toContainText(
       "A YAML file parses, but verified is at the root instead of inside account.",
     );
     await expect(
-      article.getByRole("link", {
+      lessonPanel.getByRole("link", {
         name: "Read the full lesson, glossary and answer key",
       }),
     ).toBeVisible();
@@ -65,8 +65,8 @@ test("edit and save the reading-code lesson, render it, then roll back through t
       })
       .click();
     await expect(
-      reader.getByRole("article", {
-        name: "Reading code, files, JSON and YAML",
+      reader.getByRole("tabpanel", {
+        name: /Reading code, files, JSON and YAML/,
       }),
     ).not.toContainText("Local editorial check.");
     expect(JSON.parse(readFileSync(path, "utf8"))).toEqual(original);

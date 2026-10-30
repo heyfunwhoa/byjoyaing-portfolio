@@ -11,20 +11,20 @@ test("verification keeps its source, keyboard navigation and independent review/
   });
   await start.focus();
   await page.keyboard.press("Enter");
-  const article = page.getByRole("article", {
-    name: "Grounding and source quality",
+  const lessonPanel = page.getByRole("tabpanel", {
+    name: /Grounding and source quality/,
   });
   await expect(
-    article.getByRole("heading", {
+    lessonPanel.getByRole("heading", {
       name: "Grounding and source quality",
       exact: true,
     }),
   ).toBeFocused();
-  await expect(article).toContainText(
+  await expect(lessonPanel).toContainText(
     "Learn to distinguish sourced facts, hypotheses, stale claims and hallucinations.",
   );
   await expect(
-    article.getByRole("link", { name: "NIST AI RMF" }),
+    lessonPanel.getByRole("link", { name: "NIST AI RMF" }),
   ).toHaveAttribute(
     "href",
     "https://www.nist.gov/itl/ai-risk-management-framework",
@@ -32,15 +32,15 @@ test("verification keeps its source, keyboard navigation and independent review/
   await expect(
     page.getByRole("region", { name: "Lesson prerequisites" }),
   ).toContainText("No earlier Academy lesson required.");
-  const reviewed = article.getByRole("button", {
+  const reviewed = lessonPanel.getByRole("button", {
     name: "Mark as reviewed",
     exact: true,
   });
   await reviewed.focus();
   await page.keyboard.press("Enter");
-  await expect(article.locator('input[type="radio"]:checked')).toHaveCount(0);
-  await article.getByLabel("False", { exact: true }).check();
-  await expect(article.getByRole("status")).toContainText("Correct.");
+  await expect(lessonPanel.locator('input[type="radio"]:checked')).toHaveCount(0);
+  await lessonPanel.getByLabel("False", { exact: true }).check();
+  await expect(lessonPanel.getByRole("status")).toContainText("Correct.");
   await page
     .getByRole("navigation", { name: "Lesson sequence" })
     .getByRole("button", { name: /^Next:/ })
@@ -52,7 +52,7 @@ test("verification keeps its source, keyboard navigation and independent review/
   await expect(
     article.getByRole("button", { name: "Reviewed this session" }),
   ).toHaveAttribute("aria-pressed", "true");
-  await expect(article.locator('input[type="radio"]:checked')).toHaveCount(0);
+  await expect(lessonPanel.locator('input[type="radio"]:checked')).toHaveCount(0);
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
