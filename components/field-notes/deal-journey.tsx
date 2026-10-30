@@ -69,6 +69,12 @@ export function DealJourney() {
               <p className="text-xs font-semibold uppercase tracking-wide text-muted">Sales leader lens</p>
               <p className="mt-2 text-base leading-7">{stage.leader}</p>
             </div>
+            <div className="rounded-xl border border-accent/30 bg-accent/5 p-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-accent">
+                Move forward when
+              </p>
+              <p className="mt-2 text-sm leading-6">{stage.decisionGate}</p>
+            </div>
             <div className="border-t border-border pt-4">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted">
                 Next seller move

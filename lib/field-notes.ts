@@ -38,6 +38,8 @@ export const dealStages = [
       "Confirm product fit, affected workflows, the current process, and the buyer's reason for exploring now.",
     nextMove:
       "Test one account hypothesis in discovery. Separate what the buyer said from what research suggests.",
+    decisionGate:
+      "Continue when the buyer confirms fit and a reason to act. If not, keep this as a hypothesis and test it in discovery.",
     leader:
       "Challenge the assumptions behind the opportunity. What evidence makes this worth prioritizing now?",
   },
@@ -51,6 +53,8 @@ export const dealStages = [
       "Buyer-confirmed workflow, affected teams, impact, problem owner, and an agreed next step. No impact is assumed in this example.",
     nextMove:
       "Ask how the current process works and what a better result would change. Record unknowns instead of filling them in.",
+    decisionGate:
+      "Advance when the buyer agrees the problem matters and identifies an owner. If impact stays unclear, learn more or pause.",
     leader:
       "Coach for depth. Did the buyer describe the impact, or did the seller infer it?",
   },
@@ -63,6 +67,8 @@ export const dealStages = [
       "Validate influence through stakeholder conversations and introductions. Confirm who owns the business outcome, budget, technical review, and approval steps.",
     nextMove:
       "Ask the champion for a relevant introduction and explain why that stakeholder's perspective matters.",
+    decisionGate:
+      "Move forward when decision roles and a path to each role are validated. A named contact alone is not buying-group coverage.",
     leader:
       "Inspect relationship evidence and decision roles, not contact counts or assumed reporting lines.",
   },
@@ -75,6 +81,8 @@ export const dealStages = [
       "Agreed scope, criteria, owners, data handling, and a buyer-confirmed review point. A completed evaluation is not represented.",
     nextMove:
       "Write down what the evaluation will answer and what evidence will support a decision before work starts.",
+    decisionGate:
+      "Start only after the buyer agrees on scope, success criteria, owners, and a review point. If those are missing, align before investing resources.",
     leader:
       "Review technical risk, required resources, and exit criteria. Is the evaluation testing a decision or creating activity?",
   },
@@ -88,6 +96,8 @@ export const dealStages = [
       "Buyer-confirmed budget ownership, required reviews, procurement and legal steps, and timing. Dates are unknown until the buyer validates them.",
     nextMove:
       "Map the approval path with the buyer. Keep vendor assumptions separate from customer commitments.",
+    decisionGate:
+      "Forecast timing only when the buyer confirms an owner, approval steps, and dates. Otherwise keep timing uncertain and name the next validation action.",
     leader:
       "Separate customer-confirmed timing from seller estimates and identify the next unverified dependency.",
   },
@@ -100,6 +110,8 @@ export const dealStages = [
       "Record the buyer's decision and reason, which criteria were met or not met, remaining gaps, and any mutually agreed handoff.",
     nextMove:
       "Close the loop with the participants. If no decision is made, record the blocker and agree on the next check-in.",
+    decisionGate:
+      "Record an outcome only after the buyer makes it explicit. If no decision arrives, capture the blocker and agreed follow-up instead of inferring a result.",
     leader:
       "Review forecast quality and learning against evidence. Do not turn a pending decision into an outcome claim.",
   },
