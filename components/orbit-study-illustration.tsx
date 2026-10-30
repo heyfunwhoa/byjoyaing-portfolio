@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 const orbitStudySources = {
+  projects: "/brand/orbits/studies/orbit-study-01.svg",
   "field-notes": "/brand/orbits/studies/orbit-study-03.svg",
   "side-quests": "/brand/orbits/studies/orbit-study-02.svg",
 } as const;
@@ -12,7 +13,7 @@ type OrbitStudyIllustrationProps = {
   className?: string;
 };
 
-/** Decorative orbital artwork for the Field Notes and Side Quests collection headers. */
+/** Decorative orbital artwork for the Projects, Field Notes and Side Quests collection headers. */
 export function OrbitStudyIllustration({
   variant,
   className = "",

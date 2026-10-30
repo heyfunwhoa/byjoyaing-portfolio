@@ -20,7 +20,7 @@ Templates are compositions of the components below. Do not add a template compon
 | T7 Timeline | `/experience` | Role rows from `roles` | Not a primary nav template |
 | T8 Directory | `/projects` | Filters plus `projects-directory` | Supporting. Side Quests is the introduction |
 
-Avatar by template: Home uses `/brand/avatar/home-portrait.webp`. Work and the directory use `/brand/avatar/illustrated-portrait.png`. About uses the existing transparent orbit artwork without a portrait. The `/field-notes` and `/side-quests` collection headers use decorative orbit studies; Leader, Explorer, and Builder remain contextual labels.
+Avatar by template: Home uses `/brand/avatar/home-portrait.webp`. Work uses `/brand/avatar/illustrated-portrait.png`. The Projects directory uses the decorative `projects` orbit study, without a portrait. About uses the existing transparent orbit artwork without a portrait. The `/field-notes` and `/side-quests` collection headers use decorative orbit studies; Leader, Explorer, and Builder remain contextual labels.
 
 This inventory does not prescribe a rebuild. Names in the "Possible later role" column are the shared pieces the product plan may need. If an existing component already does the job, extend it.
 
