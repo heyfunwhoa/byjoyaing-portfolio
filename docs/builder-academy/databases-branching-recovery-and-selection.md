@@ -2,7 +2,64 @@
 
 Builder Academy · Beginner → Intermediate · 35 minutes · Draft for review · Sources checked 2026-10-17
 
-Related learning owner: [KRU-121](https://linear.app/krusty/issue/KRU-121/academy-lesson-rss-polling-deduplication-and-infrastructure-costs). This extends its existing RSS infrastructure scope rather than creating another curriculum. This companion is not automatically a published Academy card.
+Related learning owner: [KRU-121](https://linear.app/krusty/issue/KRU-121/academy-lesson-rss-polling-deduplication-and-infrastructure-costs). Everyday-management expansion: [KRU-187](https://linear.app/krusty/issue/KRU-187). The existing `database-branching-recovery` card in `lib/ai-academy.ts` links here. The expansion is proposed until its PR is reviewed and released; the provider comparison below retains its October 17 review date.
+
+## Start here: a 10-minute everyday-management path
+
+**Goal: make it easy to experiment without putting somebody else's work at risk.** A little structure lets you build with more confidence and less repeated setup. Read this section first; the deeper recovery and platform-selection sections are optional next steps.
+
+Think of a database like a workshop's filing cabinet. The live cabinet contains records people depend on. Your practice cabinet lets you try a new filing system without changing theirs. Labels help people find the right cabinet, but the connection and permissions decide which cabinet an app actually opens.
+
+| Term | Plain-language meaning | Example for a fictional learning app |
+| --- | --- | --- |
+| Organization | Who owns and manages the resources and billing | A personal workspace or a hosting-managed workspace |
+| Project | A named home for one app's database resources | `learning-app` |
+| Production | The environment serving real users | Saved reading progress people expect to keep |
+| Development | Your ongoing workbench | Fictional learner records for trying changes |
+| Preview | A temporary review copy for one change | `preview/lesson-bookmarks`, linked to its PR |
+| Connection string | The address and credentials an app uses to reach a database | A secret setting, never pasted into a lesson or issue |
+
+### Six habits that make building easier
+
+1. **Name things for their job.** Prefer an app name over a generated nickname. Record stable project and branch IDs alongside labels. Renaming a project does not move its records or prove the app points to the right place. Keep unrelated apps separate unless sharing has a specific, reviewed purpose.
+2. **Give experiments their own connections.** Production, development, and previews should point to the intended separate database state. A Git branch separates code; it does not automatically separate data. Check the actual deployment's connection identity, because an integration may override dashboard defaults at deployment time.
+3. **Keep practice data fictional.** A normal database branch may copy customer details, login accounts, and sessions. For sensitive apps, use structure-only copies or build an empty development project from reviewed migrations, then add synthetic records. Disable real email, payments, and background jobs in test environments too.
+4. **Keep keys out of the notebook.** Store credentials in the hosting platform's secret settings. Use separate environment credentials and only the permissions an app needs. Keep schema-changing migration access separate from everyday application access where practical. If a credential leaks, revoke it, update its consumers, and verify the old credential no longer works. Removing text from Git is not revocation.
+5. **Agree on recovery before you need it.** Decide how much recent work you can afford to lose and how long the app can be unavailable. Those are recovery point and recovery time targets. Check the actual plan's retention, rehearse recovery into a separate target, and verify records, permissions, and routing. A successful website rollback does not undo database changes.
+6. **Give temporary work an end date.** Tie previews to a PR and owner. Before deletion, inspect deployments, scheduled jobs, unique data, and any recovery obligations. Expiration is scheduled deletion, not a backup. Keep production and long-lived development out of blanket expiry rules.
+
+### A small inventory beats a complicated dashboard
+
+Keep one internal inventory with the application/repository, hosting project, organization, environment, stable database IDs, data classification, owner, secret-setting names, recovery targets, last restore test, and review or expiry date. Record references to credentials, never their values. Update the inventory when a connection changes, rather than maintaining several competing lists.
+
+For ongoing care, review usage and leftover previews weekly while actively building. Recheck access and recovery readiness before a meaningful release, and rehearse restoration on a cadence that matches the value of the data. Watch compute, storage, retained history, and network transfer. An idle compute or a free plan does not prove that a resource is unused or that future usage costs nothing.
+
+### A predictable change process
+
+Prepare an isolated test database → apply the versioned migration there → check expected records and denied access → review the PR → approve the production migration and release → verify the live result → retire temporary resources when they are no longer needed.
+
+Promote reviewed schema changes, not a test database full of fictional records. Use an additive change when possible: add the new structure, ship compatible code, migrate existing records, and remove old structure only after consumers no longer need it. Record how to recover before each step.
+
+### Paper exercise: find the shared key
+
+A fictional learning app uses one `DATABASE_URL` for production and previews. A preview runs a migration and sends a welcome email. An old preview branch is idle and its PR is closed.
+
+1. Identify what could affect real learners even though the code is in a preview.
+2. Draw three rows for production, development, and a temporary preview. Assign distinct connection references, fictional versus real data, an owner, and a cleanup policy.
+3. Propose a recovery target in plain language, such as losing no more than an hour of changes and restoring service within four hours. These are exercise targets, not provider guarantees.
+4. List the evidence needed before deleting the idle preview.
+
+**Answer guide:** A shared connection can let preview code alter live data. A copied database can still contain real email addresses, so separate data and disable real delivery. An isolated database must have its schema and permissions tested before switching the app to it. A closed PR and idle compute are useful signals, but also check deployments, jobs, unique records, and retention requirements. No real infrastructure is changed by this exercise.
+
+### Neon and Vercel specifics
+
+Reviewed October 30, 2026 against the primary documentation:
+
+- [Schema-only branches](https://neon.com/docs/guides/branching-schema-only) copy structure without rows. Check current plan and tooling support; restoring data into that branch later can reintroduce sensitive records.
+- [Branch expiration](https://neon.com/docs/guides/branch-expiration) deletes the branch and associated compute. Set it deliberately for disposable resources.
+- [Vercel-managed integration](https://neon.com/docs/guides/vercel-managed-integration) can supply a different database connection at preview deployment time. Verify the deployed mapping, not only the environment-variable list. Manage provider-owned resource naming and configuration through its supported Vercel controls. Keep one stable production database; creating a fresh one for every production deployment is not the recommended pattern.
+
+These practices are a learning guide, not evidence that a particular app's access controls, billing, or backups have been verified.
 
 ## Learning outcomes
 1. Explain a relational database, table, row, schema, foreign key, unique constraint, and transaction in plain language.
