@@ -17,7 +17,7 @@ export const metadata: Metadata = completePageMetadata(
   alternates: { canonical: "/" },
   openGraph: { url: "/" },
   title: {
-    absolute: "Revenue & GTM Leader · Curious Builder — Kristen Aing",
+    absolute: "Kristen Aing | Cybersecurity Sales & GTM Leadership",
   },
   description: homePage.metaDescription,
 },
