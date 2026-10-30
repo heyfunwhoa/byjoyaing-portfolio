@@ -52,3 +52,27 @@ test("map handles empty, invalid and long-label fixtures without horizontal over
   const fits = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
   expect(fits).toBe(true);
 });
+
+test("desktop map stays readable and Fit view restores its framing", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto(story("patterns-stakeholder-map--overview"));
+  const canvas = page.locator(".react-flow");
+  const card = canvas.getByRole("button", { name: /Security champion/ });
+  await expect(card).toBeVisible();
+  const cardWidth = async () => (await card.boundingBox())?.width ?? 0;
+  await expect.poll(cardWidth).toBeGreaterThan(180);
+  const initialWidth = await cardWidth();
+  await canvas.getByRole("button", { name: "Zoom in on stakeholder map", exact: true }).click();
+  await expect.poll(cardWidth).toBeGreaterThan(initialWidth + 10);
+  await canvas.getByRole("button", { name: "Fit stakeholder map to view", exact: true }).click();
+  await expect.poll(async () => Math.abs((await cardWidth()) - initialWidth)).toBeLessThan(2);
+  const bounds = await canvas.boundingBox();
+  for (const node of await canvas.locator(".react-flow__node").all()) {
+    const box = await node.boundingBox();
+    expect(box).not.toBeNull();
+    expect(box!.x).toBeGreaterThanOrEqual(bounds!.x);
+    expect(box!.x + box!.width).toBeLessThanOrEqual(bounds!.x + bounds!.width);
+    expect(box!.y).toBeGreaterThanOrEqual(bounds!.y);
+    expect(box!.y + box!.height).toBeLessThanOrEqual(bounds!.y + bounds!.height);
+  }
+});

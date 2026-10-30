@@ -60,3 +60,7 @@ The named React Flow adoption is scoped to the public stakeholder map. Do not ge
 ## Release verification
 
 The user requested merge and production deployment. Head `088b51e` passed CI (unit tests, lint, dependency audit, build/TypeScript and production-browser tests), Visual QA, Security scans and Semgrep. The visual failures were fixed by preserving the accessible map label and returning no edges for invalid data before graph lookup. Exact-head preview was READY and returned HTTP 200 with the map instructions and fictional-data labels. Full manual accessibility review remains unclaimed. GitHub requested fresh required checks on the current merge candidate after readiness; this documentation commit triggers that validation. Production status must be verified separately after merge.
+
+## Readable map framing
+
+The desktop canvas now uses the full available content width, with selected stakeholder evidence below it. This avoids shrinking the three graph columns into a narrow split panel. A 28rem canvas reduces unused vertical space. Initial framing and the Fit view control share padding and a maximum fitted zoom of 1; manual zoom still reaches 1.6. Phone/tablet grouped buttons and page scrolling are unchanged. A browser regression checks readable card width, zoom-in response, Fit view recovery and node bounds at 1280px. Runtime CI validation is pending for this revision.

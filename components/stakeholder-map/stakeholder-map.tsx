@@ -34,6 +34,7 @@ type FlowNodeData = {
 type StakeholderFlowNode = Node<FlowNodeData, "stakeholder">;
 const flowNodeWidth = 224;
 const flowNodeHeight = 120;
+const fitViewOptions = { padding: 0.12, maxZoom: 1 };
 const flowHandles = [
   {
     id: "top",
@@ -224,7 +225,7 @@ export function StakeholderMap({
     );
 
   return (
-    <div className="grid min-w-0 gap-5 xl:grid-cols-[minmax(0,1.7fr)_minmax(16rem,1fr)]">
+    <div className="grid min-w-0 gap-5">
       <div className="min-w-0">
         <div
           className="grid min-w-0 gap-5 lg:hidden"
@@ -258,7 +259,7 @@ export function StakeholderMap({
           ))}
         </div>
         <div
-          className={`hidden h-[35rem] min-w-0 overflow-hidden rounded-xl border border-border bg-surface-mist lg:block ${styles.canvas}`}
+          className={`hidden h-[28rem] min-w-0 overflow-hidden rounded-xl border border-border bg-surface-mist lg:block ${styles.canvas}`}
           role="group"
           aria-label="Interactive stakeholder map"
           aria-describedby={legendId}
@@ -268,7 +269,7 @@ export function StakeholderMap({
             edges={edges}
             nodeTypes={nodeTypes}
             fitView
-            fitViewOptions={{ padding: 0.16 }}
+            fitViewOptions={fitViewOptions}
             minZoom={0.45}
             maxZoom={1.6}
             zoomOnScroll={false}
@@ -314,6 +315,7 @@ export function StakeholderMap({
               </div>
             </Panel>
             <Controls
+              fitViewOptions={fitViewOptions}
               showInteractive={false}
               position="bottom-right"
               aria-label="Stakeholder map controls"
