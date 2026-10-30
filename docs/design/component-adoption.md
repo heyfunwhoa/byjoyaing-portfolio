@@ -303,3 +303,15 @@ This supersedes the static-only scope above for the two selected examples. Statu
 Extends PR #225 after user approval. Adapt the existing systems component, state helper, semantic lists and card tokens; no third-party source, new package or motion. Destination remains /ai-academy/systems. The webhook gains an ordered delivery timeline with explicit Upcoming/Current step/Completed text and aria-current. The access illustration becomes a branching HTML decision diagram reflecting the existing radio choice, with a textual Selected outcome marker. Infrastructure becomes a labeled API → worker → database example, explicitly one possible flow. No new app or simulated production telemetry.
 
 Phone: vertically stacked steps and decision branches. Tablet: access branches may sit side by side; at narrower desktop card widths they stack again. No fixed text heights, canvas or SVG text. Native controls and polite status regions retain keyboard behavior; diagram updates add no live regions or motion. Extend existing route tests to assert timeline and selected branch states at all existing widths. Prior commit dcf39d4 passed full CI (206 browser tests passed, one skipped) and manual interaction review; new-commit checks pending. Manual zoom, contrast and screen-reader review remain separate outstanding checks. Rollback this graphics commit to restore prior illustrations and controls.
+
+
+## Projects header orbit · 2026-10-30
+
+At the owner's request, replace the Projects builder portrait with the existing orbit-study-01.svg through OrbitStudyIllustration. Add a projects variant to that shared component; retain the existing 8rem mobile / 12rem desktop container and Builder / Side Quests caption. This is decorative supporting artwork, not a visualization of live data. Empty alt and aria-hidden, intrinsic square sizing, no focus target or animation. No new asset, dependency, interaction or content claim. Tier 1 isolated presentation change; no new tracking issue. CI and preview review are recorded in the PR. Rollback restores the BrandAvatar import and mount on /projects.
+
+
+## Distinct collection header illustrations · 2026-10-30
+
+Supersedes the Projects orbit selection above after owner review. Projects uses three connected nodes for systems; Field Notes uses stacked geometric planes for accumulated ideas; Side Quests uses a branching path for exploration. Original repository-native SVGs in public/brand/page-art, using existing charcoal/copper/sage/clay tokens, transparent backgrounds and a shared 1024-square canvas. No third-party art, new dependency, animation, diagram semantics or live-data claim. The joy. site mark and About orbit are unchanged.
+
+Adapt the existing OrbitStudyIllustration wrapper and retain its exported name for compatibility. Existing page containers handle phone/tablet/desktop scaling. Decorative empty alt, aria-hidden and no focus target. Update existing SVG safety checks for the new sources. Tier 1 static presentation refinement to PR #227; no new interaction or tracking issue. Preview and CI evidence in the PR. Rollback restores the wrapper's prior artwork sources.
