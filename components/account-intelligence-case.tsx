@@ -134,7 +134,7 @@ export function AccountIntelligenceCase() {
           </div>
           <div className="max-w-xl space-y-3 text-base leading-7 text-muted">
             <p>
-              A personal workspace for an enterprise rep: assigned accounts, a classified change, and a draft that cites that change.
+              For enterprise sellers deciding where to focus, I designed a workflow that connects an account change to a relevant next conversation. The aim is to reduce repeated research and help the seller explain why an outreach message matters.
             </p>
             <p>
               The walkthrough below is sample data in this portfolio. It is not a deployed feed, and it does not call a model.
@@ -143,7 +143,7 @@ export function AccountIntelligenceCase() {
           <dl className="grid gap-4 text-sm sm:grid-cols-3">
             <div>
               <dt className="font-medium text-foreground">My role</dt>
-              <dd className="mt-1 leading-6 text-muted">Product design and GTM systems</dd>
+              <dd className="mt-1 leading-6 text-muted">I designed the personal feed and its path from a signal to a draft.</dd>
             </div>
             <div>
               <dt className="font-medium text-foreground">Scope</dt>
