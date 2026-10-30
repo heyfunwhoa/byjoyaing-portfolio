@@ -13,7 +13,7 @@ export const metadata: Metadata = completePageMetadata(
   {
     alternates: { canonical: "/about" },
     openGraph: { url: "/about" },
-    title: "About",
+    title: "About: Cybersecurity Sales & GTM",
     description: aboutPage.metaDescription,
   },
   "/about",
