@@ -85,7 +85,8 @@ test("public profile icons use known destinations and clear accessible names", (
   const form = readFileSync(new URL("../app/inquiry-form.tsx", import.meta.url), "utf8");
   const route = readFileSync(new URL("../app/api/contact/route.ts", import.meta.url), "utf8");
   assert.match(fallback, /Email \$\{PUBLIC_CONTACT_EMAIL\} instead/);
-  assert.match(form, /Email \$\{PUBLIC_CONTACT_EMAIL\} instead/);
+  assert.ok(form.includes("href={`mailto:${PUBLIC_CONTACT_EMAIL}`}"));
+  assert.match(form, /Email me instead/);
   assert.match(route, /replyTo: PUBLIC_CONTACT_EMAIL/);
   for (const source of [fallback, form, route]) {
     assert.doesNotMatch(source, /kristen\.aing@gmail\.com/);

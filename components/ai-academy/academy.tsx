@@ -5,7 +5,7 @@ import {
   getLessonGuidance,
   availabilityLabels,
 } from "@/lib/academy/lesson-guidance";
-import { BrandAvatar } from "@/components/brand-avatar";
+import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { DeliveryLifecycleLab } from "@/components/ai-academy/delivery-lifecycle-lab";
 import { PortfolioOsCaseStudy } from "@/components/ai-academy/portfolio-os-case-study";
 import { ProductRequestLab } from "@/components/ai-academy/product-request-lab";
@@ -21,10 +21,16 @@ const tracks = [
   "GTM",
   "Builder",
 ] as const;
+const academyTabs = [
+  ["learn", "01 / Learn"],
+  ["apply", "02 / Apply AI"],
+  ["skills", "03 / Build skills"],
+] as const;
+type AcademyTab = (typeof academyTabs)[number][0];
 const button =
   "rounded-lg border border-border px-3 py-2 text-sm transition hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 export function Academy({ resources }: { resources?: ReactNode }) {
-  const [tab, setTab] = useState<"learn" | "apply" | "skills">("learn");
+  const [tab, setTab] = useState<AcademyTab>("learn");
   const [pathId, setPathId] = useState<string | null>(null);
   const [track, setTrack] = useState<(typeof tracks)[number]>("All");
   const [active, setActive] = useState("what-is-ai");
@@ -56,6 +62,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
   );
   const workflow = matches.find((w) => w.title === selected) ?? matches[0];
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const selectedPath = learningPaths.find((path) => path.id === pathId);
   const guidance = getLessonGuidance(lesson.slug);
   const sequence = selectedPath
@@ -85,6 +92,19 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         : [...s, lesson.slug],
     );
   }
+  function moveTabFocus(current: AcademyTab, key: string) {
+    const currentIndex = academyTabs.findIndex(([id]) => id === current);
+    const nextIndex =
+      key === "Home"
+        ? 0
+        : key === "End"
+          ? academyTabs.length - 1
+          : (currentIndex + (key === "ArrowRight" ? 1 : -1) + academyTabs.length) %
+            academyTabs.length;
+    const nextTab = academyTabs[nextIndex][0];
+    setTab(nextTab);
+    tabRefs.current[nextIndex]?.focus();
+  }
   const [copyStatus, setCopyStatus] = useState("");
   async function copy(s: string) {
     try {
@@ -108,73 +128,54 @@ export function Academy({ resources }: { resources?: ReactNode }) {
           </h1>
           <p className="mt-4 text-lg leading-8 text-muted">
             Learn AI basics, understand the tools behind an app, or practice a
-            research task. Choose a path, read a short lesson, then try its
-            linked guide or lab.
+            research task. Read a short lesson, then try its linked guide or
+            lab.
           </p>
+          <a
+            href="#academy-sections"
+            className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Browse lessons
+          </a>
         </div>
         <div className="mx-auto w-full max-w-[9rem] md:mx-0">
-          <BrandAvatar variant="builder" />
+          <OrbitStudyIllustration variant="academy" />
           <p className="editorial-eyebrow mt-3 text-center text-muted">
             Builder
           </p>
         </div>
       </div>
-      <section
-        aria-labelledby="academy-start"
-        className="mb-4 rounded-xl border border-border bg-card p-5"
-      >
-        <h2 id="academy-start" className="font-semibold">
-          Choose the path that fits your goal.
-        </h2>
-        <p className="mt-2 text-sm leading-6 text-muted">
-          For AI learning, start with four short lessons. For building, begin
-          with the frontend or delivery path. AI basics is not a prerequisite
-          for every path.
-        </p>
-        <button
-          type="button"
-          className={`${button} mt-3 min-h-11`}
-          onClick={() => startPath("foundations")}
-        >
-          Start the AI path
-        </button>
-        <button
-          type="button"
-          className={`${button} mt-3 min-h-11 sm:ml-3`}
-          onClick={() => startPath("frontend")}
-        >
-          Start the frontend path
-        </button>
-        <button
-          type="button"
-          className={`${button} mt-3 min-h-11 sm:ml-3`}
-          onClick={() => startPath("delivery")}
-        >
-          Start the delivery path
-        </button>
-      </section>
-      <details className="mb-6 rounded-xl border border-border bg-card p-4">
-        <summary className="min-h-11 cursor-pointer py-2 font-semibold">
-          Choose a starting path
+      <details className="mb-4 rounded-xl border border-border bg-card">
+        <summary className="min-h-11 cursor-pointer px-5 py-3 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          Explore learning paths ({learningPaths.length})
         </summary>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
-          {learningPaths.map((path) => (
-            <div
-              key={path.id}
-              className="rounded-xl border border-border bg-background p-4"
-            >
-              <h2 className="font-semibold">{path.title}</h2>
-              <p className="mt-2 text-xs text-muted">{path.prerequisite}</p>
-              <p className="mt-2 text-sm leading-6">{path.outcome}</p>
-              <button
-                type="button"
-                className="mt-3 min-h-11 text-left text-sm font-semibold text-accent underline underline-offset-4"
-                onClick={() => startPath(path.id)}
+        <div className="px-5 pb-5">
+          <p className="text-sm leading-6 text-muted">
+            Pick a topic to see its lessons in order. AI basics is not a
+            prerequisite for every path.
+          </p>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {learningPaths.map((path) => (
+              <li
+                key={path.id}
+                className="rounded-xl border border-border bg-background p-4"
               >
-                Start {path.title.toLowerCase()} →
-              </button>
-            </div>
-          ))}
+                <h2 className="font-semibold">{path.title}</h2>
+                <p className="mt-2 text-xs leading-5 text-muted">
+                  {path.prerequisite}
+                </p>
+                <p className="mt-2 text-sm leading-6">{path.outcome}</p>
+                <button
+                  type="button"
+                  className={`${button} mt-3 min-h-11`}
+                  aria-label={`Start this path: ${path.title}`}
+                  onClick={() => startPath(path.id)}
+                >
+                  Start this path
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </details>
       {selectedPath && tab === "learn" ? (
@@ -218,75 +219,60 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         </nav>
       ) : null}
       {resources}
-      <dl className="mb-8 grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
+      <dl className="mb-2 grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
         <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5">
-          <dt className="text-xs font-medium text-muted">Short lessons</dt>
+          <dt className="text-xs font-medium text-muted">Lessons</dt>
           <dd className="mt-2 text-xl font-semibold sm:text-3xl">
             {lessons.length}
           </dd>
-          <p className="mt-1 text-xs leading-5 text-muted sm:text-sm">
-            Available to read
-          </p>
         </div>
         <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5">
           <dt className="text-xs font-medium text-muted">Reviewed</dt>
           <dd className="mt-2 text-xl font-semibold sm:text-3xl">
             {reviewed.length} / {lessons.length}
           </dd>
-          <p className="mt-1 text-xs leading-5 text-muted sm:text-sm">
-            Self-reported · this page only
-          </p>
         </div>
         <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5">
           <dt className="text-xs font-medium text-muted">Workflows</dt>
           <dd className="mt-2 text-xl font-semibold sm:text-3xl">
             {workflows.length}
           </dd>
-          <p className="mt-1 text-xs leading-5 text-muted sm:text-sm">
-            Prompts and tasks
-          </p>
         </div>
       </dl>
-      <nav
+      <p className="mb-8 text-xs leading-5 text-muted">
+        Review tracking is temporary and resets when you leave this page.
+      </p>
+      <div
+        id="academy-sections"
+        role="tablist"
         aria-label="Academy sections"
         className="mb-7 flex flex-wrap gap-2 border-b border-border pb-4"
       >
-        {(
-          [
-            ["learn", "01 / Learn"],
-            ["apply", "02 / Apply AI"],
-            ["skills", "03 / Build skills"],
-          ] as const
-        ).map(([id, name]) => (
+        {academyTabs.map(([id, name], index) => (
           <button
             key={id}
             type="button"
-            aria-current={tab === id ? "page" : undefined}
+            id={`academy-tab-${id}`}
+            role="tab"
+            aria-selected={tab === id}
+            aria-controls="academy-panel"
+            tabIndex={tab === id ? 0 : -1}
+            ref={(element) => {
+              tabRefs.current[index] = element;
+            }}
             className={`${button} ${tab === id ? "bg-foreground text-background" : ""}`}
             onClick={() => setTab(id)}
+            onKeyDown={(event) => {
+              if (["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) {
+                event.preventDefault();
+                moveTabFocus(id, event.key);
+              }
+            }}
           >
             {name}
           </button>
         ))}
-      </nav>
-      {tab === "learn" ? (
-        <label className="mb-4 flex flex-col gap-2 text-sm font-medium lg:hidden">
-          Choose a lesson
-          <select
-            value={lesson.slug}
-            onChange={(event) => {
-              selectLesson(event.target.value);
-            }}
-            className="min-h-12 w-full rounded-lg border border-border bg-card px-3 py-2 text-base"
-          >
-            {filtered.map((l) => (
-              <option key={l.slug} value={l.slug}>
-                {l.title}
-              </option>
-            ))}
-          </select>
-        </label>
-      ) : null}
+      </div>
       {tab === "learn" && (
         <div className="grid gap-7 lg:grid-cols-[18rem_minmax(0,1fr)]">
           <aside aria-label="Lessons" className="space-y-3">
@@ -333,9 +319,28 @@ export function Academy({ resources }: { resources?: ReactNode }) {
             </div>
           </aside>
           <article
-            aria-labelledby="academy-lesson-heading"
+            id="academy-panel"
+            role="tabpanel"
+            aria-labelledby="academy-tab-learn academy-lesson-heading"
+            tabIndex={0}
             className="min-w-0 rounded-xl border border-border bg-card p-5 sm:p-9"
           >
+            <label className="mb-4 flex flex-col gap-2 text-sm font-medium lg:hidden">
+              Choose a lesson
+              <select
+                value={lesson.slug}
+                onChange={(event) => {
+                  selectLesson(event.target.value);
+                }}
+                className="min-h-12 w-full rounded-lg border border-border bg-card px-3 py-2 text-base"
+              >
+                {filtered.map((l) => (
+                  <option key={l.slug} value={l.slug}>
+                    {l.title}
+                  </option>
+                ))}
+              </select>
+            </label>
             <p className="text-xs font-semibold tracking-widest text-accent uppercase">
               {lesson.level} · {lesson.track} · {lesson.minutes} minutes
             </p>
@@ -564,9 +569,16 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         </div>
       )}
       {tab === "apply" && (
-        <section aria-label="Workflow finder">
+        <section
+          id="academy-panel"
+          role="tabpanel"
+          aria-labelledby="academy-tab-apply academy-apply-heading"
+          tabIndex={0}
+        >
           <div className="mb-6 max-w-2xl">
-            <h2 className="font-display text-4xl">Start with your task</h2>
+            <h2 id="academy-apply-heading" className="font-display text-4xl">
+              Start with your task
+            </h2>
             <p className="mt-2 text-muted">
               Choose the problem first. The tool, prompt and eventual skill come
               second. These are starting recommendations—not validated winners.
@@ -659,8 +671,14 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         </section>
       )}
       {tab === "skills" && (
-        <section className="max-w-4xl">
-          <h2 className="font-display text-4xl">
+        <section
+          id="academy-panel"
+          role="tabpanel"
+          aria-labelledby="academy-tab-skills academy-skills-heading"
+          tabIndex={0}
+          className="max-w-4xl"
+        >
+          <h2 id="academy-skills-heading" className="font-display text-4xl">
             Turn useful work into reusable skills
           </h2>
           <p className="mt-3 leading-7 text-muted">

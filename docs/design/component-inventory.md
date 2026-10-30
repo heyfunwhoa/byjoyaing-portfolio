@@ -11,16 +11,18 @@ Templates are compositions of the components below. Do not add a template compon
 
 | Template | Used by | Composition | Build note |
 | --- | --- | --- | --- |
-| T1 Preview | Home | Hero, condensed proof, three-tile `EditorialBento`, one side quest, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
-| T2 Collection index | Work, Field Notes, Side Quests | Hero with its matching visual (Work portrait, Field Notes / Side Quests orbit study), in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
-| T3 Profile | About | Decorative orbit, origin, philosophy, capability orbit, career/education, toolkit, evidence links, compact interests, contact | Toolkit precedes the travel-led note; interest details use native disclosure |
+| T1 Preview | Home | Hero, three responsive role-proof cards, three-tile `EditorialBento`, one side quest, contact close | Sequence is [homepage-simplification.md](homepage-simplification.md) |
+| T2 Collection index | Work, Field Notes, Side Quests | Hero with its matching treatment (Work text-first, Field Notes layers, Side Quests branching path), in-page collection links, one lead section, shorter following sections | Work's lead is Enterprise Sales |
+| T3 Profile | About | Decorative orbit, origin, in-page section links, philosophy, capability orbit, career/education, toolkit, evidence links, compact interests, contact | Toolkit precedes the travel-led note; interest details use native disclosure with small Lucide symbols |
 | T4 Utility | Contact | Headline, links, `InquiryForm` | Work-example requests add a focus select. The general message does not. |
 | T5 Article | Field Notes guides | Evidence label, title, body, related links | Optional contents only when the guide is long |
 | T6 Case study | `/work/[slug]` | `work-story-template` or `build-story-template` by kind | Do not invent a third template |
 | T7 Timeline | `/experience` | Role rows from `roles` | Not a primary nav template |
 | T8 Directory | `/projects` | Filters plus `projects-directory` | Supporting. Side Quests is the introduction |
 
-Avatar by template: Home uses `/brand/avatar/home-portrait.webp`. Work and the directory use `/brand/avatar/illustrated-portrait.png`. About uses the existing transparent orbit artwork without a portrait. The `/field-notes` and `/side-quests` collection headers use decorative orbit studies; Leader, Explorer, and Builder remain contextual labels.
+Artwork by template: Home retains its existing portrait and is outside this change. Work is text-first. Projects uses connected nodes; Field Notes uses stacked shapes; Side Quests uses a branching path. Experience uses a milestone path and Builder Academy uses an open book. About retains its transparent orbit. Connection cards retain portraits for recognition. Detail pages keep their existing explanatory visuals rather than new decorative header art.
+
+About interest symbols: `app/about/page.tsx` reuses the installed `lucide-react` package for Plane (travel), Headphones (electronic music), Wrench (making and fixing), and Palette (creative exploration). The 20px static outlines use the existing muted token beside visible text inside the native disclosure. One wrapping column at every width, no icon focus stops, and `aria-hidden` / `focusable="false"` keep the symbols decorative. Unknown future interest IDs retain their text without an icon. No new dependency, CMS field, interaction, or motion. Lucide's [ISC license and retained MIT notices](https://lucide.dev/license) stay with the existing package. Scoped implementation; verification and release status are recorded in the adopting PR.
 
 This inventory does not prescribe a rebuild. Names in the "Possible later role" column are the shared pieces the product plan may need. If an existing component already does the job, extend it.
 
@@ -53,8 +55,9 @@ This inventory does not prescribe a rebuild. Names in the "Possible later role" 
 | `project-card.tsx`, `project-row.tsx`, `project-previews.tsx` | Directory and homepage previews | Story card, project preview | Implemented. Do not add a second card system. |
 | `project-status-pill.tsx`, `status-badge.tsx` | Status display | Project status, evidence label | Partial. Two status widgets exist. A later PR should pick one for public labels rather than add a third. |
 | `projects-directory.tsx`, `projects-systems.tsx` | Filterable directory | Category filter | Implemented on `/projects`. Side Quests links here. |
+| `case-study-contents.tsx` | Wrapping in-page links for long case studies; anchors can open native disclosure sections | Case-study contents navigation | Implemented on long `/work/*` detail pages. Keep labels matched to real section IDs. |
 | `experience-timeline.tsx` | Career timeline, first two roles visible, earlier roles behind a button | Career timeline | Implemented on `/experience`. Visible roles keep every point and their related links. |
-| `career-rail.tsx` | All seven roles, oldest to newest, from `roles`. Horizontal from 1024px, a vertical rail below. Line and dots are `aria-hidden`. | Career overview | Implemented on `/about` and above the timeline on `/experience`. Text only, no links. Static. |
+| `career-rail.tsx` | All seven roles, oldest to newest, from `roles`. Horizontal from 1024px, a vertical rail below. Line and dots are `aria-hidden`. | Career overview | Implemented on `/about`. `/experience` uses the detailed timeline directly to avoid repeating the same roles. Text only, no links. Static. |
 | `editorial/case-band-steps.tsx` | The five case-study fields as a horizontal band from 1024px. Below that, each step shows two lines until one "Read the full story" button expands the case. The full text stays in the accessibility tree. | Case-study layout | Implemented inside `ProfessionalCaseStudy` on `/work`. No Outcome step. |
 | `editorial-project-card.tsx` | Directory facts, status pill, one destination. Featured variant for the field practice. | Lab preview | On `/design-lab` only. Does not replace `project-card.tsx`. |
 | `project-bento.tsx` | Responsive project gallery and empty state | Lab preview | Not the homepage `EditorialBento`. |
@@ -170,7 +173,7 @@ The directory listed 434 registries on 2026-10-11 (350 healthy, 44 degraded, 38 
 
 ### Scoped stakeholder-map adoption pilot
 
-`/field-notes/multithreading` now proposes Button and Card adoption through `components/stakeholder-map/stakeholder-node.tsx` and `stakeholder-detail.tsx`. The map composition also appears in local Design Lab and Storybook. This is an explicit, reviewed exception to the earlier lab-only inventory, limited to these wrappers. See [stakeholder-map-library.md](stakeholder-map-library.md); other public primitive imports still require their own review.
+`/field-notes/multithreading` uses Button and Card adoption through `components/stakeholder-map/stakeholder-node.tsx` and `stakeholder-detail.tsx`. The desktop relationship graph adapts the MIT-licensed `@xyflow/react` 12.12.0 package; phone/tablet retain grouped native buttons. The map composition also appears in local Design Lab and Storybook. This is scoped to the named map; other public primitive or graph-library imports still require their own review. See [stakeholder-map-library.md](stakeholder-map-library.md).
 
 
 ## About workflow toolkit · PR #112

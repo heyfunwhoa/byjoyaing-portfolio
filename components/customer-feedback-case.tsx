@@ -6,6 +6,7 @@ import { CustomerFeedbackWorkflow } from "@/components/customer-feedback-workflo
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
+import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 
@@ -181,13 +182,23 @@ export function CustomerFeedbackCase() {
         </div>
       </section>
 
+      <CaseStudyContents
+        sections={[
+          { id: "problem-title", label: "Problem" },
+          { id: "workflow", label: "Workflow" },
+          { id: "architecture", label: "Architecture" },
+          { id: "design-decisions", label: "Decisions" },
+          { id: "outcomes-title", label: "Outcomes" },
+        ]}
+      />
+
       <PortfolioExample key="customer-feedback-intelligence" example={portfolioExamples["customer-feedback-intelligence"]} />
 
       <ProjectTechnologyStack slug="customer-feedback-intelligence" />
 
       <section className="border-b border-border py-16">
         <Label index="02">The feedback problem</Label>
-        <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
+        <h2 id="problem-title" className="scroll-mt-24 mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           Customer feedback is everywhere. Product context is not.
         </h2>
         <div className="mt-8 grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
@@ -325,7 +336,7 @@ export function CustomerFeedbackCase() {
 
       <section className="border-b border-border py-16">
         <Label index="06">Outcomes and roadmap</Label>
-        <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
+        <h2 id="outcomes-title" className="scroll-mt-24 mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           Measuring what matters.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">

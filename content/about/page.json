@@ -1,34 +1,34 @@
 {
   "id": "about",
-  "metaDescription": "Meet Kristen Aing: enterprise cybersecurity sales, seller coaching and practical building, guided by curiosity, clear decisions and helping people move forward.",
+  "metaDescription": "Meet Kristen Aing, a revenue and GTM leader connecting enterprise cybersecurity, customer insight, clear messaging, and practical learning resources.",
   "eyebrow": "About · Leader",
   "headline": "Strategist. Leader. Builder.",
   "lead": [
-    "I'm Kristen Aing. My work connects enterprise cybersecurity sales, people development, and practical building. I want to help people see what's possible and give them the clarity, confidence, and tools to move forward.",
-    "Curious by nature. Builder by instinct. I studied advertising and business foundations at The University of Texas at Austin. Advertising taught me to make complex ideas clear. Enterprise cybersecurity sales taught me to connect that story to technical evidence and a buying decision."
+    "I'm Kristen Aing, a revenue and GTM leader working in enterprise cybersecurity. I connect customer insight, clear messaging, and hands-on selling to help people make informed decisions about complex technology.",
+    "My background in advertising shapes how I think about audiences and stories. I develop practical resources, coach newer sellers, and build independent tools and learning experiences. I want to help people see what's possible and give them the clarity, confidence, and tools to move forward."
   ],
   "philosophyLabel": "My guiding philosophy",
   "philosophyHeading": "People first. Problem-driven. Systems-minded.",
   "principles": [
     {
       "name": "People first",
-      "body": "I listen, coach and share context so a teammate can succeed without depending on one person for every answer."
+      "body": "I listen to understand what someone needs, what matters to them, and what would help them move forward."
     },
     {
       "name": "Problem-driven",
-      "body": "I begin with customer or team friction, test assumptions and identify what would actually help before suggesting a tool."
+      "body": "I start with a question or point of friction, then test assumptions before choosing a message, resource, or solution."
     },
     {
       "name": "Systems-minded",
-      "body": "I document repeatable processes, define ownership and build small workflows that others can improve."
+      "body": "I turn useful knowledge into resources and workflows that others can find, apply, and improve."
     }
   ],
-  "leadershipApproach": "My approach to leadership combines accountability with curiosity: clear expectations, thoughtful feedback, evidence-based decisions and room for people to develop their own strengths.",
+  "leadershipApproach": "I pair clear expectations with thoughtful feedback and room for people to develop their own strengths.",
   "approachEyebrow": "The approach behind the work",
   "approachHeading": "How I work",
-  "approachIntro": "Enterprise selling sits at the center. Through coaching, clearer buying decisions and practical systems, I work to reduce unnecessary friction for buyers, builders and teammates. Explore the evidence behind each part of that approach.",
+  "approachIntro": "Enterprise selling sits at the center. Content marketing is part of how I support that work: turning buyer questions and field insight into clear messaging, practical playbooks, and learning resources. I also bring that feedback to product and marketing.",
   "careerHeading": "Career progression",
-  "careerIntro": "My path has moved from advertising and channel GTM into enterprise cybersecurity sales, team coaching, and practical systems building. The experience timeline highlights the organizations and kinds of work that shaped that path.",
+  "careerIntro": "The roles and experiences that shaped how I sell, lead, and build.",
   "educationHeading": "Education and continued learning",
   "education": [
     "B.S. Advertising, Business Foundations. The University of Texas at Austin.",
@@ -36,9 +36,9 @@
     "AWS Cloud Practitioner and AI Practitioner, foundational."
   ],
   "practiceEyebrow": "Systems behind the work",
-  "practiceHeading": "From approach to practice.",
-  "practiceIntro": "Start with a workflow. Explore the approach, open the supporting tools, then follow the evidence, from enterprise selling and team development to independent building.",
-  "exploreHeading": "Explore the work behind the approach",
+  "practiceHeading": "How I turn ideas into useful work.",
+  "practiceIntro": "Explore how I research a problem, share what I learn, and build something others can use.",
+  "exploreHeading": "Explore my work and writing",
   "beyondLabel": "Beyond work",
   "beyondHeading": "A little more about me",
   "beyondIntro": "Outside of work, I enjoy traveling, discovering new music, and getting hands-on with DIY and creative projects.",
@@ -46,7 +46,7 @@
     {
       "id": "travel",
       "title": "Travel",
-      "detail": "Traveling and discovering new places.",
+      "detail": "Discovering new places.",
       "connection": "Curiosity and a change of perspective."
     },
     {
@@ -76,10 +76,10 @@
     "Growth",
     "Independence"
   ],
-  "contactHeading": "Contact",
+  "contactHeading": "Let's build something useful.",
   "owner": "Kristen Aing",
-  "reviewer": "Pending human review of purpose and search copy",
-  "contentVersion": 3,
+  "reviewer": "Pending human review of purpose, search, and About content copy",
+  "contentVersion": 4,
   "reviewDue": "2026-11-14",
   "classification": "public",
   "publicationStatus": "review"

@@ -6,8 +6,17 @@ import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
 import { aboutPage } from "@/lib/about/editorial";
 import { careerRailNodes } from "@/lib/career-rail";
+import { fieldNoteBodies } from "@/lib/field-notes/bodies";
+import { Headphones, Palette, Plane, Wrench } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+
+const interestIcons = new Map([
+  ["travel", Plane],
+  ["music", Headphones],
+  ["making", Wrench],
+  ["creative", Palette],
+]);
 
 export const metadata: Metadata = completePageMetadata(
   {
@@ -46,7 +55,28 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-border py-12">
+      <nav aria-label="On this page" className="border-b border-border py-4">
+        <p className="editorial-eyebrow text-muted">On this page</p>
+        <ul className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+          {[
+            { href: "#philosophy", label: "Philosophy" },
+            { href: "#how-i-work", label: "How I work" },
+            { href: "#career-progression", label: "Career & education" },
+            { href: "#technologies", label: "Tools & systems" },
+          ].map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className="inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-accent underline underline-offset-4 hover:bg-surface-sage focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <section id="philosophy" className="scroll-mt-24 border-b border-border py-12">
         <p className="orbital-section-label text-sm font-medium text-muted">
           {aboutPage.philosophyLabel}
         </p>
@@ -88,7 +118,7 @@ export default function AboutPage() {
         <CapabilityOrbit />
       </section>
 
-      <section className="border-b border-border py-12">
+      <section id="career-progression" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">
           {aboutPage.careerHeading}
         </h2>
@@ -147,26 +177,65 @@ export default function AboutPage() {
 
       <section className="border-b border-border py-8">
         <h2 className="font-display text-2xl">{aboutPage.exploreHeading}</h2>
-        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
-          <Link
-            href="/work"
-            className="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
-          >
-            Professional Work
-          </Link>
-          <Link
-            href="/field-notes"
-            className="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
-          >
-            Field Notes
-          </Link>
-          <Link
-            href="/side-quests"
-            className="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
-          >
-            Independent Side Quests
-          </Link>
-        </div>
+        <ul
+          aria-label="Featured illustrative guides"
+          className="mt-5 divide-y divide-border border-y border-border"
+        >
+          {(["enterprise-deal", "multithreading"] as const).map((id) => {
+            const guide = fieldNoteBodies[id];
+            return (
+              <li key={id} className="py-4">
+                <p className="text-xs font-medium text-muted">Illustrative guide</p>
+                <h3 className="text-base font-semibold">
+                  <Link
+                    href={`/field-notes/${id}`}
+                    className="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
+                  >
+                    {guide.title}
+                  </Link>
+                </h3>
+                <p className="max-w-2xl text-sm leading-6 text-muted">
+                  Use this when {guide.sections["use-when"].body}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+        <ul className="mt-5 grid gap-4 text-sm sm:grid-cols-3">
+          <li>
+            <Link
+              href="/work"
+              className="inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4"
+            >
+              Professional Work
+            </Link>
+            <p className="leading-6 text-muted">
+              Enterprise selling, competitive positioning, and resources for the team.
+            </p>
+          </li>
+          <li>
+            <Link
+              href="/field-notes"
+              className="inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4"
+            >
+              Playbooks and practical guides
+            </Link>
+            <p className="leading-6 text-muted">
+              Structured ways to explain complex sales work and put ideas into practice.
+            </p>
+          </li>
+          <li>
+            <Link
+              href="/side-quests"
+              className="inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4"
+            >
+              Independent experiments
+            </Link>
+            <p className="leading-6 text-muted">
+              Tools and learning experiences I build to explore better ways of working.
+            </p>
+          </li>
+        </ul>
       </section>
 
       <section
@@ -183,32 +252,51 @@ export default function AboutPage() {
           <summary className="min-h-11 cursor-pointer py-3 font-medium">
             {aboutPage.beyondHeading}
           </summary>
-          <ul className="mt-2 space-y-3 leading-6">
-            {aboutPage.interests.map((interest) => (
-              <li key={interest.id}>
-                <span className="font-medium text-foreground">
-                  {interest.title}.
-                </span>{" "}
-                {interest.detail}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 leading-6">
-            <span className="font-medium">{aboutPage.valuesLabel}:</span>{" "}
-            {aboutPage.values.join(" · ")}
-          </p>
+          <div className="mt-2 rounded-xl bg-surface-clay p-4">
+            <ul className="space-y-3 leading-6">
+              {aboutPage.interests.map((interest) => {
+                const InterestIcon = interestIcons.get(interest.id);
+                return (
+                  <li key={interest.id} className="flex items-start gap-3">
+                    {InterestIcon ? (
+                      <InterestIcon
+                        aria-hidden="true"
+                        focusable="false"
+                        className="mt-0.5 size-5 shrink-0 text-muted"
+                      />
+                    ) : null}
+                    <span className="min-w-0">
+                      <span className="font-medium text-foreground">
+                        {interest.title}.
+                      </span>{" "}
+                      {interest.detail}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+            <p className="mt-4 leading-6">
+              <span className="font-medium">{aboutPage.valuesLabel}:</span>{" "}
+              {aboutPage.values.join(" · ")}
+            </p>
+          </div>
         </details>
       </section>
 
       <section className="py-12">
         <h2 className="text-lg font-semibold">{aboutPage.contactHeading}</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          I&apos;m interested in work that connects customer insight, clear communication,
+          and practical GTM execution. If you&apos;re building in cybersecurity or helping
+          a technical product find its audience, I&apos;d enjoy comparing notes.
+        </p>
         <div className="mt-4 flex flex-wrap gap-4 text-sm font-medium">
-          <Link href="/contact" className="text-accent">
-            Get in touch
+          <Link href="/contact" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">
+            Start a conversation
           </Link>
           <a
             href="https://www.linkedin.com/in/kristenaing"
-            className="text-accent"
+            className="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
             target="_blank"
             rel="noreferrer"
           >

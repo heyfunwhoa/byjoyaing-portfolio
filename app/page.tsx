@@ -32,18 +32,33 @@ function roleByCompany(company: string) {
   return role;
 }
 
-/** One existing sentence per earlier role. The rest stays on /experience. */
-function supportLine(company: string) {
-  const role = roleByCompany(company);
-  if (company === "Forcepoint" && role.points[1]) {
-    return role.points[1];
-  }
-  return role.points[0];
-}
-
 export default function Home() {
   const current = roleByCompany("Truffle Security");
   const earlier = [roleByCompany("Rapid7"), roleByCompany("Forcepoint")];
+  const roleProofs = [
+    {
+      role: current,
+      label: "Current role",
+      detail:
+        "Built shared discovery, ICP, competitive, and POC resources the sales team adopted.",
+      href: "/work#people-leadership",
+      action: "Coaching and enablement",
+    },
+    {
+      role: earlier[0],
+      label: "Strategic enterprise",
+      detail: null,
+      href: "/work#enterprise-sales",
+      action: "Enterprise deal execution",
+    },
+    {
+      role: earlier[1],
+      label: "Security sales",
+      detail: null,
+      href: "/experience#career-details",
+      action: "Full career timeline",
+    },
+  ];
   const sideQuest = directoryProjects.find((project) => project.slug === "detector-coverage-atlas",
   );
   if (!sideQuest) {
@@ -90,48 +105,44 @@ export default function Home() {
             <BrandAvatar variant="leader" portrait={homeBrandAvatarPortrait} />
           </CelestialFrame>
           <p className="editorial-subtle mt-3 text-center text-xs leading-5">{homePage.caption}</p>
-          <Link href="/about#how-i-work" className="mt-3 flex min-h-11 items-center justify-center gap-2 text-center text-sm font-semibold text-[#E6B59A] underline underline-offset-4">Explore how I work <ArrowRight size={16} aria-hidden="true" /></Link>
         </div>
       </section>
 
       <section aria-labelledby="credibility-title" className="section-enter border-b border-border py-12 sm:py-16">
         <p className="editorial-eyebrow text-accent">01 / Credibility</p>
-        <div className="mt-3 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-start lg:gap-14">
-          <h2 id="credibility-title" className="editorial-section-title max-w-[16ch]">
-            Enterprise selling, with the people and the motion around it.
-          </h2>
-          <div className="min-w-0">
-            <article className="border-t border-foreground pt-5">
-              <p className="editorial-eyebrow text-accent">Current role</p>
-              <h3 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-tight">{current.company}</h3>
-              <p className="mt-2 text-sm leading-6">{current.title}</p>
-              <p className="mt-4 max-w-xl text-base leading-7">{current.points.join(" ")}</p>
-            </article>
-            <ul className="mt-6 divide-y divide-border border-y border-border">
-              {earlier.map((role) => (
-                <li key={role.company}>
-                  <Link href="/experience" className="group grid min-w-0 gap-1 py-4 sm:grid-cols-[9.5rem_minmax(0,1fr)] sm:gap-6">
-                    <span className="editorial-eyebrow pt-1 text-accent">{role.company}</span>
-                    <span className="min-w-0">
-                      <span className="block text-sm font-semibold group-hover:text-accent">{role.title}</span>
-                      <span className="mt-1 block text-sm leading-6 text-muted">{supportLine(role.company)}</span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <nav aria-label="Explore selling and leadership evidence" className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium">
-              <Link href="/work#enterprise-sales" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">Enterprise deal execution →</Link>
-              <Link href="/work#people-leadership" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">Coaching and enablement →</Link>
-            </nav>
-            <Link
-              href="/experience"
-              className="editorial-link mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
+        <h2 id="credibility-title" className="editorial-section-title mt-3 max-w-[24ch]">
+          Enterprise sales, team development, and practical systems.
+        </h2>
+        <div className="mt-7 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {roleProofs.map(({ role, label, detail, href, action }, index) => (
+            <article
+              key={role.company}
+              className={`flex min-w-0 flex-col rounded-2xl border border-border bg-card p-5 sm:p-6 ${
+                index === 2
+                  ? "sm:col-span-2 sm:w-1/2 sm:justify-self-center lg:col-span-1 lg:w-full"
+                  : ""
+              }`}
             >
-              Read the experience timeline {" "}
-              <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
-            </Link>
-          </div>
+              <p className="editorial-eyebrow text-accent">{label}</p>
+              <h3 className="mt-3 font-display text-2xl leading-tight tracking-tight">
+                {role.company}
+              </h3>
+              <p className="mt-1 text-sm font-medium leading-6">{role.title}</p>
+              <p className="mt-4 text-sm leading-6 text-muted">
+                {role.points[0]}
+              </p>
+              {detail ? (
+                <p className="mt-3 text-sm leading-6 text-muted">{detail}</p>
+              ) : null}
+              <Link
+                href={href}
+                className="editorial-link mt-auto inline-flex min-h-11 items-center pt-4 text-sm font-semibold text-accent underline"
+              >
+                {action}
+                <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
+              </Link>
+            </article>
+          ))}
         </div>
       </section>
 

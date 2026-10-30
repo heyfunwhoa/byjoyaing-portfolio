@@ -1,6 +1,6 @@
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { completePageMetadata } from "@/lib/page-metadata";
-import { BrandAvatar } from "@/components/brand-avatar";
+import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { PageMain } from "@/components/page-main";
 import { ProjectsDirectory } from "@/components/projects-directory";
 import { ProjectsSystems } from "@/components/projects-systems";
@@ -22,9 +22,9 @@ export const metadata: Metadata = completePageMetadata(
 export default async function ProjectsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string; stage?: string }>;
+  searchParams: Promise<{ category?: string; stage?: string; q?: string }>;
 }) {
-  const { category, stage } = await searchParams;
+  const { category, stage, q } = await searchParams;
   const initialStage =
     lifecycleStages.find((value) => value === stage) ?? "All";
   const roadmap = roadmapProjects();
@@ -44,18 +44,21 @@ export default async function ProjectsPage({
           Each project is a prototype, professional field system, design, or concept. The label is the implementation status, not a production claim.
         </p>
         </div>
-        <div className="mx-auto w-full max-w-[8rem] md:max-w-[12rem]"><BrandAvatar variant="builder" /><p className="editorial-eyebrow mt-3 text-center text-muted">Builder / Side Quests</p>
+        <div className="mx-auto w-full max-w-[8rem] md:max-w-[12rem]"><OrbitStudyIllustration variant="projects" /><p className="editorial-eyebrow mt-3 text-center text-muted">Builder / Side Quests</p>
         </div>
       </section>
 
       <section id="directory" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Explore all projects</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Lifecycle stages are a second filter. A project can sit in more than one functional category. Revenue Intelligence is the Measure prototype. The other case studies still carry their own metrics. A hypothesis is not a measured outcome.
+          Filter by focus or lifecycle stage, then open a project to see what exists today, your contribution, and the supporting evidence.
         </p>
         <div className="mt-6">
-          <ProjectsDirectory key={`${category ?? "all"}-${stage ?? "All"}`} initialCategory={categoryFromSlug(category)}
-            initialStage={initialStage} />
+          <ProjectsDirectory
+            initialCategory={categoryFromSlug(category)}
+            initialStage={initialStage}
+            initialQuery={q}
+          />
         </div>
       </section>
 

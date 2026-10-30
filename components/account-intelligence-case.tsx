@@ -6,6 +6,7 @@ import { AccountIntelligenceWorkflow } from "@/components/account-intelligence-w
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
 import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
+import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { demoAccounts, demoSignals } from "@/lib/account-intelligence-demo";
@@ -195,13 +196,24 @@ export function AccountIntelligenceCase() {
         </div>
       </section>
 
+      <CaseStudyContents
+        sections={[
+          { id: "problem-title", label: "Problem" },
+          { id: "workflow", label: "Workflow" },
+          { id: "architecture", label: "Architecture" },
+          { id: "design-decisions", label: "Decisions" },
+          { id: "outcomes-title", label: "Outcomes" },
+          { id: "connected-title", label: "Related systems" },
+        ]}
+      />
+
       <PortfolioExample key="account-intelligence" example={portfolioExamples["account-intelligence"]} />
 
       <ProjectTechnologyStack slug="account-intelligence" />
 
       <section className="border-b border-border py-16" aria-labelledby="problem-title">
         <SectionLabel index="02">The problem</SectionLabel>
-        <h2 id="problem-title" className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
+        <h2 id="problem-title" className="scroll-mt-24 mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           The problem isn&apos;t finding information. It&apos;s turning information into action.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
@@ -339,7 +351,7 @@ export function AccountIntelligenceCase() {
 
       <section className="border-b border-border py-16" aria-labelledby="outcomes-title">
         <SectionLabel index="06">Outcomes and roadmap</SectionLabel>
-        <h2 id="outcomes-title" className="mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
+        <h2 id="outcomes-title" className="scroll-mt-24 mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">
           Measuring what matters.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
@@ -407,7 +419,7 @@ export function AccountIntelligenceCase() {
       </section>
 
       <section className="py-16" aria-labelledby="connected-title">
-        <h2 id="connected-title" className="text-lg font-semibold tracking-tight">
+        <h2 id="connected-title" className="scroll-mt-24 text-lg font-semibold tracking-tight">
           Connected GTM systems
         </h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
