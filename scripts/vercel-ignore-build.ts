@@ -6,6 +6,8 @@ function finish(code: 0 | 1, message: string): never {
   process.exit(code);
 }
 
+if (process.env.RELEASE_FORCE_BUILD === "1") finish(1, "build: explicit override");
+
 const previous = process.env.VERCEL_GIT_PREVIOUS_SHA?.trim() ?? "";
 const current = process.env.VERCEL_GIT_COMMIT_SHA?.trim() ?? "";
 
@@ -15,7 +17,11 @@ if (!/^[0-9a-f]{40}$/i.test(previous) || !/^[0-9a-f]{40}$/i.test(current)) {
 
 let output = "";
 try {
-  output = execFileSync("git", ["diff", "--name-only", previous, current], {
+  if (execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim().toLowerCase() !== current.toLowerCase()) {
+    finish(1, "build: checkout mismatch; fail open");
+  }
+  execFileSync("git", ["merge-base", "--is-ancestor", previous, current], { stdio: "pipe" });
+  output = execFileSync("git", ["diff", "--no-relative", "--no-renames", "--name-only", "-z", previous, current, "--"], {
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
   });
@@ -24,8 +30,7 @@ try {
 }
 
 const paths = output
-  .split("\n")
-  .map((line) => line.trim())
+  .split("\0")
   .filter(Boolean);
 
 if (shouldSkipVercelBuild(paths)) {
