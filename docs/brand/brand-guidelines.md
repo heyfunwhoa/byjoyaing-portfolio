@@ -160,6 +160,22 @@ Show what a tool genuinely does **today**, not simply its planned architecture. 
 - Label each entry as **Used in practice**, **Illustrative model**, or **Exploring**; only use *Used in practice* for supported experience. Keep confidential deal/customer details out of public examples, and never present synthetic accounts as real.
 - Anchor at least one early Field Note to a Work case study and optionally a Build. A framework must not replace deal execution proof.
 
+### Thought leadership direction
+
+Develop a recognizable point of view through useful practitioner work: **Security should help people move forward with confidence. That requires clearer decisions, practical tools, and less unnecessary friction between builders, buyers, and security teams.**
+
+This is an editorial direction and aspiration, not a new professional title or claim of established influence. It extends People, Strategy and Systems while retaining hands-on enterprise selling as the professional anchor.
+
+| Topic area | Perspective | Evidence to draw from |
+| --- | --- | --- |
+| Security adoption | Make security understandable, useful and easier to adopt in real workflows. | Source-linked research and clearly scoped builder experiments. |
+| Technical buying decisions | Connect capabilities and evaluations to an informed buying decision. | Public or approved discovery, evaluation and stakeholder examples. |
+| People and GTM systems | Help teams become more capable through coaching, shared knowledge and practical workflows. | Approved enablement examples and documented project decisions. |
+
+Use the progression: **Do the work → capture what you learned → explain the tradeoffs → develop a point of view.** Each piece should serve one reader and one decision, explain what the evidence supports, and leave the reader with a useful next step.
+
+Field Notes remains the public editorial home. Relevant project pages and repository artifacts provide supporting evidence; LinkedIn can introduce a concise insight and link to deeper public material. Do not add a separate Thought Leadership navigation item or self-label as a thought leader. Publication and outreach remain separate actions.
+
 ### Audience paths and navigation migration
 
 - **Work** navigation maps to `/work`. **Side Quests** maps to `/side-quests`. **Field Notes** maps to `/field-notes`. `/experience` and `/projects` remain supporting routes. These labels are navigational, not claims that every collection is fully populated.
