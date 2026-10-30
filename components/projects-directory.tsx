@@ -4,7 +4,7 @@ import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack"
 import { ProjectEvidence } from "@/components/project-evidence";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import {
-  activeProjects,
+  filterDirectoryProjects,
   categorySlugs,
   categoryFromSlug,
   directoryStatus,
@@ -43,28 +43,18 @@ export function ProjectsDirectory({
     setQuery(urlQuery);
   }
   const hasFilters = category !== "All work" || stage !== "All" || query.length > 0;
-  const projects = useMemo(() => {
-    const normalizedQuery = query.trim().toLocaleLowerCase();
-    return activeProjects().filter((project) => {
-      const categoryMatch =
-        category === "All work" || project.categories.includes(category);
-      const stageMatch = stage === "All" || project.phase === stage;
-      const searchMatch =
-        normalizedQuery.length === 0 ||
-        [
-          project.title,
-          project.summary,
-          project.role,
-          directoryStatus(project.status).label,
-          project.phase,
-          ...project.categories,
-        ]
-          .join(" ")
-          .toLocaleLowerCase()
-          .includes(normalizedQuery);
-      return categoryMatch && stageMatch && searchMatch;
-    });
-  }, [category, stage, query]);
+  const projects = useMemo(
+    () => filterDirectoryProjects(category, stage, query),
+    [category, stage, query],
+  );
+
+  // Carry only directory controls, not unrelated URL parameters or arbitrary return URLs.
+  const directoryContext = new URLSearchParams({ from: "projects" });
+  const categorySlug = Object.entries(categorySlugs).find(([, value]) => value === category)?.[0];
+  if (categorySlug) directoryContext.set("category", categorySlug);
+  if (stage !== "All") directoryContext.set("stage", stage);
+  if (query) directoryContext.set("q", query);
+  const caseStudyHref = (href: string) => `${href}?${directoryContext.toString()}`;
 
   function updateFilters(
     nextCategory: DirectoryCategory,
@@ -214,7 +204,7 @@ export function ProjectsDirectory({
                 <div className="flex flex-1 flex-col gap-2">
                   <h3 className="text-lg font-semibold tracking-tight">
                     <Link
-                      href={project.caseStudyUrl}
+                      href={caseStudyHref(project.caseStudyUrl)}
                       className="link-rule hover:text-accent"
                     >
                       {project.title}
@@ -239,7 +229,7 @@ export function ProjectsDirectory({
                   </div>
                 </details>
                 <Link
-                  href={project.caseStudyUrl}
+                  href={caseStudyHref(project.caseStudyUrl)}
                   className="inline-flex min-h-11 items-center justify-between gap-3 rounded-lg border border-border bg-background px-3 py-2 text-sm font-medium text-accent hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   <span>Read case study<span className="sr-only">: {project.title}</span></span>

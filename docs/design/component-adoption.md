@@ -323,6 +323,27 @@ Source review covered non-home page routes and the relevant Academy, connection-
 
 Keep About's orbit, text-first Work/Contact/Capabilities/Private Work, personal connection-card portraits, and explanatory diagrams in Academy lessons and case studies. Do not add competing decorative visuals to task-focused pages. This was a source audit, not a full visual/accessibility audit of every route. Updated inventory to reflect current treatments; extended existing SVG safety coverage. Built Experience/Academy preview and CI evidence are recorded in the PR; manual device/zoom checks remain separate. Rollback restores the two BrandAvatar mounts and removes the two source mappings.
 
+## Supporting-page breadcrumbs (2026-10-30)
+
+Tier 1 completion of the existing context-navigation pattern; no new routes, hierarchy subsystem or dependency. Reuse CollectionBreadcrumb on Projects (Side Quests), Experience and Capabilities (Work), Builder Academy (Side Quests), the public research brief (Side Quests), Builder Guide (Home), and the private-work information page (Field Notes, matching its prior return link). Extend Academy and capability detail trails with the same collection parents. Existing case/Field Note trails remain. Primary navigation destinations and standalone connection cards do not need duplicate trails; redirects, editor, prototype and gated Design Lab are excluded.
+
+Same wrapping ordered list at phone/tablet/desktop, native keyboard links with 44px targets, existing focus/token styles, one non-linked current-page label and decorative separators. No motion, loading logic or authorization change. Research failure view retains a way out. Added browser coverage for direct entries, filtered Projects, parent keyboard navigation and no duplicate trails. CI and preview checks pending. Rollback: revert these call-site additions and parent extensions. Owner: portfolio maintainer.
+
+## Directory return context and lesson sequence verification
+
+Extend PR #230 with a bounded navigation refinement: ProjectsDirectory includes only category, stage and search in case-study links. WorkCaseBreadcrumb composes a separate contextual return link under Suspense. The real collection hierarchy remains stable. A reload or new tab retains the context; direct case entry shows no stale return. The target is always /projects#directory with encoded filter values, never a supplied redirect URL. No storage, network service or dependency.
+
+The Academy already provides Previous/Next within its learning-path sequence and moves focus to the selected lesson heading. Retain it; add a keyboard round-trip check instead of inventing a sequence across unrelated standalone labs. Keep wrapping breadcrumbs on small screens because all parents remain usable without opening a menu. Existing subtle link nudge respects reduced motion.
+
+Verification: new production-browser cases cover return after reload, encoded search, fixed local destination, no stale direct-entry context and lesson keyboard navigation. Fresh CI pending. Phone/tablet/desktop use the same native link, 44px target and global focus styles. Rollback removes the new return component and directory query context. Tier 1 refinement of existing navigation; no new tracking issue.
+
+## Simplified case navigation (supersedes separate return link above)
+Adapt the shared breadcrumb into Home / Projects / title for directory cases. Projects is the single top-level return action, preserving encoded category, stage and search only when from=projects. Direct entry returns to the full directory. Remove the duplicate contextual back link. Retain collection trails for non-directory cases.
+
+Reuse the existing related-work footer for Previous/Next in directory result order. Share the exact directory matching function; preserve filters in both directions and reloads. Hide the sequence for direct entry, one/no matching result, an unmatched current case and absent endpoints. No wraparound. Phone links stack; tablet/desktop use two columns with wrapping labels, native keyboard links, 44px targets and existing focus styles. No extra motion or dependency. Academy retains its existing sequence.
+
+This is a bounded refinement in PR #230. Browser coverage checks contextual breadcrumb reload/return, direct-entry/local destinations and filtered previous/next keyboard round trips across desktop/tablet/mobile. Manual zoom and screen-reader checks remain unclaimed. Rollback restores the previous return component and removes sequence/filter helper changes.
+
 ## About work and writing emphasis (proposed, 2026-10-30)
 
 - Destination and owner: `/about`, portfolio maintainer. Approved copy connects content marketing to buyer insight, clear messaging, practical resources, and enterprise selling. Existing professional and independent evidence labels remain in place.
@@ -330,3 +351,11 @@ Keep About's orbit, text-first Work/Contact/Capabilities/Private Work, personal 
 - Presentation: existing site-build technology chips and explanatory cards move inside the existing Build notes disclosure. The shorter summary stays visible. Orbit-only hero art and compact personal interests with Lucide symbols are preserved.
 - Responsive and access behavior: guide rows wrap in one column; the three broader destinations stack on phones and use three columns from 640px. Native links and summaries retain visible focus and at least 44px action height. Document and keyboard order match; reduced-motion behavior is inherited. These static, validated records have no new loading, error, or permission states.
 - Verification: retain the About viewport, motion, and keyboard matrix from PR #231, updating its closing-link expectation for the approved CTA. Current CI and preview evidence belong in PR #219. Manual browser zoom, assistive-technology, and real-device review must be recorded separately. Status remains proposed pending human review; rollback is the scoped About copy and presentation diff.
+
+## About brand alignment and school marks (proposed, 2026-10-30)
+
+- Owner/destination: portfolio maintainer, `/about` education. Reuse the existing semantic education list and the local SVG/`next/image` approach from `ToolkitLogoGrid`; adapt the presentation for complete university wordmarks, without its tool states or external links. No new component, schema, library, motion, or integration.
+- Assets: complete official UT Austin and current WGU university marks. Local source files and provenance are in `public/logos/education/`. Original colors and proportions remain within the marks; they do not become joy. palette tokens. The visible institution, degree, and in-progress wording remain unchanged. Name matching uses the institution text, not editable list position; unmatched learning entries remain text only.
+- Composition: two school columns from 640px, stacked on phones; other credentials span the row. Logos retain their intrinsic aspect ratio, restrained widths, and padded whitespace. Empty alt and an aria-hidden wrapper prevent repeated school announcements. No new keyboard targets, motion, loading interaction, or authorization state.
+- Brand sync: both brand documents now use the same Strategist definition as the capability data; the canonical guide locates content marketing within revenue/GTM practice and records the current About flow. The avatar guide and implementation reference agree with the orbit-only About and current collection artwork.
+- Verification: inspect actual rendered logo loading, proportions, readable adjacent text, and the existing About viewport/motion matrix. Exact commit CI and preview evidence are recorded in PR #219; actual zoom, real devices, and screen readers remain separate reviews. Proposed pending human review. Rollback removes the two marks and restores the existing text-only education list.

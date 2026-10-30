@@ -5,7 +5,7 @@ import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack"
 import { AccountIntelligenceWorkflow } from "@/components/account-intelligence-workflow";
 import { RelatedWork } from "@/components/related-work";
 import { PageMain } from "@/components/page-main";
-import { WorkCaseBreadcrumb } from "@/components/collection-breadcrumb";
+import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
@@ -443,3 +443,4 @@ export function AccountIntelligenceCase() {
     </PageMain>
   );
 }
+

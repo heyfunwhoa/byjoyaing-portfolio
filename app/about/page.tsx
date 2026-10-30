@@ -9,6 +9,7 @@ import { careerRailNodes } from "@/lib/career-rail";
 import { fieldNoteBodies } from "@/lib/field-notes/bodies";
 import { Headphones, Palette, Plane, Wrench } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 const interestIcons = new Map([
@@ -17,6 +18,25 @@ const interestIcons = new Map([
   ["making", Wrench],
   ["creative", Palette],
 ]);
+
+// Match the institution name rather than the editable education list's order.
+// Other credentials keep their visible text without receiving an unrelated mark.
+const educationMarks = [
+  {
+    name: "The University of Texas at Austin",
+    src: "/logos/education/ut-austin.svg",
+    width: 1037,
+    height: 298,
+    widthClass: "w-52",
+  },
+  {
+    name: "Western Governors University",
+    src: "/logos/education/wgu.svg",
+    width: 133,
+    height: 30,
+    widthClass: "w-40",
+  },
+] as const;
 
 export const metadata: Metadata = completePageMetadata(
   {
@@ -149,10 +169,27 @@ export default function AboutPage() {
           <h3 className="text-lg font-semibold">
             {aboutPage.educationHeading}
           </h3>
-          <ul className="mt-4 grid gap-4 text-sm leading-6 text-muted sm:grid-cols-3">
-            {aboutPage.education.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
+          <ul className="mt-4 grid gap-6 text-sm leading-6 text-muted sm:grid-cols-2">
+            {aboutPage.education.map((item) => {
+              const school = educationMarks.find((mark) => item.includes(mark.name));
+              return (
+                <li key={item} className={school ? "min-w-0" : "sm:col-span-2"}>
+                  {school ? (
+                    <div aria-hidden="true" className="mb-3 flex h-20 items-center px-3">
+                      <Image
+                        src={school.src}
+                        alt=""
+                        width={school.width}
+                        height={school.height}
+                        unoptimized
+                        className={`h-auto max-w-full ${school.widthClass}`}
+                      />
+                    </div>
+                  ) : null}
+                  <p>{item}</p>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
@@ -307,3 +344,4 @@ export default function AboutPage() {
     </PageMain>
   );
 }
+

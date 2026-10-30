@@ -1,3 +1,4 @@
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { capabilityViews } from "@/lib/capabilities";
@@ -14,7 +15,8 @@ export default function CapabilitiesPage() {
   return (
     <PageMain>
       <section className="border-b border-border py-12">
-        <p className="text-sm font-medium text-muted">Capabilities</p>
+        <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/work","label":"Work"},{"label":"Capabilities"}]} />
+          <p className="text-sm font-medium text-muted">Capabilities</p>
         <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
           Commercial judgment. Practical systems.
         </h1>

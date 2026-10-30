@@ -246,3 +246,16 @@ export const systemLayers = [
 export function directoryStatus(status: ProjectStatus) {
   return { label: statusCopy[status], detail: statusHelp[status] };
 }
+
+/** Shared ordering and matching for the directory and its case-study sequence. */
+export function filterDirectoryProjects(category: DirectoryCategory, stage: LifecyclePhase | "All", query: string) {
+  const normalizedQuery = query.trim().toLocaleLowerCase();
+  return activeProjects().filter(project =>
+    (category === "All work" || project.categories.includes(category)) &&
+    (stage === "All" || project.phase === stage) &&
+    (!normalizedQuery || [
+      project.title, project.summary, project.role, directoryStatus(project.status).label,
+      project.phase, ...project.categories,
+    ].join(" ").toLocaleLowerCase().includes(normalizedQuery))
+  );
+}

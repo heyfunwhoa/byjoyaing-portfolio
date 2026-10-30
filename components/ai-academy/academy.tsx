@@ -1,4 +1,5 @@
 "use client";
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import {
@@ -122,6 +123,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
     >
       <div className="mb-10 grid min-w-0 items-end gap-6 md:grid-cols-[minmax(0,1fr)_9rem]">
         <div className="max-w-3xl min-w-0">
+          <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/side-quests","label":"Side Quests"},{"label":"Builder Academy"}]} />
           <p className="editorial-eyebrow mb-3 text-accent">Builder Academy</p>
           <h1 className="editorial-section-title">
             Learn the basics. Apply with purpose.
