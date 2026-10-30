@@ -322,3 +322,29 @@ Adapt the existing OrbitStudyIllustration wrapper and retain its exported name f
 Source review covered non-home page routes and the relevant Academy, connection-card and case-study wrappers. Main page excluded. Experience and Builder Academy were the remaining general headers repeating BrandAvatar: replace those mounts with milestone-path and open-book variants of the existing decorative wrapper. Original static SVGs; existing palette, intrinsic dimensions, responsive containers and captions retained. No data claim: the path is a career metaphor, not dates or performance; the book is learning decoration. Empty alt, aria-hidden, no focus target, motion, dependency or network integration. Tier 1 presentation refinement, no new tracking issue.
 
 Keep About's orbit, text-first Work/Contact/Capabilities/Private Work, personal connection-card portraits, and explanatory diagrams in Academy lessons and case studies. Do not add competing decorative visuals to task-focused pages. This was a source audit, not a full visual/accessibility audit of every route. Updated inventory to reflect current treatments; extended existing SVG safety coverage. Built Experience/Academy preview and CI evidence are recorded in the PR; manual device/zoom checks remain separate. Rollback restores the two BrandAvatar mounts and removes the two source mappings.
+
+## Supporting-page breadcrumbs (2026-10-30)
+
+Tier 1 completion of the existing context-navigation pattern; no new routes, hierarchy subsystem or dependency. Reuse CollectionBreadcrumb on Projects (Side Quests), Experience and Capabilities (Work), Builder Academy (Side Quests), the public research brief (Side Quests), Builder Guide (Home), and the private-work information page (Field Notes, matching its prior return link). Extend Academy and capability detail trails with the same collection parents. Existing case/Field Note trails remain. Primary navigation destinations and standalone connection cards do not need duplicate trails; redirects, editor, prototype and gated Design Lab are excluded.
+
+Same wrapping ordered list at phone/tablet/desktop, native keyboard links with 44px targets, existing focus/token styles, one non-linked current-page label and decorative separators. No motion, loading logic or authorization change. Research failure view retains a way out. Added browser coverage for direct entries, filtered Projects, parent keyboard navigation and no duplicate trails. CI and preview checks pending. Rollback: revert these call-site additions and parent extensions. Owner: portfolio maintainer.
+
+## visx visualization candidates · October 29, 2026
+
+Status: proposed catalog and brand guidance only. Owner: portfolio maintainer. No chart component, runtime package, public route or consuming-repo code is added.
+
+- Source: https://visx.airbnb.tech/gallery and https://github.com/airbnb/visx/tree/master/packages/visx-demo/src/pages. Official source inventory confirms horizontal bars/stacks, heatmaps, trees, brush and XY chart examples. Upstream is MIT; no upstream code or assets copied in this change.
+- Destination: existing lib/component-options.ts catalog and section 11 of docs/brand/brand-system-v1.md. Reuse existing catalog filtering/card/table rendering; add four Candidate entries, not another component registry.
+- Decision: adapt the structures as recommendations. Existing local primitives and semantic tables remain first choice. No visx dependency or shared package is introduced.
+- Read portfolio brand guide, workbench reuse contract, inventory, lab and adoption records. Consumer README audit: Atlas extracts pinned source facts and does not run live credential checks; Market Map is evidence-linked and permits unknowns; Account Signal is a seller desk; Revenue OS is a deterministic synthetic planner. These README observations are not verification of every consumer UI.
+- Portfolio PR #223 already proposes feedback theme bars. Reuse/review that work before any new bar implementation. Other existing portfolio UX drafts are not modified.
+- Candidate IDs: visx-comparison, visx-coverage, visx-trend and visx-hierarchy. Destination mapping and data prerequisites are in the catalog and brand guide. No consumer rollout is claimed or committed by this note.
+- Responsive, keyboard, reduced-motion and data-state requirements are specified in the brand guide. Existing lab controls are unchanged. New chart browser/contrast/screen-reader testing is not applicable until implementation; this does not certify the current lab.
+- Delivery tier 1: bounded catalog/editorial addition without new interaction, integration, architecture or brand fundamentals. No new Linear issue. Actual consumer implementations must inspect local instructions, current source and open work and apply their delivery governance.
+- Verification: targeted catalog tests run locally; full app build, complete test suite and browser review not run. CI must be reviewed on the PR. Rollback removes the four candidate records and these guidance additions, preserving independent adoption notes.
+
+## External UI pattern candidates · 2026-10-30
+
+- Caliper Scene Story is a reference for chapter-based learning and onboarding. Rebuild the pattern with native scroll, clear chapter navigation, complete text without illustrations, and responsive stacking. Do not copy the Pro source.
+- Prestige’s illustration examples are a reference for labeled workflow stages and decision paths. Use project-authored SVG/CSS and keep explanations readable in the page. The Academy Systems page already uses original illustrations and synthetic, local interactions.
+- Candidate entries are tracked in the existing workbench catalog, not installed components. Cross-project suggestions are starting points only; each repo needs a local source and open-work review before implementation.
