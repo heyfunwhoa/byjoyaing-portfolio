@@ -14,7 +14,7 @@
 - **Guiding philosophy:** **People first. Problem-driven. Systems-minded.**
 - **Core domains:** Enterprise cybersecurity, technical sales and GTM strategy, people development, product thinking, AI-assisted research and practical systems.
 
-**Purpose:** Empower people to turn curiosity into confident action.
+**Purpose:** Help people see what’s possible and give them the clarity, confidence, and tools to move forward.
 
 **Brand promise:** Make complex work clearer and reduce unnecessary friction so people can build, buy, and adopt security with confidence.
 
@@ -52,7 +52,7 @@ Sound confident but not corporate, curious but grounded, warm but concise, credi
 
 **Message hierarchy:**
 1. Who: Revenue & GTM Leader · Curious Builder, grounded in enterprise cybersecurity.
-2. Why: empower people to turn curiosity into confident action.
+2. Why: help people see what’s possible and move forward with clarity, confidence and practical tools.
 3. How: people, strategy and systems make complex work clearer and reduce unnecessary friction.
 4. Proof: professional outcomes and transparent project artifacts.
 5. Personality: joy., thoughtful curiosity and experimentation.
