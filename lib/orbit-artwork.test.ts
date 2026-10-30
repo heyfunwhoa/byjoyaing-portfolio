@@ -68,7 +68,7 @@ test("collection index pages use distinct decorative illustrations instead of po
   assert.match(sideQuests, /<OrbitStudyIllustration variant="side-quests" \/>/);
   assert.doesNotMatch(fieldNotes, /BrandAvatar/);
   assert.doesNotMatch(sideQuests, /BrandAvatar/);
-  for (const svg of [fieldNotesArt, sideQuestsArt, read("public/brand/page-art/connected-nodes.svg")]) {
+  for (const svg of [fieldNotesArt, sideQuestsArt, read("public/brand/page-art/connected-nodes.svg"), read("public/brand/page-art/milestone-path.svg"), read("public/brand/page-art/open-book.svg")]) {
     assert.match(svg, /<svg[^>]*viewBox="0 0 1024 1024"/);
     assert.doesNotMatch(svg, /<script|on[a-z]+\s*=|foreignObject|href=["']https?:/i);
   }
