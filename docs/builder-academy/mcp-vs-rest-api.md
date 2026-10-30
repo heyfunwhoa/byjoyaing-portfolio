@@ -87,11 +87,11 @@ The paper exercise in that file is the next practice. Come back to the failure t
 
 ## Sources
 
-Reviewed 2026-10-11, except the architecture page, which was opened again on 2026-10-30. That re-check is the source for "Streamable HTTP" and for the statement that MCP exchanges context and does not dictate how the host uses a model. The other three links were not re-fetched on 2026-10-30.
+Reviewed 2026-10-11. The architecture page and the Microsoft Learn page were opened again on 2026-10-30. The architecture re-check is the source for "Streamable HTTP" and for the statement that MCP exchanges context and does not dictate how the host uses a model. The Microsoft Learn re-check is the source for the Azure API Management sentence below. The two MDN links were not re-fetched on 2026-10-30.
 
 - [Model Context Protocol — architecture overview](https://modelcontextprotocol.io/docs/learn/architecture) — hosts, clients, servers, tools/resources/prompts, JSON-RPC, stdio, and Streamable HTTP. Re-checked 2026-10-30.
 - [MDN — HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) — GET/POST/PATCH semantics and method properties.
 - [MDN — Overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) — client/server requests and responses.
-- [Microsoft Learn — MCP servers in API Management](https://learn.microsoft.com/en-us/azure/api-management/mcp-server-overview) — MCP as a facade around underlying APIs.
+- [Microsoft Learn — MCP servers in API Management](https://learn.microsoft.com/en-us/azure/api-management/mcp-server-overview) — Azure API Management can expose a managed REST API's operations as MCP tools, or place an existing MCP server behind the gateway. Re-checked 2026-10-30. That page also says this Azure feature currently exposes tools and does not support MCP resources or prompts. That limit belongs to the product, not to the protocol.
 
 **Publication boundary:** Source examples are educational. Do not upload real customer records, API tokens, personal contact lists, or licensed vendor exports to a public tutorial.
