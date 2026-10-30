@@ -82,7 +82,7 @@ test("primary destinations do not repeat the header hierarchy", async ({ page })
 
 test("case studies restore directory filters after reload", async ({ page }) => {
   await page.goto("/projects?category=technical&q=Atlas#directory");
-  const openCase = page.getByRole("link", { name: "Read case study: Detector Coverage Atlas", exact: true });
+  const openCase = page.locator('#directory a[href^="/work/detector-coverage-atlas?"]').last();
   await openCase.click();
   await expect(page).toHaveURL(/from=projects/);
   await page.reload();
