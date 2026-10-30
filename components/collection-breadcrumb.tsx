@@ -14,8 +14,8 @@ export function CollectionBreadcrumb({ items }: { items: readonly TrailItem[] })
               </span>
             ) : null}
             {item.href ? (
-              <Link href={item.href} className="inline-flex min-h-11 min-w-0 items-center break-words font-medium text-accent underline underline-offset-4">
-                {item.label}
+              <Link href={item.href} className="group inline-flex min-h-11 min-w-0 items-center break-words font-medium text-accent underline underline-offset-4">
+                <span className="nudge-link inline-block min-w-0">{item.label}</span>
               </Link>
             ) : (
               <span aria-current="page" className="min-w-0 break-words text-muted">
