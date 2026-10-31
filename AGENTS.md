@@ -65,6 +65,13 @@ Before UI, layout, component or animation work, read [the workbench reuse contra
 
 For new UI journeys and material interface changes, consult the [proposed responsive app standard v1.0](https://github.com/heyfunwhoa/technical-docs-platform/blob/c7ae9a18b8045bdad5f729322722343022b13970/engineering/responsive-apps-v1.md) and its review status in [Technical Docs PR #26](https://github.com/heyfunwhoa/technical-docs-platform/pull/26). This is a pinned cross-repository reference; local brand, privacy and permissions remain authoritative. Define phone/tablet/desktop composition and the primary task before implementation. Test the built app, keyboard/focus, reduced motion and content/error states; record manual zoom/reflow and real-device checks separately. A passing viewport test does not prove WCAG conformance or review of every page. Do not add dependencies or rewrite tables/maps by default.
 
+## Cursor Cloud specific instructions
+
+- Install with `npm ci`. CI uses Node.js 22. Check the app with `npm run lint`, `npm test`, and `npm run build`.
+- Start the site with `npm run dev`. It listens on port 3000.
+- Open `http://localhost:3000`. Next.js 16 blocks dev resources, including the HMR websocket, for a `127.0.0.1` browser origin. Client components hydrate when the browser uses `localhost`, the origin the dev server advertises.
+- Public pages do not need secrets. The contact form reports that email is not configured until `RESEND_API_KEY` and `CONTACT_INBOX` are set. PostHog, Better Auth, hosted Keystatic, and Infisical stay off unless those integrations are the thing under test.
+
 ## Focused agent sessions
 
 For scoped agent work, use the proposed [focused-session procedure](https://github.com/heyfunwhoa/technical-docs-platform/blob/c749cc5c859472e2d8bdb982f0d6f346a5ad4c25/ai/agent-harness/focused-sessions.md) ([review status: PR #38](https://github.com/heyfunwhoa/technical-docs-platform/pull/38)). Start from the issue and latest checkpoint, verify current revisions, inspect relevant changes, and expand discovery for concrete dependencies. Record evidence and next action at handoff; preserve required checks and local privacy/release rules. This is a pinned proposed reference, not automatic synchronization or token/spend enforcement.
