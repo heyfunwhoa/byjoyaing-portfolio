@@ -1,7 +1,7 @@
 # Academy pull request reconciliation
 
-Reviewed: 2026-10-30, America/Chicago.
-Branch: `cursor/academy-pr-reconciliation-7469`, based on main `60a799285f746cc38f9806d4cefb4532fabd8026`.
+Reviewed: 2026-10-30, America/Chicago. Main moved again on 2026-10-31, America/Chicago.
+Branch: `cursor/academy-pr-reconciliation-7469`. The earlier base was main `60a799285f746cc38f9806d4cefb4532fabd8026`. Origin `main` is now `7d4e21588dfe2021d652038544cfc6d866c774e7`, the squash merge of PR #236.
 This note records overlap, the tested combination, and a proposed merge order. It does not merge to main or deploy. The original pull request branches were not rewritten.
 
 ## Heads compared
@@ -9,7 +9,7 @@ This note records overlap, the tested combination, and a proposed merge order. I
 | Pull request | Branch | Head | Base relative to main |
 | --- | --- | --- | --- |
 | [#233](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/233) | `feat/academy-curriculum-audit-kru-174` | `7b5c22e` | Behind main. Branched at `62d0037`, before the breadcrumb commits in PR #230. GitHub reported it conflicting with main. |
-| [#236](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/236) | `cursor/frontend-lesson-pilot-ec7c` | `5b6acdd` | Current main. Mergeable on its own. |
+| [#236](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/236) | `cursor/frontend-lesson-pilot-ec7c` | `5b6acdd` | Squash-merged to main as `7d4e215`. The original branch was not rewritten. |
 | [#237](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/237) | `docs/academy-api-mcp-progressive-lab` | `6e902c3` | Current main. Mergeable on its own. |
 | [#234](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/234) | `feat/academy-learner-accounts` | `51cf817` | Behind main at the same `62d0037` base. Checked only. Not imported. |
 
@@ -28,13 +28,24 @@ Main after `62d0037` adds supporting-page breadcrumbs, directory case navigation
 | Companion and catalog test files | #237 adds the progressive-lab assertions. #233 moves `mcp-vs-rest-api` off the delivery path. | Keep one lesson id, pseudocode labels, and corrected sources. Point the path assertion at systems and security. |
 | `package.json` test script | #236 inserts `lib/academy/frontend-lesson.test.ts`. #234 would append two account test files. | Keep the Frontend test file. Do not add the account files in this branch. |
 
-#236 and #237 do not edit the same files. They merged onto current main without conflicts. #233 is the pull request that conflicts with main and with #236.
+#236 and #237 do not edit the same files. #236 is already on main. #237 still applies on top of that lesson work. #233 is the pull request that conflicts with main and with #236.
+
+## Merge with main after #236 landed
+
+On 2026-10-31, merging origin `main` (`7d4e215`) into this branch conflicted in two files. Both conflicts were simple. They are the same Frontend pilot documents, duplicated because main squash-merged #236 while this branch already contained that lesson plus later reconciliation wording. The lesson components, content module, unit tests, site test, and `package.json` test script were identical and merged without a conflict. No product behavior differs.
+
+| File | Main's side | Kept |
+| --- | --- | --- |
+| `docs/academy/FRONTEND-PILOT.md` | The older CMS sentence ("leaves that path because it is not one of its lessons") and a coordination paragraph that still says the two copies need reconciling. | This branch's notes. The CMS button still calls `selectLesson` with `keepPath: false`. KRU-174 also lists `cms-fundamentals` on the frontend path. The coordination paragraph records that the unimplemented brief was replaced. |
+| `docs/design/component-adoption.md` | Nothing beyond the Frontend rollback bullet. | The KRU-174 path-organization section already on this branch. It does not remove the Frontend mount or the breadcrumb notes. |
+
+No conflict required a product decision, and none was left unresolved.
 
 ## Proposed merge order
 
 Use this integration branch as the review vehicle. If the original pull requests are merged separately instead, use this order and these resolutions:
 
-1. Merge #236 onto current main. It already contains the Frontend lesson, feedback and reset, responsive fixes, tests, and the completed comparison.
+1. #236 is already on main as `7d4e215`. It contains the Frontend lesson, feedback and reset, responsive fixes, tests, and the completed comparison.
 2. Merge #237 next. It applies cleanly after #236 and keeps `mcp-vs-rest-api` as the only lesson id.
 3. Merge #233 last. Accept its paths, recovery lesson, and guidance tests. Keep main's breadcrumb notes and keyboard test, and keep #236's Frontend pilot note.
 4. Leave #234 unmerged until account activation is authorized. A later merge should preserve `CollectionBreadcrumb`, keep `FrontendLesson` before the knowledge-check fieldset, and place `LessonAccountActions` after that fieldset. `accountsEnabled` defaults off, and `academyConfig()` returns null unless `ACADEMY_ACCOUNTS_ENABLED` is `true` and the database, secret, URL, and mail settings are all present. Append `lib/academy-account/account.test.ts` and `lib/academy-account/auth.integration.test.ts` to the test script beside the Frontend test file. Do not turn the flag on as part of combining the lesson work.
@@ -64,4 +75,4 @@ Observed 30 Oct 2026, evening, America/Chicago, before any merge to main:
 - `npm run lint`: passed, with the existing unused `directoryStatus` warning in `components/projects-directory.tsx`.
 - `npm run build`: Next.js 16.4.3 completed, 62 routes, TypeScript included. No account routes were generated.
 - Production browser tests, 39 passed across desktop 1280×900, tablet 768×1024, and Pixel 7: `tests/site/academy-foundation.spec.ts`, `tests/site/breadcrumbs.spec.ts`, and `tests/site/frontend-lesson.spec.ts`. That covers path organization, the recovery lesson, the keyboard sequence from main, breadcrumb and directory navigation, and the Frontend feedback, reset, and overflow checks.
-- Screen reader, a person's browser zoom menu, contrast measurement, and a physical device were not run. The rest of the site suite was not rerun locally. Hosted CI is the check after push.
+- Screen reader, a person's browser zoom menu, contrast measurement, and a physical device were not run. The rest of the site suite was not rerun locally. Hosted CI on `fecef98` passed after that push (GitHub Actions run 41157642983). The 2026-10-31 merge of `7d4e215` did not change lesson code. Hosted CI on the new head is the check after the follow-up push.
