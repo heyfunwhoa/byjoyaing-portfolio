@@ -28,6 +28,12 @@ const availableLesson = {
 } as const;
 
 export const lessonGuidance = {
+  "background-job-recovery": {
+    ...availableLesson,
+    prerequisites: ["mcp-vs-rest-api", "database-branching-recovery"],
+    guide: guide("background-job-recovery", "Read the recovery exercise and answer key"),
+    practice: { label: "Explore related webhook and access demos", href: "/ai-academy/systems" },
+  },
   "fde-ai-agent-engineering": {
     ...availableLesson,
     prerequisites: [],
@@ -304,7 +310,14 @@ export function getLessonGuidance(slug: string): LessonGuidance | undefined {
     : undefined;
 }
 
-export const academyResources = [
+export const academyResources: readonly {
+  id: string;
+  title: string;
+  href: string;
+  availability: Availability;
+  format: string;
+  detail: string;
+}[] = [
   {
     id: "follow-one-click",
     title: "Follow one click",
@@ -376,16 +389,9 @@ export const academyResources = [
     id: "systems-roadmap",
     title: "Connected Systems",
     href: "/ai-academy/systems",
-    availability: "planned",
-    format: "roadmap",
+    availability: "partial",
+    format: "demos and roadmap",
     detail:
-      "Thirteen topic outlines and seven future lab ideas. These are not guided courses or working labs.",
+      "Two interactive examples cover webhook recovery and access decisions, with an infrastructure explainer. Thirteen module outlines and seven future lab ideas remain planned.",
   },
-] as const satisfies readonly {
-  id: string;
-  title: string;
-  href: string;
-  availability: Availability;
-  format: string;
-  detail: string;
-}[];
+];

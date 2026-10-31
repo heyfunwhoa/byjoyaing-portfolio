@@ -1,7 +1,7 @@
 # Unified Learning Platform — AI Foundations + Builder Academy
 
 **Status:** proposed curriculum and product architecture (not an assertion that labs are implemented).
-**Last reviewed:** 2026-10-10.
+**Last reviewed:** 2026-10-30 (current inventory section; wider vision remains proposed).
 **Canonical implementation:** `/ai-academy` in this repository. Preserve the existing catalog and Version Control Playground; do not create a competing app/repo. The seven-lesson MVP below is historical context, not the current catalog count.
 **Other references:** [AI Command Center](https://app.notion.com/p/3f3cdefaec758139a149ef6b77d14f03), [existing academy MVP](../ai-academy.md).
 
@@ -11,7 +11,38 @@ The [Revenue enablement program and Trusted Handoff mission](REVENUE-ENABLEMENT-
 
 ## Current curriculum priorities
 
-Use the [2026-10-12 curriculum audit](CURRICULUM-AUDIT.md) for the complete inventory, observed implementation depth, reuse decisions and current priority order. The audited catalog has 22 registered lessons; Programming Foundations has 2 guided tutorials among 10 module records. This program remains the wider vision. Its older phases below are not the current implementation queue. The existing-content navigation and metadata foundation is authorized; see [mission handoff](MISSION-HANDOFF.md). The beginner reading-code/files/JSON/YAML slice is now authorized; see the focused re-audit for scope. Broader lesson expansion and new labs remain on hold.
+Use the [2026-10-30 curriculum audit](CURRICULUM-AUDIT.md) for the complete lesson/route inventory, source limits and priorities. Current main at `60a7992` contains 38 registered lessons. This integration proposes 39 with background-job recovery and nine goal-based paths. Programming has two guided tutorials among ten module records. Systems already has two interactive examples and an infrastructure explainer alongside planned modules. The user authorized this audit, organization and one written recovery lesson. Broader new labs remain separate scope. This program is the wider vision; older phases below are historical proposals, not the current implementation queue.
+
+## Current execution scope (2026-10-30)
+
+This section supersedes earlier blanket implementation holds only for the bounded work below. It does not authorize every proposed phase in this document. [Linear project P-KRU-11](https://linear.app/krusty/project/builder-academy-lesson-experience-and-ui-3919add2048a) tracks execution; repository files own versioned implementation and instructional specifications. Notion remains the product strategy/requirements reference; no private content is copied here. Overlap and proposed merge order: [INTEGRATION-233-236-237.md](INTEGRATION-233-236-237.md).
+
+1. **KRU-174 / PR #233:** nine paths, the inventory, and the written recovery exercise are included on the integration branch. The outdated "Frontend pilot not implemented" status is replaced by the completed comparison. Not merged to main and not deployed.
+2. **KRU-176:** the runnable comparison is complete. Decision: adapt the existing Academy components and defer Fumadocs. Evidence is in [FRONTEND-PILOT.md](FRONTEND-PILOT.md).
+3. **KRU-177:** the single `frontend-building-blocks` panel is implemented on the integration branch, including feedback, reset, wrapping section labels, and the scrollable example. Not merged.
+4. **KRU-77 / PR #237:** the progressive companion stays on lesson id `mcp-vs-rest-api`. The inventory lists that file and does not add `api-mcp-progressive-lab`.
+5. **KRU-178:** validate the built lesson, collect honest manual/learner evidence, then use the repository's reviewed release process. Implementation, merge, deployment and verified release are separate.
+6. **KRU-179–181:** extend to two lessons and optional diagram/sandbox experiments only after pilot validation.
+7. **KRU-182–185:** map token/context, cost, evaluated workflow and trustworthy AI interaction content now; new exercise UI follows the validated pilot. The calculator is not a prerequisite for writing workflow content.
+
+Optional accounts/saved reading stay in KRU-173 / PR #234. That pull request was checked for mount compatibility and was not imported, so accounts are not activated. Existing beginner progress stays with KRU-77. Keystatic ownership stays with KRU-75. Coordinate with release-framework PR #235 rather than creating another release policy. Recheck all PR states when resuming.
+
+### Repository ownership
+
+| Owner | Canonical responsibility | Academy relationship |
+| --- | --- | --- |
+| byjoyaing-portfolio | Public lessons, catalog, practice, UI, versioned content and tests | Implements this pilot inside the existing Academy |
+| technical-docs-platform | Shared engineering/agent standards and reusable templates | Link the current standard; do not duplicate operational policy |
+| Individual application repositories | Their own runtime, domain records, access controls and tests | Teach from reviewed public/synthetic examples; link to owning source |
+| Linear | Committed scope, dependencies, estimates, status and evidence | Link issues/PRs; do not create a competing curriculum database |
+| Keystatic | Editing approved structured public lesson records | Preserve existing overlay/schema ownership; no parallel Frontend record |
+| Private Joy Index / employer systems | Private notes and confidential information | Never import into public lessons, fixtures, logs or commits |
+
+Use the portfolio's project-card example for the first pilot. Account Signal Engine and Security Market Map are candidates for later evidence lessons, not audited implementation examples in this change. Verify each owning repo's current source and permissions before adapting it.
+
+### Planning and delivery evidence
+
+Use KRU-114 and the Linear delivery convention for human effort, agent contribution/runtime, elapsed delivery, costs, confidence and actual outcomes. Tokens are optional supporting diagnostics. Historical “AI-assisted hours” are not reliable forecasts. Lesson duration estimates are learner estimates and must remain separate from engineering effort.
 
 ## Product recommendation
 One learning platform, two coherent entry points:

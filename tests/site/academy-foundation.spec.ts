@@ -88,10 +88,10 @@ test("builder paths, prerequisites and planned resources remain independently re
     page.getByText("Partly available · guided tutorials", { exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByText("Planned · Connected Systems", { exact: true }),
+    page.getByText("Partly available · demos and roadmap", { exact: true }),
   ).toBeVisible();
   await page
-    .getByRole("link", { name: "View the systems roadmap", exact: true })
+    .getByRole("link", { name: "Connected Systems", exact: true })
     .click();
   await expect(
     page.getByRole("heading", {
@@ -161,4 +161,15 @@ test("lesson sequence supports keyboard next and previous without completing a q
   await expect(page.getByRole("heading", { name: "Privacy, security and human oversight", exact: true })).toBeFocused();
   await sequence.getByRole("button", { name: /Previous:/ }).press("Enter");
   await expect(page.getByRole("heading", { name: "AI, models and assistants", exact: true })).toBeFocused();
+});
+
+test("systems path reaches the recovery lesson and its written practice", async ({ page }) => {
+  await page.goto("/ai-academy");
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
+  await page.getByRole("button", { name: "Start this path: Connect systems and recover failures", exact: true }).click();
+  await page.getByRole("navigation", { name: "Selected learning path" }).getByRole("button", { name: "What happens when a background job fails?", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "What happens when a background job fails?", exact: true })).toBeFocused();
+  await expect(page.getByRole("region", { name: "Lesson prerequisites" })).toContainText("Databases: branching, backups, and platform decisions");
+  await expect(page.getByRole("link", { name: "Explore related webhook and access demos", exact: true })).toHaveAttribute("href", "/ai-academy/systems");
+  await expect(page.getByRole("link", { name: "Read the recovery exercise and answer key ↗", exact: true })).toHaveAttribute("href", /background-job-recovery\.md$/);
 });

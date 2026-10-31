@@ -78,10 +78,25 @@ test("practice and guide destinations resolve to existing local routes or public
   assert.equal(
     academyResources.find((item) => item.id === "systems-roadmap")
       ?.availability,
-    "planned",
+    "partial",
   );
   assert.equal(
     academyResources.find((item) => item.id === "programming")?.availability,
     "partial",
   );
+});
+
+test("every catalog lesson has a path and included prerequisites precede dependent lessons", () => {
+  const covered = new Set<string>(learningPaths.flatMap((path) => [...path.slugs]));
+  assert.deepEqual([...covered].sort(), lessons.map((lesson) => lesson.slug).sort());
+  for (const path of learningPaths) {
+    const slugs: readonly string[] = path.slugs;
+    for (const slug of slugs) {
+      for (const prerequisite of getLessonGuidance(slug)?.prerequisites ?? []) {
+        assert.ok(slugs.includes(prerequisite), `${path.id}: missing preparation ${prerequisite}`);
+        assert.ok(slugs.indexOf(prerequisite) < slugs.indexOf(slug), `${path.id}: ${prerequisite} must precede ${slug}`);
+      }
+    }
+  }
+  assert.equal(lessons[0].slug, "what-is-ai");
 });
