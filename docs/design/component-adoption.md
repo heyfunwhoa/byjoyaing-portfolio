@@ -343,3 +343,15 @@ Adapt the shared breadcrumb into Home / Projects / title for directory cases. Pr
 Reuse the existing related-work footer for Previous/Next in directory result order. Share the exact directory matching function; preserve filters in both directions and reloads. Hide the sequence for direct entry, one/no matching result, an unmatched current case and absent endpoints. No wraparound. Phone links stack; tablet/desktop use two columns with wrapping labels, native keyboard links, 44px targets and existing focus styles. No extra motion or dependency. Academy retains its existing sequence.
 
 This is a bounded refinement in PR #230. Browser coverage checks contextual breadcrumb reload/return, direct-entry/local destinations and filtered previous/next keyboard round trips across desktop/tablet/mobile. Manual zoom and screen-reader checks remain unclaimed. Rollback restores the previous return component and removes sequence/filter helper changes.
+
+## Frontend lesson pilot — adapt existing components (KRU-176 / KRU-177)
+
+- Pattern/source: `components/ai-academy/guided-programming-lesson.tsx`, `components/ai-academy/cms-lab.tsx`, and the native controls in `components/ai-academy/academy.tsx`. Catalog entry remains `frontend-building-blocks` in `lib/ai-academy.ts`.
+- Destination: one call site in `components/ai-academy/academy.tsx` for that slug, rendered by `components/ai-academy/frontend-lesson.tsx`. Content lives in `lib/academy/frontend-lesson.ts`. No Keystatic record added.
+- Decision: adapt. A pinned Fumadocs UI 16.17.9 trial was built on an uncommitted route and then removed. `Steps` only supplies `fd-steps` markup. Choice feedback, reset, local notes and lesson selection stayed native. Measured evidence is in [the frontend pilot note](../academy/FRONTEND-PILOT.md).
+- Dependency: none added. The trial's lockfile entries were not kept.
+- Tokens: existing border, card, accent and focus styles. No motion.
+- Phone, tablet and desktop: one reading column inside the existing lesson panel. The catalog sidebar remains from `lg`. Section links wrap, including their labels. The example source scrolls inside its box. Choices stack. Targets use at least 44px.
+- Keyboard and states: in-page links, buttons, labeled radios, visible focus, polite feedback, explicit reset, optional rubric disclosure. No loading or network state. Correct choices do not mark the lesson reviewed.
+- Status: implemented for this lesson, pending review. Not a general renderer and not shipped.
+- Rollback: remove the conditional mount and the two new lesson files. The catalog record stays.
