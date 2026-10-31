@@ -21,12 +21,22 @@ test("frontend lesson explains a choice, resets, and does not mark reading revie
       level: 3,
     }),
   ).toBeVisible();
-  const horizontalOverflow = await page.evaluate(
-    () =>
-      document.documentElement.scrollWidth -
-      document.documentElement.clientWidth,
-  );
-  expect(horizontalOverflow).toBeLessThanOrEqual(1);
+  const originalViewport = page.viewportSize();
+  for (const size of [
+    originalViewport,
+    { width: 375, height: 812 },
+    { width: 640, height: 900 },
+  ]) {
+    if (!size) continue;
+    await page.setViewportSize(size);
+    const horizontalOverflow = await page.evaluate(
+      () =>
+        document.documentElement.scrollWidth -
+        document.documentElement.clientWidth,
+    );
+    expect(horizontalOverflow, `${size.width}px`).toBeLessThanOrEqual(1);
+  }
+  if (originalViewport) await page.setViewportSize(originalViewport);
 
   await lesson
     .getByRole("link", { name: "Check understanding", exact: true })

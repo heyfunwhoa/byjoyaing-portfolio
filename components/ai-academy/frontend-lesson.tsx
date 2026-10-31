@@ -88,19 +88,22 @@ export function FrontendLesson({
       <p className="text-xs font-semibold tracking-widest text-accent uppercase">
         Guided lesson · Fictional project card
       </p>
-      <h3 id="frontend-lesson-title" className="mt-2 font-display text-2xl">
+      <h3
+        id="frontend-lesson-title"
+        className="mt-2 font-display text-2xl break-words"
+      >
         Diagnose one project card
       </h3>
       <p className="mt-3 text-sm leading-6">{frontendLessonObjective}</p>
       <nav
         aria-label="Frontend lesson sections"
-        className="mt-4 flex flex-wrap gap-2"
+        className="mt-4 flex min-w-0 flex-wrap gap-2"
       >
         {frontendLessonSections.map((section) => (
           <a
             key={section.id}
             href={`#frontend-${section.id}`}
-            className="inline-flex min-h-11 items-center rounded-lg border border-border bg-card px-3 text-sm font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            className="inline-flex min-h-11 max-w-full items-center rounded-lg border border-border bg-card px-3 text-left text-sm font-semibold whitespace-normal underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             onClick={(event) => {
               const target = document.getElementById(`frontend-${section.id}`);
               if (!target) return;
@@ -152,13 +155,15 @@ export function FrontendLesson({
             {projectCardExample.linkLabel}
           </a>
         </article>
-        <div className="mt-4 max-w-full min-w-0 overflow-x-auto rounded-lg border border-border bg-card p-4">
-          <p className="text-xs text-muted">
-            ProjectCard example · selectable text, not a running app
-          </p>
-          <pre className="mt-2 w-max min-w-full text-sm leading-6">
-            <code>{projectCardExample.code}</code>
-          </pre>
+        <div className="mt-4 grid grid-cols-1">
+          <div className="min-w-0 overflow-x-auto rounded-lg border border-border bg-card p-4">
+            <p className="text-xs text-muted">
+              ProjectCard example · selectable text, not a running app
+            </p>
+            <pre className="mt-2 w-max min-w-full text-sm leading-6">
+              <code>{projectCardExample.code}</code>
+            </pre>
+          </div>
         </div>
         <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-6">
           {projectCardExample.annotations.map((note) => (
