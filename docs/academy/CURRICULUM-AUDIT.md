@@ -2,10 +2,10 @@
 
 ## Current audit: 2026-10-30
 
-**Source snapshot:** `62d0037c809893a48408d32b4c7a0df4c8b642db` on main, plus this proposed KRU-174 change.
+**Source snapshot:** current main `60a799285f746cc38f9806d4cefb4532fabd8026`, which includes the breadcrumb work through PR #230. The 38-lesson count was taken at `62d0037`; `lib/ai-academy.ts` did not change on main after that. This integration also includes PR #236's Frontend lesson, PR #237's API/MCP companion, and PR #233's nine paths and recovery lesson. Overlap and merge order: [INTEGRATION-233-236-237.md](INTEGRATION-233-236-237.md).
 **Scope:** complete registered-lesson and route inventory, prerequisite/path structure, instructional fields, companion-document inventory and availability labeling. This is not a claim that every external citation, live route, exercise outcome or accessibility behavior was independently revalidated.
 **Authorization:** user requested the lesson audit, organization and background-job recovery follow-up. This supersedes older holds only for this bounded slice. Broader labs, persistent progress and badges remain separate work.
-**State:** proposed in a review branch; merge and production verification are separate.
+**State:** combined on an integration branch for review. Not merged to main and not deployed.
 
 ### Findings and changes
 
@@ -61,7 +61,7 @@ Each row is an available short card with one knowledge check. “Companion” me
 | `cms-fundamentals` | frontend | 35 min; Card + companion | Keep the six chapters optional; distinguish local editing from hosted publication. |
 | `reading-code-and-yaml` | delivery, systems | 25 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
 | `llms-models-inference-gateways` | foundations, agents, verification | 20 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
-| `frontend-building-blocks` | frontend | 35 min; Card + companion; linked practice | Place UI libraries, design systems and explanatory graphics here; use the existing project-card exercise. |
+| `frontend-building-blocks` | frontend | 35 min; Card + companion; linked practice; guided panel | KRU-176 compared Fumadocs with the existing components and deferred Fumadocs. KRU-177 implemented the guided panel on this integration: objective, worked example, practice, two checks with feedback and reset, local notes, and next step. Still one catalog id. Learner validation remains KRU-178. See [FRONTEND-PILOT.md](FRONTEND-PILOT.md). |
 | `evaluate-ai-models` | agents, verification | 18 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
 | `storybook-visual-regression` | frontend | 18 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
 | `integration-registry-finops` | systems, security | 16 min; Card + companion; linked practice | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
@@ -70,7 +70,7 @@ Each row is an available short card with one knowledge check. “Companion” me
 | `cursor-workflows` | delivery | 30 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
 | `better-auth-gtm-workspace` | security | 25 min; Card + companion; linked practice | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
 | `measure-product-use-safely` | delivery | 20 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
-| `mcp-vs-rest-api` | systems, security | 25 min; Card + companion; linked practice | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
+| `mcp-vs-rest-api` | systems, security | 25 min; Card + parent guide + progressive companion; linked practice | [api-mcp-progressive-lab.md](../builder-academy/api-mcp-progressive-lab.md) traces one fictional brief through a function, an HTTP handler, a function tool, and an MCP adapter. It does not add a lesson id. Its code blocks are labeled illustrative pseudocode. The card still needs a second independent reasoning check before full instructional-contract coverage. |
 | `enterprise-contracts-sales-cycle` | enterprise-evaluation | 30 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
 | `security-assessments-buyer-size` | enterprise-evaluation | 35 min; Card + companion | Retain existing exercise and companion; add a second independent reasoning check before claiming full instructional-contract coverage. |
 | `what-is-ai` | foundations, agents, research, verification | 8 min; Card | Add a second reasoning check and a supplied example before requiring an external assistant. |
@@ -108,7 +108,7 @@ Programming has 10 module records, only two guided tutorials, and an 11-entry te
 
 ### Companion and supporting document inventory
 
-The existing 35 Builder Academy documents and 17 enterprise-evaluation documents were inventoried by source, heading and relationship. The new recovery guide adds one Builder companion. Plans, architecture and publishing documents are maintained as supporting references, not promoted to completed lessons. This inventory does not certify every paragraph or external link as current.
+The existing 35 Builder Academy documents and 17 enterprise-evaluation documents were inventoried by source, heading and relationship. The recovery guide adds one Builder companion. The progressive API and MCP companion adds one document for the existing `mcp-vs-rest-api` lesson and does not increase the 39-lesson count. Plans, architecture and publishing documents are maintained as supporting references, not promoted to completed lessons. This inventory does not certify every paragraph or external link as current.
 
 | Document | Catalog relationship / disposition |
 | --- | --- |
@@ -137,6 +137,7 @@ The existing 35 Builder Academy documents and 17 enterprise-evaluation documents
 | [Builder Academy lab — identity lifecycle simulator](../builder-academy/identity-lifecycle-lab.md) | Supplemental reference / plan; not an additional catalog lesson |
 | [LLMs, models, inference, and AI gateways](../builder-academy/llms-models-inference-gateways.md) | `llms-models-inference-gateways`, `evaluate-ai-models` |
 | [Builder Academy — API, REST API, webhook and MCP: what is different?](../builder-academy/mcp-vs-rest-api.md) | `background-job-recovery`, `integration-registry-finops`, `better-auth-gtm-workspace`, `mcp-vs-rest-api` |
+| [One account brief, four interfaces](../builder-academy/api-mcp-progressive-lab.md) | `mcp-vs-rest-api` only; not a second catalog id |
 | [Builder Academy — Measure product use safely](../builder-academy/measure-product-usage-safely.md) | `measure-product-use-safely` |
 | [Why pre-commit alone cannot stop every secret](../builder-academy/pre-commit-secrets-defense-in-depth.md) | Supplemental reference / plan; not an additional catalog lesson |
 | [Reading code, files, JSON and YAML](../builder-academy/reading-code-and-yaml.md) | `database-branching-recovery`, `reading-code-and-yaml` |

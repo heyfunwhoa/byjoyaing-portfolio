@@ -11,20 +11,21 @@ The [Revenue enablement program and Trusted Handoff mission](REVENUE-ENABLEMENT-
 
 ## Current curriculum priorities
 
-Use the [2026-10-30 curriculum audit](CURRICULUM-AUDIT.md) for the complete lesson/route inventory, source limits and priorities. The audited main snapshot contains 38 registered lessons; KRU-174 proposes 39 with background-job recovery and nine goal-based paths. Programming has two guided tutorials among ten module records. Systems already has two interactive examples and an infrastructure explainer alongside planned modules. The user authorized this audit, organization and one written recovery lesson. Broader new labs remain separate scope. This program is the wider vision; older phases below are historical proposals, not the current implementation queue.
+Use the [2026-10-30 curriculum audit](CURRICULUM-AUDIT.md) for the complete lesson/route inventory, source limits and priorities. Current main at `60a7992` contains 38 registered lessons. This integration proposes 39 with background-job recovery and nine goal-based paths. Programming has two guided tutorials among ten module records. Systems already has two interactive examples and an infrastructure explainer alongside planned modules. The user authorized this audit, organization and one written recovery lesson. Broader new labs remain separate scope. This program is the wider vision; older phases below are historical proposals, not the current implementation queue.
 
 ## Current execution scope (2026-10-30)
 
-This section supersedes earlier blanket implementation holds only for the bounded work below. It does not authorize every proposed phase in this document. [Linear project P-KRU-11](https://linear.app/krusty/project/builder-academy-lesson-experience-and-ui-3919add2048a) tracks execution; repository files own versioned implementation and instructional specifications. Notion remains the product strategy/requirements reference; no private content is copied here.
+This section supersedes earlier blanket implementation holds only for the bounded work below. It does not authorize every proposed phase in this document. [Linear project P-KRU-11](https://linear.app/krusty/project/builder-academy-lesson-experience-and-ui-3919add2048a) tracks execution; repository files own versioned implementation and instructional specifications. Notion remains the product strategy/requirements reference; no private content is copied here. Overlap and proposed merge order: [INTEGRATION-233-236-237.md](INTEGRATION-233-236-237.md).
 
-1. **KRU-174 / PR #233:** review the audited inventory, nine paths and written recovery exercise. As checked on 2026-10-30, the PR is open, not merged or deployed.
-2. **KRU-176:** compare one Frontend lesson using existing components and a version-pinned Fumadocs experiment; document an adopt/adapt/defer decision. Source review is not a runnable comparison. See [Frontend pilot brief](FRONTEND-PILOT.md).
-3. **KRU-177:** implement only the chosen Frontend pattern after the comparison decision. Keep existing lesson identity, editorial ownership, prerequisites and progress meanings.
-4. **KRU-178:** validate the built lesson, collect honest manual/learner evidence, then use the repository's reviewed release process. Implementation, merge, deployment and verified release are separate.
-5. **KRU-179–181:** extend to two lessons and optional diagram/sandbox experiments only after pilot validation.
-6. **KRU-182–185:** map token/context, cost, evaluated workflow and trustworthy AI interaction content now; new exercise UI follows the validated pilot. The calculator is not a prerequisite for writing workflow content.
+1. **KRU-174 / PR #233:** nine paths, the inventory, and the written recovery exercise are included on the integration branch. The outdated "Frontend pilot not implemented" status is replaced by the completed comparison. Not merged to main and not deployed.
+2. **KRU-176:** the runnable comparison is complete. Decision: adapt the existing Academy components and defer Fumadocs. Evidence is in [FRONTEND-PILOT.md](FRONTEND-PILOT.md).
+3. **KRU-177:** the single `frontend-building-blocks` panel is implemented on the integration branch, including feedback, reset, wrapping section labels, and the scrollable example. Not merged.
+4. **KRU-77 / PR #237:** the progressive companion stays on lesson id `mcp-vs-rest-api`. The inventory lists that file and does not add `api-mcp-progressive-lab`.
+5. **KRU-178:** validate the built lesson, collect honest manual/learner evidence, then use the repository's reviewed release process. Implementation, merge, deployment and verified release are separate.
+6. **KRU-179–181:** extend to two lessons and optional diagram/sandbox experiments only after pilot validation.
+7. **KRU-182–185:** map token/context, cost, evaluated workflow and trustworthy AI interaction content now; new exercise UI follows the validated pilot. The calculator is not a prerequisite for writing workflow content.
 
-Optional accounts/saved reading stay in KRU-173 / PR #234; existing beginner progress stays with KRU-77; Keystatic ownership stays with KRU-75. Coordinate with release-framework PR #235 rather than creating another release policy. Recheck all PR states when resuming.
+Optional accounts/saved reading stay in KRU-173 / PR #234. That pull request was checked for mount compatibility and was not imported, so accounts are not activated. Existing beginner progress stays with KRU-77. Keystatic ownership stays with KRU-75. Coordinate with release-framework PR #235 rather than creating another release policy. Recheck all PR states when resuming.
 
 ### Repository ownership
 

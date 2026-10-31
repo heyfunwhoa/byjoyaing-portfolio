@@ -116,11 +116,20 @@ test("progressive API and MCP companion stays on the existing lesson id", () => 
   assert.equal(new Set(slugs).size, slugs.length);
   assert.equal(slugs.includes("api-mcp-progressive-lab"), false);
   assert.equal(slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
+  const systems = learningPaths.find((path) => path.id === "systems");
+  const security = learningPaths.find((path) => path.id === "security");
   const delivery = learningPaths.find((path) => path.id === "delivery");
+  assert.ok(systems);
+  assert.ok(security);
   assert.ok(delivery);
-  assert.equal(delivery.slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
+  assert.equal(systems.slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
+  assert.equal(security.slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
   const deliverySlugs: readonly string[] = delivery.slugs;
-  assert.equal(deliverySlugs.includes("api-mcp-progressive-lab"), false);
+  assert.equal(deliverySlugs.includes("mcp-vs-rest-api"), false);
+  for (const path of [systems, security, delivery]) {
+    const pathSlugs: readonly string[] = path.slugs;
+    assert.equal(pathSlugs.includes("api-mcp-progressive-lab"), false);
+  }
 
   const parent = readFileSync(new URL("../docs/builder-academy/mcp-vs-rest-api.md", import.meta.url), "utf8");
   const lab = readFileSync(new URL("../docs/builder-academy/api-mcp-progressive-lab.md", import.meta.url), "utf8");

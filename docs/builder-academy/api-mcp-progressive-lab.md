@@ -265,7 +265,7 @@ This section separates the classroom sketch from implementation evidence. Dates 
 
 | Claim | Evidence this review could check | What it does not prove |
 | --- | --- | --- |
-| The portfolio lesson id is `mcp-vs-rest-api` | The id is the parent lesson in `lib/ai-academy.ts` and `content/academy/lessons/mcp-vs-rest-api.json`. This file is not a second id. Draft curriculum inventory pull request 233 lists that same id once. | A merged catalog change. This companion is still a draft pull request. Pull request 233's inventory file is not edited here. |
+| The portfolio lesson id is `mcp-vs-rest-api` | The id is the parent lesson in `lib/ai-academy.ts` and `content/academy/lessons/mcp-vs-rest-api.json`. This file is not a second id. The combined inventory lists that same id once and lists this file as its companion. | A merge to main or a production deployment. The card still has one knowledge check. |
 | The code blocks are illustrative | They live only in this Markdown file. They are labeled pseudocode. | Compiler output, test output, or a safe production handler. |
 | Account Signal Engine pull request 155 is the linked draft | [Pull request 155](https://github.com/heyfunwhoa/account-signal-engine/pull/155). A same-day consumer note described it as an unmerged projection draft related to the existing correction work. | A test log. This portfolio credential received HTTP 404 for that private repository on 2026-10-30, so this lesson does not name its files, commands, or results. |
 | An earlier Account Signal Engine draft discussed the synthetic story | Linear KRU-66 comments on 2026-10-26 describe draft pull request 129, not pull request 155. | That 129's tests pass today, or that 155 contains the same files. |
@@ -289,6 +289,6 @@ Checked 2026-10-30 unless a row says otherwise.
 
 ## Where this file sits in the catalog
 
-Lesson id `mcp-vs-rest-api` stays one id. Draft pull request 233 inventories that id once: the card, the parent guide, and Follow one click. Its 2026-10-30 inventory does not list this file, because this file is on another branch. This pull request does not edit that inventory, the learning paths, or `lib/ai-academy.ts`. Pull request 233 also says the card still needs a second independent reasoning check before the lesson meets the full instructional contract. The paper checks above are extra practice. They do not replace the card's one question, and they do not complete that contract.
+Lesson id `mcp-vs-rest-api` stays one id. The 2026-10-30 inventory now lists this file under that id. It does not add `api-mcp-progressive-lab` to the catalog or to a learning path. KRU-174 places the parent lesson on the systems and security paths. The inventory still says the card needs a second independent reasoning check before the lesson meets the full instructional contract. The paper checks above are extra practice. They do not replace the card's one question, and they do not complete that contract.
 
 **Review again when** the MCP architecture or authorization pages change, the OpenAI tool categories change, or an authorized caller is actually approved to use one of these doors. Until then, keep this file as reading for `mcp-vs-rest-api`.
