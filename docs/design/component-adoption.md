@@ -355,3 +355,9 @@ This is a bounded refinement in PR #230. Browser coverage checks contextual brea
 - Keyboard and states: in-page links, buttons, labeled radios, visible focus, polite feedback, explicit reset, optional rubric disclosure. No loading or network state. Correct choices do not mark the lesson reviewed.
 - Status: implemented for this lesson, pending review. Not a general renderer and not shipped.
 - Rollback: remove the conditional mount and the two new lesson files. The catalog record stays.
+
+## Academy curriculum organization (2026-10-30, KRU-174)
+
+Proposed data-only reuse of the existing Academy navigation foundation. Source/destination: `components/ai-academy/academy.tsx` and `app/ai-academy/page.tsx` for path data. This section does not remove the Frontend lesson mount recorded above, and it does not remove the breadcrumb sections from main. Existing native path disclosure, responsive path cards, lesson selector, focused headings, prerequisite buttons and resource cards consume nine paths and corrected availability metadata. Owner: portfolio maintainer. No dependencies, new tokens, animation or external source imports.
+
+Phone retains stacked cards/select controls, tablet the existing two-column breakpoints and desktop the existing three-column chooser/sidebar. All path steps remain skippable. Reduced-motion behavior is inherited; no new loading, network or permission state. New browser coverage checks the recovery lesson and related Systems destination; prerequisite/coverage tests guard the data contract. The keyboard sequence test already on main stays. Manual keyboard, 200% zoom, screen reader and real-device checks were not run for this organization. Revert the path and recovery files to roll back; publication is not claimed.
