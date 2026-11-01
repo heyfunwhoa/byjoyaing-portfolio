@@ -69,7 +69,7 @@ For new UI journeys and material interface changes, consult the [proposed respon
 
 - Install with `npm ci`. CI uses Node.js 22. Check the app with `npm run lint`, `npm test`, and `npm run build`.
 - Start the site with `npm run dev`. It listens on port 3000.
-- Open `http://localhost:3000`. Next.js 16 blocks dev resources, including the HMR websocket, for a `127.0.0.1` browser origin. Client components hydrate when the browser uses `localhost`, the origin the dev server advertises.
+- Open `http://localhost:3000` or `http://127.0.0.1:3000`. `allowedDevOrigins` includes `127.0.0.1`, so client components hydrate on both origins.
 - Public pages do not need secrets. The contact form reports that email is not configured until `RESEND_API_KEY` and `CONTACT_INBOX` are set. PostHog, Better Auth, hosted Keystatic, and Infisical stay off unless those integrations are the thing under test.
 
 ## Focused agent sessions
