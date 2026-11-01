@@ -7,7 +7,6 @@ import {
   filterDirectoryProjects,
   categorySlugs,
   categoryFromSlug,
-  directoryStatus,
   directoryCategories,
   lifecycleStages,
   type DirectoryCategory,
