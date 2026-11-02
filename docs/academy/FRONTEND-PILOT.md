@@ -1,6 +1,6 @@
 # Frontend lesson pilot: diagnose one project card
 
-Status: runnable comparison completed and the single lesson implemented with existing components. Not merged and not deployed.
+Status: runnable comparison completed and the single lesson implemented with existing components. Merged to main in [#236](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/236) on 2026-10-31.
 Reviewed: 2026-10-30.
 Owner: byjoyaing-portfolio. Tracking: [KRU-176](https://linear.app/krusty/issue/KRU-176), [KRU-177](https://linear.app/krusty/issue/KRU-177), [KRU-178](https://linear.app/krusty/issue/KRU-178).
 Scope: `frontend-building-blocks` only.
