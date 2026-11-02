@@ -1,3 +1,4 @@
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { robotsNoindex } from "@/lib/indexing";
@@ -14,7 +15,7 @@ export default function PrivateWorkInfoPage() {
   return (
     <PageMain>
       <header className="border-b border-border py-12 sm:py-16">
-        <Link href="/field-notes" className="text-sm font-medium text-accent">← Field Notes</Link>
+        <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/field-notes","label":"Field Notes"},{"label":"Private case studies"}]} />
         <p className="mt-8 text-xs font-medium uppercase tracking-wide text-muted">Selected work · Access by invitation</p>
         <h1 className="editorial-title mt-3 max-w-3xl">A deeper look at the work.</h1>
         <p className="mt-5 max-w-3xl text-base leading-7 text-muted">
