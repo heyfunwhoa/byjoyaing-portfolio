@@ -161,3 +161,15 @@ test("systems path reaches the recovery lesson and its written practice", async 
   await expect(page.getByRole("link", { name: "Explore related webhook and access demos", exact: true })).toHaveAttribute("href", "/ai-academy/systems");
   await expect(page.getByRole("link", { name: "Read the recovery exercise and answer key ↗", exact: true })).toHaveAttribute("href", /background-job-recovery\.md$/);
 });
+
+test("lesson sequence supports keyboard next and previous without completing a quiz", async ({ page }) => {
+  await page.goto("/ai-academy");
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
+  await page.getByRole("button", { name: "Start this path: Start with AI basics", exact: true }).click();
+  const sequence = page.getByRole("navigation", { name: "Lesson sequence" });
+  await expect(sequence.getByRole("button", { name: /Previous:/ })).toHaveCount(0);
+  await sequence.getByRole("button", { name: /^Next:/ }).press("Enter");
+  await expect(page.getByRole("heading", { name: "Privacy, security and human oversight", exact: true })).toBeFocused();
+  await sequence.getByRole("button", { name: /Previous:/ }).press("Enter");
+  await expect(page.getByRole("heading", { name: "AI, models and assistants", exact: true })).toBeFocused();
+});

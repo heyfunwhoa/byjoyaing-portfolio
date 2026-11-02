@@ -1,3 +1,4 @@
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
@@ -33,7 +34,8 @@ export default async function ProjectsPage({
     <PageMain>
       <section className="grid items-center gap-7 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
         <div className="min-w-0">
-        <p className="editorial-eyebrow text-accent">Builds · Side Quests</p>
+        <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/side-quests","label":"Side Quests"},{"label":"Projects"}]} />
+          <p className="editorial-eyebrow text-accent">Builds · Side Quests</p>
         <h1 className="editorial-title mt-3 max-w-3xl">
           Systems for how a revenue team plans, sells, and learns.
         </h1>
