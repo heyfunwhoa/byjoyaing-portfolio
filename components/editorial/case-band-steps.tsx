@@ -26,25 +26,27 @@ export function CaseBandSteps({
           <div
             key={step.heading}
             className={
-              step.heading === "Evidence and limitations" ? "sm:col-span-2" : ""
+              step.heading === "Evidence and limitations"
+                ? "min-w-0 rounded-xl border border-border bg-surface-sage p-4 sm:col-span-2"
+                : "min-w-0"
             }
           >
             <dt className="text-sm font-semibold">{step.heading}</dt>
-            <dd className="editorial-prose mt-2 text-sm leading-6 text-muted">
+            <dd className="editorial-prose mt-2 text-sm leading-6 text-muted [overflow-wrap:anywhere]">
               {step.content}
             </dd>
           </div>
         ))}
       </dl>
       <details className="mt-5 rounded-xl border border-border bg-background p-4">
-        <summary className="cursor-pointer rounded-sm py-1 text-sm font-semibold text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+        <summary className="min-h-11 cursor-pointer content-center rounded-sm py-2 text-sm font-semibold text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
           Read the full story<span className="sr-only">: {title}</span>
         </summary>
         <dl className="mt-4 grid gap-4 sm:grid-cols-2">
           {detail.map((step) => (
             <div key={step.heading}>
               <dt className="text-sm font-semibold">{step.heading}</dt>
-              <dd className="editorial-prose mt-2 text-sm leading-6 text-muted">
+              <dd className="editorial-prose mt-2 text-sm leading-6 text-muted [overflow-wrap:anywhere]">
                 {step.content}
               </dd>
             </div>

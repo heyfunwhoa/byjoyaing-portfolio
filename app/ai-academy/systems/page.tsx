@@ -1,3 +1,4 @@
+import { SystemsIllustrations } from "@/components/academy/systems-illustrations";
 import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import type { Metadata } from "next";
@@ -129,6 +130,7 @@ export default function SystemsPage() {
         together. Start with the mental model, try a synthetic exercise, then
         apply it to a portfolio project.
       </p>
+      <SystemsIllustrations />
       <section className="mt-12" aria-labelledby="modules-heading">
         <h2 id="modules-heading" className="text-2xl font-semibold">
           Planned learning modules

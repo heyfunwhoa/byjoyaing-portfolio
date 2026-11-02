@@ -19,6 +19,7 @@ export function InquiryForm({
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const startedAt = useRef(0);
+  const submitting = useRef(false);
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -26,12 +27,14 @@ export function InquiryForm({
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submitting.current) return;
     const form = event.currentTarget;
     const data = new FormData(form);
     const note = String(data.get("message") ?? "");
 
+    submitting.current = true;
     setStatus("sending");
-    setMessage("");
+    setMessage("Sending your message…");
 
     try {
       const response = await fetch("/api/contact", {
@@ -61,8 +64,10 @@ export function InquiryForm({
     } catch {
       setStatus("error");
       setMessage(
-        `Could not send that message. Email ${PUBLIC_CONTACT_EMAIL} instead.`,
+        "Could not send that message. Please try again or use the email link below.",
       );
+    } finally {
+      submitting.current = false;
     }
   }
 
@@ -105,21 +110,40 @@ export function InquiryForm({
       </label>
       <button
         type="submit"
-        disabled={status === "sending"}
-        className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
+        aria-disabled={status === "sending"}
+        aria-busy={status === "sending"}
+        className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 aria-disabled:cursor-wait aria-disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent motion-reduce:transition-none"
       >
-        {status === "sending" ? "Sending…" : "Send message"}
+        <span className="sr-only">Send message</span>
+        <span aria-hidden="true">
+          {status === "sending" ? "Sending…" : "Send message"}
+        </span>
       </button>
       <p className="text-xs leading-5 text-muted">
         Work-example requests are reviewed individually. Submitting this form does not unlock private files.
       </p>
-      {message ? (
-        <p
-          className={`text-sm leading-6 ${status === "error" ? "font-medium text-foreground" : "text-muted"}`}
-          role="status"
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className={message ? "rounded-xl border border-border bg-card p-4 text-sm leading-6" : ""}
+      >
+        {message ? (
+          <>
+            <p className="font-medium text-foreground">
+              {status === "error" ? "Message not sent" : status === "sent" ? "Message sent" : "Sending"}
+            </p>
+            <p className="mt-1 text-muted">{message}</p>
+          </>
+        ) : null}
+      </div>
+      {status === "error" ? (
+        <a
+          href={`mailto:${PUBLIC_CONTACT_EMAIL}`}
+          className="inline-flex min-h-11 items-center self-start rounded-sm text-sm font-medium text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
         >
-          {message}
-        </p>
+          Email me instead
+        </a>
       ) : null}
     </form>
   );

@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 for (const width of [375, 768, 1280]) {
   test(`feedback overview and theme comparison at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("/work/customer-feedback-intelligence");
+    await page.goto("/work/customer-feedback-intelligence#workflow");
     await expect(page.getByRole("region", { name: "Feedback demo overview" })).toBeVisible();
     await page.getByRole("tab", { name: "Theme intelligence", exact: true }).click();
     const comparison = page.locator("figure").filter({ hasText: "Feedback volume by theme" });

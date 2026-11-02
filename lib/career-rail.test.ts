@@ -24,9 +24,9 @@ test("career rail lists employers and titles without publishing role dates", () 
   assert.doesNotMatch(read("components/experience-timeline.tsx"), /role\.period/);
 });
 
-test("source guard: the rail is static and placed on Experience and About only", () => {
+test("source guard: the rail stays static, appears on About, and is omitted from Experience", () => {
   assert.doesNotMatch(read("components/career-rail.tsx"), /"use client"|animate-|@keyframes|from "motion/);
-  assert.match(read("app/experience/page.tsx"), /<CareerRail/);
+  assert.doesNotMatch(read("app/experience/page.tsx"), /CareerRail|career-rail/);
   assert.match(read("app/about/page.tsx"), /<CareerRail/);
   assert.doesNotMatch(read("app/page.tsx"), /CareerRail|career-rail/);
 });

@@ -28,7 +28,7 @@ export function EditorialBento() {
             What I&apos;ve done.
           </h3>
           <p className="mt-4 max-w-sm text-sm leading-7 text-[#E4DED4] sm:text-base">
-            Professional experience, enterprise selling, people development, and GTM execution.
+            Case studies in enterprise sales, team development, and GTM strategy.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-8 text-sm font-semibold underline">
             Explore Work <ArrowUpRight size={16} className="nudge-link ml-2 inline-block size-4" />
@@ -43,7 +43,7 @@ export function EditorialBento() {
           <p className="editorial-eyebrow text-accent">Field Notes</p>
           <h3 className="mt-4 font-display text-3xl leading-tight">How I think.</h3>
           <p className="mt-3 max-w-sm text-sm leading-6 text-muted">
-            Playbooks, frameworks, operating systems, and lessons learned.
+            Practical playbooks, frameworks, and lessons from enterprise cybersecurity.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold text-accent underline">
             Read Field Notes <ArrowRight size={16} className="nudge-link ml-2 inline-block size-4" />
@@ -57,7 +57,7 @@ export function EditorialBento() {
           <p className="editorial-eyebrow">Side Quests</p>
           <h3 className="mt-4 font-display text-3xl leading-tight">What I build.</h3>
           <p className="mt-3 max-w-sm text-sm leading-6">
-            Independent cybersecurity, GTM, research, and developer tools.
+            Independent research and tools with clear project status labels.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-5 text-sm font-semibold underline">
             See Side Quests <ArrowRight size={16} className="nudge-link ml-2 inline-block size-4" />
