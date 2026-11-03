@@ -87,9 +87,9 @@ test("About career disclosure and Work cards adapt to phone widths", async ({ pa
 });
 
 
-test("mobile navigation traps focus, dismisses cleanly and navigates without overflow", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "site-desktop", "Run the explicit viewport matrix once.");
-  for (const width of [320, 375, 640, 768]) {
+for (const width of [320, 375, 640, 768]) {
+  test(`mobile navigation round trip at ${width}px`, async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== "site-desktop", "Run the explicit viewport matrix once.");
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/about");
     const nav = page.getByRole("navigation", { name: "Primary", exact: true });
@@ -126,5 +126,5 @@ test("mobile navigation traps focus, dismisses cleanly and navigates without ove
     await expect(page.locator("#main-content")).not.toHaveAttribute("inert", "");
     await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe(priorOverflow);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  }
-});
+  });
+}
