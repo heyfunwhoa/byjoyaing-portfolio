@@ -156,3 +156,39 @@ test("About education marks load beside visible credentials at phone and desktop
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
+
+
+test("Mobile About header and footer remain readable and reachable", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Run explicit viewport assertions once.");
+  for (const width of [320, 375, 640]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/about");
+    const header = page.getByRole("navigation", { name: "Primary" });
+    const menu = header.getByRole("button", { name: "Open navigation menu" });
+    if (width < 640) {
+      await expect(menu).toBeVisible();
+      const bounds = await menu.boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(bounds!.width).toBeGreaterThanOrEqual(44);
+      expect(bounds!.height).toBeGreaterThanOrEqual(44);
+    }
+    const footer = page.locator("footer[data-site-chrome]");
+    const links = footer.getByRole("navigation", { name: "Footer" });
+    await expect(links.getByRole("link", { name: "Contact" })).toHaveAttribute("href", "/contact");
+    const navBounds = await links.boundingBox();
+    const social = footer.getByLabel("Contact and social links");
+    const socialBounds = await social.boundingBox();
+    expect(navBounds).not.toBeNull();
+    expect(socialBounds).not.toBeNull();
+    if (width < 640) {
+      expect(socialBounds!.y).toBeGreaterThanOrEqual(navBounds!.y + navBounds!.height);
+    }
+    for (const link of await social.getByRole("link").all()) {
+      const target = await link.boundingBox();
+      expect(target).not.toBeNull();
+      expect(target!.height).toBeGreaterThanOrEqual(44);
+      expect(target!.width).toBeGreaterThanOrEqual(44);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});
