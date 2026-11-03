@@ -178,7 +178,7 @@ export function CompetitiveIntelligenceWorkflow() {
         })}
       </div>
 
-      <div role="tabpanel" id="ci-panel" aria-label="Competitive workflow details" aria-labelledby={undefined} className="min-w-0">
+      <div role="tabpanel" id="ci-panel" aria-labelledby={`ci-tab-${stage}`} className="min-w-0">
         {stage === "landscape" ? (
           <Frame title="Provider dashboard">
             <ul className="flex flex-col gap-3">
