@@ -164,7 +164,7 @@ export default function AboutPage() {
           {aboutPage.careerIntro}
         </p>
         <details className="mt-5 rounded-xl border border-border bg-card p-4">
-          <summary className="cursor-pointer py-1 font-medium">
+          <summary className="flex min-h-11 cursor-pointer items-center py-2 font-medium">
             Career at a glance
           </summary>
           <CareerRail nodes={careerRailNodes()} />
