@@ -7,6 +7,7 @@ import { CompetitiveIntelligenceCase } from "@/components/competitive-intelligen
 import { CustomerFeedbackCase } from "@/components/customer-feedback-case";
 import { FieldAssetCase } from "@/components/field-asset-case";
 import { RelatedWork } from "@/components/related-work";
+import { ProjectReturnLink } from "@/components/project-case-navigation";
 import { PageMain } from "@/components/page-main";
 import { SampleRecordView } from "@/components/sample-record";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
@@ -18,7 +19,7 @@ import { findUseCase, salesProject, sampleFor } from "@/lib/sales";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -121,12 +122,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </p>
           )}
           <p className="text-sm text-muted">Lifecycle: {project.phase}</p>
-          <Link
-            href="/projects"
-            className="link-rule w-fit text-sm font-medium text-accent"
-          >
-            Browse the project directory
-          </Link>
+          <Suspense fallback={<Link href="/projects#directory" className="link-rule inline-flex min-h-11 w-fit items-center text-sm font-medium text-accent">Browse the project directory</Link>}>
+            <ProjectReturnLink sidebar />
+          </Suspense>
         </aside>
 
         <article className="order-1 flex min-w-0 flex-col gap-8 lg:order-2">
