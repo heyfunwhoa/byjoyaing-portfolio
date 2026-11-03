@@ -71,7 +71,7 @@ export default async function ProjectsPage({
           These projects cover different parts of the same motion. Selecting one shows its inputs and output. The lines are a map, not a data integration.
         </p>
         <details className="mt-5 rounded-xl border border-border bg-card p-4">
-          <summary className="cursor-pointer py-1 font-medium">
+          <summary className="flex min-h-11 cursor-pointer items-center py-2 font-medium">
             Explore how the systems connect
           </summary>
           <div className="mt-4">
