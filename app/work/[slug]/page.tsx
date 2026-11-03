@@ -156,7 +156,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </dl>
           <details className="rounded-xl border border-border bg-card p-4">
-            <summary className="cursor-pointer py-1 font-semibold">
+            <summary className="min-h-11 cursor-pointer content-center rounded-sm py-2 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
               Workflow and next steps
             </summary>
             <dl className="mt-4 grid gap-4 text-sm leading-6">
