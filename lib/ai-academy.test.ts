@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { lessons } from "./ai-academy.ts";
+import { learningPaths } from "./academy/learning-paths.ts";
 import { evaluateSecurityDecision, findSecurityReviewScenario, securityReviewScenarios } from "./ai-academy/security-review-lab.ts";
 import { getSecurityEvidenceSources, securityEvidenceSources } from "./ai-academy/security-review-evidence.ts";
 
@@ -104,6 +106,39 @@ test("MCP versus REST lesson teaches protocol boundaries and safe synthetic prac
   assert.match(lesson.summary, /REST APIs, MCP tools, webhooks/i);
   assert.match(lesson.check.choices[lesson.check.answer], /subject to permissions/i);
   assert.ok(lesson.sources.some((source) => source.url.includes("modelcontextprotocol.io")));
+  assert.match(lesson.exercise, /docs\/builder-academy\/api-mcp-progressive-lab\.md/);
+  assert.match(lesson.exercise, /illustrative pseudocode/i);
+  assert.match(lesson.takeaways.join(" "), /Streamable HTTP/);
+});
+
+test("progressive API and MCP companion stays on the existing lesson id", () => {
+  const slugs = lessons.map((lesson) => lesson.slug);
+  assert.equal(new Set(slugs).size, slugs.length);
+  assert.equal(slugs.includes("api-mcp-progressive-lab"), false);
+  assert.equal(slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
+  const delivery = learningPaths.find((path) => path.id === "delivery");
+  assert.ok(delivery);
+  assert.equal(delivery.slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
+  const deliverySlugs: readonly string[] = delivery.slugs;
+  assert.equal(deliverySlugs.includes("api-mcp-progressive-lab"), false);
+
+  const parent = readFileSync(new URL("../docs/builder-academy/mcp-vs-rest-api.md", import.meta.url), "utf8");
+  const lab = readFileSync(new URL("../docs/builder-academy/api-mcp-progressive-lab.md", import.meta.url), "utf8");
+  const registry = readFileSync(new URL("./ai-academy.ts", import.meta.url), "utf8");
+  assert.match(parent, /api-mcp-progressive-lab\.md/);
+  assert.match(lab, /Lesson id:\*\* `mcp-vs-rest-api`/);
+  assert.match(lab, /Illustrative pseudocode/);
+  for (const term of ["API", "REST-style HTTP API", "Function tool", "MCP", "Agent harness"]) {
+    assert.match(lab, new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+  assert.match(lab, /getAccountBrief/);
+  assert.match(lab, /https:\/\/modelcontextprotocol\.io\/docs\/learn\/architecture/);
+  assert.match(lab, /https:\/\/modelcontextprotocol\.io\/docs\/tutorials\/security\/authorization/);
+  assert.match(lab, /Sources checked:\*\* 2026-10-30/);
+  assert.doesNotMatch(lab, /api[_-]?key\s*[:=]|sk-[a-z0-9]|AKIA[0-9A-Z]{16}/i);
+  assert.equal(registry.includes('slug: "api-mcp-progressive-lab"'), false);
+  assert.equal((lab.match(/```/g) ?? []).length >= 8, true);
+  assert.equal((lab.match(/Illustrative pseudocode/g) ?? []).length >= 4, true);
 });
 
 test("enterprise contracts lesson distinguishes AE and Head of Sales review duties", () => {
