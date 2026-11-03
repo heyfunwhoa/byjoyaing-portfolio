@@ -419,3 +419,13 @@ Status: proposed catalog and brand guidance only. Owner: portfolio maintainer. N
 - **Accessibility / status:** Native selects provide keyboard, screen-reader and touch semantics with minimum 48px height. Existing tabpanel relationship and all source/evidence labels remain. No new motion, data persistence or network actions.
 - **Verification:** `tests/site/competitive-workflow-mobile.spec.ts` covers 320/375/640px stage selection, nested brief selection and page-width overflow, plus desktop keyboard navigation. Exact-head CI, real-device observation, 200% zoom and screen-reader checks must be recorded before merge.
 - **Rollback:** Revert this PR's workflow and test change. No database or public route changes.
+
+### Architecture expansion follow-up (same case-study review)
+
+The owner also reported that expanding Architecture looked cramped on desktop. The previous responsive composition put four dense stage cards in one horizontal row from the `lg` breakpoint, plus redundant arrow graphics. This gave the stages insufficient width to read.
+
+- **Decision:** Reuse semantic ordered-list and card patterns already in the portfolio. Keep the existing four stages, all nodes, their status badges, descriptions, and planned-vs-built distinction. Replace the arrows with visible `01–04` stage numbers.
+- **Phone/tablet/standard laptop:** One readable column. **Wide desktop (1280px and up):** Two-column, two-row layout with source order preserved, not four narrow columns.
+- **Accessibility:** Logical DOM order, semantic `ol`, visible headings, non-interactive cards, no hidden essential content or motion. The parent Architecture disclosure keeps native keyboard operation.
+- **Verification:** The browser spec checks 320, 375, 768 and 1280px, ordered headings, responsive placement and page overflow. Manual 200% zoom, real-device readability and screen-reader checks remain release gates.
+- **Rollback:** Revert the architecture component along with this draft PR. No route, data or dependency changes.
