@@ -80,7 +80,7 @@ export function WorkExplorer({ stories }: { stories: ReactNode[] }) {
                   }}
                   type="button"
                   aria-controls={`${id}-evidence`}
-                  className={`${styles.card} group flex h-full min-h-72 w-full flex-col rounded-2xl border p-6 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:p-7 ${index === 0 ? "border-foreground bg-foreground text-background" : "border-border bg-card text-foreground"}`}
+                  className={`${styles.card} group flex h-full min-h-60 w-full flex-col rounded-2xl border p-5 text-left sm:min-h-72 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:p-7 ${index === 0 ? "border-foreground bg-foreground text-background" : "border-border bg-card text-foreground"}`}
                 >
                   <span className="flex w-full items-center justify-between gap-3 text-xs font-semibold tracking-wide">
                     <span>{eyebrow}</span>
@@ -88,9 +88,9 @@ export function WorkExplorer({ stories }: { stories: ReactNode[] }) {
                   </span>
                   <span
                     aria-hidden="true"
-                    className={`${styles.symbol} my-6 flex size-14 items-center justify-center rounded-2xl border border-current/25`}
+                    className={`${styles.symbol} my-4 flex size-12 items-center justify-center sm:my-6 sm:size-14 rounded-2xl border border-current/25`}
                   >
-                    <Icon className="size-7" />
+                    <Icon className="size-6 sm:size-7" />
                   </span>
                   <span
                     className={`font-display leading-tight ${index === 0 ? "text-3xl sm:text-4xl" : "text-2xl"}`}

@@ -1,9 +1,9 @@
 {
-  "summary": "Watch assigned accounts, separate a business change from a hypothesis, and draft outreach a person still has to send.",
+  "summary": "Help enterprise sellers connect account changes to relevant conversations. Explore a fictional workflow from a signal to a draft, with evidence and assumptions kept separate.",
   "owner": "Kristen Aing",
   "reviewer": "Pending human review of the CMS move",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "reviewDue": "2026-11-15",
   "classification": "public",
-  "publicationStatus": "published"
+  "publicationStatus": "review"
 }
