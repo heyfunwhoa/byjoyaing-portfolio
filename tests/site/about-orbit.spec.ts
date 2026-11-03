@@ -130,3 +130,30 @@ for (const width of [375, 640, 768, 1280]) {
   }
 }
 
+
+
+test("About education marks load beside visible credentials at phone and desktop widths", async ({ page }) => {
+  const marks = [
+    { src: "/logos/education/ut-austin.svg", credential: "The University of Texas at Austin" },
+    { src: "/logos/education/wgu.svg", credential: "Western Governors University" },
+    { src: "/badges/aws-certified-cloud-practitioner.png", credential: "AWS Certified Cloud Practitioner" },
+    { src: "/badges/aws-certified-ai-practitioner.png", credential: "AWS Certified AI Practitioner" },
+  ] as const;
+
+  for (const width of [375, 640, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/about#career-progression");
+    const education = page.getByRole("heading", { name: "Education and continued learning" }).locator("..");
+    for (const { src, credential } of marks) {
+      const image = education.locator(`img[src="${src}"]`);
+      await expect(image).toHaveCount(1);
+      await expect(image).toHaveAttribute("alt", "");
+      await expect.poll(() => image.evaluate((element: HTMLImageElement) =>
+        element.complete && element.naturalWidth > 0,
+      )).toBe(true);
+      await expect(education.getByText(new RegExp(credential))).toBeVisible();
+    }
+    await expect(education).toContainText("in progress");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});
