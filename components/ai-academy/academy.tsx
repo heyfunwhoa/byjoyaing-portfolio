@@ -1,4 +1,5 @@
 "use client";
+import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
 import { useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import {
@@ -11,6 +12,7 @@ import { PortfolioOsCaseStudy } from "@/components/ai-academy/portfolio-os-case-
 import { ProductRequestLab } from "@/components/ai-academy/product-request-lab";
 import { SecurityReviewLab } from "@/components/ai-academy/security-review-lab";
 import { CmsLab } from "@/components/ai-academy/cms-lab";
+import { FrontendLesson } from "@/components/ai-academy/frontend-lesson";
 import { learningPaths } from "@/lib/academy/learning-paths";
 import { lessons, workflows } from "@/lib/ai-academy";
 const tracks = [
@@ -122,6 +124,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
     >
       <div className="mb-10 grid min-w-0 items-end gap-6 md:grid-cols-[minmax(0,1fr)_9rem]">
         <div className="max-w-3xl min-w-0">
+          <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/side-quests","label":"Side Quests"},{"label":"Builder Academy"}]} />
           <p className="editorial-eyebrow mb-3 text-accent">Builder Academy</p>
           <h1 className="editorial-section-title">
             Learn the basics. Apply with purpose.
@@ -436,6 +439,13 @@ export function Academy({ resources }: { resources?: ReactNode }) {
               <SecurityReviewLab />
             )}
             {lesson.slug === "cms-fundamentals" && <CmsLab />}
+            {lesson.slug === "frontend-building-blocks" && (
+              <FrontendLesson
+                onSelectLesson={(slug, keepPath) =>
+                  selectLesson(slug, keepPath)
+                }
+              />
+            )}
             <fieldset className="mt-7 rounded-lg border border-border p-4">
               <legend className="px-2 font-semibold">Knowledge check</legend>
               <p className="mb-3">{lesson.check.question}</p>
