@@ -178,7 +178,7 @@ export function CustomerFeedbackWorkflow() {
                   : "shrink-0 rounded-xl border border-border bg-card px-3 py-3 text-left text-sm"
               }
             >
-              <span className="block text-[11px] text-muted">{String(index + 1).padStart(2, "0")}</span>
+              <span aria-hidden="true" className="block text-[11px] text-muted">{String(index + 1).padStart(2, "0")}</span>
               {item.label}
             </button>
           );

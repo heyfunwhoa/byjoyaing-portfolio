@@ -9,7 +9,7 @@ for (const width of [375, 768, 1280]) {
     const comparison = page.locator("figure").filter({ hasText: "Feedback volume by theme" });
     await expect(comparison).toBeVisible();
     await expect(comparison).toContainText("volume alone is not urgency");
-    const before = await comparison.innerText();
+    const before = (await comparison.textContent()) ?? "";
     await page.getByRole("button", { name: "Product status", exact: true }).click();
     await expect(comparison).toHaveText(before);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
