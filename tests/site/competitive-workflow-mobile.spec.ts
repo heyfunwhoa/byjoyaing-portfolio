@@ -88,3 +88,30 @@ test("workflow preserves selection when crossing the desktop breakpoint", async 
   await expect(page.getByRole("tabpanel", { name: "Discovery questions" })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
+
+
+test("competitive architecture reads as four stages without cramped columns", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Explicit architecture matrix runs once.");
+  for (const width of [320, 375, 768, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/work/competitive-intelligence-engine#architecture");
+    const disclosure = page.locator("#architecture");
+    await expect(disclosure).toHaveAttribute("open", "");
+    const stages = disclosure.getByRole("list", { name: "Proposed intelligence architecture stages" });
+    const items = stages.locator(":scope > li");
+    await expect(items).toHaveCount(4);
+    const names = ["Source collection", "Change intelligence", "Human review", "Field activation"];
+    for (let i = 0; i < names.length; i++) {
+      await expect(items.nth(i).getByRole("heading", { name: names[i] })).toBeVisible();
+      const bounds = await items.nth(i).boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(bounds!.x).toBeGreaterThanOrEqual(0);
+      expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+    }
+    const first = (await items.nth(0).boundingBox())!;
+    const second = (await items.nth(1).boundingBox())!;
+    if (width < 1280) expect(second.y).toBeGreaterThan(first.y);
+    else expect(Math.abs(second.y - first.y)).toBeLessThan(2);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});
