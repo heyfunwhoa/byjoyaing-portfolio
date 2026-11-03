@@ -414,8 +414,8 @@ Status: proposed catalog and brand guidance only. Owner: portfolio maintainer. N
 - **Owner / destination:** `byjoyaing-portfolio`, `/work/competitive-intelligence-engine#workflow`, existing `components/competitive-intelligence-workflow.tsx`.
 - **Task:** Five horizontal stage tabs become truncated on iPhone; the third tab is cut off, hiding later stages. The nested competitive brief has the same narrow-screen risk.
 - **Reuse:** Adapt the repository's existing native-selector-on-mobile pattern (Projects filters) without adding a new dependency or changing the simulated workflow data.
-- **Phone (< 1024px):** One full-width labeled select shows the numbered current workflow step and permits direct access to all five steps. The desktop tablist is hidden at these widths. For brief subsections, use a labeled select below 640px. Preserve stage state, panels and privacy boundaries.
-- **Desktop:** Keep the existing vertical tab navigation and keyboard Arrow/Home/End behavior at 1024px and above. Brief tabs stay horizontal from 640px.
+- **Phone (< 1024px):** One full-width labeled select shows the numbered current workflow step and permits direct access to all five steps. The desktop tablist is hidden at these widths. For brief subsections, use the same labeled select below 1024px. Preserve stage state, panels and privacy boundaries.
+- **Desktop:** Keep the existing vertical tab navigation and keyboard Arrow/Home/End behavior at 1024px and above. Brief tabs stay horizontal from 1024px.
 - **Accessibility / status:** Native selects provide keyboard, screen-reader and touch semantics with minimum 48px height. Existing tabpanel relationship and all source/evidence labels remain. No new motion, data persistence or network actions.
 - **Verification:** `tests/site/competitive-workflow-mobile.spec.ts` covers 320/375/640px stage selection, nested brief selection and page-width overflow, plus desktop keyboard navigation. Exact-head CI, real-device observation, 200% zoom and screen-reader checks must be recorded before merge.
 - **Rollback:** Revert this PR's workflow and test change. No database or public route changes.
