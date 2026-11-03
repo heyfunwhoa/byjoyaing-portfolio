@@ -4,7 +4,7 @@
 **Level:** Beginner to intermediate  
 **Estimated learning time:** 20–30 minutes  
 **Status:** Companion reading; not a registered Academy lesson or live publication  
-**Primary references checked:** 2026-10-18  
+**Primary references checked:** 2026-10-18. The agent-definition pages in references 1, 2, and 4 were opened again on 2026-10-30. The product and pricing links in section 3 were not re-fetched.  
 **Prerequisites:** [Cursor workflows](cursor-agent-workflows.md), [From idea to verified release](idea-to-verified-release.md)
 
 ## Learning outcomes
@@ -16,7 +16,7 @@ A **model** interprets input and generates candidate outputs. An **agent** combi
 
 **Analogy:** The model is the person reasoning through a problem; the harness is the workshop, tool checkout, instructions, permissions, checklist, inspection station and job log. A bigger brain does not replace safe machinery or quality control.
 
-Definitions vary by vendor. OpenAI's Agents SDK describes an agent as an LLM with instructions, tools and optional handoffs/guardrails, and its runner manages turns and tools. LangChain explicitly calls Deep Agents an agent harness for planning, context and subagents. Do not assume either framework guarantees safety or correctness merely by being installed. [1][2]
+Definitions vary by vendor. OpenAI's Python Agents guide says an agent is an LLM configured with instructions, tools, and optional runtime behavior such as handoffs and guardrails, and that Agent plus Runner manages turns and tools. That sentence was re-checked on the Python guide on 2026-10-30. The SDK overview, opened the same day, no longer carries it. That overview says the SDK runs in your application, and that OpenAI's Agents API runs a separate managed harness. LangChain's Deep Agents page, also opened on 2026-10-30, still calls Deep Agents an open-source agent harness for planning, context, and subagents. Do not assume any of these products is correct or safe merely because it is installed. [1][2][4]
 
 ## 2. Anatomy of an execution loop
 
@@ -190,10 +190,10 @@ The bridge placement is this Academy's teaching recommendation; Mastra specifica
 
 ## Authoritative references
 
-1. [OpenAI, Agents SDK overview](https://developers.openai.com/api/docs/guides/agents/sdk) — SDK responsibilities, runtime, tools, human review and evaluations.
-2. [LangChain, Deep Agents overview](https://www.langchain.com/deep-agents) — explicitly defined open-source harness and capabilities.
+1. [OpenAI, Agents SDK overview](https://developers.openai.com/api/docs/guides/agents/sdk) — the SDK runs in your application; the Agents API is a separate managed harness. Re-checked 2026-10-30. The LLM-with-instructions definition is on reference 4, not this overview.
+2. [LangChain, Deep Agents overview](https://www.langchain.com/deep-agents) — still calls Deep Agents an open-source agent harness. Re-checked 2026-10-30.
 3. [LangChain, filesystem middleware reference](https://reference.langchain.com/python/deepagents/middleware/filesystem) — filesystem permissions, backend choices and security caveats.
-4. [OpenAI, Agents documentation](https://openai.github.io/openai-agents-python/agents/) — agent definitions, runners and orchestration boundaries.
+4. [OpenAI, Agents documentation](https://openai.github.io/openai-agents-python/agents/) — an agent is an LLM configured with instructions, tools, and optional handoffs, guardrails, and structured outputs; Agent plus Runner manages turns and tools. Re-checked 2026-10-30.
 5. [Technical Docs Platform, agent execution contract](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/ai/agent-harness/execution-contract.md) — linked operational reference; access and adoption may vary. Do not reproduce private contents publicly.
 6. [Mastra, Principles of Building AI Agents](https://mastra.ai/books/principles-of-building-ai-agents) — fundamentals including agents, memory, workflows, RAG, tools, MCP, evaluations and observability; checked 2026-10-17.
 7. [Mastra, Patterns of Building AI Agents](https://mastra.ai/books/patterns-of-building-ai-agents) — states that Patterns builds on Principles, recommends reading Principles first, and describes production patterns for architecture, context engineering, evaluation and security; checked 2026-10-17.

@@ -228,6 +228,29 @@ Rules:
 - Reserve red/green for actual semantic need; do not use them merely because a chart library defaults to them.
 - Each product owns its exact accessible chart palette.
 
+
+### Visualization structures inspired by visx
+
+Reference: [visx gallery](https://visx.airbnb.tech/gallery), with upstream [example source](https://github.com/airbnb/visx/tree/master/packages/visx-demo/src/pages). These are candidate compositions in the existing [component catalog](../../lib/component-options.ts), not installed packages or completed product integrations.
+
+| Reader question | Structure | Intended fit | Meaning boundary |
+| --- | --- | --- | --- |
+| Which category has more? | Horizontal bars with exact values | Portfolio feedback examples; Atlas counts | Counts are not business impact or detection effectiveness. Keep synthetic labels visible. |
+| What makes up the total? | Stacked bars | Revenue OS modeled ARR components | Only additive values with the same unit; show losses separately or in a properly signed bridge. Never stack ending balances across time. |
+| Where is evidence missing? | Labeled coverage matrix inspired by heatmaps | Atlas capabilities; Market Map comparisons | Evidence states are categorical. Unknown, not evaluated, unsupported and conflict are distinct; no invented numeric score. |
+| What changed, and when? | Line chart or dated event timeline | Account Signal history; Revenue OS monthly scenarios | Timestamps, units and aggregation are explicit. No observation means a gap; a collection spike does not establish buying intent. |
+| How do categories relate? | Tree with a readable outline | Market Map hierarchy; a relevant portfolio explanation | Use only for parent-child relationships. Show overlapping categories as separate cross-links. Node size does not imply importance. |
+
+Compose each figure as **question → plain-language takeaway → visual → exact values and source → optional detail**. A takeaway must be computed from the same data as the marks or explicitly editorial, never a fabricated conclusion.
+
+For the portfolio, keep ivory surfaces, charcoal labels and restrained copper selection emphasis, with existing Geist typography. Sage, mist and clay remain supporting surfaces, not automatic severity or confidence codes. Other apps retain their own documented tokens. Direct labels, symbols or patterns supplement color. Keep the orbit as editorial geometry; do not turn it into a skills radar.
+
+On phones, wrap labels and use compact bars, an outline or a contained semantic table. At tablet and desktop widths, add plotting space rather than shrink text. Preserve exact-value access at every width. Hover is supplemental; required details need focus/tap controls or persistent text. Reduced motion must preserve the complete result without animation. Do not add drag-only brush/zoom, scroll interception or continuous movement.
+
+Before adopting a live chart, verify zero baselines for magnitude bars, units and denominators, consistent comparison domains, empty/all-zero/negative values, missing history, long labels, source freshness and stale/error states. Retain a semantic data alternative. A screenshot is not accessibility verification.
+
+Start with existing native HTML/SVG and installed chart components. Add individual visx packages only when a scoped implementation needs their layout or scale capabilities, after compatibility, license, bundle and accessibility review. The gallery is inspiration; it does not supply product data or automatic accessibility. Defer chord diagrams, streamgraphs, packed bubbles and treemaps unless a specific task makes them clearer than a table or simple chart.
+
 ## 12. Voice by context
 
 The shared voice is confident, curious, warm, concise and evidence-first.
