@@ -114,7 +114,7 @@ for (const width of [320, 375, 640, 768]) {
     await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe(priorOverflow);
 
     await menu.click();
-    await page.locator(".nav-backdrop-enter").click({ position: { x: 20, y: 300 } });
+    await page.locator(".nav-backdrop-enter").click({ position: { x: 20, y: 850 } });
     await expect(menu).toHaveAttribute("aria-expanded", "false");
     await expect(menu).toBeFocused();
 
