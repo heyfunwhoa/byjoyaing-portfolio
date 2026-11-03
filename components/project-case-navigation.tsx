@@ -26,6 +26,18 @@ export function ProjectCaseBreadcrumb({ items }: { items: readonly TrailItem[] }
   )} />;
 }
 
+export function ProjectReturnLink() {
+  const params = useSearchParams();
+  const filters = directoryFilters(params);
+  const query = filters.toString();
+  const href = `/projects${query ? `?${query}` : ""}#directory`;
+  return (
+    <Link href={href} className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+      {params?.get("from") === "projects" ? "Back to your project results" : "Back to all projects"}
+    </Link>
+  );
+}
+
 export function ProjectSequence({ slug }: { slug: string }) {
   const params = useSearchParams();
   if (params?.get("from") !== "projects") return null;
