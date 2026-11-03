@@ -11,23 +11,6 @@ import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { providers } from "@/lib/competitive-intelligence-demo";
 
-function Arrow({ direction }: { direction: "right" | "down" }) {
-  const horizontal = direction === "right";
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox={horizontal ? "0 0 32 16" : "0 0 16 32"}
-      className={horizontal ? "hidden h-4 w-8 shrink-0 text-muted lg:block" : "mx-auto h-8 w-4 text-muted lg:hidden"}
-    >
-      {horizontal ? (
-        <path d="M1 8h22M18 3l8 5-8 5" fill="none" stroke="currentColor" strokeWidth="1.25" />
-      ) : (
-        <path d="M8 1v22M3 18l5 8 5-8" fill="none" stroke="currentColor" strokeWidth="1.25" />
-      )}
-    </svg>
-  );
-}
-
 function Label({ index, children }: { index: string; children: string }) {
   return (
     <p className="text-sm font-medium text-muted">
@@ -269,31 +252,30 @@ export function CompetitiveIntelligenceCase() {
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
           Solid pills are the field habit or this sample. Dashed pills are planned. This repository does not use Firecrawl, Exa, a GitHub API client, or a model.
         </p>
-        <div className="mt-8 flex flex-col items-stretch gap-2 lg:flex-row lg:items-start lg:gap-3">
+        <ol aria-label="Proposed intelligence architecture stages" className="mt-8 grid min-w-0 gap-4 xl:grid-cols-2">
           {layers.map((layer, index) => (
-            <div key={layer.title} className="contents">
-              {index > 0 ? (
-                <>
-                  <Arrow direction="down" />
-                  <div className="hidden pt-10 lg:block">
-                    <Arrow direction="right" />
+            <li key={layer.title} className="min-w-0">
+              <article className="flex h-full min-w-0 flex-col rounded-2xl border border-border bg-background p-4 sm:p-5">
+                <div className="flex min-w-0 items-start gap-3 border-b border-border pb-4">
+                  <span aria-hidden="true" className="flex size-9 shrink-0 items-center justify-center rounded-full border border-accent text-sm font-semibold tabular-nums text-accent">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-lg font-semibold leading-snug">{layer.title}</h3>
+                    <p className="mt-1 text-sm leading-6 text-muted">{layer.body}</p>
                   </div>
-                </>
-              ) : null}
-              <article className="min-w-0 flex-1 rounded-2xl border border-border p-4">
-                <h3 className="text-base font-semibold">{layer.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted">{layer.body}</p>
-                <ul className="mt-4 flex flex-col gap-2">
+                </div>
+                <ul className="mt-4 grid min-w-0 gap-2">
                   {layer.nodes.map((node) => (
-                    <li key={node.title}>
+                    <li key={node.title} className="min-w-0">
                       <Node {...node} />
                     </li>
                   ))}
                 </ul>
               </article>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </DisclosureSection>
 
       <DisclosureSection
