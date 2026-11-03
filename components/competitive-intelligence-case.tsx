@@ -28,16 +28,16 @@ function Node({ title, detail, state,
 }) {
   const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this demo" : "Planned";
   const style =
-    state === "planned"
-      ? "rounded-full border border-dashed border-foreground/40 px-2 py-0.5 text-[11px] font-medium"
-      : "rounded-full bg-accent px-2 py-0.5 text-[11px] font-medium text-accent-foreground";
+    state === "field"
+      ? "border-accent bg-accent text-accent-foreground"
+      : state === "demo"
+        ? "border-border bg-background text-foreground"
+        : "border-foreground/40 border-dashed bg-background text-muted";
   return (
-    <div className="rounded-xl border border-border bg-card p-3">
-      <div className="flex flex-wrap items-center gap-2">
-        <p className="text-sm font-medium">{title}</p>
-        <span className={style}>{copy}</span>
-      </div>
-      <p className="mt-1 text-xs leading-5 text-muted">{detail}</p>
+    <div className="min-w-0 rounded-xl border border-border bg-card p-3">
+      <p className="text-sm font-semibold leading-6">{title}</p>
+      <span className={`mt-2 inline-flex max-w-full items-center self-start rounded-full border px-2.5 py-1 text-xs font-medium leading-4 ${style}`}>{copy}</span>
+      <p className="mt-2 text-sm leading-6 text-muted">{detail}</p>
     </div>
   );
 }
@@ -250,9 +250,26 @@ export function CompetitiveIntelligenceCase() {
           How the intelligence system would work.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Solid pills are the field habit or this sample. Dashed pills are planned. This repository does not use Firecrawl, Exa, a GitHub API client, or a model.
+          Four stages show how the field process connects to a proposed software workflow. This repository does not use Firecrawl, Exa, a GitHub API client, or a model.
         </p>
-        <ol aria-label="Proposed intelligence architecture stages" className="mt-8 grid min-w-0 gap-4 xl:grid-cols-2">
+        <div aria-label="Architecture status legend" className="mt-6 rounded-xl border border-border bg-background p-4">
+          <h3 className="text-sm font-semibold">What the status labels mean</h3>
+          <dl className="mt-3 grid gap-3 sm:grid-cols-3">
+            <div>
+              <dt className="text-sm font-semibold text-accent">Professional field system</dt>
+              <dd className="mt-1 text-sm leading-5 text-muted">Practices used with teams, not implemented as this app.</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold">In this demo</dt>
+              <dd className="mt-1 text-sm leading-5 text-muted">Illustrative behavior or sample content on this page.</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold">Planned</dt>
+              <dd className="mt-1 text-sm leading-5 text-muted">Proposed capability. Not built or connected.</dd>
+            </div>
+          </dl>
+        </div>
+        <ol aria-label="Proposed intelligence architecture stages" className="mt-6 grid min-w-0 gap-4 xl:grid-cols-2">
           {layers.map((layer, index) => (
             <li key={layer.title} className="min-w-0">
               <article className="flex h-full min-w-0 flex-col rounded-2xl border border-border bg-background p-4 sm:p-5">
