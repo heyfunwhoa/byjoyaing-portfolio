@@ -51,7 +51,7 @@ const certificationMarks = [
     src: "/badges/aws-certified-ai-practitioner.png",
     width: 600,
     height: 600,
-    widthClass: "w-20",
+    widthClass: "w-14 sm:w-20",
   },
 ] as const;
 
