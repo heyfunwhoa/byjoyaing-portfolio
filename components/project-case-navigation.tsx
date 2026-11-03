@@ -26,14 +26,17 @@ export function ProjectCaseBreadcrumb({ items }: { items: readonly TrailItem[] }
   )} />;
 }
 
-export function ProjectReturnLink() {
+export function ProjectReturnLink({ sidebar = false }: { sidebar?: boolean }) {
   const params = useSearchParams();
   const filters = directoryFilters(params);
   const query = filters.toString();
   const href = `/projects${query ? `?${query}` : ""}#directory`;
+  const fromDirectory = params?.get("from") === "projects";
   return (
-    <Link href={href} className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-      {params?.get("from") === "projects" ? "Back to your project results" : "Back to all projects"}
+    <Link href={href} className={sidebar
+      ? "link-rule inline-flex min-h-11 w-fit items-center text-sm font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      : "inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"}>
+      {fromDirectory ? "Back to your project results" : sidebar ? "Browse the project directory" : "Back to all projects"}
     </Link>
   );
 }
