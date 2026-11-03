@@ -1,3 +1,4 @@
+import { SystemsIllustrations } from "@/components/academy/systems-illustrations";
 import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { robotsNoindex } from "@/lib/indexing";
@@ -131,6 +132,7 @@ export default function SystemsPage() {
         security and operations. This roadmap outlines future lessons and
         exercises; guided systems lessons and interactive labs are not available yet.
       </p>
+      <SystemsIllustrations />
       <section className="mt-12" aria-labelledby="modules-heading">
         <h2 id="modules-heading" className="text-2xl font-semibold">
           Planned learning modules

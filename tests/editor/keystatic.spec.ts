@@ -30,15 +30,18 @@ test("edit and save the singleton, render the change, then roll back through the
     expect(saved).not.toHaveProperty("reviewed");
     const reader = await context.newPage();
     await reader.goto("/ai-academy");
-    await reader.getByText("Choose a starting path", { exact: true }).click();
+    await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
-      .getByRole("button", { name: "Start verify an ai output →", exact: true })
+      .getByRole("button", {
+        name: "Start this path: Verify an AI output",
+        exact: true,
+      })
       .click();
     await expect(
-      reader.getByRole("article", { name: "Grounding and source quality" }),
+      reader.getByRole("tabpanel", { name: /Grounding and source quality/ }),
     ).toContainText(edited);
     await reader.getByLabel("False", { exact: true }).check();
-    await expect(reader.getByRole("article").getByRole("status")).toContainText(
+    await expect(reader.getByRole("tabpanel").getByRole("status")).toContainText(
       "Correct.",
     );
     await page.reload();
@@ -49,11 +52,14 @@ test("edit and save the singleton, render the change, then roll back through the
       .poll(() => JSON.parse(readFileSync(path, "utf8")).summary)
       .toBe(original.summary);
     await reader.reload();
-    await reader.getByText("Choose a starting path", { exact: true }).click();
+    await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
-      .getByRole("button", { name: "Start verify an ai output →", exact: true })
+      .getByRole("button", {
+        name: "Start this path: Verify an AI output",
+        exact: true,
+      })
       .click();
-    await expect(reader.getByRole("article")).not.toContainText(
+    await expect(reader.getByRole("tabpanel")).not.toContainText(
       "Local editorial acceptance check.",
     );
     expect(JSON.parse(readFileSync(path, "utf8"))).toEqual(original);
