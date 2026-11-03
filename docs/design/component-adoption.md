@@ -356,6 +356,26 @@ This is a bounded refinement in PR #230. Browser coverage checks contextual brea
 - Status: implemented for this lesson, pending review. Not a general renderer and not shipped.
 - Rollback: remove the conditional mount and the two new lesson files. The catalog record stays.
 
+## visx visualization candidates · October 29, 2026
+
+Status: proposed catalog and brand guidance only. Owner: portfolio maintainer. No chart component, runtime package, public route or consuming-repo code is added.
+
+- Source: https://visx.airbnb.tech/gallery and https://github.com/airbnb/visx/tree/master/packages/visx-demo/src/pages. Official source inventory confirms horizontal bars/stacks, heatmaps, trees, brush and XY chart examples. Upstream is MIT; no upstream code or assets copied in this change.
+- Destination: existing lib/component-options.ts catalog and section 11 of docs/brand/brand-system-v1.md. Reuse existing catalog filtering/card/table rendering; add four Candidate entries, not another component registry.
+- Decision: adapt the structures as recommendations. Existing local primitives and semantic tables remain first choice. No visx dependency or shared package is introduced.
+- Read portfolio brand guide, workbench reuse contract, inventory, lab and adoption records. Consumer README audit: Atlas extracts pinned source facts and does not run live credential checks; Market Map is evidence-linked and permits unknowns; Account Signal is a seller desk; Revenue OS is a deterministic synthetic planner. These README observations are not verification of every consumer UI.
+- Portfolio PR #223 already proposes feedback theme bars. Reuse/review that work before any new bar implementation. Other existing portfolio UX drafts are not modified.
+- Candidate IDs: visx-comparison, visx-coverage, visx-trend and visx-hierarchy. Destination mapping and data prerequisites are in the catalog and brand guide. No consumer rollout is claimed or committed by this note.
+- Responsive, keyboard, reduced-motion and data-state requirements are specified in the brand guide. Existing lab controls are unchanged. New chart browser/contrast/screen-reader testing is not applicable until implementation; this does not certify the current lab.
+- Delivery tier 1: bounded catalog/editorial addition without new interaction, integration, architecture or brand fundamentals. No new Linear issue. Actual consumer implementations must inspect local instructions, current source and open work and apply their delivery governance.
+- Verification: targeted catalog tests run locally; full app build, complete test suite and browser review not run. CI must be reviewed on the PR. Rollback removes the four candidate records and these guidance additions, preserving independent adoption notes.
+
+## External UI pattern candidates · 2026-10-30
+
+- Caliper Scene Story is a reference for chapter-based learning and onboarding. Rebuild the pattern with native scroll, clear chapter navigation, complete text without illustrations, and responsive stacking. Do not copy the Pro source.
+- Prestige’s illustration examples are a reference for labeled workflow stages and decision paths. Use project-authored SVG/CSS and keep explanations readable in the page. The Academy Systems page already uses original illustrations and synthetic, local interactions.
+- Candidate entries are tracked in the existing workbench catalog, not installed components. Cross-project suggestions are starting points only; each repo needs a local source and open-work review before implementation.
+
 ## Feedback overview and theme comparison · 2026-10-29
 
 Owner: portfolio maintainer. Status: draft implementation, not merged or deployed.
