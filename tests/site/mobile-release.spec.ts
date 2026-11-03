@@ -62,3 +62,26 @@ test("Experience role disclosure and Projects map case link are usable on phones
   expect(linkBounds!.height).toBeGreaterThanOrEqual(44);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
+
+
+test("About career disclosure and Work cards adapt to phone widths", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Run mobile layout checks once.");
+  await page.setViewportSize({ width: 375, height: 900 });
+  await page.goto("/about");
+  const summary = page.getByText("Career at a glance", { exact: true });
+  await expect(summary).toBeVisible();
+  const bounds = await summary.boundingBox();
+  expect(bounds).not.toBeNull();
+  expect(bounds!.height).toBeGreaterThanOrEqual(44);
+  await summary.focus();
+  await summary.press("Enter");
+  await expect(summary.locator("..")).toHaveAttribute("open", "");
+
+  await page.goto("/work");
+  const card = page.locator("#enterprise-sales button").first();
+  await expect(card).toHaveCSS("min-height", "240px");
+  await expect(card).toBeVisible();
+  await card.click();
+  await expect(page.getByRole("region", { name: "Enterprise Sales evidence" })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
