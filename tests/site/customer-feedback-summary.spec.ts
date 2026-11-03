@@ -5,7 +5,7 @@ for (const width of [375, 768, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/work/customer-feedback-intelligence#workflow");
     await expect(page.getByRole("region", { name: "Feedback demo overview" })).toBeVisible();
-    await page.getByRole("tab", { name: "Theme intelligence", exact: true }).click();
+    await page.getByRole("tab", { name: /Theme intelligence$/ }).click();
     const comparison = page.locator("figure").filter({ hasText: "Feedback volume by theme" });
     await expect(comparison).toBeVisible();
     await expect(comparison).toContainText("volume alone is not urgency");
@@ -13,11 +13,11 @@ for (const width of [375, 768, 1280]) {
     await page.getByRole("button", { name: "Product status", exact: true }).click();
     await expect(comparison).toHaveText(before);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.getByRole("tab", { name: "Theme intelligence", exact: true }).focus();
+    await page.getByRole("tab", { name: /Theme intelligence$/ }).focus();
     await page.keyboard.press("ArrowRight");
-    await expect(page.getByRole("tab", { name: "Product decision", exact: true })).toBeFocused();
+    await expect(page.getByRole("tab", { name: /Product decision$/ })).toBeFocused();
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await page.getByRole("tab", { name: "Theme intelligence", exact: true }).click();
+    await page.getByRole("tab", { name: /Theme intelligence$/ }).click();
     await expect(comparison).toBeVisible();
     await comparison.getByRole("button", { name: /^Review / }).first().click();
     await expect(page.locator("#feedback-panel-decision")).toBeFocused();
