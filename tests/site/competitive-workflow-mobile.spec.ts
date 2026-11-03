@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 // Phone selector is intentionally native; desktop retains keyboard-operable tabs.
 test("competitive workflow steps are all discoverable without horizontal clipping on phones", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "site-desktop", "Explicit viewport matrix runs once.");
-  for (const width of [320, 375, 640]) {
+  for (const width of [320, 375, 640, 768]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/work/competitive-intelligence-engine#workflow");
     const selector = page.getByRole("combobox", { name: "Choose workflow step" });
@@ -12,8 +12,18 @@ test("competitive workflow steps are all discoverable without horizontal clippin
     const bounds = await selector.boundingBox();
     expect(bounds).not.toBeNull();
     expect(bounds!.height).toBeGreaterThanOrEqual(44);
-    await selector.selectOption("change");
-    await expect(page.getByText("Change review", { exact: true })).toBeVisible();
+    const stages = [
+      ["landscape", "Provider dashboard"],
+      ["change", "Change review"],
+      ["impact", "Impact analysis"],
+      ["brief", "Competitive brief"],
+      ["feedback", "Field feedback"],
+    ] as const;
+    for (const [value, title] of stages) {
+      await selector.selectOption(value);
+      await expect(selector).toHaveValue(value);
+      await expect(page.locator("#ci-panel").getByText(title, { exact: true }).first()).toBeVisible();
+    }
     await selector.selectOption("brief");
     await expect(page.getByRole("combobox", { name: "Choose brief section" })).toBeVisible();
     await page.getByRole("combobox", { name: "Choose brief section" }).selectOption("questions");
