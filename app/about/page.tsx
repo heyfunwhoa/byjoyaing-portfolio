@@ -27,14 +27,14 @@ const educationMarks = [
     src: "/logos/education/ut-austin.svg",
     width: 1037,
     height: 298,
-    widthClass: "w-32",
+    widthClass: "w-28 sm:w-32",
   },
   {
     name: "Western Governors University",
     src: "/logos/education/wgu.svg",
     width: 133,
     height: 30,
-    widthClass: "w-[6.5rem]",
+    widthClass: "w-24 sm:w-[6.5rem]",
   },
 ] as const;
 
@@ -44,7 +44,7 @@ const certificationMarks = [
     src: "/badges/aws-certified-cloud-practitioner.png",
     width: 600,
     height: 600,
-    widthClass: "w-20",
+    widthClass: "w-14 sm:w-20",
   },
   {
     name: "AWS Certified AI Practitioner",
@@ -183,11 +183,11 @@ export default function AboutPage() {
             See capabilities
           </Link>
         </div>
-        <div className="mt-6 border-t border-border pt-5">
+        <div className="mt-6 scroll-mt-28 border-t border-border pt-6 sm:pt-5">
           <h3 className="text-lg font-semibold">
             {aboutPage.educationHeading}
           </h3>
-          <ul className="mt-3 grid gap-x-6 gap-y-3 text-sm leading-6 text-muted sm:grid-cols-2">
+          <ul className="mt-4 grid gap-x-6 gap-y-5 text-sm leading-6 text-muted sm:grid-cols-2 sm:gap-y-4">
             {aboutPage.education.map((item) => {
               const school = educationMarks.find((mark) => item.includes(mark.name));
               const certification = certificationMarks.find((mark) =>
@@ -199,7 +199,7 @@ export default function AboutPage() {
                   key={item}
                   className={
                     certification
-                      ? "flex min-w-0 items-center gap-3"
+                      ? "flex min-w-0 items-center gap-3 sm:gap-4"
                       : school
                         ? "min-w-0"
                         : "sm:col-span-2"
@@ -210,7 +210,7 @@ export default function AboutPage() {
                       aria-hidden="true"
                       className={
                         school
-                          ? "mb-1 flex h-12 items-center px-3"
+                          ? "mb-1 flex h-10 items-center px-1 sm:h-12 sm:px-3"
                           : "shrink-0"
                       }
                     >
