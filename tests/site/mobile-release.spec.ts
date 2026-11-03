@@ -39,3 +39,26 @@ test("Mobile Work links and Projects disclosure have accessible touch targets", 
   await page.keyboard.press("Enter");
   await expect(page.locator("#systems details")).toHaveAttribute("open", "");
 });
+
+test("Experience role disclosure and Projects map case link are usable on phones", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Run mobile touch checks once.");
+  await page.setViewportSize({ width: 375, height: 900 });
+  await page.goto("/experience");
+  const roleSummary = page.locator("#career-details details summary").first();
+  await expect(roleSummary).toBeVisible();
+  const summaryBounds = await roleSummary.boundingBox();
+  expect(summaryBounds).not.toBeNull();
+  expect(summaryBounds!.height).toBeGreaterThanOrEqual(44);
+  await roleSummary.focus();
+  await roleSummary.press("Enter");
+  await expect(roleSummary.locator("..")).toHaveAttribute("open", "");
+
+  await page.goto("/projects");
+  await page.locator("#systems summary").click();
+  const caseLink = page.locator("#systems").getByRole("link", { name: "View case study" });
+  await expect(caseLink).toBeVisible();
+  const linkBounds = await caseLink.boundingBox();
+  expect(linkBounds).not.toBeNull();
+  expect(linkBounds!.height).toBeGreaterThanOrEqual(44);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
