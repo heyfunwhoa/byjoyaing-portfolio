@@ -84,3 +84,7 @@ Reconsider a provider if a concrete requirement emerges: recovery targets the cu
 10. [Account Signal Engine migration runner](https://github.com/heyfunwhoa/account-signal-engine/blob/main/db/migrate.mjs)
 
 **Evidence limits:** Pricing can change; the platform comparison is not a benchmark. This draft's scenario describes the observed branch identity outcome but does not disclose credentials, and it is not proof the branch configuration has been repaired.
+
+## Follow-on hands-on lab: Preview database routing and owner sign-in
+
+Work through [Debug a Preview database and owner login safely](preview-neon-owner-auth-troubleshooting-lab.md) to practice distinguishing Git, Vercel and Neon branches; interpreting 401 versus CORS; and preserving Preview isolation without exposing credentials. This is an educational exercise, not production enrollment guidance.
