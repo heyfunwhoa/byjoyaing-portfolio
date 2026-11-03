@@ -102,7 +102,7 @@ export function SiteHeader() {
   return (
     <>
       <header data-site-chrome className={`sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm transition-shadow duration-200 ${scrolled ? "shadow-[0_5px_20px_-16px_#1B211D]" : ""}`}>
-        <nav className="relative mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-5 py-4 sm:px-8" aria-label="Primary">
+        <nav className="relative mx-auto flex w-full max-w-5xl items-center justify-between gap-3 px-5 py-2.5 sm:gap-4 sm:px-8 sm:py-4" aria-label="Primary">
           <Link
             ref={brandRef}
             href="/" className="group/brand relative flex min-w-0 items-center gap-2.5 rounded-md text-foreground transition-colors duration-200 hover:text-accent">
