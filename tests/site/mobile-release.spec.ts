@@ -93,7 +93,7 @@ test("mobile navigation traps focus, dismisses cleanly and navigates without ove
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/about");
     const nav = page.getByRole("navigation", { name: "Primary", exact: true });
-    const menu = nav.getByRole("button", { name: "Open navigation menu" });
+    const menu = nav.getByRole("button", { name: /^(Open|Close) navigation menu$/ });
     await expect(menu).toBeVisible();
     const priorOverflow = await page.evaluate(() => document.body.style.overflow);
 
