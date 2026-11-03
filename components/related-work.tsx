@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { ProjectSequence } from "@/components/project-case-navigation";
+import { ProjectReturnLink, ProjectSequence } from "@/components/project-case-navigation";
 import { MaterialsInvitation } from "@/components/materials-invitation";
 import { ProjectStatusPill } from "@/components/project-status-pill";
 import { directoryProjects } from "@/lib/project-directory";
@@ -48,9 +48,9 @@ export function RelatedWork({ slug }: { slug: string }) {
             ))}
           </ul>
           <p className="mt-6">
-            <Link href="/projects" className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">
-              Back to all projects
-            </Link>
+            <Suspense fallback={<Link href="/projects#directory" className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">Back to all projects</Link>}>
+              <ProjectReturnLink />
+            </Suspense>
           </p>
         </>
       )}
