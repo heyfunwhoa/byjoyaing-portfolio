@@ -130,9 +130,8 @@ for (const width of [375, 640, 768, 1280]) {
   }
 }
 
-
-
-test("About education marks load beside visible credentials at phone and desktop widths", async ({ page }) => {
+test("About education marks load beside visible credentials at phone and desktop widths", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Run the explicit viewport matrix once.");
   const marks = [
     { src: "/logos/education/ut-austin.svg", credential: "The University of Texas at Austin" },
     { src: "/logos/education/wgu.svg", credential: "Western Governors University" },
