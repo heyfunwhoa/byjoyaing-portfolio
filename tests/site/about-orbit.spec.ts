@@ -192,3 +192,29 @@ test("Mobile About header and footer remain readable and reachable", async ({ pa
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
+
+test("About in-page navigation reaches real sections with keyboard links", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Test the anchor sequence once.");
+  await page.setViewportSize({ width: 375, height: 900 });
+  await page.goto("/about");
+  const nav = page.getByRole("navigation", { name: "On this page", exact: true });
+  const sections = [
+    ["Philosophy", "philosophy"],
+    ["How I work", "how-i-work"],
+    ["Career & education", "career-progression"],
+    ["Tools & systems", "technologies"],
+    ["Work & writing", "work-and-writing"],
+  ] as const;
+  for (const [label, id] of sections) {
+    const link = nav.getByRole("link", { name: label, exact: true });
+    await expect(link).toHaveAttribute("href", `#${id}`);
+    await link.focus();
+    await expect(link).toBeFocused();
+    await link.press("Enter");
+    await expect(page).toHaveURL(new RegExp(`#${id}$`));
+    const destination = page.locator(`#${id}`);
+    await expect(destination).toHaveCount(1);
+    await expect(destination).toBeInViewport();
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
