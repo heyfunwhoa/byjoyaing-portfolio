@@ -28,11 +28,14 @@ test("full SHAs match and prefixes do not count as a release match", () => {
 });
 
 test("operational-only diffs skip Vercel and public content still builds", () => {
-  assert.equal(shouldSkipVercelBuild([".github/workflows/ci.yml", "docs/operations/deploy-verify-recover.md"]), true);
+  assert.equal(shouldSkipVercelBuild([".github/workflows/ci.yml", "docs/operations/deploy-verify-recover.md"]), false);
   assert.equal(shouldSkipVercelBuild(["docs/audit/README.md", "README.md"]), true);
   assert.equal(shouldSkipVercelBuild(["docs/builder-academy/github-api-deployment-reliability.md"]), false);
   assert.equal(shouldSkipVercelBuild(["lib/ai-academy.ts"]), false);
   assert.equal(shouldSkipVercelBuild([".github/workflows/ci.yml", "app/work/page.tsx"]), false);
+  assert.equal(shouldSkipVercelBuild(["RELEASE.md", ".release/notes/plan.md"]), true);
+  assert.equal(shouldSkipVercelBuild(["content/academy/lesson.mdoc"]), false);
+  assert.equal(shouldSkipVercelBuild(["docs/operations/script.js"]), false);
   assert.equal(shouldSkipVercelBuild([]), false);
   assert.equal(shouldSkipVercelBuild(["../secrets.env"]), false);
 });
@@ -176,12 +179,12 @@ test("ignore command fails open and skips only an operational diff", () => {
   git(["init"]);
   git(["config", "user.email", "reliability@example.com"]);
   git(["config", "user.name", "Reliability Test"]);
-  mkdirSync(join(directory, ".github/workflows"), { recursive: true });
-  writeFileSync(join(directory, ".github/workflows/ci.yml"), "name: CI\n");
+  mkdirSync(join(directory, "docs/operations"), { recursive: true });
+  writeFileSync(join(directory, "docs/operations/checkpoint.md"), "name: CI\n");
   git(["add", "."]);
   git(["commit", "-m", "initial"]);
   const first = git(["rev-parse", "HEAD"]);
-  writeFileSync(join(directory, ".github/workflows/ci.yml"), "name: CI\non: pull_request\n");
+  writeFileSync(join(directory, "docs/operations/checkpoint.md"), "name: CI\non: pull_request\n");
   git(["add", "."]);
   git(["commit", "-m", "workflow only"]);
   const second = git(["rev-parse", "HEAD"]);
