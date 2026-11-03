@@ -335,7 +335,7 @@ export function CompetitiveIntelligenceWorkflow() {
               </p>
             ) : (
               <div>
-                <div className="sm:hidden">
+                <div className="lg:hidden">
                   <label htmlFor="ci-mobile-brief" className="mb-2 block text-sm font-semibold">Brief section</label>
                   <select
                     id="ci-mobile-brief"
@@ -349,7 +349,7 @@ export function CompetitiveIntelligenceWorkflow() {
                     ))}
                   </select>
                 </div>
-                <div role="tablist" aria-label="Brief sections" onKeyDown={onBriefKeyDown} className="hidden gap-2 overflow-x-auto sm:flex">
+                <div role="tablist" aria-label="Brief sections" onKeyDown={onBriefKeyDown} className="hidden gap-2 overflow-x-auto lg:flex">
                   {briefTabs.map((item) => {
                     const selected = briefTab === item.id;
                     return (
