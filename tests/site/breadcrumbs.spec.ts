@@ -121,6 +121,23 @@ test("general case sidebar returns to filtered directory results safely", async 
   await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("plan&budget");
 });
 
+test("general case disclosure has an accessible touch target and keyboard toggle", async ({ page }) => {
+  await page.goto("/work/revenue-planning-simulator");
+  const summary = page.locator("summary").filter({ hasText: "Workflow and next steps" });
+  const disclosure = summary.locator("xpath=..");
+  await expect(disclosure).not.toHaveAttribute("open");
+  const bounds = await summary.boundingBox();
+  expect(bounds).not.toBeNull();
+  expect(bounds!.height).toBeGreaterThanOrEqual(44);
+  await summary.focus();
+  await expect(summary).toBeFocused();
+  await expect(summary).toHaveCSS("outline-style", "solid");
+  await summary.press("Enter");
+  await expect(disclosure).toHaveAttribute("open", "");
+  await summary.press("Space");
+  await expect(disclosure).not.toHaveAttribute("open");
+});
+
 test("project sequence follows filtered results and preserves context in both directions", async ({ page }) => {
   await page.goto("/projects?category=customer#directory");
   const destinations = await page.locator('#directory h3 a').evaluateAll(links => links.map(link => link.getAttribute("href")!));
