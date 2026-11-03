@@ -329,6 +329,33 @@ Tier 1 completion of the existing context-navigation pattern; no new routes, hie
 
 Same wrapping ordered list at phone/tablet/desktop, native keyboard links with 44px targets, existing focus/token styles, one non-linked current-page label and decorative separators. No motion, loading logic or authorization change. Research failure view retains a way out. Added browser coverage for direct entries, filtered Projects, parent keyboard navigation and no duplicate trails. CI and preview checks pending. Rollback: revert these call-site additions and parent extensions. Owner: portfolio maintainer.
 
+## Directory return context and lesson sequence verification
+
+Extend PR #230 with a bounded navigation refinement: ProjectsDirectory includes only category, stage and search in case-study links. WorkCaseBreadcrumb composes a separate contextual return link under Suspense. The real collection hierarchy remains stable. A reload or new tab retains the context; direct case entry shows no stale return. The target is always /projects#directory with encoded filter values, never a supplied redirect URL. No storage, network service or dependency.
+
+The Academy already provides Previous/Next within its learning-path sequence and moves focus to the selected lesson heading. Retain it; add a keyboard round-trip check instead of inventing a sequence across unrelated standalone labs. Keep wrapping breadcrumbs on small screens because all parents remain usable without opening a menu. Existing subtle link nudge respects reduced motion.
+
+Verification: new production-browser cases cover return after reload, encoded search, fixed local destination, no stale direct-entry context and lesson keyboard navigation. Fresh CI pending. Phone/tablet/desktop use the same native link, 44px target and global focus styles. Rollback removes the new return component and directory query context. Tier 1 refinement of existing navigation; no new tracking issue.
+
+## Simplified case navigation (supersedes separate return link above)
+Adapt the shared breadcrumb into Home / Projects / title for directory cases. Projects is the single top-level return action, preserving encoded category, stage and search only when from=projects. Direct entry returns to the full directory. Remove the duplicate contextual back link. Retain collection trails for non-directory cases.
+
+Reuse the existing related-work footer for Previous/Next in directory result order. Share the exact directory matching function; preserve filters in both directions and reloads. Hide the sequence for direct entry, one/no matching result, an unmatched current case and absent endpoints. No wraparound. Phone links stack; tablet/desktop use two columns with wrapping labels, native keyboard links, 44px targets and existing focus styles. No extra motion or dependency. Academy retains its existing sequence.
+
+This is a bounded refinement in PR #230. Browser coverage checks contextual breadcrumb reload/return, direct-entry/local destinations and filtered previous/next keyboard round trips across desktop/tablet/mobile. Manual zoom and screen-reader checks remain unclaimed. Rollback restores the previous return component and removes sequence/filter helper changes.
+
+## Frontend lesson pilot — adapt existing components (KRU-176 / KRU-177)
+
+- Pattern/source: `components/ai-academy/guided-programming-lesson.tsx`, `components/ai-academy/cms-lab.tsx`, and the native controls in `components/ai-academy/academy.tsx`. Catalog entry remains `frontend-building-blocks` in `lib/ai-academy.ts`.
+- Destination: one call site in `components/ai-academy/academy.tsx` for that slug, rendered by `components/ai-academy/frontend-lesson.tsx`. Content lives in `lib/academy/frontend-lesson.ts`. No Keystatic record added.
+- Decision: adapt. A pinned Fumadocs UI 16.17.9 trial was built on an uncommitted route and then removed. `Steps` only supplies `fd-steps` markup. Choice feedback, reset, local notes and lesson selection stayed native. Measured evidence is in [the frontend pilot note](../academy/FRONTEND-PILOT.md).
+- Dependency: none added. The trial's lockfile entries were not kept.
+- Tokens: existing border, card, accent and focus styles. No motion.
+- Phone, tablet and desktop: one reading column inside the existing lesson panel. The catalog sidebar remains from `lg`. Section links wrap, including their labels. The example source scrolls inside its box. Choices stack. Targets use at least 44px.
+- Keyboard and states: in-page links, buttons, labeled radios, visible focus, polite feedback, explicit reset, optional rubric disclosure. No loading or network state. Correct choices do not mark the lesson reviewed.
+- Status: implemented for this lesson, pending review. Not a general renderer and not shipped.
+- Rollback: remove the conditional mount and the two new lesson files. The catalog record stays.
+
 ## visx visualization candidates · October 29, 2026
 
 Status: proposed catalog and brand guidance only. Owner: portfolio maintainer. No chart component, runtime package, public route or consuming-repo code is added.

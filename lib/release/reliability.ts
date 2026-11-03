@@ -2,9 +2,9 @@ export const MAX_GITHUB_ATTEMPTS = 3;
 
 export const PUBLIC_SMOKE_ROUTES = ["/", "/about", "/work", "/contact", "/ai-academy"] as const;
 
-export const VERCEL_SKIP_PREFIXES = [".github/", "docs/operations/", "docs/audit/"] as const;
+export const VERCEL_SKIP_PREFIXES = ["docs/operations/", "docs/audit/", ".release/notes/"] as const;
 
-export const VERCEL_SKIP_FILES = ["AGENTS.md", "CLAUDE.md", "README.md"] as const;
+export const VERCEL_SKIP_FILES = ["AGENTS.md", "CLAUDE.md", "README.md", "RELEASE.md", ".github/RELEASE_CHECKLIST.md", ".github/pull_request_template.md"] as const;
 
 const SECURITY_CI_JOBS = new Set([
   "semgrep",
@@ -53,7 +53,7 @@ export function shasMatch(intended: string | null | undefined, deployed: string 
 export function isOperationalDeployPath(path: string): boolean {
   if (!path || path.startsWith("/") || path.includes("\\") || path.split("/").includes("..")) return false;
   if ((VERCEL_SKIP_FILES as readonly string[]).includes(path)) return true;
-  return VERCEL_SKIP_PREFIXES.some((prefix) => path.startsWith(prefix));
+  return path.endsWith(".md") && VERCEL_SKIP_PREFIXES.some((prefix) => path.startsWith(prefix));
 }
 
 /** True only when every changed path is operational. Empty and unknown paths build. */
