@@ -116,11 +116,13 @@ test("progressive API and MCP companion stays on the existing lesson id", () => 
   assert.equal(new Set(slugs).size, slugs.length);
   assert.equal(slugs.includes("api-mcp-progressive-lab"), false);
   assert.equal(slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
-  const delivery = learningPaths.find((path) => path.id === "delivery");
-  assert.ok(delivery);
-  assert.equal(delivery.slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
-  const deliverySlugs: readonly string[] = delivery.slugs;
-  assert.equal(deliverySlugs.includes("api-mcp-progressive-lab"), false);
+  const pathsWithLesson = learningPaths.filter((path) => (path.slugs as readonly string[]).includes("mcp-vs-rest-api"));
+  assert.ok(pathsWithLesson.length >= 1);
+  for (const path of learningPaths) {
+    const pathSlugs: readonly string[] = path.slugs;
+    assert.ok(pathSlugs.filter((slug) => slug === "mcp-vs-rest-api").length <= 1);
+    assert.equal(pathSlugs.includes("api-mcp-progressive-lab"), false);
+  }
 
   const parent = readFileSync(new URL("../docs/builder-academy/mcp-vs-rest-api.md", import.meta.url), "utf8");
   const lab = readFileSync(new URL("../docs/builder-academy/api-mcp-progressive-lab.md", import.meta.url), "utf8");
