@@ -108,6 +108,19 @@ test("direct case links return to all projects and return targets stay local", a
   await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("hello&world");
 });
 
+test("general case sidebar returns to filtered directory results safely", async ({ page }) => {
+  await page.goto("/work/revenue-planning-simulator");
+  const sidebar = page.locator("aside");
+  await expect(sidebar.getByRole("link", { name: "Browse the project directory", exact: true }))
+    .toHaveAttribute("href", "/projects#directory");
+
+  await page.goto("/work/revenue-planning-simulator?from=projects&category=revenue&stage=Build&q=plan%26budget&returnTo=https://example.com");
+  const returnLink = sidebar.getByRole("link", { name: "Back to your project results", exact: true });
+  await expect(returnLink).toHaveAttribute("href", "/projects?category=revenue&stage=Build&q=plan%26budget#directory");
+  await returnLink.press("Enter");
+  await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("plan&budget");
+});
+
 test("project sequence follows filtered results and preserves context in both directions", async ({ page }) => {
   await page.goto("/projects?category=customer#directory");
   const destinations = await page.locator('#directory h3 a').evaluateAll(links => links.map(link => link.getAttribute("href")!));
