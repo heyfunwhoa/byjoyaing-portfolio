@@ -429,3 +429,19 @@ The owner also reported that expanding Architecture looked cramped on desktop. T
 - **Accessibility:** Logical DOM order, semantic `ol`, visible headings, non-interactive cards, no hidden essential content or motion. The parent Architecture disclosure keeps native keyboard operation.
 - **Verification:** The browser spec checks 320, 375, 768 and 1280px, ordered headings, responsive placement and page overflow. Manual 200% zoom, real-device readability and screen-reader checks remain release gates.
 - **Rollback:** Revert the architecture component along with this draft PR. No route, data or dependency changes.
+
+
+## Competitive Intelligence Engine case-study UX follow-up (2026-11-03)
+
+**Source:** `components/competitive-intelligence-case.tsx`, `components/competitive-intelligence-workflow.tsx`, and the existing reusable `PortfolioExample` disclosure. **Destination:** `/work/competitive-intelligence-engine`. Reuses the established disclosure, responsive tabs/select, session-only state and summary-card patterns, with no additional dependencies.
+
+**Reader task:** Understand a source-backed competitive conversation without mistaking fictional approval controls for real product functionality.
+
+- Put the primary five-step workflow ahead of the optional four-step learning exercise. The optional exercise now clearly explains that it is instructional and independent of the five-step workflow.
+- Add a non-persistent session takeaway under the five-step panel that shows the selected provider, current local review flags, a suggested discovery question, outstanding verification gaps, and the count of notes approved within this demo only.
+- Name the active workflow and brief tab panels independently of desktop-only hidden tab labels so assistive technology can identify them at narrow widths.
+- Use minimum 44px controls for category filters, review/history, submission and local approval actions. Retain keyboard Arrow/Home/End operation on desktop and native select operation on phones/tablets.
+- Privacy: all user entry remains in React in-memory state, no backend, localStorage, analytics payload, or persistence. Submission, review and approval do not produce real field guidance. Refresh resets session state.
+- Responsive behavior: preserves existing 320/375/640/768px selector and 1280px desktop tabs. Summary follows active content in both layouts. Reduced motion unchanged. No new animations.
+- Verify in `tests/site/competitive-workflow-mobile.spec.ts`: reader order, stage/brief accessible names, 44px review control, local review transitions, provider switching, reset on reload, and page-level overflow. Manual screen-reader and 200% zoom remain required before merge.
+- Rollback: revert the focused PR, no migrations or external data.
