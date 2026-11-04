@@ -97,8 +97,8 @@ for (const width of [375, 640, 768, 1280]) {
       // Both DOM order (assistive technology) and rendered order stay professional-first.
       const work = page.getByRole("link", { name: "Professional Work", exact: true });
       await work.focus();
-      await page.keyboard.press("Tab"); // Field Notes
-      await page.keyboard.press("Tab"); // Independent Side Quests
+      await page.keyboard.press("Tab"); // Playbooks and practical guides
+      await page.keyboard.press("Tab"); // Independent experiments
       await page.keyboard.press("Tab"); // native interests disclosure
       await expect(summary).toBeFocused();
       expect(await summary.evaluate((element) => {
@@ -123,9 +123,98 @@ for (const width of [375, 640, 768, 1280]) {
       await page.keyboard.press("Space");
       await expect(details).not.toHaveAttribute("open");
       await page.keyboard.press("Tab");
-      await expect(page.getByRole("link", { name: "Get in touch", exact: true })).toBeFocused();
+      await expect(page.getByRole("link", { name: "Start a conversation", exact: true })).toBeFocused();
       await page.keyboard.press("Shift+Tab");
       await expect(summary).toBeFocused();
     });
   }
 }
+
+test("About education marks load beside visible credentials at phone and desktop widths", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Run the explicit viewport matrix once.");
+  const marks = [
+    { src: "/logos/education/ut-austin.svg", credential: "The University of Texas at Austin" },
+    { src: "/logos/education/wgu.svg", credential: "Western Governors University" },
+    { src: "/badges/aws-certified-cloud-practitioner.png", credential: "AWS Certified Cloud Practitioner" },
+    { src: "/badges/aws-certified-ai-practitioner.png", credential: "AWS Certified AI Practitioner" },
+  ] as const;
+
+  for (const width of [375, 640, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/about#career-progression");
+    const education = page.getByRole("heading", { name: "Education and continued learning" }).locator("..");
+    for (const { src, credential } of marks) {
+      const image = education.locator(`img[src="${src}"]`);
+      await expect(image).toHaveCount(1);
+      await expect(image).toHaveAttribute("alt", "");
+      await expect.poll(() => image.evaluate((element: HTMLImageElement) =>
+        element.complete && element.naturalWidth > 0,
+      )).toBe(true);
+      await expect(education.getByText(new RegExp(credential))).toBeVisible();
+    }
+    await expect(education).toContainText("in progress");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});
+
+
+test("Mobile About header and footer remain readable and reachable", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Run explicit viewport assertions once.");
+  for (const width of [320, 375, 640]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/about");
+    const header = page.getByRole("navigation", { name: "Primary" });
+    const menu = header.getByRole("button", { name: "Open navigation menu" });
+    if (width < 640) {
+      await expect(menu).toBeVisible();
+      const bounds = await menu.boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(bounds!.width).toBeGreaterThanOrEqual(44);
+      expect(bounds!.height).toBeGreaterThanOrEqual(44);
+    }
+    const footer = page.locator("footer[data-site-chrome]");
+    const links = footer.getByRole("navigation", { name: "Footer" });
+    await expect(links.getByRole("link", { name: "Contact" })).toHaveAttribute("href", "/contact");
+    const navBounds = await links.boundingBox();
+    const social = footer.getByLabel("Contact and social links");
+    const socialBounds = await social.boundingBox();
+    expect(navBounds).not.toBeNull();
+    expect(socialBounds).not.toBeNull();
+    if (width < 640) {
+      expect(socialBounds!.y).toBeGreaterThanOrEqual(navBounds!.y + navBounds!.height);
+    }
+    for (const link of await social.getByRole("link").all()) {
+      const target = await link.boundingBox();
+      expect(target).not.toBeNull();
+      expect(target!.height).toBeGreaterThanOrEqual(44);
+      expect(target!.width).toBeGreaterThanOrEqual(44);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});
+
+test("About in-page navigation reaches real sections with keyboard links", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Test the anchor sequence once.");
+  await page.setViewportSize({ width: 375, height: 900 });
+  await page.goto("/about");
+  const nav = page.getByRole("navigation", { name: "On this page", exact: true });
+  const sections = [
+    ["Philosophy", "philosophy"],
+    ["How I work", "how-i-work"],
+    ["Career & education", "career-progression"],
+    ["Tools & systems", "technologies"],
+    ["Work & writing", "work-and-writing"],
+  ] as const;
+  for (const [label, id] of sections) {
+    const link = nav.getByRole("link", { name: label, exact: true });
+    await expect(link).toHaveAttribute("href", `#${id}`);
+    await link.focus();
+    await expect(link).toBeFocused();
+    await link.press("Enter");
+    await expect(page).toHaveURL(new RegExp(`#${id}$`));
+    const destination = page.locator(`#${id}`);
+    await expect(destination).toHaveCount(1);
+    await expect(destination).toBeInViewport();
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
