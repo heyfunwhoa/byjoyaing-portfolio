@@ -472,7 +472,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
                   <strong>
                     {answer === lesson.check.answer ? "Correct." : "Try again."}
                   </strong>{" "}
-                  {lesson.check.explanation}
+                  {lesson.check.feedbackByChoice?.[answer] ?? lesson.check.explanation}
                 </p>
               )}
             </fieldset>

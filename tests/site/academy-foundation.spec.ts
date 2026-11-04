@@ -172,4 +172,11 @@ test("systems path reaches the recovery lesson and its written practice", async 
   await expect(page.getByRole("region", { name: "Lesson prerequisites" })).toContainText("Databases: branching, backups, and platform decisions");
   await expect(page.getByRole("link", { name: "Explore related webhook and access demos", exact: true })).toHaveAttribute("href", "/ai-academy/systems");
   await expect(page.getByRole("link", { name: "Read the recovery exercise and answer key ↗", exact: true })).toHaveAttribute("href", /background-job-recovery\.md$/);
+  const check = page.getByRole("group", { name: "Knowledge check" });
+  await check.getByRole("radio", { name: "Repeat every write because there was no acknowledgement.", exact: true }).check();
+  await expect(check.getByRole("status")).toContainText("A missing acknowledgement does not prove a write failed.");
+  await check.getByRole("radio", { name: "Delete all failed jobs so the dashboard is green.", exact: true }).check();
+  await expect(check.getByRole("status")).toContainText("Deleting failed jobs hides the evidence.");
+  await check.getByRole("radio", { name: "Check the stable operation key and recorded result before repeating an effect.", exact: true }).check();
+  await expect(check.getByRole("status")).toContainText("The stable operation key and saved result");
 });

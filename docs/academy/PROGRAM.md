@@ -25,7 +25,7 @@ This section supersedes earlier blanket implementation holds only for the bounde
 6. **KRU-179–181:** extend to two lessons and optional diagram/sandbox experiments only after pilot validation.
 7. **KRU-182–185:** map token/context, cost, evaluated workflow and trustworthy AI interaction content now; new exercise UI follows the validated pilot. The calculator is not a prerequisite for writing workflow content.
 
-Optional accounts/saved reading stay in KRU-173 / PR #234. That pull request was checked for mount compatibility and was not imported, so accounts are not activated. Existing beginner progress stays with KRU-77. Keystatic ownership stays with KRU-75. Follow the repository's current [RELEASE.md](../RELEASE.md) and release operator; do not create another release pipeline. Recheck all PR states when resuming.
+Optional accounts/saved reading stay in KRU-173 / PR #234. That pull request was checked for mount compatibility and was not imported, so accounts are not activated. Existing beginner progress stays with KRU-77. Keystatic ownership stays with KRU-75. Follow the repository's current [RELEASE.md](../../RELEASE.md) and release operator; do not create another release pipeline. Recheck all PR states when resuming.
 
 ### Repository ownership
 

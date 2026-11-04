@@ -33,9 +33,26 @@ test("lesson slugs are unique and knowledge checks point at a real choice", () =
     assert.equal(Number.isInteger(lesson.check.answer), true);
     assert.ok(lesson.check.answer >= 0 && lesson.check.answer < lesson.check.choices.length);
     assert.ok(lesson.check.explanation.length > 10);
+    if (lesson.check.feedbackByChoice) {
+      assert.equal(lesson.check.feedbackByChoice.length, lesson.check.choices.length);
+      assert.ok(lesson.check.feedbackByChoice.every((feedback) => feedback.length > 20));
+    }
     assert.ok(lesson.sources.length >= 1);
     assert.ok(lesson.sources.every((source) => source.url.startsWith("https://")));
   }
+});
+
+test("recovery lesson provides answer-specific feedback without overstating mastery", () => {
+  const lesson = lessons.find((item) => item.slug === "background-job-recovery");
+  assert.ok(lesson);
+  const feedback = lesson.check.feedbackByChoice;
+  assert.ok(feedback);
+  assert.equal(feedback.length, 3);
+  assert.equal(new Set(feedback).size, 3);
+  assert.match(feedback[0], /acknowledgement.*does not prove/i);
+  assert.match(feedback[1], /operation key and saved result/i);
+  assert.match(feedback[2], /Deleting failed jobs hides the evidence/i);
+  assert.match(lesson.exercise, /written self-review/);
 });
 
 test("cursor workflows is a Builder lesson without private personal data", () => {

@@ -9,7 +9,7 @@ import { enterpriseEvaluationLessons } from "./academy/enterprise-evaluation.ts"
 export type Track = "Foundations" | "Prompting" | "Responsible AI" | "GTM" | "Builder";
 export type Lesson = {
   slug: string; title: string; track: Track; minutes: number; level: "Beginner" | "Intermediate";
-  summary: string; analogy: string; takeaways: string[]; exercise: string; check: { question: string; choices: string[]; answer: number; explanation: string };
+  summary: string; analogy: string; takeaways: string[]; exercise: string; check: { question: string; choices: string[]; answer: number; explanation: string; feedbackByChoice?: string[] };
   sources: { label: string; url: string }[];
   companion?: { label: string; url: string };
 };
@@ -39,7 +39,12 @@ export const lessons: Lesson[] = [
       "Delete all failed jobs so the dashboard is green."
     ],
     "answer": 1,
-    "explanation": "An acknowledgement can be lost after a successful write. Recovery must distinguish an unfinished job from an already completed effect."
+    "explanation": "An acknowledgement can be lost after a successful write. Recovery must distinguish an unfinished job from an already completed effect.",
+    "feedbackByChoice": [
+      "A missing acknowledgement does not prove a write failed. Check for a durable result and use the operation key to avoid duplicating the effect.",
+      "The stable operation key and saved result reveal whether the intended effect already happened, so replay can avoid another write.",
+      "Deleting failed jobs hides the evidence. A green dashboard cannot tell you whether the draft was saved or if replay is safe."
+    ]
   },
   "companion": {
     "label": "Read the recovery exercise and answer key",
