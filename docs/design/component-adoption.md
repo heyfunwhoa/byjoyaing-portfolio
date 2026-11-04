@@ -376,6 +376,60 @@ Status: proposed catalog and brand guidance only. Owner: portfolio maintainer. N
 - Prestige’s illustration examples are a reference for labeled workflow stages and decision paths. Use project-authored SVG/CSS and keep explanations readable in the page. The Academy Systems page already uses original illustrations and synthetic, local interactions.
 - Candidate entries are tracked in the existing workbench catalog, not installed components. Cross-project suggestions are starting points only; each repo needs a local source and open-work review before implementation.
 
+## About work and writing emphasis (proposed, 2026-10-30)
+
+- Destination and owner: `/about`, portfolio maintainer. Approved copy connects content marketing to buyer insight, clear messaging, practical resources, and enterprise selling. Existing professional and independent evidence labels remain in place.
+- Reuse: the current About section flow, `CapabilityOrbit`, `ToolsMap`, native disclosures, and text-link rows. Two compact illustrative guide links reuse titles and use-when copy from `fieldNoteBodies`; no new content schema, component library, dependency, or animation is added. Professional Work remains before the independent experiments destination.
+- Presentation: existing site-build technology chips and explanatory cards move inside the existing Build notes disclosure. The shorter summary stays visible. Orbit-only hero art and compact personal interests with Lucide symbols are preserved.
+- Responsive and access behavior: guide rows wrap in one column; the three broader destinations stack on phones and use three columns from 640px. Native links and summaries retain visible focus and at least 44px action height. Document and keyboard order match; reduced-motion behavior is inherited. These static, validated records have no new loading, error, or permission states.
+- Verification: retain the About viewport, motion, and keyboard matrix from PR #231, updating its closing-link expectation for the approved CTA. Current CI and preview evidence belong in PR #219. Manual browser zoom, assistive-technology, and real-device review must be recorded separately. Status remains proposed pending human review; rollback is the scoped About copy and presentation diff.
+
+## About brand alignment and school marks (proposed, 2026-10-30)
+
+- Owner/destination: portfolio maintainer, `/about` education. Reuse the existing semantic education list and the local SVG/`next/image` approach from `ToolkitLogoGrid`; adapt the presentation for complete university wordmarks, without its tool states or external links. No new component, schema, library, motion, or integration.
+- Assets: complete official UT Austin and current WGU university marks. Local source files and provenance are in `public/logos/education/`. Original colors and proportions remain within the marks; they do not become joy. palette tokens. The visible institution, degree, and in-progress wording remain unchanged. Name matching uses the institution text, not editable list position; unmatched learning entries remain text only.
+- Composition: two school columns from 640px, stacked on phones; unmatched credentials span the row. After owner review, use compact 128px UT and 104px WGU widths in 48px-high wrappers, with 4px below each mark and 12px between rows. Retain horizontal clear space, intrinsic proportions, and readable credential text. Empty alt and an aria-hidden wrapper prevent repeated school announcements. No new keyboard targets, motion, loading interaction, or authorization state.
+- Brand sync: both brand documents now use the same Strategist definition as the capability data; the canonical guide locates content marketing within revenue/GTM practice and records the current About flow. The avatar guide and implementation reference agree with the orbit-only About and current collection artwork.
+- Verification: inspect actual rendered logo loading, proportions, readable adjacent text, and the existing About viewport/motion matrix. Exact commit CI and preview evidence are recorded in PR #219; actual zoom, real devices, and screen readers remain separate reviews. Proposed pending human review. Rollback removes the two marks and restores the existing text-only education list.
+
+## Home and About as connected pages (proposed, 2026-10-30)
+
+- Reader task: Home establishes identity and professional credibility, then routes to relevant evidence. About explains background, values, working approach and learning, with optional personal context near the end. Shared identity/philosophy is intentional; the deeper supporting content differs.
+- Keep the established section order and visual distinction: Home's dark hero/portrait and concise proof cards; About's quieter orbit, expanded approach, education, tools, writing and personal disclosure. Shorten Home's body to its existing opening sentence and replace the cryptic independent-project aside with plain scope language.
+- Reuse About's existing on-page link pattern for Work & writing and give the section a durable anchor, named heading and scroll offset. Flex wrapping, native links and existing focus styles apply at all widths; no new motion, route, component or interaction dependency.
+- Synchronize the current five-part Home sequence in the canonical guide and homepage design note. AGENTS and the PR template now require reviewing page purpose, entry/next destinations, appropriate repetition, reading order and calls to action together.
+- Verification: compare the rendered Home/About openings and click Home → About → writing evidence, plus the primary Home → Work path. Exact commit CI/preview evidence belongs in PR #219. Real-device, screen-reader and actual zoom review remain separate. Rollback restores the small copy/anchor changes; preserve the page-flow review rule unless the user changes that preference.
+
+## AWS practitioner certification badges (proposed, 2026-10-30)
+
+- Owner/destination: portfolio maintainer, `/about` education. Extend the existing name-matched local-image pattern for AWS Certified Cloud Practitioner and AWS Certified AI Practitioner. Split the existing combined credential line into two editable education entries; keep the current string-array schema and school sizing.
+- Assets: original official 600px RGBA PNGs from AWS-issued Credly badge pages, replacing the opaque marketing exports at the owner's request. True alpha transparency lets the page surface show around each badge; source bytes are unchanged, without cropping, recoloring, redrawing, or CSS blending. Source links, checksums, AWS mark ownership, and display boundaries are in `public/badges/README.md`. No new package, account integration, personal verification URL, issue/expiry date, or Early Adopter designation.
+- Composition: each 80px image sits beside readable 14px credential text beneath the schools. The existing grid gives the badges two columns from 640px and stacked rows on phones. Preserve source transparency and clear space. The certifications remain identified as Foundational.
+- Accessibility/state: empty alt text and an aria-hidden image wrapper avoid repeated announcements; the visible credential names carry the meaning. No new links, focus targets, motion, or asynchronous interaction. Other learning entries retain their text fallback.
+- Verification: downloaded source files have RGBA mode, alpha range 0–255, and transparent outer corners. Existing About editorial validation plus current-head CI and the About viewport/motion matrix cover the page. Inspect actual badge loading, transparent edges against the page surface, dimensions, adjacent text, and overflow in the preview. Manual device/zoom/screen-reader checks remain separate. Tier 1 scoped presentation refinement; no new tracking issue. Rollback removes the two badge mappings/assets and restores the prior combined credential line.
+
+
+## Competitive Intelligence case: mobile workflow stage selector (2026-11-03)
+
+- **Owner / destination:** `byjoyaing-portfolio`, `/work/competitive-intelligence-engine#workflow`, existing `components/competitive-intelligence-workflow.tsx`.
+- **Task:** Five horizontal stage tabs become truncated on iPhone; the third tab is cut off, hiding later stages. The nested competitive brief has the same narrow-screen risk.
+- **Reuse:** Adapt the repository's existing native-selector-on-mobile pattern (Projects filters) without adding a new dependency or changing the simulated workflow data.
+- **Phone (< 1024px):** One full-width labeled select shows the numbered current workflow step and permits direct access to all five steps. The desktop tablist is hidden at these widths. For brief subsections, use the same labeled select below 1024px. Preserve stage state, panels and privacy boundaries.
+- **Desktop:** Keep the existing vertical tab navigation and keyboard Arrow/Home/End behavior at 1024px and above. Brief tabs stay horizontal from 1024px.
+- **Accessibility / status:** Native selects provide keyboard, screen-reader and touch semantics with minimum 48px height. Existing tabpanel relationship and all source/evidence labels remain. No new motion, data persistence or network actions.
+- **Verification:** `tests/site/competitive-workflow-mobile.spec.ts` covers 320/375/640px stage selection, nested brief selection and page-width overflow, plus desktop keyboard navigation. Exact-head CI, real-device observation, 200% zoom and screen-reader checks must be recorded before merge.
+- **Rollback:** Revert this PR's workflow and test change. No database or public route changes.
+
+### Architecture expansion follow-up (same case-study review)
+
+The owner also reported that expanding Architecture looked cramped on desktop. The previous responsive composition put four dense stage cards in one horizontal row from the `lg` breakpoint, plus redundant arrow graphics. This gave the stages insufficient width to read.
+
+- **Decision:** Reuse semantic ordered-list and card patterns already in the portfolio. Keep the existing four stages, all nodes, their status badges, descriptions, and planned-vs-built distinction. Replace the arrows with visible `01–04` stage numbers.
+- **Phone/tablet/standard laptop:** One readable column. **Wide desktop (1280px and up):** Two-column, two-row layout with source order preserved, not four narrow columns.
+- **Accessibility:** Logical DOM order, semantic `ol`, visible headings, non-interactive cards, no hidden essential content or motion. The parent Architecture disclosure keeps native keyboard operation.
+- **Verification:** The browser spec checks 320, 375, 768 and 1280px, ordered headings, responsive placement and page overflow. Manual 200% zoom, real-device readability and screen-reader checks remain release gates.
+- **Rollback:** Revert the architecture component along with this draft PR. No route, data or dependency changes.
+
 ## Feedback overview and theme comparison · 2026-10-29
 
 Owner: portfolio maintainer. Status: draft implementation, not merged or deployed.

@@ -88,7 +88,9 @@ test("case studies restore directory filters after reload", async ({ page }) => 
   await page.reload();
   const back = page.getByRole("navigation", { name: "Breadcrumb", exact: true }).getByRole("link", { name: "Projects", exact: true });
   await expect(back).toHaveAttribute("href", "/projects?category=technical&q=Atlas#directory");
-  await back.press("Enter");
+  const footerReturn = page.getByRole("link", { name: "Back to your project results" });
+  await expect(footerReturn).toHaveAttribute("href", "/projects?category=technical&q=Atlas#directory");
+  await footerReturn.press("Enter");
   await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("Atlas");
   await expect(page.getByRole("status")).toContainText("1 matching project");
   await page.getByRole("button", { name: "Clear filters", exact: true }).click();
@@ -97,12 +99,43 @@ test("case studies restore directory filters after reload", async ({ page }) => 
 
 test("direct case links return to all projects and return targets stay local", async ({ page }) => {
   await page.goto("/work/detector-coverage-atlas");
+  await expect(page.getByRole("link", { name: "Back to all projects", exact: true })).toHaveAttribute("href", "/projects#directory");
   await expect(page.getByRole("navigation", { name: "Breadcrumb", exact: true }).getByRole("link", { name: "Projects", exact: true })).toHaveAttribute("href", "/projects#directory");
   await page.goto("/work/detector-coverage-atlas?from=projects&stage=Build&q=hello%26world&returnTo=https://example.com");
   const back = page.getByRole("navigation", { name: "Breadcrumb", exact: true }).getByRole("link", { name: "Projects", exact: true });
   await expect(back).toHaveAttribute("href", "/projects?stage=Build&q=hello%26world#directory");
   await back.click();
   await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("hello&world");
+});
+
+test("general case sidebar returns to filtered directory results safely", async ({ page }) => {
+  await page.goto("/work/revenue-planning-simulator");
+  const sidebar = page.locator("aside");
+  await expect(sidebar.getByRole("link", { name: "Browse the project directory", exact: true }))
+    .toHaveAttribute("href", "/projects#directory");
+
+  await page.goto("/work/revenue-planning-simulator?from=projects&category=revenue&stage=Build&q=plan%26budget&returnTo=https://example.com");
+  const returnLink = sidebar.getByRole("link", { name: "Back to your project results", exact: true });
+  await expect(returnLink).toHaveAttribute("href", "/projects?category=revenue&stage=Build&q=plan%26budget#directory");
+  await returnLink.press("Enter");
+  await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("plan&budget");
+});
+
+test("general case disclosure has an accessible touch target and keyboard toggle", async ({ page }) => {
+  await page.goto("/work/revenue-planning-simulator");
+  const summary = page.locator("summary").filter({ hasText: "Workflow and next steps" });
+  const disclosure = summary.locator("xpath=..");
+  await expect(disclosure).not.toHaveAttribute("open");
+  const bounds = await summary.boundingBox();
+  expect(bounds).not.toBeNull();
+  expect(bounds!.height).toBeGreaterThanOrEqual(44);
+  await summary.focus();
+  await expect(summary).toBeFocused();
+  await expect(summary).toHaveCSS("outline-style", "solid");
+  await summary.press("Enter");
+  await expect(disclosure).toHaveAttribute("open", "");
+  await summary.press("Space");
+  await expect(disclosure).not.toHaveAttribute("open");
 });
 
 test("project sequence follows filtered results and preserves context in both directions", async ({ page }) => {
