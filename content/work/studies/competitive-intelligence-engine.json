@@ -1,9 +1,9 @@
 {
-  "summary": "Turn competitor research into a source-backed brief and field guidance. Monitoring and automatic updates are designed, not running.",
+  "summary": "Help sellers turn competitive research into useful buyer conversations. Explore a source-backed field brief and a proposed review workflow; automated monitoring is not running.",
   "owner": "Kristen Aing",
   "reviewer": "Pending human review of the CMS move",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "reviewDue": "2026-11-15",
   "classification": "public",
-  "publicationStatus": "published"
+  "publicationStatus": "review"
 }

@@ -1,9 +1,9 @@
 {
-  "summary": "Compare secret-detection coverage in a source-backed sample. A larger catalog and live monitoring are not in this repository.",
+  "summary": "Help security practitioners and technical sellers inspect secret-detection coverage and identify what needs review. Explore a small source-backed comparison sample.",
   "owner": "Kristen Aing",
   "reviewer": "Pending human review of the CMS move",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "reviewDue": "2026-11-15",
   "classification": "public",
-  "publicationStatus": "published"
+  "publicationStatus": "review"
 }

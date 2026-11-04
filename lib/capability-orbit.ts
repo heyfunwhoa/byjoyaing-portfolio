@@ -30,7 +30,7 @@ export const orbitPillars: readonly OrbitPillar[] = [
   {
     id: "strategist",
     label: "Strategist",
-    summary: "Understand markets and buyers, identify patterns and opportunities, ask better questions.",
+    summary: "Understand buyers and markets, identify useful patterns, and turn that insight into clear messaging and practical resources.",
     evidence: [
       {
         text: "Competitive briefs and field playbooks shared with teammates, separating validated observations from assumptions.",
@@ -101,3 +101,4 @@ export function nextPillarIndex(current: number, key: string, count: number): nu
       return null;
   }
 }
+

@@ -28,7 +28,7 @@ export function ExperienceTimeline({
                 {role.points[0]}
               </p>
               <details className="mt-3 rounded-xl border border-border bg-card p-3">
-                <summary className="cursor-pointer rounded-sm py-1 text-sm font-semibold text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+                <summary className="flex min-h-11 cursor-pointer items-center rounded-sm py-2 text-sm font-semibold text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
                   More about {role.company}
                 </summary>
                 {role.points.length > 1 ? (

@@ -80,7 +80,7 @@ export function ProjectsSystems() {
             </dd>
           </div>
         </dl>
-        <Link href={project.caseStudyUrl} className="mt-4 inline-flex text-sm font-medium text-accent">
+        <Link href={project.caseStudyUrl} className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">
           View case study
         </Link>
       </aside>
