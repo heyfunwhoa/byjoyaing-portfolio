@@ -101,7 +101,7 @@ export default function WorkPage() {
               </p>
               <Link
                 href={item.href}
-                className="mt-4 inline-block text-sm font-medium text-accent underline"
+                className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4"
               >
                 Explore case study →
               </Link>
@@ -117,7 +117,7 @@ export default function WorkPage() {
           </p>
           <Link
             href="/experience"
-            className="mt-3 inline-block text-sm text-accent underline"
+            className="mt-3 inline-flex min-h-11 items-center text-sm text-accent underline underline-offset-4"
           >
             View professional timeline →
           </Link>
