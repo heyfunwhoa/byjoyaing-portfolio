@@ -1,7 +1,7 @@
 # Unified Learning Platform — AI Foundations + Builder Academy
 
 **Status:** proposed curriculum and product architecture (not an assertion that labs are implemented).
-**Last reviewed:** 2026-10-30 (current inventory section; wider vision remains proposed).
+**Last reviewed:** 2026-11-04 for repository and PR status. The wider vision remains proposed; external product claims were not comprehensively reverified.
 **Canonical implementation:** `/ai-academy` in this repository. Preserve the existing catalog and Version Control Playground; do not create a competing app/repo. The seven-lesson MVP below is historical context, not the current catalog count.
 **Other references:** [AI Command Center](https://app.notion.com/p/3f3cdefaec758139a149ef6b77d14f03), [existing academy MVP](../ai-academy.md).
 
@@ -11,21 +11,21 @@ The [Revenue enablement program and Trusted Handoff mission](REVENUE-ENABLEMENT-
 
 ## Current curriculum priorities
 
-Use the [2026-10-30 curriculum audit](CURRICULUM-AUDIT.md) for the complete lesson/route inventory, source limits and priorities. Current main at `60a7992` contains 38 registered lessons. This integration proposes 39 with background-job recovery and nine goal-based paths. Programming has two guided tutorials among ten module records. Systems already has two interactive examples and an infrastructure explainer alongside planned modules. The user authorized this audit, organization and one written recovery lesson. Broader new labs remain separate scope. This program is the wider vision; older phases below are historical proposals, not the current implementation queue.
+Use the [curriculum audit](CURRICULUM-AUDIT.md) for the lesson/route inventory, evidence limits and priorities. On November 4, 2026, `main` at `e26355e` contains 38 registered short lessons; [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) proposes a 39th (background-job recovery) and nine goal-based paths. Programming has two guided tutorials among ten module records. Systems has two interactive examples and an infrastructure explainer alongside planned modules. The Frontend guided panel and API/MCP companion have already merged to `main`. The wider program is a proposal; older phases below do not define the active release queue.
 
-## Current execution scope (2026-10-30)
+## Current integration and execution scope (2026-11-04)
 
 This section supersedes earlier blanket implementation holds only for the bounded work below. It does not authorize every proposed phase in this document. [Linear project P-KRU-11](https://linear.app/krusty/project/builder-academy-lesson-experience-and-ui-3919add2048a) tracks execution; repository files own versioned implementation and instructional specifications. Notion remains the product strategy/requirements reference; no private content is copied here. Overlap and proposed merge order: [INTEGRATION-233-236-237.md](INTEGRATION-233-236-237.md).
 
-1. **KRU-174 / PR #233:** nine paths, the inventory, and the written recovery exercise are included on the integration branch. The outdated "Frontend pilot not implemented" status is replaced by the completed comparison. Not merged to main and not deployed.
+1. **KRU-174 / PR #238:** use the existing integration branch for the nine paths, inventory and written recovery exercise. PR #233 has older overlapping work; do not merge both independently. #238 is not merged or deployed.
 2. **KRU-176:** the runnable comparison is complete. Decision: adapt the existing Academy components and defer Fumadocs. Evidence is in [FRONTEND-PILOT.md](FRONTEND-PILOT.md).
-3. **KRU-177:** the single `frontend-building-blocks` panel is implemented on the integration branch, including feedback, reset, wrapping section labels, and the scrollable example. Not merged.
-4. **KRU-77 / PR #237:** the progressive companion stays on lesson id `mcp-vs-rest-api`. The inventory lists that file and does not add `api-mcp-progressive-lab`.
-5. **KRU-178:** validate the built lesson, collect honest manual/learner evidence, then use the repository's reviewed release process. Implementation, merge, deployment and verified release are separate.
+3. **KRU-177 / PR #236:** the `frontend-building-blocks` guided panel, feedback/reset, wrapping and responsive changes are on `main`. Manual learner acceptance is still a separate task.
+4. **KRU-77 / PR #237:** the API/MCP progressive companion is on `main` under the same lesson id `mcp-vs-rest-api`. It does not create a separate catalog lesson.
+5. **KRU-178:** validate the integrated learner journey, including mobile keyboard focus, 200% zoom, screen readers and transfer tasks. Release authorization and deployed verification remain distinct from passing CI.
 6. **KRU-179–181:** extend to two lessons and optional diagram/sandbox experiments only after pilot validation.
 7. **KRU-182–185:** map token/context, cost, evaluated workflow and trustworthy AI interaction content now; new exercise UI follows the validated pilot. The calculator is not a prerequisite for writing workflow content.
 
-Optional accounts/saved reading stay in KRU-173 / PR #234. That pull request was checked for mount compatibility and was not imported, so accounts are not activated. Existing beginner progress stays with KRU-77. Keystatic ownership stays with KRU-75. Coordinate with release-framework PR #235 rather than creating another release policy. Recheck all PR states when resuming.
+Optional accounts/saved reading stay in KRU-173 / PR #234. That pull request was checked for mount compatibility and was not imported, so accounts are not activated. Existing beginner progress stays with KRU-77. Keystatic ownership stays with KRU-75. Follow the repository's current [RELEASE.md](../RELEASE.md) and release operator; do not create another release pipeline. Recheck all PR states when resuming.
 
 ### Repository ownership
 

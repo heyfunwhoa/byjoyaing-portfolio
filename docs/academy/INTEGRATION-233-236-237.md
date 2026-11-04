@@ -1,5 +1,15 @@
 # Academy pull request reconciliation
 
+## Current reconciliation checkpoint — November 4, 2026
+
+- **Current `main`:** `e26355ea8b7ebecfce93db83cd771a70f454a6f3`. PRs [#236](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/236) (Frontend) and [#237](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/237) (API/MCP companion) are merged.
+- **Current integration vehicle:** [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238), existing branch `cursor/academy-pr-reconciliation-7469`. Its November 4 reconciliation commit `3e273f5` incorporates current `main` without rewriting PR #233. The nine paths and new recovery lesson are in this PR, **not yet on main**.
+- **Overlap:** PR #233 is an older open overlapping proposal, not an independent next merge. PR #234 optional learner accounts remains separate and inactive.
+- **Checks:** current-head CI, build, unit, dependency, security and visual workflows succeeded. The production-browser suite had one flaky mobile keyboard-heading test that passed on retry. Manual device/zoom/screen-reader/learner acceptance remains outstanding.
+- **Decision:** use #238 for owner content review and eventual separately authorized release. Preserve all earlier analysis below as historical evidence, **not current merge instructions**. Do not merge or deploy based on this document alone.
+
+## Historical October 30–31 reconciliation record
+
 Reviewed: 2026-10-30, America/Chicago. Main moved again on 2026-10-31, America/Chicago.
 Branch: `cursor/academy-pr-reconciliation-7469`. The earlier base was main `60a799285f746cc38f9806d4cefb4532fabd8026`. Origin `main` is now `7d4e21588dfe2021d652038544cfc6d866c774e7`, the squash merge of PR #236.
 This note records overlap, the tested combination, and a proposed merge order. It does not merge to main or deploy. The original pull request branches were not rewritten.
@@ -41,7 +51,7 @@ On 2026-10-31, merging origin `main` (`7d4e215`) into this branch conflicted in 
 
 No conflict required a product decision, and none was left unresolved.
 
-## Proposed merge order
+## Historical proposed merge order (superseded by the current checkpoint)
 
 Use this integration branch as the review vehicle. If the original pull requests are merged separately instead, use this order and these resolutions:
 

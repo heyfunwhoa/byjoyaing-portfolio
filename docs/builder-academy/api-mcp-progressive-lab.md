@@ -2,11 +2,13 @@
 
 **Parent lesson:** [API, REST API, webhook and MCP](mcp-vs-rest-api.md)  
 **Lesson id:** `mcp-vs-rest-api` — this file does not add a catalog id, card, or route  
-**Level:** Beginner, after the parent lesson · **Time:** about 30 minutes on paper  
+**Level:** Optional beginner-to-intermediate deep dive, after the parent lesson · **Time:** about 30 minutes for the paper activity, plus optional reading (author estimate; not learner-measured)  
 **Status:** Review draft. Companion reading only.  
 **Sources checked:** 2026-10-30
 
 You can finish this lab with a pencil. You do not need an API key, a repository, a model, or a running server.
+
+**Short route:** read the five definitions and the one-service/four-doors diagram, then complete the two knowledge checks. **Deeper route:** read each version and hand-trace the shared function, then complete the paper exercise and the source-revocation case. The optional sections are not prerequisites for the parent lesson.
 
 ## Why this matters
 
@@ -53,7 +55,7 @@ V4  an MCP adapter calls the function
                  (the only brief)
 ```
 
-The fictional company is **Northwind Example**, account id `synthetic-northwind`. The parent lesson uses another invented name, Northstar Example, for the same kind of classroom story. Neither name is a customer.
+This independent companion uses the fictional **Northwind Example**, account id `synthetic-northwind`, throughout. The parent lesson's **Northstar Example** is a different synthetic case; no customer identity or stored data is shared between the two. Start this companion fresh rather than assuming its inputs carry over from the parent.
 
 The actor is the trusted identity the server already knows. A browser, a model, or a tool argument must not be allowed to invent `allowedAccounts`.
 

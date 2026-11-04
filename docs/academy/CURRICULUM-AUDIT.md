@@ -1,11 +1,11 @@
 # Builder Academy curriculum audit and priorities
 
-## Current audit: 2026-10-30
+## Curriculum inventory: October 30 snapshot, reconciled November 4
 
 **Source snapshot:** current main `60a799285f746cc38f9806d4cefb4532fabd8026`, which includes the breadcrumb work through PR #230. The 38-lesson count was taken at `62d0037`; `lib/ai-academy.ts` did not change on main after that. This integration also includes PR #236's Frontend lesson, PR #237's API/MCP companion, and PR #233's nine paths and recovery lesson. Overlap and merge order: [INTEGRATION-233-236-237.md](INTEGRATION-233-236-237.md).
 **Scope:** complete registered-lesson and route inventory, prerequisite/path structure, instructional fields, companion-document inventory and availability labeling. This is not a claim that every external citation, live route, exercise outcome or accessibility behavior was independently revalidated.
 **Authorization:** user requested the lesson audit, organization and background-job recovery follow-up. This supersedes older holds only for this bounded slice. Broader labs, persistent progress and badges remain separate work.
-**State:** combined on an integration branch for review. Not merged to main and not deployed.
+**State (2026-11-04):** Existing PR #238 integrates the nine learning paths and recovery lesson on the original Academy integration branch. GitHub reports the branch conflict-free against current `main` at `e26355e`; exact-head automated checks succeeded with one flaky mobile focus test on first attempt. PR #238 is not merged or deployed; manual learner and owner-browser acceptance remain outstanding. This updates status only, not the original October 30 source-fact review.
 
 ### Findings and changes
 

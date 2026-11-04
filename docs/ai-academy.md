@@ -1,16 +1,18 @@
-# AI Enablement Academy — MVP
+# Builder Academy — AI Foundations and applied learning
 
-Route: `/ai-academy` on the portfolio. Built on a feature branch to avoid changes to production.
+Route: `/ai-academy` on the portfolio. The established Academy and its Frontend lesson are already on `main`. The nine-path organization and background-job recovery lesson are under review in [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238), not yet merged.
 
 ## Goal
 Start with core AI literacy, practice on realistic exercises, then recommend a workflow and graduate repeatable activities into version-controlled skills. Notion stays the human-facing knowledge layer; GitHub is canonical for code and skills.
 
 ## Current acceptance criteria
 - Guided lessons are registered in `lib/ai-academy.ts`. The `verification` editorial record is read from `content/academy/lessons/verification.json` through a validated adapter; its checks and identity remain code-owned. See the [local Keystatic pilot and rollback](academy/KEYSTATIC-PILOT.md). Each one includes an analogy, an exercise, a knowledge check, and external references. The in-app count follows that list, including package registries and npm supply-chain basics.
-- Lesson completion is intentionally **session-only**, clearly disclosed.
+- **Mark as reviewed** is a reversible, self-reported catalog reading flag in component state. It is session-only and does not prove an exercise was passed, a skill mastered, or a certification earned.
 - Workflow finder searches five task-to-tool recommendations and offers copyable starter prompts.
 - Accessible labeled controls, visible keyboard focus, mobile-responsive layout, meaningful empty states.
-- No authentication, AI API, Notion writes, autonomous agent execution, analytics or user data persistence.
+- The public catalog does not require login, invoke an AI model, write to Notion or execute agents. Optional learner accounts in [PR #234](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/234) are separate and disabled in this integration.
+- **Follow one click** is a distinct, synthetic learning mission that stores bounded practice progress in this browser's `localStorage` when available, provides reset, and falls back to page-session state. It does not sync to an account. This is separate from the catalog's session-only reading review.
+- The portfolio includes opt-in deployment-configured PostHog monitoring and analytics code. This Academy change does not activate it. Confirm the actual hosted configuration and privacy notice before claiming no analytics collection.
 
 ## Development principles
 - Feature branch → small commits → CI/lint/build → reviewed pull request → merge.
@@ -24,7 +26,7 @@ Start with core AI literacy, practice on realistic exercises, then recommend a w
 
 ## Current curriculum audit
 
-See the [complete curriculum inventory and priorities](academy/CURRICULUM-AUDIT.md), reviewed 2026-10-12. It distinguishes registered cards, guided tutorials, companion references, simulations and planned modules. Its delivery order supersedes the older roadmap below. Current work is documentation and prioritization only; lesson/UI implementation is on hold.
+See the [current curriculum inventory and priorities](academy/CURRICULUM-AUDIT.md) and [integration notes](academy/INTEGRATION-233-236-237.md). On November 4, 2026, `main` contains the existing Frontend guided lesson and the API/MCP companion; PR #238 contains the proposed nine-path organization and background-job recovery. Further interactive exercises, optional learner accounts and release decisions remain separately scoped.
 
 ## Roadmap
 P0: check build and accessibility, improve lesson testing, add learner feedback and source review dates.

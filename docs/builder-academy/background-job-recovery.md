@@ -60,7 +60,9 @@ Write a five-line recovery note with: job ID, failure category, next state, dupl
 3. **No.** Correct or quarantine invalid input. A delay cannot invent the missing ID.
 4. **Cause and fix, current authorization, input validity, existing effects, duplicate protection, budget and a recorded replay decision.** A failed-job area preserves evidence; it does not prove the work is safe to repeat.
 
-These are self-review answers. The Academy card has one automatically checked question; this written exercise does not save or grade a submission.
+**Why the alternatives fail:** Three remaining retries would confuse attempts with retries; a missing acknowledgement does not prove the write failed; delay cannot repair missing required input; and moving work to a failed-job area does not approve replay. These explanations apply to the fictional three-attempt policy, not a provider default.
+
+These are self-review answers. The Academy card has one automatically checked question; this written exercise does not save or grade a submission. A right answer in the card is not independent proof that you can operate a production queue.
 
 ## Transfer: a new similar task
 
