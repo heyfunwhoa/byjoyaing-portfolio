@@ -58,7 +58,7 @@ Risk tier: Tier [A/B/C] with rationale, independent of the Linear delivery-tier 
 Release: Do not merge or deploy without applicable checks, content/UX acceptance and explicit owner authorization.
 Rollback: [Revert path, prior production SHA, or N/A with reason]
 
-The [proposed portfolio acceptance standard](https://github.com/heyfunwhoa/technical-docs-platform/pull/58) supplements this site's brand and UX review. Passing a PR metadata check does not establish an approved public release.
+The [portfolio acceptance standard](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/engineering/acceptance-evidence-standard-v1.md) supplements this site's brand and UX review. Passing a PR metadata check does not establish an approved public release.
 
 ## Brand exceptions (only if applicable)
 
