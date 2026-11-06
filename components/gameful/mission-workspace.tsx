@@ -1,11 +1,12 @@
 "use client";
-import { useId, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { emptyMission, missionSteps, reviewedCount, reviewArtifact, updateArtifact } from '../../lib/gameful/mission';
 import styles from './mission-workspace.module.css';
 
 /** Session-only practice. No account, CRM, finance, telemetry or storage adapter. */
 export function MissionWorkspace() {
   const id = useId();
+  const resetButton = useRef<HTMLButtonElement>(null);
   const [mission, setMission] = useState(emptyMission);
   const [resetting, setResetting] = useState(false);
   const [celebrate, setCelebrate] = useState(false);
@@ -29,9 +30,9 @@ export function MissionWorkspace() {
     <div className={styles.actions}>
       <label className={styles.control}><input type="checkbox" checked={motion} onChange={event => setMotion(event.target.checked)} /> Enable a brief completion animation</label>
       <button type="button" disabled={count !== missionSteps.length || celebrate} onClick={() => setCelebrate(true)}>Celebrate practice completion</button>
-      <button type="button" onClick={() => setResetting(true)}>Reset mission</button>
+      <button ref={resetButton} type="button" onClick={() => setResetting(true)}>Reset mission</button>
     </div>
     {celebrate && <p role="status" className={motion ? styles.celebration : undefined}>✓ Four deliverables reviewed. Ready for a coaching conversation.</p>}
-    {resetting && <fieldset className={styles.confirm}><legend>Clear all fictional notes and reviews?</legend><button type="button" onClick={() => setResetting(false)}>Keep my work</button> <button type="button" onClick={() => { setMission(emptyMission()); setCelebrate(false); setResetting(false); }}>Clear mission</button></fieldset>}
+    {resetting && <fieldset className={styles.confirm}><legend>Clear all fictional notes and reviews?</legend><button type="button" onClick={() => { setResetting(false); resetButton.current?.focus(); }}>Keep my work</button> <button type="button" onClick={() => { setMission(emptyMission()); setCelebrate(false); setResetting(false); resetButton.current?.focus(); }}>Clear mission</button></fieldset>}
   </section>;
 }
