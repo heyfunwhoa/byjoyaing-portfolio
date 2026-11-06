@@ -24,6 +24,16 @@ Before editing branding, copy, layout, navigation, portfolio examples or public 
 - Every portfolio design PR must complete [.github/pull_request_template.md](.github/pull_request_template.md), documenting brand alignment, evidence, impact, tests, and exceptions.
 - Change brand fundamentals only through an explicit reviewed update to the canonical guide; do not create competing brand guidelines in other files.
 
+### Conditional brand-reference check
+
+For each PR, state whether it changes positioning, purpose, values, voice, or the visual shorthand summarized in the internal brand reference.
+
+- If yes, update `docs/brand/brand-guidelines.md` in the same reviewed PR. Name the person responsible for reconciling the internal **joy. | Brand & Values at a Glance** page after merge.
+- After the approved change merges, that person updates only the affected summary in Notion and records the reviewed merged commit SHA and reconciliation date. If Notion is unavailable, record the pending handoff in the PR; do not claim synchronization is complete.
+- Routine navigation, spacing, bug fixes and new project entries require no Notion update unless they change those brand foundations. Mark the check not applicable with a short reason.
+- GitHub remains authoritative for brand decisions. Notion is a concise, manually maintained reference; the website is the public implementation. Track deployment separately from brand reconciliation.
+- Keep private workspace links and reflections out of public repository files. Do not add scheduled audits, automatic synchronization or another brand definition for this check.
+
 These portfolio-specific rules supplement the Next.js agent block above. Other repositories may share engineering standards without adopting this site's branding.
 
 ## Shared engineering and agent operating standards (cross-repository pointer)
