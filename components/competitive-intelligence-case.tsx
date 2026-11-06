@@ -187,7 +187,6 @@ export function CompetitiveIntelligenceCase() {
         ]}
       />
 
-      <PortfolioExample key="competitive-intelligence-engine" example={portfolioExamples["competitive-intelligence-engine"]} />
 
       <ProjectTechnologyStack slug="competitive-intelligence-engine" />
 
@@ -239,6 +238,15 @@ export function CompetitiveIntelligenceCase() {
           <CompetitiveIntelligenceWorkflow />
         </div>
       </DisclosureSection>
+
+      <section aria-label="Optional evidence practice" className="my-6 rounded-2xl border border-border bg-card p-4 sm:p-6">
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted">Optional practice</p>
+        <h2 className="mt-2 font-display text-2xl">Practice the evidence habit</h2>
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+          The five-stage workflow above is the main interactive demonstration. This separate four-step exercise is an optional teaching example for inspecting a source, distinguishing interpretation, and drafting a field question. It does not update the workflow or approve a claim.
+        </p>
+        <PortfolioExample key="competitive-intelligence-engine" example={portfolioExamples["competitive-intelligence-engine"]} />
+      </section>
 
       <DisclosureSection
         id="architecture"

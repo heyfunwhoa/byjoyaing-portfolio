@@ -120,3 +120,55 @@ test("competitive architecture reads as four stages without cramped columns", as
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
+
+
+test("case study foregrounds main workflow before optional practice", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Run ordered journey test once.");
+  await page.goto("/work/competitive-intelligence-engine#workflow");
+  const workflow = page.locator("#workflow");
+  const optional = page.getByRole("region", { name: "Optional evidence practice" });
+  await expect(workflow).toBeVisible();
+  await expect(optional).toBeVisible();
+  expect(await workflow.evaluate((element) => element.compareDocumentPosition(document.querySelector('[aria-label="Optional evidence practice"]')!) & Node.DOCUMENT_POSITION_FOLLOWING)).toBeTruthy();
+  await expect(optional.getByText(/does not update the workflow or approve a claim/i)).toBeVisible();
+});
+
+test("session takeaway follows current provider and local review state without storage", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Run session state check once.");
+  await page.setViewportSize({ width: 375, height: 900 });
+  await page.goto("/work/competitive-intelligence-engine#workflow");
+  const takeaway = page.getByRole("region", { name: "Session takeaway" });
+  const selector = page.getByRole("combobox", { name: "Choose workflow step" });
+  await expect(takeaway).toContainText("TruffleHog");
+  await expect(takeaway).toContainText("Not marked reviewed");
+  await selector.selectOption("change");
+  await page.getByRole("button", { name: "Review change" }).click();
+  await expect(takeaway).toContainText("Marked reviewed in this session");
+  await selector.selectOption("impact");
+  await page.getByRole("button", { name: "Mark hypothesis reviewed" }).click();
+  await expect(takeaway).toContainText("Nothing is saved, sent, published");
+  await selector.selectOption("landscape");
+  await page.getByRole("button", { name: /GitGuardian Commercial secrets detection/ }).click();
+  await expect(takeaway).toContainText("No reviewed source attached");
+  await page.reload();
+  await expect(takeaway).toContainText("TruffleHog");
+  await expect(takeaway).toContainText("Not marked reviewed");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("mobile workflow panel is named even when desktop tabs are hidden", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "site-desktop", "Run accessible-panel check once.");
+  await page.setViewportSize({ width: 375, height: 900 });
+  await page.goto("/work/competitive-intelligence-engine#workflow");
+  await expect(page.getByRole("tabpanel", { name: "Current workflow: Competitive landscape" })).toBeVisible();
+  const selector = page.getByRole("combobox", { name: "Choose workflow step" });
+  await selector.selectOption("brief");
+  await expect(page.getByRole("tabpanel", { name: "Current workflow: Competitive brief" })).toBeVisible();
+  await page.getByRole("combobox", { name: "Choose brief section" }).selectOption("questions");
+  await expect(page.getByRole("tabpanel", { name: "Discovery questions" })).toBeVisible();
+  await selector.selectOption("change");
+  const reviewButton = page.getByRole("button", { name: "Review change" });
+  const bounds = await reviewButton.boundingBox();
+  expect(bounds).not.toBeNull();
+  expect(bounds!.height).toBeGreaterThanOrEqual(44);
+});
