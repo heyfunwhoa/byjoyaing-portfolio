@@ -35,12 +35,12 @@ type BriefTab = (typeof briefTabs)[number]["id"];
 
 function Frame({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-[#f7f4ee]">
-      <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
+    <div className="min-w-0 overflow-hidden rounded-2xl border border-border bg-[#f7f4ee]">
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-b border-border px-3 py-3 sm:px-4">
         <p className="text-xs font-medium tracking-wide text-muted">{title}</p>
         <p className="text-[11px] text-muted">Illustrative demo data</p>
       </div>
-      <div className="p-4">{children}</div>
+      <div className="min-w-0 p-3 sm:p-4">{children}</div>
     </div>
   );
 }
@@ -133,8 +133,26 @@ export function CompetitiveIntelligenceWorkflow() {
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[14rem_minmax(0,1fr)]">
-      <div role="tablist" aria-label="Competitive workflow" onKeyDown={onTabKeyDown} className="flex gap-2 overflow-x-auto lg:flex-col">
+    <div className="grid min-w-0 gap-4 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-6">
+      <div className="min-w-0 lg:hidden">
+        <label htmlFor="ci-mobile-stage" className="mb-2 block text-sm font-semibold text-foreground">
+          Workflow step {stages.findIndex((item) => item.id === stage) + 1} of {stages.length}
+        </label>
+        <select
+          id="ci-mobile-stage"
+          aria-label="Choose workflow step"
+          value={stage}
+          onChange={(event) => setStage(event.target.value as StageId)}
+          className="min-h-12 w-full min-w-0 rounded-lg border border-border bg-card px-3 text-base text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          {stages.map((item, index) => (
+            <option value={item.id} key={item.id}>
+              {String(index + 1).padStart(2, "0")} / {item.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div role="tablist" aria-label="Competitive workflow" onKeyDown={onTabKeyDown} className="hidden gap-2 lg:flex lg:flex-col">
         {stages.map((item, index) => {
           const selected = stage === item.id;
           return (
@@ -317,7 +335,21 @@ export function CompetitiveIntelligenceWorkflow() {
               </p>
             ) : (
               <div>
-                <div role="tablist" aria-label="Brief sections" onKeyDown={onBriefKeyDown} className="flex gap-2 overflow-x-auto">
+                <div className="lg:hidden">
+                  <label htmlFor="ci-mobile-brief" className="mb-2 block text-sm font-semibold">Brief section</label>
+                  <select
+                    id="ci-mobile-brief"
+                    aria-label="Choose brief section"
+                    value={briefTab}
+                    onChange={(event) => setBriefTab(event.target.value as BriefTab)}
+                    className="min-h-12 w-full rounded-lg border border-border bg-background px-3 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
+                    {briefTabs.map((item) => (
+                      <option value={item.id} key={item.id}>{item.label}</option>
+                    ))}
+                  </select>
+                </div>
+                <div role="tablist" aria-label="Brief sections" onKeyDown={onBriefKeyDown} className="hidden gap-2 overflow-x-auto lg:flex">
                   {briefTabs.map((item) => {
                     const selected = briefTab === item.id;
                     return (

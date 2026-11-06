@@ -407,3 +407,25 @@ Status: proposed catalog and brand guidance only. Owner: portfolio maintainer. N
 - Composition: each 80px image sits beside readable 14px credential text beneath the schools. The existing grid gives the badges two columns from 640px and stacked rows on phones. Preserve source transparency and clear space. The certifications remain identified as Foundational.
 - Accessibility/state: empty alt text and an aria-hidden image wrapper avoid repeated announcements; the visible credential names carry the meaning. No new links, focus targets, motion, or asynchronous interaction. Other learning entries retain their text fallback.
 - Verification: downloaded source files have RGBA mode, alpha range 0–255, and transparent outer corners. Existing About editorial validation plus current-head CI and the About viewport/motion matrix cover the page. Inspect actual badge loading, transparent edges against the page surface, dimensions, adjacent text, and overflow in the preview. Manual device/zoom/screen-reader checks remain separate. Tier 1 scoped presentation refinement; no new tracking issue. Rollback removes the two badge mappings/assets and restores the prior combined credential line.
+
+
+## Competitive Intelligence case: mobile workflow stage selector (2026-11-03)
+
+- **Owner / destination:** `byjoyaing-portfolio`, `/work/competitive-intelligence-engine#workflow`, existing `components/competitive-intelligence-workflow.tsx`.
+- **Task:** Five horizontal stage tabs become truncated on iPhone; the third tab is cut off, hiding later stages. The nested competitive brief has the same narrow-screen risk.
+- **Reuse:** Adapt the repository's existing native-selector-on-mobile pattern (Projects filters) without adding a new dependency or changing the simulated workflow data.
+- **Phone (< 1024px):** One full-width labeled select shows the numbered current workflow step and permits direct access to all five steps. The desktop tablist is hidden at these widths. For brief subsections, use the same labeled select below 1024px. Preserve stage state, panels and privacy boundaries.
+- **Desktop:** Keep the existing vertical tab navigation and keyboard Arrow/Home/End behavior at 1024px and above. Brief tabs stay horizontal from 1024px.
+- **Accessibility / status:** Native selects provide keyboard, screen-reader and touch semantics with minimum 48px height. Existing tabpanel relationship and all source/evidence labels remain. No new motion, data persistence or network actions.
+- **Verification:** `tests/site/competitive-workflow-mobile.spec.ts` covers 320/375/640px stage selection, nested brief selection and page-width overflow, plus desktop keyboard navigation. Exact-head CI, real-device observation, 200% zoom and screen-reader checks must be recorded before merge.
+- **Rollback:** Revert this PR's workflow and test change. No database or public route changes.
+
+### Architecture expansion follow-up (same case-study review)
+
+The owner also reported that expanding Architecture looked cramped on desktop. The previous responsive composition put four dense stage cards in one horizontal row from the `lg` breakpoint, plus redundant arrow graphics. This gave the stages insufficient width to read.
+
+- **Decision:** Reuse semantic ordered-list and card patterns already in the portfolio. Keep the existing four stages, all nodes, their status badges, descriptions, and planned-vs-built distinction. Replace the arrows with visible `01–04` stage numbers.
+- **Phone/tablet/standard laptop:** One readable column. **Wide desktop (1280px and up):** Two-column, two-row layout with source order preserved, not four narrow columns.
+- **Accessibility:** Logical DOM order, semantic `ol`, visible headings, non-interactive cards, no hidden essential content or motion. The parent Architecture disclosure keeps native keyboard operation.
+- **Verification:** The browser spec checks 320, 375, 768 and 1280px, ordered headings, responsive placement and page overflow. Manual 200% zoom, real-device readability and screen-reader checks remain release gates.
+- **Rollback:** Revert the architecture component along with this draft PR. No route, data or dependency changes.

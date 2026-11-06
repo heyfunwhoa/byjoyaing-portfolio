@@ -1,5 +1,6 @@
 import { execFileSync } from "node:child_process";
 import { shouldSkipVercelBuild } from "../lib/release/reliability.ts";
+import { draftPreviewSkip } from "../.release/preview-draft.mjs";
 
 function finish(code: 0 | 1, message: string): never {
   console.log(message);
@@ -7,6 +8,9 @@ function finish(code: 0 | 1, message: string): never {
 }
 
 if (process.env.RELEASE_FORCE_BUILD === "1") finish(1, "build: explicit override");
+
+const draft = await draftPreviewSkip();
+if (draft) finish(0, draft.reason);
 
 const previous = process.env.VERCEL_GIT_PREVIOUS_SHA?.trim() ?? "";
 const current = process.env.VERCEL_GIT_COMMIT_SHA?.trim() ?? "";
