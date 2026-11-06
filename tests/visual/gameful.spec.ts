@@ -2,8 +2,11 @@ import { expect, test } from '@playwright/test';
 import { lessons } from '../../lib/ai-academy';
 import { learningPaths } from '../../lib/academy/learning-paths';
 const route = '/iframe.html?id=design-lab-gameful-workbench--overview&viewMode=story';
-test('mission reviews invalidate on edit, cancel preserves work and reset clears it', async ({ page }) => {
+test.beforeEach(async ({ page }) => {
   await page.goto(route);
+  await expect(page.getByRole('heading', { name: 'Make progress visible' })).toBeVisible();
+});
+test('mission reviews invalidate on edit, cancel preserves work and reset clears it', async ({ page }) => {
   const mission = page.getByRole('region', { name: 'Build an opportunity brief' });
   const celebrate = mission.getByRole('button', { name: 'Celebrate practice completion' });
   await expect(celebrate).toBeDisabled();
@@ -33,7 +36,6 @@ test('mission reviews invalidate on edit, cancel preserves work and reset clears
   await expect(reset).toBeFocused();
 });
 test('exploration checklist preserves status and has a working reset', async ({ page }) => {
-  await page.goto(route);
   const section = page.getByRole('region', { name: 'Explore the work behind a project' });
   const first = section.getByRole('checkbox').first();
   await first.check();
@@ -44,7 +46,6 @@ test('exploration checklist preserves status and has a working reset', async ({ 
   await expect(section.getByRole('status')).toContainText('0 of');
 });
 test('learning uses real check answers, supports keyboard and resets on path change', async ({ page }) => {
-  await page.goto(route);
   const section = page.getByRole('region', { name: 'Follow a learning path' });
   const first = lessons.find(item => item.slug === learningPaths[1].slugs[0])!;
   const answer = section.getByRole('radio', { name: first.check.choices[first.check.answer], exact: true });
@@ -61,7 +62,6 @@ test('learning uses real check answers, supports keyboard and resets on path cha
   await expect(section.getByRole('status').first()).toContainText('0 of');
 });
 test('optional graph and native controls fit phone, tablet and desktop', async ({ page }) => {
-  await page.goto(route);
   const section = page.getByRole('region', { name: 'Follow a learning path' });
   await section.getByText('Show the optional path map', { exact: true }).click();
   await expect(section.locator('.react-flow')).toBeVisible();
