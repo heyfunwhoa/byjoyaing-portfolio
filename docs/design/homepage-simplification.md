@@ -1,7 +1,7 @@
 # Homepage simplification
 
-**Status:** Implementation reference. Current copy and wayfinding refinements are proposed in PR #219.  
-**Updated:** 2026-10-30  
+**Status:** Implementation reference. Home and About copy, wayfinding, and page-flow review guidance were merged in [PR #219](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/219).  
+**Updated:** 2026-11-03  
 **Source:** `app/page.tsx`, `content/home/page.json`, and `components/editorial-bento.tsx`.  
 **Brand:** [canonical brand guidelines](../brand/brand-guidelines.md).
 
