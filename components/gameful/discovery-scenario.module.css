@@ -1,0 +1,8 @@
+.scenario { color: var(--foreground, var(--ink, #1b211d)); background: var(--card, var(--paper, #fbf8f2)); border: 1px solid var(--border, var(--line, #cfc3b3)); border-radius: 1rem; padding: 1.25rem; margin-block: 1.5rem; overflow-wrap: anywhere; }
+.scenario h3 { font-size: 1.5rem; font-weight: 600; }
+.scenario p, .scenario li { margin-block: .75rem; line-height: 1.65; }
+.scenario ol { padding-left: 1.5rem; list-style: decimal; }
+.scenario button { min-height: 44px; border: 1px solid var(--border, var(--line, #cfc3b3)); border-radius: .5rem; padding: .65rem 1rem; text-align: left; }
+.scenario button:focus-visible, .scenario h3:focus { outline: 2px solid var(--accent, var(--pine, #8a4b2a)); outline-offset: 3px; }
+.choices { display: grid; gap: .75rem; margin-block: 1rem; }
+@media (min-width: 768px) { .choices { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

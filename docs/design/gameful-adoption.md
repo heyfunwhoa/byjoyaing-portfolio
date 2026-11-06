@@ -41,3 +41,23 @@ The three lightweight compositions are usable code. The remaining engine/avatar/
 ## Acceptance evidence
 
 Record exact commands and observed CI in the draft PR. Required: empty review refusal, stale review invalidation, complete/reopen/reset, keyboard practice flow, narrow-screen wrapping and reduced motion. Manual screen reader and physical-device acceptance remain separate. Do not infer public release from the lab or a passing build.
+
+## Additional component pilots (2026-11-06)
+
+User-authorized extension of #258 / KRU-150. This scoped dependency exception applies only to these prototypes; the earlier no-dependency criteria for public page cleanup remain unchanged. Tier B synthetic UI / Delivery Tier 2. No public adoption.
+
+| Library | Version / license | Named task and actual use |
+| --- | --- | --- |
+| inkjs | 2.4.0 / MIT | Runtime for an authored branching discovery conversation. Compiler runs offline through `npm run practice:compile`; generated TS string avoids importing the compiler into the client. GTM consumer: #116, `/learn/missions`. |
+| react-quiz-component | 2.1.1 / MIT | Headless `useQuiz` runs a multi-question attempt, feedback and final score. Existing Academy questions/answers/sources remain canonical; native controls and local tokens replace vendor presentation. |
+| react-hexgrid | 2.0.1 / MIT | Optional numbered SVG territories select existing Academy paths. Equivalent labeled HTML buttons remain present; no locked lessons or invented prerequisite graph. |
+
+Upstreams: https://github.com/y-lohse/inkjs ; https://github.com/wingkwong/react-quiz-component ; https://github.com/Hellenic/react-hexgrid . Exact versions and transitive integrity recorded in package-lock.json. Package MIT notices retained by installed distributions; notices also recorded in docs/design/gameful-third-party-notices.txt. No remote assets, calls or paid service. Published peer ranges accept this repo's React 19; type/build/browser verification are separate gates.
+
+Entry: `GamefulWorkbench` offers explicit load buttons. New modules are lazy imports; no public page imports. `DiscoveryPilot` is portable and consumes the same authored story in GTM OS. Existing single-question learning checks and React Flow map are retained for comparison. New quiz progress never writes to those checks or Academy storage.
+
+Phone: stacked controls and responsive 280px-high SVG. Tablet/desktop: two-column path/choice controls. Text wraps; no animation. SVG tiles respond to Enter/Space and clicks, and native path buttons provide equivalent navigation. Focus returns to conversation/quiz headings on advancement/reset. Sources open separately. Quiz path changes reset the attempt; restart clears scenario choices or quiz answers, never mission notes. Scenario has 16 terminal paths, including missing-baseline/owner coaching and a recovery from premature demo. No scoring of real deals.
+
+Verification: 218 unit tests passed (including all 16 story endings), focused ESLint passed, route type generation and TypeScript passed before final UI checks. Browser cases added for consequence/restart, hex keyboard, correct/incorrect feedback, quiz completion/reset/path switch and 375/768/1280 overflow. Local Storybook cannot start: `uv_interface_addresses` environment error. Hosted Visual QA and full CI remain required; manual zoom/screen-reader/contrast acceptance remains open. Exact-head evidence belongs in PR #258.
+
+Rollback: remove new mounts, discovery/learning-challenge source, content/compiler and test entries; remove the three package entries with a regenerated lockfile. GTM can revert its own InkJS consumer independently. No migrations or saved user state.

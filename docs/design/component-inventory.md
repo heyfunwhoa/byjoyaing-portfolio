@@ -209,3 +209,7 @@ Implementation checks do not prove rendered usability. Verify 320/375/390/430px,
 ## Game-like compositions (November 6, 2026; local prototype)
 
 `GamefulWorkbench` in `/design-lab` composes the existing BentoGrid/Card/status patterns and directory, plus the installed React Flow and existing lesson/path catalogs. It adds a portable synthetic MissionWorkspace with explicit self-review and invalidation on edit. Public pages are unchanged; production still returns 404 for Design Lab. See [gameful-adoption.md](gameful-adoption.md) for all eight source decisions, remaining engine/asset candidates, state behavior and rollback.
+
+### Branching practice, quiz and hex-map pilots (draft)
+
+`DiscoveryPilot` lazy-loads the InkJS conversation; `LearningChallenge` uses react-quiz-component's headless hook and react-hexgrid with native path controls. Local GamefulWorkbench only; GTM OS #116 owns the discovery consumer. See gameful-adoption.md for pinned versions, dependency rationale, license notices, boundaries, tests and rollback. Not approved public components.

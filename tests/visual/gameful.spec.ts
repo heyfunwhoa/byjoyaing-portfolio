@@ -71,3 +71,48 @@ test('optional graph and native controls fit phone, tablet and desktop', async (
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   }
 });
+
+test('scripted discovery has consequences and a clean restart', async ({ page }) => {
+  await page.getByRole('button', { name: 'Start a discovery conversation' }).click();
+  const scene = page.getByRole('region', { name: 'Practice a discovery conversation' });
+  await scene.getByRole('button', { name: 'Offer a demo immediately.' }).click();
+  await expect(scene).toContainText('A demo invitation is not evidence');
+  await scene.getByRole('button', { name: 'Return to discovery.' }).click();
+  await scene.getByRole('button', { name: 'Ask the service owner to measure a sample of recent onboardings.' }).click();
+  await scene.getByRole('button', { name: 'Identify the service owner, technical evaluator and budget approver.' }).click();
+  await scene.getByRole('button', { name: 'Propose one workflow with a baseline, owner and agreed success measure.' }).click();
+  await expect(scene.getByRole('status')).toContainText('Conversation complete');
+  await expect(scene).toContainText('Their approval is still unconfirmed');
+  await scene.getByRole('button', { name: 'Restart conversation' }).click();
+  await expect(scene.getByRole('listitem')).toHaveCount(1);
+});
+
+test('hex map and quiz support keyboard, scoring, reset and narrow screens', async ({ page }) => {
+  await page.getByRole('button', { name: 'Explore learning territories and quizzes' }).click();
+  const territory = page.getByRole('region', { name: 'Explore a learning territory', exact: true });
+  const tile = territory.getByRole('button', { name: 'Territory 2: Start with AI basics' });
+  await tile.focus(); await tile.press('Enter');
+  const quiz = territory.getByRole('region', { name: 'Start with AI basics: practice challenge' });
+  for (let i = 0; i < learningPaths[1].slugs.length; i++) {
+    const lesson = lessons.find(item => item.slug === learningPaths[1].slugs[i])!;
+    const answer = quiz.getByRole('radio', { name: lesson.check.choices[lesson.check.answer], exact: true });
+    await answer.focus(); await answer.press('Space');
+    await expect(quiz.getByRole('status')).toContainText('Correct.');
+    await quiz.getByRole('button', { name: i === learningPaths[1].slugs.length - 1 ? 'Finish challenge' : 'Next question' }).click();
+  }
+  await expect(quiz).toContainText('Attempt complete: 4 of 4 correct.');
+  await quiz.getByRole('button', { name: 'Restart challenge' }).click();
+  await expect(quiz).toContainText('Question 1 of 4');
+  await expect(quiz.getByRole('radio', { checked: true })).toHaveCount(0);
+  const first = lessons.find(item => item.slug === learningPaths[1].slugs[0])!;
+  await quiz.getByRole('radio').nth((first.check.answer + 1) % first.check.choices.length).check();
+  await expect(quiz.getByRole('status')).toContainText('Not quite.');
+  await territory.getByRole('button', { name: '1. Enterprise evaluation and buying process', exact: true }).click();
+  await territory.getByRole('button', { name: '2. Start with AI basics', exact: true }).click();
+  await expect(quiz).toContainText('Question 1 of 4');
+  await expect(quiz.getByRole('radio', { checked: true })).toHaveCount(0);
+  for (const width of [375, 768, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  }
+});

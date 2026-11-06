@@ -1,5 +1,7 @@
 "use client";
-import { useId, useState } from 'react';
+import { lazy, Suspense, useId, useState } from 'react';
+import { DiscoveryPilot } from '@/components/gameful/discovery-pilot';
+const LearningChallenge = lazy(() => import('./learning-challenge').then(module => ({ default: module.LearningChallenge })));
 import { Controls, ReactFlow, Position } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { BentoGrid } from '@/components/ui/bento-grid';
@@ -68,9 +70,12 @@ function LearningPath({ pathIndex }: { pathIndex: number }) {
 export function GamefulWorkbench() {
   const id = useId();
   const [pathIndex, setPathIndex] = useState(1);
+  const [showChallenge, setShowChallenge] = useState(false);
   return <section aria-labelledby={id} className="space-y-8">
     <header><p className="editorial-eyebrow text-accent">Game-like interactions · local prototypes</p><h2 id={id} className="mt-2 text-3xl font-semibold">Make progress visible</h2><p className="mt-3 text-muted">Three compositions to try before adopting them in a workflow. No points, rankings, saved accounts or live deal updates.</p></header>
     <MissionWorkspace />
+    <DiscoveryPilot />
+    {showChallenge ? <Suspense fallback={<p role="status">Loading learning territories…</p>}><LearningChallenge /></Suspense> : <button className={control} onClick={() => setShowChallenge(true)}>Explore learning territories and quizzes</button>}
     <ProjectExploration />
     <section aria-labelledby={id + '-learning'} className="space-y-4"><h3 id={id + '-learning'} className="text-2xl font-semibold">Follow a learning path</h3>
       <label className="block" htmlFor={id + '-path'}>Choose a path (changing paths clears practice answers)</label>
