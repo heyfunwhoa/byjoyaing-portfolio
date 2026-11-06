@@ -264,6 +264,245 @@ export const componentOptions: ComponentOption[] = [
     adoption:
       "Use original SVG/CSS and project data to explain one real workflow at a time. Keep labels and a text explanation in the DOM, avoid animation as the only signal, and mark synthetic examples clearly. The Academy systems page already demonstrates this pattern.",
   },
+  {
+  "id": "game-inkjs",
+  "name": "InkJS: branching practice",
+  "purpose": "Practice discovery choices and see scripted consequences.",
+  "availability": "Available here",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "GTM Revenue OS",
+    "Portfolio"
+  ],
+  "source": "https://github.com/y-lohse/inkjs",
+  "adoption": "Local pilot implemented: DiscoveryPilot. GTM #116 owns its consumer. Not merged, deployed or approved public UI. 2.4.0, MIT; see gameful-adoption.md."
+},
+  {
+  "id": "game-react-quiz",
+  "name": "React Quiz Component: practice challenges",
+  "purpose": "Answer a sequence of existing lesson questions with feedback and scoring.",
+  "availability": "Available here",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "Truffle Camp",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/wingkwong/react-quiz-component",
+  "adoption": "Local LearningChallenge pilot only. Other app assignments are potential uses. 2.1.1, MIT. Keep lesson sources canonical and practice scores separate from certification."
+},
+  {
+  "id": "game-hexgrid",
+  "name": "React Hexgrid: learning territories",
+  "purpose": "Explore numbered learning paths using tiles and equivalent text controls.",
+  "availability": "Available here",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "Truffle Camp"
+  ],
+  "source": "https://github.com/Hellenic/react-hexgrid",
+  "adoption": "Local LearningChallenge pilot only. 2.0.1, MIT. Keep native keyboard controls and readable labels; no invented prerequisite or mastery claims."
+},
+  {
+  "id": "game-rpgui",
+  "name": "RPGUI: quest journals and inventory",
+  "purpose": "Explore an RPG-style quest journal or character-sheet interface.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "Truffle Camp"
+  ],
+  "source": "https://github.com/RonenNess/RPGUI",
+  "adoption": "Potential only; not installed. Isolate to a themed Design Lab experiment. Recheck zlib license, maintenance, CSS scope, keyboard controls and contrast before adoption."
+},
+  {
+  "id": "game-nes-css",
+  "name": "NES.css: retro arcade interface",
+  "purpose": "Try retro buttons, panels and progress styling for a small arcade or interactive resume.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio"
+  ],
+  "source": "https://github.com/nostalgic-css/NES.css",
+  "adoption": "Potential only; not installed. Keep professional portfolio pages unchanged. Verify exact release/license, font and asset rights, responsive styling and focus visibility first."
+},
+  {
+  "id": "game-matter",
+  "name": "Matter.js: 2D physics puzzles",
+  "purpose": "Experiment with sorting, stacking or colliding puzzle pieces.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "Truffle Camp"
+  ],
+  "source": "https://github.com/liabru/matter-js",
+  "adoption": "Potential only; not installed. MIT reference. Define one learning task, lifecycle cleanup, performance budget and a keyboard/static alternative before a scoped pilot."
+},
+  {
+  "id": "game-rapier",
+  "name": "React Three Rapier: 3D physics",
+  "purpose": "Add physical interactions to a future React Three Fiber scene.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio"
+  ],
+  "source": "https://github.com/pmndrs/react-three-rapier",
+  "adoption": "Potential only; not installed. MIT reference. Depends on choosing a 3D use case first; inspect compatible R3F/React versions, WASM loading and mobile/static fallback."
+},
+  {
+  "id": "game-ecctrl",
+  "name": "Ecctrl: walkable project gallery",
+  "purpose": "Let a visitor explore project stations through a controllable character.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio"
+  ],
+  "source": "https://github.com/pmndrs/ecctrl",
+  "adoption": "Potential only; not installed. Larger experiment depending on R3F/Rapier. Verify exact license/version, touch controls, keyboard navigation and a complete ordinary project list."
+},
+  {
+  "id": "game-howler",
+  "name": "Howler.js: optional interaction audio",
+  "purpose": "Try opt-in sound feedback for a completed challenge or interactive demo.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "Truffle Camp"
+  ],
+  "source": "https://github.com/goldfire/howler.js",
+  "adoption": "Potential only; not installed. MIT reference. Sound off by default; require user initiation, mute/volume controls, equivalent visual feedback and separately licensed audio assets."
+},
+  {
+  "id": "game-rewards",
+  "name": "React Rewards: completion feedback",
+  "purpose": "Try a brief celebration after a meaningful practice milestone.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "Truffle Camp",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/thedevelobear/react-rewards",
+  "adoption": "Potential only; not installed. Existing CSS acknowledgment already covers the basic task. Add only for a demonstrated benefit after version/license and reduced-motion/cleanup checks."
+},
+  {
+  "id": "game-dicebear",
+  "name": "DiceBear: fictional persona avatars",
+  "purpose": "Distinguish fictional personas in a learning or discovery exercise.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "Truffle Camp",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/dicebear/dicebear",
+  "adoption": "Potential only; not installed. Inspect the chosen style license separately, bundle locally, preserve attribution and the approved joy. portrait; no remote avatar requests."
+},
+  {
+  "id": "game-r3f",
+  "name": "React Three Fiber: explorable scenes",
+  "purpose": "Prototype a small three-dimensional project or learning scene.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio"
+  ],
+  "source": "https://github.com/pmndrs/react-three-fiber",
+  "adoption": "Potential only; not installed. Define one scene and load budget, inspect license/version compatibility, and retain mobile/static and keyboard access before implementation."
+},
+  {
+  "id": "game-phaser",
+  "name": "Phaser React template: training mini-game",
+  "purpose": "Prototype one fictional secrets-triage or learning exercise.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "Truffle Camp"
+  ],
+  "source": "https://github.com/phaserjs/template-react",
+  "adoption": "Potential only; not installed. Isolated starter, not a production portfolio dependency. Review template/engine licenses, input/resize behavior and React lifecycle cleanup."
+},
+  {
+  "id": "game-boardgame",
+  "name": "boardgame.io: turn-based simulation",
+  "purpose": "Explore a fictional negotiation or resource-allocation game.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/boardgameio/boardgame.io",
+  "adoption": "Potential only; not installed. Begin single-player with deterministic rules and reset. Verify maintenance/license; no multiplayer, live finance, or forecast changes implied."
+},
+  {
+  "id": "game-kenney",
+  "name": "Kenney assets: game art and controls",
+  "purpose": "Find a coherent asset pack for an approved mini-game prototype.",
+  "availability": "Candidate",
+  "parts": [
+    "Game-like interactions",
+    "Practice and exploration"
+  ],
+  "apps": [
+    "Portfolio",
+    "Truffle Camp"
+  ],
+  "source": "https://kenney.nl/assets",
+  "adoption": "Potential only; no assets downloaded. Select a specific pack and record its exact license/file list and attribution before importing; this is an asset source, not a React package."
+},
 ];
 export function optionsForApp(
   app: ComponentApp | "All",

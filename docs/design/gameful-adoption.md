@@ -61,3 +61,9 @@ Phone: stacked controls and responsive 280px-high SVG. Tablet/desktop: two-colum
 Verification: 218 unit tests passed (including all 16 story endings), focused ESLint passed, route type generation and TypeScript passed before final UI checks. Browser cases added for consequence/restart, hex keyboard, correct/incorrect feedback, quiz completion/reset/path switch and 375/768/1280 overflow. Local Storybook cannot start: `uv_interface_addresses` environment error. Hosted Visual QA and full CI remain required; manual zoom/screen-reader/contrast acceptance remains open. Exact-head evidence belongs in PR #258.
 
 Rollback: remove new mounts, discovery/learning-challenge source, content/compiler and test entries; remove the three package entries with a regenerated lockfile. GTM can revert its own InkJS consumer independently. No migrations or saved user state.
+
+## Saved potentials in the Design Lab catalog
+
+The existing searchable component catalog (`lib/component-options.ts`) now holds 15 game-like entries: 3 available local pilots and 12 future candidates. Search **game-like**, optionally filter **Candidate**, or filter by intended app. Availability describes the portfolio only; suggested destinations are not installations.
+
+New future candidates: RPGUI, NES.css, Matter.js, React Three Rapier, Ecctrl and Howler.js. Earlier candidates React Rewards, DiceBear, React Three Fiber, Phaser React template, boardgame.io and Kenney are now visible in the same catalog. Existing Magic UI-derived BentoGrid and React Flow reuse remain documented above. Each entry includes the source, proposed use and adoption prerequisites. Saving a potential does not schedule implementation or approve production use. No additional packages or assets added in this catalog pass.

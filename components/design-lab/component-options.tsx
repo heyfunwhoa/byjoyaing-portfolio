@@ -31,7 +31,7 @@ export function ComponentOptions() {
           <p className="mt-3 max-w-xl text-sm leading-6 text-muted">
             Recommendations for your projects. “Available here” means source
             exists in this portfolio; other repos need their own compatibility
-            review.
+            review. “Candidate” means a potential, not an installed or scheduled feature. Search “game-like” to see the saved game components and pilot notes.
           </p>
         </div>
         <label className="grid w-full min-w-0 gap-2 text-sm font-medium sm:w-auto">

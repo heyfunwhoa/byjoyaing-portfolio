@@ -13,7 +13,7 @@ test("curated options retain valid destinations and official source links", () =
     componentOptions.length,
   );
   for (const option of componentOptions) {
-    assert.ok(["ui.shadcn.com", "visx.airbnb.tech", "caliperui.site", "prestigeui.com"].includes(new URL(option.source).hostname));
+    assert.ok(["ui.shadcn.com", "visx.airbnb.tech", "caliperui.site", "prestigeui.com", "github.com", "kenney.nl"].includes(new URL(option.source).hostname));
     assert.ok(option.apps.length > 0);
     assert.ok(option.apps.every((app) => componentApps.includes(app)));
   }
@@ -27,6 +27,9 @@ test("curated options retain valid destinations and official source links", () =
 
 test("availability labels agree with the portfolio source boundary", () => {
   const paths: Record<string, string[]> = {
+    "game-inkjs": ["../gameful/discovery-pilot"],
+    "game-react-quiz": ["../design-lab/learning-challenge"],
+    "game-hexgrid": ["../design-lab/learning-challenge"],
     identity: ["avatar", "tooltip"],
     summaries: ["card", "bento-grid", "carousel"],
     disclosure: ["tabs", "accordion"],
