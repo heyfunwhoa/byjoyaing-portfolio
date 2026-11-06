@@ -1,6 +1,7 @@
 import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
+import { GamefulWorkbench } from "@/components/design-lab/gameful-workbench";
 import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
 import { LearningChecksPreview } from "@/components/design-lab/learning-checks-preview";
 import { ComponentOptions } from "@/components/design-lab/component-options";
@@ -59,6 +60,7 @@ export default function DesignLabPage() {
         <MotionWorkbench />
         <ComponentOptions />
         <LearningChecksPreview />
+        <GamefulWorkbench />
 
         <section aria-labelledby="foundations-title">
           <h2 id="foundations-title" className="font-display text-2xl tracking-tight">Foundations</h2>

@@ -1,0 +1,20 @@
+.workspace { color: var(--foreground, var(--ink)); background: var(--card); border: 1px solid var(--border, var(--line)); border-radius: 1rem; padding: clamp(1rem, 3vw, 2rem); overflow-wrap: anywhere; }
+.workspace h2 { font-size: 1.6rem; font-weight: 600; }
+.workspace h3 { font-size: 1.1rem; font-weight: 600; }
+.workspace p { margin: .75rem 0; line-height: 1.6; }
+.eyebrow { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+.workspace progress { display: block; width: 100%; margin: .6rem 0; accent-color: var(--accent, var(--pine)); }
+.steps { display: grid; gap: 1.25rem; margin: 1.5rem 0; list-style: none; padding: 0; }
+.steps li { min-width: 0; border-top: 1px solid var(--border, var(--line)); padding-top: 1rem; }
+.steps label { display: block; line-height: 1.6; margin: .5rem 0; }
+.steps textarea { width: 100%; resize: vertical; border: 1px solid var(--border, var(--line)); border-radius: .5rem; padding: .7rem; background: var(--background, var(--paper)); }
+.control { display: flex !important; align-items: center; gap: .6rem; min-height: 44px; }
+.control input { flex-shrink: 0; width: 1rem; height: 1rem; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; }
+.workspace button { min-height: 44px; border: 1px solid currentColor; border-radius: .5rem; padding: .5rem 1rem; cursor: pointer; }
+.workspace button:disabled { opacity: .5; cursor: default; }
+.confirm { margin-top: 1rem; padding: 1rem; border: 1px solid currentColor; }
+.celebration { animation: arrive .4s ease-out 1; }
+@keyframes arrive { from { transform: translateY(5px); } to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .celebration { animation: none; } }
+@media (min-width: 768px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
