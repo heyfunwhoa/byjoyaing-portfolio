@@ -36,13 +36,29 @@ Describe the user-facing problem, what changed, and why. Link relevant issue/roa
 
 Pattern/source and decision (or N/A):
 
-## Evidence
+## Acceptance criteria
+
+- [ ] AC-01: [Observable reader task or editorial outcome, including its entry and next step]
+- [ ] AC-02: [Relevant responsive, keyboard, accessibility, content accuracy, or failure/recovery behavior]
+
+## Verification evidence
+
+- AC-01: not run — [Exact-head CI and real reader-journey evidence; add link or full SHA after actual verification]
+- AC-02: not run — [Manual mobile/zoom/keyboard and brand/content acceptance results, or N/A with rationale]
 
 Automated checks run (with results):
 
 Manual checks run (with results):
 
 Known risks, exceptions, follow-ups, and whether this is safe to ship:
+
+## Risk and release
+
+Risk tier: Tier [A/B/C] with rationale, independent of the Linear delivery-tier scale.
+Release: Do not merge or deploy without applicable checks, content/UX acceptance and explicit owner authorization.
+Rollback: [Revert path, prior production SHA, or N/A with reason]
+
+The [portfolio acceptance standard](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/engineering/acceptance-evidence-standard-v1.md) supplements this site's brand and UX review. Passing a PR metadata check does not establish an approved public release.
 
 ## Brand exceptions (only if applicable)
 
