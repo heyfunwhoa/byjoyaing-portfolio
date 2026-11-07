@@ -168,3 +168,17 @@ Verification for this documentation addition: reviewed against current reuse con
 The [component source audit](component-source-audit.md) inventories all 64 component types from the current shadcn index, 32 current dnd-kit core/React pages and 25 Sandpack docs pages, with [retrieval evidence](component-source-audit.sources.json). It maps candidates to the existing bank families and seven app repos, records Radix/Base UI and current/legacy dnd-kit compatibility, and specifies an optional synthetic Academy runner pilot.
 
 This is the upstream reference appendix, not a new installed-component catalog. `lib/component-options.ts` remains the curated task-oriented catalog; source availability and shipped adoption still require existing inventory/PR evidence. No packages, public routes, live demos or automatic refresh are added. Start with local primitives; drag/drop and executable labs remain scoped candidates.
+
+
+## Curated workflow motion candidates (November 2026)
+
+The catalog `lib/component-options.ts` now includes three **external candidates, not installed packages or shipped components**: Motion for React (`motion-react-purposeful`), FormKit AutoAnimate (`autoanimate-list-transitions`), and Motion-Primitives (`motion-primitives-disclosure`). Sources: https://motion.dev/docs/react , https://github.com/formkit/auto-animate , https://github.com/ibelick/motion-primitives . The source projects describe MIT licensing, subject to reviewing the exact file/version before copying source. The Design Lab workbench remains local/development-only.
+
+| Workflow | First choice | Candidate only if needed | Anti-pattern |
+| --- | --- | --- | --- |
+| GTM task-card hover and focused next step | Existing CSS, 180ms and 2px lift | Motion for React if complex layout handoff is proven useful | Constant pulse, autoplay, focus jumps |
+| Editorial slots moving between weeks | Static grouped DOM; informative status text | AutoAnimate for approved reorder interaction | Animating numeric tables or losing item identity |
+| Campaign evidence and review explanations | Native disclosure and existing Radix | Motion-Primitives disclosure after source/license review | Motion that hides a blocker or approval |
+| Multi-step Sales and CS evaluation | Clear step labels and state; no delay | Motion for layout only, if tested with interrupted transitions | Treating animation as progression/approval |
+
+**Design Lab → consumer rule:** record candidate, owner, route, evidence, license and added bundle impact before installation. A GTM OS-specific adoption of native CSS in draft `feat/kru-193-northline-navigation-motion` is not an installation of any of these libraries. No global motion dependency is justified for simple task cards. Respect `prefers-reduced-motion`, keep content visible, and test keyboard/mobile. Avoid putting paid/pro-licensed source in the open-source candidate bank.
