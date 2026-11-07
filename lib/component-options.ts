@@ -1024,7 +1024,234 @@ export const componentOptions: ComponentOption[] = [
   ],
   "source": "https://github.com/audacity/audacity",
   "adoption": "Evaluate local recording/editing with a transcript and confirmed input rights; no voice generation or recording upload."
-}
+},
+  {
+    id: "motion-react-purposeful",
+    name: "Motion for React: state and layout feedback",
+    purpose: "Animate a meaningful step, panel, validation, or selected-state transition in a complex task.",
+    availability: "Candidate",
+    parts: ["Layout transition", "Presence for conditional panels", "Reduced-motion support"],
+    apps: ["Portfolio", "GTM Revenue OS", "Account Signal Engine", "Interview dashboard"],
+    source: "https://motion.dev/docs/react",
+    adoption: "MIT candidate. Prefer existing native CSS for hover and color feedback. Only add Motion after a named workflow needs a layout/enter-exit interaction CSS cannot express. Follow useReducedMotion/MotionConfig and test interrupted focus, mobile and no-motion states; no package installed in GTM OS or Portfolio by this catalog.",
+  },
+  {
+    id: "autoanimate-list-transitions",
+    name: "FormKit AutoAnimate: changing list order",
+    purpose: "Make additions, removals, and reordered workflow or editorial cards understandable without inventing extra state.",
+    availability: "Candidate",
+    parts: ["List reorder", "Filtered results", "Kanban transition"],
+    apps: ["GTM Revenue OS", "Portfolio", "Account Signal Engine", "Detector Coverage Atlas"],
+    source: "https://github.com/formkit/auto-animate",
+    adoption: "MIT candidate. Consider only for a genuine dynamic collection such as Northline's editorial board. Check reduced-motion behavior and React 19 compatibility in a bounded prototype; never animate dense numeric tables or interfere with drag/keyboard focus. Not installed.",
+  },
+  {
+    id: "motion-primitives-disclosure",
+    name: "Motion-Primitives: contextual disclosure",
+    purpose: "Present expandable evidence or decision details without hiding essential status and next action.",
+    availability: "Candidate",
+    parts: ["Animated disclosure", "Content preview", "Progress feedback"],
+    apps: ["Portfolio", "GTM Revenue OS", "Security Market Map", "Interview dashboard"],
+    source: "https://github.com/ibelick/motion-primitives",
+    adoption: "Source candidate; exact-source license remains unresolved in this review. Review and pin exact source and licensing before adapting a single component, preserve local semantics and styling, and respect reduced-motion. Start with native details/accordion or existing workbench patterns. No copy or Motion dependency added.",
+  },
+  {
+    "id": "motion-selection-indicator",
+    "name": "Motion: selected-view indicator",
+    "purpose": "Make a tab or workflow-view selection easier to follow.",
+    "availability": "Candidate",
+    "parts": [
+      "Animated background",
+      "Shared selection indicator",
+      "Keyboard selected state"
+    ],
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Security Market Map"
+    ],
+    "source": "https://github.com/ibelick/motion-primitives/blob/main/components/core/animated-background.tsx",
+    "adoption": "Reference only: inspected blob ae0a1ffc5b375ee59744089c83527cdbe6acec8b imports motion/react and adds click/hover handlers, not complete tab semantics. Preserve the consumer's aria-selected and keyboard model; do not overwrite handlers. License file was not resolved in this review, so do not copy until exact-source licensing is verified. Static selected state under reduced motion."
+  },
+  {
+    "id": "motion-evidence-accordion",
+    "name": "Radix: expandable evidence motion",
+    "purpose": "Open qualification guidance or supporting evidence while keeping the decision and blocker visible.",
+    "availability": "Candidate",
+    "parts": [
+      "Accordion height transition",
+      "Chevron rotation",
+      "Evidence disclosure"
+    ],
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ],
+    "source": "https://www.radix-ui.com/primitives/docs/components/accordion",
+    "adoption": "First prototype choice for SPIN prompts and qualification evidence. Adapt existing native disclosure first; portfolio already has Radix, GTM OS does not. Review package/version/license before importing. Animate only optional detail; keep blocker summaries visible, return focus safely and disable motion when requested."
+  },
+  {
+    "id": "motion-copy-feedback",
+    "name": "Animate UI: copy confirmation",
+    "purpose": "Confirm copying a discovery summary or handoff note after clipboard success.",
+    "availability": "Candidate",
+    "parts": [
+      "Copy button",
+      "Icon swap",
+      "Inline success and error"
+    ],
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ],
+    "source": "https://animate-ui.com/docs/primitives/animate-ui/copy-button",
+    "adoption": "Prefer a local CSS/icon adaptation. Current docs use @animate-ui/react and separate icon packages; do not install the full stack for one button. MIT + Commons Clause inspected (blob 4c99063f507027c06af430d54c5b3cf167be51d7), not unrestricted open source. Reference only in this library; no component source redistribution. Review exact terms and dependencies before application use. Show Copied only after success; retain visible failure/retry and a polite text announcement. Download requested is not proof a file was saved."
+  },
+  {
+    "id": "motion-native-view-transition",
+    "name": "Native browser view transitions",
+    "purpose": "Preserve orientation when moving between a workspace overview and its detail.",
+    "availability": "Candidate",
+    "parts": [
+      "View Transition API",
+      "Progressive enhancement",
+      "Route transition"
+    ],
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API",
+    "adoption": "Later experiment, not a required runtime package. Check current browser support and Next.js routing integration before adoption. Ordinary navigation must work without the API. Preserve focus, back/forward, scroll restoration and unsaved-work guards. Skip transitions for reduced motion; never delay access or snapshot confidential overlays."
+  },
+  {
+    "id": "motion-task-progress",
+    "name": "Motion: truthful task progress",
+    "purpose": "Show completed discovery sections or evaluation checklist items as their real state changes.",
+    "parts": [
+      "Progress indicator",
+      "Completion labels",
+      "Reduced-motion fill"
+    ],
+    "source": "https://www.radix-ui.com/primitives/docs/components/progress",
+    "adoption": "Next: prototype a CSS transition on existing progress markup or native progress before adding a package. State the denominator and count only defined evidence, not clicks, time, or deal probability. Keep exact count and unknown states visible; no fake loading timer. Under reduced motion update instantly.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-context-panel",
+    "name": "Motion: contextual evidence panel",
+    "purpose": "Inspect stakeholder notes or account evidence while keeping the originating record nearby.",
+    "parts": [
+      "Dialog or side panel",
+      "Short enter and exit",
+      "Focus return"
+    ],
+    "source": "https://www.radix-ui.com/primitives/docs/components/dialog",
+    "adoption": "Later: reuse portfolio Dialog/Sheet; GTM OS needs a named benefit over an ordinary detail page. Pair motion with existing accessible modal semantics, visible close, Escape, focus management and background inertness. Retain edits across interruption, make mobile content scrollable and bypass motion when requested. Panel visibility is not authorization.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-operation-feedback",
+    "name": "Motion: confirmed operation feedback",
+    "purpose": "Make a completed save, import or reversible action noticeable without interrupting the workflow.",
+    "parts": [
+      "Status toast",
+      "Inline durable feedback",
+      "Optional undo"
+    ],
+    "source": "https://www.radix-ui.com/primitives/docs/components/toast",
+    "adoption": "Next after a real operation exists: keep success/error inline; a brief toast supplements it. Never say Saved on animation completion or offer Undo without a working reversal. Failed imports retain data and explain recovery. Test announcements, dismissal, repeated operations and reduced motion. Prefer local CSS for the initial feedback.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-priority-reorder",
+    "name": "Motion: reorder a short priority list",
+    "purpose": "Let an operator arrange discovery questions or personal follow-up priorities and follow the changed order.",
+    "parts": [
+      "Reorder handles",
+      "Move up and down buttons",
+      "Cancel and restore"
+    ],
+    "source": "https://motion.dev/docs/react-reorder",
+    "adoption": "Later bounded prototype: distinct from AutoAnimate, this is an actual reorder interaction. Stable IDs, button/keyboard alternatives and explicit persistence semantics required. Announce new position and support cancellation. Never change calculation order, deal stage, territory assignment or approval through drag. Compare existing dnd-kit guidance before adding Motion.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-field-validation",
+    "name": "Motion: inline validation feedback",
+    "purpose": "Help a seller find and correct invalid discovery or POC fields without losing their entries.",
+    "parts": [
+      "Field error highlight",
+      "Error summary links",
+      "Inline correction"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-invalid",
+    "adoption": "Next: local CSS border/background transition only. MDN provides semantic guidance, not a motion component. Pair aria-invalid with linked text and a summary; retain entered data. Validate at deliberate boundaries, not every keystroke. No shaking fields, color-only error or focus theft. Reduced motion gets an immediate static error.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-loading-placeholder",
+    "name": "Motion: loading-to-content handoff",
+    "purpose": "Reserve space while account/report data loads and distinguish loading, empty and failed requests.",
+    "parts": [
+      "Static skeleton",
+      "Busy region",
+      "Content replacement"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy",
+    "adoption": "Next only for a real asynchronous request: prefer a static skeleton and readable status. aria-busy guidance is semantic, not animation code. Avoid shimmer loops and fake percentages; errors need retry and empty results need a distinct message. Replace placeholders without moving focus or unnecessarily hiding stale-but-labeled data. Do not delay fast responses.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-workflow-trace",
+    "name": "Motion: user-triggered workflow trace",
+    "purpose": "Explain one campaign-to-sales handoff or evaluation decision path with a short labeled connector trace.",
+    "parts": [
+      "SVG path drawing",
+      "Replay control",
+      "Static text alternative"
+    ],
+    "source": "https://motion.dev/docs/react-svg-animation",
+    "adoption": "Later learning/demo pattern: start with original SVG and CSS; Motion is optional after measured need. Trace only on explicit Play, with Stop/Replay and an immediate complete diagram under reduced motion. Keep all labels and a text explanation visible; a moving connector is an illustration, not live integration or a completed handoff. No looping flow animation or invented progress.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
 ];
 export function optionsForApp(
   app: ComponentApp | "All",
