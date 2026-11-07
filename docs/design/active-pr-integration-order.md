@@ -12,17 +12,17 @@
 | [#266](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/266) | Motion evidence / Knip advisory | New motion example and `knip.json` plus advisory workflow | Low visible path overlap. Keep Knip **advisory**, don't make a broad removal check mandatory prematurely. |
 | [#259](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/259) | Creative AI model catalog docs | One new doc | Independent; model choices must remain candidates until measured. |
 | [#260](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/260) | SDLC learning companions | Academy docs | Independent at file level; editorial dependencies may still matter for lesson sequencing. |
-| [#264](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/264) | Cross-category tool-radar pointer | Source-audit docs plus new reference | Docs only; merge **after** the canonical catalog is approved, update provisional branch links to pinned main revision. |
+| [#264](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/264) | Cross-category tool-radar pointer | Source-audit docs plus new reference | Docs only; canonical registry merged in Technical Docs #66 at `7857899`; links now pin the reviewed commit. Recheck the exact PR head before merge. |
 | [#268](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/268) | Payload vs Keystatic evaluation scaffold | Three new `experiments/payload-editorial/` files | Independent and optional. Does not install Payload or change the editor. |
 
 The overlap assessment uses the exact GitHub PR changed-filename lists observed on 2026-11-07. It does **not** establish latest checks, mergeability, UX acceptance, licensing approval, or deployed state. Reinspect at merge time.
 
 ## Suggested review order
 
-1. **Canonical catalog:** review Technical Docs [#66](https://github.com/heyfunwhoa/technical-docs-platform/pull/66). Its 60-tool register is cross-category, and the Design Lab bank remains UI-only.
+1. **Canonical catalog:** Technical Docs [#66](https://github.com/heyfunwhoa/technical-docs-platform/pull/66) merged, commit `7857899`. Its 60-tool register is cross-category; the Design Lab bank remains UI-only.
 2. **Independent examples/docs:** review #263, #266, #259 and #260 by owner, checking current-head CI, source attribution, mobile/keyboard and editorial gates. Merge independently only after applicable acceptance.
 3. **Shared component bank:** establish one selected target for #258, then rebase #262 and reconcile catalog IDs, tests and motion guidance. Avoid taking both unchanged `lib/component-options.ts` versions.
-4. **Tool radar:** update #264's links to canonical merged source, validate the local-only Design Lab remains private, then consider its docs changes.
+4. **Tool radar:** #264's links now target the immutable merged registry revision; verify the local-only Design Lab remains private, then review its documentation changes.
 5. **Optional Payload:** #268 remains an evidence-scoped experiment; launch a separate local SQLite CMS only once the owner chooses to run and evaluate it.
 6. **GTM consumers:** select one synthetic table/qualification use case from GTM Revenue OS before adding dependencies. Do not copy the entire Design Lab app or its brand tokens.
 
