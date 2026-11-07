@@ -166,3 +166,13 @@ test("app filter retains suitable options and avoids portfolio-only recommendati
     ),
   ).toBe(true);
 });
+
+test("motion candidates remain discoverable without installing a runtime package", async ({ page }) => {
+  await page.goto("/iframe.html?id=design-lab-component-options--library&viewMode=story");
+  await page.getByRole("combobox", { name: "Project", exact: true }).selectOption("GTM Revenue OS");
+  await page.getByLabel("Search options", { exact: true }).fill("motion");
+  await page.getByRole("combobox", { name: "Availability", exact: true }).selectOption("Candidate");
+  await expect(page.getByRole("status")).toContainText("GTM Revenue OS");
+  await expect(page.getByRole("heading", { name: /Motion for React/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Motion Primitives/ })).toBeVisible();
+});
