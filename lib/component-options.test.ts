@@ -13,7 +13,7 @@ test("curated options retain valid destinations and official source links", () =
     componentOptions.length,
   );
   for (const option of componentOptions) {
-    assert.ok(["ui.shadcn.com", "visx.airbnb.tech", "caliperui.site", "prestigeui.com", "github.com", "kenney.nl", "twinery.org", "motioncanvas.io", "ffmpeg.org", "www.remotion.dev", "h5p.org"].includes(new URL(option.source).hostname));
+    assert.ok(["ui.shadcn.com", "visx.airbnb.tech", "caliperui.site", "prestigeui.com", "github.com", "kenney.nl", "twinery.org", "motioncanvas.io", "ffmpeg.org", "www.remotion.dev", "h5p.org", "motion.dev", "www.radix-ui.com", "animate-ui.com", "developer.mozilla.org"].includes(new URL(option.source).hostname));
     assert.ok(option.apps.length > 0);
     assert.ok(option.apps.every((app) => componentApps.includes(app)));
   }
@@ -88,4 +88,43 @@ test("creative production candidates are searchable without implying installatio
   assert.ok(optionsForApp("Portfolio", "marketing").some(option => option.id === "creative-penpot"));
   assert.equal(optionsForApp("All", "creative", "Available here").length, 0);
   assert.match(componentOptions.find(option => option.id === "creative-remotion")!.adoption, /Source-available/);
+});
+
+test("workflow motion options are review-only candidates", () => {
+  const ids = ["motion-react-purposeful", "autoanimate-list-transitions", "motion-primitives-disclosure"];
+  for (const id of ids) {
+    const option = componentOptions.find((item) => item.id === id);
+    assert.ok(option, id);
+    assert.equal(option.availability, "Candidate");
+    assert.ok(option.apps.includes("GTM Revenue OS"));
+  }
+});
+
+ test("specific motion patterns remain searchable GTM candidates", () => {
+  for (const id of ["motion-selection-indicator","motion-evidence-accordion","motion-copy-feedback","motion-native-view-transition"]) {
+    const option = componentOptions.find(item => item.id === id);
+    assert.ok(option);
+    assert.equal(option.availability, "Candidate");
+    assert.ok(optionsForApp("GTM Revenue OS").includes(option));
+  }
+  assert.ok(optionsForApp("GTM Revenue OS", "clipboard", "Candidate").some(item => item.id === "motion-copy-feedback"));
+});
+
+test("progress and operation motion stay review-only and discoverable", () => {
+ for (const id of ["motion-task-progress","motion-context-panel","motion-operation-feedback","motion-priority-reorder"]) {
+  const item = componentOptions.find(option => option.id === id);
+  assert.ok(item);
+  assert.equal(item.availability, "Candidate");
+  assert.ok(optionsForApp("GTM Revenue OS").includes(item));
+ }
+ assert.ok(optionsForApp("GTM Revenue OS", "priority", "Candidate").some(item => item.id === "motion-priority-reorder"));
+});
+
+test("validation loading and workflow traces remain candidates", () => {
+ for (const id of ["motion-field-validation","motion-loading-placeholder","motion-workflow-trace"]) {
+  const option = componentOptions.find(item => item.id === id);
+  assert.ok(option);
+  assert.equal(option.availability, "Candidate");
+  assert.ok(optionsForApp("GTM Revenue OS").includes(option));
+ }
 });
