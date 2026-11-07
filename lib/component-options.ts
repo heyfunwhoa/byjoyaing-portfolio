@@ -898,6 +898,132 @@ export const componentOptions: ComponentOption[] = [
   ],
   "source": "https://www.remotion.dev/docs/license/pricing",
   "adoption": "Source-available with free/company license conditions; do not assume permissive OSS. Check organization/use eligibility before adoption. No package installed."
+},
+{
+  "id": "asset-excalidraw",
+  "name": "Diagrams and visual frameworks",
+  "purpose": "Create reusable content and marketing assets for diagrams and visual frameworks.",
+  "availability": "Candidate",
+  "parts": [
+    "Excalidraw",
+    "Asset production",
+    "Marketing",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/excalidraw/excalidraw",
+  "adoption": "Export a reviewed diagram and text equivalent; reuse Mermaid for precise repo-native diagrams first."
+},
+{
+  "id": "asset-marp",
+  "name": "Presentation templates",
+  "purpose": "Create reusable content and marketing assets for presentation templates.",
+  "availability": "Candidate",
+  "parts": [
+    "Marp",
+    "Asset production",
+    "Marketing",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/marp-team/marp",
+  "adoption": "Evaluate Markdown slide templates for enablement; no slide renderer installed."
+},
+{
+  "id": "asset-inkscape",
+  "name": "Editable vector illustrations",
+  "purpose": "Create reusable content and marketing assets for editable vector illustrations.",
+  "availability": "Candidate",
+  "parts": [
+    "Inkscape",
+    "Asset production",
+    "Marketing",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/inkscape/inkscape",
+  "adoption": "Use SVG source for reusable visual assets; review fonts and imported artwork rights."
+},
+{
+  "id": "asset-scribus",
+  "name": "Reports and print collateral",
+  "purpose": "Create reusable content and marketing assets for reports and print collateral.",
+  "availability": "Candidate",
+  "parts": [
+    "Scribus",
+    "Asset production",
+    "Marketing",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/scribusproject/scribus",
+  "adoption": "Evaluate page layout for briefs/handouts; include a readable digital alternative."
+},
+{
+  "id": "asset-vega-lite",
+  "name": "Data stories and charts",
+  "purpose": "Create reusable content and marketing assets for data stories and charts.",
+  "availability": "Candidate",
+  "parts": [
+    "Vega-Lite",
+    "Asset production",
+    "Marketing",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/vega/vega-lite",
+  "adoption": "Reuse existing chart components first; require source data, table alternative and explicit limitations."
+},
+{
+  "id": "asset-h5p",
+  "name": "Portable interactive learning",
+  "purpose": "Create reusable content and marketing assets for portable interactive learning.",
+  "availability": "Candidate",
+  "parts": [
+    "H5P",
+    "Asset production",
+    "Marketing",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://h5p.org/",
+  "adoption": "Compare only for unmet portability needs; existing Academy exercises remain the default. Hosting and content-type accessibility need review."
+},
+{
+  "id": "asset-audacity",
+  "name": "Audio and narration",
+  "purpose": "Create reusable content and marketing assets for audio and narration.",
+  "availability": "Candidate",
+  "parts": [
+    "Audacity",
+    "Asset production",
+    "Marketing",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/audacity/audacity",
+  "adoption": "Evaluate local recording/editing with a transcript and confirmed input rights; no voice generation or recording upload."
 }
 ];
 export function optionsForApp(

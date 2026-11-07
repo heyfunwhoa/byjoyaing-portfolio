@@ -14,7 +14,7 @@ Owner: portfolio maintainer. Updated 2026-11-06. Tracking: KRU-150 / Portfolio P
 
 ## Inventory scope and meaning
 
-44 current records: 37 candidates and 7 source-available patterns/pilots. Of these, 24 are game-like options (21 candidates and 3 local pilots). Existing Magic UI-derived BentoGrid is represented by Summary & discovery; installed React Flow is documented in the gameful adoption record. Neither needs a duplicate installation candidate.
+56 current records: 49 candidates and 7 source-available patterns/pilots. Of these, 24 are game-like options (21 candidates and 3 local pilots). Existing Magic UI-derived BentoGrid is represented by Summary & discovery; installed React Flow is documented in the gameful adoption record. Neither needs a duplicate installation candidate.
 
 This is exhaustive for the component options captured in this conversation and the repository coverage checked on this date. It is not a claim to enumerate every open-source project or every possible future feature. Broader prior UI-source research remains linked from `component-adoption.md` and `component-inventory.md`; this register is not a replacement engineering/software ownership registry.
 
