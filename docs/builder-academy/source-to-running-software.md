@@ -51,6 +51,59 @@ A managed platform may take source and build artifacts without asking you to wri
 
 **CI** checks the change and may produce a build artifact. **CD** moves a selected version toward an environment. A release makes behavior available to its intended users. Compare the deployed revision with the one you reviewed, then exercise the actual user flow. [First Deployment Settings](first-deployment-settings.md)
 
+## Optional Dockerfile inspection: one deeper artifact exercise
+
+**Status:** This is an additional **written** Docker/OCI exercise. It does not add a catalog lesson ID, Docker dependency, container runtime, deployment, cloud account, credentials or graded learner progress. No commands or builds have been executed.
+
+Imagine a second, fictional *server API* companion to the form above. The engineer builds TypeScript `src/server.ts` into JavaScript `dist/server.js`. The latter is a **build artifact**, not necessarily a native executable. Node.js executes it. The Dockerfile below describes optional packaging of that server-side artifact:
+
+```dockerfile
+# Classroom example only: assumes dist/server.js and matching package files exist.
+FROM node:22-alpine
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+COPY dist ./dist
+ENV NODE_ENV=production
+USER node
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+
+**Read the file, not just its name.** `FROM` selects a base image; `COPY` imports files from the build context; `RUN` installs production dependencies; `USER` changes the runtime user; `EXPOSE` documents the intended port but does not publish a port; and `CMD` defines the default startup command. A real image must also handle a reviewed `.dockerignore`, pinned base image digest, dependencies and licenses, architecture, runtime file permissions, security scanning, health/shutdown behavior and how the app gets secrets. This illustrative Dockerfile has **not been tested as runnable** and must not be used as a production template.
+
+Illustrative local-only commands (**not executed for this lesson**):
+
+```sh
+npm ci
+npm test
+npm run build
+docker build -t learning/brief-api:demo .
+docker image ls
+docker run --rm -p 3000:3000 learning/brief-api:demo
+docker ps
+```
+
+`docker build` uses the specified build context (the final `.`). A tag such as `learning/brief-api:demo` is a mutable name; an image content digest identifies exact image content. A **registry** stores/distributes an image; `docker run` creates/starts a **container** locally. Neither proves that production has that image or that the expected feature works. A Docker image is different from a VM/disk image or a PNG/JPEG visual image.
+
+**Compare the managed route:** For a supported Next.js project, Vercel's Git-connected build/deployment process can work without a developer-owned Dockerfile. For a separate service requiring custom system packages or a specific runtime, a reviewed container package might be appropriate. Decide from workload and operational responsibility, not because Docker is fashionable. Kubernetes is an optional orchestration system, not required for this first example.
+
+### A stop/go artifact decision
+
+**Synthetic evidence:** The review-form PR `abc123` passed CI; a build produced `dist/server.js`; the image registry contains a tag called `demo-new`, but the test deployment still reports `demo-old`. A proposed infrastructure plan also wants to delete the notes database.
+
+What is the next action?
+
+- **A.** Mark the feature live because the code and image exist.
+- **B.** Deploy the new tag blindly and apply the database deletion to reconcile resources.
+- **C.** Stop: reconcile the target environment's deployed artifact/digest against the reviewed version, block the unexpected deletion, then verify the actual authorized/denied user flow after an approved deployment.
+
+**Feedback:** A confuses available source/packages with deployed behavior. B changes production resources without proven requirement or permission. **C** preserves separate build, image, IaC, deployment and behavior gates. The correct answer is not an automatic approval to deploy: an authorized operator must decide, and recovery/rollback may involve data as well as code.
+
+**Independent proof:** Explain the same distinction for a *new fictional report-export worker*, without copying the answer. Identify source, output artifact, image, running container, proposed infrastructure change and one observation that would justify a release statement. A correct multiple-choice response alone does not establish operational proficiency.
+
+Further sources: [Docker images](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/), [Docker containers](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/), [Dockerfile overview](https://docs.docker.com/build/concepts/dockerfile/), [build context](https://docs.docker.com/build/concepts/context/), [Next.js on Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs). These are conceptual references, not a substitute for verifying the exact platform/version used by an application.
+
 ## Try it on paper
 
 A pull request fixes the form. CI reports success and publishes image digest `demo-new`. The test environment still lists `demo-old`. The digest names are fictional placeholders. Identify the source change, what CI produced, what the environment says is running and one check you would perform next.
