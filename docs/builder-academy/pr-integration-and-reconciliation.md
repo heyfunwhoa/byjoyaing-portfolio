@@ -39,6 +39,14 @@ Imagine you're creating a fictional sales app. One PR changes the main navigatio
 
 **A merge conflict** is when Git cannot automatically reconcile edits. **An integration defect** occurs when edits merge but disagree about behavior, contracts, navigation or data. **A stale PR** is based on earlier code or evidence; its old green checks may not apply after the branch changes. A **flaky test** produces inconsistent outcomes and requires diagnosis, not repeated retries until green.
 
+## Security checks when reconciling parallel pull requests
+
+Security is a **continuous SDLC responsibility**, not only a final merge checklist. Review the [security-through-the-SDLC matrix](release-security-review.md#security-across-the-whole-software-development-lifecycle) before using the reconciliation worksheet.
+
+When two changes meet, repeat the relevant security checks against the **combined current revision**: a new API route may bypass another PR's authorization middleware, a changed navigation flow may expose a private action, and a dependency update may introduce vulnerabilities after an older scan passed. Verify the applicable secret, dependency, static and configuration scans; negative authorization/tenant tests; supply-chain and deployment settings; and actual protection/owner gate. **Do not infer security from individual PR green checks.** Use synthetic data and least-privilege CI credentials, and never silently dismiss failing findings.
+
+Add to the disposition: `security impact`, `latest SHA and scan coverage`, `unresolved findings with owner`, and `release approval`. Close a superseded PR only after confirming its security fixes and negative tests remain covered by the replacement.
+
 ## Common integration risks and repairs
 
 | Risk | Example | Repair |
