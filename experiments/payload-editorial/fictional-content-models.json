@@ -1,0 +1,257 @@
+{
+  "schemaVersion": "1",
+  "classification": "synthetic-only",
+  "evaluation": "Payload CMS vs existing Keystatic, not a migration or executable Payload configuration",
+  "rules": {
+    "publication": "Draft/review status never implies deployment; public publishing requires separate reviewer and release acceptance",
+    "privacy": "No employer, customer, personal data, secrets, or real API keys",
+    "stableIds": "Existing Academy and Field Notes slugs/IDs must not be modified",
+    "storage": "Local disposable SQLite database only; no external sync"
+  },
+  "collections": [
+    {
+      "id": "field-notes",
+      "label": "Field Notes articles",
+      "group": "Portfolio Editorial",
+      "fields": [
+        {
+          "name": "slug",
+          "type": "text",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "richText",
+          "required": true
+        },
+        {
+          "name": "sources",
+          "type": "array",
+          "fields": [
+            "label",
+            "url",
+            "accessedOn"
+          ]
+        },
+        {
+          "name": "reviewer",
+          "type": "text"
+        },
+        {
+          "name": "editorialState",
+          "type": "select",
+          "values": [
+            "draft",
+            "in-review",
+            "approved",
+            "retired"
+          ]
+        }
+      ],
+      "versions": {
+        "drafts": true,
+        "maxPerDoc": 15
+      },
+      "roles": {
+        "admin": [
+          "create",
+          "read",
+          "update",
+          "delete",
+          "publish"
+        ],
+        "editor": [
+          "create",
+          "read",
+          "update"
+        ],
+        "reviewer": [
+          "read",
+          "approve"
+        ]
+      },
+      "syntheticExample": {
+        "slug": "fictional-build-log",
+        "title": "A fictional first-release retrospective",
+        "editorialState": "draft",
+        "sourceLabel": "Example only"
+      }
+    },
+    {
+      "id": "academy-lessons",
+      "label": "Builder Academy lessons",
+      "group": "Learning Content",
+      "fields": [
+        {
+          "name": "lessonId",
+          "type": "text",
+          "unique": true,
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "learningPath",
+          "type": "text"
+        },
+        {
+          "name": "goal",
+          "type": "textarea"
+        },
+        {
+          "name": "explanation",
+          "type": "richText"
+        },
+        {
+          "name": "practicePrompt",
+          "type": "textarea"
+        },
+        {
+          "name": "reviewedSources",
+          "type": "array",
+          "fields": [
+            "title",
+            "url"
+          ]
+        },
+        {
+          "name": "editorialState",
+          "type": "select",
+          "values": [
+            "draft",
+            "in-review",
+            "approved",
+            "retired"
+          ]
+        }
+      ],
+      "versions": {
+        "drafts": true,
+        "maxPerDoc": 15
+      },
+      "roles": {
+        "admin": [
+          "create",
+          "read",
+          "update",
+          "delete",
+          "publish"
+        ],
+        "editor": [
+          "create",
+          "read",
+          "update"
+        ],
+        "reviewer": [
+          "read",
+          "approve"
+        ]
+      },
+      "syntheticExample": {
+        "lessonId": "demo-source-to-build",
+        "title": "Demo: from source code to a running app",
+        "editorialState": "draft"
+      }
+    },
+    {
+      "id": "creative-assets",
+      "label": "GTM creative assets",
+      "group": "GTM Content Studio",
+      "fields": [
+        {
+          "name": "assetId",
+          "type": "text",
+          "unique": true,
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "contentType",
+          "type": "select",
+          "values": [
+            "product-demo",
+            "campaign-email",
+            "social-video",
+            "enablement"
+          ]
+        },
+        {
+          "name": "buyerPersona",
+          "type": "text"
+        },
+        {
+          "name": "stage",
+          "type": "select",
+          "values": [
+            "awareness",
+            "evaluation",
+            "adoption"
+          ]
+        },
+        {
+          "name": "brief",
+          "type": "richText"
+        },
+        {
+          "name": "provenance",
+          "type": "textarea"
+        },
+        {
+          "name": "editorialState",
+          "type": "select",
+          "values": [
+            "draft",
+            "in-review",
+            "approved",
+            "retired"
+          ]
+        }
+      ],
+      "versions": {
+        "drafts": true,
+        "maxPerDoc": 15
+      },
+      "roles": {
+        "admin": [
+          "create",
+          "read",
+          "update",
+          "delete",
+          "publish"
+        ],
+        "editor": [
+          "create",
+          "read",
+          "update"
+        ],
+        "reviewer": [
+          "read",
+          "approve"
+        ]
+      },
+      "syntheticExample": {
+        "assetId": "demo-secops-video",
+        "title": "Fictional SecOps platform explainer",
+        "editorialState": "draft"
+      }
+    }
+  ]
+}
