@@ -429,3 +429,7 @@ The owner also reported that expanding Architecture looked cramped on desktop. T
 - **Accessibility:** Logical DOM order, semantic `ol`, visible headings, non-interactive cards, no hidden essential content or motion. The parent Architecture disclosure keeps native keyboard operation.
 - **Verification:** The browser spec checks 320, 375, 768 and 1280px, ordered headings, responsive placement and page overflow. Manual 200% zoom, real-device readability and screen-reader checks remain release gates.
 - **Rollback:** Revert the architecture component along with this draft PR. No route, data or dependency changes.
+
+## Game-like workflow prototypes (November 6, 2026)
+
+Local Design Lab only: reuse BentoGrid/Card/ProjectStatusPill and catalog data for exploration, installed React Flow 12.12.0 for an optional learning-path graph, and native controls for practice checks. New MissionWorkspace models four fictional self-reviewed deliverables; editing clears review. No package changes, public mounts or changed canonical lesson records. See [gameful-adoption.md](gameful-adoption.md) for source decisions, responsive/motion behavior, verification requirements and rollback. KRU-150 owns portfolio adoption; KRU-147 owns the GTM consumer. Status: implemented prototype, pending acceptance.
