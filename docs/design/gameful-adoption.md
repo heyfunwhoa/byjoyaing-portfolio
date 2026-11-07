@@ -64,6 +64,10 @@ Rollback: remove new mounts, discovery/learning-challenge source, content/compil
 
 ## Saved potentials in the Design Lab catalog
 
-The existing searchable component catalog (`lib/component-options.ts`) now holds 15 game-like entries: 3 available local pilots and 12 future candidates. Search **game-like**, optionally filter **Candidate**, or filter by intended app. Availability describes the portfolio only; suggested destinations are not installations.
+The existing searchable component catalog (`lib/component-options.ts`) now holds 24 game-like entries: 3 available local pilots and 21 future candidates. Search **game-like**, optionally filter **Candidate**, or filter by intended app. Availability describes the portfolio only; suggested destinations are not installations.
 
 New future candidates: RPGUI, NES.css, Matter.js, React Three Rapier, Ecctrl and Howler.js. Earlier candidates React Rewards, DiceBear, React Three Fiber, Phaser React template, boardgame.io and Kenney are now visible in the same catalog. Existing Magic UI-derived BentoGrid and React Flow reuse remain documented above. Each entry includes the source, proposed use and adoption prerequisites. Saving a potential does not schedule implementation or approve production use. No additional packages or assets added in this catalog pass.
+
+## Cross-repository register
+
+The [component opportunity register](component-opportunity-register.md) explains local access, repository coverage, priorities, alternatives and maintenance. The searchable catalog includes the additional TS-FSRS, Shiki Magic Move, XState, Twine, PixiJS React, KAPLAY, Excalibur, ROT.js and Trophy UI candidates. No packages were added for these records.

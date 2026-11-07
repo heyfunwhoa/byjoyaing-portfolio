@@ -168,3 +168,7 @@ Verification for this documentation addition: reviewed against current reuse con
 The [component source audit](component-source-audit.md) inventories all 64 component types from the current shadcn index, 32 current dnd-kit core/React pages and 25 Sandpack docs pages, with [retrieval evidence](component-source-audit.sources.json). It maps candidates to the existing bank families and seven app repos, records Radix/Base UI and current/legacy dnd-kit compatibility, and specifies an optional synthetic Academy runner pilot.
 
 This is the upstream reference appendix, not a new installed-component catalog. `lib/component-options.ts` remains the curated task-oriented catalog; source availability and shipped adoption still require existing inventory/PR evidence. No packages, public routes, live demos or automatic refresh are added. Start with local primitives; drag/drop and executable labs remain scoped candidates.
+
+## Candidate planning across repositories
+
+Use the [component opportunity register](component-opportunity-register.md) for where to open Design Lab, the complete captured opportunity inventory, repository coverage and promotion gates. The in-page catalog supports project and availability filters; this remains local-development only.
