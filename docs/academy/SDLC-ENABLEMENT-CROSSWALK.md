@@ -55,6 +55,48 @@ The groups below are a **curriculum map**, not 30 newly implemented lessons. Lin
 
 **First pilot:** keep the existing "From idea to verified release" lesson as the front door; add the SDLC map as a navigational companion. Develop a **small IaC deep-dive** only after checking current lessons for overlap.
 
+## Coverage clarification: computing, binaries, DevOps, IaC, and operations (2026-11-06)
+
+This is an **inventory and planned learning order**, not an assertion that the subjects below have complete learner-tested lessons. The SDLC-first entry proposed/implemented in Academy integration PR #238 is an orientation; it does not replace the deep technical foundations.
+
+| Concept | Existing reference (where available) | Coverage / next need |
+| --- | --- | --- |
+| Computer / operating-system foundations | Programming Foundations registry; reading-code-and-yaml guide | Partial: teach bits vs bytes, binary representations, files, processes, memory, shells and OS/runtime roles explicitly |
+| Binaries and how code executes | Reading-code-and-yaml briefly contrasts compiler/interpreter; How Code Works is a programming curriculum outline | Gap: source, compiler/transpiler, bytecode, linker, executable binaries vs interpreted programs and deployable bundles |
+| Build artifacts and supply chain | Package registries, lockfiles, Git/CI, existing security guidance | Partial: distinguish executable, built JS bundle, package, archive, OCI image, checksums, SBOM, signing, artifact provenance |
+| DevOps and CI/CD | From idea to verified release; first deployment settings; Git Workflow Essentials; Build Rate Limits & CI/CD guide | Introductory: add end-to-end build/test/artifact/deploy/release, environment gates, troubleshooting and rollback scenarios |
+| Containers and orchestration | Systems Engineering page and roadmap outline Docker; deployment guide mentions containers | Planned deep dive: Dockerfile, images versus containers, registries, Compose, Kubernetes, when managed hosting obviates orchestration |
+| Infrastructure as Code (IaC) | Systems Engineering roadmap names IaC; this crosswalk specifies a proposed Terraform/OpenTofu-safe lab | Planned: imperative vs declarative, desired state, plan/apply, state, drift, providers, modules, policy, cost and destroy/retire |
+| Platform engineering / GitOps | Engineering organization track here; Systems roadmap architecture/DevOps entries | Planned: golden paths, developer portals, reconciliation, control planes and ownership boundaries |
+| Operate, recover and retire | Background-job recovery, database recovery, measure-product-use, security/release guides, Systems outlines | Partial: expand observability, logs/metrics/traces, SLOs, on-call/incident response, backup/restore, patching, FinOps and decommissioning |
+
+### Dependency-first teaching order
+
+1. **Computing foundations:** binary numbers, bytes, encodings, file formats, filesystems, processes and the operating system. This is the missing beginner bridge.
+2. **From code to running software:** source → types/parsing/compiling/transpiling → optional linking or bytecode → **build artifact** → runtime. Distinguish compiled native executables, interpreted source, JavaScript bundles, packages and container images rather than calling all of them "a binary."
+3. **Developer workflows:** Git, branches, PRs, packages, dependency locks, builds, tests, debugging and artifact inspection.
+4. **Infrastructure foundations:** on-prem servers, virtualization, VMs, cloud compute, storage, networks, DNS, IAM, environments and secrets.
+5. **Containers and IaC:** Docker/container lifecycle first for workload packaging, then Terraform/OpenTofu/Pulumi concepts for provisioning resources. Neither requires Kubernetes in a beginner application.
+6. **DevOps / software delivery:** CI→artifact→review/gate→CD/deployment→release/feature flags→verification/rollback, with GitOps as an optional reconciliation pattern.
+7. **Operations and systems:** observability, reliability, distributed failures, incident response, recovery, scaling, cost and retirement.
+8. **Modern specialization:** platform engineering, supply-chain attestations, policy as code, AI-assisted/agentic changes and governance, with human approval and isolated credentials.
+
+Use the same **before → during → after** and **history → modern approaches → tradeoffs** lens at each step. Security, testing, accessibility, documentation, cost and responsibility are cross-cutting from day one, not a separate final gate.
+
+### One concrete beginner exercise linking the entire chain
+
+A fictional web application changes a button label:
+- **Source:** edit a TypeScript/React component. Its file is source text, not an executable machine-code binary.
+- **Build:** run a type check and build; distinguish a browser JavaScript bundle/static assets from a native executable. A compiled Go/Rust utility provides a contrast, not a required second app.
+- **Package:** identify the versioned output and dependencies; explain how a container image differs from the application binary or bundle inside it.
+- **Provision:** describe which resources an IaC plan would create or change, and which application configuration stays outside the provisioning tool.
+- **Deliver:** check GitHub CI, an approved Vercel preview, and actual runtime behavior separately. A successful build does not prove the correct release or environment is live.
+- **Operate:** explain how to find the deployed revision, a runtime error, rollback options, and resource cleanup.
+
+**Assessment:** Given a source file, a build result, an IaC plan, and a deployment record, the learner labels each artifact, spots an unintended destructive resource change, and states the next safe verification step. Synthetic/public fixtures only; no cloud apply, tenant data or credentials.
+
+**Execution boundary:** Do not author eight new lessons at once. Reuse the current code/YAML, release and CI guides, then prioritize (a) the bits/files/binaries bridge and (b) a small synthetic IaC plan-review lesson once the active Academy integration and KRU-77 work are reconciled. Preserve PR #238's ownership of UI/navigation and PR #260's documentation-only scope. Track real content development through the existing Builder Academy Linear program, not a duplicate backlog.
+
 ## One concept, multiple role contexts
 
 **Canonical concept:** Infrastructure as Code means desired infrastructure can be versioned, reviewed and provisioned through defined configurations and APIs.
