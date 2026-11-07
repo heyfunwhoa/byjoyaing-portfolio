@@ -1,11 +1,20 @@
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import {
   componentApps,
   componentOptions,
   optionsForApp,
 } from "./component-options.ts";
+import {
+  patternEvidence,
+  patternFamilies,
+  patternStages,
+  patternsForLibrary,
+  patternFileUrl,
+  stageDefinitions,
+  toPatternRecord,
+} from "./design-lab/pattern-adoption.ts";
 
 test("curated options retain valid destinations and official source links", () => {
   assert.equal(
@@ -127,4 +136,83 @@ test("validation loading and workflow traces remain candidates", () => {
   assert.equal(option.availability, "Candidate");
   assert.ok(optionsForApp("GTM Revenue OS").includes(option));
  }
+});
+
+test("pattern library is a view over the canonical component options, not a duplicate list", () => {
+  const records = patternsForLibrary();
+  assert.equal(records.length, componentOptions.length);
+  assert.equal(new Set(records.map((record) => record.id)).size, records.length);
+  assert.deepEqual(
+    new Set(records.map((record) => record.id)),
+    new Set(componentOptions.map((option) => option.id)),
+  );
+  assert.deepEqual(patternStages, ["Candidate", "Prototype", "Approved", "Adopted"]);
+  assert.ok(patternFamilies.length >= 5);
+  for (const stage of patternStages) assert.ok(stageDefinitions[stage].length > 20);
+});
+
+test("pattern states require real source or explicit decision evidence", () => {
+  const records = patternsForLibrary();
+  assert.ok(records.some((record) => record.stage === "Candidate"));
+  assert.ok(records.some((record) => record.stage === "Prototype"));
+  assert.ok(records.some((record) => record.stage === "Adopted"));
+  // No owner approval is inferred from available code or green CI.
+  assert.equal(records.filter((record) => record.stage === "Approved").length, 0);
+  for (const item of records) {
+    if (item.stage === "Adopted") assert.ok(item.uses.length > 0);
+    if (item.stage === "Approved") assert.ok(item.approval?.decisionUrl);
+    if (item.availability === "Candidate") assert.equal(item.stage, "Candidate");
+    if (item.uses.length > 0) {
+      for (const use of item.uses) {
+        assert.equal(use.scope, "source-level");
+        assert.equal(use.repository, "heyfunwhoa/byjoyaing-portfolio");
+      }
+    }
+  }
+});
+
+test("exact local source and consumer paths exist and adoption assertions match imports", () => {
+  const knownConsumers: Record<string, RegExp> = {
+    "components/toolkit-explorer.tsx": /from "\@\/components\/ui\/tabs"/,
+    "components/stakeholder-map/stakeholder-detail.tsx": /from "\@\/components\/ui\/card"/,
+  };
+  for (const [id, evidence] of Object.entries(patternEvidence)) {
+    const option = componentOptions.find((item) => item.id === id);
+    assert.ok(option, `Missing canonical pattern ID ${id}`);
+    const record = toPatternRecord(option!);
+    for (const source of [...record.localSource, ...record.uses]) {
+      assert.ok(!source.path.startsWith("/"));
+      assert.ok(!source.path.includes(".."));
+      assert.ok(existsSync(new URL(`../${source.path}`, import.meta.url)), `Missing: ${source.path}`);
+      assert.ok(patternFileUrl(source).startsWith("https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/"));
+    }
+    for (const use of record.uses) {
+      assert.ok(knownConsumers[use.path], `Unreviewed consumer source: ${use.path}`);
+      const body = readFileSync(new URL(`../${use.path}`, import.meta.url), "utf8");
+      assert.match(body, knownConsumers[use.path]);
+    }
+  }
+});
+
+test("pattern stage, family, app and keyword filters combine without losing source evidence", () => {
+  assert.deepEqual(
+    patternsForLibrary({ stage: "Adopted" }).map((item) => item.id),
+    ["summaries", "disclosure"],
+  );
+  assert.deepEqual(
+    patternsForLibrary({ query: "toolkit explorer" }).map((item) => item.id),
+    ["disclosure"],
+  );
+  assert.deepEqual(
+    patternsForLibrary({ app: "Security Market Map", stage: "Adopted" }).map((item) => item.id),
+    ["summaries", "disclosure"],
+  );
+  assert.deepEqual(patternsForLibrary({ stage: "Approved" }), []);
+  assert.ok(
+    patternsForLibrary({ family: "Learning & gameful" }).every(
+      (item) => item.family === "Learning & gameful",
+    ),
+  );
+  assert.equal(patternsForLibrary({ query: "nothing-will-ever-match" }).length, 0);
+  assert.equal(patternsForLibrary({ query: "  " }).length, componentOptions.length);
 });
