@@ -1,30 +1,18 @@
-/** Goal-based sequences share stable lesson IDs; they do not gate access. */
+/** Start with the lifecycle; goal-based paths share lessons without gating access. */
 export const learningPaths = [
   {
-    "id": "foundations",
-    "title": "Start with AI basics",
-    "prerequisite": "No experience needed",
-    "outcome": "Explain AI, protect inputs, prompt clearly and check claims.",
-    "slugs": [
-      "what-is-ai",
-      "privacy",
-      "prompting",
-      "verification",
-      "evolution",
-      "llms-models-inference-gateways"
-    ]
-  },
-  {
     "id": "delivery",
-    "title": "Build and release safely",
-    "prerequisite": "Use the linked programming and Git references when code is unfamiliar",
-    "outcome": "Read project files, plan a release, manage dependencies and measure safely.",
+    "title": "Start here: Build software from idea to release",
+    "prerequisite": "No coding prerequisite; begin with the full software lifecycle.",
+    "outcome": "Trace a change from a problem to code, review, release and measurement. Continue into Systems for APIs and data.",
     "slugs": [
-      "reading-code-and-yaml",
       "idea-to-verified-release",
-      "cursor-workflows",
-      "package-registries",
       "privacy",
+      "reading-code-and-yaml",
+      "package-registries",
+      "frontend-building-blocks",
+      "cursor-workflows",
+      "storybook-visual-regression",
       "measure-product-use-safely"
     ]
   },
@@ -35,8 +23,8 @@ export const learningPaths = [
     "outcome": "Connect accessible interfaces, reusable components, visual checks and content publishing.",
     "slugs": [
       "frontend-building-blocks",
-      "storybook-visual-regression",
-      "cms-fundamentals"
+      "cms-fundamentals",
+      "storybook-visual-regression"
     ]
   },
   {
@@ -49,8 +37,8 @@ export const learningPaths = [
       "privacy",
       "mcp-vs-rest-api",
       "database-branching-recovery",
-      "integration-registry-finops",
-      "background-job-recovery"
+      "background-job-recovery",
+      "integration-registry-finops"
     ]
   },
   {
@@ -60,13 +48,27 @@ export const learningPaths = [
     "outcome": "Explain authorization, release gates and safe import, research and export boundaries.",
     "slugs": [
       "privacy",
+      "idea-to-verified-release",
+      "verification",
       "mcp-vs-rest-api",
       "better-auth-gtm-workspace",
-      "idea-to-verified-release",
-      "security-hardening-release-gates",
-      "verification",
       "integration-registry-finops",
+      "security-hardening-release-gates",
       "secure-account-import-research"
+    ]
+  },
+  {
+    "id": "foundations",
+    "title": "Start with AI basics",
+    "prerequisite": "No experience needed",
+    "outcome": "Explain AI, protect inputs, prompt clearly and check claims.",
+    "slugs": [
+      "what-is-ai",
+      "evolution",
+      "privacy",
+      "prompting",
+      "verification",
+      "llms-models-inference-gateways"
     ]
   },
   {

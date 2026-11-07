@@ -14,7 +14,7 @@
 | 38 registered short lessons, but older program/audit count says 22 | Reconcile inventory; add one recovery lesson, for 39 | Catalog registration does not equal a complete course |
 | 12 existing lessons absent from all six paths | Nine goal-based paths cover all 39; retain stable IDs | Repeated IDs intentionally share content across paths |
 | Evaluation path omitted commercial/security prerequisites; model evaluation omitted preparation | Include all declared prerequisites before dependents; enforce in tests | Prerequisites guide, never gate, navigation |
-| Catalog array starts with a database lesson | Browse in first-appearance path order, beginning with AI basics | Builder paths remain direct independent entry points |
+| Catalog array starts with a database lesson | Browse in first-appearance path order, beginning with the software lifecycle (AI remains independently accessible) | Builder paths remain direct independent entry points |
 | Connected Systems labeled entirely planned despite working examples | Mark partial; name existing demos and separate future outlines | Background-job exercise is written, not a queue simulator |
 | All catalog cards expose one check | Keep card interface; add two-plus reasoning prompts in the new companion | One card check does not meet the two-question instructional target by itself |
 | Several “short lessons” estimate 25–45 minutes and include broad guides | Inventory duration as an estimate; recommend short stops and optional depth | No learner timing study or blanket duration rewrite |

@@ -36,6 +36,12 @@ test("paths reference available lessons and AI basics is not a universal prerequ
     for (const slug of path.slugs)
       assert.equal(getLessonGuidance(slug)?.availability, "available");
   }
+  assert.equal(learningPaths[0].id, "delivery");
+  assert.deepEqual(learningPaths[0].slugs.slice(0, 3), [
+    "idea-to-verified-release",
+    "privacy",
+    "reading-code-and-yaml",
+  ]);
   assert.equal(
     learningPaths.find((p) => p.id === "foundations")?.slugs[0],
     "what-is-ai",
