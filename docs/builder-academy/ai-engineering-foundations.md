@@ -64,6 +64,16 @@ Start with the smallest working architecture. In the real portfolio, Account Sig
 
 The stable engineering standards and detailed tooling policy live in an access-controlled Technical Docs Platform; the **public Academy teaches the concepts using fictional examples without copying private configuration**. Product repositories own actual calls, fixture tests and deployment. A shared installable library should come only after multiple real applications need a stable API.
 
+## Reuse these foundations in any future product
+
+The fictional research desk is **one example, not a required architecture**. The same questions work for an AI-powered writing assistant, code reviewer, support application, learning coach, media generator, or a project that needs no AI at all.
+
+When approaching any new feature, ask in order: **What is the user trying to accomplish? What can ordinary code do? Which data and actions are permitted? Would a model materially help? Does the existing SDK handle the request? Do we need a workflow, an agent or only a single function? How will we observe behavior and test quality? How will we cap cost and approve release?**
+
+It is equally correct to choose *no agent*, *no gateway*, *no tracing vendor* or *no model*, depending on the task. Examples of Mastra, LangGraph, Langfuse, Promptfoo, LiteLLM and provider SDKs are optional tool choices, not educational prerequisites or required project installations.
+
+For each new scenario, complete a short decision record: task, baseline, proposed AI step, permissions, source evidence, expected output, evaluation method, privacy/cost boundary and rollback. The learning exercise stays synthetic and portable. Actual code, tests and approvals always belong to the application being built.
+
 ## Offline exercise: choose the right layer
 
 For each situation, choose the smallest appropriate component before considering a new library.
