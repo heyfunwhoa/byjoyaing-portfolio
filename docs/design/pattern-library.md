@@ -75,3 +75,14 @@ A local source file and test result can establish only what they actually inspec
 - This library change adds **no** runtime packages, schema migrations, CRM integration, new API calls, credentials, subscriptions or public routes.
 
 **Rollback:** revert the small lifecycle overlay, its presentation/tests and documentation pointers; the original component options, Storybook demos, application logic and Technical Docs standards remain unchanged.
+
+
+## GTM dashboard references — November 7, 2026
+
+Canonical candidate IDs are `shadcn-admin-workspace` and `tremor-dashboard-measurement` in component-options.ts. Maintainer owns reinspection before component import, upstream license changes or consumer promotion.
+
+Shadcn Admin's dashboard was visually inspected in cloud Chrome. Its compact header, metric row and grouped panels are composition references. Its repository declares MIT. Tremor's official homepage and repository text describe free React/Tailwind components and Apache-2.0 source, while the homepage separately promotes premium Blocks/Templates. The live Tremor page returned an error in the review browser; visual review remains open. Confidence is high for these scoped source descriptions, with package/version compatibility and every premium item's rights requiring separate review.
+
+[GTM PR #149](https://github.com/heyfunwhoa/gtm-revenue-os/pull/149) owns original local adaptations of the patterns. The shared catalog keeps both entries at Candidate because upstream components are not imported or approved. Existing summaries, workspace, data and disclosure families remain canonical. Navigation consolidation remains in GTM #148.
+
+Per-repository customization includes tokens, font, density, status vocabulary, metric definitions, searchable fields and detail layout. Preserve labels, keyboard order, focus, responsive reflow, reduced motion and semantic empty/unknown states. Keep domain calculations and account suppression in the consumer. Before copying source, retain the applicable LICENSE/NOTICE and inspect the exact component revision. No automatic cross-repository synchronization.

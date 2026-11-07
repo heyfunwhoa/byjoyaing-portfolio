@@ -25,6 +25,44 @@ export type ComponentOption = {
   adoption: string;
 };
 export const componentOptions: ComponentOption[] = [
+{
+  "id": "shadcn-admin-workspace",
+  "name": "Shadcn Admin workspace composition",
+  "purpose": "Organize repeated seller work with clear page hierarchy, summary cards and a compact queue.",
+  "availability": "Candidate",
+  "parts": [
+    "Page header",
+    "Metric cards",
+    "Filter toolbar",
+    "Record queue"
+  ],
+  "apps": [
+    "GTM Revenue OS",
+    "Account Signal Engine",
+    "Portfolio Ops Runtime"
+  ],
+  "source": "https://github.com/satnaing/shadcn-admin",
+  "adoption": "Demo https://shadcn-admin.netlify.app/ inspected 2026-11-07; source declares MIT. Use layout ideas with destination tokens. Vite template routing needs adaptation for Next.js. GTM PR #149 adapts the composition in original local code. No template source imported; review exact source/license before reuse."
+},
+{
+  "id": "tremor-dashboard-measurement",
+  "name": "Tremor dashboard measurement",
+  "purpose": "Make operational metrics readable with clear labels, consistent number styling and evidence context.",
+  "availability": "Candidate",
+  "parts": [
+    "Metric summary",
+    "Bar list",
+    "Chart",
+    "Accessible data table"
+  ],
+  "apps": [
+    "GTM Revenue OS",
+    "Account Signal Engine",
+    "Detector Coverage Atlas"
+  ],
+  "source": "https://www.tremor.so/",
+  "adoption": "Official README https://github.com/tremorlabs/tremor declares Apache-2.0 for open-source components. Homepage text inspected 2026-11-07; live demo errored in cloud browser. Premium Blocks/Templates are separately offered and are not covered by this candidate's free-source assumption. GTM PR #149 uses original metric-card styling only. Review specific component version, dependencies, LICENSE/NOTICE and accessibility before importing source."
+},
   {
     "id": "identity",
     "name": "Identity & ownership",

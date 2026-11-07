@@ -157,7 +157,7 @@ function familyFor(id: string): PatternFamily {
     return "Learning & gameful";
   if (id.startsWith("motion-") || id === "autoanimate-list-transitions" || id === "feedback")
     return "Motion & feedback";
-  if (id.startsWith("visx-") || ["data", "measurement"].includes(id))
+  if (id.startsWith("visx-") || ["data", "measurement", "tremor-dashboard-measurement"].includes(id))
     return "Data & evidence";
   if (["import-review", "evidence-workflow", "runbook-progress", "editorial-review"].includes(id))
     return "Content & workflow";
