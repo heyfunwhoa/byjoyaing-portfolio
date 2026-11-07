@@ -775,7 +775,7 @@ API result → frontend confirmation or useful error
 
 A component can look correct while the API denies access, a migration fails, or production serves a prior revision. Those are different problems with different owners and evidence. Tests should cover success and failure cases. A sketch shows intended behavior; a passing test shows the tested case; a production check shows the behavior of an identified deployment. None substitutes for the others.
 
-**Existing lessons to follow for deeper detail:** [Frontend building blocks](frontend-building-blocks.md) → [MCP versus REST APIs](mcp-vs-rest-api.md) → [Databases and recovery](databases-branching-recovery-and-selection.md) → [First deployment](first-deployment-settings.md) → [Measure product use safely](measure-product-usage-safely.md). Use the [source → artifact → Docker image companion](source-to-artifact-and-docker.md) after you understand the difference between source code and a running application. Docker is optional, not a prerequisite for a managed Next.js/Vercel deployment.
+**Existing lessons to follow for deeper detail:** [Frontend building blocks](frontend-building-blocks.md) → [MCP versus REST APIs](mcp-vs-rest-api.md) → [Databases and recovery](databases-branching-recovery-and-selection.md) → [First deployment](first-deployment-settings.md) → [Measure product use safely](measure-product-usage-safely.md). Use the [source-to-running-software companion and optional Docker inspection](source-to-running-software.md) after you understand the difference between source code and a running application. Docker is optional, not a prerequisite for a managed Next.js/Vercel deployment.
 
 ### Independent transfer check
 
