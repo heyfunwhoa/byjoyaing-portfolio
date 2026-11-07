@@ -173,8 +173,8 @@ test("pattern states require real source or explicit decision evidence", () => {
 
 test("exact local source and consumer paths exist and adoption assertions match imports", () => {
   const knownConsumers: Record<string, RegExp> = {
-    "components/toolkit-explorer.tsx": /from "\@\/components\/ui\/tabs"/,
-    "components/stakeholder-map/stakeholder-detail.tsx": /from "\@\/components\/ui\/card"/,
+    "components/toolkit-explorer.tsx": /from "@\/components\/ui\/tabs"/,
+    "components/stakeholder-map/stakeholder-detail.tsx": /from "@\/components\/ui\/card"/,
   };
   for (const id of Object.keys(patternEvidence)) {
     const option = componentOptions.find((item) => item.id === id);
