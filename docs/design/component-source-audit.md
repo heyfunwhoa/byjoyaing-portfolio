@@ -7,6 +7,8 @@ Classification: public technical references and personal-repository metadata onl
 
 ## Start here
 
+For the larger cross-category list of tools worth knowing but not installing by default, see the [open-source tool radar](open-source-tool-radar.md). This source audit remains focused on concrete component adoption and source rights.
+
 This appendix extends the existing [Design Lab](design-lab.md), [component-options catalog](../../lib/component-options.ts) and [reuse contract](workbench-reuse.md). It inventories upstream options, not a second registry of installed or shipped components. The curated catalog remains the small task-oriented bank. Each consuming app owns implementation and verification. Technical Docs Platform owns shared adoption policy and the cross-repo entry point.
 
 **First reuse local Radix/shadcn components.** Treat dnd-kit as an optional interaction dependency and Sandpack as an optional code-execution integration. None is installed by this audit.
