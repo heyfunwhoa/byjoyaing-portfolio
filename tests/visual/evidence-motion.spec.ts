@@ -16,6 +16,7 @@ test("evidence disclosure is keyboard operable and preserves source limitations"
   await expect(disclosure).not.toHaveAttribute("open", "");
   await trigger.focus();
   await expect(trigger).toBeFocused();
+  expect(await trigger.evaluate((el) => getComputedStyle(el).outlineStyle)).not.toBe("none");
   await trigger.press("Enter");
   await expect(disclosure).toHaveAttribute("open", "");
   await expect(
@@ -49,7 +50,7 @@ test("evidence disclosure retains stable layout and honors reduced motion", asyn
     )
     .toBeLessThanOrEqual(0.001);
 
-  for (const width of [375, 768, 1280]) {
+  for (const width of [320, 375, 768, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     await expect(page.getByText(/Budget, project ownership/)).toBeVisible();
     expect(
