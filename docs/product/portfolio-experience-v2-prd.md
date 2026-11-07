@@ -193,7 +193,7 @@ Preserve the top-level navigation. Page-level purpose, wireframes, the migration
 - Professional stories use: context, problem, specific contribution, decision, execution, verified outcome, evidence, reflection. If an outcome is not verified, the section says what is known and stops.
 - Individual selling, team contribution, informal coaching, and direct management are different sentences.
 - Field Notes use Used in practice, Illustrative model, or Exploring. The two live guides stay illustrative until a source says otherwise.
-- Side Quests state what runs today. Detector Coverage Atlas remains a reviewed static comparison, not a pipeline. Account Signal remains the documented local slice. Synthetic GTM Revenue OS studies stay fictional, unfeatured, and labeled.
+- Side Quests state what runs today. Detector Coverage Atlas remains a reviewed static comparison, not a pipeline. Account Signal remains the documented local slice. GTM Revenue OS examples stay clearly fictional and may appear as one curated Side Quest with related workflows, subject to the current source and reader-journey checks in section 33. They do not replace professional evidence on Home or Work.
 - Employment revenue figures stay off the site. The planning prohibition includes quota attainment, rankings, and employer growth percentages that were removed in earlier public copy. Do not restore them.
 - The Joy Index is not a source that can be pasted. A public paragraph requires a deliberate review of already public material.
 
@@ -227,7 +227,7 @@ Full pattern notes: [editorial-ui-spec.md](../design/editorial-ui-spec.md).
 | FR-3 | Work presents Enterprise Sales, then People & Leadership, then GTM Strategy, each with its own evidence | Partial. Proposed to complete with existing copy |
 | FR-4 | Case studies distinguish contribution and evidence limits | Partial |
 | FR-5 | Field Notes collections show real articles or an explicit unpublished state | Partial. Proposed |
-| FR-6 | Side Quest subject and maturity are both visible | Partial |
+| FR-6 | Side Quests lead with purpose and contribution; accurate maturity is available as secondary context and material sample/saving limits appear at the relevant action | Proposed refinement; see section 33 |
 | FR-7 | Contact form continues to submit a message or a selected-work inquiry | Verified. Do not restore resume UI |
 | FR-8 | Legacy URLs keep resolving | Verified for current routes. Proposed to keep |
 | FR-9 | Private work and account-signal pages stay noindex | Verified. Not re-tested in this change |
@@ -462,3 +462,51 @@ A slice is *implemented* when its files are committed, *validated* when lint/tes
 ## 32. Editorial mechanism note (2026-10-14)
 
 About keeps the job in section 10. The visible sentences on that page can be edited through the existing local Keystatic editor, in one file, without moving interactive components or career facts. The homepage cover sentences can be edited the same way, in `content/home/page.json`, without moving the bento, role facts, or links. The three Work narrative sentences can be edited in `content/work/stories`, without moving ids, areas, or related links. The public sentences for `reading-code-and-yaml` and `mcp-vs-rest-api` can be edited as two more lesson singletons, without moving answer keys, prerequisites, or learner progress. Hosted editing is not a requirement of this PRD. The field-by-field decision, including what must stay in code, is [editorial-foundation.md](../content/editorial-foundation.md). This note does not authorize a site-wide migration or a second content system.
+
+## 33. Curated portfolio and deeper project experiences (2026-11-07)
+
+Owner direction: keep the portfolio simple and useful on its own. Lead with purpose, personal contribution and an inspectable example. Do not make prototype/design labels the headline. This records an agreed editorial direction; application changes and release remain separate.
+
+### Site structure and ownership
+
+Home introduces and routes; About explains background and approach; Work demonstrates professional contributions; Field Notes shares methods; Side Quests presents selected independent projects; Contact enables a conversation. Keep the six-item primary navigation. Experience, Projects, Capabilities and Builder Academy remain supporting destinations. Academy gets a clear entry through Side Quests, not a new primary menu item.
+
+This PRD owns website requirements. The brand guide owns editorial principles. The existing Portfolio Studio is a concise decision/reference layer, Linear owns committed delivery, and the owning application repos own their functionality and test evidence. Link rather than copy mutable plans. There is no automatic synchronization.
+
+### Project presentation contract
+
+1. Name the reader's problem and intended benefit.
+2. Explain Kristen's contribution and one meaningful decision.
+3. Offer one focused example with a useful ending.
+4. Offer a deeper destination only when its accessibility and scope have been checked.
+5. Put implementation detail and remaining limitations in a secondary disclosure.
+
+A stage badge is optional on a teaser card. Accurate status remains in project data and available secondary context. Fictional data, whether input is saved, and whether an action actually sends/publishes must be clear beside the relevant interaction. Do not hide a material limitation or suggest an unavailable application is accessible.
+
+CTA labels describe destinations: Try the example, Explore the project, View implementation, or Request a walkthrough. A deeper project may still be evolving; “full project” is not a production-readiness claim. Never link private workspace content or protected review previews as public destinations.
+
+### Curated project families
+
+| Family | Portfolio role | Deeper experience |
+| --- | --- | --- |
+| GTM Revenue OS | One coherent system story: connect planning, seller execution, buying decisions and learning | Planning, opportunity work, review and learning remain workflows in the owning app, not separate homepage projects |
+| Account Intelligence | One account change leading to a relevant next conversation | Account Workshop and research workflows stay with their owning application; do not imply automatic GTM OS synchronization |
+| Security research | One bounded, source-backed comparison with a clear decision | Atlas and Market Map keep distinct research responsibilities; use related links rather than claim integrated data flow |
+| Builder Academy | One discoverable starting lesson or learning journey | The existing Academy holds the catalog and labs; preserve curriculum ownership and stable lesson IDs |
+| Design Lab and shared standards | Supporting explanation of how the work is built and reviewed | Keep development tooling, policy, infrastructure and operational detail outside the primary visitor journey |
+
+These are presentation groupings, not a new product taxonomy, repository registry, deployed integration or instruction to feature every family on Home. Select examples from reviewed available work; a PR title alone does not substantiate a public capability claim.
+
+### Delivery and acceptance
+
+Reuse KRU-150 for this portfolio hierarchy follow-up. Coordinate existing #220 label/SEO work, #254/KRU-194 Competitive Intelligence journey work, and #238/KRU-174 Academy navigation. Do not duplicate their runtime changes or alter their release gates. KRU-65's historical completed scope stays intact.
+
+- Visitor can identify the project problem, contribution and next action without interpreting a development-status badge.
+- One primary example per project ends with a useful summary and onward link.
+- GTM OS workflows are presented as parts of one system; existing project routes remain valid.
+- Public destination links are verified before exposure; unavailable or restricted projects offer an honest alternative.
+- Scope information appears where it changes visitor expectations, with no repeated negative boilerplate.
+- Affected implementations require 375/768/1280, keyboard/focus, 200% zoom, link and content checks. This documentation does not establish those passes.
+- Record implemented, tested, accepted and deployed internally; preserve truthful visitor-facing wording without publishing the internal delivery ledger.
+
+Review trigger: changed project purpose, meaningful new visitor workflow, verified outcome or changed destination. Routine dependency, CI, instrumentation and policy changes do not automatically trigger portfolio copy changes.
