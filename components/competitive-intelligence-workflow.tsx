@@ -178,7 +178,7 @@ export function CompetitiveIntelligenceWorkflow() {
         })}
       </div>
 
-      <div role="tabpanel" id="ci-panel" aria-labelledby={`ci-tab-${stage}`} className="min-w-0">
+      <div role="tabpanel" id="ci-panel" aria-label={`Current workflow: ${stages.find((item) => item.id === stage)?.label ?? "Competitive landscape"}`} className="min-w-0">
         {stage === "landscape" ? (
           <Frame title="Provider dashboard">
             <ul className="flex flex-col gap-3">
@@ -220,8 +220,8 @@ export function CompetitiveIntelligenceWorkflow() {
                   onClick={() => setCategory(item)}
                   className={
                     category === item
-                      ? "rounded-full bg-accent px-2.5 py-1 text-[11px] font-medium text-accent-foreground"
-                      : "rounded-full border border-border px-2.5 py-1 text-[11px] font-medium"
+                      ? "inline-flex min-h-11 items-center rounded-full bg-accent px-3 py-2 text-xs font-medium text-accent-foreground"
+                      : "inline-flex min-h-11 items-center rounded-full border border-border px-3 py-2 text-xs font-medium"
                   }
                 >
                   {item}
@@ -258,13 +258,13 @@ export function CompetitiveIntelligenceWorkflow() {
                 </p>
                 <p className="mt-2 text-muted">Interpretation is on the next step. It is not part of the source text.</p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <a href={demoChange.sourceUrl} target="_blank" rel="noreferrer" className="rounded-md border border-border px-3 py-2 text-xs font-medium">
+                  <a href={demoChange.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-xs font-medium">
                     View original source
                   </a>
-                  <button type="button" className="rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground" onClick={() => setChangeReviewed(true)}>
+                  <button type="button" className="inline-flex min-h-11 items-center rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground" onClick={() => setChangeReviewed(true)}>
                     {changeReviewed ? "Change marked reviewed" : "Review change"}
                   </button>
-                  <button type="button" className="rounded-md border border-border px-3 py-2 text-xs font-medium" onClick={() => setHistoryOpen((open) => !open)}>
+                  <button type="button" className="inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-xs font-medium" onClick={() => setHistoryOpen((open) => !open)}>
                     {historyOpen ? "Hide history" : "View history"}
                   </button>
                 </div>
@@ -314,7 +314,7 @@ export function CompetitiveIntelligenceWorkflow() {
                   <p className="mt-3 text-xs text-muted">
                     Review status: {impactReviewed ? "Marked reviewed in this demo. Not published." : "Needs a person. Not auto-approved."}
                   </p>
-                  <button type="button" className="mt-3 rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground" onClick={() => setImpactReviewed(true)}>
+                  <button type="button" className="mt-3 inline-flex min-h-11 items-center rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground" onClick={() => setImpactReviewed(true)}>
                     {impactReviewed ? "Marked reviewed in this demo" : "Mark hypothesis reviewed"}
                   </button>
                 </div>
@@ -372,7 +372,7 @@ export function CompetitiveIntelligenceWorkflow() {
                     );
                   })}
                 </div>
-                <div className="mt-4 rounded-xl border border-border bg-card p-4 text-sm leading-6" role="tabpanel" aria-labelledby={`brief-tab-${briefTab}`}>
+                <div className="mt-4 rounded-xl border border-border bg-card p-4 text-sm leading-6" role="tabpanel" aria-label={briefTabs.find((item) => item.id === briefTab)?.label ?? "Overview"}>
                   {briefTab === "overview" ? (
                     <div>
                       <p className="font-medium">{provider.name}</p>
@@ -477,7 +477,7 @@ export function CompetitiveIntelligenceWorkflow() {
             <form onSubmit={submitObservation} data-ph-no-autocapture="" className="grid gap-3 rounded-xl border border-border bg-card p-4 text-sm">
               <label className="block">
                 <span className="text-xs font-medium text-muted">Provider</span>
-                <select value={providerId} onChange={(event) => setProviderId(event.target.value)} className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1.5">
+                <select value={providerId} onChange={(event) => setProviderId(event.target.value)} className="mt-1 min-h-11 w-full rounded-md border border-border bg-background px-2 py-2">
                   {providers.map((item) => (
                     <option key={item.id} value={item.id}>
                       {item.name}
@@ -487,25 +487,25 @@ export function CompetitiveIntelligenceWorkflow() {
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-muted">Opportunity context</span>
-                <input value={opportunity} onChange={(event) => setOpportunity(event.target.value)} required className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1.5" />
+                <input value={opportunity} onChange={(event) => setOpportunity(event.target.value)} required className="mt-1 min-h-11 w-full rounded-md border border-border bg-background px-2 py-2" />
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-muted">Observed customer requirement</span>
-                <input value={requirement} onChange={(event) => setRequirement(event.target.value)} className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1.5" />
+                <input value={requirement} onChange={(event) => setRequirement(event.target.value)} className="mt-1 min-h-11 w-full rounded-md border border-border bg-background px-2 py-2" />
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-muted">Competitive observation</span>
-                <textarea value={observation} onChange={(event) => setObservation(event.target.value)} required rows={3} className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1.5" />
+                <textarea value={observation} onChange={(event) => setObservation(event.target.value)} required rows={3} className="mt-1 min-h-11 w-full rounded-md border border-border bg-background px-2 py-2" />
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-muted">Supporting evidence</span>
-                <input value={evidence} onChange={(event) => setEvidence(event.target.value)} required className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1.5" />
+                <input value={evidence} onChange={(event) => setEvidence(event.target.value)} required className="mt-1 min-h-11 w-full rounded-md border border-border bg-background px-2 py-2" />
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-muted">Suggested update</span>
-                <textarea value={update} onChange={(event) => setUpdate(event.target.value)} rows={2} className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1.5" />
+                <textarea value={update} onChange={(event) => setUpdate(event.target.value)} rows={2} className="mt-1 min-h-11 w-full rounded-md border border-border bg-background px-2 py-2" />
               </label>
-              <button type="submit" className="w-fit rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground">
+              <button type="submit" className="inline-flex min-h-11 w-fit items-center rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground">
                 Submit for review
               </button>
               <p className="text-xs leading-5 text-muted">A submission does not become field guidance until a person approves it. This demo does not save or send it.</p>
@@ -526,7 +526,7 @@ export function CompetitiveIntelligenceWorkflow() {
                     {item.status === "Needs review" ? (
                       <button
                         type="button"
-                        className="mt-3 rounded-md border border-border px-3 py-2 text-xs font-medium"
+                        className="mt-3 inline-flex min-h-11 items-center rounded-md border border-border px-3 py-2 text-xs font-medium"
                         onClick={() =>
                           setObservations((current) =>
                             current.map((entry) => (entry.id === item.id ? { ...entry, status: "Approved for this demo" } : entry)),
@@ -544,6 +544,39 @@ export function CompetitiveIntelligenceWorkflow() {
             </ul>
           </Frame>
         ) : null}
+        <section aria-label="Session takeaway" className="mt-6 rounded-xl border border-border bg-card p-4 sm:p-5">
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted">Session takeaway · illustrative only</p>
+          <h3 className="mt-2 text-lg font-semibold">What this example helps you decide</h3>
+          <dl className="mt-3 grid gap-3 text-sm sm:grid-cols-2">
+            <div>
+              <dt className="font-medium">Provider under review</dt>
+              <dd className="mt-1 text-muted">{provider.name}</dd>
+            </div>
+            <div>
+              <dt className="font-medium">Available evidence</dt>
+              <dd className="mt-1 text-muted">{provider.sourceUrl ? "Public repository reference, not a live monitoring feed" : "No reviewed source attached to this sample"}</dd>
+            </div>
+            <div>
+              <dt className="font-medium">Change review</dt>
+              <dd className="mt-1 text-muted">{provider.id === demoChange.providerId ? (changeReviewed ? "Marked reviewed in this session" : "Not marked reviewed") : "No change example for this provider"}</dd>
+            </div>
+            <div>
+              <dt className="font-medium">Impact hypothesis</dt>
+              <dd className="mt-1 text-muted">{provider.id === demoChange.providerId ? (impactReviewed ? "Marked reviewed in this session" : "Not marked reviewed") : "No impact hypothesis for this provider"}</dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="font-medium">Suggested question, not an approved claim</dt>
+              <dd className="mt-1 text-muted">{provider.id === demoChange.providerId ? discoveryQuestions[0] : "Which original source would support a product-specific comparison?"}</dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="font-medium">Remaining unknowns</dt>
+              <dd className="mt-1 text-muted">Specific detector coverage, current competitor differences, and customer impact have not been independently verified.</dd>
+            </div>
+          </dl>
+          <p className="mt-4 text-xs leading-5 text-muted">
+            {approved.length} field note{approved.length === 1 ? "" : "s"} marked approved for this demo. This summary is generated only from current browser memory. Nothing is saved, sent, published, or approved for real-world sales use.
+          </p>
+        </section>
       </div>
     </div>
   );
