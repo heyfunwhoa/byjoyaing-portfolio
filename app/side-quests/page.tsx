@@ -16,7 +16,7 @@ export const metadata: Metadata = completePageMetadata(
   openGraph: { url: "/side-quests" },
   title: "Side Quests",
   description:
-    "Independent cybersecurity, AI, enablement, and GTM examples, with the problem, the contribution, and a next step.",
+    "Independent projects and learning experiences, including Builder Academy. Each one leads with the problem, the contribution, and a next step. Projects are not employer deployments.",
 },
   "/side-quests",
 );
@@ -62,7 +62,9 @@ export default function SideQuestsPage() {
             Curiosity, put to work.
           </h1>
           <p className="mt-4 max-w-2xl leading-7 text-muted">
-            I take problems from cybersecurity and go-to-market work and turn them into research, learning tools, and software experiments. These are independent of my employer work. Start with an example, then open the project for the decision behind it.
+            Independent projects and learning experiences from cybersecurity and go-to-market work.
+            These are not employer deployments. Builder Academy holds the deeper lessons.
+            Start with an example, then open the project for the decision behind it.
           </p>
         </div>
       </section>
@@ -83,15 +85,14 @@ export default function SideQuestsPage() {
       </div>
 
       <section aria-labelledby="academy-entry-title" className="border-b border-border py-12">
-        <p className="editorial-eyebrow text-accent">Learning</p>
+        <p className="editorial-eyebrow text-accent">Learning experiences</p>
         <h2 id="academy-entry-title" className="mt-2 font-display text-3xl">Builder Academy</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">{academyEntry.summary}</p>
         <Link
-          href={academyEntry.href}
+          href="/ai-academy"
           className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4"
         >
-          {academyEntry.action}
-          <span className="sr-only">: {academyEntry.title}</span>
+          Open Builder Academy
         </Link>
       </section>
 

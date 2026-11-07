@@ -23,6 +23,11 @@ test("case-study URLs highlight the registry kind and leave unclassified paths q
   assert.equal(isActive("/work/storytelling-guide", "/work"), false);
   assert.equal(isActive("/work/storytelling-guide", "/side-quests"), false);
   assert.equal(isActive("/side-quests", "/side-quests"), true);
+  assert.equal(isActive("/ai-academy", "/side-quests"), true);
+  assert.equal(isActive("/ai-academy/programming", "/side-quests"), true);
+  assert.equal(isActive("/builder-academy/identity-journey", "/side-quests"), true);
+  assert.equal(isActive("/ai-academy", "/work"), false);
+  assert.equal(navCurrent("/ai-academy", "/side-quests"), "true");
   assert.equal(isActive("/projects", "/side-quests"), false);
   assert.equal(isActive("/field-notes/multithreading", "/field-notes"), true);
   assert.equal(isActive("/contact", "/contact"), true);

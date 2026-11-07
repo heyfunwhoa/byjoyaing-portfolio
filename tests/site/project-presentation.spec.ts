@@ -4,7 +4,7 @@ test("side quests offers one academy entry, one revenue system, and no status pi
   test.skip(test.info().project.name !== "site-desktop", "Run the presentation journey once.");
   await page.goto("/side-quests");
   await expect(page.getByRole("heading", { name: "GTM Revenue OS" })).toBeVisible();
-  const academy = page.getByRole("link", { name: /Try the example\s*:\s*Builder Academy/ });
+  const academy = page.getByRole("link", { name: "Open Builder Academy" });
   await expect(academy).toHaveAttribute("href", "/ai-academy");
   await expect(page.getByRole("link", { name: /Explore the project\s*:\s*Planning$/ })).toHaveAttribute("href", "/work/revenue-planning-simulator");
   await expect(page.getByRole("link", { name: /Explore the project\s*:\s*Coverage and capacity$/ })).toHaveAttribute("href", "/work/gtm-operating-plan");
