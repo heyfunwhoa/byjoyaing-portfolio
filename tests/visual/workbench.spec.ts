@@ -174,5 +174,5 @@ test("motion candidates remain discoverable without installing a runtime package
   await page.getByRole("combobox", { name: "Availability", exact: true }).selectOption("Candidate");
   await expect(page.getByRole("status")).toContainText("GTM Revenue OS");
   await expect(page.getByRole("heading", { name: /Motion for React/ })).toBeVisible();
-  await expect(page.getByRole("heading", { name: /Motion Primitives/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Motion.Primitives/i })).toBeVisible();
 });
