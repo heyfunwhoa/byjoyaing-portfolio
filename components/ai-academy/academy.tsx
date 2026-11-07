@@ -35,7 +35,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
   const [tab, setTab] = useState<AcademyTab>("learn");
   const [pathId, setPathId] = useState<string | null>(null);
   const [track, setTrack] = useState<(typeof tracks)[number]>("All");
-  const [active, setActive] = useState("what-is-ai");
+  const [active, setActive] = useState("idea-to-verified-release");
   const [answer, setAnswer] = useState<number | null>(null);
   const [reviewed, setReviewed] = useState<string[]>([]);
   const [query, setQuery] = useState("");
@@ -130,9 +130,9 @@ export function Academy({ resources }: { resources?: ReactNode }) {
             Learn the basics. Apply with purpose.
           </h1>
           <p className="mt-4 text-lg leading-8 text-muted">
-            Learn AI basics, understand the tools behind an app, or practice a
-            research task. Read a short lesson, then try its linked guide or
-            lab.
+            Start with the software lifecycle, explore the tools behind an app,
+            or learn AI and research. Read a short lesson, then try its linked
+            guide or lab.
           </p>
           <a
             href="#academy-sections"
@@ -154,8 +154,8 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         </summary>
         <div className="px-5 pb-5">
           <p className="text-sm leading-6 text-muted">
-            Pick a topic to see its lessons in order. AI basics is not a
-            prerequisite for every path.
+            Start with the software lifecycle or choose a specialist path.
+            AI basics is not required for every path.
           </p>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {learningPaths.map((path) => (
@@ -472,7 +472,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
                   <strong>
                     {answer === lesson.check.answer ? "Correct." : "Try again."}
                   </strong>{" "}
-                  {lesson.check.explanation}
+                  {lesson.check.feedbackByChoice?.[answer] ?? lesson.check.explanation}
                 </p>
               )}
             </fieldset>

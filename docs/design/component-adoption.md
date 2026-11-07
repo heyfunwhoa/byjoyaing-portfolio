@@ -429,3 +429,9 @@ The owner also reported that expanding Architecture looked cramped on desktop. T
 - **Accessibility:** Logical DOM order, semantic `ol`, visible headings, non-interactive cards, no hidden essential content or motion. The parent Architecture disclosure keeps native keyboard operation.
 - **Verification:** The browser spec checks 320, 375, 768 and 1280px, ordered headings, responsive placement and page overflow. Manual 200% zoom, real-device readability and screen-reader checks remain release gates.
 - **Rollback:** Revert the architecture component along with this draft PR. No route, data or dependency changes.
+
+## Academy curriculum organization (2026-10-30, KRU-174)
+
+Proposed data-only reuse of the existing Academy navigation foundation. Source/destination: `components/ai-academy/academy.tsx` and `app/ai-academy/page.tsx` for path data. This section does not remove the Frontend lesson mount recorded above, and it does not remove the breadcrumb sections from main. Existing native path disclosure, responsive path cards, lesson selector, focused headings, prerequisite buttons and resource cards consume nine paths and corrected availability metadata. Owner: portfolio maintainer. No dependencies, new tokens, animation or external source imports.
+
+Phone retains stacked cards/select controls, tablet the existing two-column breakpoints and desktop the existing three-column chooser/sidebar. All path steps remain skippable. Reduced-motion behavior is inherited; no new loading, network or permission state. New browser coverage checks the recovery lesson and related Systems destination; prerequisite/coverage tests guard the data contract. The keyboard sequence test already on main stays. Manual keyboard, 200% zoom, screen reader and real-device checks were not run for this organization. Revert the path and recovery files to roll back; publication is not claimed.

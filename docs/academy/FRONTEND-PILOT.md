@@ -51,7 +51,7 @@ Section links move focus to the section. They do not create a durable lesson URL
 
 Practice and both checks use labeled radio groups. The selected choice's explanation stays visible, including when it is wrong. Reset clears that group. The verification example stays hidden until requested. Notes are component state only: they are not submitted, saved or scored. A correct choice does not press "Mark as reviewed".
 
-Next step uses the existing `selectLesson` function. Design Lab stays on the frontend path. CMS fundamentals leaves that path because it is not one of its lessons.
+Next step uses the existing `selectLesson` function. Design Lab stays on the frontend path (`keepPath: true`). The CMS button still calls `selectLesson` with `keepPath: false`, so it clears the path view. That is the tested pilot behavior. KRU-174's frontend path now also lists `cms-fundamentals`, so that lesson remains reachable from the path list. This integration does not change the button.
 
 ## Responsive and keyboard contract
 
@@ -82,4 +82,4 @@ Human review time, agent runtime, tokens and cost were not available from a bill
 
 ## Coordination
 
-PR #233 is the curriculum draft that first added this note. This copy adds the measured decision and the implementation. Reconcile the two copies if both are open. PR #234 adds optional account actions around the shared lesson and was not edited. PR #235 is the release handoff and was not edited. No merge or deployment is requested here.
+PR #233 first wrote this note as an unimplemented brief. This copy is the measured decision and the implementation, and it replaces that "not implemented" status. The lesson sequence from the brief is the rendered panel in `components/ai-academy/frontend-lesson.tsx`. PR #234's account controls were checked against this mount and were not imported. PR #235 was not edited. PR #237's companion stays on `mcp-vs-rest-api`. No merge or deployment is requested here.
