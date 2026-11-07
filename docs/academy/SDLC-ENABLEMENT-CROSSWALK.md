@@ -257,6 +257,29 @@ Continue using existing Linear program/projects and issues when scope is ready; 
 **Non-goals for this proposal:** no new app, authentication, LMS, learner accounts, database, analytics collector, CMS migration, game engine, cloud provider, paid tool, private enablement publication, automatic PR merge or release.
 
 
+## Delivery checkpoint: single-feature transfer and artifact lab (2026-11-06)
+
+**Implemented on this draft branch as educational Markdown only:**
+
+- **Now:** [From idea to verified release](../builder-academy/idea-to-verified-release.md#full-stack-bridge-trace-one-fictional-discovery-note) now includes one optional, fictional five-line transfer task spanning product problem and build-vs-buy; user journey and UX/UI; React frontend; API validation and server authorization; database constraints; CI/build; preview/production identity; outcome review. It **reuses** the parent lesson, existing six-stage interactive delivery lifecycle lab, and the current frontend/API/data/deployment lessons. It is **not** a second Academy lesson ID or a new interactive route.
+- **Next:** [Source → build artifact → Docker image → deployment](../builder-academy/source-to-artifact-and-docker.md) is a complete **written**, safe classroom exercise with a conceptual Dockerfile, optional managed-hosting comparison, six independent questions, wrong-answer guidance and a rubric. No Docker engine, registry, real code build or deployment was run; the Dockerfile assumes an existing fictional compiled application and is **not verified runnable**.
+- **Later:** IaC, Kubernetes and platform engineering are retained as scoped deep dives only after beginners can distinguish a build artifact, image, running container, cloud resource and deployment record. An illustrative IaC plan-review scenario remains the proposed first advanced lab, **not implemented** here.
+
+**No new Academy registry, UI component, account/progress store, framework, duplicate Linear issue, paid tool or public employer/customer data.** The new Markdown is on draft PR #260 until reviewed and merged. PR #238 still owns the SDLC starting navigation; do not claim that this draft guide is visible at the canonical `blob/main` URL or deployed site yet.
+
+### Other practical concerns included across the journey
+
+Use these as acceptance lenses for the single feature rather than creating separate courses before the pilot:
+
+1. **Build versus buy:** check whether an existing CRM or managed product solves the user problem before inventing infrastructure.
+2. **Roles and contracts:** name the product decision owner, UX reviewer, implementer, data/privacy owner, security reviewer and authorized release operator; map the handoffs through explicit artifacts.
+3. **Unhappy paths and accessibility:** specify 403 denial, invalid input, unavailable dependency, empty/loading states, keyboard/readability and recovery before building the happy-path UI.
+4. **Data ownership and recovery:** identify who owns records, migrations, environment isolation, retention, backup and rollback. Reverting code does not restore deleted data.
+5. **Operability, cost and feedback:** have a basic error/latency signal, optional SLO, proportional spend check and outcome measurement. Logging or pageviews do not automatically prove business impact.
+6. **Security and evidence:** pin the exact source/build/deployment version, minimize secrets and supply-chain risk, inspect least-privilege boundaries, and verify the real release. Green CI and a Docker tag alone are insufficient.
+
+**Next acceptance gates:** editorial/content review for the two guide changes; inspect internal relative links and source qualification; try the transfer task with an intended beginner; confirm no duplicate IDs or CMS/progress implications; merge draft PR #260 only through the existing release process and then recheck the published links. A written answer key is not evidence of learning effectiveness or a substitute for a runnable app test.
+
 ## Prioritized implementation plan (2026-11-06)
 
 **Decision:** Start learning immediately in chat; make the first repository delivery a bounded, outcome-driven SDLC entry and comprehension slice. No new Academy program, separate LMS, duplicate lesson registry, learner storage, or new UI framework.
