@@ -26,6 +26,8 @@ sequenceDiagram
   A-->>B: Success or error
 ```
 
+If you want to inspect the exchange before moving on to builds, take the [API request and SDK walkthrough](follow-one-api-request.md). Start with the request and response, then use the deeper sections for permission failures and retries.
+
 ## What the build produces
 
 At the computing level, bits represent values and bytes group bits. A file contains bytes interpreted according to its format. Source files are typically text in an encoding such as UTF-8. An operating system manages running processes and resources such as memory and files. The shell is one way to start a program.

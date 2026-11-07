@@ -12,6 +12,7 @@ This document is the **curriculum crosswalk**, not the learner-facing course. Ta
 | Order | Current learning material | What to produce | Delivery status |
 | --- | --- | --- | --- |
 | 1. Orientation | [From idea to verified release](../builder-academy/idea-to-verified-release.md), plus its [fictional full-stack extension](../builder-academy/idea-to-verified-release.md#full-stack-bridge-trace-one-fictional-discovery-note) | One problem, acceptance criterion, product/UX/API/data sketch, next release evidence | Existing Academy lesson; new written extension on PR #260 |
+| 1a. API practice | [Follow one click through an API](../builder-academy/follow-one-api-request.md) | Trace a form submission, inspect the request and response, and explain a safe retry | Written companion in PR #260 |
 | 2. Software artifacts and Docker | [From source code to running software](../builder-academy/source-to-running-software.md) | Source/build/artifact/image/container comparison and go/no-go rationale | Existing written guide expanded on PR #260 |
 | 3. Systems design | [Architecture trade-off exercise](../builder-academy/systems-design-tradeoffs.md) | Bounded architecture diagram, trust boundary and one decision record | Written lab in PR #260 only |
 | 4. Infrastructure as Code | [IaC plan and drift review](../builder-academy/infrastructure-as-code-plan-review.md) | Review three fictional plans and block destructive changes | Written lab in PR #260 only |
