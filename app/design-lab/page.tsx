@@ -34,17 +34,17 @@ export const metadata: Metadata = completePageMetadata({
 const ideationTemplates = [
   [
     "Idea card",
-    "Problem and audience:\nDesired outcome:\nSimplest baseline:\nAlternative and open-source building block:\nSmallest prototype:\nEvidence to collect:\nWhere else this could help:",
+    "Problem and audience:\nDesired outcome:\nSimplest baseline:\nAlternative and open-source building block:\nSmallest prototype:\nEvidence to collect:\nOwner and next review date:\nWhere else this could help:",
     "Sellers need to turn buyer conversations into a brief. Compare reading a transcript with choosing questions in an InkJS conversation. Both approaches end with the same fictional discovery brief. Builder Academy could reuse the branching format for infrastructure plan review."
   ],
   [
     "Prototype comparison",
-    "Task and audience:\nBaseline:\nAlternative:\nWhat counts as success:\nObserved results:\nDecision and reason:",
+    "Task and audience:\nBaseline:\nAlternative:\nWhat counts as success:\nObserved results and evidence links:\nLimitations or checks not run:\nDecision and reason:\nOwner and next review date:",
     "Give learners the same buyer scenario and brief rubric. Look for a clear problem, a confirmed fact, an unverified assumption, and a next step. Record which approach helped and where people got stuck. The comparison is still proposed."
   ],
   [
     "Adoption brief",
-    "Destination repo and owner:\nPattern to reuse:\nContent or behavior the destination owns:\nEvidence link:\nAcceptance criteria:\nLinear issue:\nDecision and follow-up:",
+    "Destination repo and owner:\nPattern to reuse:\nContent or behavior the destination owns:\nEvidence link:\nAcceptance criteria:\nLinear issue:\nSource repo, path, version or commit and license:\nMaintenance owner and update method:\nRollback and verification:\nDecision and follow-up:",
     "GTM Revenue OS is the destination for seller practice. Reuse the conversation interface. GTM OS supplies the buyer scenario, coaching, and brief. A learner should be able to explain what they learned and what they still need to confirm. Track the delivery decision in KRU-147."
   ]
 ] as const;
@@ -107,6 +107,26 @@ export default function DesignLabPage() {
               </details>
             ))}
           </div>
+          <details className="rounded-xl border border-border bg-card p-4">
+            <summary className="min-h-11 cursor-pointer py-2 font-semibold">When to move an idea forward</summary>
+            <ol className="mt-3 list-decimal space-y-3 pl-5 text-sm leading-6">
+              <li><strong>Define.</strong> Name the audience, problem, outcome, owner, and next review date. If there is no clear task yet, keep it as an idea.</li>
+              <li><strong>Try.</strong> Compare the simplest baseline with one alternative using the same fictional task. Choose a small time limit before building; record what you actually observed.</li>
+              <li><strong>Decide.</strong> Adopt, revise, or park. Link the evidence and name the limits. Passing software tests does not establish that the prototype helps someone do the task.</li>
+              <li><strong>Hand off.</strong> For adoption, name the destination owner and acceptance criteria, link the existing Linear issue and implementation PR, and record the source and maintenance plan.</li>
+              <li><strong>Verify.</strong> Review the destination workflow, required accessibility checks, and release evidence. Track implemented, tested, merged, and deployed separately.</li>
+            </ol>
+            <p className="mt-3 text-sm leading-6 text-muted">If an idea is parked, leave a reason and a specific trigger for revisiting it. A catalog entry is not a delivery commitment.</p>
+          </details>
+          <details className="rounded-xl border border-border bg-card p-4">
+            <summary className="min-h-11 cursor-pointer py-2 font-semibold">Keep adopted code up to date</summary>
+            <ul className="mt-3 list-disc space-y-3 pl-5 text-sm leading-6">
+              <li><strong>Published package:</strong> record the package, version, license, and owning repo. Review dependency update PRs and run the destination app’s checks before accepting an update.</li>
+              <li><strong>Copied or adapted source:</strong> record the upstream URL, file, exact commit, license notices, and local changes. The destination maintainer compares upstream changes and brings over relevant fixes.</li>
+              <li><strong>Shared internal component:</strong> use a versioned package when multiple apps need the same behavior and updates. Keep scenarios and business rules in the destination app.</li>
+            </ul>
+            <p className="mt-3 text-sm leading-6 text-muted">Today the Design Lab and GTM practice copies are maintained separately. Changes here do not automatically update another repo. The adoption brief records who checks for updates and when.</p>
+          </details>
           <aside aria-labelledby="product-feedback-idea" className="rounded-xl border border-border bg-card p-4">
             <p className="editorial-eyebrow text-accent">Future idea · parked</p>
             <h3 id="product-feedback-idea" className="mt-2 text-lg font-semibold">Turn conversation insights into product feedback</h3>

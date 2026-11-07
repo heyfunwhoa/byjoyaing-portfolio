@@ -172,3 +172,12 @@ This is the upstream reference appendix, not a new installed-component catalog. 
 ## Candidate planning across repositories
 
 Use the [component opportunity register](component-opportunity-register.md) for where to open Design Lab, the complete captured opportunity inventory, repository coverage and promotion gates. The in-page catalog supports project and availability filters; this remains local-development only.
+
+
+## Ideation and adoption operating notes
+
+The local landing page’s **From idea to adoption** section contains the idea card, prototype comparison, and adoption brief. It also explains the define → try → decide → hand off → verify sequence. Use native disclosures on all screen sizes; no additional interaction library or persistence.
+
+Record an owner and review date before trying an idea. Comparison records include observed evidence and checks not run. Adoption records include the source revision/license, maintenance owner/update method, rollback and destination verification. Published packages use reviewed dependency updates; copied source requires upstream comparison; internal shared packages remain a future adoption decision. There is no automatic cross-repository synchronization.
+
+Conversation insights → product feedback remains parked. Revisit when a product owner and a bounded fictional capture task are agreed; collecting real conversations, integrations and delivery commitments are outside this slice.
