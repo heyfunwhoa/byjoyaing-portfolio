@@ -10,6 +10,7 @@ Owner: portfolio maintainer. Updated 2026-11-06. Tracking: KRU-150 / Portfolio P
 - The route is intentionally unavailable in production, including a normal production-mode preview. It is not a live public portfolio page. No hosting/access boundary changed.
 - Catalog UI: **Choose by the job to be done**, with Project, Search, Availability, Cards and Table controls.
 - Canonical item records: `lib/component-options.ts`. This guide records coverage and maintenance, rather than duplicating item data.
+- Lifecycle overlays and source-level consumer evidence: `lib/design-lab/pattern-adoption.ts`. See [reusable pattern library](pattern-library.md) for stage rules and Technical Docs ownership. These links do not automatically update any consuming repository.
 - Component implementation inventory: `component-inventory.md`; licensing/adoption: `gameful-adoption.md` and `component-adoption.md`.
 
 ## Inventory scope and meaning
