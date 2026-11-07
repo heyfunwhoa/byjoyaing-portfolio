@@ -48,7 +48,7 @@ Availability ("Available here" versus "Candidate") is **different** from stage. 
 
 No standalone **Approved** entries have been recorded here solely from source availability. Future approvals must include a link to a reviewable owner decision before that stage is assigned.
 
-A local source file and test result can establish only what they actually inspected. **For other repositories,** record exact `repo/path`, a pinned immutable revision, and a reviewer-checked import/use. The portfolio CI cannot prove another repository deployed the pattern or that its permissions and accessibility are correct. The other repository must complete its own acceptance evidence.
+A local source file and test result can establish only what they actually inspected. **For other repositories,** record exact `repo/path`, a pinned immutable revision, and a reviewer-checked import/use. The portfolio CI cannot prove another repository deployed the pattern or that its permissions and accessibility are correct. The other repository must complete its own acceptance evidence. Recheck those pinned source revisions before reuse: these snapshots were inspected on 2026-11-07 and are not continuously monitored for drift.
 
 ## How to use the library
 
