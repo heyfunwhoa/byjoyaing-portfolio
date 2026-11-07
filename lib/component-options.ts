@@ -385,7 +385,7 @@ export const componentOptions: ComponentOption[] = [
   },
   {
     "id": "game-hexgrid",
-    "name": "React Hexgrid: learning territories",
+    "name": "Native hex learning territories",
     "purpose": "Explore numbered learning paths using tiles and equivalent text controls.",
     "availability": "Available here",
     "parts": [
@@ -396,8 +396,8 @@ export const componentOptions: ComponentOption[] = [
       "Portfolio",
       "Truffle Camp"
     ],
-    "source": "https://github.com/Hellenic/react-hexgrid",
-    "adoption": "Local LearningChallenge pilot only. 2.0.1, MIT. Keep native keyboard controls and readable labels; no invented prerequisite or mastery claims."
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path",
+    "adoption": "Local LearningChallenge prototype using native HTML buttons and CSS clip-path. No hexgrid library or native optional dependencies. Keep visible focus, readable labels, an equivalent text list and no invented prerequisite or mastery claims."
   },
   {
     "id": "game-rpgui",
