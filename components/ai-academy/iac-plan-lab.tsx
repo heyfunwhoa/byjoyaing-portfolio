@@ -10,7 +10,7 @@ export function IacPlanLab() {
     <section aria-label="IaC plan review practice" className="mt-7 rounded-xl border border-border bg-card p-4 sm:p-6">
       <p className="text-xs font-semibold uppercase tracking-widest text-accent">Optional practice · Fictional example</p>
       <h3 className="mt-2 font-display text-xl sm:text-2xl">Review an infrastructure change</h3>
-      <p className="mt-3 text-sm leading-6 text-muted">A fictional app needs one private preview bucket with seven-day retention. Production must not change. Pick the plan that could proceed to human review. No infrastructure is changed, and answers are not stored.</p>
+      <p className="mt-3 text-sm leading-6 text-muted">A fictional app needs one private preview bucket with seven-day retention. Production must not change. Pick the plan that could proceed to human review. No infrastructure is changed. Your choice is held only in this page session; it is not saved or sent.</p>
       <fieldset className="mt-5 space-y-3">
         <legend className="mb-3 font-semibold">Which proposed plan meets the requirement?</legend>
         {iacPlans.map(plan => (
@@ -25,6 +25,7 @@ export function IacPlanLab() {
         <button type="button" onClick={() => {setSelected(null);setSubmitted(false);}} className="min-h-11 rounded-lg border border-border px-4 py-2 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Reset</button>
       </div>
       {result ? <div role="status" className="mt-4 rounded-lg border border-border bg-background p-4 text-sm leading-6"><p className="font-semibold">{result.decision === "candidate" ? "Candidate for review, not approval to apply." : "Stop: unapproved or unsafe change."}</p><p className="mt-2">{result.feedback}</p></div> : null}
+      <p className="mt-4 text-xs leading-5 text-muted">Checking one answer is practice, not approval to apply infrastructure changes or proof of operating skill.</p>
       <details className="mt-5 rounded-lg border border-border p-3"><summary className="min-h-11 cursor-pointer font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Independent transfer task</summary><p className="mt-2 text-sm leading-6">A fictional report-export worker needs private storage, but a plan unexpectedly replaces the production database. Explain why to stop, what evidence to request, and who may authorize any change. Correctly selecting an answer is practice, not proof of operational skill.</p></details>
     </section>
   );
