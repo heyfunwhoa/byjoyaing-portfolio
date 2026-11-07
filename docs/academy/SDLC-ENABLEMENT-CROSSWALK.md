@@ -319,6 +319,24 @@ The user approved continuing the **remaining technical curriculum**. This draft 
 
 **Validation and scope boundary:** all code snippets and infrastructure manifests are illustrative unless a separate executable fixture is built and validated. In particular, the OpenTofu pseudo-configuration and Kubernetes manifest are **not safe deployable templates**; no provider APIs, registries, secrets or real cluster were used. Check Markdown links and accuracy, require editorial and intended-learner review, and only then consider one executable sandbox as a later, independently approved slice. Preserve existing Linear KRU-174/KRU-77 ownership, Design Lab #258 experimental boundaries, and Academy integration PR #238 release gates. The docs-only PR #260 must remain draft/unmerged pending those checks.
 
+## Learner acceptance session: 15-minute protocol
+
+**Purpose:** Evaluate whether this sequence helps a beginner reason about an unfamiliar product change **without reading answer keys first**. This is a proposed test plan; **no participants have yet been observed for these new guides**. Participation is optional, consent-based and uses fictional examples only. Keep any identifiable raw notes in an authorized private place, not this public repository.
+
+| Phase | Learner action | Observer records (actual, not inferred) |
+| --- | --- | --- |
+| 0–2 min: orientation | Find where to begin and explain what the first lesson covers | Correct starting route, navigation confusion, time/assistance |
+| 2–6 min: feature trace | On a new fictional customer-contact form, name the user problem, UX states, browser/backend/data boundaries and a missing release check | Unprompted distinctions, incorrect assumptions, assistance |
+| 6–10 min: artifact chain | Classify source file, build output, Dockerfile, OCI image, running container, IaC plan and deployed revision | Correct category explanations, not keyword matching |
+| 10–13 min: go/no-go | Given a green CI check, wrong production revision and an IaC plan that deletes unrelated data, decide what must happen next | Stop decision, evidence requested, approval/rollback boundary |
+| 13–15 min: transfer | Explain the same workflow for a report-export worker, including one failure and an operational owner | Transfer without copying the first scenario; unresolved questions |
+
+**Scoring guide, not a certification:** for each of the four skills (problem-to-design trace, artifact classification, independent release decision, failure/ownership transfer), record **independent / correct with hint / incorrect / not attempted**, plus the exact misconception or difficulty. Do not infer proficiency from time spent, reading a guide, clicking an answer, or this self-report. Even a perfect single session does not establish production operational readiness.
+
+**Documentation-ready gate:** source links and code/text labels verified, accurate status disclosures, internal links resolve on the draft branch, exact-head checks pass, and a reviewer signs off. Learner observations may be deferred explicitly if the release owner accepts the limitation; do not relabel them complete.
+
+**Interactive IaC pilot gate:** Only after the core lesson and artifact chain can be explained, choose **one** deterministic, local-only plan review with three cases (safe create, unsafe exposure, unrelated destructive delete), an explanation for each choice, reset, keyboard/mobile/screen-reader acceptance and a new transfer prompt. Reuse Academy's existing answer and focus patterns, without real Terraform, paid provider calls, credentials, login, data storage or a second lesson engine. Hold a new feature PR until the active integration/release owner has reviewed the pilot's scope.
+
 ## Prioritized implementation plan (2026-11-06)
 
 **Current decision:** Reuse the SDLC-first navigation already on **open** Academy integration PR #238. PR #260 provides an independently reviewable **written** full-stack transfer exercise and optional infrastructure/operations companions. New interactive work is gated on learner evidence and the existing Academy release process. Do not add a parallel Academy, catalog, LMS, progress store or UI framework.
