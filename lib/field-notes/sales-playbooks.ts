@@ -1,0 +1,88 @@
+import type { PlaybookOutline } from "@/components/field-notes/playbook-outlines";
+
+/** Original editorial proposals. Public project links describe conceptual reuse. */
+const projects = {
+  operatingPlan: {
+    name: "GTM Revenue OS · Operating Plan",
+    href: "/work/gtm-operating-plan",
+    role: "Planning context for coverage, ownership and capacity. The link opens the public project overview.",
+  },
+  signals: {
+    name: "Account Signal Engine · Account Intelligence",
+    href: "/work/account-intelligence",
+    role: "Research context for sources, account changes and a seller's reason to engage. The link opens the public project overview.",
+  },
+  partners: {
+    name: "Channel Territory Mapping · Partner GTM Engine",
+    href: "/work/partner-gtm-engine",
+    role: "Partner context for account matching, overlap and ownership. The link opens the public project overview.",
+  },
+  market: {
+    name: "Security Market Map · Source repository",
+    href: "https://github.com/heyfunwhoa/security-market-map",
+    role: "Category and buyer-role research to test in conversation. Market research does not establish an individual buyer's needs.",
+  },
+} as const;
+
+export const salesPlaybooks = [
+  {
+    id: "territory-planning",
+    title: "Territory planning",
+    purpose: "Choose where to spend selling time and make the trade-offs visible.",
+    when: "A new book, planning period or coverage change needs a focused account plan.",
+    before: "Define the commercial objective, ideal customer fit, exclusions, account ownership and available selling time. Separate known relationships from assumptions and keep existing opportunities visible.",
+    during: "Prioritize a bounded account set using fit, relevant evidence, relationship access and effort. Assign an owner, a reason to act and one next step; review partner overlap before outreach.",
+    after: "Review conversations, coverage gaps and time spent. Keep, change or remove priorities based on what buyers and partners actually confirm.",
+    advance: "An account has a supported fit hypothesis, clear ownership and a feasible next action. Opportunity creation still requires buyer evidence under the team's agreed qualification rules.",
+    pause: "Ownership is disputed, fit is weak or the account cannot be served. Keep uncertain timing in research or nurture; estimated account potential is not forecast revenue.",
+    artifacts: "Territory brief, ranked account worksheet, coverage map and weekly review.",
+    measures: "Priority accounts with an owner and next step, buying-role coverage, conversations held and qualified opportunities. Define the cohort, time window and available seller capacity.",
+    next: "Build a fictional ten-account plan with selection reasons, capacity limits, an ownership conflict and one deprioritized account.",
+    connections: [projects.operatingPlan, projects.signals, projects.partners],
+  },
+  {
+    id: "signal-to-conversation",
+    title: "Signal-to-conversation",
+    purpose: "Turn a verified account change into a relevant question and a useful conversation.",
+    when: "A public event or account change may affect a buyer's work, but the need has not been confirmed.",
+    before: "Check account fit, the original source, event date and freshness. Write down the observation, possible implication and what would disprove it; check existing activity and outreach ownership.",
+    during: "Choose a relevant role, test one problem hypothesis and offer a useful next step. Have a person review the message, evidence and contact preferences before outreach.",
+    after: "Record the actual response, corrected assumptions and agreed next action. Compare a single message variable across comparable cohorts before deciding what to repeat.",
+    advance: "The buyer confirms a relevant problem or priority and agrees to explore it. A signal, reply or booked meeting alone does not establish a qualified opportunity.",
+    pause: "The source is stale or contradictory, the change has no plausible role relevance, ownership is unclear or the person declines contact. Silence stays unknown.",
+    artifacts: "Signal evidence card, account hypothesis, role-specific message, review checklist and response log.",
+    measures: "Reviewed signals, relevant replies, meetings held and buyer-confirmed next steps. Keep sent, delivered, replied and qualified denominators distinct.",
+    next: "Build one fictional evidence-to-message example with a valid trigger, a stale trigger and a buyer response that disproves the hypothesis.",
+    connections: [projects.signals, projects.market, projects.operatingPlan],
+  },
+  {
+    id: "discovery-qualification",
+    title: "Discovery and qualification",
+    purpose: "Understand the buyer's problem and decide together whether further work is worthwhile.",
+    when: "An initial conversation needs to become a shared problem definition and a justified next step.",
+    before: "Review the account hypothesis, likely roles and existing evidence. Prepare open questions about the current workflow, impact, urgency and decision process; keep unknowns explicit.",
+    during: "Let the buyer explain what happens today, who is affected and why change matters. Explore alternatives, decision roles and constraints. Distinguish buyer statements from seller interpretation.",
+    after: "Send a concise recap for correction. Record evidence, gaps and an agreed action with an owner and date. Bring in technical or commercial specialists when their input answers a real question.",
+    advance: "The buyer confirms a meaningful problem, a responsible owner and a mutual next step. Start an evaluation only after agreeing its scope, success criteria, resources and decision review.",
+    pause: "There is no relevant problem, no feasible fit or no willingness to explore a next step. Missing evidence remains a gap to resolve, not a completed qualification field.",
+    artifacts: "Discovery plan, evidence-and-gaps record, buying-group map, buyer recap and evaluation brief.",
+    measures: "Buyer-confirmed next steps, unresolved evidence gaps, evaluations with agreed criteria and later dispositions. Record why an opportunity stalls or is disqualified.",
+    next: "Build a fictional discovery recap with one confirmed problem, an unknown business impact, a missing stakeholder and a mutually agreed next step.",
+    connections: [projects.market, projects.operatingPlan],
+  },
+  {
+    id: "partner-co-selling",
+    title: "Partner co-selling",
+    purpose: "Coordinate around one buyer problem with clear roles and accountable follow-through.",
+    when: "A partner relationship or shared account creates a credible route to help a buyer together.",
+    before: "Validate account matching, relationship access and the partner's contribution. Resolve ownership, permitted information sharing, first contact and commercial responsibilities before engagement.",
+    during: "Agree the buyer problem and joint account plan. Name who introduces, who leads discovery, who supports evaluation and who owns the next action. Confirm each handoff is accepted.",
+    after: "Review the buyer's response and joint commitments. Update ownership and dispositions, resolve conflicts and use agreed definitions for sourced or influenced credit.",
+    advance: "The partner accepts a specific action and the buyer agrees to engage on a relevant problem. An account match or partner introduction alone is not buyer qualification.",
+    pause: "Relationship access is assumed, ownership or incentives conflict, sharing is not permitted or the joint approach adds no buyer value. Resolve the issue before further contact.",
+    artifacts: "Joint account brief, contribution map, introduction request, handoff record and shared review.",
+    measures: "Accepted introductions, meetings held, handoff acknowledgment, joint next steps and qualified outcomes. Avoid double-counting one opportunity across partners or campaigns.",
+    next: "Build a fictional co-sell plan with partner-led, vendor-led and joint actions, plus one disputed ownership decision.",
+    connections: [projects.partners, projects.signals, projects.operatingPlan],
+  },
+] as const satisfies readonly PlaybookOutline[];

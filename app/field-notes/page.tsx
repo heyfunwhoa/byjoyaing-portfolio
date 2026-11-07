@@ -1,6 +1,8 @@
 import { completePageMetadata } from "@/lib/page-metadata";
 import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { PageMain } from "@/components/page-main";
+import { PlaybookOutlines } from "@/components/field-notes/playbook-outlines";
+import { salesPlaybooks } from "@/lib/field-notes/sales-playbooks";
 import { marketingPlaybooks } from "@/lib/field-notes/marketing-playbooks";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -19,7 +21,6 @@ const plannedTopics = [
   "Strategic account planning",
   "Deal inspection",
   "ICP and segmentation",
-  "Opportunity qualification",
   "Pipeline and forecast cadence",
   "Coaching and onboarding rhythms",
 ] as const;
@@ -40,6 +41,7 @@ export default function FieldNotesPage() {
         <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#featured">Published guides</a>
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#marketing-playbooks">Marketing playbooks</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#sales-playbooks">Sales playbooks</a>
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#private">Private work</a>
         </nav>
         </div>
@@ -101,35 +103,28 @@ export default function FieldNotesPage() {
           the measures before launch, including the source, time window,
           denominator and what is still unknown.
         </p>
-        <div className="mt-6 grid items-start gap-4 md:grid-cols-2">
-          {marketingPlaybooks.map((playbook) => (
-            <article key={playbook.id} aria-labelledby={`playbook-${playbook.id}`} className="min-w-0 rounded-2xl border border-border bg-card p-6">
-              <h3 id={`playbook-${playbook.id}`} className="font-display text-2xl tracking-tight">{playbook.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted">{playbook.purpose}</p>
-              <details className="mt-3">
-                <summary aria-label={`View ${playbook.title.toLowerCase()} outline`} className="min-h-11 cursor-pointer content-center rounded-sm py-3 text-sm font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
-                  View outline
-                </summary>
-                <dl className="mt-3 space-y-4 text-sm leading-6">
-                  {[
-                    ["When to use it", playbook.when],
-                    ["Before", playbook.before],
-                    ["During", playbook.during],
-                    ["After", playbook.after],
-                    ["Starter kit", playbook.artifacts],
-                    ["Measures to define", playbook.measures],
-                    ["Next to build", playbook.next],
-                  ].map(([label, text]) => (
-                    <div key={label}>
-                      <dt className="font-medium">{label}</dt>
-                      <dd className="mt-1 text-muted">{text}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </details>
-            </article>
-          ))}
-        </div>
+        <PlaybookOutlines playbooks={marketingPlaybooks} />
+      </section>
+      <section id="sales-playbooks" aria-labelledby="sales-playbooks-heading" className="scroll-mt-24 border-b border-border py-12">
+        <p className="text-xs font-medium text-muted">Exploring · Playbook outlines</p>
+        <h2 id="sales-playbooks-heading" className="mt-3 font-display text-3xl tracking-tight">Sales, from account focus to a shared next step</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Four starting points for choosing accounts, opening conversations,
+          qualifying opportunities and working with partners. Each includes
+          evidence to move forward, reasons to pause and an artifact to build next.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          These are proposed approaches, not completed playbooks or measured
+          results. Connected projects show where the ideas fit; the links open
+          public overviews or a public source repository, not live integrations.
+        </p>
+        <PlaybookOutlines playbooks={salesPlaybooks} />
+        <p className="mt-6 max-w-2xl text-sm leading-6 text-muted">
+          Continue discovery into the existing{" "}
+          <Link href="/field-notes/enterprise-deal" className="text-accent underline underline-offset-4">enterprise deal guide</Link>
+          {" "}and{" "}
+          <Link href="/field-notes/multithreading" className="text-accent underline underline-offset-4">stakeholder mapping playbook</Link>.
+        </p>
       </section>
       <section id="coming-later" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">Notes still in outline</h2>
