@@ -195,6 +195,8 @@ The following is a **recommended deep-dive dependency order**, not a new 11-path
 | 10 | DevOps, CI/CD and release engineering | Trace commit → build → artifact → preview → deploy → verify/rollback |
 | 11 | Operations, reliability and lifecycle improvement | Diagnose a synthetic failure, measure an outcome and propose the next change |
 
+**First practice.** Read [From source code to running software](../builder-academy/source-to-running-software.md) alongside steps 3 and 8. It includes a worked browser-to-server example, an artifact table, two reasoning checks with feedback, and a transfer task using deployment evidence.
+
 **Initial delivery constraint:** do not author 11 new lessons or add infrastructure for this map. PR #238 already handles Academy navigation and the SDLC entry; PR #260 remains docs-only. First pilot should connect the existing lifecycle/front-end/API content and make the key **artifact chain** understandable, then select one small Docker/image or IaC exercise based on actual beginner confusion. Later role-specific enablement reuses these concept IDs with its own rubric rather than copying content.
 
 ## One concept, multiple role contexts
