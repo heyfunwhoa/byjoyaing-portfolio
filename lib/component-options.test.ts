@@ -239,3 +239,30 @@ test("pattern stage, family, app and keyword filters combine without losing sour
   assert.equal(patternsForLibrary({ query: "nothing-will-ever-match" }).length, 0);
   assert.equal(patternsForLibrary({ query: "  " }).length, componentOptions.length);
 });
+
+test("native learning territories retain source IDs without unmaintained native package dependencies", () => {
+  const root = new URL("../", import.meta.url);
+  const manifest = JSON.parse(readFileSync(new URL("package.json", root), "utf8"));
+  const lock = JSON.parse(readFileSync(new URL("package-lock.json", root), "utf8"));
+  const source = readFileSync(
+    new URL("components/design-lab/learning-challenge.tsx", root), "utf8",
+  );
+  const style = readFileSync(
+    new URL("components/design-lab/learning-challenge.module.css", root), "utf8",
+  );
+  assert.equal(manifest.dependencies["react-hexgrid"], undefined);
+  assert.equal(lock.packages[""].dependencies["react-hexgrid"], undefined);
+  assert.equal(lock.packages["node_modules/react-hexgrid"], undefined);
+  assert.equal(lock.packages["node_modules/react-hexgrid/node_modules/fsevents"], undefined);
+  assert.equal(lock.packages["node_modules/bindings"], undefined);
+  assert.equal(lock.packages["node_modules/nan"], undefined);
+  assert.ok(source.includes('role="group" aria-label="Learning territories"'));
+  assert.ok(source.includes("aria-pressed={selected === index}"));
+  assert.ok(source.includes('type="button"'));
+  assert.ok(!source.includes("react-hexgrid"));
+  assert.ok(style.includes(":focus-visible"));
+  const option = componentOptions.find((item) => item.id === "game-hexgrid");
+  assert.ok(option);
+  assert.equal(option.availability, "Available here");
+  assert.match(option.adoption, /native HTML buttons/i);
+});
