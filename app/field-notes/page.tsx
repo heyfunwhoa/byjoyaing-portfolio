@@ -32,9 +32,9 @@ export default function FieldNotesPage() {
         <h1 className="editorial-title mt-3 max-w-3xl">Thinking out loud. Building in practice.</h1>
         <p className="mt-4 text-lg font-medium">Field Notes</p>
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted">
-          Playbooks, frameworks, operating systems, and lessons from the intersection of revenue,
-          go-to-market strategy, people, and technology. A place to show the thinking behind the work,
-          not just the finished output.
+          Practical thinking and useful frameworks for revenue, people, and
+          go-to-market work. These notes show how to approach a problem. They
+          are not employment records.
         </p>
         <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#featured">Published guides</a>

@@ -130,9 +130,8 @@ export function Academy({ resources }: { resources?: ReactNode }) {
             Learn the basics. Apply with purpose.
           </h1>
           <p className="mt-4 text-lg leading-8 text-muted">
-            Learn AI basics, understand the tools behind an app, or practice a
-            research task. Read a short lesson, then try its linked guide or
-            lab.
+            This is the deeper learning experience. Side Quests is the way in.
+            Read a short lesson, then try its linked guide or lab.
           </p>
           <a
             href="#academy-sections"

@@ -36,9 +36,8 @@ export default function WorkPage() {
           People. Strategy. Systems.
         </h1>
         <p className="mt-4 max-w-2xl leading-7 text-muted">
-          Enterprise cybersecurity sales, team development, competitive
-          positioning and GTM operations. My professional experience comes
-          first; independent product experiments live under Side Quests.
+          Professional contributions in selling, coaching, and GTM.
+          Independent projects and learning experiences live under Side Quests.
         </p>
       </section>
       <section

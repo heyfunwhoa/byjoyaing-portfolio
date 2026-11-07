@@ -430,6 +430,16 @@ The owner also reported that expanding Architecture looked cramped on desktop. T
 - **Verification:** The browser spec checks 320, 375, 768 and 1280px, ordered headings, responsive placement and page overflow. Manual 200% zoom, real-device readability and screen-reader checks remain release gates.
 - **Rollback:** Revert the architecture component along with this draft PR. No route, data or dependency changes.
 
+## Page jobs (2026-11-07)
+
+- **Owner / destination:** portfolio maintainer. Home, Work, Field Notes, Side Quests, `/ai-academy`, and project pages at `/work/[slug]` plus `FieldAssetCase`.
+- **Task:** Each area does one job. Side Quests introduces independent projects and the way into Builder Academy. Project pages explain the problem, the contribution, and one example before status.
+- **Reuse:** Existing `PageMain`, bento tiles, collection links, `SampleRecordView`, and `CaseStudyContents`. `ProjectStoryLead` groups three existing fields. No new dependency, motion, or navigation item.
+- **Phone / tablet / desktop:** Sections stack in source order. The Academy link and contents links keep a 44px target and the existing underline focus style. Side Quests stays current in the header on `/ai-academy` and `/builder-academy`.
+- **States:** A project without a saved sample uses the existing field note or smallest-version sentence. Academy lessons stay on their current routes.
+- **Verification:** `lib/page-jobs.test.ts` and the Side Quests active-state assertions in `lib/site-nav.test.ts`. Browser checks belong with the pull request. Manual zoom, real devices, and screen readers remain separate.
+- **Rollback:** Remove the Academy section, restore the previous openers, and stop rendering `ProjectStoryLead`.
+
 ## Game-like workflow prototypes (November 6, 2026)
 
 Local Design Lab only: reuse BentoGrid/Card/ProjectStatusPill and catalog data for exploration, installed React Flow 12.12.0 for an optional learning-path graph, and native controls for practice checks. New MissionWorkspace models four fictional self-reviewed deliverables; editing clears review. No package changes, public mounts or changed canonical lesson records. See [gameful-adoption.md](gameful-adoption.md) for source decisions, responsive/motion behavior, verification requirements and rollback. KRU-150 owns portfolio adoption; KRU-147 owns the GTM consumer. Status: implemented prototype, pending acceptance.
