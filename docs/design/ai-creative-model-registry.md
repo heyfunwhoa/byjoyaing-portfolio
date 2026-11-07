@@ -86,3 +86,9 @@ result: not_tested
 - **Code-driven explainer:** Remotion motion templates with accessibility/reduced-motion and source-controlled output.
 
 Do not add live app integrations or keys until an individual pilot has defined ownership, security review, and acceptance tests.
+
+## Editorial-calendar integration contract
+
+The catalog is **not** an editorial calendar, publishing platform, or source of GTM campaign priorities. A GTM content brief supplies required asset type, audience, channel, product-proof constraints, source-data classification, approval boundary and budget. Design Lab returns eligible candidate IDs, scoped evaluated uses, evaluation evidence and production recipe hints. GTM OS retains the calendar slot, campaign, asset, reviewer, distribution decision and outcome data. No direct automated publication or credential/data transfer is implied.
+
+Consumption reference: [GTM OS Editorial Calendar → Marketing and Sales Activation](https://github.com/heyfunwhoa/gtm-revenue-os/blob/main/docs/product/editorial-calendar-gtm-activation.md) after related PR merges. The first Design Lab UI iteration should support an asset-type filter and an export/copy of candidate IDs for use in a GTM content brief, not duplicate the calendar.
