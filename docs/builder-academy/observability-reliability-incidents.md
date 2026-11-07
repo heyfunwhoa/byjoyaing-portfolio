@@ -3,7 +3,7 @@
 **Builder Academy companion · Beginner → intermediate · 25–35-minute study budget**  
 **Status:** Draft **synthetic, written** practice, not a connected observability dashboard, configured alert, uptime guarantee or live incident. No monitoring provider, log collection, production data or credentials are enabled.
 
-**Start with:** [From idea to verified release](idea-to-verified-release.md), [Systems design and boundaries](systems-design-tradeoffs.md), and [Source to running software](source-to-running-software.md). [Background-job recovery](background-job-recovery.md) adds retry/duplicate decision practice.
+**Start with:** [From idea to verified release](idea-to-verified-release.md), [Systems design and boundaries](systems-design-tradeoffs.md), and [Source to running software](source-to-running-software.md). [proposed background-job recovery lesson in Academy PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) adds retry/duplicate decision practice.
 
 ## What changes when the app is released?
 
