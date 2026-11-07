@@ -184,7 +184,7 @@ export function ComponentOptions() {
             tabIndex={0}
             className="relative w-full max-w-full min-w-0 overflow-x-auto rounded-xl border border-border bg-card"
           >
-            <table className="w-full min-w-[42rem] border-collapse text-left text-sm">
+            <table className="w-full min-w-[64rem] border-collapse text-left text-sm">
               <caption className="p-4 text-left text-xs text-muted">
                 Component options for {app}, filtered by search and availability
               </caption>
@@ -277,6 +277,19 @@ export function ComponentOptions() {
                           for {option.name} (opens a new tab)
                         </span>
                       </a>
+                      {option.localSource[0] && (
+                        <a
+                          href={patternFileUrl(option.localSource[0])}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-flex min-h-11 items-center text-accent underline"
+                        >
+                          Local source
+                          <span className="sr-only">
+                            {" "}for {option.name} (opens a new tab)
+                          </span>
+                        </a>
+                      )}
                     </td>
                   </tr>
                 ))}
