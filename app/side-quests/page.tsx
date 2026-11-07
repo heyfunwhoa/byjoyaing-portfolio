@@ -1,10 +1,11 @@
 import { completePageMetadata } from "@/lib/page-metadata";
 import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { FeaturedSideQuestStrip } from "@/components/featured-side-quest-strip";
+import { GtmRevenueSystem } from "@/components/gtm-revenue-system";
 import { PageMain } from "@/components/page-main";
-import { ProjectStatusPill } from "@/components/project-status-pill";
 import { featuredSideQuestSlides, featuredSideQuestSlugs,
 } from "@/lib/featured-work";
+import { academyEntry } from "@/lib/project-presentation";
 import { portfolioEntries } from "@/lib/portfolio-registry";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -15,7 +16,7 @@ export const metadata: Metadata = completePageMetadata(
   openGraph: { url: "/side-quests" },
   title: "Side Quests",
   description:
-    "Independent cybersecurity, AI, enablement, and GTM software experiments, with transparent build stages.",
+    "Independent cybersecurity, AI, enablement, and GTM examples, with the problem, the contribution, and a next step.",
 },
   "/side-quests",
 );
@@ -25,7 +26,7 @@ const featuredSlugSet = new Set<string>(featuredSideQuestSlugs);
 const focusLinks = [
   {
     label: "GTM & Revenue Systems",
-    detail: "Revenue planning, partner, and operating workflows",
+    detail: "Planning, coverage, and pipeline review in one system",
     href: "/projects?category=revenue",
   },
   {
@@ -40,7 +41,7 @@ const focusLinks = [
   },
   {
     label: "All projects",
-    detail: "Browse by topic and build status",
+    detail: "Browse by the problem each project answers",
     href: "/projects",
   },
 ] as const;
@@ -61,9 +62,7 @@ export default function SideQuestsPage() {
             Curiosity, put to work.
           </h1>
           <p className="mt-4 max-w-2xl leading-7 text-muted">
-            Exploring the problems I encounter in cybersecurity and go-to-market work, then turning them into research
-            systems, learning tools, and software experiments. Different projects are at different stages; none should
-            be mistaken for employer deployments.
+            I take problems from cybersecurity and go-to-market work and turn them into research, learning tools, and software experiments. These are independent of my employer work. Start with an example, then open the project for the decision behind it.
           </p>
         </div>
       </section>
@@ -71,12 +70,29 @@ export default function SideQuestsPage() {
       <section aria-labelledby="featured-quests-title" className="section-enter border-b border-border py-12">
         <p className="orbital-section-label editorial-eyebrow text-accent">Featured builds</p>
         <h2 id="featured-quests-title" className="mt-2 font-display text-3xl">
-          Selected experiments
+          Selected examples
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
-          Start with account research, a source-backed coverage comparison or a synthetic learning exercise. Each example shows its current stage and what you can inspect today.
+          Start with an account conversation, a source-backed coverage comparison, or a synthetic learning exercise.
         </p>
         <FeaturedSideQuestStrip slides={featuredSideQuestSlides()} />
+      </section>
+
+      <div className="border-b border-border py-12">
+        <GtmRevenueSystem />
+      </div>
+
+      <section aria-labelledby="academy-entry-title" className="border-b border-border py-12">
+        <p className="editorial-eyebrow text-accent">Learning</p>
+        <h2 id="academy-entry-title" className="mt-2 font-display text-3xl">Builder Academy</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">{academyEntry.summary}</p>
+        <Link
+          href={academyEntry.href}
+          className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4"
+        >
+          {academyEntry.action}
+          <span className="sr-only">: {academyEntry.title}</span>
+        </Link>
       </section>
 
       <nav aria-label="Explore independent projects by focus" className="grid gap-3 border-b border-border py-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -106,9 +122,8 @@ export default function SideQuestsPage() {
                   className="rounded-lg border border-border p-4 hover:border-accent"
                 >
                   <span className="block font-semibold">{item.title}</span>
-                  <span className="mt-2 block">
-                    <ProjectStatusPill status={item.status} />
-                  </span>
+                  <span className="mt-2 block text-sm leading-6 text-muted">{item.summary}</span>
+                  <span className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-accent">Explore the project</span>
                 </Link>
               ))}
             </div>

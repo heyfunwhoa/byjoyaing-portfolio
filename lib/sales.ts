@@ -154,7 +154,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     decision:
       "Whether this person can talk to a Head of AppSec without overclaiming coverage.",
     myRole:
-      "I have already done the field version of this work: discovery frameworks and a self-serve onboarding resource at Truffle, industry training at Darktrace, discovery templates at Forcepoint, threat-intelligence playbooks at Rapid7, and ramp resources at Websense. Truffle Camp is the product I designed on top of that pattern. It is not those assets, and it is not deployed.",
+      "I have already done the field version of this work: discovery frameworks and a self-serve onboarding resource at Truffle, industry training at Darktrace, discovery templates at Forcepoint, threat-intelligence playbooks at Rapid7, and ramp resources at Websense. Truffle Camp is the product I designed on top of that pattern. It is not those assets.",
     maturityDetail:
       "Designed, with a sample module on this page. The Darktrace ramp result belongs to the training I created there, not to Camp.",
     fieldAsset:
@@ -186,7 +186,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     decision:
       "Whether to co-sell, resolve a conflict, or leave the account alone until the domain is confirmed.",
     myRole:
-      "At Metadot I was the global channel account manager and helped stand up a channel program. This engine is the system I would want for that motion. I have not deployed it.",
+      "At Metadot I was the global channel account manager and helped stand up a channel program. This engine is the system I would want for that motion.",
     maturityDetail:
       "Designed. The Metadot channel program is history from that job. It is not usage of this design.",
     fieldAsset:
@@ -242,7 +242,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
       "A reviewed note: the event, the source, the date, the accounts it might affect, and whether we should use it. Unreviewed items do not go out.",
     decision: "Whether to open a conversation, and what we are allowed to say.",
     myRole:
-      "At Rapid7 I was a threat-intelligence resource for enterprise accounts, partners, and customers, and I wrote playbooks the portfolio team used. At Darktrace I built industry-knowledge training. A shared signal product is still an idea.",
+      "At Rapid7 I was a threat-intelligence resource for enterprise accounts, partners, and customers, and I wrote playbooks the portfolio team used. At Darktrace I built industry-knowledge training.",
     maturityDetail:
       "Concept. The playbooks and the training were real. I have not completed a design for this product, and I have not built it.",
     fieldAsset:
@@ -269,7 +269,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     decision:
       "Inform, push adoption, re-engage, expand, renew, run a proof of concept, or say nothing.",
     myRole:
-      "At Truffle I designed the operating model: what shipped, who cares, which accounts it applies to, and what the field should do next. That design is not a deployed product.",
+      "At Truffle I designed the operating model: what shipped, who cares, which accounts it applies to, and what the field should do next.",
     maturityDetail:
       "Designed. There is no release hub running. The field asset is the question set, not an application.",
     fieldAsset:
@@ -399,7 +399,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
       "A readout: who was in the segment, what we said, and what we will change.",
     decision: "Keep the message, change it, or stop.",
     myRole:
-      "I have written outbound plays and ICP profiles at Truffle, and a new-market playbook at Quantcast. I have not built a system that measures those experiments.",
+      "I have written outbound plays and ICP profiles at Truffle, and a new-market playbook at Quantcast.",
     maturityDetail:
       "Concept. There is no implementation in this repository.",
     fieldAsset: "Outbound plays and ICP profiles. Not a campaign product.",
@@ -407,7 +407,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     links: [],
     result: {
       kind: "to-test",
-      text: "No metric. If I build it, the test is one segment, one hypothesis, and a readout that changes the next send.",
+      text: "The test is one segment, one hypothesis, and a readout that changes the next send.",
     },
     related: ["account-intelligence", "security-signal-intelligence"],
   },
@@ -423,7 +423,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     decision:
       "What we will resource, and which assumption we are willing to be wrong about.",
     myRole:
-      "I keep hitting this gap in the field. I have not designed the simulator past this note.",
+      "I keep hitting this gap in the field.",
     maturityDetail:
       "Concept. Not a completed design and not software. It sits with GTM workflow design as a note, not a tool.",
     fieldAsset: null,
@@ -431,7 +431,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     links: [],
     result: {
       kind: "to-test",
-      text: "No metric. I am not presenting this as a product.",
+      text: "The test is whether writing impact, confidence, and effort changes which bet gets the time.",
     },
     related: ["customer-feedback-intelligence"],
   },
@@ -450,7 +450,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "revenue-planning-simulator": {
     pipeline:
-      "Assumptions → validation → ARR bridge → ramped capacity → pipeline shifted by the sales cycle. Formulas only. No model.",
+      "Assumptions → validation → ARR bridge → ramped capacity → pipeline shifted by the sales cycle. Formulas only.",
     workingToday:
       "A Next.js and Postgres app in gtm-revenue-os. Not embedded here. No public demo URL.",
     plannedNext:
@@ -480,7 +480,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "security-signal-intelligence": {
     pipeline:
-      "A fixed list of public sources → a person reviews the item → a note that says whether a rep should use it. That path is not built.",
+      "A fixed list of public sources → a person reviews the item → a note that says whether a rep should use it.",
     workingToday:
       "Nothing in this repository. Rapid7 playbooks and Darktrace industry training were field work. They are not this product.",
     plannedNext:
@@ -548,7 +548,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "gtm-campaign-lab": {
     pipeline:
-      "One segment → one message → a readout of what to change. Not built.",
+      "One segment → one message → a readout of what to change.",
     workingToday:
       "Outbound plays and ICP notes from the field. No campaign tool in this repository.",
     plannedNext: "One measured send. Not designed past this page.",
@@ -556,7 +556,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "product-prioritization-simulator": {
     pipeline:
-      "A short list of bets → write impact, confidence, and effort → a decision record. Not built.",
+      "A short list of bets → write impact, confidence, and effort → a decision record.",
     workingToday: "This page. I have not scored a bet in software.",
     plannedNext: "A scoring sheet. Not an automatic roadmap.",
     implementedTech: "None.",

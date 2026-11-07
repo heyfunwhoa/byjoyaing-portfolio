@@ -433,3 +433,12 @@ The owner also reported that expanding Architecture looked cramped on desktop. T
 ## Game-like workflow prototypes (November 6, 2026)
 
 Local Design Lab only: reuse BentoGrid/Card/ProjectStatusPill and catalog data for exploration, installed React Flow 12.12.0 for an optional learning-path graph, and native controls for practice checks. New MissionWorkspace models four fictional self-reviewed deliverables; editing clears review. No package changes, public mounts or changed canonical lesson records. See [gameful-adoption.md](gameful-adoption.md) for source decisions, responsive/motion behavior, verification requirements and rollback. KRU-150 owns portfolio adoption; KRU-147 owns the GTM consumer. Status: implemented prototype, pending acceptance.
+
+## Purpose-led project cards (November 7, 2026)
+
+- **Source:** existing directory articles, `FeaturedSideQuestStrip`, native `details`, and `DisclosureSection`. No new dependency or motion.
+- **Destination:** `/side-quests`, `/projects`, and the shared case-study cards those pages link to. Design Lab cards stay on `ProjectStatusPill`.
+- **Decision:** Reuse the card and disclosure. Lead with the problem, intended value, and contribution. Keep the recorded stage inside “How it works.” One GTM Revenue OS group links the three existing revenue write-ups. One Builder Academy link reuses `/ai-academy`.
+- **Responsive and access:** One column on a phone, the revenue workflows sit three across from 768px. Actions keep a 44px target, visible focus, and keyboard activation. Reduced motion is unchanged. Empty search stays the existing directory message.
+- **Verification:** `lib/project-presentation.test.ts` and `tests/site/project-presentation.spec.ts`. Manual 200% zoom and screen-reader review remain separate from an automated zoom proxy.
+- **Rollback:** Revert this presentation slice. Routes stay the same.

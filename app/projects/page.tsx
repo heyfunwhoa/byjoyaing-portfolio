@@ -1,5 +1,5 @@
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
-import { ProjectStatusPill } from "@/components/project-status-pill";
+import { GtmRevenueSystem } from "@/components/gtm-revenue-system";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { PageMain } from "@/components/page-main";
@@ -15,7 +15,7 @@ export const metadata: Metadata = completePageMetadata(
   {
   title: "Projects",
   description:
-    "Revenue, account, enablement, customer, and technical GTM systems, labeled as prototype, field practice, design, or concept.",
+    "Revenue, account, enablement, customer, and technical GTM examples, with the problem, the contribution, and a next step.",
 },
   "/projects",
 );
@@ -42,9 +42,6 @@ export default async function ProjectsPage({
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
           I design and build GTM systems that turn fragmented information into structured intelligence and workflows a person can use. The work joins enterprise sales, product thinking, and technical implementation, from competitive intelligence and customer feedback to security research, enablement, and account-based GTM.
         </p>
-        <p className="mt-5 max-w-2xl text-sm leading-6 text-muted">
-          Each project is a prototype, professional field system, design, or concept. The label is the implementation status, not a production claim.
-        </p>
         </div>
         <div className="mx-auto w-full max-w-[8rem] md:max-w-[12rem]"><OrbitStudyIllustration variant="projects" /><p className="editorial-eyebrow mt-3 text-center text-muted">Builder / Side Quests</p>
         </div>
@@ -53,8 +50,11 @@ export default async function ProjectsPage({
       <section id="directory" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Explore all projects</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          Filter by focus or lifecycle stage, then open a project to see what exists today, your contribution, and the supporting evidence.
+          Filter by focus or lifecycle stage, then open a project for the problem, the contribution, and one next step.
         </p>
+        <div className="mt-6">
+          <GtmRevenueSystem />
+        </div>
         <div className="mt-6">
           <ProjectsDirectory
             initialCategory={categoryFromSlug(category)}
@@ -88,14 +88,11 @@ export default async function ProjectsPage({
             <li key={project.slug}>
               <article className="flex flex-col gap-2 rounded-xl border border-dashed border-foreground/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="font-medium">{project.title}</h3>
-                    <ProjectStatusPill status={project.status} />
-                  </div>
+                  <h3 className="font-medium">{project.title}</h3>
                   <p className="mt-1 text-sm leading-6 text-muted">{project.summary}</p>
                 </div>
-                <Link href={project.caseStudyUrl} className="shrink-0 text-sm font-medium text-accent">
-                  View note
+                <Link href={project.caseStudyUrl} className="inline-flex min-h-11 shrink-0 items-center text-sm font-semibold text-accent underline">
+                  Explore the project
                 </Link>
               </article>
             </li>

@@ -2,7 +2,6 @@
 
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { ProjectEvidence } from "@/components/project-evidence";
-import { ProjectStatusPill } from "@/components/project-status-pill";
 import {
   filterDirectoryProjects,
   categorySlugs,
@@ -12,6 +11,8 @@ import {
   lifecycleStages,
   type DirectoryCategory,
 } from "@/lib/project-directory";
+import { projectActions } from "@/lib/project-presentation";
+import { salesFor } from "@/lib/sales";
 import type { LifecyclePhase } from "@/lib/portfolio";
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -192,19 +193,18 @@ export function ProjectsDirectory({
         </p>
       ) : (
         <ul className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project) => (
+          {projects.map((project) => {
+            const action = projectActions[project.slug];
+            const href = caseStudyHref(action.href);
+            const value = salesFor(project.slug).decision;
+            return (
             <li key={project.slug} className="flex min-w-0">
               <article className="flex w-full min-w-0 flex-col gap-4 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-accent focus-within:border-accent motion-reduce:transition-none sm:p-5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <ProjectStatusPill status={project.status} />
-                  <span className="text-xs text-muted">
-                    {project.categories[0]}
-                  </span>
-                </div>
+                <p className="text-xs font-medium text-muted">{project.categories[0]}</p>
                 <div className="flex flex-1 flex-col gap-2">
                   <h3 className="text-lg font-semibold tracking-tight">
                     <Link
-                      href={caseStudyHref(project.caseStudyUrl)}
+                      href={href}
                       className="link-rule hover:text-accent"
                     >
                       {project.title}
@@ -213,13 +213,20 @@ export function ProjectsDirectory({
                   <p className="text-sm leading-6 text-muted">
                     {project.summary}
                   </p>
-                  <p className="text-sm leading-6"><span className="font-medium">My role: </span>{project.role}</p>
+                  <p className="text-sm leading-6"><span className="font-medium">Intended value: </span>{value}</p>
+                  <p className="text-sm leading-6"><span className="font-medium">Contribution: </span>{project.role}</p>
+                  {project.sampleNote ? (
+                    <p className="text-xs leading-5 text-muted">{project.sampleNote}</p>
+                  ) : null}
                 </div>
                 <details className="rounded-xl border border-border bg-background p-3">
                   <summary className="min-h-11 cursor-pointer content-center rounded-sm py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-                    Preview and tools
+                    How it works
                   </summary>
-                  <div className="mt-3">
+                  <div className="mt-3 space-y-3 text-sm leading-6 text-muted">
+                    <p>Recorded stage: {directoryStatus(project.status).label}. Lifecycle: {project.phase}.</p>
+                    <p>{project.scope}</p>
+                    <p>{project.technologies}</p>
                     <ProjectEvidence kind={project.preview} compact />
                     <ProjectTechnologyStack
                       slug={project.slug}
@@ -229,15 +236,16 @@ export function ProjectsDirectory({
                   </div>
                 </details>
                 <Link
-                  href={caseStudyHref(project.caseStudyUrl)}
+                  href={href}
                   className="inline-flex min-h-11 items-center justify-between gap-3 rounded-lg border border-border bg-background px-3 py-2 text-sm font-medium text-accent hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
-                  <span>Read case study<span className="sr-only">: {project.title}</span></span>
+                  <span>{action.label}<span className="sr-only">: {project.title}</span></span>
                   <span aria-hidden="true">→</span>
                 </Link>
               </article>
             </li>
-          ))}
+            );
+          })}
         </ul>
       )}
     </div>
