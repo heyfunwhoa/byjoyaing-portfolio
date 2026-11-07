@@ -104,5 +104,5 @@ test("every catalog lesson has a path and included prerequisites precede depende
       }
     }
   }
-  assert.equal(lessons[0].slug, "what-is-ai");
+  assert.equal(lessons[0].slug, "idea-to-verified-release");
 });
