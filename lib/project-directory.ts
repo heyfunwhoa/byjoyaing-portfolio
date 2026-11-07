@@ -60,7 +60,7 @@ const sources: DirectorySource[] = [
   {
     slug: "detector-coverage-atlas",
     categories: ["Technical Systems & AI"],
-    role: "I built the 3-by-3 sample and the rule that an unreviewed cell stays gray.",
+    role: "I built the sample comparing three sources across five credential categories and the rule that an unreviewed cell stays gray.",
     technologies: "Next.js, React, and TypeScript. The rows live in this repository.",
     featuredOrder: 3,
     preview: "atlas",
