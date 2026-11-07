@@ -1,5 +1,14 @@
 # Component adoption
 
+## Marketing outlines in Field Notes (November 2026, proposed)
+
+- Owner: portfolio maintainer. Destination: `/field-notes#marketing-playbooks`.
+- Reuse: the existing Field Notes card grid and native `details`/`summary` pattern, catalog `disclosure`. Keep purpose visible; expand only supporting outline fields. No shared component, dependency, animation or third-party source added.
+- Composition: one column below 768px, two above; expanded cards keep natural document height and source order. Existing tokens and `min-h-11` controls remain. Each summary has a distinct accessible name and explicit focus outline.
+- Keyboard: native Enter/Space activation and Tab order. No dialog, focus trap or escape/return-focus contract. No new motion; disclosures also work without client JavaScript. Loading/error/permission states are not applicable to authored public content.
+- Status: implemented on the proposed branch, pending publication review. Browser/build evidence and manual-review limits belong in the PR. See [editorial scope and acceptance](../product/marketing-playbook-outlines.md).
+- Rollback: remove the section and its page-local data import. Existing guides and routes remain independent.
+
 **Status:** Decision record for the celestial editorial pass.  
 **Date:** 2026-10-11  
 **Branch base:** `main` at `4a491b6`. The editorial redesign is already merged. This pass does not revive `feat/editorial-portfolio-experience`.  
