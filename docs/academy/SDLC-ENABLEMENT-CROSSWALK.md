@@ -105,7 +105,7 @@ A fictional web application changes a button label:
 
 A useful beginner mental model for an interactive application:
 
-\`\`\`text
+```text
 Problem / user / business outcome
        ↓
 Product discovery → requirements → UX/UI flow + system design
@@ -121,7 +121,7 @@ Optional Dockerfile → OCI/container image → registry → running container(s
 Runtime + cloud resources (some provisioned by IaC) + secrets + networking
        ↓
 CI/CD approval → deployment → release → verify → observe → improve / retire
-\`\`\`
+```
 
 The diagram compresses parallel work into one teaching path: product discovery, security, accessibility, testing and cost controls continue throughout. An application hosted on Vercel can skip author-managed Docker images and Kubernetes. A managed platform still uses infrastructure, but abstracts away much of its ownership.
 
@@ -175,7 +175,7 @@ A fictional meeting-preparation web app contains a React/TypeScript frontend and
 
 **Basic Docker vocabulary:** Dockerfile (recipe), build context (inputs), image (packaged layers), tag (human-readable reference), digest (content-addressed identity), registry (image storage/distribution), container (instance), runtime (executes containers), Compose (multi-container definition for a stack), Kubernetes (optional cluster orchestration). A Docker image is not an application build prerequisite for a managed Vercel website.
 
-**Conceptual example, not a runnable production Dockerfile:** \`source → npm build → app output → optional Docker build → image registry → deploy image → running container\`. Contrast with \`source → GitHub/Vercel build → Vercel deployment\`. Both need testing, authorization, environment configuration and operational verification.
+**Conceptual example, not a runnable production Dockerfile:** `source → npm build → app output → optional Docker build → image registry → deploy image → running container`. Contrast with `source → GitHub/Vercel build → Vercel deployment`. Both need testing, authorization, environment configuration and operational verification.
 
 ### Teaching sequence: how the learner should experience it
 
