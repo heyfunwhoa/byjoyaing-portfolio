@@ -13,6 +13,10 @@
 
 Do **not** move Design Lab into Technical Docs. Docs states *what evidence is required and how adoption should happen*; the portfolio repo is where the React source and interaction tests live. Links across repositories are documentation, **not a runtime dependency or synchronization mechanism**.
 
+## Broader UX categories and per-app flexibility
+
+[Flexible pattern taxonomy and repository customization](pattern-taxonomy-and-repo-customization.md) expands the existing five UI filter families into a practical directory of 18 reusable design/UI/UX concerns, including wayfinding, forms, data exploration, workflow reviews, trust, accessibility, responsive behavior, localization and resilience. **This is an explanatory category index, not a second candidate registry or a breaking change to existing pattern IDs/filters.** Applications keep their own routes, brand/tokens, state, authorization and local release decisions. Reuse, adapt, compose, defer or reject patterns according to their task and evidence.
+
 ## Use cases and next validation target
 
 | Category | Why a pattern library helps | Example destination | What has to remain in the destination |
