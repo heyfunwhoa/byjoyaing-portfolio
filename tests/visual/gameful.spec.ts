@@ -73,8 +73,11 @@ test('optional graph and native controls fit phone, tablet and desktop', async (
 });
 
 test('scripted discovery has consequences and a clean restart', async ({ page }) => {
-  await page.getByRole('button', { name: 'Start a discovery conversation' }).click();
+  await page.getByRole('button', { name: 'Start a discovery conversation' }).press('Enter');
   const scene = page.getByRole('region', { name: 'Practice a discovery conversation' });
+  await expect(scene.getByRole('heading')).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(scene.getByRole('button', { name: 'Ask what changed and how onboarding works today.' })).toBeFocused();
   await scene.getByRole('button', { name: 'Offer a demo immediately.' }).click();
   await expect(scene).toContainText('A demo invitation is not evidence');
   await scene.getByRole('button', { name: 'Return to discovery.' }).click();

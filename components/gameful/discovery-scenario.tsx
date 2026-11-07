@@ -1,5 +1,5 @@
 'use client';
-import { useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { readDiscovery } from '../../lib/gameful/discovery';
 import styles from './discovery-scenario.module.css';
 
@@ -8,6 +8,14 @@ export function DiscoveryScenario() {
   const [path, setPath] = useState<number[]>([]);
   const heading = useRef<HTMLHeadingElement>(null);
   const result = useMemo(() => readDiscovery(path), [path]);
+  useEffect(() => {
+    // The start button unmounts while the scenario loads. Preserve focus
+    // if the learner has already moved to another control.
+    if (document.activeElement === document.body) {
+      heading.current?.focus();
+    }
+  }, []);
+
   function choose(index: number) {
     setPath(current => [...current, index]);
     heading.current?.focus();
