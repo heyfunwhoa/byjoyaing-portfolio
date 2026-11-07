@@ -6,6 +6,15 @@ import {
   componentOptions,
   optionsForApp,
 } from "./component-options.ts";
+import {
+  patternEvidence,
+  patternFamilies,
+  patternStages,
+  patternsForLibrary,
+  patternFileUrl,
+  stageDefinitions,
+  toPatternRecord,
+} from "./design-lab/pattern-adoption.ts";
 
 test("curated options retain valid destinations and official source links", () => {
   assert.equal(
@@ -127,6 +136,108 @@ test("validation loading and workflow traces remain candidates", () => {
   assert.equal(option.availability, "Candidate");
   assert.ok(optionsForApp("GTM Revenue OS").includes(option));
  }
+});
+
+test("pattern library is a view over the canonical component options, not a duplicate list", () => {
+  const records = patternsForLibrary();
+  assert.equal(records.length, componentOptions.length);
+  assert.equal(new Set(records.map((record) => record.id)).size, records.length);
+  assert.deepEqual(
+    new Set(records.map((record) => record.id)),
+    new Set(componentOptions.map((option) => option.id)),
+  );
+  assert.deepEqual(patternStages, ["Candidate", "Prototype", "Approved", "Adopted"]);
+  assert.ok(patternFamilies.length >= 5);
+  for (const stage of patternStages) assert.ok(stageDefinitions[stage].length > 20);
+});
+
+test("pattern states require real source or explicit decision evidence", () => {
+  const records = patternsForLibrary();
+  assert.ok(records.some((record) => record.stage === "Candidate"));
+  assert.ok(records.some((record) => record.stage === "Prototype"));
+  assert.ok(records.some((record) => record.stage === "Adopted"));
+  // No owner approval is inferred from available code or green CI.
+  assert.equal(records.filter((record) => record.stage === "Approved").length, 0);
+  for (const item of records) {
+    if (item.stage === "Adopted") assert.ok(item.uses.length > 0);
+    if (item.stage === "Approved") assert.ok(item.approval?.decisionUrl);
+    if (item.availability === "Candidate") assert.equal(item.stage, "Candidate");
+    if (item.uses.length > 0) {
+      for (const use of item.uses) {
+        assert.equal(use.scope, "source-level");
+        assert.ok(use.repository.startsWith("heyfunwhoa/"));
+        if (use.repository !== "heyfunwhoa/byjoyaing-portfolio") {
+          assert.match(use.ref ?? "", /^[a-f0-9]{40}$/);
+        }
+      }
+    }
+  }
+});
+
+test("local and external pattern uses require inspected source and pinned provenance", () => {
+  const knownPortfolioConsumers: Record<string, string> = {
+    "components/toolkit-explorer.tsx": 'from "@/components/ui/tabs"',
+    "components/stakeholder-map/stakeholder-detail.tsx": 'from "@/components/ui/card"',
+  };
+  // Exact current main commit references inspected in the named repositories.
+  const reviewedExternal = new Map([
+    ["heyfunwhoa/security-market-map/components/scenario-player.tsx", "92c01d81770c24be95e41057bdbdf991879dbe42"],
+    ["heyfunwhoa/account-signal-engine/components/feed-app.tsx", "ea4971dcb81da1463f672e2d71f1cd460718c777"],
+    ["heyfunwhoa/truffle-camp/components/trail-checkpoint.tsx", "b3bcfae69a959fc2fe7142689335018f4c891974"],
+  ]);
+  let inspectedExternal = 0;
+  for (const id of Object.keys(patternEvidence)) {
+    const option = componentOptions.find((item) => item.id === id);
+    assert.ok(option, `Missing canonical pattern ID ${id}`);
+    const record = toPatternRecord(option);
+    for (const source of record.localSource) {
+      assert.ok(!source.path.startsWith("/"));
+      assert.ok(!source.path.includes(".."));
+      assert.ok(existsSync(new URL(`../${source.path}`, import.meta.url)), `Missing: ${source.path}`);
+      assert.ok(patternFileUrl(source).startsWith("https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/"));
+    }
+    for (const use of record.uses) {
+      assert.ok(!use.path.startsWith("/") && !use.path.includes(".."));
+      if (use.repository === "heyfunwhoa/byjoyaing-portfolio") {
+        assert.ok(knownPortfolioConsumers[use.path], `Unreviewed local consumer: ${use.path}`);
+        const body = readFileSync(new URL(`../${use.path}`, import.meta.url), "utf8");
+        assert.ok(
+          body.includes(knownPortfolioConsumers[use.path]),
+          `Missing inspected import in ${use.path}`,
+        );
+      } else {
+        const key = `${use.repository}/${use.path}`;
+        assert.equal(use.ref, reviewedExternal.get(key), `Unreviewed pinned external path ${key}`);
+        assert.match(use.ref!, /^[a-f0-9]{40}$/);
+        inspectedExternal++;
+      }
+      assert.ok(patternFileUrl(use, use.repository).includes(`/blob/${use.ref ?? "main"}/`));
+    }
+  }
+  assert.equal(inspectedExternal, 3);
+});
+
+test("pattern stage, family, app and keyword filters combine without losing source evidence", () => {
+  assert.deepEqual(
+    patternsForLibrary({ stage: "Adopted" }).map((item) => item.id),
+    ["summaries", "disclosure", "context"],
+  );
+  assert.deepEqual(
+    patternsForLibrary({ query: "toolkit explorer" }).map((item) => item.id),
+    ["disclosure"],
+  );
+  assert.deepEqual(
+    patternsForLibrary({ app: "Security Market Map", stage: "Adopted" }).map((item) => item.id),
+    ["summaries", "disclosure", "context"],
+  );
+  assert.deepEqual(patternsForLibrary({ stage: "Approved" }), []);
+  assert.ok(
+    patternsForLibrary({ family: "Learning & gameful" }).every(
+      (item) => item.family === "Learning & gameful",
+    ),
+  );
+  assert.equal(patternsForLibrary({ query: "nothing-will-ever-match" }).length, 0);
+  assert.equal(patternsForLibrary({ query: "  " }).length, componentOptions.length);
 });
 
 test("native learning territories retain source IDs without unmaintained native package dependencies", () => {

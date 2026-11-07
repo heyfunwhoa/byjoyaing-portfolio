@@ -7,4 +7,4 @@ const meta = {
 } satisfies Meta<typeof ComponentOptions>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Library: Story = {};
+export const Library: Story = { name: "Reusable pattern library" };

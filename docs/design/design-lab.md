@@ -7,6 +7,9 @@
 
 `npm run build` sets `NODE_ENV` to production, so the route calls `notFound()` before any Suspense boundary and answers 404. `robots` noindex on the source is extra. It is not the access control.
 
+**Reusable pattern library:** [pattern-library.md](pattern-library.md) documents the five component families, accessibility requirements, lifecycle stages, inspected use paths, and boundary with [Technical Docs Platform](https://github.com/heyfunwhoa/technical-docs-platform/tree/main/software-catalog). The library is the existing `ComponentOptions` view of `lib/component-options.ts`, augmented by a small source-evidence overlay; it is **not** another registry or new UI package. Other repository names are recommendations, never automatic adoption.
+
+
 ## Audit
 
 Installed UI dependencies are Next.js 16.4.0, React 19.2.8, and React DOM. Resend is the mail dependency. Tailwind CSS 4 is a dev dependency. The original audit below predates the installed shadcn/Radix primitives and Embla carousel. Current setup is `radix-nova` in `components.json`; Motion/Framer Motion remain uninstalled. See the current workbench section below.

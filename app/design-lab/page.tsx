@@ -77,13 +77,26 @@ export default function DesignLabPage() {
           <p className="mt-3 text-sm leading-6 text-muted">
             For example, try a branching conversation here, then adapt it for seller practice in GTM Revenue OS.
           </p>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            This React and Storybook workshop lives in the portfolio repository.{" "}
+            <a
+              className="text-accent underline"
+              href="https://github.com/heyfunwhoa/technical-docs-platform/tree/main/software-catalog"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Technical Docs Platform
+            </a>{" "}
+            maintains cross-repo tool and engineering standards; each consuming application
+            keeps its own data, permissions, design tokens, adoption decision and tests.
+          </p>
           <nav aria-label="Start exploring Design Lab" className="mt-5 flex flex-wrap gap-3">
             <a href="#ideation-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Use an ideation template
             </a>
             <a href="#creative-recipes-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Explore visual content recipes</a>
             <a href="#component-ideas" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
-              Browse component ideas
+              Browse the pattern library
             </a>
             <a href="#interactive-prototypes" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Try a prototype

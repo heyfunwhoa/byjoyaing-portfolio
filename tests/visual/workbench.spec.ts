@@ -46,13 +46,13 @@ test("library preserves filters across cards/table and resets an empty result", 
   await page.goto(
     "/iframe.html?id=design-lab-component-options--library&viewMode=story",
   );
-  await expect(page.getByRole("status")).toContainText("options for all projects");
+  await expect(page.getByRole("status")).toContainText("patterns for all projects");
   const unfilteredStatus = await page.getByRole("status").innerText();
   await page.getByLabel("Search options", { exact: true }).fill("avatar");
   await page
     .getByRole("combobox", { name: "Availability", exact: true })
     .selectOption("Available here");
-  await expect(page.getByRole("status")).toContainText("1 options");
+  await expect(page.getByRole("status")).toContainText("1 patterns");
   await page.getByRole("button", { name: /^table$/i }).click();
   await expect(page.getByRole("table")).toBeVisible();
   await expect(
@@ -62,7 +62,7 @@ test("library preserves filters across cards/table and resets an empty result", 
     .getByLabel("Search options", { exact: true })
     .fill("no-such-component");
   await expect(
-    page.getByRole("heading", { name: "No matching components" }),
+    page.getByRole("heading", { name: "No matching patterns" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Reset library filters" }).click();
   await expect(page.getByRole("status")).toHaveText(unfilteredStatus);
@@ -175,4 +175,46 @@ test("motion candidates remain discoverable without installing a runtime package
   await expect(page.getByRole("status")).toContainText("GTM Revenue OS");
   await expect(page.getByRole("heading", { name: /Motion for React/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: /Motion.Primitives/i })).toBeVisible();
+});
+
+test("pattern library separates local source evidence from suggested app fit", async ({ page }) => {
+  await page.goto(
+    "/iframe.html?id=design-lab-component-options--library&viewMode=story",
+  );
+  await page
+    .getByRole("combobox", { name: "Lifecycle stage", exact: true })
+    .selectOption("Adopted");
+  await expect(page.getByRole("status")).toContainText("3 patterns");
+  await page.getByRole("button", { name: /^table$/i }).click();
+  await expect(
+    page.getByRole("link", { name: /Toolkit explorer uses Tabs/ }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Security Market Map scenario tabs/ }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Account Signal Engine drafting sheet/ }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Stakeholder detail uses Card/ }),
+  ).toBeVisible();
+
+  await page
+    .getByRole("combobox", { name: "Lifecycle stage", exact: true })
+    .selectOption("Approved");
+  await expect(
+    page.getByRole("heading", { name: "No matching patterns" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Reset library filters" }).click();
+
+  await page
+    .getByRole("combobox", { name: "Pattern family", exact: true })
+    .selectOption("Learning & gameful");
+  await expect(page.getByRole("status")).toContainText("patterns for all projects");
+  await expect(
+    page.getByRole("rowheader", { name: /Identity & ownership/ }),
+  ).toHaveCount(0); // Family filters exclude unrelated UI primitives.
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+  ).toBe(true);
 });
