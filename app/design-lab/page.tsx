@@ -6,6 +6,7 @@ import { GamefulWorkbench } from "@/components/design-lab/gameful-workbench";
 import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
 import { LearningChecksPreview } from "@/components/design-lab/learning-checks-preview";
 import { ComponentOptions } from "@/components/design-lab/component-options";
+import { EvidenceReviewWorkbench } from "@/components/design-lab/evidence-review-pattern";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
@@ -98,6 +99,9 @@ export default function DesignLabPage() {
             <a href="#component-ideas" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Browse the pattern library
             </a>
+            <a href="#evidence-review-preview" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
+              Try evidence review
+            </a>
             <a href="#interactive-prototypes" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Try a prototype
             </a>
@@ -169,6 +173,9 @@ export default function DesignLabPage() {
 
         <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">
           <ComponentOptions />
+        </div>
+        <div id="evidence-review-preview" tabIndex={-1} className="scroll-mt-24">
+          <EvidenceReviewWorkbench />
         </div>
         <div id="interactive-prototypes" tabIndex={-1} className="scroll-mt-24">
           <GamefulWorkbench />
