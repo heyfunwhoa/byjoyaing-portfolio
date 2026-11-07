@@ -128,3 +128,20 @@ Every experiment records:
 First bounded example: a fictional security company has repeated customer setup work. Compare a three-panel still with a 30-second animated explanation using the same script. Ask the reviewer to identify the problem, audience and next action. Record actual answers without assuming conversion or pipeline impact. Start with a designed/static baseline; generate only if the comparison needs it.
 
 After selection, GTM OS owns campaign/calendar placement, distribution and commercial measurement. Lab owns the reusable recipe and evaluation evidence. No purchase, generated asset, commercial quality benchmark or integration is claimed.
+
+
+## Additional asset families
+
+| ID | Tool | Asset family | Official source |
+| --- | --- | --- | --- |
+| DSG-005 | Excalidraw | Diagrams / visual frameworks | https://github.com/excalidraw/excalidraw |
+| DSG-006 | Inkscape | Vector illustrations / SVG masters | https://github.com/inkscape/inkscape |
+| DOC-001 | Marp | Markdown presentation templates | https://github.com/marp-team/marp |
+| DOC-002 | Scribus | Reports / print collateral | https://github.com/scribusproject/scribus |
+| DAT-001 | Vega-Lite | Data stories / exportable charts | https://github.com/vega/vega-lite |
+| LRN-001 | H5P | Portable interactive learning | https://h5p.org/ |
+| AUD-002 | Audacity | Audio editing / narration | https://github.com/audacity/audacity |
+
+All are evaluation candidates, not installed integrations. Verify exact version/license and any plugins or hosted-service terms during adoption. The existing Academy controls and existing chart components remain the baseline; candidate presence does not justify replacing them.
+
+Design Lab #258 contains a linked asset-starter/adoption map at docs/design/templates/README.md and an original editable fictional security-workflow SVG. This is a source starter, not a copied third-party template, deployment or generated marketing asset. GTM destinations still require their own approved brief and delivery work.
