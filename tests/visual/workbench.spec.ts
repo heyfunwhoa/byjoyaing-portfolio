@@ -184,10 +184,16 @@ test("pattern library separates local source evidence from suggested app fit", a
   await page
     .getByRole("combobox", { name: "Lifecycle stage", exact: true })
     .selectOption("Adopted");
-  await expect(page.getByRole("status")).toContainText("2 patterns");
+  await expect(page.getByRole("status")).toContainText("3 patterns");
   await page.getByRole("button", { name: /^table$/i }).click();
   await expect(
     page.getByRole("link", { name: /Toolkit explorer uses Tabs/ }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Security Market Map scenario tabs/ }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Account Signal Engine drafting sheet/ }),
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: /Stakeholder detail uses Card/ }),
