@@ -59,6 +59,9 @@ export default function DesignLabPage() {
             For example, try a branching conversation here, then adapt it for seller practice in GTM Revenue OS.
           </p>
           <nav aria-label="Start exploring Design Lab" className="mt-5 flex flex-wrap gap-3">
+            <a href="#ideation-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
+              Use an ideation template
+            </a>
             <a href="#component-ideas" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Browse component ideas
             </a>
@@ -68,6 +71,37 @@ export default function DesignLabPage() {
           </nav>
           <p className="mt-4 text-sm text-muted">Available in local development.</p>
         </header>
+
+        <section aria-labelledby="ideation-title" className="space-y-4">
+          <h2 id="ideation-title" className="font-display text-2xl tracking-tight">From idea to adoption</h2>
+          <p className="max-w-2xl text-sm leading-6 text-muted">
+            Start with an idea card. Compare approaches when there is a decision to make, then write an adoption brief when a prototype is ready for a real workflow.
+          </p>
+          <div className="space-y-2 rounded-xl border border-border bg-card p-4">
+            <details>
+              <summary className="min-h-11 cursor-pointer py-2 font-semibold">Idea card</summary>
+              <p className="pb-3 text-sm leading-6">Who needs help? What are they trying to do? What outcome would improve their work? What is the smallest thing you could try? Where else could this help?</p>
+            </details>
+            <details>
+              <summary className="min-h-11 cursor-pointer py-2 font-semibold">Prototype comparison</summary>
+              <p className="pb-3 text-sm leading-6">Name a simple baseline and one alternative. Give both the same task. Record what you expect, what you observed, and whether to adopt, revise, or park the idea.</p>
+            </details>
+            <details>
+              <summary className="min-h-11 cursor-pointer py-2 font-semibold">Adoption brief</summary>
+              <p className="pb-3 text-sm leading-6">Name the destination repo and owner, what to reuse, and what the owning workflow needs to supply. Link the evidence, acceptance criteria, and Linear issue.</p>
+            </details>
+          </div>
+          <aside aria-labelledby="product-feedback-idea" className="rounded-xl border border-border bg-card p-4">
+            <p className="editorial-eyebrow text-accent">Future idea · parked</p>
+            <h3 id="product-feedback-idea" className="mt-2 text-lg font-semibold">Turn conversation insights into product feedback</h3>
+            <p className="mt-2 text-sm leading-6">
+              Test whether a short feedback brief helps a product owner decide what to investigate. Capture the customer problem, impact, supporting evidence, and open questions. Keep the customer’s request separate from the underlying need, and distinguish recurring patterns from one-off requests.
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted">
+              Start with fictional examples in Design Lab. GTM Revenue OS is the proposed home for the capture workflow. A product owner would review the brief and decide whether to investigate, park, or hand it off for delivery.
+            </p>
+          </aside>
+        </section>
 
         <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">
           <ComponentOptions />
