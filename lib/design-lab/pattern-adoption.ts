@@ -44,7 +44,7 @@ export type PatternFile = {
   ref?: string;
 };
 export type PatternUse = PatternFile & {
-  repository: "heyfunwhoa/byjoyaing-portfolio";
+  repository: `heyfunwhoa/${string}`;
   /** This is source code evidence, not proof of a deployed page. */
   scope: "source-level";
 };
@@ -91,6 +91,13 @@ export const patternEvidence: Readonly<Record<string, PatternEvidence>> = {
         label: "Toolkit explorer uses Tabs",
         scope: "source-level",
       },
+      {
+        repository: "heyfunwhoa/security-market-map",
+        path: "components/scenario-player.tsx",
+        ref: "92c01d81770c24be95e41057bdbdf991879dbe42",
+        label: "Security Market Map scenario tabs",
+        scope: "source-level",
+      },
     ],
   },
   context: {
@@ -98,6 +105,22 @@ export const patternEvidence: Readonly<Record<string, PatternEvidence>> = {
       { path: "components/ui/sheet.tsx", label: "Sheet primitive" },
       { path: "components/ui/dialog.tsx", label: "Dialog primitive" },
       { path: "components/design-lab/motion-workbench.tsx", label: "Local workbench demo" },
+    ],
+    uses: [
+      {
+        repository: "heyfunwhoa/account-signal-engine",
+        path: "components/feed-app.tsx",
+        ref: "ea4971dcb81da1463f672e2d71f1cd460718c777",
+        label: "Account Signal Engine drafting sheet",
+        scope: "source-level",
+      },
+      {
+        repository: "heyfunwhoa/truffle-camp",
+        path: "components/trail-checkpoint.tsx",
+        ref: "b3bcfae69a959fc2fe7142689335018f4c891974",
+        label: "Truffle Camp checkpoint dialog",
+        scope: "source-level",
+      },
     ],
   },
   "game-inkjs": {
