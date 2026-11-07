@@ -73,6 +73,12 @@ Start with transparent **rule-based routing**. Only add model-powered recommenda
 - Security Frameworks Hub, if built later, owns framework records/versions/mappings; Academy references lessons and citations rather than duplicating standards text.
 - Joy Index remains entirely private, outside public repo and examples.
 
+## Secure delivery and PR reconciliation: reuse existing learning path
+
+The [existing core delivery lesson](../builder-academy/idea-to-verified-release.md) remains the entry point. Its [security companion](../builder-academy/release-security-review.md#security-across-the-whole-software-development-lifecycle) covers security across requirements, design, implementation, CI, integration, deployment, operations and retirement. Its [PR reconciliation companion](../builder-academy/pr-integration-and-reconciliation.md) covers parallel-work risks, evidence freshness, overlap and release decisions. The [curriculum audit](CURRICULUM-AUDIT.md) records placement and evidence status.
+
+**Delivery boundary:** This is a cross-reference, not two new courses, parallel lesson records or duplicate roadmap projects. [KRU-174](https://linear.app/krusty/issue/KRU-174) already tracks curriculum organization and review; [PR #279](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/279) contains the proposed source changes. Preserve the distinction between content written, reviewed/merged, learner UI available, and release/learner acceptance. Add separate UI work only if a verified gap remains after the existing lesson path is accepted.
+
 ## Roadmap / release gates
 **P0 Content**: audit existing seven lessons for accuracy and accessibility; add cross-links to Builder Academy; implement three deterministic practice labs with clear answer rubrics; add explicit provenance and reviewed dates.
 
