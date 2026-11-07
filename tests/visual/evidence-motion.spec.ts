@@ -11,9 +11,7 @@ test("evidence disclosure is keyboard operable and preserves source limitations"
     page.getByRole("heading", { name: "Review evidence before choosing an action" }),
   ).toBeVisible();
 
-  const trigger = page.getByText("Inspect evidence and limitations", {
-    exact: true,
-  });
+  const trigger = page.locator("details > summary");
   const disclosure = page.locator("details");
   await expect(disclosure).not.toHaveAttribute("open", "");
   await trigger.focus();
@@ -35,9 +33,7 @@ test("evidence disclosure retains stable layout and honors reduced motion", asyn
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(story);
-  const trigger = page.getByText("Inspect evidence and limitations", {
-    exact: true,
-  });
+  const trigger = page.locator("details > summary");
   await trigger.click();
   await expect(page.locator("details")).toHaveAttribute("open", "");
 
