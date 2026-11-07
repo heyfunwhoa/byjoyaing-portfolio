@@ -120,7 +120,7 @@ This does **not** require a Kubernetes cluster, Backstage portal or custom provi
 
 ## Independent choice and diagnosis
 
-**Scenario:** A team maintains three small web applications on a managed host. One periodic report worker requires a long-running background process. A proposal suggests moving all four workloads to Kubernetes. The same proposal adds a service named \`notes-api-internal\` with selector \`app: old-notes\`, while the Pod label is \`app: notes-api\`.
+**Scenario:** A team maintains three small web applications on a managed host. One periodic report worker requires a long-running background process. A proposal suggests moving all four workloads to Kubernetes. The same proposal adds a service named `notes-api-internal` with selector `app: old-notes`, while the Pod label is `app: notes-api`.
 
 Write four sentences: (1) which requirement is actually unmet, (2) the least-complex candidate option, (3) the selector/endpoint failure, and (4) what evidence could justify Kubernetes later.
 
