@@ -87,7 +87,7 @@ A good ADR records an **explicit trade-off**, evidence, constraints and a revisi
 
 ## Practice: a design has a hidden failure
 
-**New fictional evidence packet:** The UI properly hides customer B's notes from seller A, but \`GET /api/notes?id=customer-b-note\` still returns that note to a signed-in seller A. A teammate suggests moving to microservices to fix security.
+**New fictional evidence packet:** The UI properly hides customer B's notes from seller A, but `GET /api/notes?id=customer-b-note` still returns that note to a signed-in seller A. A teammate suggests moving to microservices to fix security.
 
 Before the answer key, write:
 1. Which boundary failed? Which component must enforce the rule?
