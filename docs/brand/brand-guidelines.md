@@ -131,14 +131,28 @@ Celestial geometry is a supporting line language. It is not a space theme, a gam
 
 Target primary destinations: **Home / About / Work / Field Notes / Side Quests / Contact**. Do not break live URLs.
 
-**Page-flow review:** Evaluate each page with its likely entry point and next destinations. State the reader question, the new context this page contributes, its primary action, and the path onward. Repeat identity and essential brand language consistently; give each page distinct supporting detail. Home establishes fit and routes the reader. About adds background, values and working approach. Verify the reading order and actual links, then update the documented sequence when an approved flow changes. Visitors may enter on any page and should not need a prescribed tour.
+**Page-flow review:** Evaluate each page with its likely entry point and next destinations. State the reader question, the new context this page contributes, its primary action, and the path onward. Repeat identity and essential brand language consistently; give each page distinct supporting detail. Verify the reading order and actual links, then update the documented sequence when an approved flow changes. Visitors may enter on any page and should not need a prescribed tour.
 
-- **Home:** professional positioning → selected professional credibility → three destinations (Work, Field Notes, Side Quests) → one labeled Side Quest → contact close. Its task is to introduce, establish credibility and route the reader. About remains the secondary hero and closing path. See [homepage-simplification.md](../design/homepage-simplification.md).
+Each public area has one job:
+
+| Area | Its job |
+| --- | --- |
+| Home | Introduce Kristen and point visitors toward the strongest work |
+| About | Explain background, approach, values, and interests |
+| Work | Show professional contributions in selling, coaching, and GTM |
+| Field Notes | Share practical thinking and useful frameworks |
+| Side Quests | Introduce independent projects and learning experiences |
+| Project pages | Explain a problem, show the contribution, and offer one useful example |
+| Builder Academy | Hold the deeper learning experience, reached through Side Quests |
+| Contact | Make a conversation easy |
+
+- **Home:** professional positioning → selected professional credibility → three destinations (Work, Field Notes, Side Quests) → one labeled Side Quest → contact close. The primary path is Work. About remains the secondary hero and closing path. See [homepage-simplification.md](../design/homepage-simplification.md).
 - **About:** professional introduction and purpose → working philosophy → enterprise selling and supporting capabilities → career and education → tools and systems → work and writing → compact personal interests and values → contact.
-- **Work:** professional outcomes, team development, sales/GTM strategy, enablement, collaboration and relevant impact.
-- **Field Notes:** editorial home for how I operate. Content types: Playbooks (practical repeatable methods), Frameworks (decision tools), Lessons Learned (grounded reflections), and **Operating Systems** (revenue/team cadences and processes that make practices repeatable). Never present planned methods as proven practice.
-- **Side Quests:** independent builds, software learning, AI workflows and cybersecurity research, with honest stages and linked artifacts. Older copy may still say "Builds"; that word is not a separate navigation item.
-- **Contact:** straightforward email/social/contact path.
+- **Work:** selling, coaching, and GTM, in that evidence order. Independent projects stay on Side Quests.
+- **Field Notes:** practical thinking and useful frameworks. Content types: Playbooks (practical repeatable methods), Frameworks (decision tools), Lessons Learned (grounded reflections), and **Operating Systems** (revenue/team cadences and processes that make practices repeatable). Never present planned methods as proven practice.
+- **Side Quests:** an introduction to independent projects and to learning experiences. Builder Academy is the deeper learning destination and is linked from this page. It is not a primary navigation item. Older copy may still say "Builds"; that word is not a separate navigation item.
+- **Project pages:** the problem, the contribution, and one useful example come before status and implementation detail.
+- **Contact:** a short invitation, then email, calendar, and the existing message form.
 
 **Routing rule:** Current `/projects` and `/work/[slug]` are live legacy routes. Do not change or redirect them until corresponding destination pages exist; maintain durable old links and metadata. A personal technical project is not “Work” merely because its present URL starts with `/work/`.
 

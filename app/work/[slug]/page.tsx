@@ -12,6 +12,7 @@ import { PageMain } from "@/components/page-main";
 import { SampleRecordView } from "@/components/sample-record";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
+import { ProjectStoryLead } from "@/components/project-story-lead";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { projects } from "@/lib/portfolio";
@@ -139,6 +140,34 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </p>
           </header>
 
+          <CaseStudyContents
+            sections={[
+              { id: "problem", label: "The problem" },
+              { id: "contribution", label: "My contribution" },
+              { id: "example", label: "One example" },
+              { id: "where-it-stands", label: "Current status" },
+              { id: "outcome", label: "Evidence" },
+              { id: "links", label: "Sources and links" },
+              { id: "how-it-works", label: "How it works" },
+            ]}
+          />
+
+          <ProjectStoryLead
+            problem={project.problem.summary}
+            why={project.problem.why}
+            without={project.problem.without}
+            contribution={sales.myRole}
+            example={
+              sample ? (
+                <SampleRecordView sample={sample} />
+              ) : (
+                <p className="text-base leading-7 text-muted">
+                  {project.mvp.version} This version tests: {project.mvp.question}
+                </p>
+              )
+            }
+          />
+
           <dl className="grid max-w-2xl gap-5 text-base leading-7 sm:grid-cols-2">
             <div>
               <dt className="font-medium text-foreground">Who uses it</dt>
@@ -181,16 +210,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           <ProjectTechnologyStack slug={project.slug} />
 
-          <CaseStudyContents
-            sections={[
-              { id: "where-it-stands", label: "Current status" },
-              { id: "my-role", label: "My role" },
-              { id: "outcome", label: "Evidence" },
-              { id: "links", label: "Sources and links" },
-              { id: "how-it-works", label: "How it works" },
-            ]}
-          />
-
           <div className="grid gap-4">
             {sales.fieldAsset ? (
               <section className="border border-accent/50 bg-card p-5">
@@ -216,10 +235,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           <Block id="where-it-stands" title="Where it stands">
             <p>{sales.maturityDetail}</p>
-          </Block>
-
-          <Block id="my-role" title="My role">
-            <p>{sales.myRole}</p>
           </Block>
 
           <Block
@@ -261,22 +276,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             )}
           </Block>
 
-          {sample ? <SampleRecordView sample={sample} /> : null}
-
           <DisclosureSection
             id="how-it-works"
             title="How it works"
             className="my-6"
           >
             <div className="flex flex-col gap-6 text-base leading-7 text-muted">
-              <section className="flex flex-col gap-2">
-                <h3 className="font-medium text-foreground">
-                  The problem I kept seeing
-                </h3>
-                <p>{project.problem.summary}</p>
-                <p>{project.problem.why}</p>
-                <p>Without a repeatable answer: {project.problem.without}</p>
-              </section>
               <section className="flex flex-col gap-2">
                 <h3 className="font-medium text-foreground">
                   What I was working from
@@ -318,13 +323,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-              </section>
-              <section className="flex flex-col gap-2">
-                <h3 className="font-medium text-foreground">
-                  Smallest version
-                </h3>
-                <p>{project.mvp.version}</p>
-                <p>Question that version tests: {project.mvp.question}</p>
               </section>
               <section className="flex flex-col gap-2">
                 <h3 className="font-medium text-foreground">

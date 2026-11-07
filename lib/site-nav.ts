@@ -18,7 +18,13 @@ export function isActive(pathname: string, href: string) {
     return kind === "work";
   }
   if (href === "/side-quests") {
-    if (pathname === "/side-quests") return true;
+    if (
+      pathname === "/side-quests" ||
+      pathname.startsWith("/ai-academy") ||
+      pathname.startsWith("/builder-academy")
+    ) {
+      return true;
+    }
     return kind === "side-quest";
   }
   return pathname === href || pathname.startsWith(`${href}/`);

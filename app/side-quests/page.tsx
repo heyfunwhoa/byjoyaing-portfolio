@@ -15,7 +15,7 @@ export const metadata: Metadata = completePageMetadata(
   openGraph: { url: "/side-quests" },
   title: "Side Quests",
   description:
-    "Independent cybersecurity, AI, enablement, and GTM software experiments, with transparent build stages.",
+    "Independent projects and learning experiences, including Builder Academy. Projects are not employer deployments.",
 },
   "/side-quests",
 );
@@ -61,9 +61,8 @@ export default function SideQuestsPage() {
             Curiosity, put to work.
           </h1>
           <p className="mt-4 max-w-2xl leading-7 text-muted">
-            Exploring the problems I encounter in cybersecurity and go-to-market work, then turning them into research
-            systems, learning tools, and software experiments. Different projects are at different stages; none should
-            be mistaken for employer deployments.
+            Independent projects and learning experiences from cybersecurity and go-to-market work.
+            Projects are at different stages and are not employer deployments. Builder Academy holds the deeper lessons.
           </p>
         </div>
       </section>
@@ -77,6 +76,22 @@ export default function SideQuestsPage() {
           Start with account research, a source-backed coverage comparison or a synthetic learning exercise. Each example shows its current stage and what you can inspect today.
         </p>
         <FeaturedSideQuestStrip slides={featuredSideQuestSlides()} />
+      </section>
+
+      <section aria-labelledby="learning-title" className="border-b border-border py-12">
+        <p className="editorial-eyebrow text-accent">Learning experiences</p>
+        <h2 id="learning-title" className="mt-2 font-display text-3xl">
+          Builder Academy
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
+          This page introduces the projects. Builder Academy holds the deeper lessons, guides, and practice labs.
+        </p>
+        <Link
+          href="/ai-academy"
+          className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4"
+        >
+          Open Builder Academy
+        </Link>
       </section>
 
       <nav aria-label="Explore independent projects by focus" className="grid gap-3 border-b border-border py-8 sm:grid-cols-2 lg:grid-cols-4">

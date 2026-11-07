@@ -6,6 +6,7 @@ import { RelatedWork } from "@/components/related-work";
 import { SampleRecordView } from "@/components/sample-record";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
+import { ProjectStoryLead } from "@/components/project-story-lead";
 import { ProjectKindLabel } from "@/components/project-kind-label";
 import { StatusBadge } from "@/components/status-badge";
 import { salesProject, sampleFor } from "@/lib/sales";
@@ -36,24 +37,46 @@ export function FieldAssetCase({
       </section>
       <CaseStudyContents
         sections={[
+          { id: "problem", label: "The problem" },
+          { id: "contribution", label: "My contribution" },
+          { id: "example", label: "One example" },
           { id: "used-in-field", label: "Field evidence" },
           { id: "where-it-stands", label: "Current status" },
           { id: "outcome", label: "Outcome" },
         ]}
       />
+      <section className="border-b border-border py-12">
+        <ProjectStoryLead
+          problem={project.problem.summary}
+          why={project.problem.why}
+          without={project.problem.without}
+          contribution={project.sales.myRole}
+          example={
+            sample ? (
+              <SampleRecordView sample={sample} />
+            ) : (
+              <p className="text-base leading-7 text-muted">
+                {project.sales.fieldAsset ?? project.mvp.version}
+              </p>
+            )
+          }
+        />
+      </section>
 
       {slug === "truffle-camp" ? <PortfolioExample key={slug} example={portfolioExamples[slug]} /> : null}
       <ProjectTechnologyStack slug={slug} />
 
       <section id="used-in-field" className="scroll-mt-24 grid gap-4 border-b border-border py-12 md:grid-cols-2">
-        <article className="rounded-2xl border border-border bg-card p-5">
-          <h2 className="text-sm font-medium">What was used in the field</h2>
-          <p className="mt-3 text-sm leading-6 text-muted">
-            {project.sales.fieldAsset ?? "No separate field asset. This page is the note."}
-          </p>
-        </article>
+        {sample ? (
+          <article className="rounded-2xl border border-border bg-card p-5">
+            <h2 className="text-sm font-medium">What was used in the field</h2>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              {project.sales.fieldAsset ?? "No separate field asset. This page is the note."}
+            </p>
+          </article>
+        ) : null}
         <article className="rounded-2xl border border-dashed border-foreground/30 p-5">
-          <h2 className="text-sm font-medium">What is not built</h2>
+          <h2 className="text-sm font-medium">What remains a design</h2>
           <p className="mt-3 text-sm leading-6 text-muted">
             {project.sales.proposedSoftware ?? "No software is proposed beyond this note."}
           </p>
@@ -64,11 +87,6 @@ export function FieldAssetCase({
         <h2 className="text-lg font-semibold">Where it stands</h2>
         <p className="mt-3 max-w-2xl text-base leading-7 text-muted">{project.sales.maturityDetail}</p>
         <p className="mt-4 max-w-2xl text-sm leading-6 text-muted">{project.sales.workingToday}</p>
-        {sample ? (
-          <div className="mt-8">
-            <SampleRecordView sample={sample} />
-          </div>
-        ) : null}
       </section>
 
       <section id="outcome" className="scroll-mt-24 py-12">
