@@ -1,0 +1,6 @@
+.challenge svg { display: block; max-width: 100%; }
+.tile, .selected { fill: var(--card); stroke: var(--border); stroke-width: .6; cursor: pointer; }
+.selected { fill: var(--surface-sage, #e4e8df); stroke: var(--accent); }
+.challenge svg text { fill: var(--foreground); stroke: none; font-size: 6px; pointer-events: none; }
+.challenge svg g[role='button']:focus-visible { outline: none; stroke: var(--accent); stroke-width: 1.5; }
+.challenge button:disabled { opacity: .6; cursor: not-allowed; }

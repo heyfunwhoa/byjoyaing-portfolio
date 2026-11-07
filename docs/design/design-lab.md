@@ -168,3 +168,93 @@ Verification for this documentation addition: reviewed against current reuse con
 The [component source audit](component-source-audit.md) inventories all 64 component types from the current shadcn index, 32 current dnd-kit core/React pages and 25 Sandpack docs pages, with [retrieval evidence](component-source-audit.sources.json). It maps candidates to the existing bank families and seven app repos, records Radix/Base UI and current/legacy dnd-kit compatibility, and specifies an optional synthetic Academy runner pilot.
 
 This is the upstream reference appendix, not a new installed-component catalog. `lib/component-options.ts` remains the curated task-oriented catalog; source availability and shipped adoption still require existing inventory/PR evidence. No packages, public routes, live demos or automatic refresh are added. Start with local primitives; drag/drop and executable labs remain scoped candidates.
+
+## Candidate planning across repositories
+
+Use the [component opportunity register](component-opportunity-register.md) for where to open Design Lab, the complete captured opportunity inventory, repository coverage and promotion gates. The in-page catalog supports project and availability filters; this remains local-development only.
+
+
+## Ideation and adoption operating notes
+
+The local landing page’s **From idea to adoption** section contains the idea card, prototype comparison, and adoption brief. It also explains the define → try → decide → hand off → verify sequence. Use native disclosures on all screen sizes; no additional interaction library or persistence.
+
+Record an owner and review date before trying an idea. Comparison records include observed evidence and checks not run. Adoption records include the source revision/license, maintenance owner/update method, rollback and destination verification. Published packages use reviewed dependency updates; copied source requires upstream comparison; internal shared packages remain a future adoption decision. There is no automatic cross-repository synchronization.
+
+Conversation insights → product feedback remains parked. Revisit when a product owner and a bounded fictional capture task are agreed; collecting real conversations, integrations and delivery commitments are outside this slice.
+
+## Curated workflow motion candidates (November 2026)
+
+The catalog `lib/component-options.ts` now includes three **external candidates, not installed packages or shipped components**: Motion for React (`motion-react-purposeful`), FormKit AutoAnimate (`autoanimate-list-transitions`), and Motion-Primitives (`motion-primitives-disclosure`). Sources: https://motion.dev/docs/react , https://github.com/formkit/auto-animate , https://github.com/ibelick/motion-primitives . Licensing is reviewed per exact source, not inferred from library labels. The Motion-Primitives root license was not resolved in the follow-up inspection; treat its patterns as reference-only until verified. The Design Lab workbench remains local/development-only.
+
+| Workflow | First choice | Candidate only if needed | Anti-pattern |
+| --- | --- | --- | --- |
+| GTM task-card hover and focused next step | Existing CSS, 180ms and 2px lift | Motion for React if complex layout handoff is proven useful | Constant pulse, autoplay, focus jumps |
+| Editorial slots moving between weeks | Static grouped DOM; informative status text | AutoAnimate for approved reorder interaction | Animating numeric tables or losing item identity |
+| Campaign evidence and review explanations | Native disclosure and existing Radix | Motion-Primitives disclosure after source/license review | Motion that hides a blocker or approval |
+| Multi-step Sales and CS evaluation | Clear step labels and state; no delay | Motion for layout only, if tested with interrupted transitions | Treating animation as progression/approval |
+
+**Design Lab → consumer rule:** record candidate, owner, route, evidence, license and added bundle impact before installation. A GTM OS-specific adoption of native CSS in draft `feat/kru-193-northline-navigation-motion` is not an installation of any of these libraries. No global motion dependency is justified for simple task cards. Respect `prefers-reduced-motion`, keep content visible, and test keyboard/mobile. Avoid putting paid/pro-licensed source in the open-source candidate bank.
+
+## Specific GTM motion shortlist (reviewed November 6, 2026, America/Chicago)
+
+This extends the existing three library-level candidates, not a second registry. All four new entries are searchable in the existing component-options catalog under GTM Revenue OS and remain **Candidate**. No source code or package is imported. The development-only Design Lab gate is unchanged.
+
+| Priority | Catalog ID / pattern | GTM destination | Prototype acceptance |
+| --- | --- | --- | --- |
+| Next | motion-evidence-accordion | Discovery SPIN prompts and qualification evidence | Optional detail opens without hiding gaps; keyboard, focus, interrupted close and no-motion behavior work |
+| Next | motion-copy-feedback | Discovery summary / sales handoff | Success appears only after clipboard resolves; visible failure/retry, text announcement, keyboard target retained |
+| Later | motion-selection-indicator | Revenue / coverage / pricing views | Selected indicator follows the existing accessible state; rapid switching retains fields and focus |
+| Later | motion-native-view-transition | Overview to workspace | Feature detection and normal-navigation fallback; correct back/forward, scroll, focus and unsaved-work guard |
+| Existing candidate | autoanimate-list-transitions | Editorial card additions/reordering after lifecycle integration | Stable IDs, real state updates, no false drag/persistence affordance; do not animate finance tables |
+| Existing candidate | motion-react-purposeful | A bounded panel/layout handoff | Justify bundle cost over existing CSS; test interrupted animation and reduced motion |
+| Existing candidate | motion-primitives-disclosure | Optional supporting context | Exact source/license resolved first; do not mount/unmount fields in a way that loses edits |
+
+### Sources and review limits
+
+- [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion): official docs describe size-variable animation and keyboard semantics. Package version/license pin remains an adoption gate. Existing portfolio primitives differ from GTM OS's native components.
+- [Animate UI Copy Button](https://animate-ui.com/docs/primitives/animate-ui/copy-button): official page describes clipboard action and icon swap; examples use additional icon packages. [Project license](https://github.com/imskyleen/animate-ui/blob/main/LICENSE.md), inspected blob `4c99063f507027c06af430d54c5b3cf167be51d7`, says **MIT + Commons Clause** and restricts redistribution of components themselves. It is not cataloged as unrestricted open-source code. Keep links and independently implemented ideas here; do not copy its component source into a reusable bank.
+- [Motion-Primitives Animated Background source](https://github.com/ibelick/motion-primitives/blob/main/components/core/animated-background.tsx), inspected blob `ae0a1ffc5b375ee59744089c83527cdbe6acec8b`: imports `motion/react`, clones children and injects click/hover handlers. It is not a complete accessible tabs implementation. Preserve existing handlers/keyboard semantics. Documentation requests returned 403; GitHub source was readable. Root LICENSE request returned 404 and no root license entry was found, so exact licensing is unresolved, not presumed permissive.
+- [Motion layout documentation](https://motion.dev/docs/react-layout-animations) and [MotionConfig](https://motion.dev/docs/react-motion-config): library-level references for the existing candidate. Do not confuse free runtime features with separate paid Motion UI components.
+- [AutoAnimate official docs](https://auto-animate.formkit.com/): existing candidate for immediate-child additions/removals/moves. Inspect version, reduced-motion behavior, compatibility and license at adoption.
+- [MDN View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API): native-platform reference, not a component package. Browser compatibility and Next.js integration require a separate prototype; no API support guarantee is asserted.
+
+### Existing adoption versus future options
+
+GTM OS PR #123 contains a separate CSS adaptation of the existing Lab lift/rise ideas: card focus/hover, panel/menu entrance, tab color and next-action arrows. It does not install any external candidate above. Preserve local pine/paper tokens. No count-up financial values, constant pulse, autoplay, blur hiding required text, scroll hijacking or artificial progress.
+
+Before promoting a candidate, record exact file/package version, license notices, dependencies and measured bundle impact, owner and route, loading/error/empty/success behavior, keyboard/focus, reduced motion, narrow layouts and zoom. Source inspection is not browser or accessibility certification. Keep source unavailable/license unresolved states explicit. A new candidate is not a promise to implement it.
+
+Validation for this research/catalog update: catalog ID uniqueness, source-host allowlist, candidate status and GTM search coverage; update the existing visual test's expected count from 19 to 23. Full app build and browser suite must be recorded separately when run. Rollback: revert the shortlist/catalog commit; no migration or runtime dependency.
+
+## Second workflow-motion expansion
+
+Four more candidates bring the motion shortlist to **11** and the full component catalog to **27**. All remain reference candidates, not installed components. Official documentation reviewed November 6, 2026 (America/Chicago). No new dependency or third-party source copied; exact package version and license review remain required before implementation.
+
+| Priority | Catalog ID | Proposed use | Acceptance / limitation |
+| --- | --- | --- | --- |
+| Next | motion-task-progress | Discovery/evaluation checklist | Named denominator, exact count, instant no-motion state; no progress inferred from time or clicks |
+| Next, once an operation exists | motion-operation-feedback | Successful import/save and recovery | Result follows confirmed operation; inline errors remain; undo requires a real reversal |
+| Later | motion-context-panel | Inspect buyer/stakeholder evidence | Close/Escape/focus return, mobile scrolling, retained drafts and background inertness |
+| Later | motion-priority-reorder | Order personal follow-up questions | Stable IDs, Move up/down alternative, cancellation and explicit save semantics |
+
+Sources: [Radix Progress](https://www.radix-ui.com/primitives/docs/components/progress), [Radix Toast](https://www.radix-ui.com/primitives/docs/components/toast), [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog), [Motion Reorder](https://motion.dev/docs/react-reorder). These provide primitive/API references; the GTM applications and priorities above are local design proposals, not upstream claims.
+
+The general feedback/context catalog families describe what UI is needed; these specific entries describe optional motion and acceptance conditions. Reorder is an interaction, while the earlier AutoAnimate entry only animates collection changes. Prefer the existing CSS, native elements and installed primitives. Do not install Radix or Motion across repositories just because a candidate exists. Preserve reduced motion, exact finance values, source evidence and keyboard access in every consumer.
+
+The existing visual assertion now expects 27 options. Catalog tests cover new IDs, candidate status and GTM search. Full application and browser checks remain separate evidence.
+
+## Gap-focused additions and stop rule
+
+Three further candidates bring the interaction/motion shortlist to **14** and the full catalog to **30**. These fill error, loading and explanatory-diagram gaps rather than adding another animation library.
+
+| Priority | ID | Use and acceptance |
+| --- | --- | --- |
+| Next | motion-field-validation | Discovery/POC field errors: retained input, linked error text, summary links, no shake or color-only state |
+| Next where async exists | motion-loading-placeholder | Account/report loading: reserve space, separate failure/empty/stale states, retry; static skeleton is the default |
+| Later | motion-workflow-trace | Explain a campaign or evaluation handoff: explicit Play/Stop/Replay, complete static diagram and text, no claimed live integration |
+
+Sources checked November 6, 2026 (America/Chicago): [MDN aria-invalid](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-invalid), [MDN aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy), [Motion SVG guide](https://motion.dev/docs/react-svg-animation). MDN supplies accessibility semantics, not ready-made motion components; proposed CSS treatments are local design recommendations. No source copied or new package installed. Exact version/license checks apply if implementation later imports external code.
+
+**Catalog stop rule:** there is now enough coverage for a first implementation cycle. Add another entry only for a demonstrated task not served by existing summaries, disclosure, context, feedback, selection, progress or data patterns. Prefer implementing and validating a small candidate before increasing inventory. Defer magnetic cursors, tilt on data cards, animated financial numbers, repeated shimmer and decorative background loops.
+
+Suggested first consumer slice: discovery validation plus confirmed copy feedback. Keep loading feedback tied to an existing request; keep workflow traces in learning/demos. Candidate status is not proof of implementation or accessibility. The visual count expectation is updated to 30; browser execution remains separate.
