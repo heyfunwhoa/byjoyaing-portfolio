@@ -18,6 +18,22 @@
 
 A new `knip.json` uses `ignoreFiles` for only `scripts/vercel-ignore-build.ts`, whose externally invoked role is verified in `vercel.json`. This does **not** exclude the file from dependency/export analysis, change Knip's default entries, suppress the other findings, or mean any file is safe to delete. The prior counts below are the **unfiltered baseline** from run 42344305380; a new branch run must establish the post-config counts before comparing.
 
+## Verified rerun after narrow exception
+
+GitHub Actions [run 42345060088](https://github.com/heyfunwhoa/byjoyaing-portfolio/actions/runs/42345060088) completed successfully for PR head `79d138038ba5fade7b949279a45c96a8bba54ca5`. Knip itself continued returning exit 1 to indicate advisory findings. This is expected and **not** a failed GitHub workflow.
+
+| Category | Initial baseline | After narrow exception | Difference |
+| --- | ---: | ---: | ---: |
+| Potentially unused files | 36 | 35 | -1 |
+| Potentially unused dependencies | 1 | 1 | 0 |
+| Potentially unused devDependencies | 1 | 1 | 0 |
+| Unlisted dependency | 1 | 1 | 0 |
+| Unlisted binary | 1 | 1 | 0 |
+| Files containing unused exports | 20 | 20 | 0 |
+| Files containing unused exported types | 29 | 29 | 0 |
+
+The file list no longer includes `scripts/vercel-ignore-build.ts`. The retained 35-file list still includes the inactive Lifeline cluster and release helpers requiring owner decisions. Do not add broad exclusions or make any package changes to force zero findings. The workflow passes even when Knip reports unused code; always inspect the actual log and exit status.
+
 ## Evidence-based triage (no deletions approved)
 
 | Finding | Follow-up evidence | Disposition |
