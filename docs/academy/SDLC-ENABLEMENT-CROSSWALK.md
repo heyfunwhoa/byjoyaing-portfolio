@@ -313,7 +313,7 @@ The user approved continuing the **remaining technical curriculum**. This draft 
 | Priority | Owner / existing work | Deliverable | Gate |
 | --- | --- | --- | --- |
 | P0: Stabilize | KRU-174 and integration PR #238 | Reconciled inventory, canonical paths and integration acceptance | Owner editorial, learner, accessibility and release review; verify latest-head checks and production independently |
-| P1: SDLC entry | This crosswalk PR #260, then a separately scoped implementation within the existing Builder Academy program | Connect existing \`idea-to-verified-release\` lesson to one understandable SDLC orientation and one independent synthetic scenario; **no second SDLC lesson body** | Existing lesson IDs, prerequisites, navigation, and learner-state semantics unchanged; learner explains idea → requirement → PR/test → deploy → verify and identifies one failure |
+| P1: SDLC entry | This crosswalk PR #260, then a separately scoped implementation within the existing Builder Academy program | Connect existing `idea-to-verified-release` lesson to one understandable SDLC orientation and one independent synthetic scenario; **no second SDLC lesson body** | Existing lesson IDs, prerequisites, navigation, and learner-state semantics unchanged; learner explains idea → requirement → PR/test → deploy → verify and identifies one failure |
 | P2: Journey continuity | KRU-77 | Resume and clear feedback using existing approved progress mechanism | Reviewed, practiced, passed, and demonstrated remain distinct; test reload, reset, malformed storage, keyboard, mobile and reduced motion |
 | P3: IaC deep dive | Future bounded follow-on, after P1 and owner acceptance | One synthetic plan-review lesson, normal/change/delete cases and answer-specific feedback | Correctly identifies unintended changes and approval boundaries; no cloud credentials or live apply |
 | P4: Enablement transfer | Existing revenue enablement program | One seller/SE or onboarding mission linked to the canonical IaC concept | Independent role rubric and private/public content boundary review |
@@ -330,7 +330,7 @@ The user approved continuing the **remaining technical curriculum**. This draft 
 **User outcome:** after one short session, the learner can trace a fictional application change from a user need through requirement, design, issue, implementation, review/testing, deployment, live verification and maintenance, and can explain why passing CI is not proof of a successful live release.
 
 **Scope:**
-1. Reuse the canonical \`idea-to-verified-release\` lesson, companion and existing teaching fixtures; link the current code/YAML and deployment references where useful.
+1. Reuse the canonical `idea-to-verified-release` lesson, companion and existing teaching fixtures; link the current code/YAML and deployment references where useful.
 2. Add a clearly labeled SDLC Foundations entry/sequence within the **existing** Academy navigation after PR #238 is accepted. Prefer metadata/link wiring to new routes.
 3. Add one independent synthetic scenario or adapt an existing check: given a fictional change with a passing test but missing deployment verification, choose the next evidence-gathering step and explain why.
 4. Give feedback for each answer, a concise next-lesson recommendation and an honest status indicator. If the existing check cannot persist, say so; do not add persistence.
