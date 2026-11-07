@@ -5,19 +5,29 @@
 **Implementation owner:** existing Builder Academy in this repository. Do not create a parallel app, LMS, lesson registry, learner database, or separate curriculum repo.
 **Audience:** beginner builders first; later optional business, technical, operations, and role-based enablement overlays.
 
-## Start here: actual lesson order and status (November 6, 2026)
+## Start here
 
-This document is the **curriculum crosswalk**, not the learner-facing course. Take these pieces in sequence. All linked guides on this branch are **draft educational sources** until reviewed, merged and published. No learner progress, mastery, cloud resources or service instrumentation is created by PR #260.
+This is the learner route for **software delivery literacy and beginner practice**. Use the fictional alert handoff form throughout. The existing orientation also includes a discovery note example you can use to test whether the same ideas transfer.
 
-| Order | Current learning material | What to produce | Delivery status |
-| --- | --- | --- | --- |
-| 1. Orientation | [From idea to verified release](../builder-academy/idea-to-verified-release.md), plus its [fictional full-stack extension](../builder-academy/idea-to-verified-release.md#full-stack-bridge-trace-one-fictional-discovery-note) | One problem, acceptance criterion, product/UX/API/data sketch, next release evidence | Existing Academy lesson; new written extension on PR #260 |
-| 1a. API practice | [Follow one click through an API](../builder-academy/follow-one-api-request.md) | Trace a form submission, inspect the request and response, and explain a safe retry | Written companion in PR #260 |
-| 2. Software artifacts and Docker | [From source code to running software](../builder-academy/source-to-running-software.md) | Source/build/artifact/image/container comparison and go/no-go rationale | Existing written guide expanded on PR #260 |
-| 3. Systems design | [Architecture trade-off exercise](../builder-academy/systems-design-tradeoffs.md) | Bounded architecture diagram, trust boundary and one decision record | Written lab in PR #260 only |
-| 4. Infrastructure as Code | [IaC plan and drift review](../builder-academy/infrastructure-as-code-plan-review.md) | Review three fictional plans and block destructive changes | Written lab in PR #260 only |
-| 5. Kubernetes/platform | [Orchestration and golden-path exercise](../builder-academy/kubernetes-platform-engineering.md) | Diagnose a missing endpoint and choose managed hosting vs orchestration | Written lab in PR #260 only; optional specialization |
-| 6. Operate and improve | [Observability/SLO/incident exercise](../builder-academy/observability-reliability-incidents.md) | Incident response, recovery criteria and outcome evidence | Written lab in PR #260 only |
+| Order | Study | Show what you learned |
+| --- | --- | --- |
+| 1. Define the change | [From idea to verified release](../builder-academy/idea-to-verified-release.md) | Name the user problem, propose one improvement, and write one acceptance criterion you can test. |
+| 2. Design the form | [Sketch the alert handoff form](../builder-academy/follow-one-api-request.md#before-submit-sketch-the-form) and use [Frontend Building Blocks](../builder-academy/frontend-building-blocks.md) as a reference. | Sketch ready, submitting, confirmed, and recoverable error states. Explain what happens to the draft. |
+| 3. Trace one saved record | [Follow one click through an API](../builder-academy/follow-one-api-request.md) | Read the request and response, trace the saved row, and explain permissions, the SDK, and a safe retry. |
+| 4. Identify the build output | [From source code to running software](../builder-academy/source-to-running-software.md#what-the-build-produces) | Match a source change to its artifact and identify what runs it. |
+| 5. Deploy and verify | [First Deployment Settings](../builder-academy/first-deployment-settings.md#verify-the-alert-handoff-fix) | Identify the intended preview and revision, check the actual behavior, and explain when to pause or roll back. |
+| 6. Investigate and recover | [Observability, reliability and incident response](../builder-academy/observability-reliability-incidents.md) | Choose an indicator and say what evidence would confirm that the user can complete the workflow again. |
+
+### Optional depth
+
+| Take this when you want to understand | Study | Demonstrate |
+| --- | --- | --- |
+| Why the application has these boundaries | [Systems design](../builder-academy/systems-design-tradeoffs.md) | Draw a context diagram and explain one trade-off. |
+| How a workload travels between compatible runtimes | [Dockerfile inspection](../builder-academy/source-to-running-software.md#optional-dockerfile-inspection-one-deeper-artifact-exercise) | Trace build output → image → running container and identify a release check. |
+| How infrastructure changes are reviewed | [IaC plan and drift review](../builder-academy/infrastructure-as-code-plan-review.md) | Identify a destructive change and explain who must review it. |
+| Why a team might need orchestration | [Kubernetes and platform engineering](../builder-academy/kubernetes-platform-engineering.md) | Diagnose a missing service endpoint and justify a hosting choice. |
+
+The route uses existing lessons and written draft companions. A separate local capstone provides execution practice with the same form. The learner review below measures reasoning independently. Deep programming fluency, professional UX research, production cloud administration, security certification, and live on-call ownership are separate learning paths.
 
 **Important sequencing boundary:** Academy [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) already implements the **SDLC-first lesson navigation** on an open integration branch; it is not merged. Do not create a second SDLC entry path from this crosswalk. KRU-77 owns future resume/progress work. The first truly interactive IaC exercise, if justified after actual learner review, is a **separate, small implementation** in the existing Academy component family, not another documentation expansion or external cloud deployment.
 
@@ -195,9 +205,9 @@ A fictional meeting-preparation web app contains a React/TypeScript frontend and
 
 ### Teaching sequence: how the learner should experience it
 
-The following is a **recommended deep-dive dependency order**, not a new 11-path implementation and not a claim all material exists today.
+Use the Start here route above to study. This table is a coverage inventory for planning deeper lessons.
 
-| Sequence | Subject | Evidence or practical exercise |
+| Area | Subject | Evidence or practical exercise |
 | --- | --- | --- |
 | 1 | SDLC and product discovery | Trace idea → problem → requirement → release → measured outcome |
 | 2 | UX/UI and product design | Draw a user journey, identify interaction states, build a wireframe |

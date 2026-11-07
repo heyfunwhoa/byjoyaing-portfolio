@@ -2,6 +2,19 @@
 
 Builder Academy companion · Beginner first, with optional deeper practice · Fictional alert handoff app
 
+## Before Submit: sketch the form
+
+**User problem.** A SOC manager loses what they typed when a handoff review fails. The first improvement is a form that keeps the draft and explains how to recover.
+
+| State | What the user sees | What to check |
+| --- | --- | --- |
+| Ready | A labeled summary and a Submit button | Keyboard users can reach and operate both controls. |
+| Submitting | The draft and a submitting message | The same click cannot start a second submission while the first is pending. |
+| Confirmed | A confirmation with the review ID | The ID matches the saved record. |
+| Recoverable error | The draft and a specific next action | Correct invalid input or retry the same submission after an uncertain result. |
+
+Sketch those four states in four boxes. In the error sketch, mark where the message appears and what the user can do next. **Acceptance criterion.** If a save succeeds but its confirmation is lost, the form retains the draft and retrying the same submission confirms the existing review.
+
 ## First pass: what happens when you click Submit?
 
 A SOC manager enters “Review overnight alert escalations” and clicks **Submit**. The browser sends the form to the app server. The server checks the request, saves it if allowed, and replies. The browser uses that reply to show a confirmation or explain what to do next.
@@ -48,6 +61,17 @@ The **status code** reports the result of the request. The **response body** giv
 ### Read a network trace
 
 Use the fictional exchange above as your practice trace. Write down its method, path, submitted field, status, and returned ID. Then say what confirmation the frontend could show. If you have an authorized practice environment with a synthetic form, open browser DevTools → **Network** before clicking Submit. Select the request. Look in **Headers**, **Payload**, and **Response** for the same evidence. Use the written trace if the exercise is unavailable. Keep credentials and private request data out of screenshots and notes.
+
+### Follow the record through the backend
+
+For the successful example, the handler reads the summary, checks the caller and team, and saves a review. Think of one database row with an ID, a summary, and a request key that identifies the logical submission. The database can enforce that a key is unique within its defined scope. The handler returns the saved ID, and the frontend uses that ID in the confirmation.
+
+| Evidence | What it can establish |
+| --- | --- |
+| Draft text on screen | The browser still holds the user's input. |
+| Server response with a review ID | The handler reports a successful save. |
+| An authorized read returning that review ID | The record is present in the data store at the time of the check. |
+| One record after a retry | The retry did not create a duplicate in the tested scenario. |
 
 ## Third pass: work out where the request stopped
 
