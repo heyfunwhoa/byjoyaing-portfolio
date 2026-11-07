@@ -55,7 +55,7 @@ type PatternEvidence = {
   /** Approval is distinct from verified use. None is asserted without an owner record. */
   approval?: { decisionUrl: string; namedUse: string };
 };
-const gamefulCommit = "1bff9a6bbd8b2a1db880b5a8c5e68cbab4015412";
+const gamefulCommit = "f4ecd7d11d41ac9c665e51861a80262111f95bd8";
 
 /** Only inspected source-level examples are recorded here. */
 export const patternEvidence: Readonly<Record<string, PatternEvidence>> = {
