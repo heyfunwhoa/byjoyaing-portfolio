@@ -6,6 +6,8 @@
 
 The authoritative cross-category tool registry is in Technical Docs Platform. **Start with the [browseable 60-tool use-case index](https://github.com/heyfunwhoa/technical-docs-platform/blob/785789969464b788d247deb0333563faca2c89bc/software-catalog/open-source-browse.md)**, generated from the [canonical opportunity register](https://github.com/heyfunwhoa/technical-docs-platform/blob/785789969464b788d247deb0333563faca2c89bc/software-catalog/open-source-opportunities.json) with the [selection and pilot guide](https://github.com/heyfunwhoa/technical-docs-platform/blob/785789969464b788d247deb0333563faca2c89bc/software-catalog/open-source-intake.md), merged through [PR #66](https://github.com/heyfunwhoa/technical-docs-platform/pull/66). The links are pinned to the merged commit to preserve the reviewed catalog baseline.
 
+The broader cross-category discovery queue now includes [32 optional reference-only follow-ups](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/software-catalog/open-source-next-wave.md) in addition to the 60 canonical opportunities. UI patterns should be evaluated through the [local reusable pattern library](pattern-library.md); do not import the entire software catalog into Design Lab.
+
 This **is not another registry**. This portfolio retains the existing curated [component-options catalog](../../lib/component-options.ts), [Design Lab](design-lab.md), [source audit](component-source-audit.md), [adoption contract](component-adoption.md) and Storybook demos. Do not copy the entire cross-category JSON file into this app or add all candidates to the Design Lab UI.
 
 ## How the Design Lab should use the radar
