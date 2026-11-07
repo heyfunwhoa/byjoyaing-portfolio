@@ -61,7 +61,7 @@ A context diagram shows a user and high-level systems. A container/component dia
 
 A normal small save can often be synchronous: validate access, persist one record transactionally, return success/failure. A queue may be justified for a slow secondary job such as generating a report or integrating an approved external service. Introducing a queue adds attempts, duplicate delivery, idempotency, monitoring and failed-job recovery. **Do not insert a queue merely because it sounds enterprise-ready.**
 
-The existing [background-job recovery guide](background-job-recovery.md) teaches what can happen when a write succeeds but the acknowledgement fails. If the side effect must happen exactly once from the business perspective, choose and verify a durable idempotency/reconciliation strategy; a queue alone is insufficient.
+The existing [proposed background-job recovery guide in Academy PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) teaches what can happen when a write succeeds but the acknowledgement fails. If the side effect must happen exactly once from the business perspective, choose and verify a durable idempotency/reconciliation strategy; a queue alone is insufficient.
 
 ### Decision C: database, object storage or cache?
 
