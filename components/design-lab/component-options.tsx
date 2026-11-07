@@ -31,7 +31,7 @@ export function ComponentOptions() {
           <p className="mt-3 max-w-xl text-sm leading-6 text-muted">
             Recommendations for your projects. “Available here” means source
             exists in this portfolio; other repos need their own compatibility
-            review. “Candidate” means a potential, not an installed or scheduled feature. Search “game-like” to see saved game options, or filter by project for workflow components.
+            review. “Candidate” means a potential, not an installed or scheduled feature. Search “game-like” to see saved game options, search “creative” or “marketing” for visual asset tools, or filter by project for workflow components.
           </p>
           <a className="mt-2 inline-block min-h-11 py-2 text-sm underline" href="https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/feat/kru-150-gameful-workbench/docs/design/component-opportunity-register.md" target="_blank" rel="noopener noreferrer">Open the cross-repo candidate guide (new tab)</a>
         </div>

@@ -13,7 +13,7 @@ test("curated options retain valid destinations and official source links", () =
     componentOptions.length,
   );
   for (const option of componentOptions) {
-    assert.ok(["ui.shadcn.com", "visx.airbnb.tech", "caliperui.site", "prestigeui.com", "github.com", "kenney.nl", "twinery.org"].includes(new URL(option.source).hostname));
+    assert.ok(["ui.shadcn.com", "visx.airbnb.tech", "caliperui.site", "prestigeui.com", "github.com", "kenney.nl", "twinery.org", "motioncanvas.io", "ffmpeg.org", "www.remotion.dev"].includes(new URL(option.source).hostname));
     assert.ok(option.apps.length > 0);
     assert.ok(option.apps.every((app) => componentApps.includes(app)));
   }
@@ -80,4 +80,12 @@ test("visx recommendations stay candidates with focused destination filters", ()
   assert.ok(visx.every((option) => option.availability === "Candidate"));
   assert.deepEqual(optionsForApp("Detector Coverage Atlas", "heatmap", "Candidate").map((option) => option.id), ["visx-coverage"]);
   assert.equal(optionsForApp("Portfolio", "Heatmap").length, 0);
+});
+
+test("creative production candidates are searchable without implying installation", () => {
+  const options = optionsForApp("GTM Revenue OS", "creative", "Candidate");
+  assert.equal(options.filter(option => option.id.startsWith("creative-")).length, 5);
+  assert.ok(optionsForApp("Portfolio", "marketing").some(option => option.id === "creative-penpot"));
+  assert.equal(optionsForApp("All", "creative", "Available here").length, 0);
+  assert.match(componentOptions.find(option => option.id === "creative-remotion")!.adoption, /Source-available/);
 });

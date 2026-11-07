@@ -1,3 +1,4 @@
+import { CreativeRecipes } from "@/components/design-lab/creative-recipes";
 import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
@@ -80,6 +81,7 @@ export default function DesignLabPage() {
             <a href="#ideation-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Use an ideation template
             </a>
+            <a href="#creative-recipes-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Explore visual content recipes</a>
             <a href="#component-ideas" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Browse component ideas
             </a>
@@ -149,6 +151,8 @@ export default function DesignLabPage() {
             </p>
           </aside>
         </section>
+
+        <CreativeRecipes />
 
         <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">
           <ComponentOptions />

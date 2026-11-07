@@ -808,7 +808,97 @@ export const componentOptions: ComponentOption[] = [
     ],
     "source": "https://ui.shadcn.com/docs/components/card",
     "adoption": "Composition candidate; DailySecrets destination is provisional because README was unavailable. Confirm its intended workflow first. No publishing service, editor package or automated send is authorized by this record."
-  }
+  },
+{
+  "id": "creative-motion-canvas",
+  "name": "Motion Canvas explainers",
+  "purpose": "Create code-driven visual explanations for content and marketing assets.",
+  "availability": "Candidate",
+  "parts": [
+    "Creative production",
+    "Video",
+    "Marketing assets",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://motioncanvas.io/docs/",
+  "adoption": "MIT upstream; evaluate a single narrated scene, editable source and caption workflow. No package installed."
+},
+{
+  "id": "creative-obs",
+  "name": "OBS product capture",
+  "purpose": "Record authentic product workflows for demos, tutorials and marketing video.",
+  "availability": "Candidate",
+  "parts": [
+    "Creative production",
+    "Video",
+    "Marketing assets",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/obsproject/obs-studio",
+  "adoption": "GPL-2.0-or-later upstream; capture a controlled fictional demo, then inspect readability, cursor pacing and clean audio. No desktop integration installed."
+},
+{
+  "id": "creative-ffmpeg",
+  "name": "FFmpeg asset processing",
+  "purpose": "Transform reviewed video and audio into content and marketing export variants.",
+  "availability": "Candidate",
+  "parts": [
+    "Creative production",
+    "Video",
+    "Marketing assets",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://ffmpeg.org/legal.html",
+  "adoption": "LGPL/GPL depends on build configuration; review the exact binary and codecs before distribution. Preserve caption and transcript outputs."
+},
+{
+  "id": "creative-penpot",
+  "name": "Penpot visual templates",
+  "purpose": "Explore reusable storyboards, campaign layouts and visual marketing assets.",
+  "availability": "Candidate",
+  "parts": [
+    "Creative production",
+    "Video",
+    "Marketing assets",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://github.com/penpot/penpot",
+  "adoption": "MPL-2.0 upstream; keep company brand context separate from joy. and verify imported asset rights. No service connected."
+},
+{
+  "id": "creative-remotion",
+  "name": "Remotion coded video",
+  "purpose": "Evaluate reusable React video templates for content and marketing explainers.",
+  "availability": "Candidate",
+  "parts": [
+    "Creative production",
+    "Video",
+    "Marketing assets",
+    "Visual content"
+  ],
+  "apps": [
+    "Portfolio",
+    "GTM Revenue OS"
+  ],
+  "source": "https://www.remotion.dev/docs/license/pricing",
+  "adoption": "Source-available with free/company license conditions; do not assume permissive OSS. Check organization/use eligibility before adoption. No package installed."
+}
 ];
 export function optionsForApp(
   app: ComponentApp | "All",
