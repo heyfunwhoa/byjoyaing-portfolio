@@ -26,6 +26,13 @@ Do **not** move Design Lab into Technical Docs. Docs states *what evidence is re
 
 Accessibility is a **cross-cutting requirement**, not a lifecycle stage or a cosmetic library category.
 
+### First real composition pilot
+
+The existing `evidence-workflow` catalog entry now has a [local, fictional evidence-review workbench](patterns/evidence-review.md): **summary → evidence details → next reviewer question**. It compares reviewed, stale, missing and restricted-source states using existing Card, Button and Sheet primitives. This is **Prototype** (local source available), not Approved, cross-repository Adopted or Shipped. Do not route real research data, model outputs or CRM actions into the workbench.
+
+A proposed next consumer is Account Signal Engine or Security Market Map, but either must own a separate integration PR, permissions, provenance review and production acceptance evidence. See the [interactive Storybook exercises](../../components/design-lab/evidence-review-pattern.stories.tsx) and [source implementation](../../components/design-lab/evidence-review-pattern.tsx).
+
+
 ## Four evidence-based stages
 
 | Stage | Meaning | Promotion evidence |

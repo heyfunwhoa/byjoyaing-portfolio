@@ -759,10 +759,10 @@ export const componentOptions: ComponentOption[] = [
     "id": "evidence-workflow",
     "name": "Evidence and review checkpoints",
     "purpose": "Inspect provenance, freshness, missing evidence and a reviewed next action.",
-    "availability": "Candidate",
+    "availability": "Available here",
     "parts": [
       "Workflow composition",
-      "Potential"
+      "Local synthetic preview"
     ],
     "apps": [
       "Detector Coverage Atlas",
@@ -772,7 +772,7 @@ export const componentOptions: ComponentOption[] = [
       "Technical Docs Platform"
     ],
     "source": "https://ui.shadcn.com/docs/components/sheet",
-    "adoption": "Composition candidate using existing detail/disclosure patterns. Suggested status never equals verified evidence or approval. Keep source URLs, timestamps, missing/denied states and keyboard return paths. Ops Runtime stays on its native stack unless separately justified."
+    "adoption": "Local Design Lab prototype using existing Card, Button and Sheet primitives. It uses fictional records only; a source-review label is not fact validation or authorization. A consuming app must implement rights, review gates, timestamps, missing/restricted states, actual actions and keyboard return paths. Ops Runtime stays on its native stack unless independently justified."
   },
   {
     "id": "runbook-progress",

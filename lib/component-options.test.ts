@@ -15,6 +15,11 @@ import {
   stageDefinitions,
   toPatternRecord,
 } from "./design-lab/pattern-adoption.ts";
+import {
+  evidenceReviewScenarios,
+  evidenceReviewReadiness,
+  evidenceReviewStates,
+} from "./design-lab/evidence-review.ts";
 
 test("curated options retain valid destinations and official source links", () => {
   assert.equal(
@@ -43,6 +48,7 @@ test("availability labels agree with the portfolio source boundary", () => {
     summaries: ["card", "bento-grid", "carousel"],
     disclosure: ["tabs", "accordion"],
     context: ["sheet", "dialog", "hover-card"],
+    "evidence-workflow": ["../design-lab/evidence-review-pattern"],
   };
   for (const option of componentOptions.filter(
     (option) => option.availability === "Available here",
@@ -238,6 +244,45 @@ test("pattern stage, family, app and keyword filters combine without losing sour
   );
   assert.equal(patternsForLibrary({ query: "nothing-will-ever-match" }).length, 0);
   assert.equal(patternsForLibrary({ query: "  " }).length, componentOptions.length);
+});
+
+test("evidence review is a local prototype, not a verified adoption", () => {
+  const option = componentOptions.find((item) => item.id === "evidence-workflow");
+  assert.ok(option);
+  assert.equal(option.availability, "Available here");
+  assert.equal(toPatternRecord(option).stage, "Prototype");
+  assert.equal(toPatternRecord(option).uses.length, 0);
+  assert.ok(toPatternRecord(option).localSource.length >= 1);
+  assert.deepEqual(
+    patternsForLibrary({ query: "evidence review checkpoints", stage: "Prototype" }).map((item) => item.id),
+    ["evidence-workflow"],
+  );
+});
+
+test("fictional evidence states preserve provenance and never imply authorization", () => {
+  assert.deepEqual(evidenceReviewStates, ["reviewed", "stale", "missing", "restricted"]);
+  for (const state of evidenceReviewStates) {
+    const record = evidenceReviewScenarios[state];
+    assert.equal(record.id, state);
+    assert.ok(record.title && record.summary && record.interpretation);
+    assert.ok(record.source.reviewNote.length > 15);
+    assert.ok(record.nextQuestion.endsWith("?"));
+    assert.ok(!JSON.stringify(record).includes("api_key"));
+    if (state === "missing" || state === "restricted") {
+      assert.equal(record.source.id, null);
+      assert.equal(record.source.observation, null);
+    }
+    const readiness = evidenceReviewReadiness(record);
+    assert.equal(readiness.canProposeNextStep, state === "reviewed");
+    assert.ok(readiness.message.length > 25);
+    if (state === "reviewed") {
+      assert.match(readiness.message, /No action is approved or sent/);
+    } else {
+      assert.ok(!readiness.message.includes("approved"));
+    }
+  }
+  assert.equal(evidenceReviewScenarios.stale.source.reviewedOn, null);
+  assert.ok(evidenceReviewScenarios.reviewed.source.id?.startsWith("FIXTURE"));
 });
 
 test("native learning territories retain source IDs without unmaintained native package dependencies", () => {
