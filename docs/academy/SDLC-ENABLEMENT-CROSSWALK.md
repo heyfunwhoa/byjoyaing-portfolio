@@ -5,6 +5,21 @@
 **Implementation owner:** existing Builder Academy in this repository. Do not create a parallel app, LMS, lesson registry, learner database, or separate curriculum repo.
 **Audience:** beginner builders first; later optional business, technical, operations, and role-based enablement overlays.
 
+## Start here: actual lesson order and status (November 6, 2026)
+
+This document is the **curriculum crosswalk**, not the learner-facing course. Take these pieces in sequence. All linked guides on this branch are **draft educational sources** until reviewed, merged and published. No learner progress, mastery, cloud resources or service instrumentation is created by PR #260.
+
+| Order | Current learning material | What to produce | Delivery status |
+| --- | --- | --- | --- |
+| 1. Orientation | [From idea to verified release](../builder-academy/idea-to-verified-release.md), plus its [fictional full-stack extension](../builder-academy/idea-to-verified-release.md#full-stack-bridge-trace-one-fictional-discovery-note) | One problem, acceptance criterion, product/UX/API/data sketch, next release evidence | Existing Academy lesson; new written extension on PR #260 |
+| 2. Software artifacts and Docker | [From source code to running software](../builder-academy/source-to-running-software.md) | Source/build/artifact/image/container comparison and go/no-go rationale | Existing written guide expanded on PR #260 |
+| 3. Systems design | [Architecture trade-off exercise](../builder-academy/systems-design-tradeoffs.md) | Bounded architecture diagram, trust boundary and one decision record | Written lab in PR #260 only |
+| 4. Infrastructure as Code | [IaC plan and drift review](../builder-academy/infrastructure-as-code-plan-review.md) | Review three fictional plans and block destructive changes | Written lab in PR #260 only |
+| 5. Kubernetes/platform | [Orchestration and golden-path exercise](../builder-academy/kubernetes-platform-engineering.md) | Diagnose a missing endpoint and choose managed hosting vs orchestration | Written lab in PR #260 only; optional specialization |
+| 6. Operate and improve | [Observability/SLO/incident exercise](../builder-academy/observability-reliability-incidents.md) | Incident response, recovery criteria and outcome evidence | Written lab in PR #260 only |
+
+**Important sequencing boundary:** Academy [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) already implements the **SDLC-first lesson navigation** on an open integration branch; it is not merged. Do not create a second SDLC entry path from this crosswalk. KRU-77 owns future resume/progress work. The first truly interactive IaC exercise, if justified after actual learner review, is a **separate, small implementation** in the existing Academy component family, not another documentation expansion or external cloud deployment.
+
 ## Outcome and why this exists
 
 Teach the full software development lifecycle (SDLC), from opportunity discovery and requirements through architecture, implementation, infrastructure, testing, release, operations, optimization, and retirement. Learners should be able to (a) explain the concepts, (b) trace dependencies and evidence, (c) make bounded decisions in a simulation, and (d) demonstrate an applied skill on a safe real or synthetic project.
@@ -306,16 +321,16 @@ The user approved continuing the **remaining technical curriculum**. This draft 
 
 ## Prioritized implementation plan (2026-11-06)
 
-**Decision:** Start learning immediately in chat; make the first repository delivery a bounded, outcome-driven SDLC entry and comprehension slice. No new Academy program, separate LMS, duplicate lesson registry, learner storage, or new UI framework.
+**Current decision:** Reuse the SDLC-first navigation already on **open** Academy integration PR #238. PR #260 provides an independently reviewable **written** full-stack transfer exercise and optional infrastructure/operations companions. New interactive work is gated on learner evidence and the existing Academy release process. Do not add a parallel Academy, catalog, LMS, progress store or UI framework.
 
 ### Ownership and sequencing
 
 | Priority | Owner / existing work | Deliverable | Gate |
 | --- | --- | --- | --- |
 | P0: Stabilize | KRU-174 and integration PR #238 | Reconciled inventory, canonical paths and integration acceptance | Owner editorial, learner, accessibility and release review; verify latest-head checks and production independently |
-| P1: SDLC entry | This crosswalk PR #260, then a separately scoped implementation within the existing Builder Academy program | Connect existing `idea-to-verified-release` lesson to one understandable SDLC orientation and one independent synthetic scenario; **no second SDLC lesson body** | Existing lesson IDs, prerequisites, navigation, and learner-state semantics unchanged; learner explains idea → requirement → PR/test → deploy → verify and identifies one failure |
+| P1: SDLC entry | Open integration PR #238 (navigation) + draft PR #260 (companion) | SDLC-first path already proposed in #238; the synthetic full-stack transfer scenario is written in #260. **Do not make a second parent lesson** | Validate exact-head checks, editorial clarity and learner transfer before authorized publication |
 | P2: Journey continuity | KRU-77 | Resume and clear feedback using existing approved progress mechanism | Reviewed, practiced, passed, and demonstrated remain distinct; test reload, reset, malformed storage, keyboard, mobile and reduced motion |
-| P3: IaC deep dive | Future bounded follow-on, after P1 and owner acceptance | One synthetic plan-review lesson, normal/change/delete cases and answer-specific feedback | Correctly identifies unintended changes and approval boundaries; no cloud credentials or live apply |
+| P3: IaC deep dive | Written scenario now in PR #260; future interactive pilot in existing Academy after review | Three synthetic create/unsafe update/destructive delete plans and answer feedback are documented. Interactive UI is **not built** | Attempt the written exercise independently; implement one bounded, local-only interactive pilot only after release/learner acceptance |
 | P4: Enablement transfer | Existing revenue enablement program | One seller/SE or onboarding mission linked to the canonical IaC concept | Independent role rubric and private/public content boundary review |
 | Later | Existing Design Lab PR #258 and curriculum backlog | Optional maps, game-like missions, adaptive recommendations, broader catalog | Pilot learner evidence demonstrates value; do not merge experimental UI by assumption |
 
@@ -331,7 +346,7 @@ The user approved continuing the **remaining technical curriculum**. This draft 
 
 **Scope:**
 1. Reuse the canonical `idea-to-verified-release` lesson, companion and existing teaching fixtures; link the current code/YAML and deployment references where useful.
-2. Add a clearly labeled SDLC Foundations entry/sequence within the **existing** Academy navigation after PR #238 is accepted. Prefer metadata/link wiring to new routes.
+2. **Verify** the SDLC-first entry already proposed on PR #238, not recreate it. PR #260 only links the same canonical parent lesson and adds an optional written transfer exercise.
 3. Add one independent synthetic scenario or adapt an existing check: given a fictional change with a passing test but missing deployment verification, choose the next evidence-gathering step and explain why.
 4. Give feedback for each answer, a concise next-lesson recommendation and an honest status indicator. If the existing check cannot persist, say so; do not add persistence.
 5. Test prerequisite and link integrity, navigation, keyboard/mobile behavior and scenario answer correctness; capture exact-head CI plus owner review.
@@ -352,9 +367,9 @@ The user approved continuing the **remaining technical curriculum**. This draft 
 
 1. Review PR #238's owner acceptance and reconcile its actual merged/deployed state. Avoid writing UI while integration is open.
 2. Review KRU-174's latest inventory and KRU-77's learner-state work before implementing any path or check.
-3. Review/merge this docs-only PR #260 separately after confirming it adds no conflicting canonical ownership.
-4. Implement only P1 as a small feature branch and reviewable PR under the existing Academy project, reusing the same files and patterns. Link it to the existing issue/project rather than inventing a duplicate tracker; add a distinct scoped issue only if required by the team's delivery workflow.
-5. Validate with a real beginner before expanding to IaC and role-specific enablement.
+3. Review draft PR #260's **existing seven documentation files** and publish only after approval; avoid claiming that unmerged GitHub guide links are live Academy routes.
+4. Use the existing SDLC-first entry in PR #238 and the written exercises in PR #260 to observe a real beginner attempting a new scenario. Record actual confusion, decisions and assistance, with consent.
+5. If that evidence supports it, implement **one** IaC plan-review interaction in the existing Academy, with local synthetic fixtures and explicit feedback. Keep IaC, Kubernetes, platform and SRE operations real-world rollouts outside this lesson's scope.
 
 ### Deferred improvements
 
