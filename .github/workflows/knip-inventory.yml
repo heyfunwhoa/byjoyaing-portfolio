@@ -1,0 +1,41 @@
+name: Optional Knip inventory (read only)
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/knip-inventory.yml'
+      - 'docs/design/motion-and-knip-pilot.md'
+      - 'components/design-lab/evidence-motion-pilot.*'
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Collect advisory unused-file/export/dependency findings
+        shell: bash
+        run: |
+          set +e
+          npx --yes knip@5 --reporter compact > knip-findings.txt 2>&1
+          status=$?
+          cat knip-findings.txt
+          echo "Knip exit status: $status (informational, not a quality gate)"
+          echo "### Read-only Knip inventory" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Findings are advisory. No files or dependencies were deleted." >> "$GITHUB_STEP_SUMMARY"
+          echo "Run exit status: $status. Inspect false positives before acting." >> "$GITHUB_STEP_SUMMARY"
+          echo '#### First 80 output lines' >> "$GITHUB_STEP_SUMMARY"
+          echo '\`\`\`text' >> "$GITHUB_STEP_SUMMARY"
+          head -n 80 knip-findings.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '\`\`\`' >> "$GITHUB_STEP_SUMMARY"
+          exit 0
