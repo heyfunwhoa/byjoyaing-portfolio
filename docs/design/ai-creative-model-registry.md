@@ -2,7 +2,7 @@
 
 > Status: evaluation backlog; no purchase, API integration, deployment, or production approval implied. Reviewed 2026-11-06. Owner: Portfolio Design Lab. Consumer: GTM Revenue OS.
 >
-> This is a **private/local design research artifact**, not an instruction to expose the /design-lab production route. Do not include customer data, confidential assets or credentials.
+> This is a public-repository research document for a **local-only UI**, not an instruction to expose the /design-lab production route. Do not include customer data, confidential assets or credentials.
 
 ## Separation of responsibilities
 
@@ -40,7 +40,7 @@ Each candidate should record: `id`, `provider`, `product`, `model_or_version` (i
 | AVT-001 | HeyGen | application | avatar / localization | personalized or localized video |
 | AVT-002 | Synthesia | application | avatar / education | structured training and explainers |
 | AUD-001 | ElevenLabs | model/application | audio | approved narration/localization |
-| DEV-001 | Remotion | open-source framework | coded video | templated charts, animations and explainers |
+| DEV-001 | Remotion | source-available framework | coded video | templated charts, animations and explainers |
 | DEV-002 | FFmpeg | open-source framework/tool | processing | transforms and export automation |
 | DEV-003 | Lottie / SVG | formats / ecosystem | animation | portable lightweight motion |
 | DSG-001 | Canva | application | design | social and campaign templates |
@@ -98,3 +98,33 @@ Consumption reference: [GTM OS Editorial Calendar → Marketing and Sales Activa
 The canonical personal brand reference is [joy. brand guidelines](../brand/brand-guidelines.md), with its own mission, values, voice, identity system and proof rules. This is **not** a default brand profile for a fictional or future employer. A B2B GTM brief should name an authorized `company_context_id`, `brand_profile_id`, positioning/message version, output channel, source claims and approval owners before creative production. Personal, sample and company brand contexts must remain visibly distinct, including colors, logo, claims, imagery and customer evidence. Creative candidates are selected *after* the brand and business outcome are established.
 
 The broader cross-functional company-agnostic [Identity-to-Outcome Revenue & Growth OS](https://github.com/heyfunwhoa/gtm-revenue-os/blob/main/docs/product/b2b-revenue-growth-os-architecture.md) is the GTM consumer architecture after its companion PR merges; Design Lab supplies scoped creative patterns rather than overriding mission, company identity or revenue strategy.
+
+
+## Visual production building blocks
+
+These extend the same candidate IDs; the component catalog is a discovery index, not a second model registry. Upstream licenses checked 2026-11-06; exact versions, binaries, dependencies and asset rights still need pilot review.
+
+| ID | Candidate | Classification and source | Proposed use |
+| --- | --- | --- | --- |
+| DEV-004 | Motion Canvas | OSS, MIT; https://github.com/motion-canvas/motion-canvas and https://motioncanvas.io/docs/ | Editable explanatory vector animation |
+| DEV-005 | OBS Studio | OSS, GPL-2.0-or-later; https://github.com/obsproject/obs-studio | Authentic screen capture with fictional data |
+| DSG-004 | Penpot | OSS, MPL-2.0; https://github.com/penpot/penpot | Storyboards, layout systems and visual asset templates |
+
+**License correction:** DEV-001 Remotion is source-available with free/company license conditions, not a blanket permissive OSS recommendation. Check https://www.remotion.dev/docs/license/pricing and the exact source license for the intended organization and usage. DEV-002 FFmpeg depends on build configuration: LGPL by default with optional GPL parts; see https://ffmpeg.org/legal.html. Software license checks do not establish ownership of imported fonts, music, footage or generated outputs.
+
+**Model taxonomy:** LLMs support scripts and planning; video generation models produce scenes; capture/editing/compositing tools preserve and package authentic product proof. Commercial services and open-weight model families are not automatically open-source software. Existing model/version names are watchlist snapshots, not assertions of the newest available release. Select and record the exact provider/model at pilot time; current video API discovery: https://dev.runway.com/models/catalog.
+
+## Reusable asset recipe contract
+
+Design Lab UI in PR #258 presents five recipe categories: product demo/tutorial, campaign still, short concept video, animated technical explainer, and interactive asset. The UI references these candidate IDs; it does not connect APIs or generate assets.
+
+Every experiment records:
+- Asset ID, audience, message, brand/context version, intended channel/action and approved claim sources.
+- Baseline and alternative, identical inputs, prompt/template revision, candidate IDs and exact versions.
+- Source/editable project, export, caption/transcript or alt-text/static equivalent, and input rights.
+- Actual attempts, production minutes, revision minutes, cost per approved asset, reviewer and observed comprehension.
+- Decision (adopt/revise/park), limitations, destination brief/owner and revisit trigger.
+
+First bounded example: a fictional security company has repeated customer setup work. Compare a three-panel still with a 30-second animated explanation using the same script. Ask the reviewer to identify the problem, audience and next action. Record actual answers without assuming conversion or pipeline impact. Start with a designed/static baseline; generate only if the comparison needs it.
+
+After selection, GTM OS owns campaign/calendar placement, distribution and commercial measurement. Lab owns the reusable recipe and evaluation evidence. No purchase, generated asset, commercial quality benchmark or integration is claimed.
