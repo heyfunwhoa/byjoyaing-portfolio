@@ -212,4 +212,4 @@ Implementation checks do not prove rendered usability. Verify 320/375/390/430px,
 
 ### Branching practice, quiz and hex-map pilots (draft)
 
-`DiscoveryPilot` lazy-loads the InkJS conversation; `LearningChallenge` uses react-quiz-component's headless hook and react-hexgrid with native path controls. Local GamefulWorkbench only; GTM OS #116 owns the discovery consumer. See gameful-adoption.md for pinned versions, dependency rationale, license notices, boundaries, tests and rollback. Not approved public components.
+`DiscoveryPilot` lazy-loads the InkJS conversation; `LearningChallenge` uses react-quiz-component's headless hook and a native HTML/CSS hex selector with equivalent labeled path controls. The unmaintained react-hexgrid dependency was removed; see [dependency review](gameful-dependency-review-2026-11-07.md). Local GamefulWorkbench only; GTM OS #116 owns the discovery consumer. See gameful-adoption.md for pinned versions, dependency rationale, license notices, boundaries, tests and rollback. Not approved public components.
