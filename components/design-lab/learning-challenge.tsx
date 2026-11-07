@@ -51,7 +51,7 @@ export function LearningChallenge() {
           </span>
         </button>
       ))}
-    </div>rid>
+    </div>
     <ol className="grid gap-2 sm:grid-cols-2">{learningPaths.map((path, index) => <li key={path.id}><button className={control + ' w-full'} aria-pressed={selected === index} onClick={() => setSelected(index)}>{index + 1}. {path.title}</button></li>)}</ol>
     <p>{learningPaths[selected].outcome}</p><p>Suggested preparation: {learningPaths[selected].prerequisite}</p>
     <PracticeQuiz key={selected} pathIndex={selected} />
