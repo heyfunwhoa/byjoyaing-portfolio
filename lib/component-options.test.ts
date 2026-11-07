@@ -176,10 +176,10 @@ test("exact local source and consumer paths exist and adoption assertions match 
     "components/toolkit-explorer.tsx": /from "\@\/components\/ui\/tabs"/,
     "components/stakeholder-map/stakeholder-detail.tsx": /from "\@\/components\/ui\/card"/,
   };
-  for (const [id, evidence] of Object.entries(patternEvidence)) {
+  for (const id of Object.keys(patternEvidence)) {
     const option = componentOptions.find((item) => item.id === id);
     assert.ok(option, `Missing canonical pattern ID ${id}`);
-    const record = toPatternRecord(option!);
+    const record = toPatternRecord(option);
     for (const source of [...record.localSource, ...record.uses]) {
       assert.ok(!source.path.startsWith("/"));
       assert.ok(!source.path.includes(".."));
