@@ -60,7 +60,12 @@ test("cursor workflows is a Builder lesson without private personal data", () =>
   const verified = lessons.find((lesson) => lesson.slug === "idea-to-verified-release");
   assert.ok(cursor);
   assert.ok(verified);
-  assert.equal(lessons.indexOf(cursor), lessons.indexOf(verified) + 1);
+  const delivery = learningPaths.find((path) => path.id === "delivery");
+  assert.ok(delivery);
+  const verifiedPosition = delivery.slugs.indexOf("idea-to-verified-release");
+  const cursorPosition = delivery.slugs.indexOf("cursor-workflows");
+  assert.ok(verifiedPosition >= 0);
+  assert.ok(cursorPosition > verifiedPosition);
   assert.equal(cursor.track, "Builder");
   assert.equal(cursor.level, "Beginner");
   assert.equal(cursor.minutes, 30);
