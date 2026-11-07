@@ -14,6 +14,10 @@
 | Files with unused exports | 20 | Output records files and their exported symbols, not 20 symbols total |
 | Files with unused exported types | 29 | Output records files and types, not 29 types total |
 
+## Narrow configuration correction
+
+A new `knip.json` uses `ignoreFiles` for only `scripts/vercel-ignore-build.ts`, whose externally invoked role is verified in `vercel.json`. This does **not** exclude the file from dependency/export analysis, change Knip's default entries, suppress the other findings, or mean any file is safe to delete. The prior counts below are the **unfiltered baseline** from run 42344305380; a new branch run must establish the post-config counts before comparing.
+
 ## Evidence-based triage (no deletions approved)
 
 | Finding | Follow-up evidence | Disposition |
