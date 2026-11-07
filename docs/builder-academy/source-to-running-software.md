@@ -132,6 +132,13 @@ The team needs another instance of the same service. What does it start from?
 
 Pick one public-safe portfolio change. Write down the user outcome, the source changed, the artifact produced, the runtime or host, and the evidence you would inspect after release. If you can explain why each item matters and identify a missing check, you have demonstrated the reasoning for this exercise.
 
-Continue with [First Deployment Settings](first-deployment-settings.md), then the [IaC practice scenario](../academy/SDLC-ENABLEMENT-CROSSWALK.md#sample-pilot-iac-through-the-full-sdlc).
+Continue with [First Deployment Settings](first-deployment-settings.md). Then follow these **optional, written** advanced modules in order, using the same fictional feature rather than inventing a new project:
+
+1. [Systems design and architecture choices](systems-design-tradeoffs.md): draw the request/data boundary, compare building versus using a managed service, and document a trade-off.
+2. [Infrastructure as Code plan and drift review](infrastructure-as-code-plan-review.md): distinguish application artifact from cloud resources; inspect proposed create/update/delete actions before any approved apply.
+3. [Kubernetes and platform engineering](kubernetes-platform-engineering.md): compare a managed host with a container orchestration platform, diagnose an unavailable Service, and design one useful developer golden path.
+4. [Observability, SLOs and incident response](observability-reliability-incidents.md): interpret service signals, investigate a failed release, and decide what real evidence confirms recovery.
+
+**Do not treat the four links as four deployed interactive labs or an authorization to use real cloud infrastructure.** They are study companions in the draft Academy curriculum. After completing one, try its independent transfer task before moving to the next; skip Kubernetes when the workload has no orchestration need.
 
 Sources reviewed November 6, 2026. [MDN client and server overview](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview) · [Go build and install](https://go.dev/doc/tutorial/compile-install) · [Docker overview](https://docs.docker.com/get-started/docker-overview/) · [Terraform plan](https://developer.hashicorp.com/terraform/cli/commands/plan)
