@@ -165,39 +165,59 @@ test("pattern states require real source or explicit decision evidence", () => {
     if (item.uses.length > 0) {
       for (const use of item.uses) {
         assert.equal(use.scope, "source-level");
-        assert.equal(use.repository, "heyfunwhoa/byjoyaing-portfolio");
+        assert.ok(use.repository.startsWith("heyfunwhoa/"));
+        if (use.repository !== "heyfunwhoa/byjoyaing-portfolio") {
+          assert.match(use.ref ?? "", /^[a-f0-9]{40}$/);
+        }
       }
     }
   }
 });
 
-test("exact local source and consumer paths exist and adoption assertions match imports", () => {
-  const knownConsumers: Record<string, RegExp> = {
-    "components/toolkit-explorer.tsx": /from "@\/components\/ui\/tabs"/,
-    "components/stakeholder-map/stakeholder-detail.tsx": /from "@\/components\/ui\/card"/,
+test("local and external pattern uses require inspected source and pinned provenance", () => {
+  const knownPortfolioConsumers: Record<string, RegExp> = {
+    "components/toolkit-explorer.tsx": /from "@\\/components\\/ui\\/tabs"/,
+    "components/stakeholder-map/stakeholder-detail.tsx": /from "@\\/components\\/ui\\/card"/,
   };
+  // Exact current main commit references inspected in the named repositories.
+  const reviewedExternal = new Map([
+    ["heyfunwhoa/security-market-map/components/scenario-player.tsx", "92c01d81770c24be95e41057bdbdf991879dbe42"],
+    ["heyfunwhoa/account-signal-engine/components/feed-app.tsx", "ea4971dcb81da1463f672e2d71f1cd460718c777"],
+    ["heyfunwhoa/truffle-camp/components/trail-checkpoint.tsx", "b3bcfae69a959fc2fe7142689335018f4c891974"],
+  ]);
+  let inspectedExternal = 0;
   for (const id of Object.keys(patternEvidence)) {
     const option = componentOptions.find((item) => item.id === id);
     assert.ok(option, `Missing canonical pattern ID ${id}`);
     const record = toPatternRecord(option);
-    for (const source of [...record.localSource, ...record.uses]) {
+    for (const source of record.localSource) {
       assert.ok(!source.path.startsWith("/"));
       assert.ok(!source.path.includes(".."));
       assert.ok(existsSync(new URL(`../${source.path}`, import.meta.url)), `Missing: ${source.path}`);
       assert.ok(patternFileUrl(source).startsWith("https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/"));
     }
     for (const use of record.uses) {
-      assert.ok(knownConsumers[use.path], `Unreviewed consumer source: ${use.path}`);
-      const body = readFileSync(new URL(`../${use.path}`, import.meta.url), "utf8");
-      assert.match(body, knownConsumers[use.path]);
+      assert.ok(!use.path.startsWith("/") && !use.path.includes(".."));
+      if (use.repository === "heyfunwhoa/byjoyaing-portfolio") {
+        assert.ok(knownPortfolioConsumers[use.path], `Unreviewed local consumer: ${use.path}`);
+        const body = readFileSync(new URL(`../${use.path}`, import.meta.url), "utf8");
+        assert.match(body, knownPortfolioConsumers[use.path]);
+      } else {
+        const key = `${use.repository}/${use.path}`;
+        assert.equal(use.ref, reviewedExternal.get(key), `Unreviewed pinned external path ${key}`);
+        assert.match(use.ref!, /^[a-f0-9]{40}$/);
+        inspectedExternal++;
+      }
+      assert.ok(patternFileUrl(use, use.repository).includes(`/blob/${use.ref ?? "main"}/`));
     }
   }
+  assert.equal(inspectedExternal, 3);
 });
 
 test("pattern stage, family, app and keyword filters combine without losing source evidence", () => {
   assert.deepEqual(
     patternsForLibrary({ stage: "Adopted" }).map((item) => item.id),
-    ["summaries", "disclosure"],
+    ["summaries", "disclosure", "context"],
   );
   assert.deepEqual(
     patternsForLibrary({ query: "toolkit explorer" }).map((item) => item.id),
