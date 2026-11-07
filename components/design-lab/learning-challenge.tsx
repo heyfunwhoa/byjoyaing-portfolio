@@ -1,11 +1,10 @@
 'use client';
 import { useId, useRef, useState } from 'react';
 import { useQuiz, type Quiz } from 'react-quiz-component';
-import { HexGrid, Hexagon, Layout, Text } from 'react-hexgrid';
+
 import { learningPaths } from '@/lib/academy/learning-paths';
 import { lessons } from '@/lib/ai-academy';
 import styles from './learning-challenge.module.css';
-const positions = [[0, 0], [1, 0], [0, 1], [-1, 1], [-1, 0], [0, -1]];
 const control = 'min-h-11 rounded-lg border border-border px-3 py-2 text-left';
 
 function PracticeQuiz({ pathIndex }: { pathIndex: number }) {
@@ -37,12 +36,22 @@ export function LearningChallenge() {
   return <section aria-labelledby={id} className={styles.challenge + ' space-y-4'}>
     <h3 id={id} className="text-2xl font-semibold">Explore a learning territory</h3>
     <p>Select a numbered tile or use the path buttons below. All paths are open; position does not imply prerequisites. Changing paths starts a new quiz attempt.</p>
-    <HexGrid width="100%" height={280} viewBox="-55 -50 110 100" aria-label="Learning territories">
-      <Layout size={{ x: 15, y: 15 }} flat={false} spacing={1.08}>{learningPaths.map((path, index) => {
-        const [q, r] = positions[index] ?? [index - positions.length + 2, 0];
-        return <Hexagon key={path.id} q={q} r={r} s={-q-r} role="button" tabIndex={0} aria-label={`Territory ${index + 1}: ${path.title}`} aria-pressed={selected === index} className={selected === index ? styles.selected : styles.tile} onClick={() => setSelected(index)} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSelected(index); } }}><Text>{index + 1}</Text></Hexagon>;
-      })}</Layout>
-    </HexGrid>
+    <div role="group" aria-label="Learning territories" className={styles.territories}>
+      {learningPaths.map((path, index) => (
+        <button
+          key={path.id}
+          type="button"
+          aria-label={`Territory ${index + 1}: ${path.title}`}
+          aria-pressed={selected === index}
+          className={`${styles.territoryButton} ${selected === index ? styles.selected : ''}`}
+          onClick={() => setSelected(index)}
+        >
+          <span aria-hidden="true" className={styles.territoryShape}>
+            {index + 1}
+          </span>
+        </button>
+      ))}
+    </div>rid>
     <ol className="grid gap-2 sm:grid-cols-2">{learningPaths.map((path, index) => <li key={path.id}><button className={control + ' w-full'} aria-pressed={selected === index} onClick={() => setSelected(index)}>{index + 1}. {path.title}</button></li>)}</ol>
     <p>{learningPaths[selected].outcome}</p><p>Suggested preparation: {learningPaths[selected].prerequisite}</p>
     <PracticeQuiz key={selected} pathIndex={selected} />
