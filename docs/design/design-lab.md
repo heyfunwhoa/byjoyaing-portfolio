@@ -5,7 +5,7 @@
 **Route:** `/design-lab`, rendered only when `NODE_ENV` is not `production`.  
 **Brand:** [brand-guidelines.md](../brand/brand-guidelines.md), [component-adoption.md](component-adoption.md)
 
-
+`npm run build` sets `NODE_ENV` to production, so the route calls `notFound()` before any Suspense boundary and answers 404. `robots` noindex on the source is extra. It is not the access control.
 
 **Reusable pattern library:** [pattern-library.md](pattern-library.md) documents the five component families, accessibility requirements, lifecycle stages, inspected use paths, and boundary with [Technical Docs Platform](https://github.com/heyfunwhoa/technical-docs-platform/tree/main/software-catalog). The library is the existing `ComponentOptions` view of `lib/component-options.ts`, augmented by a small source-evidence overlay; it is **not** another registry or new UI package. Other repository names are recommendations, never automatic adoption.
 
