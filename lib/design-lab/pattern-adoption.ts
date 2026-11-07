@@ -123,6 +123,21 @@ export const patternEvidence: Readonly<Record<string, PatternEvidence>> = {
       },
     ],
   },
+  "evidence-workflow": {
+    // A local demo is a prototype, not an approved or shipped consumer.
+    localSource: [
+      {
+        path: "components/design-lab/evidence-review-pattern.tsx",
+        label: "Interactive fictional evidence-review composition",
+        ref: "7c192a083aa55110b5d4c5c8cc7f37185c331afa",
+      },
+      {
+        path: "lib/design-lab/evidence-review.ts",
+        label: "Synthetic source data and non-authoritative review states",
+        ref: "607bdc3300240cfda476698bccd54fe41e0bbb79",
+      },
+    ],
+  },
   "game-inkjs": {
     localSource: [
       {
