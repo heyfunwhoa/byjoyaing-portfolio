@@ -225,7 +225,7 @@ test("pattern stage, family, app and keyword filters combine without losing sour
   );
   assert.deepEqual(
     patternsForLibrary({ app: "Security Market Map", stage: "Adopted" }).map((item) => item.id),
-    ["summaries", "disclosure"],
+    ["summaries", "disclosure", "context"],
   );
   assert.deepEqual(patternsForLibrary({ stage: "Approved" }), []);
   assert.ok(
