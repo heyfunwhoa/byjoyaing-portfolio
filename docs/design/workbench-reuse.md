@@ -88,3 +88,11 @@ Suggested consumer instruction (adapt paths after verifying access):
 4. Add reviewed pointers and adoption records to selected consumer repos and the shared standards home. This PR does not modify those repos.
 5. Test one real user task per adopted pattern: can a hiring reader find proof, or a research user find evidence and the next action? Record observations, not assumed UX improvements.
 6. Consider shared packaging and automated catalog checks only when repeated use justifies maintenance.
+
+## Cross-functional journey and handoff pattern (November 2026)
+
+GTM Revenue OS draft PR #126 (`feat/kru-224-northline-handoff-guide`) pilots a reusable **journey orientation** pattern: a static four-stage route guide, clear current position without fictional completion metrics, an accessible next-action link, and explicit text explaining which state does **not** transfer automatically. This is currently **adopted as local GTM code under review**, not available as a Portfolio component or shared package.
+
+The same pilot introduces a separate **versioned synthetic handoff** pattern: export self-reported checklist fields as a bounded JSON packet; parse strict version and foreign identifiers on import; reject forged approval/readiness; show recoverable validation errors; leave downstream authorization and customer outcomes unapproved. This is a domain-aware source pattern, not an animation. Design Lab may demonstrate its **presentation** in the future but should not own source-of-truth, validation policy or customer logic.
+
+Potential reuse: portfolio learning-path chapters, Account Signal Engine account-review journeys, and educational workflow simulations. Start with existing text and next-action patterns. Add subtle card/menu feedback only when it clarifies orientation; never imply that navigation, motion or imported data constitutes actual business approval. Test keyboard focus, reduced motion and unsaved-input behavior before promoting an example to `Available here`. Avoid sharing domain-specific Northline fixture IDs across products.
