@@ -264,6 +264,36 @@ export const componentOptions: ComponentOption[] = [
     adoption:
       "Use original SVG/CSS and project data to explain one real workflow at a time. Keep labels and a text explanation in the DOM, avoid animation as the only signal, and mark synthetic examples clearly. The Academy systems page already demonstrates this pattern.",
   },
+  {
+    id: "motion-react-purposeful",
+    name: "Motion for React: state and layout feedback",
+    purpose: "Animate a meaningful step, panel, validation, or selected-state transition in a complex task.",
+    availability: "Candidate",
+    parts: ["Layout transition", "Presence for conditional panels", "Reduced-motion support"],
+    apps: ["Portfolio", "GTM Revenue OS", "Account Signal Engine", "Interview dashboard"],
+    source: "https://motion.dev/docs/react",
+    adoption: "MIT candidate. Prefer existing native CSS for hover and color feedback. Only add Motion after a named workflow needs a layout/enter-exit interaction CSS cannot express. Follow useReducedMotion/MotionConfig and test interrupted focus, mobile and no-motion states; no package installed in GTM OS or Portfolio by this catalog.",
+  },
+  {
+    id: "autoanimate-list-transitions",
+    name: "FormKit AutoAnimate: changing list order",
+    purpose: "Make additions, removals, and reordered workflow or editorial cards understandable without inventing extra state.",
+    availability: "Candidate",
+    parts: ["List reorder", "Filtered results", "Kanban transition"],
+    apps: ["GTM Revenue OS", "Portfolio", "Account Signal Engine", "Detector Coverage Atlas"],
+    source: "https://github.com/formkit/auto-animate",
+    adoption: "MIT candidate. Consider only for a genuine dynamic collection such as Northline's editorial board. Check reduced-motion behavior and React 19 compatibility in a bounded prototype; never animate dense numeric tables or interfere with drag/keyboard focus. Not installed.",
+  },
+  {
+    id: "motion-primitives-disclosure",
+    name: "Motion-Primitives: contextual disclosure",
+    purpose: "Present expandable evidence or decision details without hiding essential status and next action.",
+    availability: "Candidate",
+    parts: ["Animated disclosure", "Content preview", "Progress feedback"],
+    apps: ["Portfolio", "GTM Revenue OS", "Security Market Map", "Interview dashboard"],
+    source: "https://github.com/ibelick/motion-primitives",
+    adoption: "MIT source candidate, beta library. Review and pin exact source before adapting a single component, preserve local semantics and styling, and respect reduced-motion. Start with native details/accordion or existing workbench patterns. No copy or Motion dependency added.",
+  },
 ];
 export function optionsForApp(
   app: ComponentApp | "All",
