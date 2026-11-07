@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/knip-inventory.yml'
+      - 'knip.json'
       - 'docs/design/motion-and-knip-pilot.md'
       - 'components/design-lab/evidence-motion-pilot.*'
 
