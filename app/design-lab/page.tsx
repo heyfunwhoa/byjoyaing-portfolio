@@ -31,6 +31,24 @@ export const metadata: Metadata = completePageMetadata({
   robots: robotsNoindex,
 }, "/design-lab");
 
+const ideationTemplates = [
+  [
+    "Idea card",
+    "Problem and audience:\nDesired outcome:\nSimplest baseline:\nAlternative and open-source building block:\nSmallest prototype:\nEvidence to collect:\nWhere else this could help:",
+    "Sellers need to turn buyer conversations into a brief. Compare reading a transcript with choosing questions in an InkJS conversation. Both approaches end with the same fictional discovery brief. Builder Academy could reuse the branching format for infrastructure plan review."
+  ],
+  [
+    "Prototype comparison",
+    "Task and audience:\nBaseline:\nAlternative:\nWhat counts as success:\nObserved results:\nDecision and reason:",
+    "Give learners the same buyer scenario and brief rubric. Look for a clear problem, a confirmed fact, an unverified assumption, and a next step. Record which approach helped and where people got stuck. The comparison is still proposed."
+  ],
+  [
+    "Adoption brief",
+    "Destination repo and owner:\nPattern to reuse:\nContent or behavior the destination owns:\nEvidence link:\nAcceptance criteria:\nLinear issue:\nDecision and follow-up:",
+    "GTM Revenue OS is the destination for seller practice. Reuse the conversation interface. GTM OS supplies the buyer scenario, coaching, and brief. A learner should be able to explain what they learned and what they still need to confirm. Track the delivery decision in KRU-147."
+  ]
+] as const;
+
 const statuses: ProjectStatus[] = ["field", "prototype", "designed", "exploring"];
 
 const swatches = [
@@ -78,18 +96,16 @@ export default function DesignLabPage() {
             Start with an idea card. Compare approaches when there is a decision to make, then write an adoption brief when a prototype is ready for a real workflow.
           </p>
           <div className="space-y-2 rounded-xl border border-border bg-card p-4">
-            <details>
-              <summary className="min-h-11 cursor-pointer py-2 font-semibold">Idea card</summary>
-              <p className="pb-3 text-sm leading-6">Who needs help? What are they trying to do? What outcome would improve their work? What is the smallest thing you could try? Where else could this help?</p>
-            </details>
-            <details>
-              <summary className="min-h-11 cursor-pointer py-2 font-semibold">Prototype comparison</summary>
-              <p className="pb-3 text-sm leading-6">Name a simple baseline and one alternative. Give both the same task. Record what you expect, what you observed, and whether to adopt, revise, or park the idea.</p>
-            </details>
-            <details>
-              <summary className="min-h-11 cursor-pointer py-2 font-semibold">Adoption brief</summary>
-              <p className="pb-3 text-sm leading-6">Name the destination repo and owner, what to reuse, and what the owning workflow needs to supply. Link the evidence, acceptance criteria, and Linear issue.</p>
-            </details>
+            {ideationTemplates.map(([title, fields, example]) => (
+              <details key={title}>
+                <summary className="min-h-11 cursor-pointer py-2 font-semibold">{title}</summary>
+                <div className="space-y-3 pb-4 text-sm leading-6">
+                  <p>Copy these prompts into your working notes.</p>
+                  <pre className="whitespace-pre-wrap break-words rounded-lg bg-background p-3 text-xs leading-6">{fields}</pre>
+                  <p><strong>Worked example.</strong> {example}</p>
+                </div>
+              </details>
+            ))}
           </div>
           <aside aria-labelledby="product-feedback-idea" className="rounded-xl border border-border bg-card p-4">
             <p className="editorial-eyebrow text-accent">Future idea · parked</p>
@@ -97,6 +113,17 @@ export default function DesignLabPage() {
             <p className="mt-2 text-sm leading-6">
               Test whether a short feedback brief helps a product owner decide what to investigate. Capture the customer problem, impact, supporting evidence, and open questions. Keep the customer’s request separate from the underlying need, and distinguish recurring patterns from one-off requests.
             </p>
+            <details className="mt-3">
+              <summary className="min-h-11 cursor-pointer py-2 font-semibold">See a sample feedback brief</summary>
+              <dl className="grid gap-3 pb-3 text-sm leading-6 sm:grid-cols-2">
+                <div><dt className="font-semibold">Customer request</dt><dd>“Add bulk onboarding.”</dd></div>
+                <div><dt className="font-semibold">Underlying need</dt><dd>Apply the same setup steps across several customer accounts without repeating the work.</dd></div>
+                <div><dt className="font-semibold">Impact and evidence</dt><dd>In one fictional conversation, the operator described repeating setup for every customer. The time cost is unmeasured.</dd></div>
+                <div><dt className="font-semibold">Open questions</dt><dd>Which steps repeat? How often? Do other teams face the same problem?</dd></div>
+                <div><dt className="font-semibold">Product decision</dt><dd>Investigate the workflow and collect a second signal before considering a solution.</dd></div>
+                <div><dt className="font-semibold">Close the loop</dt><dd>Record who owns the follow-up, what evidence is needed, and when Sales should expect an update.</dd></div>
+              </dl>
+            </details>
             <p className="mt-2 text-sm leading-6 text-muted">
               Start with fictional examples in Design Lab. GTM Revenue OS is the proposed home for the capture workflow. A product owner would review the brief and decide whether to investigate, park, or hand it off for delivery.
             </p>
