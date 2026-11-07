@@ -45,7 +45,7 @@ B. "For eligible authorized note-save attempts, count the share that finishes wi
 
 ## Incident simulation: a release works, then users fail
 
-**Fictional timeline:** At 09:00, a reviewed release for revision \`abc123\` was deployed. At 09:06, the API error rate increased and some authorized sellers received 500 responses. The frontend still loaded, readiness remained green, and the database connection pool was exhausted. A teammate proposes "just restart every container." A schema migration also ran during the release.
+**Fictional timeline:** At 09:00, a reviewed release for revision `abc123` was deployed. At 09:06, the API error rate increased and some authorized sellers received 500 responses. The frontend still loaded, readiness remained green, and the database connection pool was exhausted. A teammate proposes "just restart every container." A schema migration also ran during the release.
 
 Write the next action for each stage:
 
@@ -65,7 +65,7 @@ Do not blindly restart everything. It may hide evidence, amplify load, lose in-f
 <summary>Reasoned response after your attempt</summary>
 
 1. Establish a clear incident owner and user impact from metrics and sampled reports. Do not say "all customers" without evidence.
-2. Check exact deployment identity \`abc123\`, request traces, database pool health, time of migration, retry pressure and whether unrelated dependencies also changed.
+2. Check exact deployment identity `abc123`, request traces, database pool health, time of migration, retry pressure and whether unrelated dependencies also changed.
 3. Contain harmful retry amplification and consider a safe traffic/routing/rollout mitigation. Review whether the old application version can work with the new schema before proposing rollback.
 4. Coordinate with the data owner on actual migration state and an approved recovery path. Restoring a backup can lose newer writes; it is not a one-click substitute for review.
 5. Verify both the affected save flow and a forbidden cross-account request with fictional identities; observe recovery signals and log only minimal permitted evidence.
