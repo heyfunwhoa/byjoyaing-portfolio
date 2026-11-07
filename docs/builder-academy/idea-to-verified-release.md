@@ -21,7 +21,7 @@ Do not read every reference in one sitting. These suggested times are study budg
 | Optional — Add agents (15 minutes) | [Agent companion](cursor-agent-workflows.md#11-add-agents-to-the-delivery-loop) | Give a worker permitted files, evidence requirements and a stop condition |
 | Optional — PR coordination and reconciliation (20–30 minutes) | [PR integration and reconciliation companion](pr-integration-and-reconciliation.md) | Classify overlapping PRs, trace exact SHA and evidence, and choose merge/update/supersede/hold using a fictional exercise |
 | Optional — First deployment (25 minutes) | [Deployment settings companion](first-deployment-settings.md) | Explain the settings, choose required integrations and write a verification checklist |
-| Optional — Security decision (10-minute exercise) | [Release security companion](release-security-review.md) | Choose one control and identify its owner, implementation and test |
+| Optional — Security across the SDLC (20–30 minutes) | [Security throughout the lifecycle](release-security-review.md#security-across-the-whole-software-development-lifecycle) | Identify security checks at requirements, design, coding, CI, integration, deployment and operations; distinguish evidence from assurance |
 
 ### How this curriculum is organized
 
