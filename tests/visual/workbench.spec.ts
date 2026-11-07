@@ -206,8 +206,8 @@ test("pattern library separates local source evidence from suggested app fit", a
     .selectOption("Learning & gameful");
   await expect(page.getByRole("status")).toContainText("patterns for all projects");
   await expect(
-    page.getByRole("rowheader", { name: /Branching story / }),
-  ).toHaveCount(0); // The filter retains the table layout; no invented adoption.
+    page.getByRole("rowheader", { name: /Identity & ownership/ }),
+  ).toHaveCount(0); // Family filters exclude unrelated UI primitives.
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
   ).toBe(true);
