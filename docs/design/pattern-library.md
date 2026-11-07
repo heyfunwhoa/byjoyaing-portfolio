@@ -41,10 +41,14 @@ Availability ("Available here" versus "Candidate") is **different** from stage. 
 
 - `summaries` / Card primitive: `components/stakeholder-map/stakeholder-detail.tsx` imports and uses the local Card. This proves that particular usage, not every bento/carousel composition.
 - `disclosure` / Tabs primitive: `components/toolkit-explorer.tsx` imports and renders the local Tabs. This does not establish adoption of the Accordion in another app.
+- The same `disclosure` family also has inspected scenario-tabs source in `heyfunwhoa/security-market-map/components/scenario-player.tsx` at pinned main commit `92c01d81770c24be95e41057bdbdf991879dbe42`. This is source-level use, not a Design Lab package import.
+- `context` / Sheet and Dialog primitives have inspected source-level uses in `heyfunwhoa/account-signal-engine/components/feed-app.tsx` at `ea4971dcb81da1463f672e2d71f1cd460718c777` and `heyfunwhoa/truffle-camp/components/trail-checkpoint.tsx` at `b3bcfae69a959fc2fe7142689335018f4c891974`. Both implementations are locally owned and are **not** synchronized from this library.
 - `identity` and `context` have inspected local sources and workbench demos; those do **not** establish a production consumer.
 - Gameful/branching prototypes from Design Lab PR #274 remain local experiment source, not shipped cross-repo features.
 
 No standalone **Approved** entries have been recorded here solely from source availability. Future approvals must include a link to a reviewable owner decision before that stage is assigned.
+
+A local source file and test result can establish only what they actually inspected. **For other repositories,** record exact `repo/path`, a pinned immutable revision, and a reviewer-checked import/use. The portfolio CI cannot prove another repository deployed the pattern or that its permissions and accessibility are correct. The other repository must complete its own acceptance evidence.
 
 ## How to use the library
 
