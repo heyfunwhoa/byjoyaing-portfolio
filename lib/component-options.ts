@@ -292,7 +292,78 @@ export const componentOptions: ComponentOption[] = [
     parts: ["Animated disclosure", "Content preview", "Progress feedback"],
     apps: ["Portfolio", "GTM Revenue OS", "Security Market Map", "Interview dashboard"],
     source: "https://github.com/ibelick/motion-primitives",
-    adoption: "MIT source candidate, beta library. Review and pin exact source before adapting a single component, preserve local semantics and styling, and respect reduced-motion. Start with native details/accordion or existing workbench patterns. No copy or Motion dependency added.",
+    adoption: "Source candidate; exact-source license remains unresolved in this review. Review and pin exact source and licensing before adapting a single component, preserve local semantics and styling, and respect reduced-motion. Start with native details/accordion or existing workbench patterns. No copy or Motion dependency added.",
+  },
+  {
+    "id": "motion-selection-indicator",
+    "name": "Motion: selected-view indicator",
+    "purpose": "Make a tab or workflow-view selection easier to follow.",
+    "availability": "Candidate",
+    "parts": [
+      "Animated background",
+      "Shared selection indicator",
+      "Keyboard selected state"
+    ],
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Security Market Map"
+    ],
+    "source": "https://github.com/ibelick/motion-primitives/blob/main/components/core/animated-background.tsx",
+    "adoption": "Reference only: inspected blob ae0a1ffc5b375ee59744089c83527cdbe6acec8b imports motion/react and adds click/hover handlers, not complete tab semantics. Preserve the consumer's aria-selected and keyboard model; do not overwrite handlers. License file was not resolved in this review, so do not copy until exact-source licensing is verified. Static selected state under reduced motion."
+  },
+  {
+    "id": "motion-evidence-accordion",
+    "name": "Radix: expandable evidence motion",
+    "purpose": "Open qualification guidance or supporting evidence while keeping the decision and blocker visible.",
+    "availability": "Candidate",
+    "parts": [
+      "Accordion height transition",
+      "Chevron rotation",
+      "Evidence disclosure"
+    ],
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ],
+    "source": "https://www.radix-ui.com/primitives/docs/components/accordion",
+    "adoption": "First prototype choice for SPIN prompts and qualification evidence. Adapt existing native disclosure first; portfolio already has Radix, GTM OS does not. Review package/version/license before importing. Animate only optional detail; keep blocker summaries visible, return focus safely and disable motion when requested."
+  },
+  {
+    "id": "motion-copy-feedback",
+    "name": "Animate UI: copy confirmation",
+    "purpose": "Confirm copying a discovery summary or handoff note after clipboard success.",
+    "availability": "Candidate",
+    "parts": [
+      "Copy button",
+      "Icon swap",
+      "Inline success and error"
+    ],
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ],
+    "source": "https://animate-ui.com/docs/primitives/animate-ui/copy-button",
+    "adoption": "Prefer a local CSS/icon adaptation. Current docs use @animate-ui/react and separate icon packages; do not install the full stack for one button. MIT + Commons Clause inspected (blob 4c99063f507027c06af430d54c5b3cf167be51d7), not unrestricted open source. Reference only in this library; no component source redistribution. Review exact terms and dependencies before application use. Show Copied only after success; retain visible failure/retry and a polite text announcement. Download requested is not proof a file was saved."
+  },
+  {
+    "id": "motion-native-view-transition",
+    "name": "Native browser view transitions",
+    "purpose": "Preserve orientation when moving between a workspace overview and its detail.",
+    "availability": "Candidate",
+    "parts": [
+      "View Transition API",
+      "Progressive enhancement",
+      "Route transition"
+    ],
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API",
+    "adoption": "Later experiment, not a required runtime package. Check current browser support and Next.js routing integration before adoption. Ordinary navigation must work without the API. Preserve focus, back/forward, scroll restoration and unsaved-work guards. Skip transitions for reduced motion; never delay access or snapshot confidential overlays."
   },
 ];
 export function optionsForApp(

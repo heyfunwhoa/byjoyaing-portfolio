@@ -172,7 +172,7 @@ This is the upstream reference appendix, not a new installed-component catalog. 
 
 ## Curated workflow motion candidates (November 2026)
 
-The catalog `lib/component-options.ts` now includes three **external candidates, not installed packages or shipped components**: Motion for React (`motion-react-purposeful`), FormKit AutoAnimate (`autoanimate-list-transitions`), and Motion-Primitives (`motion-primitives-disclosure`). Sources: https://motion.dev/docs/react , https://github.com/formkit/auto-animate , https://github.com/ibelick/motion-primitives . The source projects describe MIT licensing, subject to reviewing the exact file/version before copying source. The Design Lab workbench remains local/development-only.
+The catalog `lib/component-options.ts` now includes three **external candidates, not installed packages or shipped components**: Motion for React (`motion-react-purposeful`), FormKit AutoAnimate (`autoanimate-list-transitions`), and Motion-Primitives (`motion-primitives-disclosure`). Sources: https://motion.dev/docs/react , https://github.com/formkit/auto-animate , https://github.com/ibelick/motion-primitives . Licensing is reviewed per exact source, not inferred from library labels. The Motion-Primitives root license was not resolved in the follow-up inspection; treat its patterns as reference-only until verified. The Design Lab workbench remains local/development-only.
 
 | Workflow | First choice | Candidate only if needed | Anti-pattern |
 | --- | --- | --- | --- |
@@ -182,3 +182,34 @@ The catalog `lib/component-options.ts` now includes three **external candidates,
 | Multi-step Sales and CS evaluation | Clear step labels and state; no delay | Motion for layout only, if tested with interrupted transitions | Treating animation as progression/approval |
 
 **Design Lab → consumer rule:** record candidate, owner, route, evidence, license and added bundle impact before installation. A GTM OS-specific adoption of native CSS in draft `feat/kru-193-northline-navigation-motion` is not an installation of any of these libraries. No global motion dependency is justified for simple task cards. Respect `prefers-reduced-motion`, keep content visible, and test keyboard/mobile. Avoid putting paid/pro-licensed source in the open-source candidate bank.
+
+## Specific GTM motion shortlist (reviewed November 6, 2026, America/Chicago)
+
+This extends the existing three library-level candidates, not a second registry. All four new entries are searchable in the existing component-options catalog under GTM Revenue OS and remain **Candidate**. No source code or package is imported. The development-only Design Lab gate is unchanged.
+
+| Priority | Catalog ID / pattern | GTM destination | Prototype acceptance |
+| --- | --- | --- | --- |
+| Next | motion-evidence-accordion | Discovery SPIN prompts and qualification evidence | Optional detail opens without hiding gaps; keyboard, focus, interrupted close and no-motion behavior work |
+| Next | motion-copy-feedback | Discovery summary / sales handoff | Success appears only after clipboard resolves; visible failure/retry, text announcement, keyboard target retained |
+| Later | motion-selection-indicator | Revenue / coverage / pricing views | Selected indicator follows the existing accessible state; rapid switching retains fields and focus |
+| Later | motion-native-view-transition | Overview to workspace | Feature detection and normal-navigation fallback; correct back/forward, scroll, focus and unsaved-work guard |
+| Existing candidate | autoanimate-list-transitions | Editorial card additions/reordering after lifecycle integration | Stable IDs, real state updates, no false drag/persistence affordance; do not animate finance tables |
+| Existing candidate | motion-react-purposeful | A bounded panel/layout handoff | Justify bundle cost over existing CSS; test interrupted animation and reduced motion |
+| Existing candidate | motion-primitives-disclosure | Optional supporting context | Exact source/license resolved first; do not mount/unmount fields in a way that loses edits |
+
+### Sources and review limits
+
+- [Radix Accordion](https://www.radix-ui.com/primitives/docs/components/accordion): official docs describe size-variable animation and keyboard semantics. Package version/license pin remains an adoption gate. Existing portfolio primitives differ from GTM OS's native components.
+- [Animate UI Copy Button](https://animate-ui.com/docs/primitives/animate-ui/copy-button): official page describes clipboard action and icon swap; examples use additional icon packages. [Project license](https://github.com/imskyleen/animate-ui/blob/main/LICENSE.md), inspected blob `4c99063f507027c06af430d54c5b3cf167be51d7`, says **MIT + Commons Clause** and restricts redistribution of components themselves. It is not cataloged as unrestricted open-source code. Keep links and independently implemented ideas here; do not copy its component source into a reusable bank.
+- [Motion-Primitives Animated Background source](https://github.com/ibelick/motion-primitives/blob/main/components/core/animated-background.tsx), inspected blob `ae0a1ffc5b375ee59744089c83527cdbe6acec8b`: imports `motion/react`, clones children and injects click/hover handlers. It is not a complete accessible tabs implementation. Preserve existing handlers/keyboard semantics. Documentation requests returned 403; GitHub source was readable. Root LICENSE request returned 404 and no root license entry was found, so exact licensing is unresolved, not presumed permissive.
+- [Motion layout documentation](https://motion.dev/docs/react-layout-animations) and [MotionConfig](https://motion.dev/docs/react-motion-config): library-level references for the existing candidate. Do not confuse free runtime features with separate paid Motion UI components.
+- [AutoAnimate official docs](https://auto-animate.formkit.com/): existing candidate for immediate-child additions/removals/moves. Inspect version, reduced-motion behavior, compatibility and license at adoption.
+- [MDN View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API): native-platform reference, not a component package. Browser compatibility and Next.js integration require a separate prototype; no API support guarantee is asserted.
+
+### Existing adoption versus future options
+
+GTM OS PR #123 contains a separate CSS adaptation of the existing Lab lift/rise ideas: card focus/hover, panel/menu entrance, tab color and next-action arrows. It does not install any external candidate above. Preserve local pine/paper tokens. No count-up financial values, constant pulse, autoplay, blur hiding required text, scroll hijacking or artificial progress.
+
+Before promoting a candidate, record exact file/package version, license notices, dependencies and measured bundle impact, owner and route, loading/error/empty/success behavior, keyboard/focus, reduced motion, narrow layouts and zoom. Source inspection is not browser or accessibility certification. Keep source unavailable/license unresolved states explicit. A new candidate is not a promise to implement it.
+
+Validation for this research/catalog update: catalog ID uniqueness, source-host allowlist, candidate status and GTM search coverage; update the existing visual test's expected count from 19 to 23. Full app build and browser suite must be recorded separately when run. Rollback: revert the shortlist/catalog commit; no migration or runtime dependency.
