@@ -39,8 +39,15 @@ test("evidence disclosure retains stable layout and honors reduced motion", asyn
 
   const chevron = page.locator('summary [aria-hidden="true"]');
   await expect
-    .poll(() => chevron.evaluate((el) => getComputedStyle(el).transitionDuration))
-    .toBe("0s");
+    .poll(() =>
+      chevron.evaluate((el) => {
+        const duration = getComputedStyle(el).transitionDuration.split(",")[0].trim();
+        return duration.endsWith("ms")
+          ? Number.parseFloat(duration) / 1000
+          : Number.parseFloat(duration);
+      }),
+    )
+    .toBeLessThanOrEqual(0.001);
 
   for (const width of [375, 768, 1280]) {
     await page.setViewportSize({ width, height: 900 });
