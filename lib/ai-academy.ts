@@ -1,3 +1,4 @@
+import { lessonOrder } from "./academy/learning-paths.ts";
 import {
   mcpRestEditorial,
   readingCodeEditorial,
@@ -13,6 +14,48 @@ export type Lesson = {
   companion?: { label: string; url: string };
 };
 export const lessons: Lesson[] = [
+{
+  "slug": "background-job-recovery",
+  "title": "What happens when a background job fails?",
+  "track": "Builder",
+  "minutes": 15,
+  "level": "Beginner",
+  "summary": "Trace a queued job through bounded retries, failed-job review and safe replay using a fictional research task.",
+  "analogy": "A queue is a work tray. A worker picks up a ticket; a failed ticket needs a recorded decision before it returns to the tray.",
+  "takeaways": [
+    "A queued request is accepted work, not proof that the work finished.",
+    "Classify failures: a temporary outage may merit a delayed retry; invalid input needs correction or quarantine.",
+    "Use a bounded attempt budget. In this exercise, three total attempts means one initial attempt and at most two automatic retries.",
+    "A failed-job area preserves work for diagnosis; it does not repair the cause or authorize replay.",
+    "A worker can finish a write and crash before acknowledging it. A stable operation key and an atomic duplicate guard prevent repeating that effect.",
+    "Before replay, confirm the fix, current permission, duplicate protection and remaining cost budget; record the outcome."
+  ],
+  "exercise": "Complete the synthetic timeline and transfer exercise in the companion guide. This is written self-review, not a running queue or an automatically graded lab. The existing Systems demos show related webhook and access decisions.",
+  "check": {
+    "question": "The worker saved the result, then crashed before acknowledging the job. What must replay account for?",
+    "choices": [
+      "Repeat every write because there was no acknowledgement.",
+      "Check the stable operation key and recorded result before repeating an effect.",
+      "Delete all failed jobs so the dashboard is green."
+    ],
+    "answer": 1,
+    "explanation": "An acknowledgement can be lost after a successful write. Recovery must distinguish an unfinished job from an already completed effect."
+  },
+  "companion": {
+    "label": "Read the recovery exercise and answer key",
+    "url": "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/builder-academy/background-job-recovery.md"
+  },
+  "sources": [
+    {
+      "label": "AWS SQS: dead-letter queues",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html"
+    },
+    {
+      "label": "AWS SQS: at-least-once delivery",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html"
+    }
+  ]
+},
 {
   "slug": "database-branching-recovery",
   "title": "Databases: branching, backups, and platform decisions",
@@ -660,6 +703,8 @@ export const lessons: Lesson[] = [
     ]
   },
 ];
+// Keep source records stable while presenting the same sequence as learning paths.
+lessons.sort((a, b) => lessonOrder.indexOf(a.slug) - lessonOrder.indexOf(b.slug));
 export type Workflow = {title:string;category:"GTM"|"Research"|"Coding"|"Productivity";difficulty:"Beginner"|"Intermediate";tool:string;asset:string;summary:string;why:string;prompt:string;next:string};
 export const workflows: Workflow[]=[
 {title:"Account research",category:"GTM",difficulty:"Beginner",tool:"ChatGPT + Notion",asset:"Account research prompt",summary:"Public signals → sourced account brief → human review.",why:"Start with evidence and relevance before adding automation.",prompt:"Create a public-source account brief for [company]. Include verified signals with dated citations, ICP fit, potential pain hypotheses clearly labeled, and three discovery questions. Do not invent spending plans.",next:"Promote to a skill after repeated successful evaluations."},
