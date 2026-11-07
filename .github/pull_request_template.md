@@ -67,7 +67,7 @@ Explain the rationale, trade-offs and corresponding proposed edit to the canonic
 
 ## Claim-level source verification (when externally sourced content is added or changed)
 
-Apply the [proposed canonical source-verification standard](https://github.com/heyfunwhoa/technical-docs-platform/blob/standards/claim-source-verification-v1/standards/source-verification-v1.md) and link the owning evidence record, or explain N/A:
+Apply the [proposed canonical source-verification standard](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/standards/source-verification-v1.md) and link the owning evidence record, or explain N/A:
 - Primary publisher/source URL and specific section:
 - Precise claim that source supports (not just the vendor's marketing promise):
 - Actual source inspection date (YYYY-MM-DD) or **unverified**:
