@@ -200,6 +200,11 @@ test("IaC plan review is keyboard-usable and resets without affecting lesson pro
   await lab.getByRole("radio", {name:/Plan C: destructive database change/}).check();
   await lab.getByRole("button", {name:"Check decision"}).click();
   await expect(lab.getByRole("status")).toContainText("Stop: unapproved or unsafe change.");
+  await lab.getByRole("radio", {name:/Plan B: public access/}).check();
+  await expect(lab.getByRole("status")).toHaveCount(0);
+  await lab.getByRole("button", {name:"Check decision"}).click();
+  await expect(lab.getByRole("status")).toContainText("Stop: unapproved or unsafe change.");
+  await expect(lab.getByRole("status")).toContainText("production networking beyond the requirement");
   await lab.getByRole("radio", {name:/Plan A: private preview storage/}).check();
   await expect(lab.getByRole("status")).toHaveCount(0);
   await lab.getByRole("button", {name:"Check decision"}).press("Enter");
