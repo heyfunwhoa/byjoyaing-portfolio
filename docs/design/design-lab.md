@@ -230,3 +230,19 @@ Sources: [Radix Progress](https://www.radix-ui.com/primitives/docs/components/pr
 The general feedback/context catalog families describe what UI is needed; these specific entries describe optional motion and acceptance conditions. Reorder is an interaction, while the earlier AutoAnimate entry only animates collection changes. Prefer the existing CSS, native elements and installed primitives. Do not install Radix or Motion across repositories just because a candidate exists. Preserve reduced motion, exact finance values, source evidence and keyboard access in every consumer.
 
 The existing visual assertion now expects 27 options. Catalog tests cover new IDs, candidate status and GTM search. Full application and browser checks remain separate evidence.
+
+## Gap-focused additions and stop rule
+
+Three further candidates bring the interaction/motion shortlist to **14** and the full catalog to **30**. These fill error, loading and explanatory-diagram gaps rather than adding another animation library.
+
+| Priority | ID | Use and acceptance |
+| --- | --- | --- |
+| Next | motion-field-validation | Discovery/POC field errors: retained input, linked error text, summary links, no shake or color-only state |
+| Next where async exists | motion-loading-placeholder | Account/report loading: reserve space, separate failure/empty/stale states, retry; static skeleton is the default |
+| Later | motion-workflow-trace | Explain a campaign or evaluation handoff: explicit Play/Stop/Replay, complete static diagram and text, no claimed live integration |
+
+Sources checked November 6, 2026 (America/Chicago): [MDN aria-invalid](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-invalid), [MDN aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy), [Motion SVG guide](https://motion.dev/docs/react-svg-animation). MDN supplies accessibility semantics, not ready-made motion components; proposed CSS treatments are local design recommendations. No source copied or new package installed. Exact version/license checks apply if implementation later imports external code.
+
+**Catalog stop rule:** there is now enough coverage for a first implementation cycle. Add another entry only for a demonstrated task not served by existing summaries, disclosure, context, feedback, selection, progress or data patterns. Prefer implementing and validating a small candidate before increasing inventory. Defer magnetic cursors, tilt on data cards, animated financial numbers, repeated shimmer and decorative background loops.
+
+Suggested first consumer slice: discovery validation plus confirmed copy feedback. Keep loading feedback tied to an existing request; keep workflow traces in learning/demos. Candidate status is not proof of implementation or accessibility. The visual count expectation is updated to 30; browser execution remains separate.

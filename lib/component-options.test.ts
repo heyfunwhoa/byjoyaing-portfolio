@@ -108,3 +108,12 @@ test("progress and operation motion stay review-only and discoverable", () => {
  }
  assert.ok(optionsForApp("GTM Revenue OS", "priority", "Candidate").some(item => item.id === "motion-priority-reorder"));
 });
+
+test("validation loading and workflow traces remain candidates", () => {
+ for (const id of ["motion-field-validation","motion-loading-placeholder","motion-workflow-trace"]) {
+  const option = componentOptions.find(item => item.id === id);
+  assert.ok(option);
+  assert.equal(option.availability, "Candidate");
+  assert.ok(optionsForApp("GTM Revenue OS").includes(option));
+ }
+});

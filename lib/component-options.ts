@@ -437,6 +437,60 @@ export const componentOptions: ComponentOption[] = [
       "Account Signal Engine"
     ]
   },
+  {
+    "id": "motion-field-validation",
+    "name": "Motion: inline validation feedback",
+    "purpose": "Help a seller find and correct invalid discovery or POC fields without losing their entries.",
+    "parts": [
+      "Field error highlight",
+      "Error summary links",
+      "Inline correction"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-invalid",
+    "adoption": "Next: local CSS border/background transition only. MDN provides semantic guidance, not a motion component. Pair aria-invalid with linked text and a summary; retain entered data. Validate at deliberate boundaries, not every keystroke. No shaking fields, color-only error or focus theft. Reduced motion gets an immediate static error.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-loading-placeholder",
+    "name": "Motion: loading-to-content handoff",
+    "purpose": "Reserve space while account/report data loads and distinguish loading, empty and failed requests.",
+    "parts": [
+      "Static skeleton",
+      "Busy region",
+      "Content replacement"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-busy",
+    "adoption": "Next only for a real asynchronous request: prefer a static skeleton and readable status. aria-busy guidance is semantic, not animation code. Avoid shimmer loops and fake percentages; errors need retry and empty results need a distinct message. Replace placeholders without moving focus or unnecessarily hiding stale-but-labeled data. Do not delay fast responses.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-workflow-trace",
+    "name": "Motion: user-triggered workflow trace",
+    "purpose": "Explain one campaign-to-sales handoff or evaluation decision path with a short labeled connector trace.",
+    "parts": [
+      "SVG path drawing",
+      "Replay control",
+      "Static text alternative"
+    ],
+    "source": "https://motion.dev/docs/react-svg-animation",
+    "adoption": "Later learning/demo pattern: start with original SVG and CSS; Motion is optional after measured need. Trace only on explicit Play, with Stop/Replay and an immediate complete diagram under reduced motion. Keep all labels and a text explanation visible; a moving connector is an illustration, not live integration or a completed handoff. No looping flow animation or invented progress.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
 ];
 export function optionsForApp(
   app: ComponentApp | "All",
