@@ -1,7 +1,10 @@
+import type { PlaybookOutline } from "./playbook-links.ts";
+
 /** Original editorial outlines. No campaign results or completed artifacts implied. */
 export const marketingPlaybooks = [
   {
     id: "events",
+    connections: [{ sourceId: "gtm-revenue-os", projectSlug: "gtm-campaign-lab", contribution: "Connect the event brief to campaign preparation, follow-up and a learning readout." }],
     title: "Event marketing",
     purpose: "Give the right audience a reason to attend and a useful next step.",
     when: "A webinar, roundtable, conference or field event needs a plan from invitation through follow-up.",
@@ -14,6 +17,7 @@ export const marketingPlaybooks = [
   },
   {
     id: "partner-campaigns",
+    connections: [{ sourceId: "channel-territory-mapping", contribution: "Connect the joint campaign to account overlap, relationship ownership and partner handoffs." }],
     title: "Partner campaigns",
     purpose: "Turn shared territory knowledge into a coordinated campaign and clear follow-through.",
     when: "A partner and vendor want to reach a shared audience through an event, resource or joint account initiative.",
@@ -26,6 +30,7 @@ export const marketingPlaybooks = [
   },
   {
     id: "account-based-campaigns",
+    connections: [{ sourceId: "account-signal-engine", contribution: "Use account research and explicit selection reasons to shape the campaign cohort." }],
     title: "Account-based campaigns",
     purpose: "Connect account research, buyer relevance and coordinated sales and marketing activity.",
     when: "A defined group of accounts shares a problem worth exploring with a focused campaign.",
@@ -38,6 +43,7 @@ export const marketingPlaybooks = [
   },
   {
     id: "product-launches",
+    connections: [{ sourceId: "gtm-revenue-os", projectSlug: "gtm-campaign-lab", contribution: "Use the content-to-sales foundation to connect a release story, proof and field activation." }],
     title: "Product launches",
     purpose: "Make a product change meaningful to buyers and usable by the teams supporting them.",
     when: "A new capability needs a clear audience, credible proof, coordinated release communication and a learning plan.",
@@ -50,6 +56,7 @@ export const marketingPlaybooks = [
   },
   {
     id: "content-distribution",
+    connections: [{ sourceId: "gtm-revenue-os", projectSlug: "gtm-campaign-lab", contribution: "Connect one narrative and asset package to editorial planning, distribution and seller feedback." }],
     title: "Content and distribution",
     purpose: "Turn one useful buyer insight into a connected set of assets and conversations.",
     when: "A recurring buyer question deserves a resource that Marketing, Sales and partners can use.",
@@ -62,6 +69,7 @@ export const marketingPlaybooks = [
   },
   {
     id: "lifecycle-nurture",
+    connections: [{ sourceId: "gtm-revenue-os", projectSlug: "gtm-campaign-lab", contribution: "Reuse the lifecycle and campaign foundations to define response routes and review outcomes." }],
     title: "Lifecycle and nurture",
     purpose: "Keep the next communication relevant to what someone needs and is ready to do.",
     when: "People need different follow-through based on their questions, relationship and timing.",
@@ -74,6 +82,7 @@ export const marketingPlaybooks = [
   },
   {
     id: "customer-advocacy",
+    connections: [{ sourceId: "gtm-revenue-os", contribution: "Use the customer-intelligence reference to separate customer statements, evidence and permission to share." }],
     title: "Customer advocacy and proof",
     purpose: "Turn a customer's experience into accurate, approved evidence that helps another buyer.",
     when: "A customer is willing to share a story, reference or practical learning with a defined audience.",
@@ -86,6 +95,7 @@ export const marketingPlaybooks = [
   },
   {
     id: "sales-activation",
+    connections: [{ sourceId: "gtm-revenue-os", projectSlug: "gtm-campaign-lab", contribution: "Connect the campaign narrative to a seller kit, accepted follow-up and feedback for the next campaign." }],
     title: "Campaign-to-sales activation",
     purpose: "Give sellers the context, resources and ownership they need to follow through well.",
     when: "A campaign creates interest but reps need a practical way to respond and return what they learn.",
@@ -96,4 +106,4 @@ export const marketingPlaybooks = [
     measures: "Rep readiness, accepted handoffs, response timeliness, meetings held and disposition completeness. Resource downloads do not establish seller adoption.",
     next: "Build a fictional rep kit and trace one response from campaign context through a recorded next action.",
   },
-] as const;
+] as const satisfies readonly PlaybookOutline[];

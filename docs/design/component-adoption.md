@@ -1,13 +1,13 @@
 # Component adoption
 
-## Marketing and sales outlines in Field Notes (November 2026, proposed)
+## Sales and marketing outlines in Field Notes (November 2026, proposed)
 
-- Owner: portfolio maintainer. Destinations: `/field-notes#marketing-playbooks` and `/field-notes#sales-playbooks`.
-- Reuse: the existing Field Notes card grid and native `details`/`summary` pattern, catalog `disclosure`. Keep purpose visible; expand only supporting outline fields. The existing markup is extracted into `components/field-notes/playbook-outlines.tsx` for both collections; no new component family, dependency, animation or third-party source. Sales adds optional advance/pause fields and project links using the same tokens.
-- Composition: one column below 768px, two above; expanded cards keep natural document height and source order. Existing tokens and `min-h-11` controls remain. Each summary has a distinct accessible name and explicit focus outline. Project links have 44px minimum height, visible focus and natural wrapping; private repositories use public portfolio overviews.
+- Owner: portfolio maintainer. Destinations: `/field-notes#sales-playbooks` and `/field-notes#marketing-playbooks`.
+- Reuse: the existing Field Notes card grid and native `details`/`summary` pattern, catalog `disclosure`. Keep purpose and connected-project contribution/link visible; expand only supporting outline fields. Both collections reuse the extracted `components/field-notes/playbook-outlines.tsx`. Source names and project destinations resolve through existing registries. No dependency, animation or third-party source added.
+- Composition: one column below 768px, two above; expanded cards keep natural document height and source order. Existing tokens and `min-h-11` controls remain. Each summary has a distinct accessible name and explicit focus outline.
 - Keyboard: native Enter/Space activation and Tab order. No dialog, focus trap or escape/return-focus contract. No new motion; disclosures also work without client JavaScript. Loading/error/permission states are not applicable to authored public content.
 - Status: implemented on the proposed branch, pending publication review. Browser/build evidence and manual-review limits belong in the PR. See [editorial scope and acceptance](../product/marketing-playbook-outlines.md).
-- Rollback: remove the sections, shared presentation and their data imports. Existing guides and routes remain independent.
+- Rollback: revert this focused PR. Existing guides and routes remain independent; the former topic-only list is restored by the revert.
 
 **Status:** Decision record for the celestial editorial pass.  
 **Date:** 2026-10-11  
