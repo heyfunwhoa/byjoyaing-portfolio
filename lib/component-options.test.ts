@@ -275,7 +275,11 @@ test("fictional evidence states preserve provenance and never imply authorizatio
     const readiness = evidenceReviewReadiness(record);
     assert.equal(readiness.canProposeNextStep, state === "reviewed");
     assert.ok(readiness.message.length > 25);
-    assert.ok(!readiness.message.includes("approved"));
+    if (state === "reviewed") {
+      assert.match(readiness.message, /No action is approved or sent/);
+    } else {
+      assert.ok(!readiness.message.includes("approved"));
+    }
   }
   assert.equal(evidenceReviewScenarios.stale.source.reviewedOn, null);
   assert.ok(evidenceReviewScenarios.reviewed.source.id?.startsWith("FIXTURE"));
