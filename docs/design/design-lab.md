@@ -213,3 +213,20 @@ GTM OS PR #123 contains a separate CSS adaptation of the existing Lab lift/rise 
 Before promoting a candidate, record exact file/package version, license notices, dependencies and measured bundle impact, owner and route, loading/error/empty/success behavior, keyboard/focus, reduced motion, narrow layouts and zoom. Source inspection is not browser or accessibility certification. Keep source unavailable/license unresolved states explicit. A new candidate is not a promise to implement it.
 
 Validation for this research/catalog update: catalog ID uniqueness, source-host allowlist, candidate status and GTM search coverage; update the existing visual test's expected count from 19 to 23. Full app build and browser suite must be recorded separately when run. Rollback: revert the shortlist/catalog commit; no migration or runtime dependency.
+
+## Second workflow-motion expansion
+
+Four more candidates bring the motion shortlist to **11** and the full component catalog to **27**. All remain reference candidates, not installed components. Official documentation reviewed November 6, 2026 (America/Chicago). No new dependency or third-party source copied; exact package version and license review remain required before implementation.
+
+| Priority | Catalog ID | Proposed use | Acceptance / limitation |
+| --- | --- | --- | --- |
+| Next | motion-task-progress | Discovery/evaluation checklist | Named denominator, exact count, instant no-motion state; no progress inferred from time or clicks |
+| Next, once an operation exists | motion-operation-feedback | Successful import/save and recovery | Result follows confirmed operation; inline errors remain; undo requires a real reversal |
+| Later | motion-context-panel | Inspect buyer/stakeholder evidence | Close/Escape/focus return, mobile scrolling, retained drafts and background inertness |
+| Later | motion-priority-reorder | Order personal follow-up questions | Stable IDs, Move up/down alternative, cancellation and explicit save semantics |
+
+Sources: [Radix Progress](https://www.radix-ui.com/primitives/docs/components/progress), [Radix Toast](https://www.radix-ui.com/primitives/docs/components/toast), [Radix Dialog](https://www.radix-ui.com/primitives/docs/components/dialog), [Motion Reorder](https://motion.dev/docs/react-reorder). These provide primitive/API references; the GTM applications and priorities above are local design proposals, not upstream claims.
+
+The general feedback/context catalog families describe what UI is needed; these specific entries describe optional motion and acceptance conditions. Reorder is an interaction, while the earlier AutoAnimate entry only animates collection changes. Prefer the existing CSS, native elements and installed primitives. Do not install Radix or Motion across repositories just because a candidate exists. Preserve reduced motion, exact finance values, source evidence and keyboard access in every consumer.
+
+The existing visual assertion now expects 27 options. Catalog tests cover new IDs, candidate status and GTM search. Full application and browser checks remain separate evidence.

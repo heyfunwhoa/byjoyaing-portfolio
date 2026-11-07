@@ -365,6 +365,78 @@ export const componentOptions: ComponentOption[] = [
     "source": "https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API",
     "adoption": "Later experiment, not a required runtime package. Check current browser support and Next.js routing integration before adoption. Ordinary navigation must work without the API. Preserve focus, back/forward, scroll restoration and unsaved-work guards. Skip transitions for reduced motion; never delay access or snapshot confidential overlays."
   },
+  {
+    "id": "motion-task-progress",
+    "name": "Motion: truthful task progress",
+    "purpose": "Show completed discovery sections or evaluation checklist items as their real state changes.",
+    "parts": [
+      "Progress indicator",
+      "Completion labels",
+      "Reduced-motion fill"
+    ],
+    "source": "https://www.radix-ui.com/primitives/docs/components/progress",
+    "adoption": "Next: prototype a CSS transition on existing progress markup or native progress before adding a package. State the denominator and count only defined evidence, not clicks, time, or deal probability. Keep exact count and unknown states visible; no fake loading timer. Under reduced motion update instantly.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-context-panel",
+    "name": "Motion: contextual evidence panel",
+    "purpose": "Inspect stakeholder notes or account evidence while keeping the originating record nearby.",
+    "parts": [
+      "Dialog or side panel",
+      "Short enter and exit",
+      "Focus return"
+    ],
+    "source": "https://www.radix-ui.com/primitives/docs/components/dialog",
+    "adoption": "Later: reuse portfolio Dialog/Sheet; GTM OS needs a named benefit over an ordinary detail page. Pair motion with existing accessible modal semantics, visible close, Escape, focus management and background inertness. Retain edits across interruption, make mobile content scrollable and bypass motion when requested. Panel visibility is not authorization.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-operation-feedback",
+    "name": "Motion: confirmed operation feedback",
+    "purpose": "Make a completed save, import or reversible action noticeable without interrupting the workflow.",
+    "parts": [
+      "Status toast",
+      "Inline durable feedback",
+      "Optional undo"
+    ],
+    "source": "https://www.radix-ui.com/primitives/docs/components/toast",
+    "adoption": "Next after a real operation exists: keep success/error inline; a brief toast supplements it. Never say Saved on animation completion or offer Undo without a working reversal. Failed imports retain data and explain recovery. Test announcements, dismissal, repeated operations and reduced motion. Prefer local CSS for the initial feedback.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
+  {
+    "id": "motion-priority-reorder",
+    "name": "Motion: reorder a short priority list",
+    "purpose": "Let an operator arrange discovery questions or personal follow-up priorities and follow the changed order.",
+    "parts": [
+      "Reorder handles",
+      "Move up and down buttons",
+      "Cancel and restore"
+    ],
+    "source": "https://motion.dev/docs/react-reorder",
+    "adoption": "Later bounded prototype: distinct from AutoAnimate, this is an actual reorder interaction. Stable IDs, button/keyboard alternatives and explicit persistence semantics required. Announce new position and support cancellation. Never change calculation order, deal stage, territory assignment or approval through drag. Compare existing dnd-kit guidance before adding Motion.",
+    "availability": "Candidate",
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio",
+      "Account Signal Engine"
+    ]
+  },
 ];
 export function optionsForApp(
   app: ComponentApp | "All",

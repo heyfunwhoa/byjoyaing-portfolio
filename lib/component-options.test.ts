@@ -98,3 +98,13 @@ test("workflow motion options are review-only candidates", () => {
   }
   assert.ok(optionsForApp("GTM Revenue OS", "clipboard", "Candidate").some(item => item.id === "motion-copy-feedback"));
 });
+
+test("progress and operation motion stay review-only and discoverable", () => {
+ for (const id of ["motion-task-progress","motion-context-panel","motion-operation-feedback","motion-priority-reorder"]) {
+  const item = componentOptions.find(option => option.id === id);
+  assert.ok(item);
+  assert.equal(item.availability, "Candidate");
+  assert.ok(optionsForApp("GTM Revenue OS").includes(item));
+ }
+ assert.ok(optionsForApp("GTM Revenue OS", "priority", "Candidate").some(item => item.id === "motion-priority-reorder"));
+});
