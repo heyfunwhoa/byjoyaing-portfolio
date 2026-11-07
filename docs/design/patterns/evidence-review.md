@@ -13,6 +13,8 @@ Security research and GTM applications frequently need to help a reviewer answer
 2. **What is the evidence?** Show source identity, observation and review dates, missing/restricted data, and material limitations without implying that a source URL alone proves the claim.
 3. **What happens next?** Show a useful human-review question, while retaining any evidence blockers. This local prototype previews that question; it does **not** approve, save, publish or send anything.
 
+Dates in the fixtures are fixed sample values, not dynamically checked source freshness. A production consumer must choose and enforce its own dated review policy.
+
 The baseline is a simple card with a summary and an external source link. The prototype adds an accessible source Sheet and a review gate with visible states, rather than adding data fetching or an agent.
 
 ## Implementation anatomy
