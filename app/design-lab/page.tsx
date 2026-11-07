@@ -1,6 +1,8 @@
+import { CreativeRecipes } from "@/components/design-lab/creative-recipes";
 import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { StakeholderPlayground } from "@/components/field-notes/stakeholder-playground";
+import { GamefulWorkbench } from "@/components/design-lab/gameful-workbench";
 import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
 import { LearningChecksPreview } from "@/components/design-lab/learning-checks-preview";
 import { ComponentOptions } from "@/components/design-lab/component-options";
@@ -30,6 +32,24 @@ export const metadata: Metadata = completePageMetadata({
   robots: robotsNoindex,
 }, "/design-lab");
 
+const ideationTemplates = [
+  [
+    "Idea card",
+    "Problem and audience:\nDesired outcome:\nSimplest baseline:\nAlternative and open-source building block:\nSmallest prototype:\nEvidence to collect:\nOwner and next review date:\nWhere else this could help:",
+    "Sellers need to turn buyer conversations into a brief. Compare reading a transcript with choosing questions in an InkJS conversation. Both approaches end with the same fictional discovery brief. Builder Academy could reuse the branching format for infrastructure plan review."
+  ],
+  [
+    "Prototype comparison",
+    "Task and audience:\nBaseline:\nAlternative:\nWhat counts as success:\nObserved results and evidence links:\nLimitations or checks not run:\nDecision and reason:\nOwner and next review date:",
+    "Give learners the same buyer scenario and brief rubric. Look for a clear problem, a confirmed fact, an unverified assumption, and a next step. Record which approach helped and where people got stuck. The comparison is still proposed."
+  ],
+  [
+    "Adoption brief",
+    "Destination repo and owner:\nPattern to reuse:\nContent or behavior the destination owns:\nEvidence link:\nAcceptance criteria:\nLinear issue:\nSource repo, path, version or commit and license:\nMaintenance owner and update method:\nRollback and verification:\nDecision and follow-up:",
+    "GTM Revenue OS is the destination for seller practice. Reuse the conversation interface. GTM OS supplies the buyer scenario, coaching, and brief. A learner should be able to explain what they learned and what they still need to confirm. Track the delivery decision in KRU-147."
+  ]
+] as const;
+
 const statuses: ProjectStatus[] = ["field", "prototype", "designed", "exploring"];
 
 const swatches = [
@@ -52,12 +72,95 @@ export default function DesignLabPage() {
           <p className="editorial-eyebrow text-accent">Internal · local development</p>
           <h1 className="editorial-section-title mt-3">Portfolio design lab</h1>
           <p className="mt-4 text-base leading-7 text-muted">
-            This page previews reusable pieces before they move onto the public site. A production build returns 404. The public navigation does not link here.
+            Turn an idea into something you can try. Browse open-source components and existing patterns, then use them to build and compare prototypes. When a pattern works for a real workflow, bring it into the repo that owns that workflow.
           </p>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            For example, try a branching conversation here, then adapt it for seller practice in GTM Revenue OS.
+          </p>
+          <nav aria-label="Start exploring Design Lab" className="mt-5 flex flex-wrap gap-3">
+            <a href="#ideation-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
+              Use an ideation template
+            </a>
+            <a href="#creative-recipes-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Explore visual content recipes</a>
+            <a href="#component-ideas" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
+              Browse component ideas
+            </a>
+            <a href="#interactive-prototypes" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
+              Try a prototype
+            </a>
+          </nav>
+          <p className="mt-4 text-sm text-muted">Available in local development.</p>
         </header>
 
+        <section aria-labelledby="ideation-title" className="space-y-4">
+          <h2 id="ideation-title" className="font-display text-2xl tracking-tight">From idea to adoption</h2>
+          <p className="max-w-2xl text-sm leading-6 text-muted">
+            Start with an idea card. Compare approaches when there is a decision to make, then write an adoption brief when a prototype is ready for a real workflow.
+          </p>
+          <div className="space-y-2 rounded-xl border border-border bg-card p-4">
+            {ideationTemplates.map(([title, fields, example]) => (
+              <details key={title}>
+                <summary className="min-h-11 cursor-pointer py-2 font-semibold">{title}</summary>
+                <div className="space-y-3 pb-4 text-sm leading-6">
+                  <p>Copy these prompts into your working notes.</p>
+                  <pre className="whitespace-pre-wrap break-words rounded-lg bg-background p-3 text-xs leading-6">{fields}</pre>
+                  <p><strong>Worked example.</strong> {example}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+          <details className="rounded-xl border border-border bg-card p-4">
+            <summary className="min-h-11 cursor-pointer py-2 font-semibold">When to move an idea forward</summary>
+            <ol className="mt-3 list-decimal space-y-3 pl-5 text-sm leading-6">
+              <li><strong>Define.</strong> Name the audience, problem, outcome, owner, and next review date. If there is no clear task yet, keep it as an idea.</li>
+              <li><strong>Try.</strong> Compare the simplest baseline with one alternative using the same fictional task. Choose a small time limit before building; record what you actually observed.</li>
+              <li><strong>Decide.</strong> Adopt, revise, or park. Link the evidence and name the limits. Passing software tests does not establish that the prototype helps someone do the task.</li>
+              <li><strong>Hand off.</strong> For adoption, name the destination owner and acceptance criteria, link the existing Linear issue and implementation PR, and record the source and maintenance plan.</li>
+              <li><strong>Verify.</strong> Review the destination workflow, required accessibility checks, and release evidence. Track implemented, tested, merged, and deployed separately.</li>
+            </ol>
+            <p className="mt-3 text-sm leading-6 text-muted">If an idea is parked, leave a reason and a specific trigger for revisiting it. A catalog entry is not a delivery commitment.</p>
+          </details>
+          <details className="rounded-xl border border-border bg-card p-4">
+            <summary className="min-h-11 cursor-pointer py-2 font-semibold">Keep adopted code up to date</summary>
+            <ul className="mt-3 list-disc space-y-3 pl-5 text-sm leading-6">
+              <li><strong>Published package:</strong> record the package, version, license, and owning repo. Review dependency update PRs and run the destination app’s checks before accepting an update.</li>
+              <li><strong>Copied or adapted source:</strong> record the upstream URL, file, exact commit, license notices, and local changes. The destination maintainer compares upstream changes and brings over relevant fixes.</li>
+              <li><strong>Shared internal component:</strong> use a versioned package when multiple apps need the same behavior and updates. Keep scenarios and business rules in the destination app.</li>
+            </ul>
+            <p className="mt-3 text-sm leading-6 text-muted">Today the Design Lab and GTM practice copies are maintained separately. Changes here do not automatically update another repo. The adoption brief records who checks for updates and when.</p>
+          </details>
+          <aside aria-labelledby="product-feedback-idea" className="rounded-xl border border-border bg-card p-4">
+            <p className="editorial-eyebrow text-accent">Future idea · parked</p>
+            <h3 id="product-feedback-idea" className="mt-2 text-lg font-semibold">Turn conversation insights into product feedback</h3>
+            <p className="mt-2 text-sm leading-6">
+              Test whether a short feedback brief helps a product owner decide what to investigate. Capture the customer problem, impact, supporting evidence, and open questions. Keep the customer’s request separate from the underlying need, and distinguish recurring patterns from one-off requests.
+            </p>
+            <details className="mt-3">
+              <summary className="min-h-11 cursor-pointer py-2 font-semibold">See a sample feedback brief</summary>
+              <dl className="grid gap-3 pb-3 text-sm leading-6 sm:grid-cols-2">
+                <div><dt className="font-semibold">Customer request</dt><dd>“Add bulk onboarding.”</dd></div>
+                <div><dt className="font-semibold">Underlying need</dt><dd>Apply the same setup steps across several customer accounts without repeating the work.</dd></div>
+                <div><dt className="font-semibold">Impact and evidence</dt><dd>In one fictional conversation, the operator described repeating setup for every customer. The time cost is unmeasured.</dd></div>
+                <div><dt className="font-semibold">Open questions</dt><dd>Which steps repeat? How often? Do other teams face the same problem?</dd></div>
+                <div><dt className="font-semibold">Product decision</dt><dd>Investigate the workflow and collect a second signal before considering a solution.</dd></div>
+                <div><dt className="font-semibold">Close the loop</dt><dd>Record who owns the follow-up, what evidence is needed, and when Sales should expect an update.</dd></div>
+              </dl>
+            </details>
+            <p className="mt-2 text-sm leading-6 text-muted">
+              Start with fictional examples in Design Lab. GTM Revenue OS is the proposed home for the capture workflow. A product owner would review the brief and decide whether to investigate, park, or hand it off for delivery.
+            </p>
+          </aside>
+        </section>
+
+        <CreativeRecipes />
+
+        <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">
+          <ComponentOptions />
+        </div>
+        <div id="interactive-prototypes" tabIndex={-1} className="scroll-mt-24">
+          <GamefulWorkbench />
+        </div>
         <MotionWorkbench />
-        <ComponentOptions />
         <LearningChecksPreview />
 
         <section aria-labelledby="foundations-title">
