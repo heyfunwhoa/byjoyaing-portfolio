@@ -3,6 +3,7 @@ import test from "node:test";
 import { existsSync } from "node:fs";
 import { lessons } from "../ai-academy.ts";
 import { learningPaths } from "./learning-paths.ts";
+import { iacPlans, explainIacChoice } from "./iac-plan-lab.ts";
 import {
   lessonGuidance,
   getLessonGuidance,
@@ -105,4 +106,16 @@ test("every catalog lesson has a path and included prerequisites precede depende
     }
   }
   assert.equal(lessons[0].slug, "idea-to-verified-release");
+});
+
+
+test("IaC pilot has one review candidate, two stop cases and choice feedback", () => {
+  assert.equal(iacPlans.length, 3);
+  assert.equal(new Set(iacPlans.map(p => p.id)).size, 3);
+  assert.equal(iacPlans.filter(p => p.decision === "candidate").length, 1);
+  assert.ok(iacPlans.every(p => p.feedback.length > 35));
+  assert.match(explainIacChoice("private-preview")?.feedback ?? "", /approval/i);
+  assert.match(explainIacChoice("public-exposure")?.feedback ?? "", /Stop/);
+  assert.match(explainIacChoice("database-delete")?.feedback ?? "", /destructive/);
+  assert.equal(explainIacChoice("not-real"), null);
 });

@@ -8,6 +8,7 @@ import {
 } from "@/lib/academy/lesson-guidance";
 import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { DeliveryLifecycleLab } from "@/components/ai-academy/delivery-lifecycle-lab";
+import { IacPlanLab } from "@/components/ai-academy/iac-plan-lab";
 import { PortfolioOsCaseStudy } from "@/components/ai-academy/portfolio-os-case-study";
 import { ProductRequestLab } from "@/components/ai-academy/product-request-lab";
 import { SecurityReviewLab } from "@/components/ai-academy/security-review-lab";
@@ -428,6 +429,9 @@ export function Academy({ resources }: { resources?: ReactNode }) {
             </div>
             {lesson.slug === "idea-to-verified-release" && (
               <DeliveryLifecycleLab />
+            )}
+            {lesson.slug === "idea-to-verified-release" && (
+              <IacPlanLab />
             )}
             {lesson.slug === "idea-to-verified-release" && (
               <PortfolioOsCaseStudy />

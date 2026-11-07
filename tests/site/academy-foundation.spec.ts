@@ -192,3 +192,19 @@ test("SDLC orientation is the first recommended lesson and navigates to privacy"
   await page.getByRole("navigation", { name: "Lesson sequence" }).getByRole("button", { name: /^Next:/ }).click();
   await expect(page.getByRole("heading", { name: "Privacy, security and human oversight", exact: true })).toBeFocused();
 });
+
+
+test("IaC plan review is keyboard-usable and resets without affecting lesson progress", async ({page}) => {
+  await page.goto("/ai-academy");
+  const lab = page.getByRole("region", {name:"IaC plan review practice"});
+  await lab.getByRole("radio", {name:/Plan C: destructive database change/}).check();
+  await lab.getByRole("button", {name:"Check decision"}).click();
+  await expect(lab.getByRole("status")).toContainText("Stop: unapproved or unsafe change.");
+  await lab.getByRole("radio", {name:/Plan A: private preview storage/}).check();
+  await expect(lab.getByRole("status")).toHaveCount(0);
+  await lab.getByRole("button", {name:"Check decision"}).press("Enter");
+  await expect(lab.getByRole("status")).toContainText("Candidate for review, not approval to apply.");
+  await lab.getByRole("button", {name:"Reset"}).click();
+  await expect(lab.getByRole("radio", {checked:true})).toHaveCount(0);
+  await expect(lab.getByRole("status")).toHaveCount(0);
+});
