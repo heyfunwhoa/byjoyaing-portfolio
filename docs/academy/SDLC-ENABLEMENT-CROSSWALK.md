@@ -111,3 +111,60 @@ Continue using existing Linear program/projects and issues when scope is ready; 
 - Outcomes measured by demonstrated task accuracy, transfer to an independent scenario, learner feedback and optional role-readiness coaching. Do not equate reading time, badges or self-reported review with competence.
 
 **Non-goals for this proposal:** no new app, authentication, LMS, learner accounts, database, analytics collector, CMS migration, game engine, cloud provider, paid tool, private enablement publication, automatic PR merge or release.
+
+
+## Prioritized implementation plan (2026-11-06)
+
+**Decision:** Start learning immediately in chat; make the first repository delivery a bounded, outcome-driven SDLC entry and comprehension slice. No new Academy program, separate LMS, duplicate lesson registry, learner storage, or new UI framework.
+
+### Ownership and sequencing
+
+| Priority | Owner / existing work | Deliverable | Gate |
+| --- | --- | --- | --- |
+| P0: Stabilize | KRU-174 and integration PR #238 | Reconciled inventory, canonical paths and integration acceptance | Owner editorial, learner, accessibility and release review; verify latest-head checks and production independently |
+| P1: SDLC entry | This crosswalk PR #260, then a separately scoped implementation within the existing Builder Academy program | Connect existing \`idea-to-verified-release\` lesson to one understandable SDLC orientation and one independent synthetic scenario; **no second SDLC lesson body** | Existing lesson IDs, prerequisites, navigation, and learner-state semantics unchanged; learner explains idea → requirement → PR/test → deploy → verify and identifies one failure |
+| P2: Journey continuity | KRU-77 | Resume and clear feedback using existing approved progress mechanism | Reviewed, practiced, passed, and demonstrated remain distinct; test reload, reset, malformed storage, keyboard, mobile and reduced motion |
+| P3: IaC deep dive | Future bounded follow-on, after P1 and owner acceptance | One synthetic plan-review lesson, normal/change/delete cases and answer-specific feedback | Correctly identifies unintended changes and approval boundaries; no cloud credentials or live apply |
+| P4: Enablement transfer | Existing revenue enablement program | One seller/SE or onboarding mission linked to the canonical IaC concept | Independent role rubric and private/public content boundary review |
+| Later | Existing Design Lab PR #258 and curriculum backlog | Optional maps, game-like missions, adaptive recommendations, broader catalog | Pilot learner evidence demonstrates value; do not merge experimental UI by assumption |
+
+**Current dependency checks:** KRU-88 is Done and its guide is already linked. KRU-174 and KRU-77 remain In Progress. PR #238 remains open with owner review outstanding. PR #258 remains a draft experimental workbench. PR #260 is documentation-only. Check these states again at implementation time.
+
+### P1 minimum viable learning slice
+
+**Learner:** a beginner with no assumed programming experience.
+
+**Problem:** existing materials explain SDLC, but a new learner lacks a clearly bounded, outcome-focused first experience that shows how the stages connect and checks independent understanding.
+
+**User outcome:** after one short session, the learner can trace a fictional application change from a user need through requirement, design, issue, implementation, review/testing, deployment, live verification and maintenance, and can explain why passing CI is not proof of a successful live release.
+
+**Scope:**
+1. Reuse the canonical \`idea-to-verified-release\` lesson, companion and existing teaching fixtures; link the current code/YAML and deployment references where useful.
+2. Add a clearly labeled SDLC Foundations entry/sequence within the **existing** Academy navigation after PR #238 is accepted. Prefer metadata/link wiring to new routes.
+3. Add one independent synthetic scenario or adapt an existing check: given a fictional change with a passing test but missing deployment verification, choose the next evidence-gathering step and explain why.
+4. Give feedback for each answer, a concise next-lesson recommendation and an honest status indicator. If the existing check cannot persist, say so; do not add persistence.
+5. Test prerequisite and link integrity, navigation, keyboard/mobile behavior and scenario answer correctness; capture exact-head CI plus owner review.
+
+**Non-goals:** no new content management schema, learner accounts, badges, certificates, tracking database, live infrastructure, new gamification dependency, full 30-lesson implementation, or employer-specific content.
+
+**Acceptance criteria:**
+- AC1: Learner can find the SDLC entry from existing Academy navigation, with no duplicate catalog ID or conflicting path.
+- AC2: The entry points to one canonical lesson and the existing source/companion; content explicitly distinguishes planning, tests, merge, deployment and verification.
+- AC3: One independently answerable fictional change scenario has a correct response, plausible incorrect responses, meaningful feedback and a failure/recovery explanation.
+- AC4: Completion is not misrepresented: reading, practice, passing and demonstrated ability are separately labeled.
+- AC5: Existing tests plus focused navigation, content, accessibility and responsive checks pass on the implementation head; unresolved human checks are stated, not silently marked complete.
+- AC6: The PR is reviewable without modifying production, creating a new data store, or overlapping active KRU-77/KRU-174 work.
+
+**Outcome evidence:** ask a beginner to explain a fresh fictional change in their own words and identify which evidence is still missing before calling it live. Record the actual response and misconceptions with consent; do not claim competency based only on clickthrough.
+
+### Execution handoff
+
+1. Review PR #238's owner acceptance and reconcile its actual merged/deployed state. Avoid writing UI while integration is open.
+2. Review KRU-174's latest inventory and KRU-77's learner-state work before implementing any path or check.
+3. Review/merge this docs-only PR #260 separately after confirming it adds no conflicting canonical ownership.
+4. Implement only P1 as a small feature branch and reviewable PR under the existing Academy project, reusing the same files and patterns. Link it to the existing issue/project rather than inventing a duplicate tracker; add a distinct scoped issue only if required by the team's delivery workflow.
+5. Validate with a real beginner before expanding to IaC and role-specific enablement.
+
+### Deferred improvements
+
+A full interactive dependency graph, persistent cross-device progress, AI tutor, authoring automation, certification, employer overlays, and shared cross-repo UI packages remain opportunities, **not blockers** for the P1 learning outcome.
