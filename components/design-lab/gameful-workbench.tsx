@@ -72,12 +72,31 @@ export function GamefulWorkbench() {
   const [pathIndex, setPathIndex] = useState(1);
   const [showChallenge, setShowChallenge] = useState(false);
   return <section aria-labelledby={id} className="space-y-8">
-    <header><p className="editorial-eyebrow text-accent">Game-like interactions · local prototypes</p><h2 id={id} className="mt-2 text-3xl font-semibold">Make progress visible</h2><p className="mt-3 text-muted">Three compositions to try before adopting them in a workflow. No points, rankings, saved accounts or live deal updates.</p></header>
-    <MissionWorkspace />
-    <DiscoveryPilot />
-    {showChallenge ? <Suspense fallback={<p role="status">Loading learning territories…</p>}><LearningChallenge /></Suspense> : <button className={control} onClick={() => setShowChallenge(true)}>Explore learning territories and quizzes</button>}
-    <ProjectExploration />
-    <section aria-labelledby={id + '-learning'} className="space-y-4"><h3 id={id + '-learning'} className="text-2xl font-semibold">Follow a learning path</h3>
+    <header><p className="editorial-eyebrow text-accent">Game-like interactions · local prototypes</p><h2 id={id} className="mt-2 text-3xl font-semibold">Make progress visible</h2><p className="mt-3 text-muted">Choose a prototype by the task you want to try, then record what helped before deciding to adopt it. No points, rankings, saved accounts or live deal updates.</p></header>
+    <nav aria-label="Choose what to try">
+      <h3 className="text-xl font-semibold">Choose what to try</h3>
+      <p className="mt-2 text-sm leading-6 text-muted">These are independent experiments. You can try one without completing the others. Use fictional information; practice notes clear when you leave.</p>
+      <ul className="mt-4 grid gap-3 md:grid-cols-2">
+        {[
+          ['discovery', 'Practice a buyer conversation', 'Choose questions and inspect the coaching. Leave with confirmed facts and open questions for a brief.', 'GTM Revenue OS seller practice'],
+          ['mission', 'Draft an opportunity brief', 'Write and self-review four deliverables. Leave with a fictional practice packet for coaching.', 'GTM Revenue OS seller practice'],
+          ['learning', 'Follow a lesson sequence', 'Read existing lessons and try their checks. Leave with feedback on your practice answers.', 'Builder Academy'],
+          ['challenge', 'Compare maps and quizzes', 'Try an optional territory selector and a multi-question attempt. Compare it with the lesson list.', 'Builder Academy, if the format helps'],
+          ['projects', 'Explore project evidence', 'Review project summaries and open their evidence. Leave with a session reading checklist.', 'Portfolio project exploration'],
+        ].map(([key, title, task, destination]) => <li key={key} className="min-w-0 rounded-xl border border-border bg-card p-4">
+          <a className="inline-flex min-h-11 items-center font-semibold underline" href={'#' + id + '-' + key + '-prototype'}>{title}</a>
+          <p className="mt-2 text-sm leading-6">{task}</p>
+          <p className="mt-2 text-sm leading-6 text-muted">Intended home: {destination}. Adoption is reviewed separately.</p>
+        </li>)}
+      </ul>
+    </nav>
+    <div id={id + '-mission-prototype'} tabIndex={-1} className="scroll-mt-24"><MissionWorkspace /></div>
+    <div id={id + '-discovery-prototype'} tabIndex={-1} className="scroll-mt-24"><DiscoveryPilot /></div>
+    <div id={id + '-challenge-prototype'} tabIndex={-1} className="scroll-mt-24">
+      {showChallenge ? <Suspense fallback={<p role="status">Loading learning territories…</p>}><LearningChallenge /></Suspense> : <button className={control} onClick={() => setShowChallenge(true)}>Explore learning territories and quizzes</button>}
+    </div>
+    <div id={id + '-projects-prototype'} tabIndex={-1} className="scroll-mt-24"><ProjectExploration /></div>
+    <section id={id + '-learning-prototype'} tabIndex={-1} aria-labelledby={id + '-learning'} className="scroll-mt-24 space-y-4"><h3 id={id + '-learning'} className="text-2xl font-semibold">Follow a learning path</h3>
       <label className="block" htmlFor={id + '-path'}>Choose a path (changing paths clears practice answers)</label>
       <select className={control + ' w-full'} id={id + '-path'} value={pathIndex} onChange={event => setPathIndex(Number(event.target.value))}>{learningPaths.map((path, index) => <option key={path.id} value={index}>{path.title}</option>)}</select>
       <LearningPath key={pathIndex} pathIndex={pathIndex} />

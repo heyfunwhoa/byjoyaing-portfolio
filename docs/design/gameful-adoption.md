@@ -71,3 +71,8 @@ New future candidates: RPGUI, NES.css, Matter.js, React Three Rapier, Ecctrl and
 ## Cross-repository register
 
 The [component opportunity register](component-opportunity-register.md) explains local access, repository coverage, priorities, alternatives and maintenance. The searchable catalog includes the additional TS-FSRS, Shiki Magic Move, XState, Twine, PixiJS React, KAPLAY, Excalibur, ROT.js and Trophy UI candidates. No packages were added for these records.
+
+
+## Prototype chooser follow-up
+
+`GamefulWorkbench` now begins with a task-first menu for its five existing prototypes. Each entry explains the task, output and intended destination without claiming production adoption. Reuses native fragment links and the existing card/token classes; no package, routing or persistence changes. The menu stacks on phones and uses two columns from tablet widths. Focusable fragment targets support keyboard entry without clearing practice state; no motion added. Existing Storybook overview exercises the same component. Added desktop/mobile keyboard coverage for every target and retained notes. Exact-head browser results remain in PR #258; manual zoom, screen-reader and device checks remain separate. Rollback: remove the menu/target wrappers and its scoped browser test.

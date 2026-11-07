@@ -119,3 +119,20 @@ test('hex map and quiz support keyboard, scoring, reset and narrow screens', asy
     await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   }
 });
+
+// Exercise every jump with a keyboard; preserve in-progress notes while navigating.
+test('prototype chooser reaches every destination without clearing practice', async ({ page }) => {
+  const chooser = page.getByRole('navigation', { name: 'Choose what to try' });
+  const note = page.getByRole('region', { name: 'Build an opportunity brief' }).getByRole('textbox').first();
+  await note.fill('Fictional note retained while exploring');
+  for (const link of await chooser.getByRole('link').all()) {
+    const href = await link.getAttribute('href');
+    expect(href).toBeTruthy();
+    await link.focus();
+    await link.press('Enter');
+    const target = page.locator(`[id="${href!.slice(1)}"]`);
+    await expect(target).toBeFocused();
+    await expect(target).toBeInViewport();
+  }
+  await expect(note).toHaveValue('Fictional note retained while exploring');
+});
