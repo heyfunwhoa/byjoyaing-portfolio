@@ -175,9 +175,9 @@ test("pattern states require real source or explicit decision evidence", () => {
 });
 
 test("local and external pattern uses require inspected source and pinned provenance", () => {
-  const knownPortfolioConsumers: Record<string, RegExp> = {
-    "components/toolkit-explorer.tsx": /from "@\\/components\\/ui\\/tabs"/,
-    "components/stakeholder-map/stakeholder-detail.tsx": /from "@\\/components\\/ui\\/card"/,
+  const knownPortfolioConsumers: Record<string, string> = {
+    "components/toolkit-explorer.tsx": 'from "@/components/ui/tabs"',
+    "components/stakeholder-map/stakeholder-detail.tsx": 'from "@/components/ui/card"',
   };
   // Exact current main commit references inspected in the named repositories.
   const reviewedExternal = new Map([
@@ -201,7 +201,10 @@ test("local and external pattern uses require inspected source and pinned proven
       if (use.repository === "heyfunwhoa/byjoyaing-portfolio") {
         assert.ok(knownPortfolioConsumers[use.path], `Unreviewed local consumer: ${use.path}`);
         const body = readFileSync(new URL(`../${use.path}`, import.meta.url), "utf8");
-        assert.match(body, knownPortfolioConsumers[use.path]);
+        assert.ok(
+          body.includes(knownPortfolioConsumers[use.path]),
+          `Missing inspected import in ${use.path}`,
+        );
       } else {
         const key = `${use.repository}/${use.path}`;
         assert.equal(use.ref, reviewedExternal.get(key), `Unreviewed pinned external path ${key}`);
