@@ -5,6 +5,10 @@
 **Owner:** Kristen Aing
 **Status:** Priority order retained. The user authorized the existing-content navigation and metadata foundation (Batch B slice), including its merge before mission work. New lesson authoring and new labs remain on hold. See [mission handoff](MISSION-HANDOFF.md).
 
+## Data Foundations curriculum addendum (2026-11-07)
+
+The [Data Foundations pathway](DATA-FOUNDATIONS-PATH.md) addresses a missing no-prerequisites bridge: data and meaning before JSON, records, modeling, schemas/contracts, databases and API exchanges. It maps ten proposed lessons to existing resources and new gaps. **This is a curriculum mapping and not a fresh complete route/browser audit, a new catalog registration, or proof of lesson delivery.** Preserve the existing audit inventory and priority decisions; reconcile lesson reuse and statuses again before implementation. Recommended first new content is DF-01 (What is Data?) followed by DF-02 (Representation and Types), using only fictional examples.
+
 ## Focused re-audit: AI Foundations versus Builder Academy
 
 **2026-10-12 follow-up:** The user authorized one beginner code/file/YAML lesson and this comparison. This supersedes the authoring hold only for that slice. The prior full inventory remains a historical baseline; this follow-up inspected the current catalog, guidance, paths, programming registry, program and open PR #131. It is not a fresh exhaustive route or browser audit.
