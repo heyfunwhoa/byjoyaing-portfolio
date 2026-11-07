@@ -53,14 +53,30 @@ export default function DesignLabPage() {
           <p className="editorial-eyebrow text-accent">Internal · local development</p>
           <h1 className="editorial-section-title mt-3">Portfolio design lab</h1>
           <p className="mt-4 text-base leading-7 text-muted">
-            This page previews reusable pieces before they move onto the public site. A production build returns 404. The public navigation does not link here.
+            Turn an idea into something you can try. Browse open-source components and existing patterns, then use them to build and compare prototypes. When a pattern works for a real workflow, bring it into the repo that owns that workflow.
           </p>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            For example, try a branching conversation here, then adapt it for seller practice in GTM Revenue OS.
+          </p>
+          <nav aria-label="Start exploring Design Lab" className="mt-5 flex flex-wrap gap-3">
+            <a href="#component-ideas" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
+              Browse component ideas
+            </a>
+            <a href="#interactive-prototypes" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
+              Try a prototype
+            </a>
+          </nav>
+          <p className="mt-4 text-sm text-muted">Available in local development.</p>
         </header>
 
+        <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">
+          <ComponentOptions />
+        </div>
+        <div id="interactive-prototypes" tabIndex={-1} className="scroll-mt-24">
+          <GamefulWorkbench />
+        </div>
         <MotionWorkbench />
-        <ComponentOptions />
         <LearningChecksPreview />
-        <GamefulWorkbench />
 
         <section aria-labelledby="foundations-title">
           <h2 id="foundations-title" className="font-display text-2xl tracking-tight">Foundations</h2>
