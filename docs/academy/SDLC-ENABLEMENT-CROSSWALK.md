@@ -280,6 +280,30 @@ Use these as acceptance lenses for the single feature rather than creating separ
 
 **Next acceptance gates:** editorial/content review for the two guide changes; inspect internal relative links and source qualification; try the transfer task with an intended beginner; confirm no duplicate IDs or CMS/progress implications; merge draft PR #260 only through the existing release process and then recheck the published links. A written answer key is not evidence of learning effectiveness or a substitute for a runnable app test.
 
+## Advanced companion delivery checkpoint (2026-11-06)
+
+The user approved continuing the **remaining technical curriculum**. This draft branch now contains the following **written, public-safe synthetic exercises**. They extend the same fictional discovery-note application and are **not newly registered Academy lessons, deployed routes, tested cloud resources or automatically graded interactive labs**.
+
+| Optional step | Canonical content and existing anchors | Independent learner outcome | Status |
+| --- | --- | --- | --- |
+| 1. Architecture | [Systems design trade-offs](../builder-academy/systems-design-tradeoffs.md), building on current frontend/API/database lessons and Systems Engineering roadmap | Choose a bounded architecture, specify trust/data boundaries, recognize a forbidden object read, and write one decision record | New draft written companion |
+| 2. IaC | [Infrastructure as Code plan review](../builder-academy/infrastructure-as-code-plan-review.md), building on source/build/container vocabulary | Stop unexpected production deletion, inspect desired/observed state, identify drift and approval boundary | New draft written companion |
+| 3. Orchestration and platform | [Kubernetes and platform engineering](../builder-academy/kubernetes-platform-engineering.md), building on Docker artifacts/managed-hosting comparison | Separate image, Pod, Deployment and Service; diagnose selector/rollout failure; choose managed hosting vs orchestration; design a small golden path | New draft written companion |
+| 4. Reliability/operations | [Observability and incident response](../builder-academy/observability-reliability-incidents.md), using the existing recovery and product measurement resources | Select a user-facing SLI/SLO, trace a fictional bad release, identify incident owners and safe recovery evidence | New draft written companion |
+
+**Navigable entry:** [From idea to verified release](../builder-academy/idea-to-verified-release.md#full-stack-bridge-trace-one-fictional-discovery-note) → [From source code to running software](../builder-academy/source-to-running-software.md#apply-it-independently) → four optional advanced companions above. The main Academy UI remains owned by PR #238; PR #260 is the written learning-source proposal. No parallel app or learning-progress backend.
+
+### Additional practical principles integrated into the exercises
+
+- **Architecture is a decision, not a stack checklist.** Each scenario requires an actual user need, functional/nonfunctional constraints, system/trust boundary, responsible roles, choice of smallest workable alternative and an explicit reconsideration trigger.
+- **Artifacts are distinct:** a PRD, UI design, API contract, native binary/JS build, OCI image, IaC plan/state, Kubernetes manifest/rollout, monitoring report and deployed-revision record answer different questions.
+- **Operating cost and responsibilities follow the deployment choice.** Vercel/managed platforms reduce some operator work, whereas an independently managed container stack needs cluster/service and incident owners.
+- **Safety/negative paths are part of the definition of done.** Synthetic unauthorized access, invalid input, source/build mismatch, unavailable image, stale IaC state, destructive plan, Pod readiness, migration rollback and error budget are explicit exercises.
+- **Teach what a tool cannot prove.** A passing CI check is not production acceptance; an image tag is not proof of an active container; a plan is not an apply; a running Pod is not a correct user journey; an SLO target is not verified service performance.
+- **Human transfer matters.** A learner must justify a decision on a fresh fictional scenario, not only read an answer key or click "Reviewed." If no learner session occurred, do not claim a learning outcome.
+
+**Validation and scope boundary:** all code snippets and infrastructure manifests are illustrative unless a separate executable fixture is built and validated. In particular, the OpenTofu pseudo-configuration and Kubernetes manifest are **not safe deployable templates**; no provider APIs, registries, secrets or real cluster were used. Check Markdown links and accuracy, require editorial and intended-learner review, and only then consider one executable sandbox as a later, independently approved slice. Preserve existing Linear KRU-174/KRU-77 ownership, Design Lab #258 experimental boundaries, and Academy integration PR #238 release gates. The docs-only PR #260 must remain draft/unmerged pending those checks.
+
 ## Prioritized implementation plan (2026-11-06)
 
 **Decision:** Start learning immediately in chat; make the first repository delivery a bounded, outcome-driven SDLC entry and comprehension slice. No new Academy program, separate LMS, duplicate lesson registry, learner storage, or new UI framework.
