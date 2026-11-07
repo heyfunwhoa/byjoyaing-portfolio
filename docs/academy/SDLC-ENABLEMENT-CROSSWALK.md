@@ -97,6 +97,106 @@ A fictional web application changes a button label:
 
 **Execution boundary:** Do not author eight new lessons at once. Reuse the current code/YAML, release and CI guides, then prioritize (a) the bits/files/binaries bridge and (b) a small synthetic IaC plan-review lesson once the active Academy integration and KRU-77 work are reconciled. Preserve PR #238's ownership of UI/navigation and PR #260's documentation-only scope. Track real content development through the existing Builder Academy Linear program, not a duplicate backlog.
 
+## Whole-product and full-stack development learning map (2026-11-06)
+
+**Decision:** Teach the product lifecycle, software architecture, user experience, application code, software artifacts, infrastructure and operations as **interconnected layers**, not independent tool courses. This extends the existing 30-topic/six-group crosswalk, rather than creating more catalog IDs, a competing Academy, or a separate issue tracker. The eight-lesson SDLC entry in Academy integration PR #238 is an orientation only. Additional deep dives below are **planned** unless an existing reviewed source and actual exercise are identified.
+
+### How the layers fit together
+
+A useful beginner mental model for an interactive application:
+
+\`\`\`text
+Problem / user / business outcome
+       ↓
+Product discovery → requirements → UX/UI flow + system design
+       ↓                              ↓
+Frontend (UI, state, interaction) ⇄ HTTP/API ⇄ Backend (auth, rules, jobs) ⇄ Database / storage
+       ↓                                                 ↓
+Source code + dependencies + tests + build configuration (the repository)
+       ↓
+Build and validate → versioned deployable artifact (web bundle, executable, package, etc.)
+       ↓
+Optional Dockerfile → OCI/container image → registry → running container(s)
+       ↓
+Runtime + cloud resources (some provisioned by IaC) + secrets + networking
+       ↓
+CI/CD approval → deployment → release → verify → observe → improve / retire
+\`\`\`
+
+The diagram compresses parallel work into one teaching path: product discovery, security, accessibility, testing and cost controls continue throughout. An application hosted on Vercel can skip author-managed Docker images and Kubernetes. A managed platform still uses infrastructure, but abstracts away much of its ownership.
+
+### Product development, design, and architecture: beginner-to-advanced crosswalk
+
+| Learning domain | Questions and essentials to teach | Existing material to reuse | Depth still needed |
+| --- | --- | --- | --- |
+| **Product development and lifecycle** | Problem framing; customer/user research; JTBD; hypotheses; product-market signals; PRD; personas; requirements and acceptance; prioritization; roadmaps; lifecycle from discovery to retirement; outcomes vs outputs | From idea to verified release; evidence-based product request; enterprise-evaluation lessons | Guided discovery → prioritization → implementation acceptance → post-release outcome case |
+| **UX, UI, and design systems** | UX vs UI; user journeys; information architecture; wireframes; prototypes; interaction, visual hierarchy, typography, design tokens, component libraries; accessible/mobile/responsive design; research and usability evidence | Frontend building blocks; Design Lab/Storybook visual regression; editorial card; existing site component inventory | Distinguish design artifact vs coded UI; exercise from user flow to wireframe and component/edge states |
+| **Computing and software foundations** | Bits, bytes, encodings, memory, CPU, OS, processes, files; terminals and shells; algorithms; source vs runtime; compilers, interpreters, transpilers, bytecode, linkers and binaries | Reading code, files, JSON and YAML; Programming Foundations (partially guided) | Dedicated small 'how a computer runs software / how code becomes an artifact' bridge |
+| **Frontend engineering** | Browser and DOM; HTML, CSS, JavaScript/TypeScript; React components; state, props, forms; client vs server rendering; accessibility; fetching and caching; error/loading/empty states; frontend build output | Frontend building blocks (guided pilot); CMS fundamentals; Storybook/Visual Regression | Trace browser → event → API request → rendered feedback, including negative paths |
+| **Backend engineering** | APIs and route handlers; business rules; authN/authZ; validation; sessions; queues and workers; dependency boundaries; server runtime; retries, rate limits and safe external calls | MCP vs REST API; Better Auth GTM workspace; Follow one click; background-job recovery | A coherent, synthetic request lifecycle exercise from client to backend and back |
+| **Data and storage** | SQL, relational models and constraints, migrations; transactions; object storage vs database; cache; backups and restore; consistency; schema/API contracts | Database branching/recovery; CMS modeling; identity journey | End-to-end data model/migration + read/write/rollback decision scenario |
+| **Systems design and architecture** | Requirements and nonfunctional constraints; context/container/component diagrams (do not confuse architecture 'container' with Docker); monolith vs modular monolith vs microservices; sync/async; queues; API design; failures; security boundaries; scaling; technical ADRs | Systems Engineering overview (outlines only); verified-release flow; database/API/recovery lessons | Architecture trade-off exercise with explicit constraints, diagram, ownership, failure modes and ADR |
+| **Developer workflow and build engineering** | Editors, Git, branches, PRs; code review; dependencies/lockfiles; tests; build tools; generated outputs; build artifacts, reproducibility, debugging, release identifiers | Git Workflow Essentials; package registries/lockfiles; Cursor workflows; verified release | Trace actual source → build → artifact → preview → release evidence; include binary vs JS distinctions |
+| **Infrastructure, containers and DevOps** | Compute/storage/network/DNS/IAM; on-prem, virtualization and cloud; Docker images, registries and containers; Compose, Kubernetes when justified; IaC, CI/CD, GitOps, delivery/rollback and secrets | First deployment settings; Build Rate Limits & CI/CD; Systems overview; existing IaC pilot specification | Separate focused Docker/OCI and IaC/DevOps labs; no live infrastructure in beginner pilot |
+| **Production operations and product improvement** | Monitoring, logs, metrics, traces, SLI/SLO; security patches, incidents, backups/restore, scaling, FinOps, product analytics, customer feedback, maintenance and retirement | Measure product use safely; background-job and database recovery; security review | Unified production incident + product-feedback transfer exercise |
+
+**Cross-cutting:** security/privacy, accessibility, quality, cost, performance, documentation, evidence/traceability, permissions, and human acceptance are assessed at every relevant stage. Distinguish **product planning artifacts** from **engineering build/deployment artifacts**.
+
+### What does "artifact" mean, precisely?
+
+An artifact is a produced, identifiable output from a lifecycle activity. It is not inherently a binary file. Each type answers a different question:
+
+| Stage | Artifact examples | What it proves / does NOT prove |
+| --- | --- | --- |
+| Discovery and product | Interview notes, problem statement, PRD, user stories, acceptance criteria | A decision or intended behavior, **not** deployed functionality |
+| UX/UI | User journey, wireframe, Figma/Design Lab prototype, design tokens, component specification | A design or experiment, **not** a tested production UI |
+| Architecture | Context diagram, API schema/OpenAPI document, data model, sequence diagram, ADR | A proposed/accepted technical contract, **not** a deployed system |
+| Source and review | Source files, manifests, Dockerfile, IaC configuration, Git commit, PR diff | Reviewed intent or changes, **not** a release |
+| Build | Transpiled/compiled code, native executable binary, browser/server bundles, libraries, ZIP or package | A produced runnable/distributable unit, **not** a healthy service |
+| Packaging | OCI/Docker image, digest, registry reference | Immutable identified package for container execution, **not** a running container |
+| Security and quality | Test reports, SBOM, dependency scan, artifact checksum, signature/provenance/attestation | Evidence of specific checks and origin, **not** universal security certification |
+| Infrastructure and release | Terraform/OpenTofu plan or state, deployment manifest, CI run, preview URL, release tag | Intended/applied resource state or delivery evidence (check each separately), **not** proof the user journey works |
+| Operations | Logs, traces, SLO reports, incident record, restore evidence, usage/feedback metrics | Evidence about behavior, reliability or adoption, subject to coverage and accuracy |
+
+**Image is ambiguous:** a PNG/JPEG is a *visual asset*; a container image is a filesystem/layer + execution metadata packaged for container runtimes; a VM/disk image represents a bootable or mountable disk state. They are not interchangeable.
+
+### Docker and the artifact chain: one practical walkthrough
+
+A fictional meeting-preparation web app contains a React/TypeScript frontend and a server-side API with a database. Trace what each layer owns:
+
+1. **User and UX:** the learner defines a "save meeting brief" flow, a loading state, a denied-access state and successful feedback. Output: user flow/wireframe.
+2. **Application architecture:** frontend collects fields; backend validates input and user authorization, then stores a record; the server returns a result. Output: API/data contract, data-flow and ownership diagram.
+3. **Source and dependencies:** the repo contains React components, route handlers, dependency manifest/lockfile, tests and build settings. Source code is not the deployment artifact.
+4. **Build:** a JavaScript/TypeScript app may generate optimized JS bundles, HTML/CSS/assets and server output; a compiled Go or Rust service instead generates a native executable for a target platform. "Binary" can mean compiled machine code or binary data, **not** every build artifact.
+5. **Optional container packaging:** a Dockerfile describes build steps; a container build makes an OCI-compatible **image** (filesystem layers + metadata). Tag/digest identifies it; a registry stores/distributes it. A **container** is the running or stopped instance created from an image. An image alone isn't running.
+6. **Provisioning:** Terraform/OpenTofu might define a cloud network, service, managed database or storage. IaC **does not automatically produce or run** the app image and must manage state, drift, permissions, cost and destructive-change review.
+7. **Delivery:** CI checks the exact commit, dependencies and build output; CD deploys the right artifact to a target environment with approved configuration. The application can also deploy through Vercel-managed builds without the developer producing or running a Docker image.
+8. **Verify and operate:** test the deployed user flow and access controls; record the deployed artifact digest/commit, observe logs, errors and product usage, and rehearse rollback/data recovery when appropriate.
+
+**Basic Docker vocabulary:** Dockerfile (recipe), build context (inputs), image (packaged layers), tag (human-readable reference), digest (content-addressed identity), registry (image storage/distribution), container (instance), runtime (executes containers), Compose (multi-container definition for a stack), Kubernetes (optional cluster orchestration). A Docker image is not an application build prerequisite for a managed Vercel website.
+
+**Conceptual example, not a runnable production Dockerfile:** \`source → npm build → app output → optional Docker build → image registry → deploy image → running container\`. Contrast with \`source → GitHub/Vercel build → Vercel deployment\`. Both need testing, authorization, environment configuration and operational verification.
+
+### Teaching sequence: how the learner should experience it
+
+The following is a **recommended deep-dive dependency order**, not a new 11-path implementation and not a claim all material exists today.
+
+| Sequence | Subject | Evidence or practical exercise |
+| --- | --- | --- |
+| 1 | SDLC and product discovery | Trace idea → problem → requirement → release → measured outcome |
+| 2 | UX/UI and product design | Draw a user journey, identify interaction states, build a wireframe |
+| 3 | Computing, source code and binaries | Classify code, compiled executable, JS bundle, package and data file |
+| 4 | Frontend development | Implement/inspect a tiny form, state change and accessible error |
+| 5 | Backend, APIs, database and storage | Trace a validated request through authorization, persistence and response |
+| 6 | Systems design | Make a scoped architecture diagram and justify one trade-off |
+| 7 | Developer workflows and testing | Review a PR, tests, source change and produced artifact |
+| 8 | Docker and software supply chain | Read a Dockerfile; distinguish image vs container, tags vs digests, SBOM |
+| 9 | Cloud and Infrastructure as Code | Interpret an illustrative plan with create/change/destroy safety decisions |
+| 10 | DevOps, CI/CD and release engineering | Trace commit → build → artifact → preview → deploy → verify/rollback |
+| 11 | Operations, reliability and lifecycle improvement | Diagnose a synthetic failure, measure an outcome and propose the next change |
+
+**Initial delivery constraint:** do not author 11 new lessons or add infrastructure for this map. PR #238 already handles Academy navigation and the SDLC entry; PR #260 remains docs-only. First pilot should connect the existing lifecycle/front-end/API content and make the key **artifact chain** understandable, then select one small Docker/image or IaC exercise based on actual beginner confusion. Later role-specific enablement reuses these concept IDs with its own rubric rather than copying content.
+
 ## One concept, multiple role contexts
 
 **Canonical concept:** Infrastructure as Code means desired infrastructure can be versioned, reviewed and provisioned through defined configurations and APIs.
