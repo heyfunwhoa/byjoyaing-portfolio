@@ -90,6 +90,7 @@ export default function AboutPage() {
               {paragraph}
             </p>
           ))}
+          <p className="mt-4 text-sm font-medium text-muted">US-based, open to remote</p>
         </div>
       </section>
 
