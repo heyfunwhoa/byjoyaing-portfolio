@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog, DialogContent, DialogDescription, DialogTitle,
@@ -32,6 +32,7 @@ function Evidence() {
 export function DetailPatternComparison() {
   const heading = useId();
   const detailId = useId();
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const [pattern, setPattern] = useState<DetailPattern>("inline");
   const [open, setOpen] = useState(false);
   const current = detailPatterns.find((option) => option.id === pattern)!;
@@ -62,7 +63,7 @@ export function DetailPatternComparison() {
         <p className="text-xs text-muted">Synthetic account record</p>
         <h3 className="mt-1 font-semibold">Northstar Security</h3>
         <p className="mt-2 text-sm leading-6">Possible service expansion, pending source review.</p>
-        <Button type="button" className="mt-3" variant="outline"
+        <Button ref={triggerRef} type="button" className="mt-3" variant="outline"
           aria-expanded={pattern === "inline" ? open : undefined}
           aria-controls={pattern === "inline" ? detailId : undefined}
           onClick={() => setOpen((value) => !value)}>
@@ -75,7 +76,7 @@ export function DetailPatternComparison() {
         )}
       </div>
       <Sheet open={pattern === "sheet" && open} onOpenChange={setOpen}>
-        <SheetContent side="right" className="overflow-y-auto">
+        <SheetContent side="right" className="overflow-y-auto" onCloseAutoFocus={(event) => { event.preventDefault(); triggerRef.current?.focus(); }}>
           <div className="p-5 pt-14">
             <SheetTitle>Northstar evidence</SheetTitle>
             <SheetDescription className="mt-2">Review the same record without leaving its source list.</SheetDescription>
@@ -84,7 +85,7 @@ export function DetailPatternComparison() {
         </SheetContent>
       </Sheet>
       <Dialog open={pattern === "dialog" && open} onOpenChange={setOpen}>
-        <DialogContent>
+        <DialogContent onCloseAutoFocus={(event) => { event.preventDefault(); triggerRef.current?.focus(); }}>
           <DialogTitle>Northstar evidence</DialogTitle>
           <DialogDescription>A focused view of the same synthetic evidence.</DialogDescription>
           <Evidence />
