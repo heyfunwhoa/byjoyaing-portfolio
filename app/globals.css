@@ -349,3 +349,5 @@ body:has([data-connect-page]) [data-site-chrome] {
 [data-connect-variant="truffle"] {
   --foreground: #252525;
 }
+
+/* Temporary deployment-test marker: intentionally no visual changes. Do not merge. */
