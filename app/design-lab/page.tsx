@@ -8,6 +8,7 @@ import { LearningChecksPreview } from "@/components/design-lab/learning-checks-p
 import { ComponentOptions } from "@/components/design-lab/component-options";
 import { ComponentLearning } from "@/components/design-lab/component-learning";
 import { FormPatternComparison } from "@/components/design-lab/form-pattern-comparison";
+import { DataDisplayComparison } from "@/components/design-lab/data-display-comparison";
 import { NavigationPatternComparison } from "@/components/design-lab/navigation-pattern-comparison";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
@@ -159,6 +160,7 @@ export default function DesignLabPage() {
 
         <ComponentLearning />
         <FormPatternComparison />
+        <DataDisplayComparison />
         <NavigationPatternComparison />
 
         <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">
