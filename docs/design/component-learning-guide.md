@@ -1,7 +1,7 @@
 # UI/UX component learning in Design Lab
 
 ## Purpose and ownership
-The portfolio Design Lab is the canonical visual explorer. Its curated list remains `lib/component-options.ts`; do not create a competing exhaustive registry or duplicate the Technology Docs software catalog. `components/design-lab/component-learning.tsx` provides six guided educational examples. Technical Docs Platform owns cross-repository UI adoption guidance; Builder Academy owns learning paths and learner review after its curriculum reconciliation.
+The portfolio Design Lab is the canonical visual explorer. Its curated list remains `lib/component-options.ts`; do not create a competing exhaustive registry or duplicate the Technology Docs software catalog. `components/design-lab/component-learning.tsx` provides nine guided educational examples. Technical Docs Platform owns cross-repository UI adoption guidance; Builder Academy owns learning paths and learner review after its curriculum reconciliation.
 
 ## Entry requirements
 A lesson must answer:
