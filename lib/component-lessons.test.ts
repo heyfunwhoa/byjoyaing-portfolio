@@ -99,3 +99,22 @@ test("lesson search matches a task and a project without saving progress", () =>
     true,
   );
 });
+
+test("form comparison teaches exclusive, multi-choice, select, and search patterns", () => {
+  const comparison = readFileSync(
+    new URL("../components/design-lab/form-pattern-comparison.tsx", import.meta.url),
+    "utf8",
+  );
+  const page = readFileSync(new URL("../app/design-lab/page.tsx", import.meta.url), "utf8");
+  for (const pattern of ["radio", "checkbox", "select", "search"]) {
+    assert.match(comparison, new RegExp('id: "' + pattern + '"'));
+  }
+  assert.match(comparison, /type="radio"/);
+  assert.match(comparison, /type="checkbox"/);
+  assert.match(comparison, /type="search"/);
+  assert.match(comparison, /<select/);
+  assert.match(comparison, /No accounts match that search/);
+  assert.match(comparison, /not a full ARIA combobox/);
+  assert.match(page, /<FormPatternComparison \/>/);
+  assert.match(page, /designLabAvailable\(\)/);
+});
