@@ -37,7 +37,7 @@ const related: Record<string, { href: string; label: string }[]> = {
   Forcepoint: [{ href: "/work#enterprise-sales", label: "Professional enterprise selling" },{ href: "/work/competitive-intelligence-engine", label: "Discovery templates",
     },
   ],
-  Metadot: [{ href: "/work/partner-gtm-engine", label: "Partner design, not the Metadot program",
+  "Das Keyboard (Metadot)": [{ href: "/work/partner-gtm-engine", label: "Partner design, not the Metadot program",
     },
   ],
 };
