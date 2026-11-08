@@ -115,9 +115,10 @@ export function LessonLibrary({
       )}
       {matches.length ? (
         <>
-          <label className="mt-3 flex flex-col gap-2 text-sm font-medium lg:hidden">
-            Choose a lesson
+          <div className="mt-3 flex flex-col gap-2 text-sm font-medium lg:hidden">
+            <label htmlFor="lesson-choice">Choose a lesson</label>
             <select
+              id="lesson-choice"
               className={control}
               value={selectedInResults ? active : ""}
               onChange={(event) => onSelect(event.target.value)}
@@ -133,7 +134,7 @@ export function LessonLibrary({
                 </option>
               ))}
             </select>
-          </label>
+          </div>
           <div className="mt-3 hidden max-h-[min(55vh,28rem)] overflow-y-auto overscroll-contain p-1 lg:block">
             <ul className="space-y-2">
               {matches.map((lesson) => (
