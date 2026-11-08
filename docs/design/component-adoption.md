@@ -476,3 +476,12 @@ Local Design Lab only: reuse BentoGrid/Card/ProjectStatusPill and catalog data f
 - All widths retain source order and existing tokens. Native Enter/Space operation, visible focus, and reduced-motion behavior stay with the existing disclosure; no dependency, state store, API, or shared component behavior changes.
 - Verification lives in the updated page-jobs guard and the existing project-presentation browser suite: both templates at 375/768/1280, single contribution/status text, reading order, contents links, keyboard disclosure, legacy fragment and refresh. Results and manual review limits are recorded against the final PR head.
 - KRU-150 remains the existing reference; no new issue or competing implementation. This follow-up does not change brand fundamentals or require a Notion brand-summary update. Rollback restores the two template sections and their prior guard without changing routes or underlying project facts.
+
+
+## Frontend Academy enrichment, PR #238 (2026-11-08)
+
+Owner-requested pilot for the existing Frontend lesson only. Reuse `components/academy/mission-layout.tsx` in embedded mode; adopt local `ui/tabs` only through `components/ai-academy/frontend-example.tsx` and `ui/sheet` only through `components/ai-academy/frontend-glossary.tsx`. These exact imports are allowlisted in `lib/shadcn-setup.test.ts`; the public-adoption guard stays intact elsewhere. Existing Radix primitives and brand tokens provide behavior and appearance, with no new package or theme.
+
+The user moves through Understand / See / Try / Explain, switches one example between words, rendered card and code, and opens a glossary without losing lesson state. Tabs use the installed Radix `data-state` contract for selected styling. Code scroll is contained; modal definitions scroll independently; close and step controls are at least 44px. The drawer uses a single trigger for focus restoration, a visible title, focus containment and Escape. No added animation, autoplay or quiz gate. Current step and answer status do not claim mastery or review.
+
+See [Frontend pilot](../academy/FRONTEND-PILOT.md) for ownership, responsive behavior, verification requirements and rollback. Browser evidence belongs to the exact PR head; manual screen-reader, physical-device and learner acceptance remain explicit owner-review work. This scoped adoption is not approval for every Academy lesson or any Design Lab engine.
