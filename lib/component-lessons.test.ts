@@ -189,6 +189,28 @@ test("dashboard lesson combines shared filters, summaries, chart and exact value
   assert.match(page, /notFound\(\)/);
 });
 
+test("account application workbench covers research, evidence, shortlist and handoff without live integration", () => {
+  const fixture = readFileSync(new URL("./design-lab-account-workflow.ts", import.meta.url), "utf8");
+  const component = readFileSync(new URL("../components/design-lab/account-workflow-workbench.tsx", import.meta.url), "utf8");
+  const page = readFileSync(new URL("../app/design-lab/page.tsx", import.meta.url), "utf8");
+  for (const stage of ["discover", "inspect", "shortlist", "export"]) {
+    assert.match(component, new RegExp('id: "' + stage + '"'));
+  }
+  assert.match(fixture, /accountWorkbenchFixture/);
+  assert.match(fixture, /visibleWorkbenchAccounts/);
+  assert.match(fixture, /workbenchExportPreview/);
+  assert.match(fixture, /status: "Unknown"/);
+  assert.match(component, /<EvidenceDetail/);
+  assert.match(component, /role="status"/);
+  assert.match(component, /type="checkbox"/);
+  assert.match(component, /No matching accounts/);
+  assert.match(component, /No accounts selected/);
+  assert.match(component, /No Excel file is generated/);
+  assert.match(page, /<AccountWorkflowWorkbench \/>/);
+  assert.match(page, /designLabAvailable\(\)/);
+  assert.match(page, /notFound\(\)/);
+});
+
 test("context and feedback comparisons reuse existing Design Lab primitives and route gate", () => {
   const details = readFileSync(new URL("../components/design-lab/detail-pattern-comparison.tsx", import.meta.url), "utf8");
   const feedback = readFileSync(new URL("../components/design-lab/feedback-pattern-comparison.tsx", import.meta.url), "utf8");
