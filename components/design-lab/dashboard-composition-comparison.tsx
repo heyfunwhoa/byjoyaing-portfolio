@@ -171,7 +171,7 @@ export function DashboardCompositionComparison() {
       </div>
       <p className="text-xs leading-5 text-muted">
         Exercise: Choose the view you would use to answer “Which month was highest?”
-        and then “What was February's exact count?” Explain why they may require different components.
+        and then “What was February’s exact count?” Explain why they may require different components.
         No data is persisted or synchronized.
       </p>
     </section>
