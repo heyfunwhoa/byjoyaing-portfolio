@@ -74,7 +74,7 @@ jobs:
             exit 0
           fi
           changed_files="$(git diff --name-only "$BASE_SHA" HEAD)"
-          if [[ -n "$changed_files" ]] && ! printf '%s\\n' "$changed_files" | grep -Ev '^docs/'; then
+          if [[ -n "$changed_files" ]] && ! grep -Ev '^docs/' <<< "$changed_files"; then
             echo 'Only docs/ files changed; skipping production build/browser steps.'
             echo 'run_build=false' >> "$GITHUB_OUTPUT"
           else
