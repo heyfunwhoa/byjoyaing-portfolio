@@ -159,3 +159,26 @@ test("advanced Design Lab examples are present without introducing a new registr
   assert.match(demos, /role="region"/);
   assert.match(demos, /<fieldset/);
 });
+
+test("data display comparison keeps cards, table, and metrics tied to the same fixture", () => {
+  const comparison = readFileSync(
+    new URL("../components/design-lab/data-display-comparison.tsx", import.meta.url),
+    "utf8",
+  );
+  const page = readFileSync(
+    new URL("../app/design-lab/page.tsx", import.meta.url),
+    "utf8",
+  );
+  for (const pattern of ["cards", "table", "metrics"]) {
+    assert.match(comparison, new RegExp('id: "' + pattern + '"'));
+  }
+  assert.match(comparison, /const accounts: Account\[\]/);
+  assert.match(comparison, /filtered\.reduce\(/);
+  assert.match(comparison, /No matching accounts/);
+  assert.match(comparison, /<caption/);
+  assert.match(comparison, /aria-pressed=/);
+  assert.match(comparison, /scope="col"/);
+  assert.match(page, /<DataDisplayComparison \/>/);
+  assert.match(page, /designLabAvailable\(\)/);
+  assert.match(page, /notFound\(\)/);
+});
