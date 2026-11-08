@@ -11,6 +11,7 @@ import { directoryProjects } from "@/lib/project-directory";
 import { roles, statusCopy, statusHelp } from "@/lib/portfolio";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PUBLIC_BOOKING_URL } from "@/lib/portfolio/public-contact";
 
 export const metadata: Metadata = completePageMetadata(
   {
@@ -198,6 +199,15 @@ export default function Home() {
             Get in touch {" "}
             <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
           </Link>
+          <a
+            href={PUBLIC_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Book a time with Kristen Aing (opens Cal.com in a new tab)"
+            className="inline-flex min-h-11 items-center px-1 text-sm font-semibold text-accent underline underline-offset-4"
+          >
+            Book a time
+          </a>
           <Link
             href="/about"
             className="inline-flex min-h-11 items-center px-1 text-sm font-semibold text-accent underline underline-offset-4"

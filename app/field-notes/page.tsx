@@ -114,9 +114,9 @@ export default function FieldNotesPage() {
           Professional experience and independently built projects have different evidence and confidentiality boundaries. Frameworks demonstrate an approach; real selling and leadership outcomes belong in Work.
         </p>
         <div className="mt-5 flex flex-wrap gap-5 text-sm font-medium">
-          <Link href="/work" className="text-accent">Professional work</Link>
-          <Link href="/side-quests" className="text-accent">Explore Side Quests</Link>
-          <Link href="/contact" className="text-accent">Get in touch</Link>
+          <Link href="/work" className="inline-flex min-h-11 items-center text-accent">Professional work</Link>
+          <Link href="/side-quests" className="inline-flex min-h-11 items-center text-accent">Explore Side Quests</Link>
+          <Link href="/contact" className="inline-flex min-h-11 items-center text-accent">Get in touch</Link>
         </div>
       </section>
     </PageMain>

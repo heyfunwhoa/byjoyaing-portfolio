@@ -77,7 +77,10 @@ export default function WorkPage() {
             />
           ))}
         />
-        <Link href="/about#how-i-work" className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">How I approach the work →</Link>
+        <div className="mt-6 flex flex-wrap gap-x-6">
+          <Link href="/about#how-i-work" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">How I approach the work →</Link>
+          <Link href="/field-notes/build-the-motion" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">How I&apos;d build a motion at your stage →</Link>
+        </div>
       </section>
       <section className="border-b border-border py-12" aria-label="Related professional work">
         <h2 className="font-display text-2xl">Related field systems</h2>
