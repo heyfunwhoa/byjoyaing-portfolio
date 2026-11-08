@@ -11,6 +11,7 @@ import { Headphones, Palette, Plane, Wrench } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { PUBLIC_BOOKING_URL } from "@/lib/portfolio/public-contact";
 
 const interestIcons = new Map([
   ["travel", Plane],
@@ -89,6 +90,7 @@ export default function AboutPage() {
               {paragraph}
             </p>
           ))}
+          <p className="mt-4 text-sm font-medium text-muted">US-based, open to remote</p>
         </div>
       </section>
 
@@ -375,6 +377,15 @@ export default function AboutPage() {
           <Link href="/contact" className="inline-flex min-h-11 items-center text-accent underline underline-offset-4">
             Start a conversation
           </Link>
+          <a
+            href={PUBLIC_BOOKING_URL}
+            className="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Book a time with Kristen Aing (opens Cal.com in a new tab)"
+          >
+            Book a time
+          </a>
           <a
             href="https://www.linkedin.com/in/kristenaing"
             className="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
