@@ -210,3 +210,28 @@ test("account application workbench covers research, evidence, shortlist and han
   assert.match(page, /designLabAvailable\(\)/);
   assert.match(page, /notFound\(\)/);
 });
+
+test("context and feedback comparisons reuse existing Design Lab primitives and route gate", () => {
+  const details = readFileSync(new URL("../components/design-lab/detail-pattern-comparison.tsx", import.meta.url), "utf8");
+  const feedback = readFileSync(new URL("../components/design-lab/feedback-pattern-comparison.tsx", import.meta.url), "utf8");
+  const page = readFileSync(new URL("../app/design-lab/page.tsx", import.meta.url), "utf8");
+  for (const pattern of ["inline", "sheet", "dialog"]) {
+    assert.match(details, new RegExp('id: "' + pattern + '"'));
+  }
+  for (const pattern of ["inline", "toast", "alert"]) {
+    assert.match(feedback, new RegExp('id: "' + pattern + '"'));
+  }
+  assert.match(details, /<DialogContent/);
+  assert.match(details, /<SheetContent/);
+  assert.match(details, /aria-expanded=/);
+  assert.match(details, /Synthetic teaching fixture/);
+  assert.match(feedback, /aria-invalid=/);
+  assert.match(feedback, /aria-describedby=/);
+  assert.match(feedback, /role="alert"/);
+  assert.match(feedback, /role="status"/);
+  assert.match(feedback, /Simulate recovery/);
+  assert.match(page, /<DetailPatternComparison \/>/);
+  assert.match(page, /<FeedbackPatternComparison \/>/);
+  assert.match(page, /designLabAvailable\(\)/);
+  assert.match(page, /notFound\(\)/);
+});
