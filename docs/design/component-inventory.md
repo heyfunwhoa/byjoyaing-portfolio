@@ -82,6 +82,8 @@ These are page-local systems, not the editorial design system. Do not generalize
 
 ## Not built, and not approved to build yet
 
+Academy navigation refinement in PR #238: `LearningPathPicker`, `LessonLibrary`, and `LessonOutline` are scoped compositions of the existing native disclosure, selector, search/empty-state, and in-page contents patterns. They share the existing lesson/path data and installed Lucide icons. See the November 8 KRU-178 record in [component-adoption.md](component-adoption.md) for responsive behavior, state boundaries, checks and rollback. Branch implementation is not a release claim.
+
 | Requested name | Nearest existing piece | Decision for now |
 | --- | --- | --- |
 | EditorialHero | Homepage hero in `app/page.tsx` | Leave on the page until a second page needs it |
@@ -205,3 +207,11 @@ Implementation checks do not prove rendered usability. Verify 320/375/390/430px,
 ### Guided request mission (draft on merged Academy foundation #130)
 
 `components/academy/mission-layout.tsx` composes local Understand / See / Try / Explain steps with heading focus and unlocked reading. `follow-one-click.tsx` provides the fictional request walkthrough, feedback and activity-scoped resume. Storybook: Academy / Follow one click / Pilot. Mounted at `/ai-academy/journeys/follow-one-click` in this branch, discovered through the shared resource/practice metadata; not yet a deployed-feature claim. Reuses `AcademyBreadcrumb`, native disclosures and existing tokens; adds no dependencies. See [pilot ownership and progress contract](follow-one-click-pilot.md).
+
+## Game-like compositions (November 6, 2026; local prototype)
+
+`GamefulWorkbench` in `/design-lab` composes the existing BentoGrid/Card/status patterns and directory, plus the installed React Flow and existing lesson/path catalogs. It adds a portable synthetic MissionWorkspace with explicit self-review and invalidation on edit. Public pages are unchanged; production still returns 404 for Design Lab. See [gameful-adoption.md](gameful-adoption.md) for all eight source decisions, remaining engine/asset candidates, state behavior and rollback.
+
+### Branching practice, quiz and hex-map pilots (draft)
+
+`DiscoveryPilot` lazy-loads the InkJS conversation; `LearningChallenge` uses react-quiz-component's headless hook and a native HTML/CSS hex selector with equivalent labeled path controls. The unmaintained react-hexgrid dependency was removed; see [dependency review](gameful-dependency-review-2026-11-07.md). Local GamefulWorkbench only; GTM OS #116 owns the discovery consumer. See gameful-adoption.md for pinned versions, dependency rationale, license notices, boundaries, tests and rollback. Not approved public components.

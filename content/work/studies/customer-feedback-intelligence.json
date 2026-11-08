@@ -1,5 +1,5 @@
 {
-  "summary": "Group customer requests into themes with the account still attached. Intake from CRM and tickets is not connected.",
+  "summary": "Group customer requests into themes with the account still attached.",
   "owner": "Kristen Aing",
   "reviewer": "Pending human review of the CMS move",
   "contentVersion": 1,

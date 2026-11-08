@@ -1,4 +1,3 @@
-import { StatusBadge } from "@/components/status-badge";
 import type { SalesProject } from "@/lib/sales";
 import Link from "next/link";
 
@@ -19,10 +18,6 @@ export function ProjectCard({
           : "flex flex-col gap-3 border border-border bg-card p-5 transition-colors hover:border-accent sm:p-6"
       }
     >
-      <div className="flex flex-wrap items-center gap-2">
-        <StatusBadge status={project.status} />
-        <span className="text-xs text-muted">{project.phase}</span>
-      </div>
       <h3 className="text-xl font-semibold tracking-tight text-foreground">
         <Link
           href={`/work/${project.slug}`}
@@ -48,40 +43,22 @@ export function ProjectCard({
             <dd>{project.sales.pipeline}</dd>
           </div>
           <div>
-            <dt className="font-medium text-foreground">Working today</dt>
-            <dd>{project.sales.workingToday}</dd>
-          </div>
-          <div>
-            <dt className="font-medium text-foreground">Planned next</dt>
-            <dd>{project.sales.plannedNext}</dd>
-          </div>
-          <div>
-            <dt className="font-medium text-foreground">
-              In this repo or a linked project
-            </dt>
-            <dd>{project.sales.implementedTech}</dd>
+            <dt className="font-medium text-foreground">Contribution</dt>
+            <dd>{project.sales.myRole}</dd>
           </div>
         </dl>
       ) : (
-        <p className="text-sm leading-6 text-muted">
-          {project.sales.workingToday}
-        </p>
+        <p className="text-sm leading-6 text-muted">{project.sales.myRole}</p>
       )}
-      {density === "full" ? (
-        <p className="text-sm leading-6 text-muted">
-          <span className="font-medium text-foreground">
-            {project.sales.result.kind === "measured"
-              ? "On record. "
-              : "Metric to test. "}
-          </span>
-          {project.sales.result.text}
-        </p>
-      ) : null}
-      {density === "quiet" ? (
-        <p className="text-sm font-medium text-foreground">
-          Concept. Not built.
-        </p>
-      ) : null}
+      <details className="rounded-xl border border-border p-3">
+        <summary className="min-h-11 cursor-pointer py-2 text-sm font-medium">How it works</summary>
+        <div className="mt-3 space-y-2 text-sm leading-6 text-muted">
+          <p>Recorded stage: {project.phase}. {project.sales.maturityDetail}</p>
+          <p>{project.sales.workingToday}</p>
+          <p>{project.sales.implementedTech}</p>
+          {density === "full" ? <p>{project.sales.result.text}</p> : null}
+        </div>
+      </details>
     </article>
   );
 }

@@ -1,7 +1,7 @@
 # Homepage simplification
 
 **Status:** Implementation reference. Home and About copy, wayfinding, and page-flow review guidance were merged in [PR #219](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/219).  
-**Updated:** 2026-11-03  
+**Updated:** 2026-11-07  
 **Source:** `app/page.tsx`, `content/home/page.json`, and `components/editorial-bento.tsx`.  
 **Brand:** [canonical brand guidelines](../brand/brand-guidelines.md).
 
@@ -9,14 +9,20 @@ The homepage is an editorial cover. It introduces Kristen Aing, shows selected p
 
 Positioning stays **Revenue & GTM Leader · Curious Builder**. The philosophy is **People first. Problem-driven. Systems-minded.** The signature, Geist typography, existing palette, approved homepage portrait, and six-item primary navigation stay consistent.
 
-## 1. Home and About have different jobs
+## 1. Each area has one job
 
-| Page | Reader question | Content that earns its place | Next step |
+| Area | Its job | Reader question | Next step |
 | --- | --- | --- | --- |
-| Home | Who is Kristen, and which work is relevant to me? | Concise positioning, selected role evidence, clear destination choices, one labeled independent example. | Explore Work first; About for context; relevant collections or Contact when useful. |
-| About | What shaped Kristen's approach, and how does she work? | Advertising background and purpose, expanded philosophy, capabilities, career and education, practical methods, writing examples, and a little personal context. | Inspect relevant professional work or writing, then start a conversation. |
+| Home | Introduce Kristen and point visitors toward the strongest work | Who is Kristen, and which work should I open first? | Explore Work. About, Field Notes, Side Quests, or Contact when that is the question. |
+| About | Explain background, approach, values, and interests | What shaped the approach, and what matters besides the résumé? | Relevant professional work or writing, then a conversation. |
+| Work | Show professional contributions in selling, coaching, and GTM | What has Kristen done in the field? | A project page, Experience, or Contact. |
+| Field Notes | Share practical thinking and useful frameworks | How does she approach a selling or coaching problem? | One guide, then the related Work or Contact. |
+| Side Quests | Introduce independent projects and learning experiences | What has she built or studied on her own? | One project, or Builder Academy for the deeper lesson. |
+| Project pages | Explain a problem, show the contribution, and offer one useful example | What was hard, what did she do, and what can I try? | The example, then a related note or Contact. |
+| Builder Academy | Hold the deeper learning experience, reached through Side Quests | Where do I practice the idea? | A lesson or lab, then back to Side Quests. |
+| Contact | Make a conversation easy | How do I write or book time? | Send a message or book a time. |
 
-Repeat the name, enterprise cybersecurity context, positioning, and philosophy where needed for direct visitors. Home states the philosophy; About explains how it shows up in practice. Keep the expanded education, toolkit, writing excerpts, and personal interests on About. Keep the three selected role cards and large destination bento on Home.
+Home and About still differ. Repeat the name, enterprise cybersecurity context, positioning, and philosophy where needed for direct visitors. Home states the philosophy; About explains how it shows up in practice. Keep the expanded education, toolkit, writing excerpts, and personal interests on About. Keep the three selected role cards and large destination bento on Home.
 
 Visuals support these roles: Home uses the dark editorial hero and approved portrait; About uses the quieter orbit-only introduction. They share a visual identity while giving the reader different information.
 
@@ -38,7 +44,7 @@ There is no separate competitive field-practice section on Home. That profession
 | About Me | `/about`: background, working approach and personal context |
 | Role evidence links | Relevant Work section, or `/experience#career-details` |
 | Field Notes tile | `/field-notes`: practical guides and frameworks |
-| Side Quests tile | `/side-quests`: independent projects and research |
+| Side Quests tile | `/side-quests`: independent projects, then Builder Academy for the deeper learning experience |
 | Detector Coverage Atlas sample | `/work/detector-coverage-atlas`: the existing case-study route, labeled as an independent project |
 | Get in touch | `/contact`: the conversation and contact options |
 

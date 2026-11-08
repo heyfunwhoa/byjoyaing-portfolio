@@ -14,15 +14,10 @@ import { SecurityReviewLab } from "@/components/ai-academy/security-review-lab";
 import { CmsLab } from "@/components/ai-academy/cms-lab";
 import { FrontendLesson } from "@/components/ai-academy/frontend-lesson";
 import { learningPaths } from "@/lib/academy/learning-paths";
-import { lessons, workflows } from "@/lib/ai-academy";
-const tracks = [
-  "All",
-  "Foundations",
-  "Prompting",
-  "Responsible AI",
-  "GTM",
-  "Builder",
-] as const;
+import { LearningPathPicker } from "@/components/ai-academy/learning-path-picker";
+import { LessonLibrary } from "@/components/ai-academy/lesson-library";
+import { LessonOutline } from "@/components/ai-academy/lesson-outline";
+import { lessons, workflows, type Track } from "@/lib/ai-academy";
 const academyTabs = [
   ["learn", "01 / Learn"],
   ["apply", "02 / Apply AI"],
@@ -34,7 +29,7 @@ const button =
 export function Academy({ resources }: { resources?: ReactNode }) {
   const [tab, setTab] = useState<AcademyTab>("learn");
   const [pathId, setPathId] = useState<string | null>(null);
-  const [track, setTrack] = useState<(typeof tracks)[number]>("All");
+  const [track, setTrack] = useState<Track | "All">("All");
   const [active, setActive] = useState("idea-to-verified-release");
   const [answer, setAnswer] = useState<number | null>(null);
   const [reviewed, setReviewed] = useState<string[]>([]);
@@ -101,7 +96,9 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         ? 0
         : key === "End"
           ? academyTabs.length - 1
-          : (currentIndex + (key === "ArrowRight" ? 1 : -1) + academyTabs.length) %
+          : (currentIndex +
+              (key === "ArrowRight" ? 1 : -1) +
+              academyTabs.length) %
             academyTabs.length;
     const nextTab = academyTabs[nextIndex][0];
     setTab(nextTab);
@@ -122,17 +119,22 @@ export function Academy({ resources }: { resources?: ReactNode }) {
       tabIndex={-1}
       className="mx-auto w-full max-w-6xl px-5 pt-12 pb-24 sm:px-8"
     >
-      <div className="mb-10 grid min-w-0 items-end gap-6 md:grid-cols-[minmax(0,1fr)_9rem]">
+      <div className="mb-7 grid min-w-0 items-end gap-6 md:grid-cols-[minmax(0,1fr)_9rem]">
         <div className="max-w-3xl min-w-0">
-          <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/side-quests","label":"Side Quests"},{"label":"Builder Academy"}]} />
+          <CollectionBreadcrumb
+            items={[
+              { href: "/", label: "Home" },
+              { href: "/side-quests", label: "Side Quests" },
+              { label: "Builder Academy" },
+            ]}
+          />
           <p className="editorial-eyebrow mb-3 text-accent">Builder Academy</p>
           <h1 className="editorial-section-title">
             Learn the basics. Apply with purpose.
           </h1>
           <p className="mt-4 text-lg leading-8 text-muted">
-            Start with the software lifecycle, explore the tools behind an app,
-            or learn AI and research. Read a short lesson, then try its linked
-            guide or lab.
+            This is the deeper learning experience. Side Quests is the way in.
+            Choose a path, read a lesson, then put it into practice.
           </p>
           <a
             href="#academy-sections"
@@ -141,115 +143,19 @@ export function Academy({ resources }: { resources?: ReactNode }) {
             Browse lessons
           </a>
         </div>
-        <div className="mx-auto w-full max-w-[9rem] md:mx-0">
+        <div className="hidden w-full max-w-[9rem] md:block">
           <OrbitStudyIllustration variant="academy" />
           <p className="editorial-eyebrow mt-3 text-center text-muted">
             Builder
           </p>
         </div>
       </div>
-      <details className="mb-4 rounded-xl border border-border bg-card">
-        <summary className="min-h-11 cursor-pointer px-5 py-3 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-          Explore learning paths ({learningPaths.length})
-        </summary>
-        <div className="px-5 pb-5">
-          <p className="text-sm leading-6 text-muted">
-            Start with the software lifecycle or choose a specialist path.
-            AI basics is not required for every path.
-          </p>
-          <ul className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-            {learningPaths.map((path) => (
-              <li
-                key={path.id}
-                className="rounded-xl border border-border bg-background p-4"
-              >
-                <h2 className="font-semibold">{path.title}</h2>
-                <p className="mt-2 text-xs leading-5 text-muted">
-                  {path.prerequisite}
-                </p>
-                <p className="mt-2 text-sm leading-6">{path.outcome}</p>
-                <button
-                  type="button"
-                  className={`${button} mt-3 min-h-11`}
-                  aria-label={`Start this path: ${path.title}`}
-                  onClick={() => startPath(path.id)}
-                >
-                  Start this path
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </details>
-      {selectedPath && tab === "learn" ? (
-        <nav
-          aria-label="Selected learning path"
-          className="mb-6 rounded-xl border border-border p-4"
-        >
-          <p className="text-sm font-semibold">{selectedPath.title}</p>
-          <ol className="mt-2 grid gap-2 sm:grid-cols-2">
-            {selectedPath.slugs.map((slug, index) => {
-              const item = lessons.find((l) => l.slug === slug)!;
-              return (
-                <li key={slug}>
-                  <button
-                    type="button"
-                    aria-current={active === slug ? "step" : undefined}
-                    aria-label={item.title}
-                    className={`min-h-11 w-full rounded-lg border px-3 py-2 text-left text-sm ${active === slug ? "border-accent bg-card" : "border-border"}`}
-                    onClick={() => {
-                      setTrack("All");
-                      selectLesson(slug, true);
-                    }}
-                  >
-                    {index + 1}. {item.title}
-                  </button>
-                </li>
-              );
-            })}
-          </ol>
-          <p className="mt-3 text-xs leading-5 text-muted">
-            Steps show the suggested reading order, not reviewed work. Skip
-            ahead when useful. Progress lasts only while this page stays open.
-          </p>
-          <button
-            type="button"
-            className="mt-2 min-h-11 text-sm text-accent underline"
-            onClick={() => setPathId(null)}
-          >
-            Leave this path
-          </button>
-        </nav>
-      ) : null}
-      {resources}
-      <dl className="mb-2 grid min-w-0 grid-cols-3 gap-2 sm:gap-3">
-        <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5">
-          <dt className="text-xs font-medium text-muted">Lessons</dt>
-          <dd className="mt-2 text-xl font-semibold sm:text-3xl">
-            {lessons.length}
-          </dd>
-        </div>
-        <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5">
-          <dt className="text-xs font-medium text-muted">Reviewed</dt>
-          <dd className="mt-2 text-xl font-semibold sm:text-3xl">
-            {reviewed.length} / {lessons.length}
-          </dd>
-        </div>
-        <div className="min-w-0 rounded-xl border border-border bg-card p-3 sm:p-5">
-          <dt className="text-xs font-medium text-muted">Workflows</dt>
-          <dd className="mt-2 text-xl font-semibold sm:text-3xl">
-            {workflows.length}
-          </dd>
-        </div>
-      </dl>
-      <p className="mb-8 text-xs leading-5 text-muted">
-        Review tracking is temporary and resets when you leave this page.
-      </p>
+      <LearningPathPicker onStart={startPath} />
       <div
         id="academy-sections"
         role="tablist"
         aria-label="Academy sections"
-        className="mb-7 flex flex-wrap gap-2 border-b border-border pb-4"
+        className="mb-7 flex scroll-mt-28 flex-wrap gap-2 border-b border-border pb-4"
       >
         {academyTabs.map(([id, name], index) => (
           <button
@@ -266,7 +172,9 @@ export function Academy({ resources }: { resources?: ReactNode }) {
             className={`${button} ${tab === id ? "bg-foreground text-background" : ""}`}
             onClick={() => setTab(id)}
             onKeyDown={(event) => {
-              if (["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) {
+              if (
+                ["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)
+              ) {
                 event.preventDefault();
                 moveTabFocus(id, event.key);
               }
@@ -278,48 +186,71 @@ export function Academy({ resources }: { resources?: ReactNode }) {
       </div>
       {tab === "learn" && (
         <div className="grid gap-7 lg:grid-cols-[18rem_minmax(0,1fr)]">
-          <aside aria-label="Lessons" className="space-y-3">
-            <label className="block text-sm font-semibold" htmlFor="track">
-              Learning track
-            </label>
-            <select
-              id="track"
-              value={track}
-              onChange={(e) => {
-                const t = e.target.value as typeof track;
-                setTrack(t);
-                setPathId(null);
-                const l = lessons.find((x) => t === "All" || x.track === t);
-                if (l) {
-                  selectLesson(l.slug);
-                }
-              }}
-              className="w-full rounded-lg border border-border bg-card p-3 text-sm"
-            >
-              {tracks.map((t) => (
-                <option key={t}>{t}</option>
-              ))}
-            </select>
-            <div className="hidden space-y-2 lg:block">
-              {filtered.map((l, i) => (
+          <aside
+            aria-label="Lessons"
+            className="min-w-0 self-start lg:sticky lg:top-24"
+          >
+            {selectedPath ? (
+              <nav
+                aria-label="Selected learning path"
+                className="rounded-xl border border-border bg-card p-4"
+              >
+                <p className="text-sm font-semibold">{selectedPath.title}</p>
+                <p className="mt-2 text-xs text-muted">
+                  Lesson {position + 1} of {sequence.length}
+                </p>
+                <ol className="mt-3 max-h-[min(55vh,28rem)] space-y-2 overflow-y-auto overscroll-contain p-1">
+                  {selectedPath.slugs.map((slug, index) => {
+                    const item = lessons.find((l) => l.slug === slug)!;
+                    return (
+                      <li key={slug}>
+                        <button
+                          type="button"
+                          aria-current={active === slug ? "step" : undefined}
+                          aria-label={item.title}
+                          className={`min-h-11 w-full rounded-lg border px-3 py-2 text-left text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${active === slug ? "border-accent bg-background font-semibold" : "border-border"}`}
+                          onClick={() => {
+                            setTrack("All");
+                            selectLesson(slug, true);
+                          }}
+                        >
+                          {index + 1}. {item.title}
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ol>
+                <p className="mt-3 text-xs leading-5 text-muted">
+                  Suggested order. Skip ahead when useful.
+                </p>
                 <button
                   type="button"
-                  key={l.slug}
+                  className="mt-2 min-h-11 text-sm text-accent underline"
                   onClick={() => {
-                    selectLesson(l.slug);
+                    setPathId(null);
+                    requestAnimationFrame(() => headingRef.current?.focus());
                   }}
-                  className={`w-full rounded-lg border p-3 text-left transition focus-visible:outline-2 focus-visible:outline-accent ${active === l.slug ? "border-accent bg-card" : "border-border hover:bg-card"}`}
                 >
-                  <span className="text-xs text-muted">
-                    {String(i + 1).padStart(2, "0")} · {l.track} · {l.minutes}{" "}
-                    min
-                  </span>
-                  <span className="mt-1 block font-semibold">
-                    {l.title} {reviewed.includes(l.slug) ? "· Reviewed" : ""}
-                  </span>
+                  Leave this path
                 </button>
-              ))}
-            </div>
+              </nav>
+            ) : (
+              <LessonLibrary
+                lessons={filtered}
+                active={lesson.slug}
+                track={track}
+                reviewed={reviewed}
+                onTrackChange={(nextTrack) => {
+                  setTrack(nextTrack);
+                  setPathId(null);
+                  const first = lessons.find(
+                    (item) => nextTrack === "All" || item.track === nextTrack,
+                  );
+                  if (first) selectLesson(first.slug);
+                }}
+                onSelect={selectLesson}
+              />
+            )}
           </aside>
           <article
             id="academy-panel"
@@ -328,22 +259,6 @@ export function Academy({ resources }: { resources?: ReactNode }) {
             tabIndex={0}
             className="min-w-0 rounded-xl border border-border bg-card p-5 sm:p-9"
           >
-            <label className="mb-4 flex flex-col gap-2 text-sm font-medium lg:hidden">
-              Choose a lesson
-              <select
-                value={lesson.slug}
-                onChange={(event) => {
-                  selectLesson(event.target.value);
-                }}
-                className="min-h-12 w-full rounded-lg border border-border bg-card px-3 py-2 text-base"
-              >
-                {filtered.map((l) => (
-                  <option key={l.slug} value={l.slug}>
-                    {l.title}
-                  </option>
-                ))}
-              </select>
-            </label>
             <p className="text-xs font-semibold tracking-widest text-accent uppercase">
               {lesson.level} · {lesson.track} · {lesson.minutes} minutes
             </p>
@@ -357,11 +272,12 @@ export function Academy({ resources }: { resources?: ReactNode }) {
               id="academy-lesson-heading"
               ref={headingRef}
               tabIndex={-1}
-              className="mt-2 font-display text-3xl sm:text-4xl"
+              className="mt-2 scroll-mt-28 font-display text-3xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:text-4xl"
             >
               {lesson.title}
             </h2>
             <p className="mt-4 leading-7 text-muted">{lesson.summary}</p>
+            <LessonOutline />
             <section
               aria-label="Lesson prerequisites"
               className="mt-5 rounded-lg border border-border p-4"
@@ -369,7 +285,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
               <h3 className="text-sm font-semibold">Before you start</h3>
               <p className="mt-2 text-sm text-muted">
                 {guidance?.prerequisites.length
-                  ? "Suggested preparation — you can still read this lesson now."
+                  ? "Suggested preparation. You can still read this lesson now."
                   : "No earlier Academy lesson required."}
               </p>
               {guidance?.prerequisites.length ? (
@@ -405,7 +321,13 @@ export function Academy({ resources }: { resources?: ReactNode }) {
               ) : null}
             </section>
             <div className="my-7 rounded-lg bg-background p-5">
-              <h3 className="font-semibold">Think of it like this</h3>
+              <h3
+                id="lesson-read"
+                tabIndex={-1}
+                className="scroll-mt-28 font-semibold"
+              >
+                Think of it like this
+              </h3>
               <p className="mt-2 leading-7">{lesson.analogy}</p>
             </div>
             <h3 className="font-semibold">What you should remember</h3>
@@ -415,7 +337,13 @@ export function Academy({ resources }: { resources?: ReactNode }) {
               ))}
             </ul>
             <div className="mt-7 border-t border-border pt-6">
-              <h3 className="font-semibold">Try it yourself</h3>
+              <h3
+                id="lesson-practice"
+                tabIndex={-1}
+                className="scroll-mt-28 font-semibold"
+              >
+                Try it yourself
+              </h3>
               <p className="mt-2 leading-7">{lesson.exercise}</p>
               {guidance?.practice ? (
                 <a
@@ -446,16 +374,22 @@ export function Academy({ resources }: { resources?: ReactNode }) {
                 }
               />
             )}
-            <fieldset className="mt-7 rounded-lg border border-border p-4">
+            <fieldset
+              id="lesson-check"
+              tabIndex={-1}
+              className="mt-7 scroll-mt-28 rounded-xl border border-border bg-background p-4 sm:p-5"
+            >
               <legend className="px-2 font-semibold">Knowledge check</legend>
-              <p className="mb-3">{lesson.check.question}</p>
+              <p className="mb-4 leading-7 font-medium">
+                {lesson.check.question}
+              </p>
               {lesson.check.choices.map((c, i) => (
                 <label
                   key={c}
-                  className="mb-2 flex cursor-pointer items-start gap-2 text-sm"
+                  className={`mb-2 flex min-h-12 cursor-pointer items-start gap-3 rounded-lg border p-3 text-sm leading-6 ${answer === i ? "border-accent bg-card" : "border-border hover:bg-card"}`}
                 >
                   <input
-                    className="mt-1 accent-accent"
+                    className="mt-1.5 shrink-0 accent-accent"
                     type="radio"
                     name={lesson.slug}
                     checked={answer === i}
@@ -472,13 +406,14 @@ export function Academy({ resources }: { resources?: ReactNode }) {
                   <strong>
                     {answer === lesson.check.answer ? "Correct." : "Try again."}
                   </strong>{" "}
-                  {lesson.check.feedbackByChoice?.[answer] ?? lesson.check.explanation}
+                  {lesson.check.feedbackByChoice?.[answer] ??
+                    lesson.check.explanation}
                 </p>
               )}
             </fieldset>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <button
-                className="rounded-lg bg-accent px-5 py-3 font-semibold text-accent-foreground disabled:opacity-50"
+                className="min-h-11 rounded-lg border border-border px-4 py-3 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 aria-pressed={reviewed.includes(lesson.slug)}
                 onClick={markReviewed}
               >
@@ -551,7 +486,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
                 {position >= 0 && position < sequence.length - 1 ? (
                   <button
                     type="button"
-                    className={`${button} min-h-11 text-left`}
+                    className={`${button} min-h-11 bg-accent text-left text-accent-foreground`}
                     onClick={() =>
                       selectLesson(
                         sequence[position + 1].slug,
@@ -753,6 +688,11 @@ export function Academy({ resources }: { resources?: ReactNode }) {
           {copyStatus}
         </p>
       ) : null}
+      <div className="mt-10">{resources}</div>
+      <p className="mt-5 text-xs leading-6 text-muted">
+        Reviewed this session: {reviewed.length} / {lessons.length}. Review
+        tracking resets when you leave this page.
+      </p>
       <footer className="mt-14 border-t border-border pt-5 text-xs leading-6 text-muted">
         Educational prototype · No login, model API calls or persistent progress
         in this version. Review privacy requirements before using internal data.

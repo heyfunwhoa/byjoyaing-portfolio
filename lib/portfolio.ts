@@ -251,6 +251,7 @@ export const loop = [
 export const roles = [
   {
     company: "Truffle Security",
+    years: "2024–present",
     title: "Senior Enterprise Account Executive",
     category: "Developer security, secrets, machine identity",
     points: [
@@ -261,6 +262,7 @@ export const roles = [
   },
   {
     company: "Darktrace",
+    years: "2023–2024",
     title: "Senior Enterprise Account Executive",
     category: "Threat intelligence and network / AI security",
     points: [
@@ -270,6 +272,7 @@ export const roles = [
   },
   {
     company: "Rapid7",
+    years: "2021–2023",
     title: "Enterprise Account Executive, Strategic",
     category: "Threat intelligence, cloud, and application security",
     points: [
@@ -279,6 +282,7 @@ export const roles = [
   },
   {
     company: "Forcepoint",
+    years: "2018–2021",
     title: "Senior Account Executive, Lead",
     category: "Web security and data protection",
     points: [
@@ -287,8 +291,9 @@ export const roles = [
     ],
   },
   {
-    company: "Metadot",
-    title: "Global Channel Account Manager",
+    company: "Das Keyboard (Metadot)",
+    years: "2016–2018",
+    title: "Manager, Global Accounts & Channel",
     category: "Channel, partners, and new-category GTM",
     points: [
       "Helped stand up a global channel program with executive leadership, including national distributors.",
@@ -296,6 +301,7 @@ export const roles = [
   },
   {
     company: "Quantcast",
+    years: "2015–2016",
     title: "Corporate Account Executive",
     category: "New-market GTM",
     points: [
@@ -304,6 +310,7 @@ export const roles = [
   },
   {
     company: "Websense",
+    years: "2014–2015",
     title: "Regional Account Manager",
     category: "Web, email, and data security",
     points: [
@@ -908,7 +915,7 @@ export const projects: Project[] = [
       ],
     },
     hypothesis:
-      "If prioritization is explicit, the company should waste less build time on low-confidence bets. Next — not built.",
+      "If prioritization is explicit, the company should waste less build time on low-confidence bets.",
     tradeoffs: ["Simple scoring over a model that hides the judgment."],
     prototype: "Next. Not started as software.",
     next: [
@@ -1446,7 +1453,7 @@ export const projects: Project[] = [
       ],
     },
     hypothesis:
-      "If campaigns start from product and customer signals, outreach should be more relevant and attribution should improve. Next — not built.",
+      "If campaigns start from product and customer signals, outreach should be more relevant and attribution should improve.",
     tradeoffs: ["One measured experiment over a spray of sequences."],
     prototype: "Next. Not started as software.",
     next: ["Connect to release and feedback signals once those systems exist."],
@@ -1512,7 +1519,7 @@ export const projects: Project[] = [
       ],
     },
     hypothesis:
-      "If market events are reviewed and tagged, GTM should respond faster and more consistently. Next — not built. Human review stays in the loop.",
+      "If market events are reviewed and tagged, GTM should respond faster and more consistently. Human review stays in the loop.",
     tradeoffs: [
       "Reviewed digest over real-time unfiltered alerts.",
       "Deterministic source list over open-ended crawling.",

@@ -37,7 +37,7 @@ const related: Record<string, { href: string; label: string }[]> = {
   Forcepoint: [{ href: "/work#enterprise-sales", label: "Professional enterprise selling" },{ href: "/work/competitive-intelligence-engine", label: "Discovery templates",
     },
   ],
-  Metadot: [{ href: "/work/partner-gtm-engine", label: "Partner design, not the Metadot program",
+  "Das Keyboard (Metadot)": [{ href: "/work/partner-gtm-engine", label: "Partner design, not the Metadot program",
     },
   ],
 };
@@ -89,7 +89,7 @@ export default function ExperiencePage() {
           ].map(([motion, project, href]) => (
             <li key={motion} className="grid gap-1 py-3 sm:grid-cols-2">
               <span>{motion}</span>
-              <Link href={href} className="font-medium text-accent">{project}</Link>
+              <Link href={href} className="inline-flex min-h-11 items-center font-medium text-accent sm:min-h-6">{project}</Link>
             </li>
           ))}
         </ul>

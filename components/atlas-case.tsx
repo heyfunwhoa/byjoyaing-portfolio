@@ -7,18 +7,15 @@ import { PageMain } from "@/components/page-main";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
-import { StatusBadge } from "@/components/status-badge";
 
 export function AtlasCase() {
   return (
     <PageMain>
-      <section className="grid items-start gap-10 border-b border-border py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:py-20">
-        <div className="flex flex-col gap-6">
+      <section className="border-b border-border py-16 lg:py-20">
+        <div className="flex max-w-3xl flex-col gap-6">
           <WorkCaseBreadcrumb slug="detector-coverage-atlas" />
           <div className="flex flex-wrap items-center gap-3">
             <ProjectKindLabel slug="detector-coverage-atlas" />
-            <p className="text-sm font-medium text-muted">Project 01</p>
-            <StatusBadge status="prototype" />
           </div>
           <h1 className="font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
             Compare coverage without calling a gray cell a gap.
@@ -26,29 +23,10 @@ export function AtlasCase() {
           <p className="max-w-xl text-base leading-7 text-muted">
             For security practitioners and technical sellers comparing secret-detection coverage, this sample makes the evidence easier to inspect. Compare three sources across five credential types, distinguish reviewed coverage from observations, and see what still needs investigation. My aim is to help people ask better security questions without turning missing evidence into a product claim.
           </p>
-          <dl className="grid gap-4 text-sm sm:grid-cols-2">
-            <div>
-              <dt className="font-medium">Role</dt>
-              <dd className="mt-1 leading-6 text-muted">I built this table and the rule that gray is not a gap.</dd>
-            </div>
-            <div>
-              <dt className="font-medium">Stage</dt>
-              <dd className="mt-1 leading-6 text-muted">Prototype. Not a production scanner and not a Truffle Security product.</dd>
-            </div>
-          </dl>
+          <p className="text-sm leading-6 text-muted">I built this table and the rule that gray is not a gap.</p>
           <a href="#comparison" className="inline-flex h-11 w-fit items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
-            Use the comparison
+            Try the example
           </a>
-        </div>
-        <div className="rounded-2xl border border-border bg-card p-5 text-sm leading-6">
-          <p className="text-xs font-medium text-muted">What this repository runs</p>
-          <ul className="mt-3 space-y-2 text-muted">
-            <li>3 sources, typed into the page</li>
-            <li>5 credential types</li>
-            <li>A browser filter</li>
-            <li>No parser, database, or refresh job</li>
-          </ul>
-          <p className="mt-4 text-xs text-muted">Notes mention 910 parsed TruffleHog records and 14 enriched. Those rows are not in this table.</p>
         </div>
       </section>
 
@@ -57,7 +35,7 @@ export function AtlasCase() {
           { id: "comparison", label: "Compare coverage" },
           { id: "read-the-cell", label: "Read a cell" },
           { id: "attribution", label: "Sources and attribution" },
-          { id: "not-in-repository", label: "Scope limits" },
+          { id: "not-in-repository", label: "How it works" },
         ]}
       />
 
@@ -110,10 +88,15 @@ export function AtlasCase() {
       </section>
 
       <section id="not-in-repository" className="scroll-mt-24 py-16">
-        <p className="text-sm font-medium text-muted">05 / Not in this repository</p>
-        <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-5xl">The parser is a note, not a job.</h2>
+        <p className="text-sm font-medium text-muted">05 / How it works</p>
+        <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-5xl">A static sample you can filter.</h2>
+        <ul className="mt-4 max-w-2xl list-disc space-y-2 pl-5 text-base leading-7 text-muted">
+          <li>Three sources and five credential types, typed into this page.</li>
+          <li>A browser filter.</li>
+          <li>Notes elsewhere mention 910 parsed TruffleHog records and 14 enriched. Those rows are not in this table.</li>
+        </ul>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          A later version would read public detector files at a pinned commit and leave unreviewed cells gray. That code is not here. This page does not call GitHub, and it does not refresh itself.
+          A later version would read public detector files at a pinned commit and leave unreviewed cells gray. That code is not here. This page does not call GitHub, and it does not refresh itself. It is not a production scanner and not a Truffle Security product.
         </p>
         <RelatedWork slug="detector-coverage-atlas" />
       </section>

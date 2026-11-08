@@ -168,12 +168,14 @@ Preserve the top-level navigation. Page-level purpose, wireframes, the migration
 
 | Destination | Job | Verified today | Proposed next |
 | --- | --- | --- | --- |
-| Home | Why explore | Five-section cover in [homepage-simplification.md](../design/homepage-simplification.md) | Keep it a cover. Do not lengthen it with timelines, guide lists, or project grids. |
-| About | Who I am | Page exists: origin, philosophy, milestones | Editorial pass only. No Joy Index. Public interests only. |
-| Work | What I have done | Index plus timeline at `/experience` | Three collections with distinct evidence. Enterprise Sales first. |
-| Field Notes | How I think | Index and two guides | Real inventories. Unpublished titles labeled. |
-| Side Quests | What I am building | Index plus `/projects` | Four subject groups, maturity still separate. |
-| Contact | How to connect | Form and links | Keep the working form. |
+| Home | Introduce Kristen and point visitors toward the strongest work | Five-section cover in [homepage-simplification.md](../design/homepage-simplification.md) | Keep it a cover. Do not lengthen it with timelines, guide lists, or project grids. |
+| About | Explain background, approach, values, and interests | Page exists: origin, philosophy, milestones | Editorial pass only. No Joy Index. Public interests only. |
+| Work | Show professional contributions in selling, coaching, and GTM | Index plus timeline at `/experience` | Three collections with distinct evidence. Enterprise Sales first. |
+| Field Notes | Share practical thinking and useful frameworks | Index and published guides | Real inventories. Unpublished titles labeled. |
+| Side Quests | Introduce independent projects and learning experiences | Index plus `/projects`. Academy was reachable, but not introduced here | Link Academy from this page. Keep it out of primary navigation. |
+| Project pages | Explain a problem, show the contribution, and offer one useful example | `/work/[slug]` | Lead with those three. Status stays secondary. |
+| Builder Academy | Hold the deeper learning experience, reached through Side Quests | `/ai-academy` | One entry from Side Quests. Do not add a seventh nav item. |
+| Contact | Make a conversation easy | Form and links | Keep the working form. |
 
 **Work collections (proposed structure, existing facts only):**
 

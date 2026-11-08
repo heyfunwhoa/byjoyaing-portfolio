@@ -91,3 +91,8 @@ For scoped agent work, use the proposed [focused-session procedure](https://gith
 ## Release handoff
 
 For preview, merge and deployment work, read [RELEASE.md](RELEASE.md). Batch related changes into review checkpoints, preserve required tests and private/local-only boundaries, and hand off the exact PR head and evidence to the designated release operator. Do not introduce a second deploy pipeline or treat a successful preflight as merge authorization.
+
+
+## Source verification for public claims, lessons and tool recommendations
+
+For new or materially revised portfolio claims, case studies, learning materials, research, project/tool references, framework explanations and outward-facing recommendations, follow the [canonical claim/source verification standard](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/standards/source-verification-v1.md) (draft [Technical Docs PR #75](https://github.com/heyfunwhoa/technical-docs-platform/pull/75)). Record primary publisher/source, exact supported claim, actual verification date or null, confidence, limits, rights/licensing status and a review trigger. If content is synthetic, hypothetical or derived advice, label it clearly. A linked citation does not prove the claim was inspected; a public web page does not automatically grant reproduction rights. Avoid private workspace/customer content and do not claim audit, deployment or licensing approval without evidence. The record belongs with its owning content/repository, not a second source database.
