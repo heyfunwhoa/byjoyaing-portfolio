@@ -301,6 +301,7 @@ export const roles = [
   },
   {
     company: "Quantcast",
+    years: "2015–2016",
     title: "Corporate Account Executive",
     category: "New-market GTM",
     points: [
@@ -309,6 +310,7 @@ export const roles = [
   },
   {
     company: "Websense",
+    years: "2014–2015",
     title: "Regional Account Manager",
     category: "Web, email, and data security",
     points: [
