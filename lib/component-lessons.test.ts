@@ -99,3 +99,24 @@ test("lesson search matches a task and a project without saving progress", () =>
     true,
   );
 });
+
+test("navigation comparison supports three distinct patterns and stays in Design Lab", () => {
+  const comparison = readFileSync(
+    new URL("../components/design-lab/navigation-pattern-comparison.tsx", import.meta.url),
+    "utf8",
+  );
+  const page = readFileSync(
+    new URL("../app/design-lab/page.tsx", import.meta.url),
+    "utf8",
+  );
+  for (const pattern of ["sidebar", "top", "tabs"]) {
+    assert.match(comparison, new RegExp('id: "' + pattern + '"'));
+  }
+  assert.match(comparison, /aria-pressed=/);
+  assert.match(comparison, /aria-current=/);
+  assert.match(comparison, /aria-expanded=/);
+  assert.match(comparison, /Fictional teaching data only/);
+  assert.match(page, /<NavigationPatternComparison \/>/);
+  assert.match(page, /designLabAvailable\(\)/);
+  assert.match(page, /notFound\(\)/);
+});
