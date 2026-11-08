@@ -27,6 +27,11 @@ test("detail opens by keyboard and returns focus after Escape", async ({ page })
   await expect(dialog).toBeVisible();
   await expect(dialog).toContainText("Unverified");
   await expect(page.getByRole("button", { name: "Close" })).toBeFocused();
+  // With one focusable control in this fictional detail, Tab must not escape the dialog.
+  await page.keyboard.press("Tab");
+  await expect(page.getByRole("button", { name: "Close" })).toBeFocused();
+  await page.keyboard.press("Shift+Tab");
+  await expect(page.getByRole("button", { name: "Close" })).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
   await expect(inspect).toBeFocused();
