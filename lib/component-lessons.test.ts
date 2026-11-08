@@ -147,7 +147,7 @@ test("advanced Design Lab examples are present without introducing a new registr
   const demos = readFileSync(new URL("../components/design-lab/advanced-learning-demos.tsx", import.meta.url), "utf8");
   for (const id of advanced) {
     assert.ok(ids.has(id), id);
-    assert.match(explorer, new RegExp('\\\\n  "' + id + '":'));
+    assert.match(explorer, new RegExp('\\n  "' + id + '":'));
   }
   assert.equal(componentLessons.filter(lesson => lesson.catalogId === "data").length, 2);
   assert.match(demos, /Fictional accounts/);
