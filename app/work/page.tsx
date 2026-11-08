@@ -97,10 +97,6 @@ export default function WorkPage() {
               <p className="mt-3 text-sm leading-6 text-muted">
                 {item.summary}
               </p>
-              <p className="mt-3 text-xs leading-5 text-muted">
-                Portfolio example: outcomes and any related software experiments
-                are described separately.
-              </p>
               <Link
                 href={item.href}
                 className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4"

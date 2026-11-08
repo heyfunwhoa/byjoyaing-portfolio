@@ -104,10 +104,10 @@ export default function FieldNotesPage() {
       </section>
       <section id="private" className="scroll-mt-24 border-t border-border py-12">
         <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>
-        <Link href="/private-work" className="mb-8 block rounded-2xl border border-border bg-surface-mist p-5 hover:border-accent">
-          <h2 className="text-xl font-semibold">Private case studies</h2>
-          <p className="mt-2 text-sm leading-6 text-muted">Some detailed deal and operating artifacts require approval. See what can be requested and how access will work.</p>
-          <span className="mt-3 inline-block text-sm font-medium text-accent">About private access →</span>
+        <Link href="/contact" className="mb-8 block rounded-2xl border border-border bg-surface-mist p-5 hover:border-accent">
+          <h2 className="text-xl font-semibold">Request a walkthrough</h2>
+          <p className="mt-2 text-sm leading-6 text-muted">Detailed deal and operating examples aren&apos;t public. Ask, and I&apos;ll walk you through what I can share.</p>
+          <span className="mt-3 inline-block text-sm font-medium text-accent">Get in touch →</span>
         </Link>
         <h2 className="font-display text-3xl tracking-tight">See the work behind the ideas</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
