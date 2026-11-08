@@ -452,3 +452,11 @@ Local Design Lab only: reuse BentoGrid/Card/ProjectStatusPill and catalog data f
 - **Responsive and access:** One column on a phone, the revenue workflows sit three across from 768px. Actions keep a 44px target, visible focus, and keyboard activation. Reduced motion is unchanged. Empty search stays the existing directory message.
 - **Verification:** `lib/project-presentation.test.ts` and `tests/site/project-presentation.spec.ts`. Manual 200% zoom and screen-reader review remain separate from an automated zoom proxy.
 - **Rollback:** Revert this presentation slice. Routes stay the same.
+
+### Project story follow-up (November 8, 2026, PR #288)
+
+- Reuse `ProjectStoryLead`, `CaseStudyContents`, and `DisclosureSection` in the generic project route and `FieldAssetCase`. Keep problem, contribution, and example visible; render recorded stage once inside How it works. Remove the repeated field-asset hero contribution and the duplicate proposed-software paragraph from the disclosure. Field evidence and proposed-software context remain visible beside the example.
+- Preserve `#where-it-stands` as a nested section. The existing disclosure opens for direct links and refreshes at that fragment. Contents navigation offers one How it works destination instead of separate links to the same supporting context.
+- All widths retain source order and existing tokens. Native Enter/Space operation, visible focus, and reduced-motion behavior stay with the existing disclosure; no dependency, state store, API, or shared component behavior changes.
+- Verification lives in the updated page-jobs guard and the existing project-presentation browser suite: both templates at 375/768/1280, single contribution/status text, reading order, contents links, keyboard disclosure, legacy fragment and refresh. Results and manual review limits are recorded against the final PR head.
+- KRU-150 remains the existing reference; no new issue or competing implementation. This follow-up does not change brand fundamentals or require a Notion brand-summary update. Rollback restores the two template sections and their prior guard without changing routes or underlying project facts.

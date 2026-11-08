@@ -140,7 +140,7 @@ export default function SideQuestsPage() {
                   href="https://github.com/heyfunwhoa/security-market-map"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent underline"
+                  className="inline-flex min-h-11 items-center text-accent underline"
                 >
                   Security Market Map ↗
                 </a>
@@ -148,7 +148,7 @@ export default function SideQuestsPage() {
                   href="https://github.com/heyfunwhoa/technical-docs-platform"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent underline"
+                  className="inline-flex min-h-11 items-center text-accent underline"
                 >
                   Technical Documentation Foundation ↗
                 </a>

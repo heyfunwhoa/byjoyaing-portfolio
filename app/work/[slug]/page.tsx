@@ -145,7 +145,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               { id: "problem", label: "The problem" },
               { id: "contribution", label: "My contribution" },
               { id: "example", label: "One example" },
-              { id: "where-it-stands", label: "Current status" },
               { id: "outcome", label: "Evidence" },
               { id: "links", label: "Sources and links" },
               { id: "how-it-works", label: "How it works" },
@@ -233,10 +232,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             ) : null}
           </div>
 
-          <Block id="where-it-stands" title="Where it stands">
-            <p>{sales.maturityDetail}</p>
-          </Block>
-
           <Block
             id="outcome"
             title={
@@ -282,7 +277,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             className="my-6"
           >
             <div className="flex flex-col gap-6 text-base leading-7 text-muted">
-              <section className="flex flex-col gap-2">
+              <section id="where-it-stands" className="scroll-mt-24 flex flex-col gap-2">
                 <h3 className="font-medium text-foreground">Recorded stage</h3>
                 <p>{sales.maturityDetail}</p>
                 <p>{sales.workingToday}</p>
