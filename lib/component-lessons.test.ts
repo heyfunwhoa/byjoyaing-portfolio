@@ -162,3 +162,29 @@ test("data display comparison keeps cards, table, and metrics tied to the same f
   assert.match(page, /designLabAvailable\(\)/);
   assert.match(page, /notFound\(\)/);
 });
+
+test("dashboard lesson combines shared filters, summaries, chart and exact values", () => {
+  const source = readFileSync(
+    new URL("../components/design-lab/dashboard-composition-comparison.tsx", import.meta.url),
+    "utf8",
+  );
+  const page = readFileSync(
+    new URL("../app/design-lab/page.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(source, /export const dashboardFixture/);
+  assert.match(source, /export function dashboardRows/);
+  assert.match(source, /team === "All teams" \|\| item\.team === team/);
+  assert.match(source, /filtered\.filter\(/);
+  assert.match(source, /role="group" aria-label="Data presentation mode"/);
+  assert.match(source, /aria-pressed=/);
+  assert.match(source, /<figure/);
+  assert.match(source, /<figcaption/);
+  assert.match(source, /<table/);
+  assert.match(source, /scope="col"/);
+  assert.match(source, /scope="row"/);
+  assert.match(source, /synthetic/);
+  assert.match(page, /<DashboardCompositionComparison \/>/);
+  assert.match(page, /designLabAvailable\(\)/);
+  assert.match(page, /notFound\(\)/);
+});
