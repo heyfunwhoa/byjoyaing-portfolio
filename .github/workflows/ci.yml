@@ -73,7 +73,11 @@ jobs:
             echo 'run_build=true' >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          changed_files="$(git diff --name-only "$BASE_SHA" HEAD)"
+          # If the base commit cannot be compared, retain the full required build.
+          if ! changed_files="$(git diff --name-only "$BASE_SHA" HEAD)"; then
+            echo 'run_build=true' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           if [[ -n "$changed_files" ]] && ! grep -Ev '^docs/' <<< "$changed_files"; then
             echo 'Only docs/ files changed; skipping production build/browser steps.'
             echo 'run_build=false' >> "$GITHUB_OUTPUT"
