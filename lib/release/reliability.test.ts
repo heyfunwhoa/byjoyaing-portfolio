@@ -208,14 +208,13 @@ test("ignore command fails open and skips only an operational diff", () => {
   assert.equal(skipped.code, 0, skipped.stdout);
   assert.match(skipped.stdout, /skip:/);
 
-  // New preview branches may have no previous successful deployment SHA.
-  // Their immediately preceding commit can still identify a safe docs-only change.
+  // New preview branches without a prior successful deployment must fail open.
   const firstPreview = run({
     ...gitEnv, VERCEL_ENV: "preview", VERCEL_GIT_PREVIOUS_SHA: "",
     VERCEL_GIT_COMMIT_SHA: second,
   });
-  assert.equal(firstPreview.code, 0, firstPreview.stdout);
-  assert.match(firstPreview.stdout, /skip:/);
+  assert.equal(firstPreview.code, 1, firstPreview.stdout);
+  assert.match(firstPreview.stdout, /fail open/);
   const productionWithoutBaseline = run({
     ...gitEnv, VERCEL_ENV: "production", VERCEL_GIT_PREVIOUS_SHA: "",
     VERCEL_GIT_COMMIT_SHA: second,
