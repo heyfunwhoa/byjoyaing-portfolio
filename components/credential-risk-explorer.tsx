@@ -42,7 +42,7 @@ export function CredentialRiskExplorer() {
             <p className="mt-1 text-xs text-muted">Example: {source.example}</p>
             <a className="mt-2 inline-block text-sm text-accent underline underline-offset-4" href={source.reference} target="_blank" rel="noopener noreferrer">Read reference</a>
           </article>)}
-          <p className="text-xs text-muted">Illustrative sources, not live connectors. No credential data is sent to external services.</p>
+          <p className="text-xs text-muted">Explore illustrative source records. Your choices stay in this exercise.</p>
         </div>}
       </div>
       <fieldset className="mt-6 grid gap-4 sm:grid-cols-2">

@@ -11,7 +11,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = completePageMetadata({
   title: "LimaCharlie research brief",
   description:
-    "A source-grounded brief from one public LimaCharlie documentation page. Prototype, not a live account feed.",
+    "A source-grounded brief from one public LimaCharlie documentation page, with cited facts and labeled hypotheses.",
   robots: robotsNoindex,
 }, "/account-signal");
 
@@ -38,14 +38,13 @@ export default function AccountSignalPage() {
       <article className="flex flex-col gap-12 py-16">
         <header className="flex flex-col gap-4">
           <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/side-quests","label":"Side Quests"},{"label":"LimaCharlie research brief"}]} />
-          <Kicker>Prototype</Kicker>
+          <Kicker>Research brief</Kicker>
           <h1 className="font-display max-w-3xl text-4xl leading-[1.12] tracking-tight text-foreground sm:text-5xl">
             LimaCharlie, from one public documentation page
           </h1>
           <p className="max-w-2xl text-base leading-7 text-muted">
             This brief is built only from a saved snapshot. Verified lines are quotations.
             A hypothesis is an inference and is labeled. Missing business facts stay missing.
-            No paid search API and no language model ran for this page.
           </p>
         </header>
 

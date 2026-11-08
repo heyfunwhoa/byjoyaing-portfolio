@@ -20,7 +20,7 @@ test("primary navigation stays six items and Academy is reached through Side Que
   const academy = source("components/ai-academy/academy.tsx");
   assert.match(academy, /deeper learning experience/);
   assert.match(academy, /Side Quests is the way in/);
-  assert.match(academy, /"href":"\/side-quests"/);
+  assert.match(academy, /href:\s*"\/side-quests"/);
 });
 
 test("project pages lead with the problem, the contribution, and one example", () => {

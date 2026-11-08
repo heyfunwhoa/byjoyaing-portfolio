@@ -11,7 +11,7 @@ export const metadata: Metadata = completePageMetadata(
   {
     title: "Builder Academy",
     description:
-      "Choose a learning path through AI basics, practical building, research and verification. Find available lessons, guides and practice labs.",
+      "Start with the software development lifecycle or choose an AI, systems, security, or research path. Explore available lessons and practice labs.",
   },
   "/ai-academy",
 );

@@ -96,7 +96,7 @@ export const themes: FeedbackTheme[] = [
     status: "In review",
     summary: "Four notes ask for directory-backed access. They are not the same sentence, and they are not a shipped feature.",
     rationale: "Product has not accepted a commitment. The demo stops at a recommendation a person can confirm.",
-    owner: "Unassigned in this demo",
+    owner: "Unassigned",
     commitment: "None recorded. A pilot note mentioned SCIM. That sentence is not a ship date.",
   },
   {
@@ -108,7 +108,7 @@ export const themes: FeedbackTheme[] = [
     status: "Not reviewed",
     summary: "One request to move a digest from email to Slack.",
     rationale: "Volume is too thin to treat as a theme decision.",
-    owner: "Unassigned in this demo",
+    owner: "Unassigned",
     commitment: "None recorded.",
   },
 ];

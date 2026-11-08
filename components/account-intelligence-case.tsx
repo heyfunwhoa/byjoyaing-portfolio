@@ -45,7 +45,7 @@ function Node({
               : "rounded-full border border-dashed border-foreground/40 px-2 py-0.5 text-[11px] font-medium text-foreground"
           }
         >
-          {state === "demo" ? "In this demo" : "Planned"}
+          {state === "demo" ? "In this walkthrough" : "Planned"}
         </span>
       </div>
       <p className="mt-1 text-xs leading-5 text-muted">{detail}</p>
@@ -75,7 +75,7 @@ const columns = [
     title: "Data collection",
     body: "Assignments would arrive from territory mapping or be typed in, then sit in this app’s own database. Exa and Sumble are the research sources in the design. None of those connections run here.",
     nodes: [
-      { title: "Territory mapping", detail: "Would send account assignments. The partner page is a design, not a live webhook.", state: "planned" as const,
+      { title: "Territory mapping", detail: "Proposed account-assignment handoff from the partner workflow.", state: "planned" as const,
       },
       { title: "Manual entry", detail: "A rep could add an account when no assignment exists.", state: "planned" as const,
       },
@@ -103,7 +103,7 @@ const columns = [
     nodes: [
       { title: "Personal feed", detail: "The sample list in the walkthrough above.", state: "demo" as const,
       },
-      { title: "Claude draft", detail: "Planned. The demo swaps two local paragraphs instead.", state: "planned" as const,
+      { title: "Claude draft", detail: "Proposed drafting integration; this example offers two written alternatives.", state: "planned" as const,
       },
       { title: "Human review", detail: "A rep checks the source before anyone sends.", state: "demo" as const,
       },
@@ -164,7 +164,7 @@ export function AccountIntelligenceCase() {
         <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
           <div className="flex items-center justify-between gap-3 border-b border-border pb-3">
             <p className="text-xs font-medium tracking-wide text-muted">Account intelligence</p>
-            <p className="text-[11px] text-muted">Illustrative demo data</p>
+            <p className="text-[11px] text-muted">Example data</p>
           </div>
           <div className="mt-4 flex gap-6 text-sm">
             <p>
@@ -240,7 +240,7 @@ export function AccountIntelligenceCase() {
           From account assignment to a draft a person still has to send.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Four steps a rep would take. Territory mapping would decide which accounts belong here. This demo only shows when and why someone might reach out.
+          Explore four steps from account context to outreach. Use the source and timing to decide why a conversation would be relevant.
         </p>
         <div className="mt-8">
           <AccountIntelligenceWorkflow />
@@ -416,7 +416,7 @@ export function AccountIntelligenceCase() {
             <p className="text-xs font-medium text-muted">Territory and ownership</p>
             <p className="mt-2 text-lg font-semibold">Partner GTM Engine</p>
             <p className="mt-2 text-sm leading-6 text-muted">
-              The channel design for who owns an account. It would hand assignments to this feed. It is not deployed.
+              The channel design for who owns an account. It would hand assignments to this feed. Explore its workflow design.
             </p>
           </Link>
           <a href="#workflow" className="rounded-2xl border border-border p-5 hover:border-accent">

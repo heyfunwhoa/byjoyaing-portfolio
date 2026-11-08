@@ -26,7 +26,7 @@ function Label({ index, children }: { index: string; children: string }) {
 function Node({ title, detail, state,
 }: { title: string; detail: string; state: "field" | "demo" | "planned";
 }) {
-  const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this demo" : "Planned";
+  const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this walkthrough" : "Planned";
   const style =
     state === "field"
       ? "border-accent bg-accent text-accent-foreground"
@@ -45,13 +45,13 @@ function Node({ title, detail, state,
 const layers = [
   {
     title: "Source collection",
-    body: "Field briefs were written from public pages and deal notes. This site does not collect those sources.",
+    body: "Field briefs were written from public pages and deal notes.",
     nodes: [
       { title: "Official websites", detail: "Read by hand for briefs. Not crawled here.", state: "field" as const,
       },
-      { title: "Product documentation", detail: "Planned input. Not connected.", state: "planned" as const,
+      { title: "Product documentation", detail: "Proposed input.", state: "planned" as const,
       },
-      { title: "Release notes", detail: "Planned input. Not connected.", state: "planned" as const,
+      { title: "Release notes", detail: "Proposed input.", state: "planned" as const,
       },
       { title: "Public GitHub repositories", detail: "One cited URL. No GitHub API client.", state: "demo" as const,
       },
@@ -61,7 +61,7 @@ const layers = [
     title: "Change intelligence",
     body: "The walkthrough shows a hand-written pair of sentences. Nothing is scheduled, snapshotted, or classified by software.",
     nodes: [
-      { title: "Scheduled monitoring", detail: "Not built.", state: "planned" as const,
+      { title: "Scheduled monitoring", detail: "Proposed capability.", state: "planned" as const,
       },
       { title: "Source snapshots", detail: "Not stored.", state: "planned" as const,
       },
@@ -83,7 +83,7 @@ const layers = [
       },
       { title: "Approved findings", detail: "One teaching claim on this page.", state: "demo" as const,
       },
-      { title: "Recommendation review", detail: "A review queue is not built.", state: "planned" as const,
+      { title: "Recommendation review", detail: "Proposed review queue.", state: "planned" as const,
       },
     ],
   },
@@ -95,7 +95,7 @@ const layers = [
       },
       { title: "Battlecards", detail: "The sample brief in the walkthrough.", state: "demo" as const,
       },
-      { title: "Alerts", detail: "Not built.", state: "planned" as const },
+      { title: "Alerts", detail: "Proposed capability.", state: "planned" as const },
       { title: "Field feedback", detail: "A form that stays in the browser.", state: "demo" as const,
       },
       { title: "Change history", detail: "Not stored.", state: "planned" as const,
@@ -149,7 +149,7 @@ export function CompetitiveIntelligenceCase() {
         <div className="rounded-2xl border border-border bg-card p-5">
           <div className="flex items-center justify-between gap-3">
             <p className="text-xs font-medium tracking-wide text-muted">Intelligence workspace</p>
-            <p className="text-[11px] text-muted">Illustrative demo data</p>
+            <p className="text-[11px] text-muted">Example data</p>
           </div>
           <dl className="mt-4 grid grid-cols-3 gap-3 text-sm">
             <div>
@@ -233,7 +233,7 @@ export function CompetitiveIntelligenceCase() {
           From a competitor change to field execution.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Five steps in the browser. Providers are examples. Only TruffleHog has a reviewed public source in this sample. Nothing here monitors a site.
+          Explore five steps from source review to a field brief. The walkthrough uses example providers and a reviewed public TruffleHog source.
         </p>
         <div className="mt-8">
           <CompetitiveIntelligenceWorkflow />
@@ -257,15 +257,15 @@ export function CompetitiveIntelligenceCase() {
           <dl className="mt-3 grid gap-3 sm:grid-cols-3">
             <div>
               <dt className="text-sm font-semibold text-accent">Professional field system</dt>
-              <dd className="mt-1 text-sm leading-5 text-muted">Practices used with teams, not implemented as this app.</dd>
+              <dd className="mt-1 text-sm leading-5 text-muted">Briefs and review practices used with teams.</dd>
             </div>
             <div>
-              <dt className="text-sm font-semibold">In this demo</dt>
+              <dt className="text-sm font-semibold">In this walkthrough</dt>
               <dd className="mt-1 text-sm leading-5 text-muted">Illustrative behavior or sample content on this page.</dd>
             </div>
             <div>
               <dt className="text-sm font-semibold">Planned</dt>
-              <dd className="mt-1 text-sm leading-5 text-muted">Proposed capability. Not built or connected.</dd>
+              <dd className="mt-1 text-sm leading-5 text-muted">Proposed capability.</dd>
             </div>
           </dl>
         </div>
