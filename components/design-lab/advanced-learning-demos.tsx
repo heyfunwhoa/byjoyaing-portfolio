@@ -37,7 +37,7 @@ export function AdvancedGridDemo() {
       {visible.length === 0 ? <p role="status">No accounts match this view.</p> : view === "cards" ? (
         <ul className="grid gap-2">
           {visible.map(account => <li key={account.id} className="rounded-lg border border-border p-3">
-            <label className="flex items-center gap-2"><input type="checkbox" checked={selected.includes(account.id)} onChange={event => setSelected(current => event.target.checked ? [...current, account.id] : current.filter(id => id !== account.id))}/><strong>{account.name}</strong></label>
+            <label className="flex items-center gap-2"><input aria-label={`Select ${account.name}`} type="checkbox" checked={selected.includes(account.id)} onChange={event => setSelected(current => event.target.checked ? [...current, account.id] : current.filter(id => id !== account.id))}/><strong>{account.name}</strong></label>
             <p>{account.signals} signals · {account.status} · {account.owner}</p>
           </li>)}
         </ul>
@@ -68,8 +68,8 @@ export function WorkflowBuilderDemo() {
     <div className="grid gap-3 text-sm">
       <p className="text-xs text-muted">A local sequence builder. This does not run a workflow or contact any service.</p>
       <div className="flex flex-wrap gap-2">
-        <button className="min-h-11 rounded-lg border border-border px-3" aria-pressed={mode === "sequence"} onClick={() => setMode("sequence")}>Step path</button>
-        <button className="min-h-11 rounded-lg border border-border px-3" aria-pressed={mode === "outline"} onClick={() => setMode("outline")}>Accessible outline</button>
+        <button type="button" className="min-h-11 rounded-lg border border-border px-3" aria-pressed={mode === "sequence"} onClick={() => setMode("sequence")}>Step path</button>
+        <button type="button" className="min-h-11 rounded-lg border border-border px-3" aria-pressed={mode === "outline"} onClick={() => setMode("outline")}>Accessible outline</button>
       </div>
       <ol aria-label="Workflow stages" className={mode === "sequence" ? "flex flex-wrap items-center gap-2" : "grid gap-2"}>
         {steps.map((step, index) => <li key={step} className="flex items-center gap-2">
@@ -104,7 +104,10 @@ export function AgentActivityDemo() {
       <p className="text-xs text-muted">Fictional agent trace. Nothing is sent to a model, CRM, or outreach tool.</p>
       <ol className="grid gap-2" aria-label="Agent activity">
         {trace.map((item, index) => <li key={item.label} className="rounded-lg border border-border p-3">
-          <button type="button" aria-expanded={stage === index} className="min-h-11 w-full text-left font-medium" onClick={() => setStage(index)}>{index + 1}. {item.label} {stage === index ? "−" : "+"}</button>
+          <button type="button" aria-expanded={stage === index} className="flex min-h-11 w-full items-center justify-between gap-3 text-left font-medium" onClick={() => setStage(index)}>
+            <span>{index + 1}. {item.label}</span>
+            <span aria-hidden="true">{stage === index ? "−" : "+"}</span>
+          </button>
           {stage === index ? <p className="mt-1 text-muted">{item.detail}</p> : null}
         </li>)}
       </ol>
@@ -140,13 +143,13 @@ export function RuleBuilderDemo() {
           <select value={join} onChange={event => setJoin(event.target.value as "AND" | "OR")} className="min-h-11 rounded-lg border border-border bg-card px-2"><option>AND</option><option>OR</option></select>
         </label>
         {rules.map((rule, index) => <div key={index} className="flex flex-wrap items-end gap-2 rounded-lg border border-border p-2">
-          <label className="grid gap-1">Field
+          <label className="grid gap-1">Rule {index + 1} field
             <select value={rule.field} className="min-h-11 rounded-lg border border-border bg-card px-2" onChange={event => edit(index, event.target.value === "signals" ? { field: "signals", operator: "at-least", value: "1" } : { field: "status", operator: "equals", value: "Ready" })}>
               <option value="status">Status</option><option value="signals">Signal count</option>
             </select>
           </label>
           <span className="pb-3 text-xs">{rule.operator === "equals" ? "is" : "at least"}</span>
-          <label className="grid gap-1">Value
+          <label className="grid gap-1">Rule {index + 1} value
             {rule.field === "status" ? <select className="min-h-11 rounded-lg border border-border bg-card px-2" value={rule.value} onChange={event => edit(index, { ...rule, value: event.target.value })}><option>Ready</option><option>Review</option></select>
               : <input type="number" min={0} max={20} className="min-h-11 w-20 rounded-lg border border-border bg-card px-2" value={rule.value} onChange={event => edit(index, { ...rule, value: event.target.value })}/>}
           </label>
@@ -154,7 +157,7 @@ export function RuleBuilderDemo() {
         </div>)}
       </fieldset>
       <button type="button" className="min-h-11 rounded-lg border border-border px-3" onClick={() => setRules(current => [...current, { field: "signals", operator: "at-least", value: "2" }])}>Add condition</button>
-      <p role="status">{matches.length} matching accounts: {matches.map(account => account.name).join(", ") || "none"}.</p>
+      <p role="status">{matches.length} matching {matches.length === 1 ? "account" : "accounts"}: {matches.map(account => account.name).join(", ") || "none"}.</p>
     </div>
   );
 }
