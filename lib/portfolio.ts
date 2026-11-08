@@ -13,17 +13,17 @@ export type LifecyclePhase = (typeof lifecycle)[number];
 export type ProjectStatus = "field" | "prototype" | "designed" | "exploring";
 
 export const statusCopy: Record<ProjectStatus, string> = {
-  field: "Professional field system",
-  prototype: "Prototype",
-  designed: "Designed",
-  exploring: "Concept",
+  field: "Used professionally",
+  prototype: "Software project",
+  designed: "Workflow design",
+  exploring: "Idea",
 };
 
 export const statusHelp: Record<ProjectStatus, string> = {
-  field: "Used in real work as documents and practice. Not this software.",
-  prototype: "A sample you can inspect. Not a production application.",
-  designed: "A documented product. An interactive page is still a sample.",
-  exploring: "No completed design and no field deployment.",
+  field: "Resources and practices used with teams.",
+  prototype: "Code and examples you can inspect.",
+  designed: "A documented workflow and operating model.",
+  exploring: "A problem and an approach to explore.",
 };
 
 export const avatar = {
@@ -58,7 +58,7 @@ export const skills = [
   "Competitive selling with source-backed claims",
   "Channel and partner motions",
   "Enablement a new rep can finish without me",
-  "Working prototypes when a spreadsheet stops being enough",
+  "Building tools when a spreadsheet stops being enough",
 ];
 
 export type TechStance = "built" | "professional" | "learning";
@@ -90,19 +90,19 @@ export const techCategories = [
         id: "vercel",
         name: "Vercel",
         stance: "built",
-        note: "Hosts this site. It does not host a separate intelligence app.",
+        note: "Hosts this site.",
       },
       {
         id: "cursor",
         name: "Cursor",
         stance: "professional",
-        note: "Where I write. Not a feature of the site.",
+        note: "Where I write.",
       },
       {
         id: "aws",
         name: "AWS",
         stance: "learning",
-        note: "Cloud Practitioner and AI Practitioner. This site does not call AWS.",
+        note: "Cloud Practitioner and AI Practitioner.",
       },
     ],
   },
@@ -120,7 +120,7 @@ export const techCategories = [
         id: "linkedin",
         name: "LinkedIn / Sales Navigator",
         stance: "professional",
-        note: "Account research in the field. Not connected to this site.",
+        note: "Account research in the field.",
       },
     ],
   },
@@ -162,7 +162,7 @@ export const techCategories = [
         id: "slack",
         name: "Slack",
         stance: "professional",
-        note: "Where competitive notes and handoffs actually moved. Not integrated here.",
+        note: "Where competitive notes and handoffs actually moved.",
       },
       {
         id: "resend",
@@ -181,7 +181,7 @@ export const techCategories = [
 ] as const;
 
 export const toolsFit =
-  "Built with means the package or host is in this repository and you can see the result on the site. Used professionally means I sold with it. Learning means I have not shipped it here. A name in a case-study sketch is not a completed integration. The GTM logo row is a field collection, not the verified Side Quest stack.";
+  "Built with means the package or host is in this repository and you can see the result on the site. Used professionally means I sold with it. Learning identifies tools I am exploring. Project architecture notes describe proposed integrations; each Side Quest lists its verified stack.";
 
 export const aiLoop = [
   {
@@ -193,7 +193,7 @@ export const aiLoop = [
     body: "If a line is generated, it has to come from text I retrieved. Missing stays not evaluated.",
   },
   {
-    title: "Not built here",
+    title: "Proposed capabilities",
     body: "There is no database write and no scheduled ingest in this repository.",
   },
   {
@@ -203,7 +203,7 @@ export const aiLoop = [
 ];
 
 export const bio =
-  "I sell enterprise cybersecurity across application security, cloud, data, threat intelligence, network security, and developer security. I own complex cycles with security, engineering, and partner stakeholders, and turn recurring questions into briefs, playbooks, and tools other people can use. Some of that work is material a team already used. Some of it is a working prototype. Some of it is a design I have not shipped as software.";
+  "I sell enterprise cybersecurity across application security, cloud, data, threat intelligence, network security, and developer security. I own complex cycles with security, engineering, and partner stakeholders, and turn recurring questions into briefs, playbooks, and tools other people can use. I share that work through practical resources, workflow designs and software projects.";
 
 export const targetRolesPrimary = [
   "Enterprise sales",
@@ -214,7 +214,7 @@ export const targetRolesPrimary = [
 
 export const proof = [
   {
-    value: "1 prototype",
+    value: "1 public catalog",
     label:
       "Detector Coverage Atlas — public catalog you can inspect. Gray is not evaluated, never a confirmed gap.",
   },
@@ -226,7 +226,7 @@ export const proof = [
   {
     value: "5 designed",
     label:
-      "Operating models for launch, enablement, partners, account signal, and feedback — not claimed as live products.",
+      "Operating models for launch, enablement, partners, account signal and feedback.",
   },
 ];
 
@@ -244,7 +244,7 @@ export const loop = [
   "Customer problem",
   "Product / GTM insight",
   "System design",
-  "Prototype",
+  "Build and test",
   "Measurable impact",
 ];
 
@@ -446,7 +446,7 @@ export const projects: Project[] = [
       "Computed comparison views vs. stored matrix rows.",
     ],
     prototype:
-      "Phase 1 in progress: parser tested on the real public TruffleHog repo; 14 enriched detectors ready for the Next.js table. Independent/unofficial. Separate from Truffle Camp and from any company-owned Atlas. The parser is not in this repository.",
+      "Parser tested on the public TruffleHog repository; 14 enriched detectors prepared for the Next.js table. Independent/unofficial. Separate from Truffle Camp and from any company-owned Atlas. The parser is not in this repository.",
     next: [
       "Detector detail with verification profiles and conditional risk language.",
       "Betterleaks and Kingfisher only after rule-file review; GitGuardian and GitHub Secret Scanning stay manual-doc.",
@@ -562,7 +562,7 @@ export const projects: Project[] = [
       "Human approval vs. automated outreach.",
     ],
     prototype:
-      "PRD and operating model. Prototype next: 5–10 historical or synthetic releases against a small account set. Ask: who cares, why, which accounts, what should we do?",
+      "PRD and operating model. Next exercise: 5–10 historical or synthetic releases against a small account set. Ask: who cares, why, which accounts, what should we do?",
     next: [
       "Standardize the internal release template and tags.",
       "Manual Salesforce / CS / POC matching for Tier 1.",
@@ -671,7 +671,7 @@ export const projects: Project[] = [
       "Local fixtures so Camp stays playable if Notion is down.",
     ],
     prototype:
-      "PRD complete. No public repository. Independent training product — not live verification, not customer data. Atlas integration would be a curated export, not a merge.",
+      "PRD complete. No public repository. Independent training curriculum using fictional examples. Atlas integration would be a curated export, not a merge.",
     next: [
       "One Dig Site mission end to end, then Verification Lab and Handoff Desk.",
       "Import one curated Atlas detector record via schema.",
@@ -766,7 +766,7 @@ export const projects: Project[] = [
       "Depth on a few competitors over shallow coverage of everyone.",
     ],
     prototype:
-      "Used in the field: battlecards and briefs. Monitoring, snapshots, and alerts are designed, not built.",
+      "Battlecards and briefs used in the field, with proposed monitoring, snapshots and alerts.",
     next: [
       "Scheduled source snapshots.",
       "Change detection with human review.",
@@ -854,7 +854,7 @@ export const projects: Project[] = [
       "Account context over volume-only scoring.",
     ],
     prototype:
-      "Designed. The field loop exists; the intelligence layer is not a shipped app.",
+      "Documented feedback workflow, informed by field practice.",
     next: [
       "CRM and call-note ingestion.",
       "Deduplicated themes.",
@@ -917,7 +917,7 @@ export const projects: Project[] = [
     hypothesis:
       "If prioritization is explicit, the company should waste less build time on low-confidence bets.",
     tradeoffs: ["Simple scoring over a model that hides the judgment."],
-    prototype: "Next. Not started as software.",
+    prototype: "Workflow outline and requirements.",
     next: [
       "Wire inputs from feedback and competitive systems once those MVPs exist.",
     ],
@@ -1043,7 +1043,7 @@ export const projects: Project[] = [
       primary:
         "Single rep, personal feed (v1 is not a multi-rep admin console)",
       secondary:
-        "Future: Nooks/Outreach as a handoff, not a live v1 integration",
+        "Proposed handoff to Nooks or Outreach",
       job: "See assigned-account signals and draft outreach that cites the specific event.",
     },
     evidence:
@@ -1199,7 +1199,7 @@ export const projects: Project[] = [
       "Win rate is the rate on opportunities created, not coverage on a live open-pipeline snapshot.",
     ],
     prototype:
-      "Separate app in gtm-revenue-os. Not embedded on this site. In-year new logos do not churn inside the planning year, so December matches the annual bridge. Gross retention above 100% is rejected.",
+      "Implementation: gtm-revenue-os. In-year new logos do not churn inside the planning year, so December matches the annual bridge. Gross retention above 100% is rejected.",
     next: [
       "The operating plan can already copy AE count, quota, attainment, ramp, and ending target into this model. That copy changes planned capacity only.",
     ],
@@ -1290,7 +1290,7 @@ export const projects: Project[] = [
       "A stage-history table costs writes on every move. Reporting off the current stage would be shorter and wrong.",
     ],
     prototype:
-      "Separate app in gtm-revenue-os. Not embedded on this site. Account potential is excluded from the plan-versus-execution comparison.",
+      "Implementation: gtm-revenue-os. Account potential is excluded from the plan-versus-execution comparison.",
     next: [
       "When a CRM sync arrives, keep stage history as the source of truth. Do not backfill win rate from the latest stage.",
     ],
@@ -1383,7 +1383,7 @@ export const projects: Project[] = [
       "The research feed and this revenue database stay separate so either can be down.",
     ],
     prototype:
-      "Separate app in gtm-revenue-os. Not embedded on this site. Accepting Larkspur Regional Health, a synthetic review, creates an unassigned account with $380,000 potential and does not insert an opportunity.",
+      "Implementation: gtm-revenue-os. Accepting Larkspur Regional Health, a synthetic review, creates an unassigned account with $380,000 potential and does not insert an opportunity.",
     next: [
       "Receive only reviewed accounts that include a source note.",
       "Leave live signal polling and sequencer push on the Account Intelligence design.",
@@ -1455,7 +1455,7 @@ export const projects: Project[] = [
     hypothesis:
       "If campaigns start from product and customer signals, outreach should be more relevant and attribution should improve.",
     tradeoffs: ["One measured experiment over a spray of sequences."],
-    prototype: "Next. Not started as software.",
+    prototype: "Workflow outline and requirements.",
     next: ["Connect to release and feedback signals once those systems exist."],
     businessValue: [
       "Faster GTM experimentation",
@@ -1524,7 +1524,7 @@ export const projects: Project[] = [
       "Reviewed digest over real-time unfiltered alerts.",
       "Deterministic source list over open-ended crawling.",
     ],
-    prototype: "Next. Not started as software.",
+    prototype: "Workflow outline and requirements.",
     next: ["Source list", "Review queue", "Account tagging"],
     businessValue: [
       "Faster market awareness",

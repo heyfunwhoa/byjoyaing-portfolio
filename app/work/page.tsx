@@ -124,7 +124,7 @@ export default function WorkPage() {
       <section className="py-12 sm:py-16" aria-labelledby="side-quest-demonstrations-heading">
         <p className="editorial-eyebrow text-accent">Side Quests / After the professional stories</p>
         <h2 id="side-quest-demonstrations-heading" className="mt-2 font-display text-3xl">
-          Two demonstrations you can inspect
+          Two workflows you can explore
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
           These are independent experiments, not employer outcomes. The account

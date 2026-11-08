@@ -82,6 +82,8 @@ These are page-local systems, not the editorial design system. Do not generalize
 
 ## Not built, and not approved to build yet
 
+Academy navigation refinement in PR #238: `LearningPathPicker`, `LessonLibrary`, and `LessonOutline` are scoped compositions of the existing native disclosure, selector, search/empty-state, and in-page contents patterns. They share the existing lesson/path data and installed Lucide icons. See the November 8 KRU-178 record in [component-adoption.md](component-adoption.md) for responsive behavior, state boundaries, checks and rollback. Branch implementation is not a release claim.
+
 | Requested name | Nearest existing piece | Decision for now |
 | --- | --- | --- |
 | EditorialHero | Homepage hero in `app/page.tsx` | Leave on the page until a second page needs it |
@@ -213,3 +215,8 @@ Implementation checks do not prove rendered usability. Verify 320/375/390/430px,
 ### Branching practice, quiz and hex-map pilots (draft)
 
 `DiscoveryPilot` lazy-loads the InkJS conversation; `LearningChallenge` uses react-quiz-component's headless hook and a native HTML/CSS hex selector with equivalent labeled path controls. The unmaintained react-hexgrid dependency was removed; see [dependency review](gameful-dependency-review-2026-11-07.md). Local GamefulWorkbench only; GTM OS #116 owns the discovery consumer. See gameful-adoption.md for pinned versions, dependency rationale, license notices, boundaries, tests and rollback. Not approved public components.
+
+
+### Frontend lesson enrichment (PR #238 preview)
+
+`FrontendLesson` composes embedded `MissionLayout` (Understand / See / Try / Explain), `FrontendExample` (local Radix Tabs) and `FrontendGlossary` (local Radix Sheet). One existing lesson, existing content, no dependency or curriculum expansion. Exact public import exceptions are scoped to the two new wrappers. [Adoption and verification](../academy/FRONTEND-PILOT.md) include state retention, contained scroll, keyboard and modal behavior. Owner/learner acceptance remains open; this entry does not claim production release.

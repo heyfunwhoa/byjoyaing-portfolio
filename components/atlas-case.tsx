@@ -78,7 +78,7 @@ export function AtlasCase() {
           Detector Coverage Atlas is my independent research and visualization project. Its detector facts are derived from public TruffleHog source code at pinned revisions; the TruffleHog detector engine and its implementations belong to their upstream project and contributors. This portfolio&apos;s comparison is a small static sample, not the full Atlas ingestion application.
         </p>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          The upstream TruffleHog v3 repository identifies AGPL-3.0 as its license. Reading and attributing source is different from copying or modifying covered code. A future fork to experiment with Go detectors is planned, not implemented.
+          The upstream TruffleHog v3 repository identifies AGPL-3.0 as its license. Reading and attributing source is different from copying or modifying covered code. A future fork could explore Go detectors.
         </p>
         <div className="mt-5 flex flex-wrap gap-5 text-sm">
           <a href="https://github.com/trufflesecurity/trufflehog" target="_blank" rel="noopener noreferrer" className="text-accent underline">Original TruffleHog project ↗</a>
@@ -96,7 +96,7 @@ export function AtlasCase() {
           <li>Notes elsewhere mention 910 parsed TruffleHog records and 14 enriched. Those rows are not in this table.</li>
         </ul>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          A later version would read public detector files at a pinned commit and leave unreviewed cells gray. That code is not here. This page does not call GitHub, and it does not refresh itself. It is not a production scanner and not a Truffle Security product.
+          Filter the example catalog and inspect the source notes. Unreviewed cells stay gray. The table reflects a fixed set of reviewed examples, maintained independently from Truffle Security.
         </p>
         <RelatedWork slug="detector-coverage-atlas" />
       </section>

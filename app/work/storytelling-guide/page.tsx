@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = completePageMetadata({
   title: "Two Ways to Tell the Work",
-  description: "A demonstration of distinct editorial templates for commercial leadership and independently built software.",
+  description: "Editorial templates for commercial leadership and independently built software.",
   robots: robotsNoindex,
 }, "/work/storytelling-guide");
 
@@ -18,7 +18,7 @@ export default function StorytellingGuide() {
     <CollectionBreadcrumb items={[{ href: "/", label: "Home" }, { href: "/work", label: "Work" }, { label: "Storytelling Guide" }]} />
     <p className="editorial-eyebrow mt-4 text-accent">Portfolio design / Editorial templates</p>
     <h1 className="editorial-title mt-3">Two kinds of work. Two ways to tell the story.</h1>
-    <p className="editorial-intro my-6 text-muted">This page demonstrates reusable case-study structures using fictional examples. They are not customer outcomes, employment claims or deployed products.</p>
+    <p className="editorial-intro my-6 text-muted">Explore two case-study structures through fictional examples: a commercial decision and a software project.</p>
     <div className="grid gap-8">
       <WorkStoryTemplate story={{
         title:"A complex enterprise decision",
@@ -30,13 +30,13 @@ export default function StorytellingGuide() {
         evidence:["Illustrative stakeholder map","Synthetic evaluation milestones","Example decision criteria"],
         outcomes:["A clear decision framework, not a claimed closed deal"],
         lessons:["Separate individual ownership from team results before publishing a number.","A framework is not a substitute for the deal."],
-        caveat:"Demonstration only; no actual customer information or invented revenue figures.",
+        caveat:"Fictional example for practicing a case-study structure.",
       }} />
       <BuildStoryTemplate story={{
-        title:"An evidence-backed research prototype",
+        title:"An evidence-backed research project",
         stage:"Illustrative concept",
         problem:"How might an analyst connect security detector facts to market categories without treating marketing as verification?",
-        motivation:"The useful question showed up in real selling. The prototype exists to learn the shape of an answer, not to claim a product.",
+        motivation:"The question starts in a sales conversation and becomes a structured research workflow.",
         architecture:"A public-safe data registry maps source IDs, dates, technical methods and limitations to each concept.",
         sources:["Fictional source metadata","Public standards and repository documentation only"],
         implementation:["A typed model for claims and provenance","A small educational interface"],

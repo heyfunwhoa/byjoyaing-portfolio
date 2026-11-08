@@ -99,7 +99,7 @@ test("competitive architecture reads as four stages without cramped columns", as
     await expect(disclosure).toHaveAttribute("open", "");
     const legend = disclosure.locator('[aria-label="Architecture status legend"]');
     await expect(legend).toBeVisible();
-    for (const status of ["Professional field system", "In this demo", "Planned"]) {
+    for (const status of ["Professional field system", "In this walkthrough", "Planned"]) {
       await expect(legend.getByText(status, { exact: true })).toBeVisible();
     }
     const stages = disclosure.getByRole("list", { name: "Proposed intelligence architecture stages" });

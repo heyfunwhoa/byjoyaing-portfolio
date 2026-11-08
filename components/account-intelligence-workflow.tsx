@@ -40,7 +40,7 @@ function DemoFrame({
     <div className="overflow-hidden rounded-2xl border border-border bg-[#f7f4ee] text-foreground">
       <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
         <p className="text-xs font-medium tracking-wide text-muted">{title}</p>
-        <p className="text-[11px] text-muted">Illustrative demo data</p>
+        <p className="text-[11px] text-muted">Example data</p>
       </div>
       <div className="p-4">{children}</div>
     </div>
@@ -139,7 +139,7 @@ export function AccountIntelligenceWorkflow() {
             <div className="mb-4 flex flex-wrap gap-4 text-sm">
               <p>
                 <span className="block text-lg font-semibold">{demoAccounts.length}</span>
-                <span className="text-muted">Accounts in this demo</span>
+                <span className="text-muted">Example accounts</span>
               </p>
               <p>
                 <span className="block text-lg font-semibold">{demoSignals.length}</span>
@@ -149,7 +149,7 @@ export function AccountIntelligenceWorkflow() {
             <div className="overflow-x-auto">
               <table className="w-full min-w-[32rem] text-left text-sm">
                 <caption className="sr-only">
-                  Illustrative assigned accounts. Not a live territory.
+                  Fictional account assignments for this walkthrough.
                 </caption>
                 <thead className="text-[11px] font-medium text-muted">
                   <tr>
@@ -164,7 +164,7 @@ export function AccountIntelligenceWorkflow() {
                     <tr key={item.id} className="border-t border-border">
                       <td className="py-3 pr-3 font-medium">{item.name}</td>
                       <td className="py-3 pr-3 text-muted">{item.industry}</td>
-                      <td className="py-3 pr-3">{signalsForAccount(item.id).length} in demo</td>
+                      <td className="py-3 pr-3">{signalsForAccount(item.id).length} in this example</td>
                       <td className="py-3">
                         <button
                           type="button"
@@ -216,7 +216,7 @@ export function AccountIntelligenceWorkflow() {
                   className="link-rule font-medium text-foreground"
                   onClick={() => setAccountFilter("all")}
                 >
-                  Show all demo accounts
+                  Show all example accounts
                 </button>
               </p>
             ) : null}
@@ -276,7 +276,7 @@ export function AccountIntelligenceWorkflow() {
                   <dd className="text-muted">{signal.observed}</dd>
                 </div>
                 <div>
-                  <dt className="font-medium">Published in this demo</dt>
+                  <dt className="font-medium">Example published date</dt>
                   <dd className="text-muted">{signal.date}</dd>
                 </div>
                 <div>

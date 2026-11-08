@@ -37,7 +37,7 @@ test("review is independent of checks and practice, and does not gate navigation
     .click();
   await expect(
     page.getByRole("heading", {
-      name: "Privacy, security and human oversight",
+      name: "From rules to AI agents",
       exact: true,
     }),
   ).toBeFocused();
@@ -88,10 +88,10 @@ test("builder paths, prerequisites and planned resources remain independently re
     page.getByText("Partly available · guided tutorials", { exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByText("Planned · Connected Systems", { exact: true }),
+    page.getByText("Partly available · demos and roadmap", { exact: true }),
   ).toBeVisible();
   await page
-    .getByRole("link", { name: "View the systems roadmap", exact: true })
+    .getByRole("link", { name: "Connected Systems", exact: true })
     .click();
   await expect(
     page.getByRole("heading", {
@@ -134,13 +134,13 @@ test("path switching clears stale answers and links to existing practice", async
   await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page
     .getByRole("button", {
-      name: "Start this path: Build and release safely",
+      name: "Start this path: Start here: Build software from idea to release",
       exact: true,
     })
     .click();
   await expect(
     page.getByRole("heading", {
-      name: "Reading code, files, JSON and YAML",
+      name: "From idea to verified release",
       exact: true,
     }),
   ).toBeVisible();
@@ -155,10 +155,41 @@ test("lesson sequence supports keyboard next and previous without completing a q
   await page.goto("/ai-academy");
   await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page.getByRole("button", { name: "Start this path: Start with AI basics", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "AI, models and assistants", exact: true })).toBeFocused();
   const sequence = page.getByRole("navigation", { name: "Lesson sequence" });
   await expect(sequence.getByRole("button", { name: /Previous:/ })).toHaveCount(0);
   await sequence.getByRole("button", { name: /^Next:/ }).press("Enter");
-  await expect(page.getByRole("heading", { name: "Privacy, security and human oversight", exact: true })).toBeFocused();
+  await expect(page.getByRole("heading", { name: "From rules to AI agents", exact: true })).toBeFocused();
   await sequence.getByRole("button", { name: /Previous:/ }).press("Enter");
   await expect(page.getByRole("heading", { name: "AI, models and assistants", exact: true })).toBeFocused();
+});
+
+test("systems path reaches the recovery lesson and its written practice", async ({ page }) => {
+  await page.goto("/ai-academy");
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
+  await page.getByRole("button", { name: "Start this path: Connect systems and recover failures", exact: true }).click();
+  await page.getByRole("navigation", { name: "Selected learning path" }).getByRole("button", { name: "What happens when a background job fails?", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "What happens when a background job fails?", exact: true })).toBeFocused();
+  await expect(page.getByRole("region", { name: "Lesson prerequisites" })).toContainText("Databases: branching, backups, and platform decisions");
+  await expect(page.getByRole("link", { name: "Explore related webhook and access demos", exact: true })).toHaveAttribute("href", "/ai-academy/systems");
+  await expect(page.getByRole("link", { name: "Read the recovery exercise and answer key ↗", exact: true })).toHaveAttribute("href", /background-job-recovery\.md$/);
+  const check = page.getByRole("group", { name: "Knowledge check" });
+  await check.getByRole("radio", { name: "Repeat every write because there was no acknowledgement.", exact: true }).check();
+  await expect(check.getByRole("status")).toContainText("A missing acknowledgement does not prove a write failed.");
+  await check.getByRole("radio", { name: "Delete all failed jobs so the dashboard is green.", exact: true }).check();
+  await expect(check.getByRole("status")).toContainText("Deleting failed jobs hides the evidence.");
+  await check.getByRole("radio", { name: "Check the stable operation key and recorded result before repeating an effect.", exact: true }).check();
+  await expect(check.getByRole("status")).toContainText("The stable operation key and saved result");
+});
+
+test("SDLC orientation is the first recommended lesson and navigates to privacy", async ({ page }) => {
+  await page.goto("/ai-academy");
+  await expect(page.getByRole("heading", { name: "From idea to verified release", exact: true })).toBeVisible();
+  await page.getByText(/^Explore learning paths \(\d+\)$/).click();
+  await page.getByRole("button", { name: "Start this path: Start here: Build software from idea to release", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "From idea to verified release", exact: true })).toBeFocused();
+  const path = page.getByRole("navigation", { name: "Selected learning path" });
+  await expect(path.locator("li").first()).toContainText("From idea to verified release");
+  await page.getByRole("navigation", { name: "Lesson sequence" }).getByRole("button", { name: /^Next:/ }).click();
+  await expect(page.getByRole("heading", { name: "Privacy, security and human oversight", exact: true })).toBeFocused();
 });

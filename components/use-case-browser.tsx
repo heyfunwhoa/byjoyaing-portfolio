@@ -50,7 +50,7 @@ export function UseCaseBrowser() {
             id="maturity-filter-label"
             className="text-sm font-medium text-foreground"
           >
-            Show by maturity
+            Explore by format
           </p>
           <div
             role="group"
@@ -60,7 +60,7 @@ export function UseCaseBrowser() {
             {maturityFilters.map((filter) => {
               const selected = maturity === filter;
               const label =
-                filter === "all" ? "All maturities" : statusCopy[filter];
+                filter === "all" ? "All formats" : statusCopy[filter];
               return (
                 <button
                   key={filter}

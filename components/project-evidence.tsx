@@ -8,7 +8,7 @@ const evidence: Record<DirectoryPreview, { label: string; caption: string }> = {
   },
   competitive: {
     label: "Illustrative field brief",
-    caption: "A sample research brief explaining source-review practices. It is not a live competitive monitoring service.",
+    caption: "A sample research brief explaining source-review practices.",
   },
   account: {
     label: "Fictional account scenario",
