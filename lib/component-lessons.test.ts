@@ -53,7 +53,7 @@ test("every lesson has the teaching fields and a working demo", () => {
     }
     assert.equal(lesson.source.startsWith("https://"), true, lesson.id);
     assert.ok(sourceHosts.has(new URL(lesson.source).hostname), lesson.source);
-    assert.match(explorer, new RegExp(`\\n  ${lesson.id}:`));
+    assert.match(explorer, new RegExp(`\\n  ["\x27]?${lesson.id}["\x27]?:`));
     if (lesson.kind === "concept") {
       assert.equal(lessonTrack(lesson), "Foundations");
       assert.equal(lesson.catalogId, undefined, lesson.id);
@@ -85,7 +85,7 @@ test("lesson search matches a task and a project without saving progress", () =>
   );
   assert.deepEqual(
     lessonsForExplorer("Components", "pipeline").map((lesson) => lesson.id),
-    ["table"],
+    ["table", "advanced-grid"],
   );
   assert.equal(lessonsForExplorer("All", "no-such-lesson").length, 0);
   assert.equal(
