@@ -123,3 +123,19 @@ Use the existing Field Notes authoring/publication boundaries. The two-guide Key
 - AC-03: Existing guide destinations and the Keystatic two-guide contract remain intact; superseded topic-only placeholders are removed while complementary strategic account planning and ICP/segmentation framework topics remain. No fabricated outcomes, new dependencies, CMS schema, integrations or private records.
 
 Check results and limitations are recorded in the owning PR. An automated viewport or CSS zoom check is not a real-device or assistive-technology conformance review. Rollback is a revert of this focused change.
+
+### Focused browser coverage and owner review
+
+`tests/site/field-notes-playbooks.spec.ts` adds five scenarios to the existing production-build browser suite. It checks all 18 disclosures at 375, 768 and 1280px with reduced motion, natural Tab order between connected links and summaries, visible keyboard outlines, Enter/Space activation, control target sizes and closed/expanded horizontal reflow. It also follows each distinct internal project destination and both linked guides, returns to Field Notes, and checks native disclosure use with JavaScript disabled. The external Security Market Map URL is checked without navigating to it.
+
+The suite uses the existing CI/browser configuration. It adds no workflow, dependency, credential, preview bypass or recording. Results belong to the exact PR head and are recorded in PR #289. This is automated behavior evidence, not manual visual, contrast, screen-reader or 200% browser-zoom approval.
+
+For the remaining owner review, open the preview from PR #289 while signed into Vercel:
+
+1. Scan the closed cards on phone and desktop. Confirm the purpose, connected work and outline action are easy to find.
+2. Open Territory planning and Event marketing. Decide whether the level of detail represents the intended public portfolio voice.
+3. At 200% browser zoom, expand a card and follow its project link. Check readability, clipping and the return journey. Narrow-viewport automation is not a substitute for this check.
+4. Review the focus indicator, text contrast and disclosure announcements with the intended browser and assistive technology.
+5. Record the reviewed commit, observed issues and content approval in the existing PR. A successful automated run alone does not record owner acceptance.
+
+If these checks reveal a defect, fix it within this PR and rerun the relevant checks. Expansion into worked examples begins with the already named territory, outreach, discovery and event artifacts; the remaining outlines can stay as useful starting points.
