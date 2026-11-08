@@ -7,6 +7,7 @@ import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
 import { LearningChecksPreview } from "@/components/design-lab/learning-checks-preview";
 import { ComponentOptions } from "@/components/design-lab/component-options";
 import { ComponentLearning } from "@/components/design-lab/component-learning";
+import { AccountWorkflowWorkbench } from "@/components/design-lab/account-workflow-workbench";
 import { FormPatternComparison } from "@/components/design-lab/form-pattern-comparison";
 import { DataDisplayComparison } from "@/components/design-lab/data-display-comparison";
 import { DashboardCompositionComparison } from "@/components/design-lab/dashboard-composition-comparison";
@@ -164,6 +165,7 @@ export default function DesignLabPage() {
         <DataDisplayComparison />
         <DashboardCompositionComparison />
         <NavigationPatternComparison />
+        <AccountWorkflowWorkbench />
 
         <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">
           <ComponentOptions />
