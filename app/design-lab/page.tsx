@@ -6,6 +6,7 @@ import { GamefulWorkbench } from "@/components/design-lab/gameful-workbench";
 import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
 import { LearningChecksPreview } from "@/components/design-lab/learning-checks-preview";
 import { ComponentOptions } from "@/components/design-lab/component-options";
+import { ComponentLearning } from "@/components/design-lab/component-learning";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
@@ -153,6 +154,8 @@ export default function DesignLabPage() {
         </section>
 
         <CreativeRecipes />
+
+        <ComponentLearning />
 
         <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">
           <ComponentOptions />
