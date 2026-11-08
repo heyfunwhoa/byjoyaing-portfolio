@@ -8,7 +8,6 @@ import { PageMain } from "@/components/page-main";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
-import { StatusBadge } from "@/components/status-badge";
 
 function Arrow({ direction }: { direction: "right" | "down" }) {
   const horizontal = direction === "right";
@@ -129,9 +128,7 @@ export function CustomerFeedbackCase() {
           <WorkCaseBreadcrumb slug="customer-feedback-intelligence" />
           <div className="flex flex-wrap items-center gap-3">
             <ProjectKindLabel slug="customer-feedback-intelligence" />
-            <p className="text-sm font-medium text-muted">Project 02</p>
             <Label index="01">Product and GTM systems</Label>
-            <StatusBadge status="designed" />
           </div>
           <div>
             <p className="text-sm font-medium text-muted">Customer Feedback Intelligence</p>
@@ -140,24 +137,24 @@ export function CustomerFeedbackCase() {
             </h1>
           </div>
           <p className="max-w-xl text-base leading-7 text-muted">
-            An intelligence workspace that would connect feedback across Sales, Customer Success, and Support to show recurring product needs, account context, and commercial impact. From the first request to a product decision and a customer follow-up, the design keeps a traceable loop. This page is a sample. It does not read live systems.
+            An intelligence workspace for feedback across Sales, Customer Success, and Support: recurring product needs, account context, and a follow-up a person still has to review.
           </p>
           <dl className="grid gap-4 text-sm sm:grid-cols-2">
             <div>
-              <dt className="font-medium">Role</dt>
-              <dd className="mt-1 leading-6 text-muted">Product strategy, GTM systems, and workflow design.</dd>
+              <dt className="font-medium">Contribution</dt>
+              <dd className="mt-1 leading-6 text-muted">I designed this review from the sales-to-product loop I use in the field.</dd>
             </div>
             <div>
-              <dt className="font-medium">Stage</dt>
-              <dd className="mt-1 leading-6 text-muted">Designed. The field loop at Truffle is not this app.</dd>
+              <dt className="font-medium">Intended value</dt>
+              <dd className="mt-1 leading-6 text-muted">Keep the account attached to the theme so a person can still review the follow-up.</dd>
             </div>
           </dl>
           <div className="flex flex-col gap-3 sm:flex-row">
             <a href="#workflow" className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
-              Explore the workflow
+              Try the example
             </a>
             <a href="#architecture" className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium">
-              View technical architecture
+              How it works
             </a>
           </div>
         </div>

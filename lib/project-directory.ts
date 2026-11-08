@@ -49,6 +49,10 @@ type DirectorySource = {
   slug: CaseStudySlug;
   categories: Exclude<DirectoryCategory, "All work">[];
   role: string;
+  /** Useful limit for the optional How it works disclosure. */
+  scope: string;
+  /** One sample-data note when the summary does not already say so. */
+  sampleNote: string | null;
   technologies: string;
   featuredOrder: number | null;
   preview: DirectoryPreview;
@@ -61,6 +65,8 @@ const sources: DirectorySource[] = [
     slug: "detector-coverage-atlas",
     categories: ["Technical Systems & AI"],
     role: "I built the 3-by-3 sample and the rule that an unreviewed cell stays gray.",
+    scope: "The comparison is the table on the case study. A later parser is described there and is not part of this page.",
+    sampleNote: null,
     technologies: "Next.js, React, and TypeScript. The rows live in this repository.",
     featuredOrder: 3,
     preview: "atlas",
@@ -70,8 +76,10 @@ const sources: DirectorySource[] = [
   {
     slug: "competitive-intelligence-engine",
     categories: ["Account & Market Intelligence", "Sales Enablement & Productivity"],
-    role: "I wrote the briefs and taught them. The monitor on the case study is a sample.",
-    technologies: "Field documents, Salesforce, and Slack. This page is a Next.js sample, not a crawler.",
+    role: "I wrote the briefs and taught them.",
+    scope: "The case study walkthrough stays in the browser. It does not monitor sites.",
+    sampleNote: "The monitor on the case study is a sample.",
+    technologies: "Field documents and a Next.js walkthrough on this page.",
     featuredOrder: 2,
     preview: "competitive",
     demoUrl: null,
@@ -80,8 +88,10 @@ const sources: DirectorySource[] = [
   {
     slug: "account-intelligence",
     categories: ["Account & Market Intelligence"],
-    role: "I designed the personal feed. The walkthrough uses fictional accounts and does not call a data source.",
-    technologies: "Next.js sample. Supabase, Exa, Sumble, and Claude are planned, not installed.",
+    role: "I designed the personal feed and the path from an account change to a draft.",
+    scope: "Copy stays in the browser. Planned research sources are named on the case study and are not called from this page.",
+    sampleNote: null,
+    technologies: "Next.js walkthrough on this page.",
     featuredOrder: 1,
     preview: "account",
     demoUrl: null,
@@ -90,8 +100,10 @@ const sources: DirectorySource[] = [
   {
     slug: "customer-feedback-intelligence",
     categories: ["Customer & Product Intelligence"],
-    role: "I run the sales-to-product loop in the field. The workspace is a browser sample.",
-    technologies: "Next.js sample. No CRM, ticket system, or model.",
+    role: "I run the sales-to-product loop in the field and designed this review.",
+    scope: "Confirming a theme stays in the browser and does not send a message.",
+    sampleNote: "Fictional accounts.",
+    technologies: "Next.js walkthrough on this page.",
     featuredOrder: 4,
     preview: "note",
     demoUrl: null,
@@ -100,8 +112,10 @@ const sources: DirectorySource[] = [
   {
     slug: "product-release-intelligence",
     categories: ["Customer & Product Intelligence", "Sales Enablement & Productivity"],
-    role: "I designed the question set I use with the field. There is no release application.",
-    technologies: "The questions. No release hub in this repository.",
+    role: "I designed the question set I use with the field.",
+    scope: "This page is that question set.",
+    sampleNote: null,
+    technologies: "The questions on this page.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,
@@ -111,7 +125,9 @@ const sources: DirectorySource[] = [
     slug: "truffle-camp",
     categories: ["Sales Enablement & Productivity"],
     role: "I designed the curriculum on top of enablement I have already done with teams.",
-    technologies: "A written module and session-only practice question in this Next.js page. No course platform.",
+    scope: "The knowledge check stays in this page session.",
+    sampleNote: null,
+    technologies: "A written module and one practice question on this page.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,
@@ -120,8 +136,10 @@ const sources: DirectorySource[] = [
   {
     slug: "partner-gtm-engine",
     categories: ["Revenue Strategy & Operations", "Account & Market Intelligence"],
-    role: "I designed this from channel work. The page shows one fictional match.",
-    technologies: "A written design. No spreadsheet upload or CRM sync.",
+    role: "I designed the match rule from channel work: a similar name is not a confirmed account.",
+    scope: "The example does not upload a spreadsheet or sync a CRM.",
+    sampleNote: "One fictional match.",
+    technologies: "A written example on this page.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,
@@ -130,8 +148,10 @@ const sources: DirectorySource[] = [
   {
     slug: "product-prioritization-simulator",
     categories: ["Customer & Product Intelligence"],
-    role: "I have not scored a bet in software.",
-    technologies: "None.",
+    role: "I wrote down the decision I want before a bet gets build time.",
+    scope: "This page is the note.",
+    sampleNote: null,
+    technologies: "This page.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,
@@ -140,8 +160,10 @@ const sources: DirectorySource[] = [
   {
     slug: "revenue-planning-simulator",
     categories: ["Revenue Strategy & Operations"],
-    role: "I built the planner in gtm-revenue-os. It is not embedded here, and it is not an employer plan.",
-    technologies: "Next.js, TypeScript, and Postgres. No language model in the calculation.",
+    role: "I built the planner so retention, expansion, and new ARR stay separate formulas.",
+    scope: "The planner is a separate app. This page does not save a scenario or export a file.",
+    sampleNote: null,
+    technologies: "Next.js, TypeScript, and Postgres in the separate planner. The formulas are deterministic.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,
@@ -150,8 +172,10 @@ const sources: DirectorySource[] = [
   {
     slug: "revenue-intelligence",
     categories: ["Revenue Strategy & Operations"],
-    role: "I wrote the SQL. Win rate comes from the close, not the current stage.",
-    technologies: "Next.js and PostgreSQL in gtm-revenue-os. Not embedded on this site.",
+    role: "I wrote the queries so win rate comes from the close, not the current stage.",
+    scope: "The dashboard is a separate app. This page does not query a database.",
+    sampleNote: null,
+    technologies: "Next.js and PostgreSQL in the separate dashboard.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,
@@ -160,8 +184,10 @@ const sources: DirectorySource[] = [
   {
     slug: "gtm-operating-plan",
     categories: ["Revenue Strategy & Operations"],
-    role: "I built the operating plan in gtm-revenue-os. The $25M view is capacity math, not a result.",
-    technologies: "Next.js and PostgreSQL. Same capacity formulas as the revenue planner.",
+    role: "I built the operating plan so a hiring change moves capacity and leaves bookings still.",
+    scope: "The plan is a separate app. This page does not assign live accounts.",
+    sampleNote: null,
+    technologies: "Next.js and PostgreSQL in the separate operating plan. Same capacity formulas as the planner.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,
@@ -170,8 +196,10 @@ const sources: DirectorySource[] = [
   {
     slug: "gtm-campaign-lab",
     categories: ["Revenue Strategy & Operations"],
-    role: "I have written outbound plays. I have not built a system that measures them.",
-    technologies: "None.",
+    role: "I have written outbound plays and framed the readout I would want after one message.",
+    scope: "This page is the question. There is no campaign tool here.",
+    sampleNote: null,
+    technologies: "This page.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,
@@ -180,8 +208,10 @@ const sources: DirectorySource[] = [
   {
     slug: "security-signal-intelligence",
     categories: ["Account & Market Intelligence", "Technical Systems & AI"],
-    role: "Playbooks and industry training were field work. They are not this product.",
-    technologies: "None in this repository.",
+    role: "I used playbooks and industry training in the field. This note is the review question for a public source.",
+    scope: "This page is the note.",
+    sampleNote: null,
+    technologies: "This page.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,
@@ -254,7 +284,8 @@ export function filterDirectoryProjects(category: DirectoryCategory, stage: Life
     (category === "All work" || project.categories.includes(category)) &&
     (stage === "All" || project.phase === stage) &&
     (!normalizedQuery || [
-      project.title, project.summary, project.role, directoryStatus(project.status).label,
+      project.title, project.summary, project.role, project.scope, project.sampleNote ?? "",
+      directoryStatus(project.status).label,
       project.phase, ...project.categories,
     ].join(" ").toLocaleLowerCase().includes(normalizedQuery))
   );

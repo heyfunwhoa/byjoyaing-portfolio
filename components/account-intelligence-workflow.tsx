@@ -367,7 +367,7 @@ export function AccountIntelligenceWorkflow() {
               </button>
             </div>
             <p className="mt-3 text-xs leading-5 text-muted">
-              Demo only. Regenerate swaps a local example. No model is called. Human review is required before anyone sends this.
+              This draft stays in the browser. Regenerate swaps the sample text. Copy does not send it. Review it before anyone would send it.
             </p>
           </DemoFrame>
         ) : null}

@@ -1,6 +1,6 @@
 import { ArrowRight } from "@/components/icons/arrow-right";
-import { ProjectStatusPill } from "@/components/project-status-pill";
-import { featuredSourceLabel, type FeaturedSlide } from "@/lib/featured-work";
+import { projectAction } from "@/lib/project-presentation";
+import type { FeaturedSlide } from "@/lib/featured-work";
 import Link from "next/link";
 
 /**
@@ -23,24 +23,16 @@ export function FeaturedSideQuestStrip({ slides,
           className="w-[min(20rem,85%)] shrink-0 snap-start sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.7rem)]"
         >
           <article className="editorial-panel group relative flex h-full min-w-0 flex-col bg-surface-sage p-5 sm:p-6">
-            <div className="flex flex-wrap items-center gap-2">
-              {slide.status ? (
-                  <ProjectStatusPill status={slide.status} />
-                ) : null}
-              <span className="rounded-full border border-border bg-background px-2.5 py-0.5 text-xs font-medium">
-                {featuredSourceLabel[slide.source]}
-              </span>
-            </div>
-            <h3 className="mt-4 font-display text-xl leading-tight tracking-tight">
+            <h3 className="font-display text-xl leading-tight tracking-tight">
               <Link href={slide.href} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >
                 <span className="relative">{slide.title}</span>
-                <span className="sr-only">. Independent Side Quest.</span>
+                <span className="sr-only">. {projectAction(slide.id)?.label ?? "Explore the project"}.</span>
               </Link>
             </h3>
             <p className="mt-3 text-sm leading-6 text-muted">{slide.summary}</p>
             <p className="editorial-link mt-auto inline-flex min-h-11 items-end pt-5 text-sm font-semibold text-accent underline">
-              Open the build
+              {projectAction(slide.id)?.label ?? "Explore the project"}
               <ArrowRight size={16} className="nudge-link ml-2 inline-block size-4" />
             </p>
           </article>

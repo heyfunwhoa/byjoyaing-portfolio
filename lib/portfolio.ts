@@ -915,7 +915,7 @@ export const projects: Project[] = [
       ],
     },
     hypothesis:
-      "If prioritization is explicit, the company should waste less build time on low-confidence bets. Next — not built.",
+      "If prioritization is explicit, the company should waste less build time on low-confidence bets.",
     tradeoffs: ["Simple scoring over a model that hides the judgment."],
     prototype: "Next. Not started as software.",
     next: [
@@ -1453,7 +1453,7 @@ export const projects: Project[] = [
       ],
     },
     hypothesis:
-      "If campaigns start from product and customer signals, outreach should be more relevant and attribution should improve. Next — not built.",
+      "If campaigns start from product and customer signals, outreach should be more relevant and attribution should improve.",
     tradeoffs: ["One measured experiment over a spray of sequences."],
     prototype: "Next. Not started as software.",
     next: ["Connect to release and feedback signals once those systems exist."],
@@ -1519,7 +1519,7 @@ export const projects: Project[] = [
       ],
     },
     hypothesis:
-      "If market events are reviewed and tagged, GTM should respond faster and more consistently. Next — not built. Human review stays in the loop.",
+      "If market events are reviewed and tagged, GTM should respond faster and more consistently. Human review stays in the loop.",
     tradeoffs: [
       "Reviewed digest over real-time unfiltered alerts.",
       "Deterministic source list over open-ended crawling.",

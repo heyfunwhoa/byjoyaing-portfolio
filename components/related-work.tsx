@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { ProjectReturnLink, ProjectSequence } from "@/components/project-case-navigation";
 import { MaterialsInvitation } from "@/components/materials-invitation";
-import { ProjectStatusPill } from "@/components/project-status-pill";
+import { projectActions } from "@/lib/project-presentation";
 import { directoryProjects } from "@/lib/project-directory";
 import Link from "next/link";
 
@@ -40,9 +40,9 @@ export function RelatedWork({ slug }: { slug: string }) {
             {items.map((project) => (
               <li key={project.slug} className="min-w-0">
                 <Link href={project.caseStudyUrl} className="flex h-full min-w-0 flex-col gap-2 rounded-xl border border-border bg-card p-4 hover:border-accent">
-                  <ProjectStatusPill status={project.status} />
                   <p className="font-semibold">{project.title}</p>
                   <p className="text-sm leading-6 text-muted">{project.summary}</p>
+                  <span className="mt-auto inline-flex min-h-11 items-end text-sm font-semibold text-accent underline">{projectActions[project.slug].label}</span>
                 </Link>
               </li>
             ))}

@@ -12,9 +12,10 @@ import { PageMain } from "@/components/page-main";
 import { SampleRecordView } from "@/components/sample-record";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
+import { GtmRevenueSystem } from "@/components/gtm-revenue-system";
 import { ProjectStoryLead } from "@/components/project-story-lead";
 import { ProjectKindLabel } from "@/components/project-kind-label";
-import { StatusBadge } from "@/components/status-badge";
+import { gtmRevenueWorkflows, walkthroughAction } from "@/lib/project-presentation";
 import { projects } from "@/lib/portfolio";
 import { findUseCase, salesProject, sampleFor } from "@/lib/sales";
 import type { Metadata } from "next";
@@ -107,7 +108,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <PageMain>
       <div className="grid gap-12 border-b border-border py-16 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-16">
         <aside className="order-2 flex flex-col gap-6 lg:sticky lg:top-24 lg:order-1 lg:self-start">
-          <StatusBadge status={project.status} />
           {useCase ? (
             <p className="text-sm leading-6 text-muted">
               <Link
@@ -145,7 +145,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               { id: "problem", label: "The problem" },
               { id: "contribution", label: "My contribution" },
               { id: "example", label: "One example" },
-              { id: "where-it-stands", label: "Current status" },
               { id: "outcome", label: "Evidence" },
               { id: "links", label: "Sources and links" },
               { id: "how-it-works", label: "How it works" },
@@ -180,10 +179,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <dd className="text-muted">{sales.decision}</dd>
             </div>
             <div>
-              <dt className="font-medium text-foreground">Working today</dt>
-              <dd className="text-muted">{sales.workingToday}</dd>
+              <dt className="font-medium text-foreground">What it produces</dt>
+              <dd className="text-muted">{sales.produces}</dd>
             </div>
           </dl>
+          {gtmRevenueWorkflows.some((workflow) => workflow.slug === slug) ? (
+            <GtmRevenueSystem current={slug} />
+          ) : (
+            <Link
+              href={walkthroughAction.href}
+              className="inline-flex min-h-11 w-fit items-center text-sm font-semibold text-accent underline underline-offset-4"
+            >
+              {walkthroughAction.label}
+            </Link>
+          )}
           <details className="rounded-xl border border-border bg-card p-4">
             <summary className="min-h-11 cursor-pointer content-center rounded-sm py-2 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
               Workflow and next steps
@@ -221,21 +230,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </p>
               </section>
             ) : null}
-            {sales.proposedSoftware ? (
-              <section className="border border-dashed border-foreground/30 p-5">
-                <h2 className="text-sm font-medium text-foreground">
-                  Proposed software, separate from that asset
-                </h2>
-                <p className="mt-2 text-base leading-7 text-muted">
-                  {sales.proposedSoftware}
-                </p>
-              </section>
-            ) : null}
           </div>
-
-          <Block id="where-it-stands" title="Where it stands">
-            <p>{sales.maturityDetail}</p>
-          </Block>
 
           <Block
             id="outcome"
@@ -282,6 +277,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             className="my-6"
           >
             <div className="flex flex-col gap-6 text-base leading-7 text-muted">
+              <section id="where-it-stands" className="scroll-mt-24 flex flex-col gap-2">
+                <h3 className="font-medium text-foreground">Recorded stage</h3>
+                <p>{sales.maturityDetail}</p>
+                <p>{sales.workingToday}</p>
+                {sales.proposedSoftware ? <p>{sales.proposedSoftware}</p> : null}
+              </section>
               <section className="flex flex-col gap-2">
                 <h3 className="font-medium text-foreground">
                   What I was working from
@@ -299,9 +300,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <p>{project.systemPlain.join(" → ")}</p>
               </section>
               <section className="flex flex-col gap-2">
-                <h3 className="font-medium text-foreground">
-                  Described stack — not what this repository runs
-                </h3>
+                <h3 className="font-medium text-foreground">Implementation notes</h3>
                 <p>
                   Names below are a sketch. They are not completed integrations
                   unless the technology section says Built with.

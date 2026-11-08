@@ -8,11 +8,8 @@ import { PageMain } from "@/components/page-main";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
-import { StatusBadge } from "@/components/status-badge";
 import { demoAccounts, demoSignals } from "@/lib/account-intelligence-demo";
 import Link from "next/link";
-
-const planned = ["Supabase", "Exa", "Sumble", "Claude"] as const;
 
 function SectionLabel({ index, children,
 }: { index: string; children: string;
@@ -125,7 +122,6 @@ export function AccountIntelligenceCase() {
           <div className="flex flex-wrap items-center gap-3">
             <ProjectKindLabel slug="account-intelligence" />
             <SectionLabel index="01">GTM systems</SectionLabel>
-            <StatusBadge status="designed" />
           </div>
           <div>
             <p className="text-sm font-medium text-muted">Account Intelligence</p>
@@ -133,14 +129,9 @@ export function AccountIntelligenceCase() {
               Turn account signals into timely, relevant outreach.
             </h1>
           </div>
-          <div className="max-w-xl space-y-3 text-base leading-7 text-muted">
-            <p>
-              For enterprise sellers deciding where to focus, I designed a workflow that connects an account change to a relevant next conversation. The aim is to reduce repeated research and help the seller explain why an outreach message matters.
-            </p>
-            <p>
-              The walkthrough below is sample data in this portfolio. It is not a deployed feed, and it does not call a model.
-            </p>
-          </div>
+          <p className="max-w-xl text-base leading-7 text-muted">
+            For enterprise sellers deciding where to focus, I designed a workflow that connects an account change to a relevant next conversation. The aim is to reduce repeated research and help the seller explain why an outreach message matters.
+          </p>
           <dl className="grid gap-4 text-sm sm:grid-cols-3">
             <div>
               <dt className="font-medium text-foreground">My role</dt>
@@ -152,9 +143,7 @@ export function AccountIntelligenceCase() {
             </div>
             <div>
               <dt className="font-medium text-foreground">Technology</dt>
-              <dd className="mt-1 leading-6 text-muted">
-                Next.js for this walkthrough. {planned.join(", ")} are planned, not running here.
-              </dd>
+              <dd className="mt-1 leading-6 text-muted">Next.js walkthrough on this page.</dd>
             </div>
           </dl>
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -162,13 +151,13 @@ export function AccountIntelligenceCase() {
               href="#workflow"
               className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground"
             >
-              Explore the workflow
+              Try the example
             </a>
             <a
               href="#architecture"
               className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium text-foreground"
             >
-              View technical architecture
+              How it works
             </a>
           </div>
         </div>
