@@ -155,6 +155,7 @@ test("lesson sequence supports keyboard next and previous without completing a q
   await page.goto("/ai-academy");
   await page.getByText(/^Explore learning paths \(\d+\)$/).click();
   await page.getByRole("button", { name: "Start this path: Start with AI basics", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "AI, models and assistants", exact: true })).toBeFocused();
   const sequence = page.getByRole("navigation", { name: "Lesson sequence" });
   await expect(sequence.getByRole("button", { name: /Previous:/ })).toHaveCount(0);
   await sequence.getByRole("button", { name: /^Next:/ }).press("Enter");
