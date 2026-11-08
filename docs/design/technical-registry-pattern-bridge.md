@@ -1,10 +1,14 @@
 # Technical Registry → Design Lab pattern bridge
 
-**Status:** proposed pattern handoff, not implemented Storybook components. **Reviewed:** 2026-11-08.
+**Status:** proposed cross-repo handoff with a working synthetic Storybook example in draft PR #292; no production consumer adoption. **Reviewed:** 2026-11-08.
 
 ## System boundaries
 
 Technical Docs Platform [registry cross-repository contract](https://github.com/heyfunwhoa/technical-docs-platform/blob/feat/technical-registry-ux-plan-20261108/software-catalog/registry-cross-repo-contract.md) owns stable catalog semantics, decision evidence, adoption labels and the read-only reference explorer. Portfolio Design Lab owns examples for reuse. Local apps own route-specific implementations and data permissions. Do not duplicate the canonical technology records inside Portfolio.
+
+## Coordination with concurrently active educational PR #293
+
+PR #293 owns `components/design-lab/component-learning.tsx`, `docs/design/component-learning-guide.md`, and the Design Lab page. This PR owns `components/design-lab/registry-patterns.stories.tsx` and this bridge. The latest inspected PR diffs do not overlap file paths. **Keep both roles distinct:** #293 teaches foundational UI concepts; #292 exercises registry-specific explore/inspect/compare states for pattern reuse. Do not edit the active #293 branch or create another component catalog. Both PR heads had passing CI and bounded visual workflow checks at the time of the November 8 coordination review, but manual keyboard, assistive technology and 200%-zoom acceptance remain outstanding. See the [cross-repo adoption index](https://github.com/heyfunwhoa/technical-docs-platform/blob/feat/technical-registry-ux-plan-20261108/software-catalog/registry-adoption-index.md).
 
 ## Reuse before new stories
 
@@ -24,7 +28,7 @@ Inspect the existing `docs/design/workbench-reuse.md`, `docs/design/low-cost-pat
 
 ## First accepted slice to request
 
-Create **only** Explorer + ToolDetail + Comparison demos after checking existing Storybook coverage; use synthetic fixtures with no production tool catalog duplication. Test at 375/768/1280 pixels and 200% zoom, keyboard, focus trapping and return, screen reader, reduced motion, errors and no-match. Preserve reusable pattern IDs (`registry.explorer.v1`, `registry.detail.v1`, `registry.compare.v1`) in documentation. If an existing story already solves the behavior, link/adapt it instead of creating a duplicate.
+The first synthetic `ExplorerDetailAndCompare` Storybook story is now in this draft branch. Verify this existing story before creating any further variants; use synthetic fixtures with no production tool catalog duplication. Test at 375/768/1280 pixels and 200% zoom, keyboard, focus trapping and return, screen reader, reduced motion, errors and no-match. Preserve reusable pattern IDs (`registry.explorer.v1`, `registry.detail.v1`, `registry.compare.v1`) in documentation. If an existing story already solves the behavior, link/adapt it instead of creating a duplicate.
 
 ## Adoption handoffs
 
