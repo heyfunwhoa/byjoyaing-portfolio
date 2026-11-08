@@ -245,7 +245,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           <Block id="links" title="Links">
             {sales.links.length === 0 ? (
-              <p>No public demo or repository beyond this page.</p>
+              <p>Explore the workflow and supporting detail below.</p>
             ) : (
               <ul className="space-y-2">
                 {sales.links.map((link) => (
@@ -278,7 +278,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           >
             <div className="flex flex-col gap-6 text-base leading-7 text-muted">
               <section id="where-it-stands" className="scroll-mt-24 flex flex-col gap-2">
-                <h3 className="font-medium text-foreground">Recorded stage</h3>
+                <h3 className="font-medium text-foreground">Project overview</h3>
                 <p>{sales.maturityDetail}</p>
                 <p>{sales.workingToday}</p>
                 {sales.proposedSoftware ? <p>{sales.proposedSoftware}</p> : null}
@@ -302,8 +302,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <section className="flex flex-col gap-2">
                 <h3 className="font-medium text-foreground">Implementation notes</h3>
                 <p>
-                  Names below are a sketch. They are not completed integrations
-                  unless the technology section says Built with.
+                  Proposed architecture. The technology section identifies what
+                  each project uses today.
                 </p>
                 <p>{project.systemTechnical.join(" · ")}</p>
                 <p>{project.dataModel.join(" · ")}</p>

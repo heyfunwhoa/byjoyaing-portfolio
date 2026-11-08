@@ -41,7 +41,7 @@ function Label({ index, children }: { index: string; children: string }) {
 function Node({ title, detail, state,
 }: { title: string; detail: string; state: "field" | "demo" | "planned";
 }) {
-  const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this demo" : "Planned";
+  const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this walkthrough" : "Planned";
   const style =
     state === "planned"
       ? "rounded-full border border-dashed border-foreground/40 px-2 py-0.5 text-[11px] font-medium"
@@ -62,19 +62,19 @@ const layers = [
     title: "Feedback sources",
     body: "Sales conversations at Truffle are the field habit. This site does not read CRM, calls, success notes, or tickets.",
     nodes: [
-      { title: "CRM", detail: "Planned source. Not connected.", state: "planned" as const,
+      { title: "CRM", detail: "Proposed source.", state: "planned" as const,
       },
-      { title: "Call records", detail: "Planned source. Not connected.", state: "planned" as const,
+      { title: "Call records", detail: "Proposed source.", state: "planned" as const,
       },
-      { title: "Customer Success notes", detail: "Planned source. Not connected.", state: "planned" as const,
+      { title: "Customer Success notes", detail: "Proposed source.", state: "planned" as const,
       },
-      { title: "Support tickets", detail: "Planned source. Not connected.", state: "planned" as const,
+      { title: "Support tickets", detail: "Proposed source.", state: "planned" as const,
       },
     ],
   },
   {
     title: "Intelligence processing",
-    body: "The demo shows a suggested theme you can correct. Ingestion and deduplication are not built. No model runs.",
+    body: "Review a suggested theme and correct it using the original feedback.",
     nodes: [
       { title: "Ingestion", detail: "Planned. The sample is hardcoded.", state: "planned" as const,
       },
@@ -90,7 +90,7 @@ const layers = [
   },
   {
     title: "Product intelligence",
-    body: "Themes, accounts, and a review a person confirms. Confirming the demo does not update a roadmap.",
+    body: "Connect themes and accounts, then record a review for this session.",
     nodes: [
       { title: "Normalized feedback", detail: "Five sample records.", state: "demo" as const,
       },

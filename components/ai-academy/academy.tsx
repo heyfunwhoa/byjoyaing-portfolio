@@ -693,12 +693,6 @@ export function Academy({ resources }: { resources?: ReactNode }) {
         Reviewed this session: {reviewed.length} / {lessons.length}. Review
         tracking resets when you leave this page.
       </p>
-      <footer className="mt-14 border-t border-border pt-5 text-xs leading-6 text-muted">
-        Educational prototype · No login, model API calls or persistent progress
-        in this version. Review privacy requirements before using internal data.
-        Sourced references are linked in lessons; model-specific comparisons
-        require evaluation.
-      </footer>
     </main>
   );
 }

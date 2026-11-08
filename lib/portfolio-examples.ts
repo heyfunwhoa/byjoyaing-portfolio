@@ -34,7 +34,7 @@ export const portfolioExamples: Record<string, PortfolioExample> = {
     title: "Read a comparison without inventing a gap",
     label: "Public-source sample",
     limitation:
-      "Static portfolio sample. A source reference is not a live validation result or a current vendor ranking.",
+      "A source-linked example. Compare the cited evidence and review date for each finding.",
     steps: [
       {
         title: "Inspect the source",

@@ -33,7 +33,7 @@ export function IdentityJourneyLab() {
     <section className="rounded-2xl border border-border bg-card p-5 sm:p-7" aria-labelledby="journey-heading">
       <h2 id="journey-heading" className="font-display text-2xl sm:text-3xl">Follow an identity through the system</h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-        A fictional learning simulation — not connected to real identities, credentials, services or access.
+        Use fictional identities to explore verification, permissions and access changes.
       </p>
 
       <fieldset className="mt-6">
@@ -68,7 +68,7 @@ export function IdentityJourneyLab() {
 
       <div className="mt-8 border-t border-border pt-6">
         <h3 className="text-lg font-semibold">Test a permission decision</h3>
-        <p className="mt-2 text-sm leading-6 text-muted">These simplified conditions are not a production authorization engine. Change them to see why sign-in is not enough.</p>
+        <p className="mt-2 text-sm leading-6 text-muted">Change the example conditions to see how sign-in, permissions and revocation affect access.</p>
         <div className="mt-4 grid gap-3">
           <label className="flex items-center gap-3 text-sm"><input type="checkbox" checked={verified} onChange={(event) => setVerified(event.target.checked)} className="h-4 w-4 accent-accent" /> Identity verified</label>
           <label className="flex items-center gap-3 text-sm"><input type="checkbox" checked={granted} onChange={(event) => setGranted(event.target.checked)} className="h-4 w-4 accent-accent" /> Resource permission active</label>

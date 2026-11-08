@@ -97,7 +97,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     fieldAsset:
       "Battlecards, competitive briefs, discovery templates, and threat-intelligence playbooks.",
     proposedSoftware:
-      "A system that classifies a competitor change and recommends a field action. Designed, not built.",
+      "Proposed system for classifying competitor changes and recommending a field action.",
     links: [],
     result: {
       kind: "to-test",
@@ -123,7 +123,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
       "What runs is the sample table: 3 sources and 5 credential types. AWS keys and GitHub PATs are Covered for TruffleHog. Slack, GitLab, and GCP are Observed because a public detector folder exists, not because verification was fully reviewed. Notes mention 910 parsed records and 14 enriched. Those rows are not in this repository.",
     fieldAsset: null,
     proposedSoftware:
-      "A commit-pinned catalog that ingests public detector files. Not built in this repo. This is not a production scanner and not a Truffle Security product.",
+      "Proposed catalog ingestion from public detector files at pinned commits, maintained as an independent research project.",
     links: [
       {
         label: "Live sample",
@@ -192,7 +192,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     fieldAsset:
       "The Metadot channel motion, and the judgment that came from matching partner lists by hand.",
     proposedSoftware:
-      "Domain matching, partner overlap, conflict review, and scored whitespace. Documented. Not deployed.",
+      "Documented workflow for domain matching, partner overlap, conflict review and scored whitespace.",
     links: [],
     result: {
       kind: "to-test",
@@ -213,9 +213,9 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
       "An account brief: context, a dated event, likely stakeholders, a hypothesis marked as a hypothesis, discovery questions, and one next action.",
     decision: "Who to contact, what to ask, and what not to treat as fact.",
     myRole:
-      "I designed a personal signal feed that stays separate from the partner app, so either one can exist if the other is down. I have not shipped it.",
+      "I designed a personal signal feed that stays separate from the partner app, so either one can operate independently.",
     maturityDetail:
-      "Designed. No public demo. The sample brief on this page is fictional.",
+      "Workflow design with a fictional research brief to explore.",
     fieldAsset: null,
     proposedSoftware:
       "Assignment sync, classified signals, and a draft that cites the event. Designed, not running.",
@@ -244,7 +244,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "At Rapid7 I was a threat-intelligence resource for enterprise accounts, partners, and customers, and I wrote playbooks the portfolio team used. At Darktrace I built industry-knowledge training.",
     maturityDetail:
-      "Concept. The playbooks and the training were real. I have not completed a design for this product, and I have not built it.",
+      "A workflow idea informed by playbooks and training used with teams.",
     fieldAsset:
       "Rapid7 threat-intelligence playbooks and Darktrace industry training.",
     proposedSoftware: "Not designed as a product yet.",
@@ -275,7 +275,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     fieldAsset:
       "The questions I use with the field: what changed, why we built it, who cares, why it matters, how to use it, and what not to overpromise.",
     proposedSoftware:
-      "A release hub with tiers, tags, and account matches. Not built.",
+      "Proposed release hub with tiers, tags and account matches.",
     links: [],
     result: {
       kind: "to-test",
@@ -301,7 +301,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
       "Designed for the software. The feedback loop with product is in use. I am not calling that loop a shipped product.",
     fieldAsset: "The sales-to-product feedback loop at Truffle.",
     proposedSoftware:
-      "Ingestion, themes, account context, and a join to the release note when a theme ships. Not built.",
+      "Proposed workflow for ingestion, themes, account context and linking shipped themes to release notes.",
     links: [],
     result: {
       kind: "to-test",
@@ -325,7 +325,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "I built the planner in gtm-revenue-os. It is not a plan I ran at Truffle, Rapid7, Forcepoint, or Darktrace.",
     maturityDetail:
-      "Prototype. The software runs and the formula tests pass. It is not embedded on this site.",
+      "A separate application with tested planning formulas. This page explains the workflow.",
     fieldAsset: null,
     proposedSoftware: null,
     links: [],
@@ -351,7 +351,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "I built the queries in gtm-revenue-os. The seeded attainment is a fixture, not a measured result.",
     maturityDetail:
-      "Prototype. The software runs and the SQL tests pass. It is not embedded on this site.",
+      "A separate application with tested SQL queries. This page explains the workflow.",
     fieldAsset: null,
     proposedSoftware: null,
     links: [],
@@ -377,7 +377,7 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "I built the operating plan in gtm-revenue-os. It is not an employer deployment.",
     maturityDetail:
-      "Prototype. The software runs. It is not embedded on this site. Accepting a synthetic review creates an unassigned account and no opportunity.",
+      "A separate application for account review. Accepting a synthetic review creates an unassigned account and no opportunity.",
     fieldAsset: null,
     proposedSoftware: null,
     links: [],
@@ -452,7 +452,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
     pipeline:
       "Assumptions → validation → ARR bridge → ramped capacity → pipeline shifted by the sales cycle. Formulas only.",
     workingToday:
-      "A Next.js and Postgres app in gtm-revenue-os. Not embedded here. No public demo URL.",
+      "A Next.js and Postgres application in gtm-revenue-os, documented here through its workflow and source.",
     plannedNext:
       "The operating plan can copy AE count, quota, attainment, ramp, and ending target. That copy changes planned capacity only.",
     implementedTech:
@@ -462,7 +462,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
     pipeline:
       "Filters → stage as of a date from history → win rate and cycle from the close → plan versus bookings versus still required.",
     workingToday:
-      "A Next.js and Postgres app in gtm-revenue-os. Not embedded here. SQL lives in lib/intelligence/sql.ts. No public demo URL.",
+      "A Next.js and Postgres application in gtm-revenue-os. SQL lives in lib/intelligence/sql.ts.",
     plannedNext:
       "If a CRM sync arrives, keep stage history as the source of truth. Do not backfill win rate from the latest stage.",
     implementedTech:
@@ -472,7 +472,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
     pipeline:
       "ICP criteria → territory assignment → coverage and ratios → roster copied into the revenue plan. Bookings stay still.",
     workingToday:
-      "A Next.js and Postgres app in gtm-revenue-os. Not embedded here. No public demo URL.",
+      "A Next.js and Postgres application in gtm-revenue-os, documented here through its workflow and source.",
     plannedNext:
       "Reviewed accounts with a source note. Live signal polling stays on the Account Intelligence design.",
     implementedTech:
@@ -491,7 +491,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
     pipeline:
       "A cited public page → a claim that keeps the source and date → a hypothesis a person can mark reviewed → a brief. Field notes stay in the browser until approved.",
     workingToday:
-      "Battlecards, discovery templates, and threat-intelligence playbooks used with teams. This page is a sample walkthrough. It does not monitor sites, store snapshots, or call a model.",
+      "Battlecards, discovery templates and threat-intelligence playbooks used with teams. Explore the source-review process in the walkthrough.",
     plannedNext:
       "Scheduled snapshots of a few public sources, a real diff, and a review queue before any field alert.",
     implementedTech:
@@ -534,7 +534,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
     plannedNext:
       "Upload a sheet, match on domain, and leave uncertain rows for a person.",
     implementedTech:
-      "Static copy in this Next.js page. No live demo and no public project repo.",
+      "A documented workflow presented on this page.",
   },
   "customer-feedback-intelligence": {
     pipeline:
@@ -658,7 +658,7 @@ export function densityFor(slug: string, status: ProjectStatus) {
 export const accountBriefSample = {
   kicker: "Illustrative account brief",
   title: "Northline Freight",
-  note: "Fictional company. This is the shape of the brief, not a real account and not a live feed.",
+  note: "A research brief for a fictional company.",
   rows: [
     {
       label: "Company and industry",
@@ -725,7 +725,7 @@ export const claimSample = {
     {
       label: "Review status",
       value:
-        "Reviewed against that public description for this portfolio sample. Not a live competitive record.",
+        "Reviewed against the cited public description.",
     },
     {
       label: "Positioning I would approve",
@@ -776,7 +776,7 @@ export const partnerMatchSample = {
 export const campModuleSample = {
   kicker: "Sample module",
   title: "First Expedition — accidental commit",
-  note: "A learner journey for the designed Truffle Camp curriculum. Not a live course, and not the onboarding assets teams already use.",
+  note: "A learner journey through the Truffle Camp curriculum design.",
   rows: [
     {
       label: "Who it is for",

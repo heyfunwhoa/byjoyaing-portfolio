@@ -29,7 +29,7 @@ export default function IdentityJourneyPage() {
           <Link className="text-accent underline underline-offset-4" href="/about">About the Curious Builder</Link>
         </div>
         <p className="mt-6 max-w-2xl text-xs leading-5 text-muted">
-          Educational simulation only. Better Auth, SSO, SCIM and machine identity examples describe concepts, not live portfolio integrations.
+          Learn identity and access concepts through Better Auth, SSO, SCIM and machine identity examples.
         </p>
       </section>
     </PageMain>
