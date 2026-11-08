@@ -144,7 +144,8 @@ test("About education marks load beside visible credentials at phone and desktop
     await page.goto("/about#career-progression");
     const education = page.getByRole("heading", { name: "Education and continued learning" }).locator("..");
     for (const { src, credential } of marks) {
-      const image = education.locator(`img[src="${src}"]`);
+      // Vercel appends a deployment query to otherwise unchanged public asset paths.
+      const image = education.locator(`img[src="${src}"], img[src^="${src}?"]`);
       await expect(image).toHaveCount(1);
       await expect(image).toHaveAttribute("alt", "");
       await expect.poll(() => image.evaluate((element: HTMLImageElement) =>
