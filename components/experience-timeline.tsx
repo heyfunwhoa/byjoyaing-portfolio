@@ -22,7 +22,12 @@ export function ExperienceTimeline({
           >
             <div>
               <h3 className="text-lg font-semibold">{role.company}</h3>
-              <p className="mt-1 font-medium">{role.title}</p>
+              <p className="mt-1 font-medium">
+                {role.title}
+                {"years" in role && role.years ? (
+                  <span className="font-normal text-muted"> · {role.years}</span>
+                ) : null}
+              </p>
               <p className="mt-1 text-sm text-muted">{role.category}</p>
               <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-7 text-muted">
                 {role.points.map((point) => (

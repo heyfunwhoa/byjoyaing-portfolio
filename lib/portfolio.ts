@@ -251,6 +251,7 @@ export const loop = [
 export const roles = [
   {
     company: "Truffle Security",
+    years: "2024–present",
     title: "Senior Enterprise Account Executive",
     category: "Developer security, secrets, machine identity",
     points: [
@@ -261,6 +262,7 @@ export const roles = [
   },
   {
     company: "Darktrace",
+    years: "2023–2024",
     title: "Senior Enterprise Account Executive",
     category: "Threat intelligence and network / AI security",
     points: [
@@ -270,6 +272,7 @@ export const roles = [
   },
   {
     company: "Rapid7",
+    years: "2021–2023",
     title: "Enterprise Account Executive, Strategic",
     category: "Threat intelligence, cloud, and application security",
     points: [
@@ -279,6 +282,7 @@ export const roles = [
   },
   {
     company: "Forcepoint",
+    years: "2018–2021",
     title: "Senior Account Executive, Lead",
     category: "Web security and data protection",
     points: [
@@ -287,8 +291,9 @@ export const roles = [
     ],
   },
   {
-    company: "Metadot",
-    title: "Global Channel Account Manager",
+    company: "Das Keyboard (Metadot)",
+    years: "2016–2018",
+    title: "Manager, Global Accounts & Channel",
     category: "Channel, partners, and new-category GTM",
     points: [
       "Helped stand up a global channel program with executive leadership, including national distributors.",
@@ -296,6 +301,7 @@ export const roles = [
   },
   {
     company: "Quantcast",
+    years: "2015–2016",
     title: "Corporate Account Executive",
     category: "New-market GTM",
     points: [
@@ -304,6 +310,7 @@ export const roles = [
   },
   {
     company: "Websense",
+    years: "2014–2015",
     title: "Regional Account Manager",
     category: "Web, email, and data security",
     points: [
