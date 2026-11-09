@@ -36,12 +36,20 @@ Each candidate should record: `id`, `provider`, `product`, `model_or_version` (i
 | DEM-002 | Arcade | application | product demos | interactive guided walkthroughs |
 | DEM-003 | Screen Studio | application | capture | recorded product demos |
 | DEM-004 | Trupeer | application | product demos / training | screen recordings into narrated tutorials |
+| DEM-005 | Supademo | application | interactive demos | guided product walkthroughs and reusable step-by-step demos |
+| DEM-006 | Storylane | application | interactive demos | captured product tours and buyer-facing demo collections |
 | CAP-001 | Riverside | application | recording / editing | interviews, webinars and repurposed clips |
+| CAP-002 | Loom | application | recording / sharing | short screen-and-camera messages and follow-ups |
+| CAP-003 | Cap | application; license review pending | recording / sharing | local capture or hosted share-link workflows |
 | EDT-001 | Descript | application | editing | repurposing interviews, webinars, demos |
 | EDT-002 | Adobe Premiere Pro | application | editing | professional review and finishing |
 | EDT-003 | CapCut | application | editing | lightweight social variants |
 | EDT-004 | DaVinci Resolve | application | editing / finishing | timeline editing, color and audio; free and Studio editions |
 | EDT-005 | Shotcut | open-source application | editing | local timeline editing and exports |
+| EDT-006 | OpusClip | application | repurposing | long recordings into reviewed short clips |
+| HST-001 | Wistia | application | hosting / analytics | website video delivery and engagement measurement |
+| HST-002 | Vidyard | application | sales video / hosting | personal video messages and video engagement |
+| REV-001 | Frame.io | application | creative review | precise video/asset comments and review workflows |
 | AVT-001 | HeyGen | application | avatar / localization | personalized or localized video |
 | AVT-002 | Synthesia | application | avatar / education | structured training and explainers |
 | AUD-001 | ElevenLabs / ElevenCreative | model/application | audio / video | narration, localization and creative video options; not approved |
@@ -222,3 +230,52 @@ These are dated observations, not a budget or complete legal review. Check the s
 ### Catalog ownership and discovery
 
 The cross-portfolio technology library should link here by candidate ID. The existing Technical Docs Remotion record and Motion Canvas next-wave reference remain cross-category discovery pointers; creative comparisons stay here. GTM Revenue OS owns production briefs and measurement. This update adds no dependency, provider connection, live workflow, release or competing inventory.
+
+## Adjacent content and sales-video options
+
+**Recorded 2026-11-09. State: research references, not active pilots or adoption decisions.** Eight new IDs extend the same registry, from 43 to 51 candidates. The earlier 15-tool video comparison remains intact. Interactive demos, hosting, review and sales sharing are different jobs from video generation; compare within a job before adding another tool.
+
+### Compare by the problem
+
+The suggestions below are author recommendations, not tested quality or conversion rankings.
+
+| Problem | Options | Reuse or baseline first | Reconsideration trigger and cost questions |
+| --- | --- | --- | --- |
+| Long recordings rarely become useful clips | EDT-006 OpusClip | Existing EDT-001 Descript or CAP-001 Riverside clip workflow; manual selection | Repeated clip backlog. Compare editing minutes, factual context, caption corrections and cost per accepted clip; verify media-credit limits |
+| Buyers need a short personal explanation | CAP-002 Loom; CAP-003 Cap; HST-002 Vidyard | Existing recorder and an authorized share link | Frequent asynchronous demos/follow-ups. Compare capture friction, viewer access, retention, link controls and seats/storage |
+| Prospects want to click through a product before a call | Existing DEM-002 Arcade; DEM-005 Supademo; DEM-006 Storylane | A concise real demo video or an existing synthetic product prototype | Repeated requests for self-guided exploration. Compare update effort, accessible fallback, capture fidelity, embeds and plan limits; choose one |
+| Website videos need better delivery and engagement data | HST-001 Wistia; HST-002 Vidyard | Existing approved hosting/player and website analytics | A documented playback, organization or measurement gap. Review storage, bandwidth, seats, tracked-viewer behavior and CRM integration tier |
+| Creative feedback gets lost across comments and versions | REV-001 Frame.io | Existing editor comments and one review owner | Multiple reviewers or costly version confusion. Compare precise commenting, version handling, external-reviewer access and storage |
+| Sellers need an asset for each buyer stage | Existing production tools plus a small asset map | Existing GTM OS briefs and approved content repository | Missing proof for a specific stage/persona. Create the missing asset before adding a sales-enablement platform |
+
+**Suggested order:** finish one useful product demo; derive a small set of accurate clips; assess one clickable demo if buyers need self-guided exploration; add specialist hosting/review only after a demonstrated gap. Software access through an assistant is not evidence of a paid account, usable API entitlement or a configured integration.
+
+### Source evidence for the eight additions
+
+Shared fields: claim_kind=vendor_claim; source_type=primary; verified_at=2026-11-09; verified_by=Codex, inspected the listed official page sections through web retrieval; confidence=moderate; verification_status=partially_verified; evaluation_status=researching; adoption_status=reference; implementation_result=not_tested; owner=Portfolio Design Lab; evidence_artifact=this versioned section. The named vendor/project is source_owner.
+
+Only the published descriptions below were checked. Exact pricing, free-tier/export limits, authenticated availability, maintenance, integration compatibility, security, training/retention terms and commercial/output rights are **unverified**. license_rights=unknown_review_required; rights_url=null pending selected-product/release review. Cap's linked upstream repository could not be fetched during this review, so its precise source/binary/hosted licensing remains unresolved; no blanket open-source/free-commercial classification is assigned.
+
+Review trigger: before purchase, pilot, publication of stronger claims, or use of real data, and on changed terms/features; review_due=on_trigger. No recurring schedule is created.
+
+| Claim ID / candidate | Official source and inspected section | Narrow supported description | Limit or cost driver to verify |
+| --- | --- | --- | --- |
+| CONTENT-20261109-01 / EDT-006 | [OpusClip](https://www.opus.pro/), clipping/captioning/reframe feature overview | Vendor describes turning longer footage into edited, resized clips with captions | No guarantee of virality or correct clip selection; verify credits, export limits and human correction effort |
+| CONTENT-20261109-02 / CAP-002 | [Loom](https://www.loom.com/), screen recording and share/embed sections | Vendor describes screen/camera recording and sharing video messages | Verify recording length, library/storage limits, viewer access and selected-plan controls |
+| CONTENT-20261109-03 / CAP-003 | [Cap](https://cap.so/), Instant/Studio modes and sharing | Vendor describes instant hosted links, local capture/editing and shared playback pages | Verify exact OS support, local versus cloud data path, license, commercial use and self-host maintenance |
+| CONTENT-20261109-04 / DEM-005 | [Supademo](https://supademo.com/), Guided Interactive Demos | Vendor describes guided HTML or screenshot/video walkthroughs | Not proof of a fully functional product environment; validate update cost and allowed capture data |
+| CONTENT-20261109-05 / DEM-006 | [Storylane](https://www.storylane.io/interactive-demos), capture/edit/share | Vendor describes screenshot, video and HTML/CSS capture, editing and sharing of interactive demos | No automatic proof of product behavior, accessibility or conversion uplift |
+| CONTENT-20261109-06 / HST-001 | [Wistia](https://wistia.com/), video management/marketing/analytics feature overview | Vendor lists hosting, embedding, player, lead forms and video analytics | Exact analytics semantics, viewer identity, plan entitlements and data handling not tested |
+| CONTENT-20261109-07 / HST-002 | [Vidyard](https://www.vidyard.com/), Video Messages and Video Hosting | Vendor describes personal video messages, centralized hosting and viewer-engagement reporting | Views do not establish buying intent; verify identity attribution, integrations and plan costs |
+| CONTENT-20261109-08 / REV-001 | [Frame.io](https://frame.io/features/review-and-approval), Precision Feedback and viewing controls | Vendor describes anchored asset comments and frame-accurate video review controls | Application review state does not replace the content owner's approval; check seats, storage and existing subscription entitlement |
+
+### Supporting practices to use before adding more software
+
+- **One content brief:** audience/persona, buyer question, sales stage, message, verified proof, desired action, placement and owner.
+- **One asset record in the existing content system:** master/source project, export, transcript/captions, thumbnail, brand version, source claims, reviewer, approved revision and update/retirement trigger. Do not create another database just for this library.
+- **A repurposing map:** one approved walkthrough can supply a short clip, written explanation, sales follow-up and training excerpt; adapt each to its audience instead of assuming every clip belongs on every channel.
+- **A buyer-stage map:** awareness explains the problem; evaluation demonstrates a real workflow; decision content supplies approved evidence and implementation answers; onboarding teaches the next task.
+- **A measurement plan:** track production/revision effort, meaningful completion, CTA responses, qualified meetings or evaluation progress where attributable. A view, completion or asset open is an engagement event, not proof of revenue or intent.
+- **A maintenance habit:** verify captions and technical terminology, retain editable masters, and refresh assets when the product or claims change.
+
+Content scheduling, campaign ownership, newsletter distribution and document-sharing operations belong in the existing GTM/technology catalog and GTM Revenue OS, not a second calendar here. Buffer, DocSend and the already-listed Postiz/listmonk are evaluated in that owning catalog.
