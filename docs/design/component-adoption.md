@@ -496,3 +496,12 @@ See [Frontend pilot](../academy/FRONTEND-PILOT.md) for ownership, responsive beh
 - **Keyboard and motion:** Pressed filters, labeled previous/next, disabled ends, no autoplay. The sheet uses the installed dialog focus trap. Reduced motion uses an instant scroll and a zero-duration carousel. Empty filters explain how to reset or open the directory.
 - **Verification:** `lib/component-lessons.test.ts`, `lib/featured-work.test.ts`, `tests/visual/project-discovery.spec.ts`, and `tests/site/project-presentation.spec.ts`. Viewport, zoom, and screen-reader results belong in the PR. Lab availability is not approval to replace the directory.
 - **Rollback:** Remove the comparison section and the seven lessons, and restore the previous strip and directory card markup. Routes stay the same.
+
+## Case-study evidence storytelling comparison (November 9, 2026)
+
+- **Status:** Design Lab teaching specimen, not adopted on public case-study routes. Roadmap #322.
+- **Source:** existing `ProjectEvidence`, `ProjectPreview`, `directoryProjects`, `getProject`, canonical case-study pages, and current brand tokens. No new package, registry family, images, or invented claims.
+- **Implementation:** `components/design-lab/case-study-evidence-comparison.tsx`, Storybook specimen and bounded visual/browser test. Compare story-first vs evidence-first layouts with two existing examples: Detector Coverage Atlas and Account Intelligence.
+- **Boundary:** Atlas shows a fixed illustrative table, not live scanning or proof of vendor gaps. Account Intelligence uses a fictional browser walkthrough with no live sources or outbound sending. Do not conflate this portfolio example with a separately deployed Account Signal Engine.
+- **Responsive / accessibility:** Normal document reading order, native pressed buttons, visible titles and sample captions, no autoplay, no added animation. Verify focus, 375/768/1280 widths, 200% zoom, reduced-motion settings, and real screen-reader use before adoption.
+- **Decision gate:** After evidence and UX approval, pilot only one case study at a time. Keep the existing public contents links and source attributions; prefer existing approved figures over synthetic product screenshots. Rollback by removing the single Lab mount and specimen.

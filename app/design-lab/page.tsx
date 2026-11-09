@@ -16,6 +16,7 @@ import { DataDisplayComparison } from "@/components/design-lab/data-display-comp
 import { DashboardCompositionComparison } from "@/components/design-lab/dashboard-composition-comparison";
 import { NavigationPatternComparison } from "@/components/design-lab/navigation-pattern-comparison";
 import { ProjectDiscoveryComparison } from "@/components/design-lab/project-discovery-comparison";
+import { CaseStudyEvidenceComparison } from "@/components/design-lab/case-study-evidence-comparison";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
@@ -171,6 +172,7 @@ export default function DesignLabPage() {
         <GuidedPracticeExplorer />
         <ComponentLearning />
         <ProjectDiscoveryComparison />
+        <CaseStudyEvidenceComparison />
         <div id="guided-form-controls" className="scroll-mt-24">
           <FormPatternComparison />
         </div>
