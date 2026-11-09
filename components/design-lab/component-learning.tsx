@@ -8,6 +8,15 @@ import {
   type ReactNode,
 } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  CaptionedGallery,
+  CompactEditorialCard,
+  FeaturedCaseStudyCard,
+  FilteredProjectCarousel,
+  ProjectDetailRoutes,
+  ProjectRelationshipMap,
+  ScreenshotLedCard,
+} from "@/components/design-lab/project-discovery-comparison";
 import { componentOptions } from "@/lib/component-options";
 import {
   componentLessons,
@@ -636,6 +645,13 @@ const demos: Record<string, () => ReactElement> = {
   feedback: FeedbackDemo,
   checkbox: CheckboxDemo,
   select: SelectDemo,
+  editorialProjectCard: CompactEditorialCard,
+  screenshotProjectCard: ScreenshotLedCard,
+  featuredCaseStudy: FeaturedCaseStudyCard,
+  projectCarousel: FilteredProjectCarousel,
+  projectDetailChoice: ProjectDetailRoutes,
+  captionGallery: CaptionedGallery,
+  projectMap: ProjectRelationshipMap,
   table: TableDemo,
 };
 

@@ -65,6 +65,8 @@ Primitives already in the repo: links, buttons in the header and filters, `Proje
 
 Lesson: [editorial-project-card.md](../builder-academy/editorial-project-card.md).
 
+The project-discovery comparison sits with the component lessons. It reuses the `summaries`, `context`, and `process-illustrations` catalog families. It does not add a registry. The seven examples use public project records and label missing screenshots instead of drawing new ones.
+
 ## Motion & component workbench (2026-10-12)
 
 The top of `/design-lab` now provides a compact selector and one preview stage, followed by a project-filtered collection of ten component families. The production gate remains in place. Storybook exposes `Design Lab/Motion Workbench` and `Design Lab/Component Options`.
