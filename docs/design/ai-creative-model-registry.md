@@ -1,6 +1,6 @@
 # AI Creative Model & Tool Registry
 
-> Status: evaluation backlog; no purchase, API integration, deployment, or production approval implied. Reviewed 2026-11-06. Owner: Portfolio Design Lab. Consumer: GTM Revenue OS.
+> Status: evaluation backlog; no purchase, API integration, deployment, or production approval implied. Registry updated 2026-11-09; source checks are scoped and dated below. Owner: Portfolio Design Lab. Consumer: GTM Revenue OS.
 >
 > This is a public-repository research document for a **local-only UI**, not an instruction to expose the /design-lab production route. Do not include customer data, confidential assets or credentials.
 
@@ -31,15 +31,20 @@ Each candidate should record: `id`, `provider`, `product`, `model_or_version` (i
 | VID-003 | Kling | video model family | video | reference-driven video |
 | VID-004 | Seedance | video model family | video | multimodal reference-driven video |
 | VID-005 | Wan | video model family | video | video model comparison |
+| VID-006 | Higgsfield | application / model workspace | video / marketing | generated scenes and visual ad concepts |
 | DEM-001 | Clueso | application | product demos | real product video / tutorials |
 | DEM-002 | Arcade | application | product demos | interactive guided walkthroughs |
 | DEM-003 | Screen Studio | application | capture | recorded product demos |
+| DEM-004 | Trupeer | application | product demos / training | screen recordings into narrated tutorials |
+| CAP-001 | Riverside | application | recording / editing | interviews, webinars and repurposed clips |
 | EDT-001 | Descript | application | editing | repurposing interviews, webinars, demos |
 | EDT-002 | Adobe Premiere Pro | application | editing | professional review and finishing |
 | EDT-003 | CapCut | application | editing | lightweight social variants |
+| EDT-004 | DaVinci Resolve | application | editing / finishing | timeline editing, color and audio; free and Studio editions |
+| EDT-005 | Shotcut | open-source application | editing | local timeline editing and exports |
 | AVT-001 | HeyGen | application | avatar / localization | personalized or localized video |
 | AVT-002 | Synthesia | application | avatar / education | structured training and explainers |
-| AUD-001 | ElevenLabs | model/application | audio | approved narration/localization |
+| AUD-001 | ElevenLabs / ElevenCreative | model/application | audio / video | narration, localization and creative video options; not approved |
 | DEV-001 | Remotion | source-available framework | coded video | templated charts, animations and explainers |
 | DEV-002 | FFmpeg | open-source framework/tool | processing | transforms and export automation |
 | DEV-003 | Lottie / SVG | formats / ecosystem | animation | portable lightweight motion |
@@ -145,3 +150,75 @@ After selection, GTM OS owns campaign/calendar placement, distribution and comme
 All are evaluation candidates, not installed integrations. Verify exact version/license and any plugins or hosted-service terms during adoption. The existing Academy controls and existing chart components remain the baseline; candidate presence does not justify replacing them.
 
 Design Lab #258 contains a linked asset-starter/adoption map at docs/design/templates/README.md and an original editable fictional security-workflow SVG. This is a source starter, not a copied third-party template, deployment or generated marketing asset. GTM destinations still require their own approved brief and delivery work.
+
+## Marketing and product video options
+
+**Decision state:** research options only, recorded 2026-11-09. The original five requested options resolve to DEM-001, EDT-001, AUD-001, DEV-001 and new VID-006. Reuse existing IDs for alternatives; five new candidates were added: VID-006, DEM-004, CAP-001, EDT-004 and EDT-005. There is no second creative registry.
+
+The following fits and priorities are **recommendations**, not measured quality rankings. Capability evidence is scoped in the source table below. Existing records for Arcade, Premiere Pro, CapCut, Synthesia and FFmpeg remain available; they have not been freshly evaluated by this update.
+
+| Task | Candidate IDs and options | Why compare them | Current recommendation and trigger |
+| --- | --- | --- | --- |
+| Product walkthrough or release video | DEM-001 Clueso; DEM-004 Trupeer | Both describe workflows that turn real screen recordings into narrated, edited videos | Assess Clueso first; compare Trupeer if editing, updates or export limits become a specific obstacle |
+| Polished screen capture on Mac | DEM-003 Screen Studio; DEV-005 OBS Studio | Screen Studio emphasizes zoom/framing; OBS offers configurable capture and audio mixing | Compare a paid polish workflow with a free capture baseline; check the actual device/OS before selecting |
+| Marketing explainers and social clips | EDT-001 Descript; DSG-001 Canva | Descript fits transcript-led edits; Canva fits template-led visual assembly | Assess one primary editor based on whether the source is spoken footage or designed assets |
+| Interviews, customer stories and webinars | CAP-001 Riverside; EDT-001 Descript | Remote recording plus editing/repurposing workflows | Revisit Riverside only if existing recording is limiting guest quality or production |
+| Narration and localization | AUD-001 ElevenLabs / ElevenCreative; EDT-001 Descript; DEM-001 Clueso | Dedicated voice workflow versus narration already included with an editor | Test the existing editor's narration first; add ElevenLabs when delivery or localization has a demonstrated gap |
+| Cinematic or abstract marketing scenes | VID-006 Higgsfield; VID-001 Runway family | Creative video workspaces for generated supporting footage | Watchlist until a brief needs generated scenes; evaluate the exact model and cost per accepted shot |
+| Repeatable animations and technical explainers | DEV-001 Remotion; DEV-004 Motion Canvas | React video templates versus TypeScript animation authoring | Reference until a repeated asset format justifies setup; reuse Design Lab visual patterns |
+| Timeline editing and finishing | EDT-004 DaVinci Resolve; EDT-005 Shotcut | A free-edition professional editor versus a free open-source editor | Use as a low-subscription-cost baseline; compare learning/revision effort and hardware needs |
+| Presenter or translated video | AVT-001 HeyGen; existing AVT-002 Synthesia | Presenter/localization workflow candidates | Defer until a real presenter/localization requirement exists; no need to add an avatar to ordinary demos |
+
+### Three starting workflows
+
+1. **Quick product demo:** synthetic screen recording → Clueso → reviewed captions/transcript and a short teaser. Compare Trupeer only on a defined gap.
+2. **Broad marketing production:** existing screen/camera recording → Descript → reviewed social clips. Add ElevenLabs only if its voice workflow improves the result enough to justify another tool.
+3. **Low-cost local baseline:** OBS capture + own narration → Shotcut or the free edition of DaVinci Resolve → manual review/export. Local compute, learning and editing time still count as cost.
+
+For a repeatable branded explainer, compare Remotion with Motion Canvas after the baseline works. Canva can provide simple visual assembly. Higgsfield/Runway supply optional concept footage. Use real captures for product behavior and verify any reconstructed UI against the actual product.
+
+**Proposed sample, not an active pilot:** one fictional 60–90 second software walkthrough, plus a 15–30 second teaser. Record hands-on minutes, correction/update minutes, actual credits/spend, UI/text accuracy, caption accuracy, editability and cost per approved asset. Start with one workflow; no automatic subscriptions, generation jobs, publishing or n8n integration.
+
+### Cost and license observations
+
+These are dated observations, not a budget or complete legal review. Check the selected plan, billing commitment, taxes, export/watermark limits, model credits and commercial terms before use.
+
+| Candidate | Observation from inspected official source on 2026-11-09 | Cost or rights gap |
+| --- | --- | --- |
+| DEM-001 Clueso | Free evaluation lists 10 video-export minutes/month; Solo lists $40/month **billed yearly**, with 3 export hours/year. [Pricing](https://www.clueso.io/pricing) | Annual commitment and annual export quota matter; free export watermark/rights and selected features need confirmation |
+| EDT-001 Descript | Pricing comparison lists a Free tier with 60 media minutes/month. [Pricing](https://www.descript.com/pricing) | Media processing allowance is not an unlimited video-generation allowance; confirm resolution, watermark and AI limits |
+| AUD-001 ElevenLabs | Regular Starter $6/month, Creator $22/month; Starter lists a commercial license and Image & Video. Introductory offers excluded. [Pricing](https://elevenlabs.io/pricing) | Check model-specific credits, regeneration cost, exact output rights and intended use |
+| DEV-001 Remotion | Free eligibility includes individuals/companies up to three people; company Creator option $25/seat/month; Automator option $0.01/render with $100/month minimum. [License/pricing](https://www.remotion.dev/docs/license/pricing) | Source-available, not blanket OSS; verify intended organization, manual versus automated use, exact terms and compute cost |
+| EDT-004 DaVinci Resolve | Official product page offers a free edition and a paid Studio edition. [Editions](https://www.blackmagicdesign.com/products/davinciresolve) | Free software price does not imply open source; confirm codecs/features and hardware for the chosen edition |
+| EDT-005 Shotcut | Official site describes a free open-source editor; upstream COPYING contains GNU GPL v3. [Product](https://www.shotcut.org/) · [COPYING](https://github.com/mltframework/shotcut/blob/master/COPYING) | Exact release/dependencies and redistribution rights require review; software licensing does not license imported media |
+| Other candidates | Exact current prices and plan entitlements **not assessed** in this update | Reuse existing licensed tools where adequate; review seats, export limits, credits, storage, recording hours and operational effort before purchase |
+
+### Scoped source evidence
+
+**Shared record fields for the rows below:** source_type=primary; claim_kind=vendor_claim (published capability, not independent performance); verified_at=2026-11-09; verified_by=Codex, inspected official page sections through web retrieval; confidence=moderate; verification_status=partially_verified; adoption_status=reference; evaluation_status=researching; implementation_result=not_tested; owner=Portfolio Design Lab; evidence_artifact=this versioned registry section. The source owner is the named vendor/project. Recommendations above are author judgments derived from these descriptions, not empirically tested superiority claims.
+
+**Shared limitations:** no account-level entitlement, working integration, production quality, security approval, uptime, model-version availability or ROI was tested. Product homepages support only what the vendor describes. Current model variants, exact release licenses, training/retention/security terms and output/commercial rights remain unverified except the narrow pricing/license observations above. license_rights=unknown_review_required for vendor material and generated/imported assets; rights_url=null unless a rights source is explicitly linked above or in the existing record. Only short paraphrases and source links are stored.
+
+**Review trigger for every row:** before purchase, pilot, external factual publication or use with real data, and when pricing, features, model versions or terms change. review_due=on_trigger; no recurring schedule created.
+
+| Claim ID / candidate | Official source and inspected section | Precisely supported description | Specific limitation |
+| --- | --- | --- | --- |
+| VIDEO-20261109-01 / DEM-001 | [Clueso](https://www.clueso.io/), “Start however you like” | Vendor describes recording or uploading a product walkthrough and producing script, voiceover and edited video | Automation quality and account access not tested |
+| VIDEO-20261109-02 / EDT-001 | [Descript](https://www.descript.com/pricing), Features and plan comparison | Lists screen recording, transcript-based editing, captions, audio cleanup and clip creation | Individual features can depend on tier/credits |
+| VIDEO-20261109-03 / AUD-001 | [ElevenCreative](https://elevenlabs.io/creative), Create/edit/localize | Describes voiceovers, video generation, avatars, music and localization in the platform | Do not reduce it to audio only; exact model and paid-plan access still need checking |
+| VIDEO-20261109-04 / DEV-001 | [Remotion](https://www.remotion.dev/), programmatic video and parameterization | Describes React-authored videos and reusable parameterized templates | Template engineering, rendering and organization eligibility not tested |
+| VIDEO-20261109-05 / VID-006 | [Higgsfield help](https://higgsfield.ai/creator-hub/help-center/tools/which-higgsfield-tool-should-i-use), tool selection | Routes cinematic camera-control work to Cinema Studio and product-ad work to Marketing Studio | Workspace capability is not proof of exact generated product behavior |
+| VIDEO-20261109-06 / DEM-003 | [Screen Studio](https://screen.studio/), Focus and zoom | Describes Mac screen capture, automatic/manual zoom and screen/camera layouts | Device compatibility, current price and account license not verified |
+| VIDEO-20261109-07 / DEM-004 | [Trupeer Video](https://www.trupeer.ai/video), screen recording and editing | Describes recorded-screen input, script editing, AI voiceover and video/doc exports | Output quality, current plan limits and commercial terms not tested |
+| VIDEO-20261109-08 / DEV-005 | [OBS Studio](https://obsproject.com/), Features | Describes screen/window/webcam sources, scene composition and audio mixing | Capture setup requires validation on the actual device |
+| VIDEO-20261109-09 / EDT-004 | [DaVinci Resolve](https://www.blackmagicdesign.com/products/davinciresolve), Two Great Versions | Describes editing, color, motion/VFX and audio with separate free/Studio editions | No assertion that Studio-only features are included free |
+| VIDEO-20261109-10 / EDT-005 | [Shotcut](https://www.shotcut.org/), format support and timeline/editor sections | Describes a free cross-platform editor with native editing and multi-format timelines | Caption workflow, exact binaries and performance not tested |
+| VIDEO-20261109-11 / DEV-004 | [Motion Canvas](https://motioncanvas.io/), Best of Both Worlds | Describes TypeScript-authored animation and a browser editor for syncing audio | No assumption of direct drop-in reuse of Remotion/React components |
+| VIDEO-20261109-12 / AVT-001 | [HeyGen](https://www.heygen.com/), avatar and translation sections | Describes avatar-led videos and translation of existing footage | Consent, authenticity, exact language quality and pricing need separate review |
+| VIDEO-20261109-13 / VID-001 | [Runway Creative](https://runway.com/), creative-platform description | Describes a cloud workspace for generating/editing video, images and audio | This source check does not revalidate the older Gen-4.5 watchlist label or rank current models |
+| VIDEO-20261109-14 / DSG-001 | [Canva Video](https://www.canva.com/video-editor/), templates/features and watermark FAQ | Describes template/timeline video editing, captions and free-versus-paid asset watermark conditions | Asset rights and selected plan features still require review |
+| VIDEO-20261109-15 / CAP-001 | [Riverside](https://riverside.com/), product overview | Describes recording, editing and repurposing for interviews, webinars and social clips | Guest experience, exact recording limits, privacy and costs not tested |
+
+### Catalog ownership and discovery
+
+The cross-portfolio technology library should link here by candidate ID. The existing Technical Docs Remotion record and Motion Canvas next-wave reference remain cross-category discovery pointers; creative comparisons stay here. GTM Revenue OS owns production briefs and measurement. This update adds no dependency, provider connection, live workflow, release or competing inventory.
