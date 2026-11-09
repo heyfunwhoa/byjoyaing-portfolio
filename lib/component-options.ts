@@ -1519,6 +1519,150 @@ export const componentOptions: ComponentOption[] = [
     "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
     "adoption": "Keep the underlying facts unchanged across views. Titles do not imply permissions; avoid duplicate content in the source."
   },
+  {
+    "id": "product-guided-setup",
+    "name": "Guided onboarding and setup wizard",
+    "purpose": "Help a user configure prerequisites and reach a first verified success.",
+    "availability": "Candidate",
+    "parts": [
+      "Prerequisite review",
+      "Step-by-step setup",
+      "Verify and resume"
+    ],
+    "apps": [
+      "Portfolio Ops Runtime",
+      "Truffle Camp",
+      "GTM Revenue OS"
+    ],
+    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "adoption": "Compose existing steps, forms and feedback. Clearly distinguish configured, connected and verified; only offer resumable state when persistence actually exists."
+  },
+  {
+    "id": "product-relationship-explorer",
+    "name": "Entity relationship explorer",
+    "purpose": "Inspect explicit relationships among records without losing their underlying source.",
+    "availability": "Candidate",
+    "parts": [
+      "Relationship summary",
+      "Neighbor list",
+      "Focused detail"
+    ],
+    "apps": [
+      "Security Market Map",
+      "Account Signal Engine",
+      "GTM Revenue OS"
+    ],
+    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "adoption": "Start with a semantic list and anchored detail; a node graph is optional and must preserve accessible tabular relationships and evidence."
+  },
+  {
+    "id": "product-uncertainty",
+    "name": "Confidence and uncertainty display",
+    "purpose": "Separate verified observations from assumptions, unknowns, contradictions and stale facts.",
+    "availability": "Candidate",
+    "parts": [
+      "Evidence status",
+      "Freshness and source",
+      "Contradiction explanation"
+    ],
+    "apps": [
+      "Security Market Map",
+      "Account Signal Engine",
+      "Technical Docs Platform"
+    ],
+    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "adoption": "Never replace provenance with an invented numeric confidence score. Explicitly name what is known, inferred, unverified or outdated."
+  },
+  {
+    "id": "product-decision-workbench",
+    "name": "Decision comparison workbench",
+    "purpose": "Help evaluate alternatives against explicit criteria, costs, limitations and reconsideration triggers.",
+    "availability": "Candidate",
+    "parts": [
+      "Weighted or unweighted criteria",
+      "Side-by-side evidence",
+      "Decision record"
+    ],
+    "apps": [
+      "Technical Docs Platform",
+      "Portfolio Ops Runtime",
+      "GTM Revenue OS"
+    ],
+    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "adoption": "Compose existing comparison and evidence patterns; do not create a competing technology registry. Clearly distinguish preference from verified facts and adopted decisions."
+  },
+  {
+    "id": "product-provenance",
+    "name": "Data provenance and transformation trail",
+    "purpose": "Expose the original source, normalized fields, transformations and resolution of conflicting records.",
+    "availability": "Candidate",
+    "parts": [
+      "Source trace",
+      "Transformation stages",
+      "Reconciliation exceptions"
+    ],
+    "apps": [
+      "Account Signal Engine",
+      "Channel Territory Mapping",
+      "Security Market Map"
+    ],
+    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "adoption": "Show concrete sources, timestamps and transformations; never imply actual connector access or completed enrichment in a synthetic demo."
+  },
+  {
+    "id": "product-action-preview",
+    "name": "Human approval and action preview",
+    "purpose": "Explain intended edits, side effects and permissions before executing an externally impactful action.",
+    "availability": "Candidate",
+    "parts": [
+      "Before-and-after preview",
+      "Scope summary",
+      "Approve or cancel"
+    ],
+    "apps": [
+      "GTM Revenue OS",
+      "Portfolio Ops Runtime",
+      "Account Signal Engine"
+    ],
+    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "adoption": "Reuse the approval primitives being explored in Design Lab PR #303; this is a composed transaction preview, not another approval-panel component. Clearly separate simulation from live execution."
+  },
+  {
+    "id": "product-recovery",
+    "name": "Recovery, retry and supported undo",
+    "purpose": "Make failures understandable and offer safe recovery without losing validated user input.",
+    "availability": "Candidate",
+    "parts": [
+      "Failure detail",
+      "Retry and repair",
+      "Undo when supported"
+    ],
+    "apps": [
+      "Account Signal Engine",
+      "GTM Revenue OS",
+      "Channel Territory Mapping"
+    ],
+    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "adoption": "Use durable inline error messages, preserve work, and only offer Undo when the underlying action is truly reversible. Never present destructive rollback as guaranteed."
+  },
+  {
+    "id": "product-master-detail",
+    "name": "Responsive master-detail explorer",
+    "purpose": "Allow inspection of a collection and a selected record while preserving list context.",
+    "availability": "Candidate",
+    "parts": [
+      "Collection list",
+      "Detail pane",
+      "Mobile back navigation"
+    ],
+    "apps": [
+      "Account Signal Engine",
+      "Security Market Map",
+      "Portfolio"
+    ],
+    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "adoption": "Reuse existing card/table and sheet patterns. Preserve selection, keyboard focus and mobile route context; avoid a new split-pane library until needed."
+  },
 ];
 export function optionsForApp(
   app: ComponentApp | "All",
