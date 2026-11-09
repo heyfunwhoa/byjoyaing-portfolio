@@ -7,6 +7,7 @@ import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
 import { LearningChecksPreview } from "@/components/design-lab/learning-checks-preview";
 import { ComponentOptions } from "@/components/design-lab/component-options";
 import { ComponentLearning } from "@/components/design-lab/component-learning";
+import { GuidedPracticeExplorer } from "@/components/design-lab/guided-practice-explorer";
 import { DetailPatternComparison } from "@/components/design-lab/detail-pattern-comparison";
 import { FeedbackPatternComparison } from "@/components/design-lab/feedback-pattern-comparison";
 import { AccountWorkflowWorkbench } from "@/components/design-lab/account-workflow-workbench";
@@ -162,13 +163,22 @@ export default function DesignLabPage() {
 
         <CreativeRecipes />
 
+        <GuidedPracticeExplorer />
         <ComponentLearning />
-        <FormPatternComparison />
-        <DataDisplayComparison />
-        <DashboardCompositionComparison />
+        <div id="guided-form-controls" className="scroll-mt-24">
+          <FormPatternComparison />
+        </div>
+        <div id="guided-data-display" className="scroll-mt-24">
+          <DataDisplayComparison />
+        </div>
+        <div id="guided-dashboard" className="scroll-mt-24">
+          <DashboardCompositionComparison />
+        </div>
         <NavigationPatternComparison />
         <AccountWorkflowWorkbench />
-        <DetailPatternComparison />
+        <div id="guided-detail-patterns" className="scroll-mt-24">
+          <DetailPatternComparison />
+        </div>
         <FeedbackPatternComparison />
 
         <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">

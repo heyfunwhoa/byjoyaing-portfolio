@@ -235,3 +235,32 @@ test("context and feedback comparisons reuse existing Design Lab primitives and 
   assert.match(page, /designLabAvailable\(\)/);
   assert.match(page, /notFound\(\)/);
 });
+
+test("five guided exercises reuse existing workbench examples without persisting answers", async () => {
+  const { guidedExercises, isGuidedExercise } = await import("./design-lab-guided-exercises.ts");
+  const ui = readFileSync(new URL("../components/design-lab/guided-practice-explorer.tsx", import.meta.url), "utf8");
+  const page = readFileSync(new URL("../app/design-lab/page.tsx", import.meta.url), "utf8");
+  assert.equal(guidedExercises.length, 5);
+  assert.equal(new Set(guidedExercises.map((exercise) => exercise.id)).size, 5);
+  assert.equal(isGuidedExercise("account-handoff"), true);
+  assert.equal(isGuidedExercise("unknown"), false);
+  const destinations = new Set(["guided-data-display", "guided-form-controls", "guided-dashboard", "guided-detail-patterns", "application-workbench"]);
+  for (const exercise of guidedExercises) {
+    assert.ok(exercise.userTask.length > 20);
+    assert.ok(exercise.why.length > 20);
+    assert.ok(exercise.test.length > 20);
+    assert.ok(exercise.followUp.length > 20);
+    assert.ok(exercise.choices.length >= 2);
+    assert.ok(exercise.choices.some((choice) => choice.id === exercise.suggested));
+    assert.ok(destinations.has(exercise.destination));
+    assert.ok(page.includes('id="' + exercise.destination + '"') || exercise.destination === "application-workbench");
+  }
+  assert.match(ui, /type="radio"/);
+  assert.match(ui, /Compare my decision/);
+  assert.match(ui, /Worked example and tradeoffs/);
+  assert.match(ui, /Reset answer/);
+  assert.match(ui, /Nothing is saved|not recorded|not grades/);
+  assert.match(page, /<GuidedPracticeExplorer \/>/);
+  assert.match(page, /designLabAvailable\(\)/);
+  assert.match(page, /notFound\(\)/);
+});
