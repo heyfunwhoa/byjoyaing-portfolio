@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { componentOptions } from "@/lib/component-options";
 import {
   componentLessons,
@@ -567,6 +568,85 @@ function SelectDemo() {
   );
 }
 
+function ProjectCarouselDemo() {
+  const examples = [
+    { id: "coverage", title: "Coverage Atlas", focus: "Security", teaser: "Organize fictional detection evidence.", problem: "Evidence is fragmented.", contribution: "A readable coverage comparison.", stage: "Sample concept" },
+    { id: "signals", title: "Account Signals", focus: "GTM", teaser: "Turn fictional signals into account context.", problem: "Research is spread across sources.", contribution: "Structured, reviewable account summaries.", stage: "Sample concept" },
+    { id: "academy", title: "Builder Lessons", focus: "Learning", teaser: "Practice one technical concept at a time.", problem: "Passive reading is hard to apply.", contribution: "Interactive lessons with feedback.", stage: "Sample concept" },
+    { id: "revenue", title: "Revenue Workspace", focus: "GTM", teaser: "Connect fictional deal evidence to next steps.", problem: "Pipeline context is scattered.", contribution: "A consistent review workflow.", stage: "Sample concept" },
+  ] as const;
+  const [focus, setFocus] = useState("All");
+  const [selected, setSelected] = useState<string | null>(null);
+  const [position, setPosition] = useState(0);
+  const [emptyExample, setEmptyExample] = useState(false);
+  const visible = emptyExample ? [] : examples.filter((item) => focus === "All" || item.focus === focus);
+  const chosen = visible.find((item) => item.id === selected);
+  const [api, setApi] = useState<import("@/components/ui/carousel").CarouselApi>();
+  const canPrevious = Boolean(api?.canScrollPrev());
+  const canNext = Boolean(api?.canScrollNext());
+  function changeFocus(next: string) {
+    setFocus(next);
+    setSelected(null);
+    setPosition(0);
+    setEmptyExample(false);
+  }
+  return (
+    <div className="min-w-0 space-y-3">
+      <p className="text-xs leading-5 text-muted">Fictional project examples. Controls only change this local lesson.</p>
+      <div role="group" aria-label="Filter featured projects" className="flex flex-wrap gap-2">
+        {["All", "GTM", "Security", "Learning"].map((item) => (
+          <Button key={item} type="button" variant={focus === item ? "default" : "outline"} aria-pressed={focus === item} onClick={() => changeFocus(item)}>{item}</Button>
+        ))}
+      </div>
+      <label className="flex min-h-11 items-center gap-2 text-sm">
+        <input type="checkbox" checked={emptyExample} onChange={(event) => { setEmptyExample(event.target.checked); setSelected(null); setPosition(0); }} />
+        Practice the empty-results state
+      </label>
+      <p role="status" className="text-xs text-muted">{visible.length} featured {visible.length === 1 ? "project" : "projects"} · {visible.length ? `Slide ${Math.min(position + 1, visible.length)} of ${visible.length}` : "No matches"}</p>
+      {visible.length === 0 ? (
+        <div className="rounded-lg border border-dashed border-border p-4">
+          <p className="font-medium">No featured projects match.</p>
+          <p className="mt-1 text-sm text-muted">Reset to explore the complete example.</p>
+          <Button className="mt-3" type="button" variant="outline" onClick={() => changeFocus("All")}>Reset filters</Button>
+        </div>
+      ) : (
+        <Carousel key={focus + String(emptyExample)} setApi={setApi} opts={{ align: "start", loop: false }} aria-label="Fictional featured project carousel" className="min-w-0">
+          <CarouselContent>
+            {visible.map((item) => (
+              <CarouselItem key={item.id} className="basis-[90%] sm:basis-[65%]">
+                <article className="flex h-full min-w-0 flex-col rounded-xl border border-border bg-card p-4">
+                  <p className="editorial-eyebrow text-accent">{item.focus} · {item.stage}</p>
+                  <h4 className="mt-2 font-display text-lg">{item.title}</h4>
+                  <p className="mt-2 flex-1 text-sm leading-6 text-muted">{item.teaser}</p>
+                  <Button type="button" variant="outline" className="mt-3 w-fit" aria-expanded={selected === item.id} aria-controls="project-carousel-preview" onClick={() => setSelected(selected === item.id ? null : item.id)}>{selected === item.id ? "Close preview" : "Preview project"}</Button>
+                </article>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="mt-3 flex items-center justify-between gap-2">
+            <CarouselPrevious className="static translate-y-0" aria-label="Previous featured project" onClick={() => setPosition((x) => Math.max(0, x - 1))} />
+            <span className="text-xs text-muted">Browse featured examples</span>
+            <CarouselNext className="static translate-y-0" aria-label="Next featured project" onClick={() => setPosition((x) => Math.min(visible.length - 1, x + 1))} />
+          </div>
+        </Carousel>
+      )}
+      <div id="project-carousel-preview" className="rounded-lg border border-border bg-background p-4" aria-live="polite">
+        {chosen ? (
+          <div className="space-y-2 text-sm leading-6">
+            <h4 className="font-semibold">{chosen.title} · Detail preview</h4>
+            <p><strong>Problem:</strong> {chosen.problem}</p>
+            <p><strong>Contribution:</strong> {chosen.contribution}</p>
+            <p><strong>Stage:</strong> {chosen.stage}</p>
+            <p className="text-muted">A public portfolio would link to the canonical project case study here. This lab example does not invent a URL.</p>
+          </div>
+        ) : <p className="text-sm text-muted">Choose Preview project to inspect the problem, contribution, and stage without leaving this lesson.</p>}
+      </div>
+      <p className="text-sm"><a href="/projects" className="inline-flex min-h-11 items-center text-accent underline">Browse the full project directory</a></p>
+      <p className="text-xs text-muted">Alternatives: static grid for simultaneous scanning, directory for exhaustive filtering, and single large feature for a deeper story.</p>
+    </div>
+  );
+}
+
 function TableDemo() {
   return (
     <div>
@@ -637,6 +717,7 @@ const demos: Record<string, () => ReactElement> = {
   checkbox: CheckboxDemo,
   select: SelectDemo,
   table: TableDemo,
+  "project-carousel": ProjectCarouselDemo,
 };
 
 function Demo({ lessonId }: { lessonId: string }) {
