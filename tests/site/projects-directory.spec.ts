@@ -79,7 +79,9 @@ test("directory sorting is shareable and preserves category, search, and focus",
   expect(titles.length).toBeGreaterThan(1);
   expect(titles).toEqual([...titles].sort((a, b) => a.localeCompare(b)));
 
-  // Playwright selectOption changes the value without granting focus; simulate a focused control.\n  await sort.focus();\n  await sort.selectOption("stage");
+  // Playwright selectOption changes the value without granting focus; simulate a focused control.
+  await sort.focus();
+  await sort.selectOption("stage");
   await expect(sort).toBeFocused();
   expect(new URL(page.url()).searchParams.get("sort")).toBe("stage");
 
@@ -91,7 +93,8 @@ test("directory sorting is shareable and preserves category, search, and focus",
   await expect(sort).toHaveValue("stage");
   await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("detector");
 
-  await sort.focus();\n  await sort.selectOption("featured");
+  await sort.focus();
+  await sort.selectOption("featured");
   expect(new URL(page.url()).searchParams.has("sort")).toBe(false);
   await expect(sort).toBeFocused();
 });
