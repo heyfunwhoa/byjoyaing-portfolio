@@ -505,3 +505,11 @@ See [Frontend pilot](../academy/FRONTEND-PILOT.md) for ownership, responsive beh
 - **Boundary:** Atlas shows a fixed illustrative table, not live scanning or proof of vendor gaps. Account Intelligence uses a fictional browser walkthrough with no live sources or outbound sending. Do not conflate this portfolio example with a separately deployed Account Signal Engine.
 - **Responsive / accessibility:** Normal document reading order, native pressed buttons, visible titles and sample captions, no autoplay, no added animation. Verify focus, 375/768/1280 widths, 200% zoom, reduced-motion settings, and real screen-reader use before adoption.
 - **Decision gate:** After evidence and UX approval, pilot only one case study at a time. Keep the existing public contents links and source attributions; prefer existing approved figures over synthetic product screenshots. Rollback by removing the single Lab mount and specimen.
+
+## Atlas evidence reading guide (November 9, 2026)
+
+- **Scope and source:** First public case-study pilot from the evidence-storytelling Design Lab comparison (#327). Reuse the existing `AtlasCase`, `CoverageExplorer`, `CaseStudyContents`, source attribution anchors, and brand tokens. No new dependency or screenshot assets.
+- **Reader task:** Before using the table, distinguish what the fixed sample actually contains from what it cannot prove. The compact guide identifies three sources and five credential types, explicitly excludes live detection, complete coverage, vendor gaps and monitoring, and links to the pre-existing cell definitions and attribution.
+- **Behavior:** Native links and document reading order, no autoplay or motion. Guide stacks on narrow screens and uses a three-column definition list at wider widths; no page-wide overflow expected.
+- **Acceptance:** Production build, lint, tests and site Playwright, 375/768/1280/200% zoom and keyboard/real screen reader review. No approval is implied by CI alone.
+- **Rollback:** Revert the guide-only change inside `components/atlas-case.tsx`; existing table, route, source links and contents remain unchanged.
