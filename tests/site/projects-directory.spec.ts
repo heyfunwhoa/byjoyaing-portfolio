@@ -70,3 +70,28 @@ test("changing filters without a fragment does not add an anchor jump", async ({
   await search.fill("detector");
   await expect(page).toHaveURL(/\/projects\?q=detector$/);
 });
+
+test("directory sorting is shareable and preserves category, search, and focus", async ({ page }) => {
+  await page.goto("/projects?sort=title#directory");
+  const sort = page.getByRole("combobox", { name: "Sort projects" });
+  await expect(sort).toHaveValue("title");
+  const titles = await page.locator("#directory article h3").allTextContents();
+  expect(titles.length).toBeGreaterThan(1);
+  expect(titles).toEqual([...titles].sort((a, b) => a.localeCompare(b)));
+
+  await sort.selectOption("stage");
+  await expect(sort).toBeFocused();
+  expect(new URL(page.url()).searchParams.get("sort")).toBe("stage");
+
+  await page.getByRole("searchbox", { name: "Search projects" }).fill("detector");
+  const parsed = new URL(page.url());
+  expect(parsed.searchParams.get("q")).toBe("detector");
+  expect(parsed.searchParams.get("sort")).toBe("stage");
+  await page.reload();
+  await expect(sort).toHaveValue("stage");
+  await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("detector");
+
+  await sort.selectOption("featured");
+  expect(new URL(page.url()).searchParams.has("sort")).toBe(false);
+  await expect(sort).toBeFocused();
+});
