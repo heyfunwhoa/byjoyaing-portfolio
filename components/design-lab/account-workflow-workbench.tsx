@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   accountWorkbenchFixture,
@@ -32,6 +32,8 @@ function EvidenceDetail({ account }: { account: WorkbenchAccount }) {
 export function AccountWorkflowWorkbench() {
   const heading = useId();
   const searchId = useId();
+  const stepHeadingRef = useRef<HTMLHeadingElement>(null);
+  const initialStage = useRef(true);
   const [stage, setStage] = useState<Stage>("discover");
   const [query, setQuery] = useState("");
   const [segment, setSegment] = useState<"All" | WorkbenchAccount["segment"]>("All");
@@ -44,6 +46,16 @@ export function AccountWorkflowWorkbench() {
   const inspected = accountWorkbenchFixture.find((item) => item.id === inspectedId);
   const exportRows = useMemo(() => workbenchExportPreview(shortlist), [shortlist]);
   const currentIndex = stages.findIndex((item) => item.id === stage);
+
+  // Changing steps unmounts the old controls. Move focus to the new step
+  // so keyboard and assistive-technology users do not lose their place.
+  useEffect(() => {
+    if (initialStage.current) {
+      initialStage.current = false;
+      return;
+    }
+    stepHeadingRef.current?.focus();
+  }, [stage]);
 
   function toggleShortlist(id: string) {
     setShortlist((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
@@ -73,7 +85,7 @@ export function AccountWorkflowWorkbench() {
         ))}
       </nav>
       <div className="rounded-xl border border-border bg-card p-4 sm:p-5">
-        <h3 className="font-display text-xl">{stages[currentIndex].question}</h3>
+        <h3 ref={stepHeadingRef} tabIndex={-1} className="font-display text-xl focus-visible:outline-2 focus-visible:outline-offset-2">{stages[currentIndex].question}</h3>
         <p className="mt-1 text-xs text-muted">Stage {currentIndex + 1} of {stages.length} · {shortlist.length} accounts shortlisted</p>
 
         {stage === "discover" && (
