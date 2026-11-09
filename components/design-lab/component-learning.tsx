@@ -130,6 +130,7 @@ function ColorDemo() {
 
 function SpacingDemo() {
   const [compact, setCompact] = useState(false);
+  const [reviewed, setReviewed] = useState(false);
   return (
     <div>
       <div
@@ -168,7 +169,14 @@ function SpacingDemo() {
             {account.name}
           </p>
         ))}
-        <Button type="button">Review example</Button>
+        <Button type="button" onClick={() => setReviewed((current) => !current)} aria-pressed={reviewed}>
+          {reviewed ? "Reset review" : "Review example"}
+        </Button>
+        <p role="status" className="text-sm text-muted">
+          {reviewed
+            ? "Review complete: compare the space between records before choosing a layout."
+            : "Choose Review example to reveal a spacing observation."}
+        </p>
       </div>
     </div>
   );
@@ -176,6 +184,7 @@ function SpacingDemo() {
 
 function AlignmentDemo() {
   const [clear, setClear] = useState(true);
+  const [activity, setActivity] = useState<string | null>(null);
   return (
     <div>
       <div
@@ -193,7 +202,7 @@ function AlignmentDemo() {
             key={label}
             type="button"
             aria-pressed={clear === value}
-            onClick={() => setClear(value)}
+            onClick={() => {setClear(value); setActivity(null);}}
             className={
               "min-h-11 rounded-lg border px-3 text-sm " +
               (clear === value
@@ -211,8 +220,8 @@ function AlignmentDemo() {
             Northstar has three signals to review.
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
-            <Button type="button">Review Northstar</Button>
-            <Button type="button" variant="outline">
+            <Button type="button" onClick={() => setActivity("Northstar: three fictional signals to review. No account was opened.")}>Review Northstar</Button>
+            <Button type="button" variant="outline" onClick={() => setActivity("Fictional accounts: Northstar (3 signals), Horizon (1 signal), Lumen (0 signals).")}>
               See all accounts
             </Button>
           </div>
@@ -220,13 +229,16 @@ function AlignmentDemo() {
       ) : (
         <div className="mt-4 text-center">
           <div className="flex flex-wrap justify-center gap-2">
-            <Button type="button">Research</Button>
-            <Button type="button">Draft</Button>
-            <Button type="button">Send</Button>
+            <Button type="button" onClick={() => setActivity("Research selected: inspect fictional account evidence before drafting.")}>Research</Button>
+            <Button type="button" onClick={() => setActivity("Draft selected: no message was created or saved.")}>Draft</Button>
+            <Button type="button" onClick={() => setActivity("Send simulated: no email or data was sent.")}>Send</Button>
           </div>
           <p className="mt-3 text-sm">Three equal actions compete.</p>
         </div>
       )}
+      <p role="status" className="mt-3 text-sm text-muted">
+        {activity ?? "Select an example action to see its simulated outcome. No customer records are accessed."}
+      </p>
     </div>
   );
 }
