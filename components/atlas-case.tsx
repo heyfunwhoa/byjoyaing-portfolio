@@ -49,6 +49,27 @@ export function AtlasCase() {
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
           Covered, Observed, and Not evaluated are different claims. The scroll on a narrow screen is the table, not the page.
         </p>
+        <aside aria-labelledby="atlas-evidence-guide" className="mt-7 rounded-xl border border-border bg-surface-sage p-4 sm:p-5">
+          <h3 id="atlas-evidence-guide" className="text-base font-semibold">What this comparison can tell you</h3>
+          <dl className="mt-4 grid gap-4 md:grid-cols-3">
+            <div>
+              <dt className="text-sm font-semibold">What you can inspect</dt>
+              <dd className="mt-1 text-sm leading-6 text-muted">A fixed example of three sources and five credential types, with distinct review states.</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold">What it does not establish</dt>
+              <dd className="mt-1 text-sm leading-6 text-muted">Live detection, complete coverage, verified product gaps, or continuous monitoring.</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold">How to interpret it</dt>
+              <dd className="mt-1 text-sm leading-6 text-muted">Filter a credential type, then read the cell definitions and source attribution before drawing conclusions.</dd>
+            </div>
+          </dl>
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <a href="#read-the-cell" className="inline-flex min-h-11 items-center text-accent underline">Read the evidence states</a>
+            <a href="#attribution" className="inline-flex min-h-11 items-center text-accent underline">Inspect source attribution</a>
+          </div>
+        </aside>
         <div className="mt-8">
           <CoverageExplorer />
         </div>
