@@ -31,12 +31,12 @@ type Display = (typeof dataDisplayOptions)[number]["id"];
 type Status = "Needs review" | "Reviewed";
 type SortKey = "name" | "signals" | "reviewed";
 type SortDirection = "asc" | "desc";
-type Account = { id: string; name: string; signals: number; reviewed: string; status: Status };
+type Account = { id: string; name: string; signals: number; reviewed: string; reviewedAt: string; status: Status };
 const accounts: Account[] = [
-  { id: "northstar", name: "Northstar Security", signals: 3, reviewed: "Nov 4", status: "Needs review" },
-  { id: "horizon", name: "Horizon Networks", signals: 1, reviewed: "Nov 6", status: "Reviewed" },
-  { id: "lumen", name: "Lumen Data", signals: 0, reviewed: "Nov 5", status: "Needs review" },
-  { id: "summit", name: "Summit Systems", signals: 2, reviewed: "Nov 7", status: "Reviewed" },
+  { id: "northstar", name: "Northstar Security", signals: 3, reviewed: "Nov 4", reviewedAt: "2026-11-04", status: "Needs review" },
+  { id: "horizon", name: "Horizon Networks", signals: 1, reviewed: "Nov 6", reviewedAt: "2026-11-06", status: "Reviewed" },
+  { id: "lumen", name: "Lumen Data", signals: 0, reviewed: "Nov 5", reviewedAt: "2026-11-05", status: "Needs review" },
+  { id: "summit", name: "Summit Systems", signals: 2, reviewed: "Nov 7", reviewedAt: "2026-11-07", status: "Reviewed" },
 ];
 
 export function DataDisplayComparison() {
@@ -49,6 +49,7 @@ export function DataDisplayComparison() {
   const [sortKey, setSortKey] = useState<SortKey>("name");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
   const [density, setDensity] = useState<"comfortable" | "compact">("comfortable");
+  const cellPadding = density === "compact" ? "p-2" : "p-3";
   function chooseSort(next: SortKey) {
     if (next === sortKey) setSortDirection((current) => current === "asc" ? "desc" : "asc");
     else { setSortKey(next); setSortDirection("asc"); }
@@ -62,7 +63,7 @@ export function DataDisplayComparison() {
   );
   const sorted = useMemo(() => [...filtered].sort((a, b) => {
     const comparison = sortKey === "signals" ? a.signals - b.signals
-      : sortKey === "reviewed" ? Number(a.reviewed.split(" ")[1]) - Number(b.reviewed.split(" ")[1])
+      : sortKey === "reviewed" ? a.reviewedAt.localeCompare(b.reviewedAt)
       : a.name.localeCompare(b.name);
     return sortDirection === "asc" ? comparison : -comparison;
   }), [filtered, sortKey, sortDirection]);
@@ -162,21 +163,21 @@ export function DataDisplayComparison() {
                 </caption>
                 <thead className="bg-surface-sage">
                   <tr>
-                    <th scope="col" aria-sort={sortKey === "name" ? (sortDirection === "asc" ? "ascending" : "descending") : "none"} className={density === "compact" ? "p-2" : "p-3"}><button type="button" className="min-h-11 text-left underline" onClick={() => chooseSort("name")}>Account {sortKey === "name" ? (sortDirection === "asc" ? "↑" : "↓") : ""}</button></th>
-                    <th scope="col" aria-sort={sortKey === "signals" ? (sortDirection === "asc" ? "ascending" : "descending") : "none"} className={density === "compact" ? "p-2" : "p-3"}><button type="button" className="min-h-11 underline" onClick={() => chooseSort("signals")}>Signals {sortKey === "signals" ? (sortDirection === "asc" ? "↑" : "↓") : ""}</button></th>
-                    <th scope="col" className="p-3">Status</th>
-                    <th scope="col" aria-sort={sortKey === "reviewed" ? (sortDirection === "asc" ? "ascending" : "descending") : "none"} className={density === "compact" ? "p-2" : "p-3"}><button type="button" className="min-h-11 underline" onClick={() => chooseSort("reviewed")}>Reviewed {sortKey === "reviewed" ? (sortDirection === "asc" ? "↑" : "↓") : ""}</button></th>
-                    <th scope="col" className="p-3">Action</th>
+                    <th scope="col" aria-sort={sortKey === "name" ? (sortDirection === "asc" ? "ascending" : "descending") : "none"} className={cellPadding}><button type="button" className="min-h-11 text-left underline" onClick={() => chooseSort("name")}>Account {sortKey === "name" ? (sortDirection === "asc" ? "↑" : "↓") : ""}</button></th>
+                    <th scope="col" aria-sort={sortKey === "signals" ? (sortDirection === "asc" ? "ascending" : "descending") : "none"} className={cellPadding}><button type="button" className="min-h-11 underline" onClick={() => chooseSort("signals")}>Signals {sortKey === "signals" ? (sortDirection === "asc" ? "↑" : "↓") : ""}</button></th>
+                    <th scope="col" className={cellPadding}>Status</th>
+                    <th scope="col" aria-sort={sortKey === "reviewed" ? (sortDirection === "asc" ? "ascending" : "descending") : "none"} className={cellPadding}><button type="button" className="min-h-11 underline" onClick={() => chooseSort("reviewed")}>Reviewed {sortKey === "reviewed" ? (sortDirection === "asc" ? "↑" : "↓") : ""}</button></th>
+                    <th scope="col" className={cellPadding}>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {sorted.map((account) => (
                     <tr key={account.id} className="border-t border-border">
-                      <th scope="row" className={(density === "compact" ? "p-2" : "p-3") + " font-medium"}>{account.name}</th>
-                      <td className="p-3 tabular-nums">{account.signals}</td>
-                      <td className="p-3">{account.status}</td>
-                      <td className="p-3">{account.reviewed}</td>
-                      <td className="p-3"><Button type="button" variant="outline"
+                      <th scope="row" className={`${cellPadding} font-medium`}>{account.name}</th>
+                      <td className={`${cellPadding} tabular-nums`}>{account.signals}</td>
+                      <td className={cellPadding}>{account.status}</td>
+                      <td className={cellPadding}>{account.reviewed}</td>
+                      <td className={cellPadding}><Button type="button" variant="outline"
                         aria-pressed={selected === account.id}
                         onClick={() => setSelected(account.id)}>Inspect</Button></td>
                     </tr>

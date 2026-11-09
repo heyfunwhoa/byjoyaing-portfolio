@@ -30,6 +30,9 @@ test("data display sorting, search, density and reset use the same fixture", asy
 
   await page.getByRole("combobox", { name: "Table spacing" }).selectOption("compact");
   await expect(page.getByRole("combobox", { name: "Table spacing" })).toHaveValue("compact");
+  await expect(table.locator("tbody tr").first().locator("td").first()).toHaveClass(/p-2/);
+  await page.getByRole("combobox", { name: "Table spacing" }).selectOption("comfortable");
+  await expect(table.locator("tbody tr").first().locator("td").first()).toHaveClass(/p-3/);
 
   const search = page.getByRole("searchbox", { name: "Search fictional accounts" });
   await search.fill("northstar");
