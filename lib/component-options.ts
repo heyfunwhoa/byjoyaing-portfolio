@@ -1534,7 +1534,7 @@ export const componentOptions: ComponentOption[] = [
       "Truffle Camp",
       "GTM Revenue OS"
     ],
-    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
     "adoption": "Compose existing steps, forms and feedback. Clearly distinguish configured, connected and verified; only offer resumable state when persistence actually exists."
   },
   {
@@ -1552,7 +1552,7 @@ export const componentOptions: ComponentOption[] = [
       "Account Signal Engine",
       "GTM Revenue OS"
     ],
-    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
     "adoption": "Start with a semantic list and anchored detail; a node graph is optional and must preserve accessible tabular relationships and evidence."
   },
   {
@@ -1570,7 +1570,7 @@ export const componentOptions: ComponentOption[] = [
       "Account Signal Engine",
       "Technical Docs Platform"
     ],
-    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
     "adoption": "Never replace provenance with an invented numeric confidence score. Explicitly name what is known, inferred, unverified or outdated."
   },
   {
@@ -1588,7 +1588,7 @@ export const componentOptions: ComponentOption[] = [
       "Portfolio Ops Runtime",
       "GTM Revenue OS"
     ],
-    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
     "adoption": "Compose existing comparison and evidence patterns; do not create a competing technology registry. Clearly distinguish preference from verified facts and adopted decisions."
   },
   {
@@ -1606,7 +1606,7 @@ export const componentOptions: ComponentOption[] = [
       "Channel Territory Mapping",
       "Security Market Map"
     ],
-    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
     "adoption": "Show concrete sources, timestamps and transformations; never imply actual connector access or completed enrichment in a synthetic demo."
   },
   {
@@ -1624,7 +1624,7 @@ export const componentOptions: ComponentOption[] = [
       "Portfolio Ops Runtime",
       "Account Signal Engine"
     ],
-    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
     "adoption": "Reuse the approval primitives being explored in Design Lab PR #303; this is a composed transaction preview, not another approval-panel component. Clearly separate simulation from live execution."
   },
   {
@@ -1642,7 +1642,7 @@ export const componentOptions: ComponentOption[] = [
       "GTM Revenue OS",
       "Channel Territory Mapping"
     ],
-    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
     "adoption": "Use durable inline error messages, preserve work, and only offer Undo when the underlying action is truly reversible. Never present destructive rollback as guaranteed."
   },
   {
@@ -1660,7 +1660,7 @@ export const componentOptions: ComponentOption[] = [
       "Security Market Map",
       "Portfolio"
     ],
-    "source": "https://www.w3.org/WAI/ARIA/apg/patterns/",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
     "adoption": "Reuse existing card/table and sheet patterns. Preserve selection, keyboard focus and mobile route context; avoid a new split-pane library until needed."
   },
 ];
