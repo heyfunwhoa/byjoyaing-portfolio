@@ -247,9 +247,14 @@ export default function AboutPage() {
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           {aboutPage.practiceIntro}
         </p>
-        <div className="mt-6">
-          <ToolsMap />
-        </div>
+        <details className="mt-6 rounded-xl border border-border bg-card p-4">
+          <summary className="flex min-h-11 cursor-pointer items-center py-2 font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            See the tools and systems I use
+          </summary>
+          <div className="mt-4">
+            <ToolsMap />
+          </div>
+        </details>
       </section>
 
       <section
@@ -284,7 +289,7 @@ export default function AboutPage() {
             );
           })}
         </ul>
-        <ul className="mt-5 grid gap-4 text-sm sm:grid-cols-3">
+        <ul className="mt-5 flex flex-wrap gap-x-6 text-sm">
           <li>
             <Link
               href="/work"
@@ -292,9 +297,6 @@ export default function AboutPage() {
             >
               Professional Work
             </Link>
-            <p className="leading-6 text-muted">
-              Enterprise selling, competitive positioning, and resources for the team.
-            </p>
           </li>
           <li>
             <Link
@@ -303,9 +305,6 @@ export default function AboutPage() {
             >
               Playbooks and practical guides
             </Link>
-            <p className="leading-6 text-muted">
-              Structured ways to explain complex sales work and put ideas into practice.
-            </p>
           </li>
           <li>
             <Link
@@ -314,9 +313,6 @@ export default function AboutPage() {
             >
               Independent experiments
             </Link>
-            <p className="leading-6 text-muted">
-              Tools and learning experiences I build to explore better ways of working.
-            </p>
           </li>
         </ul>
       </section>
