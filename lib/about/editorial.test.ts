@@ -39,7 +39,8 @@ test("education captions break the credential and its detail onto two lines", ()
     page.education.map(educationCaptionLines),
     [
       [
-        "B.S. Advertising, Business Foundations.",
+        "Bachelor of Science in Advertising.",
+        "Business Foundations.",
         "The University of Texas at Austin.",
       ],
       ["MBA, IT Management.", "Western Governors University, 2025."],
@@ -52,6 +53,10 @@ test("education captions break the credential and its detail onto two lines", ()
     assert.equal(lines.join(" "), item);
   }
   assert.deepEqual(educationCaptionLines("One line only"), ["One line only"]);
+  assert.deepEqual(educationCaptionLines("B.S. Advertising. The University of Texas at Austin."), [
+    "B.S. Advertising.",
+    "The University of Texas at Austin.",
+  ]);
 });
 
 test("malformed About content and missing required fields fail closed", () => {

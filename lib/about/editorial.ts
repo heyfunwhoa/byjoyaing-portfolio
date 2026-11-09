@@ -225,13 +225,20 @@ export function readAboutEditorial(input: unknown): AboutPage {
   };
 }
 
-/** Keep the credential on the first line and the school or level on the second. */
+/** Put each sentence on its own line. Keep initials such as B.S. with the words that follow. */
 export function educationCaptionLines(item: string): string[] {
-  const breakAt = item.lastIndexOf(". ");
-  if (breakAt < 0) return [item];
-  const detail = item.slice(breakAt + 2).trim();
-  if (!detail) return [item];
-  return [item.slice(0, breakAt + 1), detail];
+  const parts = item.split(". ");
+  if (parts.length < 2) return [item];
+  const lines: string[] = [];
+  for (let index = 0; index < parts.length; index += 1) {
+    let part = parts[index].trim();
+    while (index < parts.length - 1 && /^([A-Z]\.)*[A-Z]$/.test(part)) {
+      index += 1;
+      part = `${part}. ${parts[index].trim()}`;
+    }
+    lines.push(part.endsWith(".") ? part : `${part}.`);
+  }
+  return lines;
 }
 
 export const aboutPage = readAboutEditorial(record);
