@@ -9,6 +9,7 @@ export function GuidedPracticeExplorer() {
   const [selected, setSelected] = useState(guidedExercises[0].id);
   const [choice, setChoice] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
+  const [usedSuggestion, setUsedSuggestion] = useState(false);
   const exercise = guidedExercises.find((item) => item.id === selected) ?? guidedExercises[0];
   const picked = exercise.choices.find((item) => item.id === choice);
 
@@ -16,6 +17,7 @@ export function GuidedPracticeExplorer() {
     setSelected(id);
     setChoice(null);
     setRevealed(false);
+    setUsedSuggestion(false);
   };
 
   return (
@@ -51,24 +53,34 @@ export function GuidedPracticeExplorer() {
               <label key={option.id} className="flex min-h-11 cursor-pointer items-start gap-3 rounded-lg border border-border bg-background p-3">
                 <input type="radio" name={headingId + "-choice"} value={option.id}
                   checked={choice === option.id}
-                  onChange={() => {setChoice(option.id); setRevealed(false);}}
+                  onChange={() => {setChoice(option.id); setRevealed(false); setUsedSuggestion(false);}}
                   className="mt-1 size-4 shrink-0 accent-current" />
                 <span className="text-sm font-medium">{option.label}</span>
               </label>
             ))}
           </fieldset>
+          <p className="mt-3 text-sm text-muted">Select an option to compare your answer, or choose Compare my decision to see a suggested starting point.</p>
           <div className="mt-4 flex flex-wrap gap-2">
-            <Button type="button" disabled={!picked} onClick={() => setRevealed(true)}>
+            <Button type="button" onClick={() => {
+              if (!choice) {
+                setChoice(exercise.suggested);
+                setUsedSuggestion(true);
+              } else {
+                setUsedSuggestion(false);
+              }
+              setRevealed(true);
+            }}>
               Compare my decision
             </Button>
-            <Button type="button" variant="outline" onClick={() => {setChoice(null);setRevealed(false);}}>
+            <Button type="button" variant="outline" onClick={() => {setChoice(null);setRevealed(false);setUsedSuggestion(false);}}>
               Reset answer
             </Button>
           </div>
           {revealed && picked && (
             <div aria-live="polite" className="mt-5 space-y-3 rounded-lg border border-border bg-background p-4 text-sm leading-6">
               <h4 className="font-semibold">Worked example and tradeoffs</h4>
-              <p><strong>Your choice:</strong> {picked.label}. {picked.tradeoff}</p>
+              {usedSuggestion && <p>Since no option was selected, this example starts with the suggested approach. You can choose another option and compare again.</p>}
+              <p><strong>{usedSuggestion ? "Suggested example" : "Your choice"}:</strong> {picked.label}. {picked.tradeoff}</p>
               <p><strong>Suggested starting point:</strong> {exercise.choices.find((option) => option.id === exercise.suggested)?.label}</p>
               <p>{exercise.why}</p>
               <p><strong>When the decision changes:</strong> {exercise.followUp}</p>
