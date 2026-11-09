@@ -1,4 +1,9 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+// The header publishes --site-header-offset once it has hydrated; scroll only after that.
+async function waitForHeader(page: Page) {
+  await page.waitForFunction(() => document.documentElement.style.getPropertyValue("--site-header-offset") !== "");
+}
 
 // KRU-311: menu bar and motion patterns. Default runs use reduced motion; the motion
 // checks below opt in to no-preference explicitly.
@@ -8,6 +13,7 @@ test.describe("with motion allowed", () => {
 
   test("header tucks away on scroll down and returns on scroll up", async ({ page }) => {
     await page.goto("/about");
+    await waitForHeader(page);
     const header = page.locator("header[data-site-chrome]");
     await page.evaluate(() => window.scrollTo(0, 400));
     await page.evaluate(() => window.scrollTo(0, 900));
@@ -42,6 +48,7 @@ test.describe("with motion allowed", () => {
 test.describe("with reduced motion", () => {
   test("header never tucks and the timeline shows complete", async ({ page }) => {
     await page.goto("/experience");
+    await waitForHeader(page);
     const header = page.locator("header[data-site-chrome]");
     await page.evaluate(() => window.scrollTo(0, 400));
     await page.evaluate(() => window.scrollTo(0, 900));
