@@ -87,6 +87,9 @@ export default function DesignLabPage() {
             For example, try a branching conversation here, then adapt it for seller practice in GTM Revenue OS.
           </p>
           <nav aria-label="Start exploring Design Lab" className="mt-5 flex flex-wrap gap-3">
+            <a href="#guided-practice" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Start guided practice</a>
+            <a href="#component-learning" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Explore component lessons</a>
+            <a href="#application-workbench" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Try the account workflow</a>
             <a href="#ideation-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Use an ideation template
             </a>

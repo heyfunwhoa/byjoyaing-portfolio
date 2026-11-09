@@ -264,3 +264,18 @@ test("five guided exercises reuse existing workbench examples without persisting
   assert.match(page, /designLabAvailable\(\)/);
   assert.match(page, /notFound\(\)/);
 });
+
+test("Design Lab quick navigation and workbench step focus remain accessible", () => {
+  const page = readFileSync(new URL("../app/design-lab/page.tsx", import.meta.url), "utf8");
+  const workbench = readFileSync(new URL("../components/design-lab/account-workflow-workbench.tsx", import.meta.url), "utf8");
+  for (const anchor of ["guided-practice", "component-learning", "application-workbench"]) {
+    assert.match(page, new RegExp('href="#' + anchor + '"'));
+    assert.ok(page.includes('<GuidedPracticeExplorer />') || anchor !== "guided-practice");
+  }
+  assert.match(workbench, /stepHeadingRef\.current\?\.focus\(\)/);
+  assert.match(workbench, /ref=\{stepHeadingRef\} tabIndex=\{-1\}/);
+  assert.match(workbench, /onClick=\{reset\}/);
+  assert.match(workbench, /aria-current=\{stage === item\.id/);
+  assert.match(page, /designLabAvailable\(\)/);
+  assert.match(page, /notFound\(\)/);
+});
