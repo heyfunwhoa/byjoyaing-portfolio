@@ -170,7 +170,7 @@ export function CompetitiveIntelligenceCase() {
             <p className="mt-1 font-medium">TruffleHog · product capability</p>
             <p className="mt-2 text-muted">An illustrative sentence pair, not a historical vendor change. Review status: needs a person.</p>
             <p className="mt-2 text-muted">Available brief: Detection is not verification.</p>
-            <a href="#workflow" className="mt-3 inline-flex text-sm font-medium text-accent">
+            <a href="#workflow" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-accent">
               View details
             </a>
           </div>

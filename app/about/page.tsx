@@ -28,14 +28,14 @@ const educationMarks = [
     src: "/logos/education/ut-austin.svg",
     width: 1037,
     height: 298,
-    widthClass: "w-28 sm:w-32",
+    widthClass: "h-6 w-auto sm:h-7",
   },
   {
     name: "Western Governors University",
     src: "/logos/education/wgu.svg",
     width: 133,
     height: 30,
-    widthClass: "w-24 sm:w-[6.5rem]",
+    widthClass: "h-6 w-auto sm:h-7",
   },
 ] as const;
 
@@ -45,14 +45,14 @@ const certificationMarks = [
     src: "/badges/aws-certified-cloud-practitioner.png",
     width: 600,
     height: 600,
-    widthClass: "w-14 sm:w-20",
+    widthClass: "h-auto w-12 sm:w-14",
   },
   {
     name: "AWS Certified AI Practitioner",
     src: "/badges/aws-certified-ai-practitioner.png",
     width: 600,
     height: 600,
-    widthClass: "w-14 sm:w-20",
+    widthClass: "h-auto w-12 sm:w-14",
   },
 ] as const;
 
@@ -222,7 +222,7 @@ export default function AboutPage() {
                         width={mark.width}
                         height={mark.height}
                         unoptimized
-                        className={`h-auto max-w-full ${mark.widthClass}`}
+                        className={`max-w-full ${mark.widthClass}`}
                       />
                     </div>
                   ) : null}
