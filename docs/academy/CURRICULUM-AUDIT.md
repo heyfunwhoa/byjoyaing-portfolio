@@ -7,6 +7,18 @@
 **Authorization:** user requested the lesson audit, organization and background-job recovery follow-up. This supersedes older holds only for this bounded slice. Broader labs, persistent progress and badges remain separate work.
 **State (2026-11-04):** Existing PR #238 integrates the nine learning paths and recovery lesson on the original Academy integration branch. GitHub reports the branch conflict-free against current `main` at `e26355e`; exact-head automated checks succeeded with one flaky mobile focus test on first attempt. PR #238 is not merged or deployed; manual learner and owner-browser acceptance remain outstanding. This updates status only, not the original October 30 source-fact review.
 
+## Reconciliation addendum (2026-11-09)
+
+The November 4 state above is historical. [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) merged on 2026-11-08 at `3a64a4387392be3daa5686cd23f7eec81cc8c1f0`. Checked against `main` `6ff958ad675c631f253f34ea84369fe82e34219f` before this reconciliation commit, the registry still has 39 short lessons and nine paths. Do not restore the older 22-lesson or 38-lesson counts as the current inventory. This addendum does not repeat the October 30 citation review and does not claim a fresh browser or production audit.
+
+Source companions added with this reconciliation, none of which is a registered lesson:
+
+- [PR integration and reconciliation](../builder-academy/pr-integration-and-reconciliation.md) and [security across the SDLC](../builder-academy/release-security-review.md#security-across-the-whole-software-development-lifecycle), preserved from [PR #279](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/279). Place them after the beginner release core and before agent parallelization. They extend [From idea to verified release](../builder-academy/idea-to-verified-release.md); they are not a second security course.
+- [SDLC enablement crosswalk](SDLC-ENABLEMENT-CROSSWALK.md) and its written build, API, infrastructure and operations companions, preserved from [PR #260](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/260). The crosswalk is a proposed map, not a live track.
+- [Data Foundations pathway](DATA-FOUNDATIONS-PATH.md), preserved from [PR #282](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/282). It is a beginner mapping from what data is through representation, records, modeling, schemas, databases, APIs and versioning, using a fictional Vendor Intake example. It is not a catalog registration. Recommended first unwritten content remains DF-01 and DF-02.
+
+[PR #283](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/283) keeps its separate data-architecture ownership map and membership-registry modeling/privacy pilot. [PR #233](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/233) remains open and conflicted; its nine-path registry is not the current navigation. [PR #278](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/278) remains the stacked executable capstone and is not part of this documentation change. Public Academy UI integration and human editorial acceptance remain separate.
+
 ### Findings and changes
 
 | Finding at the snapshot | Action in this change | Remaining limit |
