@@ -1252,6 +1252,273 @@ export const componentOptions: ComponentOption[] = [
       "Account Signal Engine"
     ]
   },
+  {
+    "id": "story-journey",
+    "name": "Interactive story journey",
+    "purpose": "Navigate a lesson through scenes, chapters, actions and replay.",
+    "availability": "Candidate",
+    "parts": [
+      "Scene stepper",
+      "Chapter context",
+      "Replay and orientation"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "Portfolio"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Refine the DailySecrets rail rather than replace it. Keep keyboard focus, current step, text-only navigation and reduced-motion behavior."
+  },
+  {
+    "id": "story-living-system",
+    "name": "Living system and cumulative copy map",
+    "purpose": "Show the consequences of events across connected systems over time.",
+    "availability": "Candidate",
+    "parts": [
+      "System nodes",
+      "Cumulative copies",
+      "Active versus revoked states"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "Security Market Map"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Extend the existing DailySecrets copy map using a static accessible list first. Separate exposure location from credential validity and avoid implying every location is scanned."
+  },
+  {
+    "id": "story-decision-feedback",
+    "name": "Decision and consequence",
+    "purpose": "Invite meaningful choices and explain why each response succeeds or fails.",
+    "availability": "Candidate",
+    "parts": [
+      "Choice cards",
+      "Persistent outcome",
+      "Retry and explanation"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "GTM Revenue OS"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Use a small fixed set of synthetic decisions, not an unrestricted branching engine. Ensure every choice has readable feedback and recovery."
+  },
+  {
+    "id": "story-recap",
+    "name": "Scenario recap and debrief",
+    "purpose": "Connect actions, changed state, evidence and transferable learning outcomes.",
+    "availability": "Candidate",
+    "parts": [
+      "Event summary",
+      "Decision recap",
+      "Learning takeaways"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "GTM Revenue OS"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Keep a static end-state summary accessible even without animation. Do not treat completion as certification or actual incident closure."
+  },
+  {
+    "id": "story-explorer",
+    "name": "Clickable concept and system explorer",
+    "purpose": "Let learners inspect a connected technical environment while retaining a readable overview.",
+    "availability": "Candidate",
+    "parts": [
+      "Interactive nodes",
+      "Details panel",
+      "Text alternative"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "Security Market Map"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Start with labeled buttons and a text list; defer graph packages until network size and navigation requirements demonstrate need."
+  },
+  {
+    "id": "story-replay",
+    "name": "Time travel and state replay",
+    "purpose": "Compare what was true at different steps without losing the chronology.",
+    "availability": "Candidate",
+    "parts": [
+      "Scene scrubber",
+      "Step history",
+      "Replay and reset"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Derive states from canonical scene data; ensure scrubbing does not falsely undo issuer-side revocation or imply saved progress."
+  },
+  {
+    "id": "story-sandbox",
+    "name": "Guided technical sandbox",
+    "purpose": "Practice commands and process choices without invoking real infrastructure.",
+    "availability": "Candidate",
+    "parts": [
+      "Simulated console",
+      "Bounded tasks",
+      "Safe validation feedback"
+    ],
+    "apps": [
+      "Truffle Camp",
+      "DailySecrets"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Use synthetic inputs and deterministic local validation. Do not execute real commands, use credentials or introduce an extra runtime for an explanatory lesson."
+  },
+  {
+    "id": "story-swimlane",
+    "name": "Role-based responsibility explorer",
+    "purpose": "Reveal who owns, investigates, is affected by and authorizes each step.",
+    "availability": "Candidate",
+    "parts": [
+      "Role lanes",
+      "Handoff links",
+      "Authority explanations"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "GTM Revenue OS"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Differentiate job title from authorization. Prefer accessible structured rows over a complex swimlane canvas for the first specimen."
+  },
+  {
+    "id": "story-what-if",
+    "name": "What-if and dependency simulator",
+    "purpose": "Explore counterfactual changes with explicit assumptions and consequences.",
+    "availability": "Candidate",
+    "parts": [
+      "Scenario controls",
+      "Dependency view",
+      "Counterfactual explanation"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "Security Market Map"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Mark simulated results as hypotheses; show unknown consumers and failure cases. No actual production state changes."
+  },
+  {
+    "id": "story-predict-reveal",
+    "name": "Predict then reveal",
+    "purpose": "Ask the learner to predict an outcome before exposing the evidence.",
+    "availability": "Candidate",
+    "parts": [
+      "Prediction choices",
+      "Reveal action",
+      "Explanatory feedback"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "Portfolio"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Avoid ambiguous scoring: distinguish possible locations from confirmed copies. Feedback must not rely on color or motion."
+  },
+  {
+    "id": "story-evidence",
+    "name": "Evidence inspector",
+    "purpose": "Teach the difference between detection, verification, ownership and proof of closure.",
+    "availability": "Candidate",
+    "parts": [
+      "Evidence card",
+      "Source and uncertainty",
+      "Finding state comparison"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "Security Market Map"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Keep evidence provenance and unknowns visible. A detector finding does not establish a valid credential or successful remediation."
+  },
+  {
+    "id": "story-hotspots",
+    "name": "Annotated scene and contextual glossary",
+    "purpose": "Explain technical objects in place without obscuring the story.",
+    "availability": "Candidate",
+    "parts": [
+      "Accessible hotspot",
+      "Plain-language definition",
+      "Optional technical depth"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "Portfolio"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Support touch and keyboard; do not require hover. Keep essential definitions visible and optional detail behind explicit controls."
+  },
+  {
+    "id": "story-comparator",
+    "name": "Before and after state comparator",
+    "purpose": "Compare two system states and explain the causal difference.",
+    "availability": "Candidate",
+    "parts": [
+      "Paired states",
+      "Change summary",
+      "Accessible labels"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "Security Market Map"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Label the exact moment and scenario; do not collapse exposure, verification and revocation into one success badge."
+  },
+  {
+    "id": "story-misconception",
+    "name": "Misconception check and interactive checklist",
+    "purpose": "Test a common mistaken belief and practice its corrective sequence.",
+    "availability": "Candidate",
+    "parts": [
+      "Claim check",
+      "Sequence checklist",
+      "Why feedback"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Reconcile with existing quiz and runbook patterns. Build a composition, not another quiz package; distinguish simulation from real action."
+  },
+  {
+    "id": "story-perspectives",
+    "name": "Perspective switching",
+    "purpose": "Explain the same event to technical, operational and business audiences.",
+    "availability": "Candidate",
+    "parts": [
+      "Persona selector",
+      "Shared facts",
+      "Audience-specific explanation"
+    ],
+    "apps": [
+      "DailySecrets",
+      "Truffle Camp",
+      "GTM Revenue OS"
+    ],
+    "source": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+    "adoption": "Keep the underlying facts unchanged across views. Titles do not imply permissions; avoid duplicate content in the source."
+  },
 ];
 export function optionsForApp(
   app: ComponentApp | "All",
