@@ -81,9 +81,9 @@ export function AtlasCase() {
           The upstream TruffleHog v3 repository identifies AGPL-3.0 as its license. Reading and attributing source is different from copying or modifying covered code. A future fork could explore Go detectors.
         </p>
         <div className="mt-5 flex flex-wrap gap-5 text-sm">
-          <a href="https://github.com/trufflesecurity/trufflehog" target="_blank" rel="noopener noreferrer" className="text-accent underline">Original TruffleHog project ↗</a>
-          <a href="https://github.com/trufflesecurity/trufflehog/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="text-accent underline">Upstream license ↗</a>
-          <a href="https://github.com/heyfunwhoa/detector-coverage-atlas" target="_blank" rel="noopener noreferrer" className="text-accent underline">Independent Atlas repository ↗</a>
+          <a href="https://github.com/trufflesecurity/trufflehog" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-accent underline">Original TruffleHog project ↗</a>
+          <a href="https://github.com/trufflesecurity/trufflehog/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-accent underline">Upstream license ↗</a>
+          <a href="https://github.com/heyfunwhoa/detector-coverage-atlas" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-accent underline">Independent Atlas repository ↗</a>
         </div>
       </section>
 
