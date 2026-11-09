@@ -15,6 +15,7 @@ import { FormPatternComparison } from "@/components/design-lab/form-pattern-comp
 import { DataDisplayComparison } from "@/components/design-lab/data-display-comparison";
 import { DashboardCompositionComparison } from "@/components/design-lab/dashboard-composition-comparison";
 import { NavigationPatternComparison } from "@/components/design-lab/navigation-pattern-comparison";
+import { ProjectDiscoveryComparison } from "@/components/design-lab/project-discovery-comparison";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
@@ -89,6 +90,7 @@ export default function DesignLabPage() {
           <nav aria-label="Start exploring Design Lab" className="mt-5 flex flex-wrap gap-3">
             <a href="#guided-practice" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Start guided practice</a>
             <a href="#component-learning" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Explore component lessons</a>
+            <a href="#project-discovery" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Compare project discovery</a>
             <a href="#application-workbench" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Try the account workflow</a>
             <a href="#ideation-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Use an ideation template
@@ -168,6 +170,7 @@ export default function DesignLabPage() {
 
         <GuidedPracticeExplorer />
         <ComponentLearning />
+        <ProjectDiscoveryComparison />
         <div id="guided-form-controls" className="scroll-mt-24">
           <FormPatternComparison />
         </div>

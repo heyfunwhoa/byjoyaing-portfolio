@@ -51,6 +51,10 @@ test("side quests offers one academy entry, one revenue system, and no status pi
   await expect(page.getByRole("link", { name: /Explore the project\s*:\s*Coverage and capacity$/ })).toHaveAttribute("href", "/work/gtm-operating-plan");
   await expect(page.getByRole("link", { name: /Explore the project\s*:\s*Pipeline review$/ })).toHaveAttribute("href", "/work/revenue-intelligence");
   await expect(page.getByRole("link", { name: "Request a walkthrough" })).toHaveAttribute("href", "/contact");
+  await expect(page.getByRole("heading", { name: "Account Intelligence" })).toBeVisible();
+  await expect(page.getByText("Problem:").first()).toBeVisible();
+  await expect(page.getByText("Intended value:").first()).toBeVisible();
+  await expect(page.getByRole("link", { name: "Browse all independent projects" })).toHaveAttribute("href", "/projects#directory");
   await expect(page.getByText("Prototype", { exact: true })).toHaveCount(0);
   await expect(page.locator("a[href*='gtm-revenue-os'], a[href*='vercel.app']")).toHaveCount(0);
 

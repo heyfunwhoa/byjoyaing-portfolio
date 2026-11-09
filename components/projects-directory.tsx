@@ -192,15 +192,24 @@ export function ProjectsDirectory({
           No projects match these filters. Try a different search or clear the filters to see all projects.
         </p>
       ) : (
-        <ul className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <ul className="mt-8 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => {
             const action = projectActions[project.slug];
             const href = caseStudyHref(action.href);
             const value = salesFor(project.slug).decision;
             return (
             <li key={project.slug} className="flex min-w-0">
-              <article className="flex w-full min-w-0 flex-col gap-4 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-accent focus-within:border-accent motion-reduce:transition-none sm:p-5">
-                <p className="text-xs font-medium text-muted">{project.categories[0]}</p>
+              <article className="flex w-full min-w-0 max-w-full flex-col gap-4 overflow-hidden rounded-2xl border border-border bg-card p-4 transition-colors hover:border-accent focus-within:border-accent motion-reduce:transition-none sm:p-5">
+                <p className="text-xs font-medium text-muted">
+                  {project.featuredOrder !== null ? "Featured · " : ""}
+                  {project.categories[0]}
+                </p>
+                <p className="text-xs text-muted">
+                  {project.phase} · {directoryStatus(project.status).label}
+                </p>
+                {project.preview === "note" ? null : (
+                  <ProjectEvidence kind={project.preview} compact />
+                )}
                 <div className="flex flex-1 flex-col gap-2">
                   <h3 className="text-lg font-semibold tracking-tight">
                     <Link
@@ -215,6 +224,7 @@ export function ProjectsDirectory({
                   </p>
                   <p className="text-sm leading-6"><span className="font-medium">Intended value: </span>{value}</p>
                   <p className="text-sm leading-6"><span className="font-medium">Contribution: </span>{project.role}</p>
+                  <p className="text-sm leading-6 text-muted">{project.technologies}</p>
                   {project.sampleNote ? (
                     <p className="text-xs leading-5 text-muted">{project.sampleNote}</p>
                   ) : null}
@@ -226,8 +236,9 @@ export function ProjectsDirectory({
                   <div className="mt-3 space-y-3 text-sm leading-6 text-muted">
                     <p>Recorded stage: {directoryStatus(project.status).label}. Lifecycle: {project.phase}.</p>
                     <p>{project.scope}</p>
-                    <p>{project.technologies}</p>
-                    <ProjectEvidence kind={project.preview} compact />
+                    {project.preview === "note" ? (
+                      <ProjectEvidence kind={project.preview} compact />
+                    ) : null}
                     <ProjectTechnologyStack
                       slug={project.slug}
                       className="mt-3"

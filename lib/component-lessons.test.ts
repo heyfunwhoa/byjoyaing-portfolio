@@ -236,6 +236,39 @@ test("context and feedback comparisons reuse existing Design Lab primitives and 
   assert.match(page, /notFound\(\)/);
 });
 
+test("project discovery lessons stay on existing catalog families", () => {
+  const comparison = readFileSync(
+    new URL("../components/design-lab/project-discovery-comparison.tsx", import.meta.url),
+    "utf8",
+  );
+  const page = readFileSync(new URL("../app/design-lab/page.tsx", import.meta.url), "utf8");
+  const catalogByLesson = {
+    editorialProjectCard: "summaries",
+    screenshotProjectCard: "summaries",
+    featuredCaseStudy: "summaries",
+    projectCarousel: "summaries",
+    projectDetailChoice: "context",
+    captionGallery: "summaries",
+    projectMap: "process-illustrations",
+  } as const;
+  for (const [id, catalogId] of Object.entries(catalogByLesson)) {
+    const lesson = componentLessons.find((item) => item.id === id);
+    assert.ok(lesson, id);
+    assert.equal(lesson.catalogId, catalogId);
+    assert.equal(lesson.family, "Discovery");
+    assert.match(comparison, new RegExp(`id: "${id === "editorialProjectCard" ? "compact" : id === "screenshotProjectCard" ? "screenshot" : id === "featuredCaseStudy" ? "featured" : id === "projectCarousel" ? "carousel" : id === "projectDetailChoice" ? "routes" : id === "captionGallery" ? "gallery" : "map"}"`));
+  }
+  assert.match(comparison, /No featured projects match/);
+  assert.match(comparison, /prefers-reduced-motion/);
+  assert.match(comparison, /loop: false/);
+  assert.doesNotMatch(comparison, /loop:\s*true|Autoplay/);
+  assert.match(page, /<ProjectDiscoveryComparison \/>/);
+  assert.match(page, /designLabAvailable\(\)/);
+  assert.match(page, /notFound\(\)/);
+  const families = new Set(componentOptions.map((option) => option.id));
+  assert.equal(families.has("project-discovery"), false);
+});
+
 test("five guided exercises reuse existing workbench examples without persisting answers", async () => {
   const { guidedExercises, isGuidedExercise } = await import("./design-lab-guided-exercises.ts");
   const ui = readFileSync(new URL("../components/design-lab/guided-practice-explorer.tsx", import.meta.url), "utf8");
