@@ -14,12 +14,14 @@ export function isActive(pathname: string, href: string) {
   // /work/[slug] serves both collections. Highlight the registry kind, not the prefix.
   const kind = kindForPathname(pathname);
   if (href === "/work") {
-    if (pathname === "/work") return true;
+    if (pathname === "/work" || pathname === "/experience" || pathname === "/work/storytelling-guide" || pathname.startsWith("/capabilities")) return true;
     return kind === "work";
   }
   if (href === "/side-quests") {
     if (
       pathname === "/side-quests" ||
+      pathname === "/projects" ||
+      pathname === "/account-signal" ||
       pathname.startsWith("/ai-academy") ||
       pathname.startsWith("/builder-academy")
     ) {
@@ -27,6 +29,7 @@ export function isActive(pathname: string, href: string) {
     }
     return kind === "side-quest";
   }
+  if (href === "/field-notes" && pathname === "/private-work") return true;
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
