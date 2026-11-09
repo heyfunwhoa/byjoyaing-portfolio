@@ -22,7 +22,7 @@ export function FeaturedSideQuestStrip({ slides,
           key={slide.id}
           className="w-[min(20rem,85%)] shrink-0 snap-start sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.7rem)]"
         >
-          <article className="editorial-panel group relative flex h-full min-w-0 flex-col bg-surface-sage p-5 sm:p-6">
+          <article className="card-lift editorial-panel group relative flex h-full min-w-0 flex-col bg-surface-sage p-5 sm:p-6">
             <h3 className="font-display text-xl leading-tight tracking-tight">
               <Link href={slide.href} className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >

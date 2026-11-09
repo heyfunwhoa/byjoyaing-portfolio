@@ -1,5 +1,6 @@
 import { roles } from "@/lib/portfolio";
 import Link from "next/link";
+import { TimelineTrack } from "@/components/timeline-track";
 
 type RelatedLink = { href: string; label: string };
 
@@ -42,14 +43,16 @@ export function ExperienceTimeline({
         Most recent first. Each role&apos;s contribution, with related examples beside it.
       </p>
 
-      <ol className="mt-8 border-l border-border">
+      <TimelineTrack className="mt-8">
+      <ol>
         {recent.map((role, index) => {
           const links = related[role.company] ?? [];
           return (
             <li key={role.company} className="relative pb-10 pl-6 sm:pl-8">
               <span
                 aria-hidden="true"
-                className={`absolute top-1.5 -left-[0.4375rem] size-3.5 rounded-full border-2 border-accent ${index === 0 ? "bg-accent" : "bg-background"}`}
+                data-timeline-dot
+                className={`timeline-dot absolute top-1.5 -left-[0.4375rem] size-3.5 rounded-full border-2 border-accent data-[reached=true]:bg-accent ${index === 0 ? "bg-accent" : "bg-background"}`}
               />
               {"years" in role && role.years ? (
                 <p className="editorial-eyebrow text-accent">{role.years}</p>
@@ -70,7 +73,8 @@ export function ExperienceTimeline({
         <li className="relative pl-6 sm:pl-8">
           <span
             aria-hidden="true"
-            className="absolute top-2 -left-[0.3125rem] size-2.5 rounded-full border border-border bg-background"
+            data-timeline-dot
+            className="timeline-dot absolute top-2 -left-[0.3125rem] size-2.5 rounded-full border border-accent bg-background data-[reached=true]:bg-accent"
           />
           <h3 className="editorial-eyebrow text-muted">Earlier career</h3>
           <ol className="mt-4 space-y-6">
@@ -107,6 +111,7 @@ export function ExperienceTimeline({
           </ol>
         </li>
       </ol>
+      </TimelineTrack>
     </section>
   );
 }

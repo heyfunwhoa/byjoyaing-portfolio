@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { riseIndex } from "@/lib/motion";
 import { ProjectReturnLink, ProjectSequence } from "@/components/project-case-navigation";
 import { MaterialsInvitation } from "@/components/materials-invitation";
 import { projectActions } from "@/lib/project-presentation";
@@ -37,9 +38,9 @@ export function RelatedWork({ slug }: { slug: string }) {
         <>
           <h2 className="mt-8 text-lg font-semibold">Explore related work</h2>
           <ul className="mt-4 grid min-w-0 gap-4 md:grid-cols-3">
-            {items.map((project) => (
-              <li key={project.slug} className="min-w-0">
-                <Link href={project.caseStudyUrl} className="flex h-full min-w-0 flex-col gap-2 rounded-xl border border-border bg-card p-4 hover:border-accent">
+            {items.map((project, index) => (
+              <li key={project.slug} style={riseIndex(index)} className="rise-in min-w-0">
+                <Link href={project.caseStudyUrl} className="card-lift flex h-full min-w-0 flex-col gap-2 rounded-xl border border-border bg-card p-4 hover:border-accent">
                   <p className="font-semibold">{project.title}</p>
                   <p className="text-sm leading-6 text-muted">{project.summary}</p>
                   <span className="mt-auto inline-flex min-h-11 items-end text-sm font-semibold text-accent underline">{projectActions[project.slug].label}</span>
