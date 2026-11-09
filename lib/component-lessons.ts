@@ -690,7 +690,7 @@ const components: ComponentLesson[] = [
     related: ["checkbox", "search"],
   },
   {
-    id: "project-carousel",
+    id: "projectCarousel",
     title: "Filtered project carousel and detail preview",
     family: "Discovery",
     kind: "component",
