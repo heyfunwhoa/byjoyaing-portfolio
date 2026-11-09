@@ -33,16 +33,29 @@ export function SiteHeader() {
   // Slim after a little scroll; tuck away on scroll down and return on scroll up.
   // Never tucks while the menu is open, focus is inside the header, or motion is reduced.
   useEffect(() => {
+    // Distances are accumulated per direction so the small scroll adjustment the browser
+    // makes when the header slims (scroll anchoring) never reads as "scrolling up".
     let lastY = window.scrollY;
+    let upTravel = 0;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updateScroll = () => {
       const y = window.scrollY;
+      const delta = y - lastY;
+      lastY = y;
       setScrolled(y > 8);
       const focusInside = headerRef.current?.contains(document.activeElement) ?? false;
-      if (reduce.matches || openRef.current || focusInside || y < 120) setTucked(false);
-      else if (y > lastY + 6) setTucked(true);
-      else if (y < lastY - 6) setTucked(false);
-      lastY = y;
+      if (reduce.matches || openRef.current || focusInside || y < 120) {
+        upTravel = 0;
+        setTucked(false);
+        return;
+      }
+      if (delta > 0) {
+        upTravel = 0;
+        if (delta > 6) setTucked(true);
+      } else if (delta < 0) {
+        upTravel -= delta;
+        if (upTravel >= 40) setTucked(false);
+      }
     };
     updateScroll();
     window.addEventListener("scroll", updateScroll, { passive: true });
