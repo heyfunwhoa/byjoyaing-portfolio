@@ -199,7 +199,7 @@ export function ProjectsDirectory({
             const value = salesFor(project.slug).decision;
             return (
             <li key={project.slug} className="flex min-w-0">
-              <article className="flex w-full min-w-0 flex-col gap-4 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-accent focus-within:border-accent motion-reduce:transition-none sm:p-5">
+              <article className="card-lift flex w-full min-w-0 flex-col gap-4 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-accent focus-within:border-accent motion-reduce:transition-none sm:p-5">
                 <p className="text-xs font-medium text-muted">{project.categories[0]}</p>
                 <div className="flex flex-1 flex-col gap-2">
                   <h3 className="text-lg font-semibold tracking-tight">

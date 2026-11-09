@@ -20,7 +20,7 @@ export function EditorialBento() {
       <div className="mt-8 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-2 lg:gap-4">
         <Link
           href="/work"
-          className="group editorial-panel relative flex min-h-72 min-w-0 flex-col overflow-hidden bg-foreground p-6 text-background transition-colors hover:bg-[#303A32] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:col-span-2 sm:min-h-80 sm:p-8 lg:col-span-7 lg:row-span-2 lg:min-h-[28rem]"
+          className="card-lift group editorial-panel relative flex min-h-72 min-w-0 flex-col overflow-hidden bg-foreground p-6 text-background transition-colors hover:bg-[#303A32] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:col-span-2 sm:min-h-80 sm:p-8 lg:col-span-7 lg:row-span-2 lg:min-h-[28rem]"
         >
           <p className="editorial-eyebrow text-[#D6C8B6]">Work</p>
           <span aria-hidden="true" className="mt-4 block h-px w-12 bg-[#E6B59A]" />
@@ -38,7 +38,7 @@ export function EditorialBento() {
 
         <Link
           href="/field-notes"
-          className="group editorial-panel flex min-w-0 flex-col bg-surface-clay p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:p-7 lg:col-span-5"
+          className="card-lift group editorial-panel flex min-w-0 flex-col bg-surface-clay p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:p-7 lg:col-span-5"
         >
           <p className="editorial-eyebrow text-accent">Field Notes</p>
           <h3 className="mt-4 font-display text-3xl leading-tight">How I think.</h3>
@@ -52,7 +52,7 @@ export function EditorialBento() {
 
         <Link
           href="/side-quests"
-          className="group editorial-panel flex min-w-0 flex-col bg-surface-sage p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:p-7 lg:col-span-5"
+          className="card-lift group editorial-panel flex min-w-0 flex-col bg-surface-sage p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring sm:p-7 lg:col-span-5"
         >
           <p className="editorial-eyebrow">Side Quests</p>
           <h3 className="mt-4 font-display text-3xl leading-tight">What I build.</h3>

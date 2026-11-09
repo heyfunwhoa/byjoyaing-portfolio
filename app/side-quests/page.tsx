@@ -1,4 +1,5 @@
 import { completePageMetadata } from "@/lib/page-metadata";
+import { riseIndex } from "@/lib/motion";
 import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { FeaturedSideQuestStrip } from "@/components/featured-side-quest-strip";
 import { GtmRevenueSystem } from "@/components/gtm-revenue-system";
@@ -97,8 +98,8 @@ export default function SideQuestsPage() {
       </section>
 
       <nav aria-label="Explore independent projects by focus" className="grid gap-3 border-b border-border py-8 sm:grid-cols-2 lg:grid-cols-4">
-        {focusLinks.map((item) => (
-          <Link key={item.label} href={item.href} className="rounded-xl border border-border bg-card p-4 hover:border-accent">
+        {focusLinks.map((item, index) => (
+          <Link key={item.label} href={item.href} style={riseIndex(index)} className="card-lift rise-in rounded-xl border border-border bg-card p-4 hover:border-accent">
             <span className="block font-display text-xl">{item.label}</span>
             <span className="mt-2 block text-sm leading-6 text-muted">{item.detail}</span>
             <span className="mt-3 block text-sm font-medium text-accent">Explore →</span>

@@ -1,4 +1,5 @@
 import { completePageMetadata } from "@/lib/page-metadata";
+import { riseIndex } from "@/lib/motion";
 import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { PageMain } from "@/components/page-main";
 import type { Metadata } from "next";
@@ -75,8 +76,8 @@ export default function FieldNotesPage() {
               label: "Interactive playbook",
               when: "Use when a deal depends on one contact or the buying group is unclear.",
             },
-          ].map((note) => (
-            <Link key={note.href} href={note.href} className="group block rounded-2xl border border-border bg-surface-clay p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+          ].map((note, index) => (
+            <Link key={note.href} href={note.href} style={riseIndex(index)} className="card-lift rise-in group block rounded-2xl border border-border bg-surface-clay p-6 transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
               <p className="text-xs font-medium text-muted">{note.label}</p>
               <h3 className="mt-3 font-display text-2xl tracking-tight">{note.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted"><strong>When to use it:</strong> {note.when}</p>
@@ -104,7 +105,7 @@ export default function FieldNotesPage() {
       </section>
       <section id="private" className="scroll-mt-24 border-t border-border py-12">
         <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>
-        <Link href="/contact" className="mb-8 block rounded-2xl border border-border bg-surface-mist p-5 hover:border-accent">
+        <Link href="/contact" className="card-lift mb-8 block rounded-2xl border border-border bg-surface-mist p-5 hover:border-accent">
           <h2 className="text-xl font-semibold">Request a walkthrough</h2>
           <p className="mt-2 text-sm leading-6 text-muted">Detailed deal and operating examples aren&apos;t public. Ask, and I&apos;ll walk you through what I can share.</p>
           <span className="mt-3 inline-block text-sm font-medium text-accent">Get in touch →</span>
