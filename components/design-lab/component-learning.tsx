@@ -2,6 +2,7 @@
 
 import {
   useId,
+  useEffect,
   useMemo,
   useState,
   type ReactElement,
@@ -582,8 +583,14 @@ function ProjectCarouselDemo() {
   const visible = emptyExample ? [] : examples.filter((item) => focus === "All" || item.focus === focus);
   const chosen = visible.find((item) => item.id === selected);
   const [api, setApi] = useState<import("@/components/ui/carousel").CarouselApi>();
-  const canPrevious = Boolean(api?.canScrollPrev());
-  const canNext = Boolean(api?.canScrollNext());
+  useEffect(() => {
+    if (!api) return;
+    const sync = () => setPosition(api.selectedScrollSnap());
+    sync();
+    api.on("select", sync);
+    api.on("reInit", sync);
+    return () => { api.off("select", sync); api.off("reInit", sync); };
+  }, [api]);
   function changeFocus(next: string) {
     setFocus(next);
     setSelected(null);
@@ -624,9 +631,9 @@ function ProjectCarouselDemo() {
             ))}
           </CarouselContent>
           <div className="mt-3 flex items-center justify-between gap-2">
-            <CarouselPrevious className="static translate-y-0" aria-label="Previous featured project" onClick={() => setPosition((x) => Math.max(0, x - 1))} />
+            <CarouselPrevious className="static translate-y-0" aria-label="Previous featured project"  />
             <span className="text-xs text-muted">Browse featured examples</span>
-            <CarouselNext className="static translate-y-0" aria-label="Next featured project" onClick={() => setPosition((x) => Math.min(visible.length - 1, x + 1))} />
+            <CarouselNext className="static translate-y-0" aria-label="Next featured project"  />
           </div>
         </Carousel>
       )}
@@ -717,7 +724,7 @@ const demos: Record<string, () => ReactElement> = {
   checkbox: CheckboxDemo,
   select: SelectDemo,
   table: TableDemo,
-  "project-carousel": ProjectCarouselDemo,
+  projectCarousel: ProjectCarouselDemo,
 };
 
 function Demo({ lessonId }: { lessonId: string }) {
