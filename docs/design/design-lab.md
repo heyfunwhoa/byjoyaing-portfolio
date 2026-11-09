@@ -260,3 +260,7 @@ Sources checked November 6, 2026 (America/Chicago): [MDN aria-invalid](https://d
 **Catalog stop rule:** there is now enough coverage for a first implementation cycle. Add another entry only for a demonstrated task not served by existing summaries, disclosure, context, feedback, selection, progress or data patterns. Prefer implementing and validating a small candidate before increasing inventory. Defer magnetic cursors, tilt on data cards, animated financial numbers, repeated shimmer and decorative background loops.
 
 Suggested first consumer slice: discovery validation plus confirmed copy feedback. Keep loading feedback tied to an existing request; keep workflow traces in learning/demos. Candidate status is not proof of implementation or accessibility. The visual count expectation is updated to 30; browser execution remains separate.
+
+## Product-design rationale workbench (November 9, 2026)
+
+Design Lab includes a decision-comparison lesson for Home motion, Projects discovery, and case-study storytelling. It explicitly distinguishes audience **hypotheses**, current baselines, alternatives, tradeoffs, provisional recommendations, missing evidence, and release boundaries. It is a local teaching specimen, not proof of visitor research or a signal to ship all variants. See [the reusable design decision template](product-design-rationale.md) and the existing [component adoption log](component-adoption.md). The workbench reuses existing components/tokens without a new catalog family, dependency, data store, or public route.
