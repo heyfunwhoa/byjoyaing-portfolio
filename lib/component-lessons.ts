@@ -690,6 +690,66 @@ const components: ComponentLesson[] = [
     related: ["checkbox", "search"],
   },
   {
+    id: "project-carousel",
+    title: "Filtered project carousel and detail preview",
+    family: "Discovery",
+    kind: "component",
+    level: "foundational",
+    definition:
+      "A project carousel is a short, horizontally browsable collection of featured work. Filters narrow the items, and a detail preview gives context before a visitor opens the full case study.",
+    why:
+      "A featured rail lets visitors scan a curated selection without turning a homepage into a dense directory. The filters help people find relevant work, while a preview keeps the story and next action clear.",
+    useCases: [
+      "Browse a few independent portfolio projects",
+      "Filter by project focus before opening a case study",
+      "Inspect the problem, contribution, and status of one project",
+    ],
+    when:
+      "A small featured subset needs a visually scannable introduction, and a separate complete directory remains available.",
+    avoid:
+      "Do not hide every project inside the carousel, autoplay it, or use it for comparing many equivalent records. Keep professional Work and independent Side Quests distinct.",
+    alternatives: [
+      {
+        name: "Static card grid",
+        tradeoff:
+          "All cards are visible and easier to compare, but a long grid can overwhelm a curated homepage.",
+      },
+      {
+        name: "Searchable directory",
+        tradeoff:
+          "Best for comprehensive discovery and multi-criteria filtering, not a short editorial introduction.",
+      },
+      {
+        name: "Large featured case study",
+        tradeoff:
+          "Gives one project more room and context but reduces quick scanning across several projects.",
+      },
+    ],
+    variants:
+      "Choose a focus, navigate Previous and Next, then open or close a fictional project detail. Filtering resets the position. This is a local educational example, not live project content.",
+    accessibility:
+      "Use labeled previous and next buttons, disabled end states, a visible position and result count, focusable details, and an always-available directory path. Keep the selection stable, avoid autoplay, honor reduced motion, and verify 375, 768, 1280px and 200% zoom.",
+    projects: [
+      {
+        name: "Portfolio",
+        application:
+          "Introduce a short, curated Side Quests selection while keeping the existing directory and public project case studies canonical.",
+      },
+      {
+        name: "Builder Academy",
+        application:
+          "Use an analogous rail for a short recommended lesson set, never as the only route to lessons.",
+      },
+    ],
+    prompt:
+      "Can a visitor discover the full set, use the filters, reach every card by keyboard, and understand a project before opening it?",
+    exercise:
+      "Choose Security, open the project preview, then return to All and navigate to the next card. Check that every action has a visible result.",
+    source: "https://ui.shadcn.com/docs/components/carousel",
+    related: ["card", "search", "responsive"],
+    catalogId: "summaries",
+  },
+  {
     id: "table",
     title: "Data table",
     family: "Data",
