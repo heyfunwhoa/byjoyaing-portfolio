@@ -156,6 +156,13 @@ test("data display comparison keeps cards, table, and metrics tied to the same f
   assert.match(comparison, /filtered\.reduce\(/);
   assert.match(comparison, /No matching accounts/);
   assert.match(comparison, /<caption/);
+  assert.match(comparison, /aria-sort=/);
+  assert.match(comparison, /chooseSort\("name"\)/);
+  assert.match(comparison, /chooseSort\("signals"\)/);
+  assert.match(comparison, /chooseSort\("reviewed"\)/);
+  assert.match(comparison, /Sort accounts by/);
+  assert.match(comparison, /Table spacing/);
+  assert.match(comparison, /Clear search and filters/);
   assert.match(comparison, /aria-pressed=/);
   assert.match(comparison, /scope="col"/);
   assert.match(page, /<DataDisplayComparison \/>/);
