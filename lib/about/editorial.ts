@@ -225,4 +225,13 @@ export function readAboutEditorial(input: unknown): AboutPage {
   };
 }
 
+/** Keep the credential on the first line and the school or level on the second. */
+export function educationCaptionLines(item: string): string[] {
+  const breakAt = item.lastIndexOf(". ");
+  if (breakAt < 0) return [item];
+  const detail = item.slice(breakAt + 2).trim();
+  if (!detail) return [item];
+  return [item.slice(0, breakAt + 1), detail];
+}
+
 export const aboutPage = readAboutEditorial(record);

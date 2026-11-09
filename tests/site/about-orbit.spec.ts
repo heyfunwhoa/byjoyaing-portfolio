@@ -154,6 +154,13 @@ test("About education marks load beside visible credentials at phone and desktop
       await expect(education.getByText(new RegExp(credential))).toBeVisible();
     }
     await expect(education).toContainText("Western Governors University, 2025");
+    const stacked = await education.locator("li p").evaluateAll((paragraphs) =>
+      paragraphs.map((paragraph) => {
+        const lines = [...paragraph.querySelectorAll("span")];
+        return lines.length === 2 && lines[1].offsetTop > lines[0].offsetTop;
+      }),
+    );
+    expect(stacked).toEqual([true, true, true, true]);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });

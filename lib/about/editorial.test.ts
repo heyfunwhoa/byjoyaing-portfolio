@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import record from "../../content/about/page.json" with { type: "json" };
-import { readAboutEditorial } from "./editorial.ts";
+import { educationCaptionLines, readAboutEditorial } from "./editorial.ts";
 
 const read = (file: string) =>
   readFileSync(new URL(`../../${file}`, import.meta.url), "utf8");
@@ -31,6 +31,27 @@ test("the About page renders one validated record and keeps interaction in code"
     read("lib/public-personal.ts"),
     /I enjoy the process of discovering/,
   );
+});
+
+test("education captions break the credential and its detail onto two lines", () => {
+  const page = readAboutEditorial(record);
+  assert.deepEqual(
+    page.education.map(educationCaptionLines),
+    [
+      [
+        "B.S. Advertising, Business Foundations.",
+        "The University of Texas at Austin.",
+      ],
+      ["MBA, IT Management.", "Western Governors University, 2025."],
+      ["AWS Certified Cloud Practitioner.", "Foundational."],
+      ["AWS Certified AI Practitioner.", "Foundational."],
+    ],
+  );
+  for (const item of page.education) {
+    const lines = educationCaptionLines(item);
+    assert.equal(lines.join(" "), item);
+  }
+  assert.deepEqual(educationCaptionLines("One line only"), ["One line only"]);
 });
 
 test("malformed About content and missing required fields fail closed", () => {
