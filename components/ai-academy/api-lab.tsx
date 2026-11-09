@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ApiLabWalkthrough } from "@/components/ai-academy/api-lab-walkthrough";
 import { apiVocabulary, apiStyles, apiImplementations, apiLabQuestions, scoreApiLab, type ApiLabSection } from "@/lib/academy/api-lab";
 
 const stages: { id: ApiLabSection; label: string }[] = [
@@ -92,6 +93,7 @@ const data = await tasksClient.list();`}</code></pre>
           <pre className="mt-2 overflow-x-auto text-xs"><code>{JSON.stringify({ tasks: [{ id: "t1", title: "Learn an API" }, { id: "t2", title: "Compare deployments" }] }, null, 2)}</code></pre>
         </div>
       </div>
+      <ApiLabWalkthrough path={implementation} />
       <p className="mt-5 text-sm leading-6 text-muted">Challenge: implement GET /health with a JSON response of {"{ \"status\": \"ok\" }"}. Run it locally, inspect the HTTP status and Content-Type, then test an unknown path. Only deploy after understanding access, costs and security controls.</p>
     </section>}
 
