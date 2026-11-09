@@ -29,6 +29,8 @@ export const dataDisplayOptions = [
 
 type Display = (typeof dataDisplayOptions)[number]["id"];
 type Status = "Needs review" | "Reviewed";
+type SortKey = "name" | "signals" | "reviewed";
+type SortDirection = "asc" | "desc";
 type Account = { id: string; name: string; signals: number; reviewed: string; status: Status };
 const accounts: Account[] = [
   { id: "northstar", name: "Northstar Security", signals: 3, reviewed: "Nov 4", status: "Needs review" },
@@ -44,12 +46,26 @@ export function DataDisplayComparison() {
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<"All" | Status>("All");
   const [selected, setSelected] = useState<string | null>(null);
+  const [sortKey, setSortKey] = useState<SortKey>("name");
+  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+  const [density, setDensity] = useState<"comfortable" | "compact">("comfortable");
+  function chooseSort(next: SortKey) {
+    if (next === sortKey) setSortDirection((current) => current === "asc" ? "desc" : "asc");
+    else { setSortKey(next); setSortDirection("asc"); }
+  }
+  function reset() { setQuery(""); setStatus("All"); setSelected(null); setSortKey("name"); setSortDirection("asc"); }
   const filtered = useMemo(
     () => accounts.filter((account) =>
       account.name.toLowerCase().includes(query.trim().toLowerCase()) &&
       (status === "All" || account.status === status)),
     [query, status],
   );
+  const sorted = useMemo(() => [...filtered].sort((a, b) => {
+    const comparison = sortKey === "signals" ? a.signals - b.signals
+      : sortKey === "reviewed" ? Number(a.reviewed.split(" ")[1]) - Number(b.reviewed.split(" ")[1])
+      : a.name.localeCompare(b.name);
+    return sortDirection === "asc" ? comparison : -comparison;
+  }), [filtered, sortKey, sortDirection]);
   const totalSignals = filtered.reduce((total, account) => total + account.signals, 0);
   const requiresReview = filtered.filter((account) => account.status === "Needs review").length;
   const active = filtered.find((account) => account.id === selected);
@@ -64,7 +80,7 @@ export function DataDisplayComparison() {
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
           Compare the same four fictional account records in three presentation styles.
-          Search and filter them, then watch which questions each presentation makes easier to answer.
+          Search, filter, and sort them, then watch which questions each presentation makes easier to answer.
           No live data, backend queries, or saved changes.
         </p>
       </div>
@@ -104,12 +120,28 @@ export function DataDisplayComparison() {
           </select>
         </label>
       </div>
-      <p role="status" className="text-xs text-muted">{filtered.length} of {accounts.length} fictional accounts shown</p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p role="status" aria-live="polite" className="text-xs text-muted">{filtered.length} of {accounts.length} fictional accounts shown. Sorted by {sortKey}, {sortDirection === "asc" ? "ascending" : "descending"}.</p>
+        <Button type="button" variant="outline" onClick={reset} disabled={!query && status === "All" && sortKey === "name" && sortDirection === "asc"}>Clear search and filters</Button>
+      </div>
+      <div className="flex flex-wrap items-center gap-3">
+        <label className="flex items-center gap-2 text-sm">Sort by
+          <select aria-label="Sort accounts by" value={sortKey} onChange={(event) => { setSortKey(event.target.value as SortKey); setSortDirection("asc"); }} className="min-h-11 rounded-lg border border-border bg-card px-3">
+            <option value="name">Account name</option><option value="signals">Signal count</option><option value="reviewed">Last reviewed</option>
+          </select>
+        </label>
+        <Button type="button" variant="outline" onClick={() => setSortDirection((value) => value === "asc" ? "desc" : "asc")}>Direction: {sortDirection === "asc" ? "Ascending" : "Descending"}</Button>
+        {display === "table" && <label className="flex items-center gap-2 text-sm">Table spacing
+          <select aria-label="Table spacing" value={density} onChange={(event) => setDensity(event.target.value as typeof density)} className="min-h-11 rounded-lg border border-border bg-card px-3">
+            <option value="comfortable">Comfortable</option><option value="compact">Compact</option>
+          </select>
+        </label>}
+      </div>
       {filtered.length ? (
         <div className="rounded-xl border border-border bg-card p-4">
           {display === "cards" ? (
             <div className="grid gap-3 sm:grid-cols-2">
-              {filtered.map((account) => (
+              {sorted.map((account) => (
                 <article key={account.id} className="rounded-lg border border-border bg-background p-4">
                   <h3 className="font-semibold">{account.name}</h3>
                   <p className="mt-2 text-sm">{account.signals} signals · {account.status}</p>
@@ -126,21 +158,21 @@ export function DataDisplayComparison() {
               className="max-w-full overflow-x-auto rounded-lg border border-border focus-visible:outline-2 focus-visible:outline-offset-2">
               <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
                 <caption className="p-3 text-left text-xs text-muted">
-                  Fictional account comparison. Exact counts, status, and last-reviewed dates.
+                  Fictional account comparison. Exact counts, status, and last-reviewed dates. Activate a column heading to sort.
                 </caption>
                 <thead className="bg-surface-sage">
                   <tr>
-                    <th scope="col" className="p-3">Account</th>
-                    <th scope="col" className="p-3">Signals</th>
+                    <th scope="col" aria-sort={sortKey === "name" ? (sortDirection === "asc" ? "ascending" : "descending") : "none"} className={density === "compact" ? "p-2" : "p-3"}><button type="button" className="min-h-11 text-left underline" onClick={() => chooseSort("name")}>Account {sortKey === "name" ? (sortDirection === "asc" ? "↑" : "↓") : ""}</button></th>
+                    <th scope="col" aria-sort={sortKey === "signals" ? (sortDirection === "asc" ? "ascending" : "descending") : "none"} className={density === "compact" ? "p-2" : "p-3"}><button type="button" className="min-h-11 underline" onClick={() => chooseSort("signals")}>Signals {sortKey === "signals" ? (sortDirection === "asc" ? "↑" : "↓") : ""}</button></th>
                     <th scope="col" className="p-3">Status</th>
-                    <th scope="col" className="p-3">Reviewed</th>
+                    <th scope="col" aria-sort={sortKey === "reviewed" ? (sortDirection === "asc" ? "ascending" : "descending") : "none"} className={density === "compact" ? "p-2" : "p-3"}><button type="button" className="min-h-11 underline" onClick={() => chooseSort("reviewed")}>Reviewed {sortKey === "reviewed" ? (sortDirection === "asc" ? "↑" : "↓") : ""}</button></th>
                     <th scope="col" className="p-3">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filtered.map((account) => (
+                  {sorted.map((account) => (
                     <tr key={account.id} className="border-t border-border">
-                      <th scope="row" className="p-3 font-medium">{account.name}</th>
+                      <th scope="row" className={(density === "compact" ? "p-2" : "p-3") + " font-medium"}>{account.name}</th>
                       <td className="p-3 tabular-nums">{account.signals}</td>
                       <td className="p-3">{account.status}</td>
                       <td className="p-3">{account.reviewed}</td>
@@ -182,7 +214,7 @@ export function DataDisplayComparison() {
         <div className="rounded-xl border border-border bg-card p-5">
           <h3 className="font-semibold">No matching accounts</h3>
           <p className="mt-2 text-sm text-muted">Try a broader search or reset the status filter.</p>
-          <Button className="mt-3" variant="outline" onClick={() => { setQuery(""); setStatus("All"); setSelected(null); }}>
+          <Button className="mt-3" variant="outline" onClick={reset}>
             Reset filters
           </Button>
         </div>
