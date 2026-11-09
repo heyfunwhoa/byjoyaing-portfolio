@@ -35,6 +35,8 @@ export function ProjectsDirectory({
     ? lifecycleStages.find((value) => value === searchParams.get("stage")) ?? "All"
     : initialStage;
   const urlQuery = searchParams ? searchParams.get("q") ?? "" : initialQuery;
+  const sortParam = searchParams?.get("sort");
+  const sort = sortParam === "title" || sortParam === "stage" ? sortParam : "featured";
   const [query, setQuery] = useState(urlQuery);
   const [previousUrlQuery, setPreviousUrlQuery] = useState(urlQuery);
   // Text entry must update synchronously; Next's history notification is a transition.
@@ -44,10 +46,14 @@ export function ProjectsDirectory({
     setQuery(urlQuery);
   }
   const hasFilters = category !== "All work" || stage !== "All" || query.length > 0;
-  const projects = useMemo(
-    () => filterDirectoryProjects(category, stage, query),
-    [category, stage, query],
-  );
+  const projects = useMemo(() => {
+    const matching = filterDirectoryProjects(category, stage, query);
+    if (sort === "featured") return matching;
+    const sorted = [...matching];
+    if (sort === "title") sorted.sort((a, b) => a.title.localeCompare(b.title));
+    else sorted.sort((a, b) => a.phase.localeCompare(b.phase) || a.title.localeCompare(b.title));
+    return sorted;
+  }, [category, stage, query, sort]);
 
   // Carry only directory controls, not unrelated URL parameters or arbitrary return URLs.
   const directoryContext = new URLSearchParams({ from: "projects" });
@@ -55,6 +61,7 @@ export function ProjectsDirectory({
   if (categorySlug) directoryContext.set("category", categorySlug);
   if (stage !== "All") directoryContext.set("stage", stage);
   if (query) directoryContext.set("q", query);
+  if (sort !== "featured") directoryContext.set("sort", sort);
   const caseStudyHref = (href: string) => `${href}?${directoryContext.toString()}`;
 
   function updateFilters(
@@ -74,6 +81,13 @@ export function ProjectsDirectory({
     if (nextQuery) params.set("q", nextQuery);
     // Next syncs useSearchParams with native history without a route transition.
     // Preserve the current fragment, focus, scroll and mounted card disclosures.
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+  }
+  function updateSort(next: "featured" | "title" | "stage") {
+    const url = new URL(window.location.href);
+    if (next === "featured") url.searchParams.delete("sort");
+    else url.searchParams.set("sort", next);
+    // Preserve search/filter state, focus, scroll, and mounted disclosures.
     window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
   }
   return (
@@ -183,6 +197,20 @@ export function ProjectsDirectory({
       >
         Clear filters
       </button>
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+        <label className="flex items-center gap-2 text-sm font-medium">
+          Sort projects
+          <select
+            value={sort}
+            onChange={(event) => updateSort(event.target.value as "featured" | "title" | "stage")}
+            className="min-h-11 rounded-lg border border-border bg-card px-3 text-sm font-normal"
+          >
+            <option value="featured">Featured first</option>
+            <option value="title">Project name (A–Z)</option>
+            <option value="stage">Lifecycle stage (A–Z)</option>
+          </select>
+        </label>
+      </div>
       <p role="status" aria-live="polite" className="mt-5 text-sm text-muted">
         {projects.length} matching{" "}
         {projects.length === 1 ? "project" : "projects"}
