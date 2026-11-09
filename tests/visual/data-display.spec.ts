@@ -18,6 +18,16 @@ test("data display sorting, search, density and reset use the same fixture", asy
   await expect(table.getByRole("columnheader", { name: /Signals/ })).toHaveAttribute("aria-sort", "descending");
   await expect(rows.first()).toContainText("Northstar Security");
 
+  await table.getByRole("button", { name: /Reviewed/ }).click();
+  await expect(table.getByRole("columnheader", { name: /Reviewed/ })).toHaveAttribute("aria-sort", "ascending");
+  await expect(rows.first()).toContainText("Northstar Security");
+  await table.getByRole("button", { name: /Reviewed/ }).click();
+  await expect(rows.first()).toContainText("Summit Systems");
+
+  await page.getByRole("button", { name: "Summary cards" }).click();
+  await expect(page.locator("article").first()).toContainText("Summit Systems");
+  await page.getByRole("button", { name: "Comparison table" }).click();
+
   await page.getByRole("combobox", { name: "Table spacing" }).selectOption("compact");
   await expect(page.getByRole("combobox", { name: "Table spacing" })).toHaveValue("compact");
 
@@ -41,6 +51,8 @@ test("data display remains within viewport with an internally scrolling table", 
   await page.getByRole("button", { name: "Comparison table" }).click();
   const region = page.getByRole("region", { name: /Comparison table/ });
   await expect(region).toBeVisible();
-  expect(await region.evaluate((element) => element.clientWidth <= element.scrollWidth)).toBe(true);
+  const sizes = await region.evaluate((element) => ({ client: element.clientWidth, scroll: element.scrollWidth }));
+  expect(sizes.scroll).toBeGreaterThanOrEqual(sizes.client);
+  if (page.viewportSize()!.width < 600) expect(sizes.scroll).toBeGreaterThan(sizes.client);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
 });
