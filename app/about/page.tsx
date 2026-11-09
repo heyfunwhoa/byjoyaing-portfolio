@@ -4,7 +4,7 @@ import { OrbitArtwork } from "@/components/orbit-artwork";
 import { CareerRail } from "@/components/career-rail";
 import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
-import { aboutPage } from "@/lib/about/editorial";
+import { aboutPage, educationCaptionLines } from "@/lib/about/editorial";
 import { careerRailNodes } from "@/lib/career-rail";
 import { fieldNoteBodies } from "@/lib/field-notes/bodies";
 import { Headphones, Palette, Plane, Wrench } from "lucide-react";
@@ -28,14 +28,14 @@ const educationMarks = [
     src: "/logos/education/ut-austin.svg",
     width: 1037,
     height: 298,
-    widthClass: "w-28 sm:w-32",
+    widthClass: "h-6 w-auto sm:h-7",
   },
   {
     name: "Western Governors University",
     src: "/logos/education/wgu.svg",
     width: 133,
     height: 30,
-    widthClass: "w-24 sm:w-[6.5rem]",
+    widthClass: "h-6 w-auto sm:h-7",
   },
 ] as const;
 
@@ -45,14 +45,14 @@ const certificationMarks = [
     src: "/badges/aws-certified-cloud-practitioner.png",
     width: 600,
     height: 600,
-    widthClass: "w-14 sm:w-20",
+    widthClass: "h-auto w-12 sm:w-14",
   },
   {
     name: "AWS Certified AI Practitioner",
     src: "/badges/aws-certified-ai-practitioner.png",
     width: 600,
     height: 600,
-    widthClass: "w-14 sm:w-20",
+    widthClass: "h-auto w-12 sm:w-14",
   },
 ] as const;
 
@@ -196,6 +196,7 @@ export default function AboutPage() {
                 item.includes(mark.name),
               );
               const mark = school ?? certification;
+              const lines = educationCaptionLines(item);
               return (
                 <li
                   key={item}
@@ -222,11 +223,18 @@ export default function AboutPage() {
                         width={mark.width}
                         height={mark.height}
                         unoptimized
-                        className={`h-auto max-w-full ${mark.widthClass}`}
+                        className={`max-w-full ${mark.widthClass}`}
                       />
                     </div>
                   ) : null}
-                  <p>{item}</p>
+                  <p>
+                    {lines.map((line, index) => (
+                      <span key={line} className="block">
+                        {line}
+                        {index < lines.length - 1 ? " " : ""}
+                      </span>
+                    ))}
+                  </p>
                 </li>
               );
             })}
@@ -247,9 +255,14 @@ export default function AboutPage() {
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           {aboutPage.practiceIntro}
         </p>
-        <div className="mt-6">
-          <ToolsMap />
-        </div>
+        <details className="mt-6 rounded-xl border border-border bg-card p-4">
+          <summary className="flex min-h-11 cursor-pointer items-center py-2 font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            See the tools and systems I use
+          </summary>
+          <div className="mt-4">
+            <ToolsMap />
+          </div>
+        </details>
       </section>
 
       <section
@@ -284,7 +297,7 @@ export default function AboutPage() {
             );
           })}
         </ul>
-        <ul className="mt-5 grid gap-4 text-sm sm:grid-cols-3">
+        <ul className="mt-5 flex flex-wrap gap-x-6 text-sm">
           <li>
             <Link
               href="/work"
@@ -292,9 +305,6 @@ export default function AboutPage() {
             >
               Professional Work
             </Link>
-            <p className="leading-6 text-muted">
-              Enterprise selling, competitive positioning, and resources for the team.
-            </p>
           </li>
           <li>
             <Link
@@ -303,9 +313,6 @@ export default function AboutPage() {
             >
               Playbooks and practical guides
             </Link>
-            <p className="leading-6 text-muted">
-              Structured ways to explain complex sales work and put ideas into practice.
-            </p>
           </li>
           <li>
             <Link
@@ -314,9 +321,6 @@ export default function AboutPage() {
             >
               Independent experiments
             </Link>
-            <p className="leading-6 text-muted">
-              Tools and learning experiences I build to explore better ways of working.
-            </p>
           </li>
         </ul>
       </section>

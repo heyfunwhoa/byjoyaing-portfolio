@@ -20,7 +20,7 @@ test("case-study URLs highlight the registry kind and leave unclassified paths q
   assert.equal(isActive("/work/detector-coverage-atlas", "/side-quests"), true);
   assert.equal(isActive("/work/competitive-intelligence-engine", "/work"), true);
   assert.equal(isActive("/work/competitive-intelligence-engine", "/side-quests"), false);
-  assert.equal(isActive("/work/storytelling-guide", "/work"), false);
+  assert.equal(isActive("/work/storytelling-guide", "/work"), true);
   assert.equal(isActive("/work/storytelling-guide", "/side-quests"), false);
   assert.equal(isActive("/side-quests", "/side-quests"), true);
   assert.equal(isActive("/ai-academy", "/side-quests"), true);
@@ -28,7 +28,13 @@ test("case-study URLs highlight the registry kind and leave unclassified paths q
   assert.equal(isActive("/builder-academy/identity-journey", "/side-quests"), true);
   assert.equal(isActive("/ai-academy", "/work"), false);
   assert.equal(navCurrent("/ai-academy", "/side-quests"), "true");
-  assert.equal(isActive("/projects", "/side-quests"), false);
+  // Supporting pages highlight the same section their breadcrumb names as parent.
+  assert.equal(isActive("/projects", "/side-quests"), true);
+  assert.equal(isActive("/account-signal", "/side-quests"), true);
+  assert.equal(isActive("/experience", "/work"), true);
+  assert.equal(isActive("/capabilities/revenue-strategy", "/work"), true);
+  assert.equal(isActive("/private-work", "/field-notes"), true);
+  assert.equal(isActive("/experience", "/side-quests"), false);
   assert.equal(isActive("/field-notes/multithreading", "/field-notes"), true);
   assert.equal(isActive("/contact", "/contact"), true);
   assert.equal(navCurrent("/work", "/work"), "page");
