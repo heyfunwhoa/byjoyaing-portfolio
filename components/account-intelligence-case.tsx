@@ -200,6 +200,34 @@ export function AccountIntelligenceCase() {
 
       <ProjectTechnologyStack slug="account-intelligence" />
 
+      <aside aria-labelledby="account-evidence-guide-title" className="my-8 rounded-xl border border-border bg-surface-sage p-4 sm:p-5">
+        <h2 id="account-evidence-guide-title" className="font-display text-xl tracking-tight">How to read this example</h2>
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+          This case study shows a browser-only walkthrough and the decisions behind a proposed account-intelligence workflow.
+          The example is not a deployed customer intelligence service.
+        </p>
+        <dl className="mt-4 grid gap-4 md:grid-cols-3">
+          <div>
+            <dt className="text-sm font-semibold">Demonstrated here</dt>
+            <dd className="mt-1 text-sm leading-6 text-muted">Fictional account changes, a reviewable signal, and an editable outreach draft in the page walkthrough.</dd>
+          </div>
+          <div>
+            <dt className="text-sm font-semibold">Planned, not connected</dt>
+            <dd className="mt-1 text-sm leading-6 text-muted">Live research sources, account assignment sync, a dedicated database, CRM handoff, and sequencer integration.</dd>
+          </div>
+          <div>
+            <dt className="text-sm font-semibold">Not measured</dt>
+            <dd className="mt-1 text-sm leading-6 text-muted">Rep adoption, time saved, positive replies, and pipeline impact. These remain proposed success measures.</dd>
+          </div>
+        </dl>
+        <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+          <a href="#workflow" className="inline-flex min-h-11 items-center text-accent underline">Explore the fictional workflow</a>
+          <a href="#architecture" className="inline-flex min-h-11 items-center text-accent underline">Review planned architecture</a>
+          <a href="#outcomes-title" className="inline-flex min-h-11 items-center text-accent underline">See proposed measures</a>
+        </div>
+      </aside>
+
+
       <section className="border-b border-border py-16" aria-labelledby="problem-title">
         <SectionLabel index="02">The problem</SectionLabel>
         <h2 id="problem-title" className="scroll-mt-24 mt-3 max-w-2xl font-display text-3xl leading-tight tracking-tight sm:text-5xl">

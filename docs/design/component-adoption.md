@@ -513,3 +513,12 @@ See [Frontend pilot](../academy/FRONTEND-PILOT.md) for ownership, responsive beh
 - **Behavior:** Native links and document reading order, no autoplay or motion. Guide stacks on narrow screens and uses a three-column definition list at wider widths; no page-wide overflow expected.
 - **Acceptance:** Production build, lint, tests and site Playwright, 375/768/1280/200% zoom and keyboard/real screen reader review. No approval is implied by CI alone.
 - **Rollback:** Revert the guide-only change inside `components/atlas-case.tsx`; existing table, route, source links and contents remain unchanged.
+
+## Account Intelligence reading guide (November 9, 2026)
+
+- **Scope:** Companion public case-study pilot to the Detector Coverage Atlas evidence guide, using existing Account Intelligence page content. No new screenshots, metrics, libraries, registry entries or external connections.
+- **Reader task:** Separate the fictional on-page walkthrough from proposed production architecture and unmeasured business outcomes before a visitor explores the page.
+- **Adoption:** A native three-part definition list below the introductory project example, with existing fragment links to the workflow, architecture and success-measures sections. No additional motion or application state; reuse ivory/sage/copper tokens and the existing contents navigation.
+- **Evidence boundaries:** Demo is browser-only and fictional; source integrations, database, CRM and sequencer are planned, not connected; usage and pipeline outcomes are proposed measures, not results.
+- **Acceptance:** Verify lint, tests, production build, site Playwright, 375/768/1280 and 200% zoom, keyboard focus and real screen-reader behavior. Public adoption is limited to this case-study reading guide; future interactive galleries require their own approval.
+- **Rollback:** Remove the guide markup without affecting the original workflow, architecture, metrics, case-study anchors, or links.
