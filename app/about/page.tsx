@@ -4,7 +4,7 @@ import { OrbitArtwork } from "@/components/orbit-artwork";
 import { CareerRail } from "@/components/career-rail";
 import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
-import { aboutPage } from "@/lib/about/editorial";
+import { aboutPage, educationCaptionLines } from "@/lib/about/editorial";
 import { careerRailNodes } from "@/lib/career-rail";
 import { fieldNoteBodies } from "@/lib/field-notes/bodies";
 import { Headphones, Palette, Plane, Wrench } from "lucide-react";
@@ -196,6 +196,7 @@ export default function AboutPage() {
                 item.includes(mark.name),
               );
               const mark = school ?? certification;
+              const lines = educationCaptionLines(item);
               return (
                 <li
                   key={item}
@@ -226,7 +227,14 @@ export default function AboutPage() {
                       />
                     </div>
                   ) : null}
-                  <p>{item}</p>
+                  <p>
+                    {lines.map((line, index) => (
+                      <span key={line} className="block">
+                        {line}
+                        {index < lines.length - 1 ? " " : ""}
+                      </span>
+                    ))}
+                  </p>
                 </li>
               );
             })}
