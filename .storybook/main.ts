@@ -1,10 +1,12 @@
 import type { StorybookConfig } from "@storybook/nextjs-vite";
 const config: StorybookConfig = {
   stories: ["../components/**/*.stories.@(ts|tsx)"],
-  addons: [],
+  addons: ["@storybook/addon-mcp"],
   framework: { name: "@storybook/nextjs-vite", options: {} },
   staticDirs: ["../public"],
   core: { disableTelemetry: true },
+  // The MCP docs toolset reads this manifest. The addon preset also turns it on.
+  features: { componentsManifest: true },
   viteFinal(config) {
     // Next's Storybook SWC plugin emits obsolete `assert` syntax for `with`.
     // Vite already turns JSON into JS modules, so strip the Node-only attribute
