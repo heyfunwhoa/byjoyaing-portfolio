@@ -1,3 +1,4 @@
+import { DailySecretsStory } from "@/components/design-lab/dailysecrets-story";
 import { CreativeRecipes } from "@/components/design-lab/creative-recipes";
 import { AcademyBreadcrumb } from "@/components/academy-breadcrumb";
 import { completePageMetadata } from "@/lib/page-metadata";
@@ -173,6 +174,40 @@ export default function DesignLabPage() {
         <ComponentLearning />
         <ProjectDiscoveryComparison />
         <CaseStudyEvidenceComparison />
+
+        <section
+          id="dailysecrets-story"
+          aria-labelledby="dailysecrets-title"
+          className="scroll-mt-24 space-y-6 border-t border-border py-12"
+        >
+          <div>
+            <p className="editorial-eyebrow text-accent">
+              Design Lab · Story format experiment
+            </p>
+            <h2
+              id="dailysecrets-title"
+              className="mt-2 font-display text-2xl tracking-tight"
+            >
+              Can readers follow where the key went?
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm text-muted">
+              Compare identical panels in two layouts. Ask a reader new to
+              secrets security what the wiki edit fixed and what the team still
+              had to do. Use the separate Storybook stories for an unaided first
+              read.
+            </p>
+          </div>
+          <div className="grid min-w-0 items-start gap-8 lg:grid-cols-2">
+            <div className="min-w-0 space-y-3">
+              <p className="text-sm font-semibold">A. Stacked story</p>
+              <DailySecretsStory format="stacked" />
+            </div>
+            <div className="min-w-0 space-y-3">
+              <p className="text-sm font-semibold">B. Carousel</p>
+              <DailySecretsStory format="carousel" />
+            </div>
+          </div>
+        </section>
         <div id="guided-form-controls" className="scroll-mt-24">
           <FormPatternComparison />
         </div>
