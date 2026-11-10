@@ -7,6 +7,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from "react";
+import { AdvancedGridDemo, WorkflowBuilderDemo, AgentActivityDemo, RuleBuilderDemo, LearningPlaygroundDemo } from "./advanced-learning-demos";
 import { Button } from "@/components/ui/button";
 import {
   CaptionedGallery,
@@ -653,6 +654,11 @@ const demos: Record<string, () => ReactElement> = {
   captionGallery: CaptionedGallery,
   projectMap: ProjectRelationshipMap,
   table: TableDemo,
+  "advanced-grid": AdvancedGridDemo,
+  "workflow-builder": WorkflowBuilderDemo,
+  "agent-activity": AgentActivityDemo,
+  "rule-builder": RuleBuilderDemo,
+  "learning-playground": LearningPlaygroundDemo,
 };
 
 function Demo({ lessonId }: { lessonId: string }) {

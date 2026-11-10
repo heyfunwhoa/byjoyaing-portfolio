@@ -53,7 +53,7 @@ test("every lesson has the teaching fields and a working demo", () => {
     }
     assert.equal(lesson.source.startsWith("https://"), true, lesson.id);
     assert.ok(sourceHosts.has(new URL(lesson.source).hostname), lesson.source);
-    assert.match(explorer, new RegExp(`\\n  ${lesson.id}:`));
+    assert.match(explorer, new RegExp(`\\n  ["\x27]?${lesson.id}["\x27]?:`));
     if (lesson.kind === "concept") {
       assert.equal(lessonTrack(lesson), "Foundations");
       assert.equal(lesson.catalogId, undefined, lesson.id);
@@ -85,7 +85,7 @@ test("lesson search matches a task and a project without saving progress", () =>
   );
   assert.deepEqual(
     lessonsForExplorer("Components", "pipeline").map((lesson) => lesson.id),
-    ["table"],
+    ["table", "advanced-grid"],
   );
   assert.equal(lessonsForExplorer("All", "no-such-lesson").length, 0);
   assert.equal(
@@ -138,6 +138,26 @@ test("form comparison teaches exclusive, multi-choice, select, and search patter
   assert.match(comparison, /not a full ARIA combobox/);
   assert.match(page, /<FormPatternComparison \/>/);
   assert.match(page, /designLabAvailable\(\)/);
+});
+
+test("advanced Design Lab examples are present without introducing a new registry", () => {
+  const advanced = ["advanced-grid", "workflow-builder", "agent-activity", "rule-builder", "learning-playground"];
+  const ids = new Set(componentLessons.map((lesson) => lesson.id));
+  const explorer = readFileSync(new URL("../components/design-lab/component-learning.tsx", import.meta.url), "utf8");
+  const demos = readFileSync(new URL("../components/design-lab/advanced-learning-demos.tsx", import.meta.url), "utf8");
+  for (const id of advanced) {
+    assert.ok(ids.has(id), id);
+    assert.match(explorer, new RegExp('\\n  "' + id + '":'));
+  }
+  assert.equal(componentLessons.filter(lesson => lesson.catalogId === "data").length, 2);
+  assert.match(demos, /Fictional accounts/);
+  assert.match(demos, /No action was actually executed/);
+  assert.match(demos, /No bulk action or export is connected/);
+  assert.match(demos, /No grading, progress recording/);
+  assert.match(demos, /aria-expanded=/);
+  assert.match(demos, /role="status"/);
+  assert.match(demos, /role="region"/);
+  assert.match(demos, /<fieldset/);
 });
 
 test("data display comparison keeps cards, table, and metrics tied to the same fixture", () => {
