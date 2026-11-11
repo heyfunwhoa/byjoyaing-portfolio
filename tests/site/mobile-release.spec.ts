@@ -85,3 +85,46 @@ test("About career disclosure and Work cards adapt to phone widths", async ({ pa
   await expect(page.getByRole("region", { name: "Enterprise Sales evidence" })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
+
+
+for (const width of [320, 375, 640, 768]) {
+  test(`mobile navigation round trip at ${width}px`, async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== "site-desktop", "Run the explicit viewport matrix once.");
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/about");
+    const nav = page.getByRole("navigation", { name: "Primary", exact: true });
+    const menu = nav.getByRole("button", { name: /^(Open|Close) navigation menu$/ });
+    await expect(menu).toBeVisible();
+    const priorOverflow = await page.evaluate(() => document.body.style.overflow);
+
+    await menu.click();
+    await expect(menu).toHaveAttribute("aria-expanded", "true");
+    await expect(page.locator("#main-content")).toHaveAttribute("inert", "");
+    await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe("hidden");
+    const firstLink = nav.locator("#primary-menu a[href]").first();
+    const lastLink = nav.locator("#primary-menu a[href]").last();
+    await expect(firstLink).toBeFocused();
+    await lastLink.focus();
+    await lastLink.press("Tab");
+    await expect(menu).toBeFocused();
+    await menu.press("Escape");
+    await expect(menu).toHaveAttribute("aria-expanded", "false");
+    await expect(menu).toBeFocused();
+    await expect(page.locator("#main-content")).not.toHaveAttribute("inert", "");
+    await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe(priorOverflow);
+
+    await menu.click();
+    await page.locator(".nav-backdrop-enter").click({ position: { x: 20, y: 850 } });
+    await expect(menu).toHaveAttribute("aria-expanded", "false");
+    await expect(menu).toBeFocused();
+
+    await menu.click();
+    await nav.getByRole("link", { name: "Work", exact: true }).click();
+    await expect(page).toHaveURL(/\/work$/);
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(nav.getByRole("button", { name: "Open navigation menu" })).toHaveAttribute("aria-expanded", "false");
+    await expect(page.locator("#main-content")).not.toHaveAttribute("inert", "");
+    await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe(priorOverflow);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  });
+}
