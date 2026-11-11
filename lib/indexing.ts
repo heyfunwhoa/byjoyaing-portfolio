@@ -20,6 +20,7 @@ export const indexableStaticPaths = [
   "/field-notes/enterprise-deal",
   "/field-notes/multithreading",
   "/field-notes/build-the-motion",
+  "/field-notes/developer-workstations",
   "/ai-academy/systems",
   "/contact",
 ] as const;

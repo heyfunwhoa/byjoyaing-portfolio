@@ -63,10 +63,17 @@ export default function FieldNotesPage() {
             },
             {
               title: "How I'd Build a Motion at Your Stage",
-              description: "A sell-first plan in three gated phases: prove the deal, make it repeatable, then scale what is proven. I keep carrying a number throughout.",
+              description: "A sell-first plan in three gated phases, with the team I'd build at each stage and the trigger for the first hire. I keep carrying a number throughout.",
               href: "/field-notes/build-the-motion",
               label: "Illustrative model",
-              when: "Use when an early team needs its first repeatable sales motion and has to decide when to add headcount.",
+              when: "Use when an early team needs its first repeatable sales motion and a plan for the team that will run it.",
+            },
+            {
+              title: "The Developer Workstation Is the New Soft Target",
+              description: "A point of view on why developer machines and CI became a primary attack path, who owns the problem, and how I'd test a motion around it.",
+              href: "/field-notes/developer-workstations",
+              label: "Point of view · Exploring",
+              when: "Use when deciding where a security product fits current buyer pain, or which segment to test next.",
             },
             {
               title: "Multithreading & Stakeholder Mapping",
