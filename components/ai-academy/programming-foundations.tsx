@@ -37,6 +37,12 @@ export function ProgrammingFoundations(){
       {showLessons&&<ol id="curriculum" className="mt-5 grid gap-3 md:grid-cols-2">{curriculum.map((l,i)=><li key={l.slug} className="rounded-xl border border-border bg-card p-5"><p className="text-xs font-medium text-accent">LESSON {String(i+1).padStart(2,"0")} · {getGuidedLesson(l.slug)?"Guided lesson available":"Planned"}</p><h3 className="mt-2 font-semibold">{l.title}</h3><p className="mt-2 text-sm leading-6 text-muted">{l.objective}</p><p className="mt-3 text-sm"><strong>Practice:</strong> {l.practice}</p><p className="mt-2 text-xs text-muted">Prerequisites: {l.prerequisites.length?l.prerequisites.join(", "):"None"}</p>{getGuidedLesson(l.slug)&&<button type="button" onClick={()=>setActiveGuided(l.slug)} className="mt-4 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" aria-label={`Open guided lesson: ${l.title}`}>Open guided lesson →</button>}</li>)}</ol>}
       {activeGuided&&<GuidedProgrammingLesson key={activeGuided} slug={activeGuided} onClose={()=>setActiveGuided(null)}/>}
     </section>
+    <section aria-labelledby="api-lab-entry" className="mt-10 rounded-xl border border-border bg-card p-5 sm:p-7">
+      <p className="text-xs font-semibold uppercase tracking-wider text-accent">Optional guided lab · Preview</p>
+      <h2 id="api-lab-entry" className="font-display mt-2 text-2xl">Build an API three ways</h2>
+      <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">Extend your programming foundations with a hands-on introduction to REST, GraphQL, webhooks, WebSockets and SDKs. Compare the same fictional tasks API in Next.js, Express and n8n, then check your understanding. Progress is session-only.</p>
+      <a href="/ai-academy/programming/api-lab" className="mt-4 inline-block rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">Open API lab →</a>
+    </section>
     <section aria-labelledby="explorer-heading" className="mt-14">
       <h2 id="explorer-heading" className="font-display text-3xl">Language & technology explorer</h2>
       <p className="mt-2 text-sm text-muted">Languages, frameworks, libraries, runtimes and platforms are different categories. Compare what each does and where it fits.</p>
