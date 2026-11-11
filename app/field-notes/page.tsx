@@ -1,6 +1,9 @@
 import { completePageMetadata } from "@/lib/page-metadata";
 import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { PageMain } from "@/components/page-main";
+import { marketingPlaybooks } from "@/lib/field-notes/marketing-playbooks";
+import { salesPlaybooks } from "@/lib/field-notes/sales-playbooks";
+import { PlaybookOutlines } from "@/components/field-notes/playbook-outlines";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -14,14 +17,7 @@ export const metadata: Metadata = completePageMetadata(
   "/field-notes",
 );
 
-const plannedTopics = [
-  "Strategic account planning",
-  "Deal inspection",
-  "ICP and segmentation",
-  "Opportunity qualification",
-  "Pipeline and forecast cadence",
-  "Coaching and onboarding rhythms",
-] as const;
+const plannedTopics = ["Strategic account planning", "ICP and segmentation"] as const;
 
 export default function FieldNotesPage() {
   return (
@@ -38,6 +34,8 @@ export default function FieldNotesPage() {
         </p>
         <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#featured">Published guides</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#sales-playbooks">Sales playbooks</a>
+          <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#marketing-playbooks">Marketing playbooks</a>
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#private">Private work</a>
         </nav>
         </div>
@@ -86,21 +84,49 @@ export default function FieldNotesPage() {
           ))}
         </div>
       </section>
+      <section id="sales-playbooks" aria-labelledby="sales-playbooks-heading" className="scroll-mt-24 border-b border-border py-12">
+        <p className="text-xs font-medium text-muted">Exploring · Playbook outlines</p>
+        <h2 id="sales-playbooks-heading" className="mt-3 font-display text-3xl tracking-tight">Sales, from account choice to buyer progress</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Practical starting points for account planning, conversations, deal
+          decisions and coaching. Each includes the evidence to move forward,
+          when to pause and a connection to the work behind it.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Connected work links to public project stories or source material.
+          The connections show how the ideas support each other.
+        </p>
+        <PlaybookOutlines playbooks={salesPlaybooks} />
+        <p className="mt-6 max-w-2xl text-sm leading-6 text-muted">
+          For business cases, technical evaluations, mutual action plans,
+          procurement, negotiation and handoffs, start with the{' '}
+          <Link href="https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/enterprise-evaluation/README.md" className="text-accent underline underline-offset-4">existing evaluation toolkit</Link>.
+        </p>
+      </section>
+      <section id="marketing-playbooks" aria-labelledby="marketing-playbooks-heading" className="scroll-mt-24 border-b border-border py-12">
+        <p className="text-xs font-medium text-muted">Exploring · Playbook outlines</p>
+        <h2 id="marketing-playbooks-heading" className="mt-3 font-display text-3xl tracking-tight">Marketing, from idea to follow-through</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Starting points for connecting audience value, campaign execution and
+          sales follow-through. Each outline covers preparation, delivery and
+          learning, with an artifact to build next.
+        </p>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
+          Start with one audience, one useful outcome and a named owner. Define
+          the measures before launch, including the source, time window,
+          denominator and what is still unknown.
+        </p>
+        <PlaybookOutlines playbooks={marketingPlaybooks} />
+      </section>
       <section id="coming-later" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">Notes still in outline</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-          These topics are not articles. They are subjects I may write later, each labeled Used in practice, Illustrative model, or Exploring when they exist. Nothing below is clickable on purpose.
+          Future frameworks for developing one account in depth and defining
+          the segments worth pursuing. These will complement the playbooks above.
         </p>
-        <details className="mt-4 rounded-xl border border-border bg-card p-4">
-          <summary className="cursor-pointer py-1 font-medium">
-            View topics in outline
-          </summary>
-          <ul className="mt-4 max-w-xl list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
-          {plannedTopics.map((topic) => (
-            <li key={topic}>{topic}</li>
-          ))}
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
+          {plannedTopics.map((topic) => <li key={topic}>{topic}</li>)}
         </ul>
-        </details>
       </section>
       <section id="private" className="scroll-mt-24 border-t border-border py-12">
         <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>
