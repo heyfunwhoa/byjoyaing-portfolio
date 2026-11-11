@@ -44,6 +44,10 @@ Use the portfolio's project-card example for the first pilot. Account Signal Eng
 
 Use KRU-114 and the Linear delivery convention for human effort, agent contribution/runtime, elapsed delivery, costs, confidence and actual outcomes. Tokens are optional supporting diagnostics. Historical “AI-assisted hours” are not reliable forecasts. Lesson duration estimates are learner estimates and must remain separate from engineering effort.
 
+## Data Foundations entry pathway (curriculum proposal, 2026-11-07)
+
+[Data Foundations pathway](DATA-FOUNDATIONS-PATH.md) establishes a beginner-first sequence from what data is → representation/types → records/relationships → structured data → modeling → schemas/contracts → databases → APIs → versioning/governance. It reuses existing JSON/YAML, SQL and API/MCP material rather than building duplicate lessons, and uses a fictional Vendor Intake request from the Operating Model Workbench as a continuous example. This change documents a proposed learning sequence only; no new Academy card, route or lab is published by linking the path.
+
 ## Product recommendation
 One learning platform, two coherent entry points:
 
