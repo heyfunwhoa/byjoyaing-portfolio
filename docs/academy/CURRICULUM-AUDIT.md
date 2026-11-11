@@ -195,6 +195,15 @@ The following 2026-10-12 inventory and status statements describe their dated sn
 **Owner:** Kristen Aing
 **Status:** Priority order retained. The user authorized the existing-content navigation and metadata foundation (Batch B slice), including its merge before mission work. New lesson authoring and new labs remain on hold. See [mission handoff](MISSION-HANDOFF.md).
 
+
+## Security throughout the delivery curriculum (2026-11-07)
+
+Extend the existing [release security companion](../builder-academy/release-security-review.md#security-across-the-whole-software-development-lifecycle) instead of creating a second security course. Teach staged security from requirements/threat modeling → architecture/trust boundaries → secure implementation → CI scans and negative tests → integration/security regression → production release verification → operations and retirement. Link from the core [release learning path](../builder-academy/idea-to-verified-release.md) and the [PR reconciliation companion](../builder-academy/pr-integration-and-reconciliation.md). Scope is source documentation; UI lesson registry, observed learning outcomes and formal standards adoption remain separate.
+
+## PR integration and reconciliation companion (2026-11-07)
+
+The existing [From idea to verified release](../builder-academy/idea-to-verified-release.md) already teaches branch/commit/CI/deployment distinctions and basic merge conflicts. Extend that path rather than creating another curriculum or scored lesson. The new [PR integration and reconciliation companion](../builder-academy/pr-integration-and-reconciliation.md) adds the missing **parallel-work/WIP complexity** and **multi-PR disposition** skills: merged vs deployed vs owner-accepted, stale checks, contract/navigation overlap, superseded PRs, exact-SHA evidence, issue reconciliation and a fictional five-PR practice case. This is source content only; public Academy UI integration and human editorial acceptance remain separate. Place after the beginner release core and before agent parallelization.
+
 ## Focused re-audit: AI Foundations versus Builder Academy
 
 **2026-10-12 follow-up:** The user authorized one beginner code/file/YAML lesson and this comparison. This supersedes the authoring hold only for that slice. The prior full inventory remains a historical baseline; this follow-up inspected the current catalog, guidance, paths, programming registry, program and open PR #131. It is not a fresh exhaustive route or browser audit.
