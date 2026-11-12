@@ -230,6 +230,18 @@ Checked 2026-10-13; provider interfaces and defaults can change.
 - [D4: Vercel — Deployment overview](https://vercel.com/docs/deployments/overview)
 
 
+## Verify the alert handoff fix
+
+Continue the [alert handoff form](follow-one-api-request.md). You reviewed a change that preserves the draft when the server saves the request but the browser misses its confirmation.
+
+1. Name the revision or artifact that contains the fix. Confirm the preview is serving that version.
+2. Use fictional data in the approved practice environment. Submit a review and simulate a lost confirmation.
+3. Confirm the draft is still visible and the form gives you a way to retry. Retry the same logical submission.
+4. Compare the confirmation ID with the stored review. Count matching rows and expect one.
+5. Record the environment, revision, observed behavior, and your decision. If the version or behavior differs from what you reviewed, pause and investigate. If a released change must be reversed, identify the last known good version and consider what happens to data before rolling back.
+
+A successful build establishes that the build finished. The preview check gives you separate evidence about what ran and what the user experienced.
+
 ## Return to the parent lesson
 
 [Continue the delivery learning path](idea-to-verified-release.md#choose-a-short-learning-path). Your settings explanation and release checklist are the practice artifacts; deploying a real app is optional and requires approval.
