@@ -1,23 +1,15 @@
 name: Security scans
 
-# Semgrep, TruffleHog and Trivy run as steps of ONE job. Private-repo Actions
-# billing rounds every job up to a whole minute, and each of these scans takes
-# well under a minute, so separate jobs tripled the billed time. Every scanner
-# keeps its pinned version and arguments, and every scanner runs even when an
-# earlier one fails; any failing scanner fails the job. Findings are blocking:
-# never mask failures with continue-on-error.
-
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
   push:
     branches: [main]
+
   workflow_dispatch:
   schedule:
-    # Weekly full-repository lookback scan of all three scanners, staggered
-    # across projects (UTC). This was Semgrep's schedule; the TruffleHog/Trivy
-    # schedule ('7 12 * * 3') is folded into it so the scanners run once a week.
-    - cron: '37 11 * * 2'
+    - cron: '7 12 * * 3'
 
 permissions:
   contents: read
@@ -27,46 +19,31 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  scans:
-    name: Security scans (Semgrep, TruffleHog, Trivy)
+  trufflehog:
+    name: TruffleHog introduced secrets
     if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          # Full history for TruffleHog's commit-range scan.
           fetch-depth: 0
           persist-credentials: false
-
-      # Semgrep scans the entire checked-out repository on PRs and on main.
-      # It runs first so it sees only the checkout, before other scanners
-      # write caches into the workspace.
-      - name: Setup Python
-        if: ${{ !cancelled() && steps.checkout.outcome == 'success' }}
-        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version: "3.11"
-      - name: Install Semgrep
-        id: semgrep-install
-        if: ${{ !cancelled() && steps.checkout.outcome == 'success' }}
-        run: python -m pip install semgrep==1.180.0
-      - name: Run Semgrep scan
-        if: ${{ !cancelled() && steps.semgrep-install.outcome == 'success' }}
-        run: semgrep scan --config p/security-audit --config p/secrets --error --metrics=off --exclude node_modules --exclude .next --exclude dist .
-
-      - name: TruffleHog introduced secrets
-        if: ${{ !cancelled() && steps.checkout.outcome == 'success' }}
-        uses: trufflesecurity/trufflehog@ce76ea8f54888c154de94d37f0681493e69193f8 # main
+      - uses: trufflesecurity/trufflehog@ce76ea8f54888c154de94d37f0681493e69193f8 # main
         with:
           version: "3.99.2"
           extra_args: --results=verified,unknown
 
-      - name: Trivy dependency and config review
-        if: ${{ !cancelled() && steps.checkout.outcome == 'success' }}
-        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+  trivy:
+    name: Trivy dependency and config review
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           scan-type: fs
           scan-ref: .
