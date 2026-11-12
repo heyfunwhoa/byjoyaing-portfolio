@@ -8,7 +8,7 @@ Owner: Kristen Aing. Scope: byjoyaing-portfolio. Updated: 2026-10-13.
 - Site tests cover Home, About, Work, Contact and Academy rendering, uncaught browser exceptions, horizontal overflow, keyboard navigation, empty/invalid-email contact validation, request-mode disclosure, the legacy About redirect and unknown-route 404.
 - Browser tests abort contact/resume API requests. Invalid form cases must issue no request. They do not prove real email delivery. Remote mode is limited to the two public portfolio origins, disables trace/screenshots/video and uses no bypass credentials.
 - `Production smoke` is an on-demand post-release browser check against `https://www.byjoyaing.com`. Run from main only. It observes the live domain; it does not prove that its deployed SHA matches the workflow SHA, hold a release, monitor continuously or automatically roll back.
-- Visual QA now triggers for changes to app, components, lib and public, plus its existing configuration/dependency paths. Existing Storybook screenshot comparisons stay; site tests check real page layout/interaction, without asserting full-page visual baselines.
+- Visual QA runs on every non-draft PR but starts Storybook and the screenshots only when the PR changes what the stories can render: `components/`, `lib/`, `content/`, `public/`, `.storybook/`, `tests/visual/`, any `.css`/`.scss` file (including `app/globals.css`), the Playwright/PostCSS/TypeScript/Next config, `package.json`/`package-lock.json` or the workflow itself. Route-only `app/` changes are covered by the site tests in `Production build + TypeScript`. The check still reports success when it skips. Existing Storybook screenshot comparisons stay; site tests check real page layout/interaction, without asserting full-page visual baselines.
 - Direct action references are pinned to upstream commit SHAs. TruffleHog's engine is pinned to 3.99.2 rather than latest. Upstream composite actions/tool downloads and mutable scanner databases/rule registries are not made fully immutable by this change.
 
 Local commands:
@@ -31,7 +31,7 @@ In repository Settings → Rules → Rulesets, inspect existing main protection 
 
 - Require pull requests; restrict deletion and force pushes.
 - Require passing status checks and branches to be up to date.
-- Select the actual emitted check names: `Lint`, `Unit tests`, `Production build + TypeScript`, `Production dependency audit`, `semgrep`, `TruffleHog introduced secrets`, `Trivy dependency and config review`, and the Vercel preview check where a preview is required.
+- Select the actual emitted check names: `Lint, unit tests, release policy + audit`, `Production build + TypeScript`, `Security scans (Semgrep, TruffleHog, Trivy)`, and the Vercel preview check where a preview is required.
 - Choose reviewer requirements that work for this sole-owner repository; requiring another approver without an available reviewer can prevent all merges.
 - Do not make the path-filtered Visual QA workflow globally required: GitHub may leave absent path-filtered checks pending. Review its result on applicable UI PRs, or replace path filtering with an always-emitted aggregate check before making it required.
 - Test enforcement on a harmless deliberately failing PR; verify merge is blocked, then close it. Do not bypass checks routinely.
@@ -40,7 +40,7 @@ In repository Settings → Rules → Rulesets, inspect existing main protection 
 
 Project: `byjoyaing-portfolio` (`prj_BWgeuBsxiMKOlGzg193H5O4odb2i`), scope `krusty1`. Keep Node 22 aligned with CI and preview authentication enabled.
 
-Project Settings → Deployment Checks → Add Checks → GitHub: select checks emitted on main: `Lint`, `Unit tests`, `Production build + TypeScript`, `Production dependency audit`, `semgrep`, `TruffleHog introduced secrets`, `Trivy dependency and config review`.
+Project Settings → Deployment Checks → Add Checks → GitHub: select checks emitted on main: `Lint, unit tests, release policy + audit`, `Production build + TypeScript`, `Security scans (Semgrep, TruffleHog, Trivy)`.
 
 After the security-enforcement PR, TruffleHog and Trivy emit checks on main and can be required for production. Do not require path-filtered Visual QA as a production check: it does not reliably emit for every commit. Do not require `Public production browser smoke` before release: it tests the current public domain, so it is a post-release check.
 

@@ -101,6 +101,12 @@ test("git provider failure and unit-test failure stay separate classes", () => {
   const security = classifyReleaseEvidence({ failedCiJobs: ["semgrep", "Production build + TypeScript"] });
   assert.deepEqual(security.classes, ["security_check", "application_build"]);
 
+  const consolidated = classifyReleaseEvidence({
+    failedCiJobs: ["Lint, unit tests, release policy + audit", "Security scans (Semgrep, TruffleHog, Trivy)"],
+  });
+  assert.deepEqual(consolidated.classes, ["source_validation", "security_check"]);
+  assert.equal(consolidated.notes.some((note) => note.startsWith("Unclassified")), false);
+
   const platform = classifyReleaseEvidence({ vercelReadyState: "CANCELED" });
   assert.deepEqual(platform.classes, ["deployment_platform"]);
 });
@@ -150,7 +156,6 @@ test("workflow concurrency cancels pull requests only and keeps security jobs", 
   const files = {
     ci: readFileSync(join(root, ".github/workflows/ci.yml"), "utf8"),
     security: readFileSync(join(root, ".github/workflows/security-scans.yml"), "utf8"),
-    semgrep: readFileSync(join(root, ".github/workflows/semgrep.yml"), "utf8"),
     visual: readFileSync(join(root, ".github/workflows/visual-qa.yml"), "utf8"),
   };
   for (const contents of Object.values(files)) {
@@ -165,9 +170,10 @@ test("workflow concurrency cancels pull requests only and keeps security jobs", 
   assert.match(files.security, /group: security-\$\{\{ github\.workflow \}\}-\$\{\{ github\.ref \}\}/);
   assert.match(files.security, /trufflesecurity\/trufflehog@[0-9a-f]{40}/);
   assert.match(files.security, /exit-code: "1"/);
-  assert.match(files.semgrep, /group: semgrep-\$\{\{ github\.workflow \}\}-\$\{\{ github\.ref \}\}/);
-  assert.match(files.semgrep, /cron: '37 11 \* \* 2'/);
-  assert.match(files.semgrep, /semgrep scan --config p\/security-audit/);
+  assert.match(files.security, /cron: '37 11 \* \* 2'/);
+  assert.match(files.security, /semgrep scan --config p\/security-audit/);
+  assert.match(files.security, /aquasecurity\/trivy-action@[0-9a-f]{40}/);
+  assert.equal(/^\s*continue-on-error:/m.test(files.security), false);
   assert.match(files.visual, /group: visual-qa-\$\{\{ github\.ref \}\}/);
   assert.match(files.visual, /npm run test:visual/);
 });

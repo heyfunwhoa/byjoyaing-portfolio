@@ -12,13 +12,11 @@ PostHog project 659261 was verified as this portfolio. Its error-alert list retu
 
 ## Required check names after this PR
 
-- `Lint`
-- `Unit tests`
+- `Lint, unit tests, release policy + audit` (lint, unit tests, release policy tests and the production dependency audit, as steps of one job)
 - `Production build + TypeScript`
-- `Production dependency audit`
-- `semgrep`
-- `TruffleHog introduced secrets`
-- `Trivy dependency and config review`
+- `Security scans (Semgrep, TruffleHog, Trivy)` (all three scanners, as steps of one job)
+
+Before the 2026-11 CI cost consolidation these were separate checks named `Lint`, `Unit tests`, `Production dependency audit`, `policy`, `semgrep`, `TruffleHog introduced secrets` and `Trivy dependency and config review`. Rules that still require the old names will wait for checks that no longer report.
 
 A failing job is not a merge or deployment gate until the hosting/repository settings require it. Use these exact emitted names, confirm they appear for the candidate SHA, and recheck after future workflow renames. In this change secret scans run on PR/push; weekly/manual runs scan history. Scanner rules/databases update independently of pinned binaries. Trivy's default npm coverage and `npm audit --omit=dev` exclude development dependencies. No ignored-CVE file or blanket continue-on-error is introduced.
 

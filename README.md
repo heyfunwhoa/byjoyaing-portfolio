@@ -34,7 +34,7 @@ npm run start   # serve the production build
 
 `npm test` uses the built-in Node.js test runner with TypeScript stripping and the explicit file list in `package.json`. Coverage includes Account Signal, portfolio data and navigation, Builder Academy, identity and credential exercises, privacy, email, metadata, and repository contracts. Academy coverage includes `lib/ai-academy-labs.test.ts`, `lib/ai-academy-advanced-labs.test.ts`, and `lib/ai-prompt-journey.test.ts`. New test files must be added to the command to run in this suite.
 
-The `Unit tests` job in `.github/workflows/ci.yml` runs `npm test` on Node.js 22 for pull requests targeting `main` and pushes to `main`. Browser checks are separate: `npm run test:site` tests the production build, `npm run test:visual` runs the Playwright visual suite, and `npm run test:editor` tests the Keystatic editor. Passing unit tests does not establish coverage of every page or endpoint.
+The `Lint, unit tests, release policy + audit` job in `.github/workflows/ci.yml` runs `npm test` on Node.js 22 for pull requests targeting `main` and pushes to `main`. Browser checks are separate: `npm run test:site` tests the production build, `npm run test:visual` runs the Playwright visual suite, and `npm run test:editor` tests the Keystatic editor. Passing unit tests does not establish coverage of every page or endpoint.
 
 ## Read next
 

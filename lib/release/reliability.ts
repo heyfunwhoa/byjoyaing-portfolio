@@ -6,7 +6,10 @@ export const VERCEL_SKIP_PREFIXES = ["docs/operations/", "docs/audit/", ".releas
 
 export const VERCEL_SKIP_FILES = ["AGENTS.md", "CLAUDE.md", "README.md", "RELEASE.md", ".github/RELEASE_CHECKLIST.md", ".github/pull_request_template.md"] as const;
 
+// Current check names first; the older per-scanner names stay so evidence from
+// runs before the CI consolidation still classifies correctly.
 const SECURITY_CI_JOBS = new Set([
+  "Security scans (Semgrep, TruffleHog, Trivy)",
   "semgrep",
   "TruffleHog introduced secrets",
   "Trivy dependency and config review",
@@ -15,7 +18,10 @@ const SECURITY_CI_JOBS = new Set([
 
 const BUILD_CI_JOBS = new Set(["Production build + TypeScript"]);
 
-const SOURCE_CI_JOBS = new Set(["Lint", "Unit tests"]);
+// The combined CI job also runs the production dependency audit. Its failure is
+// classified as source validation; read the failed step to tell an audit
+// finding from a lint, unit-test or release-policy failure.
+const SOURCE_CI_JOBS = new Set(["Lint, unit tests, release policy + audit", "Lint", "Unit tests", "policy"]);
 
 export type FailureClass =
   | "source_validation"
