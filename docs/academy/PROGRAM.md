@@ -11,13 +11,13 @@ The [Revenue enablement program and Trusted Handoff mission](REVENUE-ENABLEMENT-
 
 ## Current curriculum priorities
 
-Use the [curriculum audit](CURRICULUM-AUDIT.md) for the lesson/route inventory, evidence limits and priorities. On November 4, 2026, `main` at `e26355e` contains 38 registered short lessons; [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) proposes a 39th (background-job recovery) and nine goal-based paths. Programming has two guided tutorials among ten module records. Systems has two interactive examples and an infrastructure explainer alongside planned modules. The Frontend guided panel and API/MCP companion have already merged to `main`. The wider program is a proposal; older phases below do not define the active release queue.
+Use the [curriculum audit](CURRICULUM-AUDIT.md) for the lesson/route inventory, evidence limits and priorities. Checked on November 9, 2026 against `main` at `6ff958ad675c631f253f34ea84369fe82e34219f`, before this reconciliation commit: the registry has **39** short lessons in **nine** goal-based paths, including background-job recovery. That inventory landed through merged [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) (merge commit `3a64a4387392be3daa5686cd23f7eec81cc8c1f0`, 2026-11-08). The November 4 note that #238 was still a proposal is historical. Programming has two guided tutorials among ten module records. Systems has two interactive examples and an infrastructure explainer alongside planned modules. The Frontend guided panel and API/MCP companion are on `main`. The wider program remains a proposal; older phases below do not define the active release queue. Written companions linked below are source documents, not additional registered lesson IDs, and this count was not rechecked against production.
 
 ## Current integration and execution scope (2026-11-04)
 
 This section supersedes earlier blanket implementation holds only for the bounded work below. It does not authorize every proposed phase in this document. [Linear project P-KRU-11](https://linear.app/krusty/project/builder-academy-lesson-experience-and-ui-3919add2048a) tracks execution; repository files own versioned implementation and instructional specifications. Notion remains the product strategy/requirements reference; no private content is copied here. Overlap and proposed merge order: [INTEGRATION-233-236-237.md](INTEGRATION-233-236-237.md).
 
-1. **KRU-174 / PR #238:** use the existing integration branch for the nine paths, inventory and written recovery exercise. PR #233 has older overlapping work; do not merge both independently. #238 is not merged or deployed.
+1. **KRU-174 / merged PR #238:** the nine paths, inventory and written recovery exercise are on `main`. Open [PR #233](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/233) is the older overlapping branch and currently conflicts with `main`. Do not merge it. Owner disposition is still required before anyone closes it. Passing registry tests are not a production-deployment claim.
 2. **KRU-176:** the runnable comparison is complete. Decision: adapt the existing Academy components and defer Fumadocs. Evidence is in [FRONTEND-PILOT.md](FRONTEND-PILOT.md).
 3. **KRU-177 / PR #236:** the `frontend-building-blocks` guided panel, feedback/reset, wrapping and responsive changes are on `main`. Manual learner acceptance is still a separate task.
 4. **KRU-77 / PR #237:** the API/MCP progressive companion is on `main` under the same lesson id `mcp-vs-rest-api`. It does not create a separate catalog lesson.
@@ -103,6 +103,20 @@ Start with transparent **rule-based routing**. Only add model-powered recommenda
 - Account Signal Engine owns account intelligence execution and its private research storage. Academy teaches its architecture with synthetic/public examples.
 - Security Frameworks Hub, if built later, owns framework records/versions/mappings; Academy references lessons and citations rather than duplicating standards text.
 - Joy Index remains entirely private, outside public repo and examples.
+
+## Secure delivery, data foundations and SDLC companions (source only, 2026-11-09)
+
+These links reuse the existing delivery lesson. They do not add catalog IDs, routes or a second Academy.
+
+- [From idea to verified release](../builder-academy/idea-to-verified-release.md) remains the parent. It includes an optional fictional discovery-note trace and links to PR reconciliation and lifecycle security.
+- [PR integration and reconciliation](../builder-academy/pr-integration-and-reconciliation.md) covers parallel work, stale checks, exact commits and a fictional multi-PR exercise. Preserved from [PR #279](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/279) at `bba8aee73d42b902c8ea7e6ceba1e327312d2006`.
+- [Security across the SDLC](../builder-academy/release-security-review.md#security-across-the-whole-software-development-lifecycle) extends the existing security companion. The original ten-minute release-decision exercise remains in that same file.
+- [SDLC enablement crosswalk](SDLC-ENABLEMENT-CROSSWALK.md) is the proposed written route and subject map preserved from [PR #260](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/260) at `645581dca10327ffd331e4ae720defb31ec570e8`. It is not a live track.
+- [Data Foundations pathway](DATA-FOUNDATIONS-PATH.md) is the proposed beginner sequence preserved from [PR #282](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/282) at `fe7cb676087a20854615248cda1c9f6f4493a6c8`. It is not registered and does not gate other paths.
+- The data-architecture crosswalk and membership-registry pilot stay on [PR #283](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/283). They are not copied here.
+- The executable alert-handoff capstone stays stacked on [PR #278](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/278) (`3ce637e0abd6cd9454202bfddc934fcf7e022a51`, base `docs/sdlc-enablement-crosswalk-20261106`). This change does not retarget that branch.
+
+**Delivery boundary:** [KRU-239](https://linear.app/krusty/issue/KRU-239) tracks this reconciliation. Content written in Git, reviewed, merged, shown in the Academy UI, and accepted by a learner are separate states. None of the new Markdown companions is a published Academy card.
 
 ## Roadmap / release gates
 **P0 Content**: audit existing seven lessons for accuracy and accessibility; add cross-links to Builder Academy; implement three deterministic practice labs with clear answer rubrics; add explicit provenance and reviewed dates.

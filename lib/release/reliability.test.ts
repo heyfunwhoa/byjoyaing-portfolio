@@ -174,8 +174,11 @@ test("workflow concurrency cancels pull requests only and keeps security jobs", 
 
 test("ignore command fails open and skips only an operational diff", () => {
   const directory = mkdtempSync(join(tmpdir(), "vercel-ignore-"));
-  const git = (args: string[]) =>
-    execFileSync("git", args, { cwd: directory, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  const git = (args: string[]) => {
+    const env = { ...process.env };
+    for (const key of ["GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE", "GIT_PREFIX"]) delete env[key];
+    return execFileSync("git", args, { cwd: directory, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], env }).trim();
+  };
   git(["init"]);
   git(["config", "user.email", "reliability@example.com"]);
   git(["config", "user.name", "Reliability Test"]);
