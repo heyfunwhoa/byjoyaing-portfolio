@@ -404,7 +404,7 @@ Status: proposed catalog and brand guidance only. Owner: portfolio maintainer. N
 
 - Owner/destination: portfolio maintainer, `/about` education. Extend the existing name-matched local-image pattern for AWS Certified Cloud Practitioner and AWS Certified AI Practitioner. Split the existing combined credential line into two editable education entries; keep the current string-array schema and school sizing.
 - Assets: original official 600px RGBA PNGs from AWS-issued Credly badge pages, replacing the opaque marketing exports at the owner's request. True alpha transparency lets the page surface show around each badge; source bytes are unchanged, without cropping, recoloring, redrawing, or CSS blending. Source links, checksums, AWS mark ownership, and display boundaries are in `public/badges/README.md`. No new package, account integration, personal verification URL, issue/expiry date, or Early Adopter designation.
-- Composition: each 80px image sits beside readable 14px credential text beneath the schools. The existing grid gives the badges two columns from 640px and stacked rows on phones. Preserve source transparency and clear space. The certifications remain identified as Foundational.
+- Composition: each badge image sits beside readable 14px credential text beneath the schools. The existing grid gives the badges two columns from 640px and stacked rows on phones. Each education sentence stays on its own line. The Texas entry reads Bachelor of Science in Advertising, then Business Foundations, then the university. Preserve source transparency and clear space. The certifications remain identified as Foundational.
 - Accessibility/state: empty alt text and an aria-hidden image wrapper avoid repeated announcements; the visible credential names carry the meaning. No new links, focus targets, motion, or asynchronous interaction. Other learning entries retain their text fallback.
 - Verification: downloaded source files have RGBA mode, alpha range 0–255, and transparent outer corners. Existing About editorial validation plus current-head CI and the About viewport/motion matrix cover the page. Inspect actual badge loading, transparent edges against the page surface, dimensions, adjacent text, and overflow in the preview. Manual device/zoom/screen-reader checks remain separate. Tier 1 scoped presentation refinement; no new tracking issue. Rollback removes the two badge mappings/assets and restores the prior combined credential line.
 
@@ -485,3 +485,40 @@ Owner-requested pilot for the existing Frontend lesson only. Reuse `components/a
 The user moves through Understand / See / Try / Explain, switches one example between words, rendered card and code, and opens a glossary without losing lesson state. Tabs use the installed Radix `data-state` contract for selected styling. Code scroll is contained; modal definitions scroll independently; close and step controls are at least 44px. The drawer uses a single trigger for focus restoration, a visible title, focus containment and Escape. No added animation, autoplay or quiz gate. Current step and answer status do not claim mastery or review.
 
 See [Frontend pilot](../academy/FRONTEND-PILOT.md) for ownership, responsive behavior, verification requirements and rollback. Browser evidence belongs to the exact PR head; manual screen-reader, physical-device and learner acceptance remain explicit owner-review work. This scoped adoption is not approval for every Academy lesson or any Design Lab engine.
+
+## Project discovery comparison (November 8, 2026)
+
+- **Source:** `lib/component-options.ts` families `summaries`, `context`, and `process-illustrations`; existing lessons in `lib/component-lessons.ts`; `FeaturedSideQuestStrip`; `ProjectsDirectory`; `ProjectsSystems`; `ProjectEvidence`. No new registry family or dependency.
+- **Lab destination:** `components/design-lab/project-discovery-comparison.tsx`, mounted on `/design-lab` and in the component-lesson explorer. Status: lab prototype.
+- **Public destination:** Home keeps one Side Quest and adds the existing problem, contribution, and intended value. Side Quests keeps the sage scroll-snap strip, now with those facts, lifecycle text, an approved sample when one exists, category filters, and previous/next. `/projects` keeps the searchable directory and shows stage, technologies, and an approved sample on the card. Work stays on `WorkExplorer`.
+- **Decision:** Reuse the public records. Do not invent screenshots. The Embla carousel stays a lab lesson so Side Quests does not copy the Work carousel.
+- **Phone / tablet / desktop:** Strip cards are one across on a phone, two from 640px, three from 1024px. Directory cards stack, then two columns, then three. Controls stay at least 44px. The lab width select caps the example at 375 and 768px.
+- **Keyboard and motion:** Pressed filters, labeled previous/next, disabled ends, no autoplay. The sheet uses the installed dialog focus trap. Reduced motion uses an instant scroll and a zero-duration carousel. Empty filters explain how to reset or open the directory.
+- **Verification:** `lib/component-lessons.test.ts`, `lib/featured-work.test.ts`, `tests/visual/project-discovery.spec.ts`, and `tests/site/project-presentation.spec.ts`. Viewport, zoom, and screen-reader results belong in the PR. Lab availability is not approval to replace the directory.
+- **Rollback:** Remove the comparison section and the seven lessons, and restore the previous strip and directory card markup. Routes stay the same.
+
+## Case-study evidence storytelling comparison (November 9, 2026)
+
+- **Status:** Design Lab teaching specimen, not adopted on public case-study routes. Roadmap #322.
+- **Source:** existing `ProjectEvidence`, `ProjectPreview`, `directoryProjects`, `getProject`, canonical case-study pages, and current brand tokens. No new package, registry family, images, or invented claims.
+- **Implementation:** `components/design-lab/case-study-evidence-comparison.tsx`, Storybook specimen and bounded visual/browser test. Compare story-first vs evidence-first layouts with two existing examples: Detector Coverage Atlas and Account Intelligence.
+- **Boundary:** Atlas shows a fixed illustrative table, not live scanning or proof of vendor gaps. Account Intelligence uses a fictional browser walkthrough with no live sources or outbound sending. Do not conflate this portfolio example with a separately deployed Account Signal Engine.
+- **Responsive / accessibility:** Normal document reading order, native pressed buttons, visible titles and sample captions, no autoplay, no added animation. Verify focus, 375/768/1280 widths, 200% zoom, reduced-motion settings, and real screen-reader use before adoption.
+- **Decision gate:** After evidence and UX approval, pilot only one case study at a time. Keep the existing public contents links and source attributions; prefer existing approved figures over synthetic product screenshots. Rollback by removing the single Lab mount and specimen.
+
+## Atlas evidence reading guide (November 9, 2026)
+
+- **Scope and source:** First public case-study pilot from the evidence-storytelling Design Lab comparison (#327). Reuse the existing `AtlasCase`, `CoverageExplorer`, `CaseStudyContents`, source attribution anchors, and brand tokens. No new dependency or screenshot assets.
+- **Reader task:** Before using the table, distinguish what the fixed sample actually contains from what it cannot prove. The compact guide identifies three sources and five credential types, explicitly excludes live detection, complete coverage, vendor gaps and monitoring, and links to the pre-existing cell definitions and attribution.
+- **Behavior:** Native links and document reading order, no autoplay or motion. Guide stacks on narrow screens and uses a three-column definition list at wider widths; no page-wide overflow expected.
+- **Acceptance:** Production build, lint, tests and site Playwright, 375/768/1280/200% zoom and keyboard/real screen reader review. No approval is implied by CI alone.
+- **Rollback:** Revert the guide-only change inside `components/atlas-case.tsx`; existing table, route, source links and contents remain unchanged.
+
+## Account Intelligence reading guide (November 9, 2026)
+
+- **Scope:** Companion public case-study pilot to the Detector Coverage Atlas evidence guide, using existing Account Intelligence page content. No new screenshots, metrics, libraries, registry entries or external connections.
+- **Reader task:** Separate the fictional on-page walkthrough from proposed production architecture and unmeasured business outcomes before a visitor explores the page.
+- **Adoption:** A native three-part definition list below the introductory project example, with existing fragment links to the workflow, architecture and success-measures sections. No additional motion or application state; reuse ivory/sage/copper tokens and the existing contents navigation.
+- **Evidence boundaries:** Demo is browser-only and fictional; source integrations, database, CRM and sequencer are planned, not connected; usage and pipeline outcomes are proposed measures, not results.
+- **Acceptance:** Verify lint, tests, production build, site Playwright, 375/768/1280 and 200% zoom, keyboard focus and real screen-reader behavior. Public adoption is limited to this case-study reading guide; future interactive galleries require their own approval.
+- **Rollback:** Remove the guide markup without affecting the original workflow, architecture, metrics, case-study anchors, or links.

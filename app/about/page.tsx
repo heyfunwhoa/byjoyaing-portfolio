@@ -4,7 +4,7 @@ import { OrbitArtwork } from "@/components/orbit-artwork";
 import { CareerRail } from "@/components/career-rail";
 import { PageMain } from "@/components/page-main";
 import { ToolsMap } from "@/components/tools-map";
-import { aboutPage } from "@/lib/about/editorial";
+import { aboutPage, educationCaptionLines } from "@/lib/about/editorial";
 import { careerRailNodes } from "@/lib/career-rail";
 import { fieldNoteBodies } from "@/lib/field-notes/bodies";
 import { Headphones, Palette, Plane, Wrench } from "lucide-react";
@@ -28,14 +28,14 @@ const educationMarks = [
     src: "/logos/education/ut-austin.svg",
     width: 1037,
     height: 298,
-    widthClass: "w-28 sm:w-32",
+    widthClass: "h-6 w-auto sm:h-7",
   },
   {
     name: "Western Governors University",
     src: "/logos/education/wgu.svg",
     width: 133,
     height: 30,
-    widthClass: "w-24 sm:w-[6.5rem]",
+    widthClass: "h-6 w-auto sm:h-7",
   },
 ] as const;
 
@@ -45,14 +45,14 @@ const certificationMarks = [
     src: "/badges/aws-certified-cloud-practitioner.png",
     width: 600,
     height: 600,
-    widthClass: "w-14 sm:w-20",
+    widthClass: "h-auto w-12 sm:w-14",
   },
   {
     name: "AWS Certified AI Practitioner",
     src: "/badges/aws-certified-ai-practitioner.png",
     width: 600,
     height: 600,
-    widthClass: "w-14 sm:w-20",
+    widthClass: "h-auto w-12 sm:w-14",
   },
 ] as const;
 
@@ -196,6 +196,7 @@ export default function AboutPage() {
                 item.includes(mark.name),
               );
               const mark = school ?? certification;
+              const lines = educationCaptionLines(item);
               return (
                 <li
                   key={item}
@@ -222,11 +223,18 @@ export default function AboutPage() {
                         width={mark.width}
                         height={mark.height}
                         unoptimized
-                        className={`h-auto max-w-full ${mark.widthClass}`}
+                        className={`max-w-full ${mark.widthClass}`}
                       />
                     </div>
                   ) : null}
-                  <p>{item}</p>
+                  <p>
+                    {lines.map((line, index) => (
+                      <span key={line} className="block">
+                        {line}
+                        {index < lines.length - 1 ? " " : ""}
+                      </span>
+                    ))}
+                  </p>
                 </li>
               );
             })}

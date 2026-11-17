@@ -2,6 +2,7 @@ name: Visual QA (bounded)
 on:
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 permissions:
   contents: read
@@ -10,14 +11,20 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   storybook-and-visual:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Check whether PR changes only documentation
+      # Storybook and its screenshots cost ~4 billed minutes, so they run only
+      # when a PR changes something the stories can render: components and the
+      # lib/content modules they import, styles, static assets, the Storybook
+      # and Playwright config, dependencies or this workflow. The job still
+      # reports success otherwise, so it can stay a required check.
+      - name: Check whether PR changes UI, component, style or Storybook paths
         id: changes
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
@@ -28,12 +35,17 @@ jobs:
             echo 'run_visual=true' >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          changed_files="$(git diff --name-only "$BASE_SHA" HEAD)"
-          if [[ -n "$changed_files" ]] && ! printf '%s\n' "$changed_files" | grep -Ev '^docs/'; then
-            echo 'Only docs/ files changed; visual checks are unnecessary.'
-            echo 'run_visual=false' >> "$GITHUB_OUTPUT"
-          else
+          # If the base commit cannot be compared, run the full visual checks.
+          if ! changed_files="$(git diff --name-only "$BASE_SHA" HEAD)"; then
             echo 'run_visual=true' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          visual_paths='^(components|lib|content|public|\.storybook|tests/visual)/|\.(css|scss)$|^(playwright\.config\.ts|package\.json|package-lock\.json|postcss\.config\.mjs|tsconfig\.json|next\.config\.ts|\.github/workflows/visual-qa\.yml)$'
+          if [[ -z "$changed_files" ]] || grep -E "$visual_paths" <<< "$changed_files"; then
+            echo 'run_visual=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'No UI, component, style or Storybook paths changed; visual checks are unnecessary.'
+            echo 'run_visual=false' >> "$GITHUB_OUTPUT"
           fi
       - if: steps.changes.outputs.run_visual == 'true'
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0

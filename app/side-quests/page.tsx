@@ -69,13 +69,14 @@ export default function SideQuestsPage() {
         </div>
       </section>
 
-      <section aria-labelledby="featured-quests-title" className="section-enter border-b border-border py-12">
+      <section aria-labelledby="featured-quests-title" className="section-enter min-w-0 overflow-x-clip border-b border-border py-12">
         <p className="orbital-section-label editorial-eyebrow text-accent">Featured builds</p>
         <h2 id="featured-quests-title" className="mt-2 font-display text-3xl">
           Selected examples
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
           Start with an account conversation, a source-backed coverage comparison, or a synthetic learning exercise.
+          Filter this short set, then open the directory for every independent project.
         </p>
         <FeaturedSideQuestStrip slides={featuredSideQuestSlides()} />
       </section>

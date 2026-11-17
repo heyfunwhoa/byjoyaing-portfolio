@@ -156,6 +156,13 @@ test("data display comparison keeps cards, table, and metrics tied to the same f
   assert.match(comparison, /filtered\.reduce\(/);
   assert.match(comparison, /No matching accounts/);
   assert.match(comparison, /<caption/);
+  assert.match(comparison, /aria-sort=/);
+  assert.match(comparison, /chooseSort\("name"\)/);
+  assert.match(comparison, /chooseSort\("signals"\)/);
+  assert.match(comparison, /chooseSort\("reviewed"\)/);
+  assert.match(comparison, /Sort accounts by/);
+  assert.match(comparison, /Table spacing/);
+  assert.match(comparison, /Clear search and filters/);
   assert.match(comparison, /aria-pressed=/);
   assert.match(comparison, /scope="col"/);
   assert.match(page, /<DataDisplayComparison \/>/);
@@ -234,6 +241,39 @@ test("context and feedback comparisons reuse existing Design Lab primitives and 
   assert.match(page, /<FeedbackPatternComparison \/>/);
   assert.match(page, /designLabAvailable\(\)/);
   assert.match(page, /notFound\(\)/);
+});
+
+test("project discovery lessons stay on existing catalog families", () => {
+  const comparison = readFileSync(
+    new URL("../components/design-lab/project-discovery-comparison.tsx", import.meta.url),
+    "utf8",
+  );
+  const page = readFileSync(new URL("../app/design-lab/page.tsx", import.meta.url), "utf8");
+  const catalogByLesson = {
+    editorialProjectCard: "summaries",
+    screenshotProjectCard: "summaries",
+    featuredCaseStudy: "summaries",
+    projectCarousel: "summaries",
+    projectDetailChoice: "context",
+    captionGallery: "summaries",
+    projectMap: "process-illustrations",
+  } as const;
+  for (const [id, catalogId] of Object.entries(catalogByLesson)) {
+    const lesson = componentLessons.find((item) => item.id === id);
+    assert.ok(lesson, id);
+    assert.equal(lesson.catalogId, catalogId);
+    assert.equal(lesson.family, "Discovery");
+    assert.match(comparison, new RegExp(`id: "${id === "editorialProjectCard" ? "compact" : id === "screenshotProjectCard" ? "screenshot" : id === "featuredCaseStudy" ? "featured" : id === "projectCarousel" ? "carousel" : id === "projectDetailChoice" ? "routes" : id === "captionGallery" ? "gallery" : "map"}"`));
+  }
+  assert.match(comparison, /No featured projects match/);
+  assert.match(comparison, /prefers-reduced-motion/);
+  assert.match(comparison, /loop: false/);
+  assert.doesNotMatch(comparison, /loop:\s*true|Autoplay/);
+  assert.match(page, /<ProjectDiscoveryComparison \/>/);
+  assert.match(page, /designLabAvailable\(\)/);
+  assert.match(page, /notFound\(\)/);
+  const families = new Set(componentOptions.map((option) => option.id));
+  assert.equal(families.has("project-discovery"), false);
 });
 
 test("five guided exercises reuse existing workbench examples without persisting answers", async () => {
