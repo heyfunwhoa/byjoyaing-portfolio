@@ -236,7 +236,13 @@ export function ProjectsDirectory({
                   {project.phase} · {directoryStatus(project.status).label}
                 </p>
                 {project.preview === "note" ? null : (
-                  <ProjectEvidence kind={project.preview} compact />
+                  // The sample table is long on phones; show it from tablet width up.
+                  <div className="hidden sm:block">
+                    <ProjectEvidence kind={project.preview} compact />
+                    {project.sampleNote ? (
+                      <p className="mt-2 text-xs leading-5 text-muted">{project.sampleNote}</p>
+                    ) : null}
+                  </div>
                 )}
                 <div className="flex flex-1 flex-col gap-2">
                   <h3 className="text-lg font-semibold tracking-tight">
@@ -250,18 +256,18 @@ export function ProjectsDirectory({
                   <p className="text-sm leading-6 text-muted">
                     {project.summary}
                   </p>
-                  <p className="text-sm leading-6"><span className="font-medium">Intended value: </span>{value}</p>
-                  <p className="text-sm leading-6"><span className="font-medium">Contribution: </span>{project.role}</p>
-                  <p className="text-sm leading-6 text-muted">{project.technologies}</p>
-                  {project.sampleNote ? (
-                    <p className="text-xs leading-5 text-muted">{project.sampleNote}</p>
-                  ) : null}
                 </div>
                 <details className="rounded-xl border border-border bg-background p-3">
                   <summary className="min-h-11 cursor-pointer content-center rounded-sm py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
                     How it works
                   </summary>
                   <div className="mt-3 space-y-3 text-sm leading-6 text-muted">
+                    <p className="text-foreground"><span className="font-medium">Intended value: </span>{value}</p>
+                    <p className="text-foreground"><span className="font-medium">Contribution: </span>{project.role}</p>
+                    <p>{project.technologies}</p>
+                    {project.sampleNote && project.preview === "note" ? (
+                      <p className="text-xs leading-5">{project.sampleNote}</p>
+                    ) : null}
                     <p>Recorded stage: {directoryStatus(project.status).label}. Lifecycle: {project.phase}.</p>
                     <p>{project.scope}</p>
                     {project.preview === "note" ? (
