@@ -372,28 +372,33 @@ export function CompetitiveIntelligenceCase() {
             </article>
           ))}
         </div>
-        <ol className="mt-8 grid gap-4 md:grid-cols-3">
-          {[
-            ["Professional field system", ["Structured competitor profiles", "Source-backed battlecards", "Reusable field briefs",
+        <details className="mt-8 rounded-2xl border border-border p-4 sm:p-5">
+          <summary className="flex min-h-11 cursor-pointer items-center py-2 font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            See the roadmap
+          </summary>
+          <ol className="mt-4 grid gap-4 md:grid-cols-3">
+            {[
+              ["Professional field system", ["Structured competitor profiles", "Source-backed battlecards", "Reusable field briefs",
+                ],
               ],
-            ],
-            ["Next", ["Scheduled source snapshots", "Change detection", "Human-reviewed updates",
+              ["Next", ["Scheduled source snapshots", "Change detection", "Human-reviewed updates",
+                ],
               ],
-            ],
-            ["Later", ["Field alerts", "CRM opportunity context", "Product feedback integration", "Historical change analytics",
+              ["Later", ["Field alerts", "CRM opportunity context", "Product feedback integration", "Historical change analytics",
+                ],
               ],
-            ],
-          ].map(([when, items]) => (
-            <li key={when as string} className="rounded-xl border border-border bg-card p-4">
-              <h3 className="text-sm font-medium">{when as string}</h3>
-              <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
-                {(items as string[]).map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ol>
+            ].map(([when, items]) => (
+              <li key={when as string} className="rounded-xl border border-border bg-card p-4">
+                <h3 className="text-sm font-medium">{when as string}</h3>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
+                  {(items as string[]).map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+        </details>
       </section>
 
       <RelatedWork slug="competitive-intelligence-engine" />
