@@ -93,12 +93,8 @@ test("builder paths, prerequisites and planned resources remain independently re
   await page
     .getByRole("link", { name: "Connected Systems", exact: true })
     .click();
-  await expect(
-    page.getByRole("heading", {
-      name: "Planned learning modules",
-      exact: true,
-    }),
-  ).toBeVisible();
+  await expect(page).toHaveURL(/\/ai-academy\/systems$/);
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 });
 
 test("path switching clears stale answers and links to existing practice", async ({

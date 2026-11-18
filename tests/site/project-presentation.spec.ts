@@ -80,12 +80,12 @@ test("side quests offers one academy entry, one revenue system, and no status pi
   const card = page.locator("#directory article").filter({
     has: page.getByRole("heading", { name: "Revenue Planning Simulator", exact: true }),
   });
-  await expect(card.getByText("Intended value:")).toBeVisible();
-  await expect(card.getByText("Contribution:")).toBeVisible();
   const details = card.locator("details");
   await details.locator("summary").focus();
   await page.keyboard.press("Enter");
   await expect(details).toHaveAttribute("open", "");
+  await expect(card.getByText("Intended value:")).toBeVisible();
+  await expect(card.getByText("Contribution:")).toBeVisible();
   await expect(card.getByText(/Recorded stage:/)).toBeVisible();
   await expect(card.getByText(/does not save a scenario/)).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
