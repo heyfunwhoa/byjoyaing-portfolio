@@ -1,8 +1,8 @@
 {
-  "summary": "Territory coverage and AE capacity for the same fictional company. Potential is an estimate. Headcount does not create bookings.",
+  "summary": "Territory coverage and AE capacity for the same fictional company: where to add sellers, and the proven pipeline each hire should be built on. Potential figures are estimates.",
   "owner": "Kristen Aing",
   "reviewer": "Pending human review of the CMS move",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "reviewDue": "2026-11-15",
   "classification": "public",
   "publicationStatus": "published"
