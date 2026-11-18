@@ -112,7 +112,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <p className="text-sm leading-6 text-muted">
               <Link
                 href={`/projects?category=${useCase.id === "account" ? "accounts" : "revenue"}#directory`}
-                className="link-rule font-medium text-foreground"
+                className="link-rule inline-flex min-h-11 items-center font-medium text-foreground"
               >
                 {useCase.title}
               </Link>
