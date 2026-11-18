@@ -6,10 +6,9 @@ import { PageMain } from "@/components/page-main";
 import { ProjectsDirectory } from "@/components/projects-directory";
 import { ProjectsSystems } from "@/components/projects-systems";
 import { categoryFromSlug,
-  lifecycleStages, roadmapProjects,
+  lifecycleStages,
 } from "@/lib/project-directory";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = completePageMetadata(
   {
@@ -28,7 +27,6 @@ export default async function ProjectsPage({
   const { category, stage, q } = await searchParams;
   const initialStage =
     lifecycleStages.find((value) => value === stage) ?? "All";
-  const roadmap = roadmapProjects();
 
   return (
     <PageMain>
@@ -64,7 +62,7 @@ export default async function ProjectsPage({
         </div>
       </section>
 
-      <section id="systems" className="scroll-mt-24 border-b border-border py-12">
+      <section id="systems" className="scroll-mt-24 py-12">
         <h2 className="font-display text-3xl tracking-tight sm:text-4xl">Connected GTM systems</h2>
         <p className="mt-3 max-w-2xl text-base leading-7 text-muted">From market intelligence to customer execution.</p>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
@@ -80,25 +78,6 @@ export default async function ProjectsPage({
         </details>
       </section>
 
-      <section id="roadmap" className="scroll-mt-24 py-12">
-        <h2 className="font-display text-3xl tracking-tight sm:text-4xl">On the roadmap</h2>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-muted">Ideas and operating models I am exploring next.</p>
-        <ul className="mt-6 flex flex-col gap-3">
-          {roadmap.map((project) => (
-            <li key={project.slug}>
-              <article className="flex flex-col gap-2 rounded-xl border border-dashed border-foreground/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h3 className="font-medium">{project.title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-muted">{project.summary}</p>
-                </div>
-                <Link href={project.caseStudyUrl} className="inline-flex min-h-11 shrink-0 items-center text-sm font-semibold text-accent underline">
-                  Explore the project
-                </Link>
-              </article>
-            </li>
-          ))}
-        </ul>
-      </section>
     </PageMain>
   );
 }

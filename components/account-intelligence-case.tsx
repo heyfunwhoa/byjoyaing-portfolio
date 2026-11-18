@@ -403,36 +403,41 @@ export function AccountIntelligenceCase() {
             </article>
           ))}
         </div>
-        <ol className="mt-8 grid gap-4 md:grid-cols-3">
-          {[
-            {
-              when: "Designed now",
-              items: ["Personal feed", "Classified signals", "Source kept next to the event", "A draft a person reviews",
-              ],
-            },
-            {
-              when: "Next",
-              items: ["Better ranking of signals", "More public sources", "A sequencer only after drafts get used",
-              ],
-            },
-            {
-              when: "Later",
-              items: ["Multi-rep view", "Team analytics", "CRM identifiers"],
-            },
-          ].map((phase) => (
-            <li key={phase.when} className="rounded-xl border border-border bg-card p-4">
-              <h3 className="text-sm font-medium">{phase.when}</h3>
-              <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
-                {phase.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-4 text-sm leading-6 text-muted">
-          “Designed now” is the scope of the concept. The only part you can click is the sample walkthrough on this page.
-        </p>
+        <details className="mt-8 rounded-2xl border border-border p-4 sm:p-5">
+          <summary className="flex min-h-11 cursor-pointer items-center py-2 font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            See the roadmap
+          </summary>
+          <ol className="mt-4 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                when: "Designed now",
+                items: ["Personal feed", "Classified signals", "Source kept next to the event", "A draft a person reviews",
+                ],
+              },
+              {
+                when: "Next",
+                items: ["Better ranking of signals", "More public sources", "A sequencer only after drafts get used",
+                ],
+              },
+              {
+                when: "Later",
+                items: ["Multi-rep view", "Team analytics", "CRM identifiers"],
+              },
+            ].map((phase) => (
+              <li key={phase.when} className="rounded-xl border border-border bg-card p-4">
+                <h3 className="text-sm font-medium">{phase.when}</h3>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
+                  {phase.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-4 text-sm leading-6 text-muted">
+            “Designed now” is the scope of the concept. The only part you can click is the sample walkthrough on this page.
+          </p>
+        </details>
       </section>
 
       <section className="py-16" aria-labelledby="connected-title">
