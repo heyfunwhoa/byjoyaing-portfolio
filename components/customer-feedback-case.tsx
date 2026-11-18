@@ -172,7 +172,7 @@ export function CustomerFeedbackCase() {
             <p className="text-[11px] font-medium text-muted">Featured theme</p>
             <p className="mt-1 font-medium">Enterprise identity and provisioning</p>
             <p className="mt-2 text-sm leading-6 text-muted">Four sample notes, three fictional accounts. One closed-lost line mentions SCIM. That is context, not revenue.</p>
-            <a href="#workflow" className="mt-3 inline-flex text-sm font-medium text-accent">
+            <a href="#workflow" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-accent">
               View details
             </a>
           </div>

@@ -39,7 +39,7 @@ export function DealJourney() {
             onClick={() => setSelected(index)}
             className={`min-h-14 rounded-xl border px-3 py-3 text-left text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${selected === index ? "border-accent bg-accent text-accent-foreground" : "border-border bg-card text-foreground hover:border-accent"}`}
           >
-            <span className="block text-xs opacity-75">0{index + 1}</span>
+            <span className="block text-xs">0{index + 1}</span>
             <span className="mt-1 block font-medium">{item.name}</span>
           </button>
         ))}
