@@ -127,9 +127,8 @@ export default function WorkPage() {
           Two workflows you can explore
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
-          These are independent experiments, not employer outcomes. The account
-          example uses fictional records. The coverage example is a small sample,
-          and an unreviewed cell stays gray.
+          Independent projects I built on my own time, separate from my employer
+          work.
         </p>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {demonstrations.map((project) => (
