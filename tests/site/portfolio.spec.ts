@@ -18,6 +18,7 @@ const routes = [
   "/field-notes/enterprise-deal",
   "/field-notes/multithreading",
   "/work/truffle-camp",
+  "/work/a-keys-day",
   "/work/competitive-intelligence-engine",
   "/work/account-intelligence",
   "/work/customer-feedback-intelligence",

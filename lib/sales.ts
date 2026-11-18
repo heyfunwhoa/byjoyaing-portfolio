@@ -173,6 +173,37 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     ],
   },
   {
+    slug: "a-keys-day",
+    useCase: "enablement",
+    salesQuestion:
+      "Can someone who does not write code explain how one key leaks during an ordinary workday, and what a team has to do before it is actually fixed?",
+    userMoment:
+      "A rep, SE, or new hire before a conversation with a security team, or anyone asked to explain a leaked credential to the business.",
+    intake:
+      "One made-up key, a named cast, and an ordinary developer's day. No real secrets and nothing scanned.",
+    produces:
+      "A five-part walkthrough: Code, People, Systems, Agents, and Coverage. Each part ends with the old key shut off and confirmed.",
+    decision:
+      "Whether the reader can separate finding a copy, checking that it still works, telling the owner, and replacing it.",
+    myRole:
+      "I designed the story, the cast, and the lesson structure for sales and enablement readers, and built the site with an AI coding assistant. It is independent work, not employer training. Truffle Camp is the separate hands-on curriculum design; this is the story series a reader can open today.",
+    maturityDetail:
+      "Live and public, with five parts merged. A walkthrough with a non-coder reader is still open.",
+    fieldAsset: null,
+    proposedSoftware: null,
+    links: [
+      {
+        label: "Open A Key's Day",
+        href: "https://dailysecrets-orpin.vercel.app/",
+      },
+    ],
+    result: {
+      kind: "to-test",
+      text: "I have no learner results yet. The site counts anonymous steps reached, with no cookies. The test I want: after one part, a reader explains detection versus verification in their own words.",
+    },
+    related: ["truffle-camp", "competitive-intelligence-engine"],
+  },
+  {
     slug: "partner-gtm-engine",
     useCase: "workflow",
     salesQuestion:
@@ -515,6 +546,16 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
     plannedNext:
       "A page that lists affected accounts only after a person confirms the match.",
     implementedTech: "None beyond this page.",
+  },
+  "a-keys-day": {
+    pipeline:
+      "A made-up key → one developer's day, step by step → the copies it leaves → the old key shut off and confirmed.",
+    workingToday:
+      "Five public parts with 66 steps in total, a named cast, and a jump-to-topic index. The key is invented and progress is not saved.",
+    plannedNext:
+      "A walkthrough with a non-coder reader, then one practice exercise on which control would help.",
+    implementedTech:
+      "A static site in HTML, CSS, and JavaScript with one shared lesson engine, hosted on Vercel. No account, database, or model.",
   },
   "truffle-camp": {
     pipeline:

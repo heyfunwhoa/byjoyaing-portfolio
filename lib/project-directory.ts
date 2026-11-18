@@ -134,6 +134,18 @@ const sources: DirectorySource[] = [
     githubUrl: null,
   },
   {
+    slug: "a-keys-day",
+    categories: ["Sales Enablement & Productivity"],
+    role: "I designed the story, the cast, and the lesson, and built it with an AI coding assistant.",
+    scope: "The key is made up. Nothing is scanned and progress is not saved.",
+    sampleNote: null,
+    technologies: "A static site: HTML, CSS, and JavaScript.",
+    featuredOrder: null,
+    preview: "note",
+    demoUrl: null,
+    githubUrl: null,
+  },
+  {
     slug: "partner-gtm-engine",
     categories: ["Revenue Strategy & Operations", "Account & Market Intelligence"],
     role: "I designed the match rule from channel work: a similar name is not a confirmed account.",
@@ -269,7 +281,7 @@ export const systemLayers = [
   },
   {
     title: "Field enablement",
-    slugs: ["truffle-camp"],
+    slugs: ["truffle-camp", "a-keys-day"],
   },
 ] as const;
 
