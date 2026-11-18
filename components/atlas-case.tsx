@@ -111,14 +111,18 @@ export function AtlasCase() {
       <section id="not-in-repository" className="scroll-mt-24 py-16">
         <p className="text-sm font-medium text-muted">05 / How it works</p>
         <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-5xl">A static sample you can filter.</h2>
-        <ul className="mt-4 max-w-2xl list-disc space-y-2 pl-5 text-base leading-7 text-muted">
-          <li>Three sources and five credential types, typed into this page.</li>
-          <li>A browser filter.</li>
-          <li>Notes elsewhere mention 910 parsed TruffleHog records and 14 enriched. Those rows are not in this table.</li>
-        </ul>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Filter the example catalog and inspect the source notes. Unreviewed cells stay gray. The table reflects a fixed set of reviewed examples, maintained independently from Truffle Security.
-        </p>
+        <details className="mt-5 max-w-2xl rounded-xl border border-border bg-card p-4">
+          <summary className="flex min-h-11 cursor-pointer items-center py-2 font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            How the sample is built
+          </summary>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-7 text-muted">
+            <li>Three sources and five credential types, typed into this page.</li>
+            <li>A browser filter. Unreviewed cells stay gray.</li>
+          </ul>
+          <p className="mt-3 text-base leading-7 text-muted">
+            The table reflects a fixed set of reviewed examples, maintained independently from Truffle Security.
+          </p>
+        </details>
         <RelatedWork slug="detector-coverage-atlas" />
       </section>
     </PageMain>
