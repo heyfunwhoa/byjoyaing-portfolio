@@ -58,7 +58,12 @@ export function CoverageExplorer() {
           ))}
         </div>
       </div>
-      <div className="max-h-[min(28rem,70vh)] overflow-auto">
+      <div
+        className="max-h-[min(28rem,70vh)] overflow-auto rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        tabIndex={0}
+        role="region"
+        aria-label="Coverage table. Scroll to see every column."
+      >
         <table className="w-full min-w-[40rem] text-left text-sm">
           <caption className="sr-only">
             Sample comparison. Not evaluated means the public source has not
