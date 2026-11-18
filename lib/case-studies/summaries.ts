@@ -11,6 +11,7 @@ import intelligence from "../../content/work/studies/revenue-intelligence.json" 
 import planning from "../../content/work/studies/revenue-planning-simulator.json" with { type: "json" };
 import signal from "../../content/work/studies/security-signal-intelligence.json" with { type: "json" };
 import camp from "../../content/work/studies/truffle-camp.json" with { type: "json" };
+import keysDay from "../../content/work/studies/a-keys-day.json" with { type: "json" };
 
 /** Directory order. The filename is the slug. Kind, route, and status stay in code. */
 export const caseStudySlugs = [
@@ -20,6 +21,7 @@ export const caseStudySlugs = [
   "customer-feedback-intelligence",
   "product-release-intelligence",
   "truffle-camp",
+  "a-keys-day",
   "partner-gtm-engine",
   "product-prioritization-simulator",
   "revenue-planning-simulator",
@@ -48,6 +50,7 @@ const files: Record<CaseStudySlug, unknown> = {
   "customer-feedback-intelligence": feedback,
   "product-release-intelligence": release,
   "truffle-camp": camp,
+  "a-keys-day": keysDay,
   "partner-gtm-engine": partner,
   "product-prioritization-simulator": prioritization,
   "revenue-planning-simulator": planning,

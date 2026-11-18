@@ -39,6 +39,7 @@ export const projectActions: Record<CaseStudySlug, ProjectAction> = {
     href: "/work/customer-feedback-intelligence",
   },
   "truffle-camp": { label: "Try the example", href: "/work/truffle-camp" },
+  "a-keys-day": { label: "Explore the project", href: "/work/a-keys-day" },
   "product-release-intelligence": {
     label: "Explore the project",
     href: "/work/product-release-intelligence",
