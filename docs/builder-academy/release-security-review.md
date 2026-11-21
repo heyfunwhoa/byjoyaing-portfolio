@@ -1,11 +1,58 @@
 # Builder Academy — Review release evidence and security boundaries
 
-**Parent:** [From idea to verified release](idea-to-verified-release.md) · **Level:** Beginner extension · **Time:** 10-minute exercise budget, plus optional reference reading
+**Parent:** [From idea to verified release](idea-to-verified-release.md) · **Level:** Beginner extension · **Time:** 10-minute release-decision exercise, plus an optional 20–30 minute lifecycle section
 **Status:** Companion lesson source for review; preserves the parent's fictional examples. No standalone lesson ID or automatic progress credit.
 
 **Learning objectives:** explain what each check can find; distinguish authentication from authorization; choose denied-path tests; separate configured, passing and enforced controls; decide when a release still needs verification.
 
 This is a fictional account-research application with synthetic data. It is teaching material, not a live audit or claim about any private project's security.
+
+## Security across the whole software development lifecycle
+
+Security is not one scanner at the end. Teach **shift left** (identify risks early), **shift right** (verify runtime protections after release), and continuous learning. The appropriate checks depend on the change, data sensitivity and risk; do not add tools simply to tick boxes.
+
+| SDLC stage | Security questions and activities | Evidence / learner deliverable |
+| --- | --- | --- |
+| 1. Discovery and requirements | What data, users, organizations and environments exist? What could go wrong? Identify privacy, compliance and abuse requirements, threat actors, trust boundaries and acceptance criteria for misuse cases | Data-flow sketch, risk tier, threat hypotheses, negative security requirements and assigned owner |
+| 2. Architecture and design | Review authentication versus authorization, tenant isolation, least privilege, secure defaults, data minimization, encryption/retention, secret handling and third-party trust boundaries | Threat model, architecture decision, proposed controls and explicit trade-offs |
+| 3. Implementation | Validate inputs and outputs, enforce server-side authorization, avoid hardcoded secrets, use safe dependencies, and review AI-generated changes and prompt-injection boundaries | Peer-reviewed code, tests for denied paths, dependency/license review and secret-scan findings |
+| 4. Build and CI | Run proportionate unit/integration tests, SAST, SCA/dependency checks, secret detection, configuration/IaC checks and build/artifact provenance verification | Exact SHA, job status, scan scope, reviewed findings, exceptions and documented coverage limits |
+| 5. Integration and pre-release | Check combined workflows, negative authorization and role/tenant tests, API/webhook permissions, failure/retry safety, application tests (DAST when justified), deployment configuration and manual security review | Synthetic end-to-end security tests, risk decisions, current-head checks, owner acceptance |
+| 6. Deployment and release | Verify protected environment, scoped credentials, secure migrations, rollback readiness, branch/release gates, staging-to-production drift and target artifact | Approved deployment and configuration evidence, rollback rehearsal as warranted, post-deploy smoke/security checks |
+| 7. Operations and incident response | Monitor misuse/error signals, vulnerability disclosures, dependency advisories, suspicious access, secrets rotation, backups and recovery; maintain an incident response path | Dated monitoring checks, response playbook, remediation tickets and verified recovery exercises |
+| 8. Change and retirement | Revisit threat model when features or suppliers change; remove unused credentials/services, revoke access, retain/delete data appropriately and close exceptions | Change review, offboarding checklist, audit trail and deletion/retention evidence |
+
+**Not every stage means a new vendor.** For small docs-only changes, use proportional review. For authentication, customer data, payments or cross-tenant APIs, increase coverage, including deliberate denial tests. A green scanner never substitutes for authorization validation or secure release operation.
+
+### One continuous example: fictional account export
+
+- **Discovery:** Identify account owners and forbidden cross-tenant exports; require no data leakage and audit evidence.
+- **Design:** Put permission checks on the server before generating files; minimize export fields and define retention.
+- **Coding:** Test a user attempting to export another tenant's records; use harmless synthetic records.
+- **CI:** Run targeted negative tests, secret scanning and dependency/static analysis, recording which revision was tested.
+- **Pre-release:** Verify navigation, API, job/queue and file storage jointly; check errors and unauthorized requests have no side effects.
+- **Release:** Confirm production roles/configuration, artifact revision, reviewer approval and rollback plan.
+- **Operate:** Alert on unusual export volume and review access logs without revealing personal data in telemetry.
+- **Retire:** Revoke export credentials and delete temporary artifacts per approved retention policy.
+
+### Risk-first practical exercise
+
+A fictional feature adds a background job that fetches user-provided URLs and stores research results. Classify which security check is earliest and which should recur:
+
+1. **Requirements:** define permissible sources, privacy constraints, maximum spend and forbidden network destinations.
+2. **Design:** review SSRF, redirect/DNS behavior, credential scope, throttling and idempotency.
+3. **Implementation:** test malformed URLs, wrong-owner access and denial without calls or writes.
+4. **CI:** run relevant static, dependency, secret and negative tests at the current SHA.
+5. **Release:** verify runtime environment permissions and failure handling with synthetic fixtures.
+6. **Operate:** monitor anomalous requests, bills, exceptions and upstream security advisories.
+
+**Answer:** every stage has its own control and evidence. The earliest check is the requirements-level abuse case; it must be refined in design, proven in tests and verified in operation. Do not wait until CI to discover that the URL-fetching architecture is unsafe.
+
+### Framework references and limits
+
+The [NIST Secure Software Development Framework (SSDF), SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final) organizes practices around preparing the organization, protecting software, producing well-secured software and responding to vulnerabilities. [OWASP SAMM](https://owaspsamm.org/model/) addresses governance, design, implementation, verification and operations. These are educational anchors, not a claim of compliance or certification. [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/) can inform risk-appropriate application security test requirements. Checked 2026-11-09: the NIST publication page title is SP 800-218 Version 1.1; SAMM returned the model page; the ASVS project URL redirected to `https://asvs.owasp.org/`. A direct HEAD request to the NIST page returned 404, while a browser GET returned the publication. This check does not certify the exercises or adopt either framework.
+
+For practical PR coordination, continue with [PR integration and reconciliation](pr-integration-and-reconciliation.md), including how to handle stale security scans, cross-feature permission regressions and unresolved release gates.
 
 ### What a pull request and CI do
 

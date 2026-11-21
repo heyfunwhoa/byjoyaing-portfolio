@@ -55,7 +55,7 @@ Implementation is proposed in a PR until merged and verified on production. Publ
 | Routes | Decision | Reason and next check |
 | --- | --- | --- |
 | /builder-academy/identity-journey; /builder-academy/credential-risk | Allow indexing with explicit page metadata and add to sitemap | Existing public explanations and fictional security exercises directly support the portfolio's security and learning focus. Verify effective robots metadata, canonical, sitemap, and exercise behavior on preview before publishing. |
-| /ai-academy/systems | Exclude from indexing and sitemap | Thirteen planned modules and seven future lab ideas are a roadmap, not available courses. Reconsider when standalone lessons are delivered. |
+| /ai-academy/systems | Keep indexed | A published essay with illustrations and a capstone. The planned modules and lab list were removed in #350, so the page no longer presents a roadmap as courses. |
 | /ai-academy/programming | Keep excluded | Two guided tutorials, with the other eight modules planned. Revisit the broad language-learning description and completion state. |
 | /ai-academy/journeys/source-verification; /ai-academy/journeys/prompting; /ai-academy/journeys/follow-one-click | Keep excluded for this release | Strong next candidates. Review every step, feedback, keyboard flow and visible standalone explanation before promotion. Follow-one-click is now explicitly recorded in the exclusion registry. |
 | /ai-academy/playground; /ai-academy/playground/skill-builder; /ai-academy/playground/research-pipeline | Keep excluded | Review task completion and useful static explanations before promoting individual tools. |

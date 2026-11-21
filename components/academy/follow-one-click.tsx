@@ -126,8 +126,8 @@ function RequestWalkthrough() {
         </button>
       </div>
       <p className="text-xs leading-5 text-muted">
-        Simulation only. These buttons do not call an API or check real
-        permissions. All steps remain readable without animation.
+        Follow an example request step by step. All steps remain readable
+        without animation.
       </p>
     </div>
   );

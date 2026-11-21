@@ -38,7 +38,7 @@ function Frame({ title, children }: { title: string; children: ReactNode }) {
     <div className="min-w-0 overflow-hidden rounded-2xl border border-border bg-[#f7f4ee]">
       <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-b border-border px-3 py-3 sm:px-4">
         <p className="text-xs font-medium tracking-wide text-muted">{title}</p>
-        <p className="text-[11px] text-muted">Illustrative demo data</p>
+        <p className="text-[11px] text-muted">Example data</p>
       </div>
       <div className="min-w-0 p-3 sm:p-4">{children}</div>
     </div>
@@ -79,7 +79,7 @@ export function CompetitiveIntelligenceWorkflow() {
 
   const provider = providers.find((item) => item.id === providerId) ?? providers[0];
   const showChange = provider.id === demoChange.providerId && (category === "All" || category === demoChange.category);
-  const approved = observations.filter((item) => item.status === "Approved for this demo" && item.providerId === provider.id);
+  const approved = observations.filter((item) => item.status === "Approved for this exercise" && item.providerId === provider.id);
 
   function onTabKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     const current = stages.findIndex((item) => item.id === stage);
@@ -233,7 +233,7 @@ export function CompetitiveIntelligenceWorkflow() {
                 <div className="flex flex-wrap gap-2">
                   <Pill>{provider.name}</Pill>
                   <Pill>{demoChange.category}</Pill>
-                  <Pill>{changeReviewed ? "Reviewed in this demo" : "Needs review"}</Pill>
+                  <Pill>{changeReviewed ? "Reviewed for this session" : "Needs review"}</Pill>
                 </div>
                 <p className="mt-3">
                   <span className="font-medium">Source. </span>
@@ -270,13 +270,13 @@ export function CompetitiveIntelligenceWorkflow() {
                 </div>
                 {historyOpen ? (
                   <p className="mt-3 text-xs leading-5 text-muted">
-                    No snapshot history is stored. September 2026 is when this sample was checked against the public description. The pair above is demo text.
+                    No snapshot history is stored. September 2026 is when this sample was checked against the public description. The pair above is illustrative text.
                   </p>
                 ) : null}
               </div>
             ) : (
               <p className="rounded-xl border border-dashed border-border p-4 text-sm leading-6 text-muted">
-                {provider.name} has no monitored change in this demo. The only before-and-after is an illustrative pair for TruffleHog, and it is not a historical vendor diff.
+                {provider.name} has no change example here. Explore the illustrative before-and-after for TruffleHog.
               </p>
             )}
           </Frame>
@@ -312,16 +312,16 @@ export function CompetitiveIntelligenceWorkflow() {
                     {guidance}
                   </p>
                   <p className="mt-3 text-xs text-muted">
-                    Review status: {impactReviewed ? "Marked reviewed in this demo. Not published." : "Needs a person. Not auto-approved."}
+                    Review status: {impactReviewed ? "Marked reviewed for this session. Not published." : "Needs a person. Not auto-approved."}
                   </p>
                   <button type="button" className="mt-3 rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground" onClick={() => setImpactReviewed(true)}>
-                    {impactReviewed ? "Marked reviewed in this demo" : "Mark hypothesis reviewed"}
+                    {impactReviewed ? "Marked reviewed for this session" : "Mark hypothesis reviewed"}
                   </button>
                 </div>
               </div>
             ) : (
               <p className="rounded-xl border border-dashed border-border p-4 text-sm leading-6 text-muted">
-                No impact note for {provider.name}. This demo does not invent a customer implication without a reviewed source.
+                No impact note for {provider.name}. Review a source before adding a customer implication.
               </p>
             )}
           </Frame>
@@ -394,7 +394,7 @@ export function CompetitiveIntelligenceWorkflow() {
                           <tr className="border-b border-border text-xs text-muted">
                             <th className="py-2 pr-3 font-medium">Dimension</th>
                             <th className="py-2 pr-3 font-medium">TruffleHog</th>
-                            <th className="py-2 font-medium">Other providers in this demo</th>
+                            <th className="py-2 font-medium">Other providers in this walkthrough</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -429,7 +429,7 @@ export function CompetitiveIntelligenceWorkflow() {
                       </div>
                       <div>
                         <dt className="font-medium">Review date</dt>
-                        <dd className="text-muted">September 2026. Checked for this portfolio sample. Not a live competitive record.</dd>
+                        <dd className="text-muted">September 2026. Checked for this portfolio sample. Use the cited source and review date.</dd>
                       </div>
                       <div>
                         <dt className="font-medium">Approved finding</dt>
@@ -439,7 +439,7 @@ export function CompetitiveIntelligenceWorkflow() {
                       </div>
                       <div>
                         <dt className="font-medium">Evidence status</dt>
-                        <dd className="text-muted">Reviewed against that public description. The before-and-after on the change step is demo text, not this evidence.</dd>
+                        <dd className="text-muted">Reviewed against that public description. The before-and-after on the change step is illustrative text, not this evidence.</dd>
                       </div>
                     </dl>
                   ) : null}
@@ -508,7 +508,7 @@ export function CompetitiveIntelligenceWorkflow() {
               <button type="submit" className="w-fit rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground">
                 Submit for review
               </button>
-              <p className="text-xs leading-5 text-muted">A submission does not become field guidance until a person approves it. This demo does not save or send it.</p>
+              <p className="text-xs leading-5 text-muted">A submission does not become field guidance until a person approves it. Your feedback stays in this tab and clears on refresh.</p>
             </form>
             <ul className="mt-4 flex flex-col gap-3">
               {observations.map((item) => {
@@ -529,11 +529,11 @@ export function CompetitiveIntelligenceWorkflow() {
                         className="mt-3 rounded-md border border-border px-3 py-2 text-xs font-medium"
                         onClick={() =>
                           setObservations((current) =>
-                            current.map((entry) => (entry.id === item.id ? { ...entry, status: "Approved for this demo" } : entry)),
+                            current.map((entry) => (entry.id === item.id ? { ...entry, status: "Approved for this exercise" } : entry)),
                           )
                         }
                       >
-                        Approve for this demo
+                        Approve for this exercise
                       </button>
                     ) : (
                       <p className="mt-2 text-xs text-muted">Approved only in this browser session. It does not update a field document.</p>

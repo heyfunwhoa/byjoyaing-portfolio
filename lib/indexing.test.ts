@@ -7,7 +7,6 @@ import { indexableStaticPaths, noindexPaths } from "./indexing.ts";
 const root = path.resolve(import.meta.dirname, "..");
 
 const noindexSource: Record<string, string> = {
-  "/ai-academy/systems": "app/ai-academy/systems/page.tsx",
   "/ai-academy/journeys/follow-one-click": "app/ai-academy/journeys/layout.tsx",
   "/ai-academy/programming": "app/ai-academy/programming/page.tsx",
   "/ai-academy/playground": "app/ai-academy/playground/layout.tsx",

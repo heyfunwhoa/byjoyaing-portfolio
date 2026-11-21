@@ -95,6 +95,8 @@ test("installed primitives are present and public adoption stays explicitly scop
   // FeaturedWorkCarousel wraps ui/carousel. Stakeholder map pilot adopts only
   // Button and Card in these two named wrappers; no global primitive exemption.
   const scopedImports: Record<string, string[]> = {
+    "components/ai-academy/frontend-example.tsx": ["@/components/ui/tabs"],
+    "components/ai-academy/frontend-glossary.tsx": ["@/components/ui/sheet"],
     "components/work-explorer.tsx": ["@/components/ui/bento-grid"],
     "components/toolkit-explorer.tsx": ["@/components/ui/tabs", "@/components/ui/button"],
     "components/stakeholder-map/stakeholder-node.tsx": ["@/components/ui/button"],

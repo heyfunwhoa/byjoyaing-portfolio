@@ -125,7 +125,7 @@ export function SystemsIllustrations() {
     : "Deliver same event again";
   const message = delivery.phase === "ready" ? "Ready. No requests have been made. Follow the middle receiver in the illustration."
     : delivery.phase === "failed" ? "Attempt 1 failed before processing. The middle receiver returned a simulated 500 error. No business work happened there."
-    : delivery.phase === "waiting" ? "Backoff means waiting before retrying. This demo skips the timer; choose Retry delivery when you are ready."
+    : delivery.phase === "waiting" ? "Backoff means waiting before retrying. Choose Retry delivery when you are ready to continue the example."
     : delivery.duplicates > 0 ? "Duplicate recognized. The receiver has already processed event demo-001, so it acknowledges the delivery without repeating the business action."
     : "Attempt 2 succeeded. The receiver processed event demo-001 once and returned a simulated 200 acknowledgment.";
   const control = "min-h-11 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
@@ -136,7 +136,7 @@ export function SystemsIllustrations() {
         Make the invisible parts easier to understand.
       </h2>
       <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
-        Illustrative examples, not live infrastructure or security results. Start here before exploring the planned modules below.
+        Explore requests, retries and access decisions through interactive examples.
       </p>
       <div className="mt-6 grid min-w-0 gap-4 lg:grid-cols-2">
         <figure className="min-w-0 rounded-2xl border border-border bg-surface-sage p-5 sm:p-6 lg:col-span-2">
@@ -211,7 +211,7 @@ export function SystemsIllustrations() {
               <p className="mt-2 text-sm leading-6">{accessExamples[access].explanation}</p>
             </div>
             <p className="mt-3 text-xs leading-5 text-muted">
-              Simulated responses only; choosing an option changes no real permissions. Reloading resets both examples.
+              Compare the example responses. Reloading resets your choices.
             </p>
             <a href="/ai-academy/programming" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4">Explore programming foundations →</a>
             <p className="mt-3 text-xs leading-5 text-muted">

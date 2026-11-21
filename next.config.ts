@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // The dev server treats its advertised host as localhost. Browsers and
+  // Playwright that open 127.0.0.1 are otherwise blocked from dev assets.
+  allowedDevOrigins: ["127.0.0.1"],
   async headers() {
     return [
       {

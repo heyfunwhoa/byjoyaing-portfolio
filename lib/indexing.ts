@@ -20,13 +20,14 @@ export const indexableStaticPaths = [
   "/field-notes/enterprise-deal",
   "/field-notes/multithreading",
   "/field-notes/build-the-motion",
+  "/field-notes/developer-workstations",
+  "/ai-academy/systems",
   "/builder-academy/identity-journey",
   "/builder-academy/credential-risk",
   "/contact",
 ] as const;
 
 export const noindexPaths = [
-  "/ai-academy/systems",
   "/ai-academy/journeys/follow-one-click",
   "/ai-academy/programming",
   "/ai-academy/playground",

@@ -8,11 +8,8 @@ import { PageMain } from "@/components/page-main";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
-import { StatusBadge } from "@/components/status-badge";
 import { demoAccounts, demoSignals } from "@/lib/account-intelligence-demo";
 import Link from "next/link";
-
-const planned = ["Supabase", "Exa", "Sumble", "Claude"] as const;
 
 function SectionLabel({ index, children,
 }: { index: string; children: string;
@@ -48,7 +45,7 @@ function Node({
               : "rounded-full border border-dashed border-foreground/40 px-2 py-0.5 text-[11px] font-medium text-foreground"
           }
         >
-          {state === "demo" ? "In this demo" : "Planned"}
+          {state === "demo" ? "In this walkthrough" : "Planned"}
         </span>
       </div>
       <p className="mt-1 text-xs leading-5 text-muted">{detail}</p>
@@ -78,7 +75,7 @@ const columns = [
     title: "Data collection",
     body: "Assignments would arrive from territory mapping or be typed in, then sit in this app’s own database. Exa and Sumble are the research sources in the design. None of those connections run here.",
     nodes: [
-      { title: "Territory mapping", detail: "Would send account assignments. The partner page is a design, not a live webhook.", state: "planned" as const,
+      { title: "Territory mapping", detail: "Proposed account-assignment handoff from the partner workflow.", state: "planned" as const,
       },
       { title: "Manual entry", detail: "A rep could add an account when no assignment exists.", state: "planned" as const,
       },
@@ -106,7 +103,7 @@ const columns = [
     nodes: [
       { title: "Personal feed", detail: "The sample list in the walkthrough above.", state: "demo" as const,
       },
-      { title: "Claude draft", detail: "Planned. The demo swaps two local paragraphs instead.", state: "planned" as const,
+      { title: "Claude draft", detail: "Proposed drafting integration; this example offers two written alternatives.", state: "planned" as const,
       },
       { title: "Human review", detail: "A rep checks the source before anyone sends.", state: "demo" as const,
       },
@@ -125,7 +122,6 @@ export function AccountIntelligenceCase() {
           <div className="flex flex-wrap items-center gap-3">
             <ProjectKindLabel slug="account-intelligence" />
             <SectionLabel index="01">GTM systems</SectionLabel>
-            <StatusBadge status="designed" />
           </div>
           <div>
             <p className="text-sm font-medium text-muted">Account Intelligence</p>
@@ -133,14 +129,9 @@ export function AccountIntelligenceCase() {
               Turn account signals into timely, relevant outreach.
             </h1>
           </div>
-          <div className="max-w-xl space-y-3 text-base leading-7 text-muted">
-            <p>
-              For enterprise sellers deciding where to focus, I designed a workflow that connects an account change to a relevant next conversation. The aim is to reduce repeated research and help the seller explain why an outreach message matters.
-            </p>
-            <p>
-              The walkthrough below is sample data in this portfolio. It is not a deployed feed, and it does not call a model.
-            </p>
-          </div>
+          <p className="max-w-xl text-base leading-7 text-muted">
+            For enterprise sellers deciding where to focus, I designed a workflow that connects an account change to a relevant next conversation. The aim is to reduce repeated research and help the seller explain why an outreach message matters.
+          </p>
           <dl className="grid gap-4 text-sm sm:grid-cols-3">
             <div>
               <dt className="font-medium text-foreground">My role</dt>
@@ -152,9 +143,7 @@ export function AccountIntelligenceCase() {
             </div>
             <div>
               <dt className="font-medium text-foreground">Technology</dt>
-              <dd className="mt-1 leading-6 text-muted">
-                Next.js for this walkthrough. {planned.join(", ")} are planned, not running here.
-              </dd>
+              <dd className="mt-1 leading-6 text-muted">Next.js walkthrough on this page.</dd>
             </div>
           </dl>
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -162,20 +151,20 @@ export function AccountIntelligenceCase() {
               href="#workflow"
               className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground"
             >
-              Explore the workflow
+              Try the example
             </a>
             <a
               href="#architecture"
               className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium text-foreground"
             >
-              View technical architecture
+              How it works
             </a>
           </div>
         </div>
         <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
           <div className="flex items-center justify-between gap-3 border-b border-border pb-3">
             <p className="text-xs font-medium tracking-wide text-muted">Account intelligence</p>
-            <p className="text-[11px] text-muted">Illustrative demo data</p>
+            <p className="text-[11px] text-muted">Example data</p>
           </div>
           <div className="mt-4 flex gap-6 text-sm">
             <p>
@@ -210,6 +199,34 @@ export function AccountIntelligenceCase() {
       <PortfolioExample key="account-intelligence" example={portfolioExamples["account-intelligence"]} />
 
       <ProjectTechnologyStack slug="account-intelligence" />
+
+      <aside aria-labelledby="account-evidence-guide-title" className="my-8 rounded-xl border border-border bg-surface-sage p-4 sm:p-5">
+        <h2 id="account-evidence-guide-title" className="font-display text-xl tracking-tight">How to read this example</h2>
+        <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+          This case study shows a browser-only walkthrough and the decisions behind a proposed account-intelligence workflow.
+          The example is not a deployed customer intelligence service.
+        </p>
+        <dl className="mt-4 grid gap-4 md:grid-cols-3">
+          <div>
+            <dt className="text-sm font-semibold">Demonstrated here</dt>
+            <dd className="mt-1 text-sm leading-6 text-muted">Fictional account changes, a reviewable signal, and an editable outreach draft in the page walkthrough.</dd>
+          </div>
+          <div>
+            <dt className="text-sm font-semibold">Planned, not connected</dt>
+            <dd className="mt-1 text-sm leading-6 text-muted">Live research sources, account assignment sync, a dedicated database, CRM handoff, and sequencer integration.</dd>
+          </div>
+          <div>
+            <dt className="text-sm font-semibold">Not measured</dt>
+            <dd className="mt-1 text-sm leading-6 text-muted">Rep adoption, time saved, positive replies, and pipeline impact. These remain proposed success measures.</dd>
+          </div>
+        </dl>
+        <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+          <a href="#workflow" className="inline-flex min-h-11 items-center text-accent underline">Explore the fictional workflow</a>
+          <a href="#architecture" className="inline-flex min-h-11 items-center text-accent underline">Review planned architecture</a>
+          <a href="#outcomes-title" className="inline-flex min-h-11 items-center text-accent underline">See proposed measures</a>
+        </div>
+      </aside>
+
 
       <section className="border-b border-border py-16" aria-labelledby="problem-title">
         <SectionLabel index="02">The problem</SectionLabel>
@@ -251,7 +268,7 @@ export function AccountIntelligenceCase() {
           From account assignment to a draft a person still has to send.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Four steps a rep would take. Territory mapping would decide which accounts belong here. This demo only shows when and why someone might reach out.
+          Explore four steps from account context to outreach. Use the source and timing to decide why a conversation would be relevant.
         </p>
         <div className="mt-8">
           <AccountIntelligenceWorkflow />
@@ -386,36 +403,41 @@ export function AccountIntelligenceCase() {
             </article>
           ))}
         </div>
-        <ol className="mt-8 grid gap-4 md:grid-cols-3">
-          {[
-            {
-              when: "Designed now",
-              items: ["Personal feed", "Classified signals", "Source kept next to the event", "A draft a person reviews",
-              ],
-            },
-            {
-              when: "Next",
-              items: ["Better ranking of signals", "More public sources", "A sequencer only after drafts get used",
-              ],
-            },
-            {
-              when: "Later",
-              items: ["Multi-rep view", "Team analytics", "CRM identifiers"],
-            },
-          ].map((phase) => (
-            <li key={phase.when} className="rounded-xl border border-border bg-card p-4">
-              <h3 className="text-sm font-medium">{phase.when}</h3>
-              <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
-                {phase.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-4 text-sm leading-6 text-muted">
-          “Designed now” is the scope of the concept. The only part you can click is the sample walkthrough on this page.
-        </p>
+        <details className="mt-8 rounded-2xl border border-border p-4 sm:p-5">
+          <summary className="flex min-h-11 cursor-pointer items-center py-2 font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            See the roadmap
+          </summary>
+          <ol className="mt-4 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                when: "Designed now",
+                items: ["Personal feed", "Classified signals", "Source kept next to the event", "A draft a person reviews",
+                ],
+              },
+              {
+                when: "Next",
+                items: ["Better ranking of signals", "More public sources", "A sequencer only after drafts get used",
+                ],
+              },
+              {
+                when: "Later",
+                items: ["Multi-rep view", "Team analytics", "CRM identifiers"],
+              },
+            ].map((phase) => (
+              <li key={phase.when} className="rounded-xl border border-border bg-card p-4">
+                <h3 className="text-sm font-medium">{phase.when}</h3>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
+                  {phase.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-4 text-sm leading-6 text-muted">
+            “Designed now” is the scope of the concept. The only part you can click is the sample walkthrough on this page.
+          </p>
+        </details>
       </section>
 
       <section className="py-16" aria-labelledby="connected-title">
@@ -427,7 +449,7 @@ export function AccountIntelligenceCase() {
             <p className="text-xs font-medium text-muted">Territory and ownership</p>
             <p className="mt-2 text-lg font-semibold">Partner GTM Engine</p>
             <p className="mt-2 text-sm leading-6 text-muted">
-              The channel design for who owns an account. It would hand assignments to this feed. It is not deployed.
+              The channel design for who owns an account. It would hand assignments to this feed. Explore its workflow design.
             </p>
           </Link>
           <a href="#workflow" className="rounded-2xl border border-border p-5 hover:border-accent">

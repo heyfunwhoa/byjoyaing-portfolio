@@ -19,8 +19,11 @@ Do not read every reference in one sitting. These suggested times are study budg
 | 3 — Make a release decision (20 minutes) | [The worked exercise](#worked-exercise-one-lesson-edit-with-controls) below | Complete the handoff and recovery decision; compare with the answer key |
 | Optional — Research and organization | PRD deep dive, team/persona maps and [evidence practice](#use-evidence-to-improve-a-product-decision) | Identify what a source supports and what still needs local evidence |
 | Optional — Add agents (15 minutes) | [Agent companion](cursor-agent-workflows.md#11-add-agents-to-the-delivery-loop) | Give a worker permitted files, evidence requirements and a stop condition |
+| Optional — Full-stack feature (20 minutes) | [Trace one fictional discovery note](#full-stack-bridge-trace-one-fictional-discovery-note) | Explain product → UX/UI → frontend/API/data → build/release → measured outcome |
+| Optional — PR coordination and reconciliation (20–30 minutes) | [PR integration and reconciliation companion](pr-integration-and-reconciliation.md) | Classify overlapping PRs, trace exact SHA and evidence, and choose merge, update, supersede or hold |
 | Optional — First deployment (25 minutes) | [Deployment settings companion](first-deployment-settings.md) | Explain the settings, choose required integrations and write a verification checklist |
 | Optional — Security decision (10-minute exercise) | [Release security companion](release-security-review.md) | Choose one control and identify its owner, implementation and test |
+| Optional — Security across the SDLC (20–30 minutes) | [Security throughout the lifecycle](release-security-review.md#security-across-the-whole-software-development-lifecycle) | Identify security checks from requirements through operations and distinguish evidence from assurance |
 
 ### How this curriculum is organized
 
@@ -28,9 +31,12 @@ This is one parent lesson with three core stops, followed by optional companions
 
 - **Core session:** follow stops 1–3 in order and stop after the five-line handoff. Approximately 45 minutes is a study budget, not a measured guarantee.
 - **Reference shelf in this parent:** PRD deep dive, team/persona tables, package details, status terminology and the revenue-planning example. Open only the section needed for the current question.
+- **Full-stack bridge:** trace one fictional discovery note from the product problem through UX, frontend, API, data, build, release and measurement. This is a written transfer task in this parent lesson, not a new catalog ID.
+- **PR reconciliation companion:** practice parallel-work risk, stale checks, exact-commit evidence and a fictional multi-PR disposition. It does not add a lesson ID.
 - **Deployment companion:** practice configuring hosting after the core terminology is familiar.
-- **Security companion:** inspect missing release evidence; use before releasing a feature that changes access or sensitive data.
+- **Security companion:** keep the ten-minute control decision, and use the longer section when the task needs security at each lifecycle stage.
 - **Agent companion:** apply the same decisions to a bounded worker task after completing the core. Agents do not replace the product decision or reviewer.
+- **Written route map:** the [SDLC enablement crosswalk](../academy/SDLC-ENABLEMENT-CROSSWALK.md) sequences these companions. It is a proposed source map, not another catalog path. The executable alert-handoff capstone remains on stacked PR #278 and is not included here.
 
 These companion files are sections of this learning path, not new tracked Academy lessons. Preserve the existing parent lesson ID, prerequisites, assessment and progress behavior. Wiring source text into the public renderer is a separate verified publication step.
 
@@ -736,6 +742,67 @@ A founder-facing simulator needs to represent a manager who also sells. Imagine 
 
 A correct model precedes a hiring recommendation. M3 captures not just *what shipped*, but whether the system produces a defensible decision.
 
+## Full-stack bridge: trace one fictional discovery note
+
+**Optional extension after the core three stops · Suggested time: 15–20 minutes.** This is a single, **synthetic** product case and a written transfer task, not a newly registered Academy lesson or an implemented feature in another repository. The current Academy's [six-stage delivery lifecycle lab](https://www.byjoyaing.com/ai-academy) already practices intake → definition → planning → build → verify → measure; select **From idea to verified release** there. This extension teaches the technical parts *between* its stages, rather than duplicating that interaction.
+
+**The fictional product decision:** Sellers want to save a short, structured discovery note and retrieve it before the next customer call. One invented request is not proof of a widespread problem. Before building, compare an existing CRM's notes feature with a custom workspace; record the user, frequency, privacy need, measurable outcome and why a custom solution might be justified. The aim is to save **one authorized fictional note**, not build CRM synchronization, AI summaries, authentication from scratch or a complex enterprise platform.
+
+### Follow the same feature through each role and artifact
+
+| Stage / owner (illustrative) | Output / artifact | What a reviewer can check |
+| --- | --- | --- |
+| **Discover / product + seller** | Problem statement, assumption log, success metric, non-goals | User need supported; build-vs-buy alternatives considered |
+| **Define / product owner** | Small PRD, one user story, acceptance criteria, prioritized issue | Exactly which behavior makes this slice valuable |
+| **UX/UI / designer + learner** | User flow, low-fidelity wireframe, required field, loading/empty/error/success and keyboard states | Can a user find, save and confirm a note accessibly? |
+| **Architecture / engineer** | Context/data-flow diagram and API/data contract | Where trust changes, who may see each note, what can fail |
+| **Frontend / engineer** | React/TypeScript form and feedback UI | Labels, validation feedback, loading/error state and no exposed server secrets |
+| **Backend / engineer** | Fictional `POST /api/notes` handler with input validation and object-level authorization | A forged account ID cannot grant access; denial has no side effects |
+| **Data / engineer** | Relational note schema, constraints and reviewed migration/rollback plan | Owner links, uniqueness/retention, separate dev/test/production data |
+| **Build and QA / engineers + reviewer** | Commit, tests, CI check report and build artifact | Correct commit and negative paths checked; no false claim that CI proves everything |
+| **Release / authorized operator** | Preview, release approval, deployment revision and rollback plan | Correct environment and actual deployed version |
+| **Operate and improve / product + support + engineering** | Error/latency evidence, outcome review and next decision | Can users complete the workflow without leaking or losing data? |
+
+This table is a learning map, not a claim that the fictional app has actually been written or deployed.
+
+```text
+Browser (discovery note form)
+      |
+      v
+POST /api/notes (server-side input validation + authorization)
+      |
+      v
+Database (only the permitted fictional note record)
+      |
+      v
+API result → frontend confirmation or useful error
+```
+
+A component can look correct while the API denies access, a migration fails, or production serves a prior revision. Those are different problems with different owners and evidence. Tests should cover success and failure cases. A sketch shows intended behavior; a passing test shows the tested case; a production check shows the behavior of an identified deployment. None substitutes for the others.
+
+**Existing lessons to follow for deeper detail:** [Frontend building blocks](frontend-building-blocks.md) → [MCP versus REST APIs](mcp-vs-rest-api.md) → [Databases and recovery](databases-branching-recovery-and-selection.md) → [First deployment](first-deployment-settings.md) → [Measure product use safely](measure-product-usage-safely.md). Use the [source-to-running-software companion and optional Docker inspection](source-to-running-software.md) after you understand the difference between source code and a running application. Docker is optional, not a prerequisite for a managed Next.js/Vercel deployment.
+
+### Independent transfer check
+
+**Scenario:** The form renders successfully. CI passed for commit `abc123`. On the preview, submitting a note for a different fictional account returns 403, as intended; submitting an authorized note succeeds. But the production deployment still points to an older commit, and no one has tested the actual user workflow there.
+
+1. What evidence is missing before claiming this feature is live?
+2. Which part owns the 403 behavior, and why shouldn't the frontend remove the error by bypassing authorization?
+3. What should be measured after release that a commit count or pageview does not prove?
+
+<details>
+<summary>Answer key: reveal after attempting</summary>
+
+1. Release approval, the intended production revision/environment and a real end-to-end authorized/denied user-flow verification are missing. The earlier preview and green CI do not prove production success.
+2. The backend's object-level authorization enforces access; the frontend presents the denial clearly. Avoiding or weakening the access check would create a security bug, not fix the user experience.
+3. Whether sellers can safely create/retrieve useful notes with fewer handoff mistakes, accompanied by actual observed use, errors and qualitative feedback. Do not fabricate learner or product impact data.
+
+</details>
+
+**Learner deliverable:** Write five lines: (1) user problem and build-vs-buy decision, (2) desired UI state, (3) frontend → backend → data boundary, (4) latest required release evidence, (5) outcome and failure signal. A correct keyed response is practice; an independently explained new scenario is stronger evidence of skill. Nothing is submitted from this Markdown exercise or synced to a CRM.
+
+Preserved from [PR #260](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/260) at `645581dca10327ffd331e4ae720defb31ec570e8`. The PR-coordination and lifecycle-security rows in the path above are preserved from [PR #279](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/279) at `bba8aee73d42b902c8ea7e6ceba1e327312d2006`. Neither section replaces the other, and neither is a new registered lesson.
+
 ## Status ≠ priority ≠ milestone
 
 | Status | Meaning |
@@ -777,7 +844,7 @@ Use one Linear team initially; activate projects only for current deliverables; 
 
 ## Security review before merge (additional 10-minute practice)
 
-Continue with [Review release evidence and security boundaries](release-security-review.md). This optional companion preserves the scan comparison, authentication/authorization examples, denied-path tests, configured-versus-enforced distinction and release-decision exercise.
+Continue with [Review release evidence and security boundaries](release-security-review.md). This optional companion preserves the scan comparison, authentication/authorization examples, denied-path tests, configured-versus-enforced distinction and release-decision exercise. The same file also contains the longer staged-security section; use the ten-minute exercise when you only need one control decision.
 
 **Start when:** you can explain PR, commit, check, merge and deployment. **Return with:** one release decision, the missing evidence and its owner. Do not add this extension to the core session unless the learner's task needs it.
 
