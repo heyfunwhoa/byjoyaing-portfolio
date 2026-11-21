@@ -11,6 +11,7 @@ import { Headphones, Palette, Plane, Wrench } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { OnThisPage } from "@/components/on-this-page";
 import { PUBLIC_BOOKING_URL } from "@/lib/portfolio/public-contact";
 
 const interestIcons = new Map([
@@ -94,27 +95,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <nav aria-label="On this page" className="border-b border-border py-4">
-        <p className="editorial-eyebrow text-muted">On this page</p>
-        <ul className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
-          {[
-            { href: "#philosophy", label: "Philosophy" },
-            { href: "#how-i-work", label: "How I work" },
-            { href: "#career-progression", label: "Career & education" },
-            { href: "#technologies", label: "Tools & systems" },
-            { href: "#work-and-writing", label: "Work & writing" },
-          ].map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className="inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-accent underline underline-offset-4 hover:bg-surface-sage focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <OnThisPage
+        items={[
+          { id: "philosophy", label: "Philosophy" },
+          { id: "how-i-work", label: "How I work" },
+          { id: "career-progression", label: "Career & education" },
+          { id: "technologies", label: "Tools & systems" },
+          { id: "work-and-writing", label: "Work & writing" },
+        ]}
+      />
 
       <section id="philosophy" className="scroll-mt-24 border-b border-border py-12">
         <p className="orbital-section-label text-sm font-medium text-muted">

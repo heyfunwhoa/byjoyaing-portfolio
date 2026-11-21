@@ -141,7 +141,7 @@ export function FeaturedSideQuestStrip({
                 key={card.slide.id}
                 className="w-[min(22rem,85%)] min-w-0 shrink-0 snap-start sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.7rem)]"
               >
-                <article className="editorial-panel flex h-full min-w-0 max-w-full flex-col overflow-hidden bg-surface-sage p-5 sm:p-6">
+                <article className="card-lift editorial-panel flex h-full min-w-0 max-w-full flex-col overflow-hidden bg-surface-sage p-5 sm:p-6">
                   <p className="editorial-eyebrow text-accent">{card.categories[0]}</p>
                   <h3 className="mt-3 font-display text-xl leading-tight tracking-tight">
                     <Link
