@@ -2,8 +2,8 @@
  * Static routes a crawler may index. Capability views and /work/[slug]
  * case studies are added in app/sitemap.ts from their registries.
  * Selected public security lessons explicitly override the noindex parent layout.
- * Other practice labs, unfinished roadmaps, prototypes and private-work remain
- * excluded. See docs/seo/search-console-p0.md for the route review.
+ * /ai-academy and /ai-academy/systems stay because they are published essays.
+ * Other practice labs, prototypes and private-work remain excluded. See docs/seo/search-console-p0.md for the route review.
  * Search directives do not provide authentication or authorization.
  */
 export const indexableStaticPaths = [

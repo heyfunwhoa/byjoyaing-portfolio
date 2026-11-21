@@ -53,6 +53,6 @@ test("selected public security lessons override the excluded parent and enter th
     const source = readFileSync(path.join(root, `app${route}/page.tsx`), "utf8");
     assert.match(source, /robots: \{ index: true, follow: true \}/, route);
   }
-  assert.ok(noindexPaths.includes("/ai-academy/systems"));
+  assert.ok(new Set<string>(indexableStaticPaths).has("/ai-academy/systems"));
   assert.ok(noindexPaths.includes("/private-work"));
 });
