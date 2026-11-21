@@ -1,10 +1,10 @@
 /**
  * Static routes a crawler may index. Capability views and /work/[slug]
  * case studies are added in app/sitemap.ts from their registries.
- * Practice labs, the design storytelling guide, prototypes, and private-work
- * are omitted and must set `robotsNoindex`.
+ * Selected public security lessons explicitly override the noindex parent layout.
  * /ai-academy and /ai-academy/systems stay because they are published essays.
- * /ai-academy/programming is a lab: noindex, and not listed here.
+ * Other practice labs, prototypes and private-work remain excluded. See docs/seo/search-console-p0.md for the route review.
+ * Search directives do not provide authentication or authorization.
  */
 export const indexableStaticPaths = [
   "/",
@@ -22,10 +22,13 @@ export const indexableStaticPaths = [
   "/field-notes/build-the-motion",
   "/field-notes/developer-workstations",
   "/ai-academy/systems",
+  "/builder-academy/identity-journey",
+  "/builder-academy/credential-risk",
   "/contact",
 ] as const;
 
 export const noindexPaths = [
+  "/ai-academy/journeys/follow-one-click",
   "/ai-academy/programming",
   "/ai-academy/playground",
   "/ai-academy/playground/skill-builder",
@@ -35,8 +38,6 @@ export const noindexPaths = [
   "/ai-academy/journeys/source-verification",
   "/ai-academy/devops/build-rate-limits",
   "/ai-academy/dependencies/lockfiles",
-  "/builder-academy/identity-journey",
-  "/builder-academy/credential-risk",
   "/work/storytelling-guide",
   "/prototype",
   "/private-work",
