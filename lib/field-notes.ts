@@ -5,20 +5,25 @@
  */
 export const connectedSources = [
   {
+    id: "account-signal-engine",
     name: "Account Signal Engine",
+    publicProjectSlug: "account-intelligence",
     visibility: "private",
     capability: "Account change signals, sourced company research, seller-ready context",
     stage: "Verified repository architecture; not integrated with this portfolio",
     application: "Surface a relevant trigger, attach its source and date, and suggest a human-reviewed conversation",
   },
   {
+    id: "channel-territory-mapping",
     name: "Channel Territory Mapping",
+    publicProjectSlug: "partner-gtm-engine",
     visibility: "private",
     capability: "Account matching and partner-overlap ownership",
     stage: "Local MVP; not integrated with this portfolio",
     application: "Identify a potential partner introduction and confirm ownership before engagement",
   },
   {
+    id: "security-market-map",
     name: "Security Market Map",
     visibility: "public",
     url: "https://github.com/heyfunwhoa/security-market-map",
@@ -26,7 +31,27 @@ export const connectedSources = [
     stage: "Public runnable project with evidence limitations",
     application: "Prepare role-specific discovery and translate technical capabilities into buyer priorities",
   },
+  {
+    id: "gtm-revenue-os",
+    name: "GTM Revenue OS",
+    visibility: "private",
+    publicProjectSlug: "gtm-operating-plan",
+    capability: "Revenue planning, campaign methods, qualification and deal review",
+    stage: "Repository code and operating references; portfolio links are editorial connections",
+    application: "Connect a playbook's decisions and measures to the existing campaign and sales-process foundations",
+  },
+  {
+    id: "truffle-camp",
+    name: "Truffle Camp",
+    visibility: "private",
+    publicProjectSlug: "truffle-camp",
+    capability: "Synthetic security learning with practice and feedback",
+    stage: "Training example; not a general sales onboarding system",
+    application: "Use an existing learning example to explore role-specific practice and feedback",
+  },
 ] as const;
+
+export type ConnectedSourceId = (typeof connectedSources)[number]["id"];
 
 export const dealStages = [
   {
