@@ -8,7 +8,6 @@ import { PageMain } from "@/components/page-main";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
 import { ProjectKindLabel } from "@/components/project-kind-label";
-import { StatusBadge } from "@/components/status-badge";
 
 function Arrow({ direction }: { direction: "right" | "down" }) {
   const horizontal = direction === "right";
@@ -42,7 +41,7 @@ function Label({ index, children }: { index: string; children: string }) {
 function Node({ title, detail, state,
 }: { title: string; detail: string; state: "field" | "demo" | "planned";
 }) {
-  const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this demo" : "Planned";
+  const copy = state === "field" ? "Professional field system" : state === "demo" ? "In this walkthrough" : "Planned";
   const style =
     state === "planned"
       ? "rounded-full border border-dashed border-foreground/40 px-2 py-0.5 text-[11px] font-medium"
@@ -63,19 +62,19 @@ const layers = [
     title: "Feedback sources",
     body: "Sales conversations at Truffle are the field habit. This site does not read CRM, calls, success notes, or tickets.",
     nodes: [
-      { title: "CRM", detail: "Planned source. Not connected.", state: "planned" as const,
+      { title: "CRM", detail: "Proposed source.", state: "planned" as const,
       },
-      { title: "Call records", detail: "Planned source. Not connected.", state: "planned" as const,
+      { title: "Call records", detail: "Proposed source.", state: "planned" as const,
       },
-      { title: "Customer Success notes", detail: "Planned source. Not connected.", state: "planned" as const,
+      { title: "Customer Success notes", detail: "Proposed source.", state: "planned" as const,
       },
-      { title: "Support tickets", detail: "Planned source. Not connected.", state: "planned" as const,
+      { title: "Support tickets", detail: "Proposed source.", state: "planned" as const,
       },
     ],
   },
   {
     title: "Intelligence processing",
-    body: "The demo shows a suggested theme you can correct. Ingestion and deduplication are not built. No model runs.",
+    body: "Review a suggested theme and correct it using the original feedback.",
     nodes: [
       { title: "Ingestion", detail: "Planned. The sample is hardcoded.", state: "planned" as const,
       },
@@ -91,7 +90,7 @@ const layers = [
   },
   {
     title: "Product intelligence",
-    body: "Themes, accounts, and a review a person confirms. Confirming the demo does not update a roadmap.",
+    body: "Connect themes and accounts, then record a review for this session.",
     nodes: [
       { title: "Normalized feedback", detail: "Five sample records.", state: "demo" as const,
       },
@@ -129,9 +128,7 @@ export function CustomerFeedbackCase() {
           <WorkCaseBreadcrumb slug="customer-feedback-intelligence" />
           <div className="flex flex-wrap items-center gap-3">
             <ProjectKindLabel slug="customer-feedback-intelligence" />
-            <p className="text-sm font-medium text-muted">Project 02</p>
             <Label index="01">Product and GTM systems</Label>
-            <StatusBadge status="designed" />
           </div>
           <div>
             <p className="text-sm font-medium text-muted">Customer Feedback Intelligence</p>
@@ -140,24 +137,24 @@ export function CustomerFeedbackCase() {
             </h1>
           </div>
           <p className="max-w-xl text-base leading-7 text-muted">
-            An intelligence workspace that would connect feedback across Sales, Customer Success, and Support to show recurring product needs, account context, and commercial impact. From the first request to a product decision and a customer follow-up, the design keeps a traceable loop. This page is a sample. It does not read live systems.
+            An intelligence workspace for feedback across Sales, Customer Success, and Support: recurring product needs, account context, and a follow-up a person still has to review.
           </p>
           <dl className="grid gap-4 text-sm sm:grid-cols-2">
             <div>
-              <dt className="font-medium">Role</dt>
-              <dd className="mt-1 leading-6 text-muted">Product strategy, GTM systems, and workflow design.</dd>
+              <dt className="font-medium">Contribution</dt>
+              <dd className="mt-1 leading-6 text-muted">I designed this review from the sales-to-product loop I use in the field.</dd>
             </div>
             <div>
-              <dt className="font-medium">Stage</dt>
-              <dd className="mt-1 leading-6 text-muted">Designed. The field loop at Truffle is not this app.</dd>
+              <dt className="font-medium">Intended value</dt>
+              <dd className="mt-1 leading-6 text-muted">Keep the account attached to the theme so a person can still review the follow-up.</dd>
             </div>
           </dl>
           <div className="flex flex-col gap-3 sm:flex-row">
             <a href="#workflow" className="inline-flex h-11 items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
-              Explore the workflow
+              Try the example
             </a>
             <a href="#architecture" className="inline-flex h-11 items-center justify-center rounded-md border border-border px-5 text-sm font-medium">
-              View technical architecture
+              How it works
             </a>
           </div>
         </div>
@@ -175,7 +172,7 @@ export function CustomerFeedbackCase() {
             <p className="text-[11px] font-medium text-muted">Featured theme</p>
             <p className="mt-1 font-medium">Enterprise identity and provisioning</p>
             <p className="mt-2 text-sm leading-6 text-muted">Four sample notes, three fictional accounts. One closed-lost line mentions SCIM. That is context, not revenue.</p>
-            <a href="#workflow" className="mt-3 inline-flex text-sm font-medium text-accent">
+            <a href="#workflow" className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-accent">
               View details
             </a>
           </div>

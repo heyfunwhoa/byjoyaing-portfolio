@@ -36,6 +36,12 @@ test("paths reference available lessons and AI basics is not a universal prerequ
     for (const slug of path.slugs)
       assert.equal(getLessonGuidance(slug)?.availability, "available");
   }
+  assert.equal(learningPaths[0].id, "delivery");
+  assert.deepEqual(learningPaths[0].slugs.slice(0, 3), [
+    "idea-to-verified-release",
+    "privacy",
+    "reading-code-and-yaml",
+  ]);
   assert.equal(
     learningPaths.find((p) => p.id === "foundations")?.slugs[0],
     "what-is-ai",
@@ -78,10 +84,25 @@ test("practice and guide destinations resolve to existing local routes or public
   assert.equal(
     academyResources.find((item) => item.id === "systems-roadmap")
       ?.availability,
-    "planned",
+    "partial",
   );
   assert.equal(
     academyResources.find((item) => item.id === "programming")?.availability,
     "partial",
   );
+});
+
+test("every catalog lesson has a path and included prerequisites precede dependent lessons", () => {
+  const covered = new Set<string>(learningPaths.flatMap((path) => [...path.slugs]));
+  assert.deepEqual([...covered].sort(), lessons.map((lesson) => lesson.slug).sort());
+  for (const path of learningPaths) {
+    const slugs: readonly string[] = path.slugs;
+    for (const slug of slugs) {
+      for (const prerequisite of getLessonGuidance(slug)?.prerequisites ?? []) {
+        assert.ok(slugs.includes(prerequisite), `${path.id}: missing preparation ${prerequisite}`);
+        assert.ok(slugs.indexOf(prerequisite) < slugs.indexOf(slug), `${path.id}: ${prerequisite} must precede ${slug}`);
+      }
+    }
+  }
+  assert.equal(lessons[0].slug, "idea-to-verified-release");
 });

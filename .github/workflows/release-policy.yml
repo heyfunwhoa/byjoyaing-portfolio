@@ -1,6 +1,7 @@
 name: Release policy tests
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
   push:
     branches: [main]
 permissions:
@@ -10,6 +11,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   policy:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -19,4 +21,4 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
           node-version: '22'
-      - run: node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test .release/preflight.node-check.mjs lib/release/reliability.test.ts
+      - run: node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test .release/preflight.node-check.mjs .release/preview-draft.node-check.mjs lib/release/reliability.test.ts

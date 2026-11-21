@@ -1,0 +1,10 @@
+#!/bin/sh
+# Pre-commit hook: scan staged changes for secrets before they become a commit.
+# Kept fast on purpose: lint (~45s on this repo) runs in pre-push instead.
+# This file is tracked in scripts/ and installed by npm prepare (scripts/install-hooks.mjs).
+
+echo "Running pre-commit checks..."
+
+sh scripts/secret-scan.sh || exit 1
+
+echo "✅ Pre-commit checks passed."

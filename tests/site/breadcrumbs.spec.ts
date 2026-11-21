@@ -97,6 +97,16 @@ test("case studies restore directory filters after reload", async ({ page }) => 
   await expect(page.getByRole("searchbox", { name: "Search projects" })).toHaveValue("");
 });
 
+test("case study trails follow the project's section", async ({ page }) => {
+  await page.goto("/work/detector-coverage-atlas");
+  let trail = page.getByRole("navigation", { name: "Breadcrumb", exact: true });
+  await expect(trail.getByRole("link", { name: "Side Quests", exact: true })).toHaveAttribute("href", "/side-quests");
+  await page.goto("/work/competitive-intelligence-engine");
+  trail = page.getByRole("navigation", { name: "Breadcrumb", exact: true });
+  await expect(trail.getByRole("link", { name: "Work", exact: true })).toHaveAttribute("href", "/work");
+  await expect(trail.getByRole("link", { name: "Projects", exact: true })).toHaveCount(0);
+});
+
 test("direct case links return to all projects and return targets stay local", async ({ page }) => {
   await page.goto("/work/detector-coverage-atlas");
   await expect(page.getByRole("link", { name: "Back to all projects", exact: true })).toHaveAttribute("href", "/projects#directory");
