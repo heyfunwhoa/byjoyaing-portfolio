@@ -1,0 +1,14 @@
+#!/bin/sh
+# Pre-push hook: run the slower checks once per push instead of on every commit.
+# Draft PRs skip CI, so this is what checks a draft. Same commands CI uses; no build or browser tests.
+# Installed by npm prepare (scripts/install-hooks.mjs).
+
+echo "Running pre-push checks..."
+
+npm run lint --silent || { echo "❌ ESLint failed. Fix the issues above before pushing."; exit 1; }
+npm test --silent || { echo "❌ Unit tests failed. Fix them before pushing."; exit 1; }
+node --experimental-strip-types --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test .release/preflight.node-check.mjs .release/preview-draft.node-check.mjs lib/release/reliability.test.ts >/dev/null \
+  || { echo "❌ Release policy tests failed. Run them without >/dev/null to see why."; exit 1; }
+{ npx next typegen >/dev/null && npx tsc --noEmit; } || { echo "❌ Typecheck failed. Fix the errors above before pushing."; exit 1; }
+
+echo "✅ Pre-push checks passed."

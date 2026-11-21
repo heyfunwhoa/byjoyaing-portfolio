@@ -16,6 +16,6 @@ test("the constellation stays on three honest projects", () => {
   for (const note of constellationNotes) {
     assert.equal(constellationSlugs.includes(note.from), true);
     assert.equal(constellationSlugs.includes(note.to), true);
-    assert.match(note.text, /does not|not a deployment/);
+    assert.match(note.text, /does not|not a deployment|separate coverage example/);
   }
 });

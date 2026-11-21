@@ -8,6 +8,7 @@ export const kindBySlug: Record<string, PortfolioKind> = {
   "detector-coverage-atlas": "side-quest",
   "product-release-intelligence": "side-quest",
   "truffle-camp": "side-quest",
+  "a-keys-day": "side-quest",
   "competitive-intelligence-engine": "work",
   "customer-feedback-intelligence": "side-quest",
   "product-prioritization-simulator": "side-quest",

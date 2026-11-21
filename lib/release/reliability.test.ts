@@ -174,8 +174,11 @@ test("workflow concurrency cancels pull requests only and keeps security jobs", 
 
 test("ignore command fails open and skips only an operational diff", () => {
   const directory = mkdtempSync(join(tmpdir(), "vercel-ignore-"));
-  const git = (args: string[]) =>
-    execFileSync("git", args, { cwd: directory, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  const git = (args: string[]) => {
+    const env = { ...process.env };
+    for (const key of ["GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE", "GIT_PREFIX"]) delete env[key];
+    return execFileSync("git", args, { cwd: directory, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], env }).trim();
+  };
   git(["init"]);
   git(["config", "user.email", "reliability@example.com"]);
   git(["config", "user.name", "Reliability Test"]);
@@ -208,6 +211,20 @@ test("ignore command fails open and skips only an operational diff", () => {
   assert.equal(skipped.code, 0, skipped.stdout);
   assert.match(skipped.stdout, /skip:/);
 
+  // New preview branches without a prior successful deployment must fail open.
+  const firstPreview = run({
+    ...gitEnv, VERCEL_ENV: "preview", VERCEL_GIT_PREVIOUS_SHA: "",
+    VERCEL_GIT_COMMIT_SHA: second,
+  });
+  assert.equal(firstPreview.code, 1, firstPreview.stdout);
+  assert.match(firstPreview.stdout, /fail open/);
+  const productionWithoutBaseline = run({
+    ...gitEnv, VERCEL_ENV: "production", VERCEL_GIT_PREVIOUS_SHA: "",
+    VERCEL_GIT_COMMIT_SHA: second,
+  });
+  assert.equal(productionWithoutBaseline.code, 1);
+  assert.match(productionWithoutBaseline.stdout, /fail open/);
+
   mkdirSync(join(directory, "docs/builder-academy"), { recursive: true });
   writeFileSync(join(directory, "docs/builder-academy/github-api-deployment-reliability.md"), "# lesson\n");
   git(["add", "."]);
@@ -216,6 +233,13 @@ test("ignore command fails open and skips only an operational diff", () => {
   const built = run({ ...gitEnv, VERCEL_GIT_PREVIOUS_SHA: second, VERCEL_GIT_COMMIT_SHA: third });
   assert.equal(built.code, 1, built.stdout);
   assert.match(built.stdout, /build:/);
+
+  const appPreview = run({
+    ...gitEnv, VERCEL_ENV: "preview", VERCEL_GIT_PREVIOUS_SHA: "",
+    VERCEL_GIT_COMMIT_SHA: third,
+  });
+  assert.equal(appPreview.code, 1, appPreview.stdout);
+  assert.match(appPreview.stdout, /build:/);
 
   const missing = run({ VERCEL_GIT_PREVIOUS_SHA: "", VERCEL_GIT_COMMIT_SHA: "" });
   assert.equal(missing.code, 1);

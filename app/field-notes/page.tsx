@@ -32,9 +32,9 @@ export default function FieldNotesPage() {
         <h1 className="editorial-title mt-3 max-w-3xl">Thinking out loud. Building in practice.</h1>
         <p className="mt-4 text-lg font-medium">Field Notes</p>
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted">
-          Playbooks, frameworks, operating systems, and lessons from the intersection of revenue,
-          go-to-market strategy, people, and technology. A place to show the thinking behind the work,
-          not just the finished output.
+          Practical thinking and useful frameworks for revenue, people, and
+          go-to-market work. These notes show how to approach a problem. They
+          are not employment records.
         </p>
         <nav aria-label="Field Notes sections" className="mt-7 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
           <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href="#featured">Published guides</a>
@@ -63,10 +63,17 @@ export default function FieldNotesPage() {
             },
             {
               title: "How I'd Build a Motion at Your Stage",
-              description: "A sell-first plan in three gated phases: prove the deal, make it repeatable, then scale what is proven. I keep carrying a number throughout.",
+              description: "A sell-first plan in three gated phases, with the team I'd build at each stage and the trigger for the first hire. I keep carrying a number throughout.",
               href: "/field-notes/build-the-motion",
               label: "Illustrative model",
-              when: "Use when an early team needs its first repeatable sales motion and has to decide when to add headcount.",
+              when: "Use when an early team needs its first repeatable sales motion and a plan for the team that will run it.",
+            },
+            {
+              title: "The Developer Workstation Is the New Soft Target",
+              description: "A point of view on why developer machines and CI became a primary attack path, who owns the problem, and how I'd test a motion around it.",
+              href: "/field-notes/developer-workstations",
+              label: "Point of view · Exploring",
+              when: "Use when deciding where a security product fits current buyer pain, or which segment to test next.",
             },
             {
               title: "Multithreading & Stakeholder Mapping",
@@ -104,19 +111,19 @@ export default function FieldNotesPage() {
       </section>
       <section id="private" className="scroll-mt-24 border-t border-border py-12">
         <p className="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Deeper, permissioned material</p>
-        <Link href="/private-work" className="mb-8 block rounded-2xl border border-border bg-surface-mist p-5 hover:border-accent">
-          <h2 className="text-xl font-semibold">Private case studies</h2>
-          <p className="mt-2 text-sm leading-6 text-muted">Some detailed deal and operating artifacts require approval. See what can be requested and how access will work.</p>
-          <span className="mt-3 inline-block text-sm font-medium text-accent">About private access →</span>
+        <Link href="/contact" className="mb-8 block rounded-2xl border border-border bg-surface-mist p-5 hover:border-accent">
+          <h2 className="text-xl font-semibold">Request a walkthrough</h2>
+          <p className="mt-2 text-sm leading-6 text-muted">Detailed deal and operating examples aren&apos;t public. Ask, and I&apos;ll walk you through what I can share.</p>
+          <span className="mt-3 inline-block text-sm font-medium text-accent">Get in touch →</span>
         </Link>
         <h2 className="font-display text-3xl tracking-tight">See the work behind the ideas</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Professional experience and independently built projects have different evidence and confidentiality boundaries. Frameworks demonstrate an approach; real selling and leadership outcomes belong in Work.
         </p>
         <div className="mt-5 flex flex-wrap gap-5 text-sm font-medium">
-          <Link href="/work" className="text-accent">Professional work</Link>
-          <Link href="/side-quests" className="text-accent">Explore Side Quests</Link>
-          <Link href="/contact" className="text-accent">Get in touch</Link>
+          <Link href="/work" className="inline-flex min-h-11 items-center text-accent">Professional work</Link>
+          <Link href="/side-quests" className="inline-flex min-h-11 items-center text-accent">Explore Side Quests</Link>
+          <Link href="/contact" className="inline-flex min-h-11 items-center text-accent">Get in touch</Link>
         </div>
       </section>
     </PageMain>

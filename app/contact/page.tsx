@@ -30,6 +30,7 @@ export default async function ContactPage({
             Let&apos;s talk about the work.
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted">For hiring conversations, collaboration or a closer look at an example, send a message or book a time on my calendar.</p>
+          <p className="text-sm font-medium text-muted">US-based, open to remote</p>
 
           <div
             role="group"

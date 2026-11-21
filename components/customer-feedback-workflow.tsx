@@ -27,7 +27,7 @@ function Frame({ title, children }: { title: string; children: ReactNode }) {
     <div className="overflow-hidden rounded-2xl border border-border bg-[#f7f4ee]">
       <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
         <p className="text-xs font-medium tracking-wide text-muted">{title}</p>
-        <p className="text-[11px] text-muted">Illustrative demo data</p>
+        <p className="text-[11px] text-muted">Example data</p>
       </div>
       <div className="p-4">{children}</div>
     </div>
@@ -218,7 +218,7 @@ export function CustomerFeedbackWorkflow() {
                 </p>
                 <p className="mt-2">
                   <span className="font-medium">Review status. </span>
-                  {confirmed ? "Confirmed in this demo" : record.status}
+                  {confirmed ? "Confirmed for this session" : record.status}
                 </p>
                 <p className="mt-2 text-muted">
                   The suggestion is sample data, not a model score. Correcting it stays in the browser.
@@ -317,7 +317,7 @@ export function CustomerFeedbackWorkflow() {
               </p>
               <p className="mt-2">
                 <span className="font-medium">Product status. </span>
-                {decision === "accepted" ? "Reviewed in this demo. Not shipped." : theme.status}
+                {decision === "accepted" ? "Reviewed for this session." : theme.status}
               </p>
               <p className="mt-2 text-muted">
                 <span className="font-medium text-foreground">Decision rationale. </span>
@@ -328,7 +328,7 @@ export function CustomerFeedbackWorkflow() {
                 className="mt-4 rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground"
                 onClick={() => setDecision("accepted")}
               >
-                {decision === "accepted" ? "Marked reviewed in this demo" : "Confirm product review"}
+                {decision === "accepted" ? "Marked reviewed for this session" : "Confirm product review"}
               </button>
               <p className="mt-2 text-xs text-muted">
                 Confirming here does not write a roadmap item. Shipping a related feature would still not close every original request.
@@ -354,7 +354,7 @@ export function CustomerFeedbackWorkflow() {
                 <dt className="font-medium">Product update</dt>
                 <dd className="text-muted">
                   {decision === "accepted"
-                    ? "Demo status: reviewed, not shipped. Each original request stays open until someone writes that account."
+                    ? "Review status: reviewed. Each original request stays open until someone writes that account."
                     : "No product status yet. Confirm the review on the previous step, or leave this open."}
                 </dd>
               </div>
@@ -387,7 +387,7 @@ export function CustomerFeedbackWorkflow() {
                 {copied ? "Copied" : "Copy draft"}
               </button>
             </div>
-            <p className="mt-3 text-xs leading-5 text-muted">Human review is required before sending. This demo does not email anyone.</p>
+            <p className="mt-3 text-xs leading-5 text-muted">Human review is required before sending. Copy the draft to your email tool when ready.</p>
           </Frame>
         ) : null}
       </div>

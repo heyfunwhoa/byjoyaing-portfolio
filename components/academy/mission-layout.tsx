@@ -8,21 +8,31 @@ export function MissionLayout({
   step,
   onStep,
   children,
+  embedded = false,
+  headingId = "mission-step",
 }: {
   steps: readonly string[];
   step: number;
   onStep: (step: number) => void;
   children: ReactNode;
+  /** Embedded lessons follow an h3 and use a compact navigation row. */
+  embedded?: boolean;
+  headingId?: string;
 }) {
   const heading = useRef<HTMLHeadingElement>(null);
+  const Heading = embedded ? "h4" : "h2";
   function go(next: number) {
     onStep(next);
-    heading.current?.focus();
+    requestAnimationFrame(() => heading.current?.focus());
   }
   return (
-    <div className="mt-8 grid min-w-0 gap-6 lg:grid-cols-[13rem_minmax(0,1fr)]">
+    <div
+      className={`grid min-w-0 ${embedded ? "mt-6 gap-5" : "mt-8 gap-6 lg:grid-cols-[13rem_minmax(0,1fr)]"}`}
+    >
       <nav aria-label="Mission steps">
-        <ol className="grid grid-cols-2 gap-2 lg:grid-cols-1">
+        <ol
+          className={`grid grid-cols-2 gap-2 ${embedded ? "sm:grid-cols-4" : "lg:grid-cols-1"}`}
+        >
           {steps.map((label, i) => (
             <li key={label}>
               <button
@@ -31,8 +41,7 @@ export function MissionLayout({
                 aria-current={step === i ? "step" : undefined}
                 className={`min-h-12 w-full rounded-xl border px-4 py-3 text-left text-sm transition-colors motion-reduce:transition-none ${step === i ? "border-accent bg-card font-semibold" : "border-border hover:bg-card"}`}
               >
-                <span className="mr-2 text-accent">{i + 1}.</span>{" "}
-                {label}
+                <span className="mr-2 text-accent">{i + 1}.</span> {label}
               </button>
             </li>
           ))}
@@ -42,20 +51,20 @@ export function MissionLayout({
         </p>
       </nav>
       <section
-        aria-labelledby="mission-step"
-        className="min-w-0 rounded-2xl border border-border bg-card p-5 sm:p-8"
+        aria-labelledby={headingId}
+        className={`min-w-0 rounded-2xl border border-border bg-card ${embedded ? "p-4 sm:p-5" : "p-5 sm:p-8"}`}
       >
         <p className="text-xs font-semibold tracking-wider text-accent uppercase">
           Step {step + 1} of {steps.length}
         </p>
-        <h2
-          id="mission-step"
+        <Heading
+          id={headingId}
           ref={heading}
           tabIndex={-1}
-          className="mt-2 font-display text-3xl"
+          className={`mt-2 font-display ${embedded ? "text-2xl" : "text-3xl"}`}
         >
           {steps[step]}
-        </h2>
+        </Heading>
         <div className="mt-6 space-y-5">{children}</div>
         <div className="mt-8 flex flex-wrap justify-between gap-3 border-t border-border pt-5">
           <button

@@ -45,24 +45,24 @@ The guided programming component is a modal for two programming slugs and scores
 | `content/academy/lessons/`                  | No new editorial record                                                                                                       |
 | `docs/design/component-adoption.md`         | Adoption note for this call site                                                                                              |
 
-The rendered order is objective, section links, vocabulary, worked example, guided practice, two checks, independent notes, then next step. The catalog exercise, practice link, single knowledge check, review button, companion and sources remain below it.
+The current branch renders the objective and glossary trigger, then four unlocked steps: Understand (analogy and vocabulary), See (one example in three views), Try (guided practice and two checks), and Explain (independent notes, rubric and next lesson). The catalog exercise, practice link, single knowledge check, review button, companion and sources remain below it.
 
-Section links move focus to the section. They do not create a durable lesson URL. Lesson choice stays in memory.
+Step buttons and Back/Continue move focus to the active step heading. They do not create a durable lesson URL. Lesson choice, active step, example view, answers and notes stay in component memory. Switching steps preserves them; leaving the lesson or refreshing resets this pilot state. Reading review remains a separate explicit action.
 
 Practice and both checks use labeled radio groups. The selected choice's explanation stays visible, including when it is wrong. Reset clears that group. The verification example stays hidden until requested. Notes are component state only: they are not submitted, saved or scored. A correct choice does not press "Mark as reviewed".
 
-Next step uses the existing `selectLesson` function. Design Lab stays on the frontend path. CMS fundamentals leaves that path because it is not one of its lessons.
+Next step uses the existing `selectLesson` function. Design Lab stays on the frontend path (`keepPath: true`). The CMS button still calls `selectLesson` with `keepPath: false`, so it clears the path view. That is the tested pilot behavior. KRU-174's frontend path now also lists `cms-fundamentals`, so that lesson remains reachable from the path list. This integration does not change the button.
 
 ## Responsive and keyboard contract
 
-- Phone: one reading column, the existing lesson selector, wrapping section links and labels, stacked choices, at least 44px targets. The example source scrolls inside its box.
+- Phone: one reading column, the existing lesson selector, a two-column step selector and wrapping labels, stacked choices, at least 44px targets. The example source scrolls inside its box.
 - Tablet: the same reading order. No second sidebar is required.
 - Desktop: the existing catalog sidebar remains. The lesson stays one column.
-- Keyboard: links move between sections, buttons run actions, radios are labeled, focus stays on the radio after it is selected, and feedback uses a polite status. No drag or hover-only meaning.
+- Keyboard: step buttons focus the active heading; the example tabs support arrows and Home/End; the glossary traps focus, closes with Escape and returns to its trigger. Other buttons run actions, radios are labeled, focus stays on the radio after it is selected, and feedback uses a polite status. No drag or hover-only meaning.
 - Motion: none added. An answer does not scroll or advance.
 - The code sample is selectable and scrolls inside its box.
 
-## Verification
+## Initial pilot verification (historical, before the four-step enrichment)
 
 | Check                                                                                | Result                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -82,4 +82,19 @@ Human review time, agent runtime, tokens and cost were not available from a bill
 
 ## Coordination
 
-PR #233 is the curriculum draft that first added this note. This copy adds the measured decision and the implementation. Reconcile the two copies if both are open. PR #234 adds optional account actions around the shared lesson and was not edited. PR #235 is the release handoff and was not edited. No merge or deployment is requested here.
+PR #233 first wrote this note as an unimplemented brief. This copy is the measured decision and the implementation, and it replaces that "not implemented" status. The lesson sequence from the brief is the rendered panel in `components/ai-academy/frontend-lesson.tsx`. PR #234's account controls were checked against this mount and were not imported. PR #235 was not edited. PR #237's companion stays on `mcp-vs-rest-api`. No merge or deployment is requested here.
+
+
+## Four-step enrichment on canonical PR #238 (2026-11-08)
+
+The owner approved this bounded UI pilot. Reuse the existing `MissionLayout` with an embedded layout and h4 step heading; its standalone default remains available to Follow one click. The six original content sections remain grouped into four stages, with no new lesson records, prerequisites or curriculum claims.
+
+- `FrontendExample` adopts only the local Radix-backed Tabs wrapper. Plain English, Rendered card and Code show the same existing fixture. The source is selectable, focusable and horizontally scrollable inside its own box. The chosen view survives step navigation.
+- `FrontendGlossary` adopts only the local Radix-backed Sheet wrapper. One trigger remains available at every step. A full-width phone drawer and bounded desktop drawer show the five existing terms, with a 44px close target, scrollable definitions, modal focus containment and Escape/close focus return.
+- `MissionLayout` uses a two-column phone step selector, four columns when space permits, explicit current step, Back and Continue. Navigation remains unlocked. Heading focus moves after the new content renders.
+- Choice feedback and reset remain scoped to each question. Notes and answers survive step changes but are not persisted. This pilot does not award completion, mastery or approval.
+- No new dependencies, providers, storage, analytics events or content source. Five tracks, nine paths and the existing lesson IDs retain ownership under KRU-174. KRU-178 owns verification and owner review.
+
+Automated acceptance in `tests/site/frontend-lesson.spec.ts` covers unlocked step navigation and heading focus; retained notes, choices and example view; isolated reset and untouched reading review; keyboard tabs; contained code scrolling at 375/768/1280px; and glossary focus trap, scroll, Escape and focus return at 375×400. Site tests run with reduced motion. Exact-head results and the Vercel preview are recorded in PR #238 and KRU-178 after CI. These checks do not establish learner effectiveness, physical-device usability or manual screen-reader acceptance.
+
+Rollback this enrichment by reverting its scoped components, `FrontendLesson` changes, embedded `MissionLayout` option, two allowlist entries and tests. No data migration is required. This is preview work, not a production release.

@@ -404,7 +404,7 @@ Status: proposed catalog and brand guidance only. Owner: portfolio maintainer. N
 
 - Owner/destination: portfolio maintainer, `/about` education. Extend the existing name-matched local-image pattern for AWS Certified Cloud Practitioner and AWS Certified AI Practitioner. Split the existing combined credential line into two editable education entries; keep the current string-array schema and school sizing.
 - Assets: original official 600px RGBA PNGs from AWS-issued Credly badge pages, replacing the opaque marketing exports at the owner's request. True alpha transparency lets the page surface show around each badge; source bytes are unchanged, without cropping, recoloring, redrawing, or CSS blending. Source links, checksums, AWS mark ownership, and display boundaries are in `public/badges/README.md`. No new package, account integration, personal verification URL, issue/expiry date, or Early Adopter designation.
-- Composition: each 80px image sits beside readable 14px credential text beneath the schools. The existing grid gives the badges two columns from 640px and stacked rows on phones. Preserve source transparency and clear space. The certifications remain identified as Foundational.
+- Composition: each badge image sits beside readable 14px credential text beneath the schools. The existing grid gives the badges two columns from 640px and stacked rows on phones. Each education sentence stays on its own line. The Texas entry reads Bachelor of Science in Advertising, then Business Foundations, then the university. Preserve source transparency and clear space. The certifications remain identified as Foundational.
 - Accessibility/state: empty alt text and an aria-hidden image wrapper avoid repeated announcements; the visible credential names carry the meaning. No new links, focus targets, motion, or asynchronous interaction. Other learning entries retain their text fallback.
 - Verification: downloaded source files have RGBA mode, alpha range 0–255, and transparent outer corners. Existing About editorial validation plus current-head CI and the About viewport/motion matrix cover the page. Inspect actual badge loading, transparent edges against the page surface, dimensions, adjacent text, and overflow in the preview. Manual device/zoom/screen-reader checks remain separate. Tier 1 scoped presentation refinement; no new tracking issue. Rollback removes the two badge mappings/assets and restores the prior combined credential line.
 
@@ -429,3 +429,96 @@ The owner also reported that expanding Architecture looked cramped on desktop. T
 - **Accessibility:** Logical DOM order, semantic `ol`, visible headings, non-interactive cards, no hidden essential content or motion. The parent Architecture disclosure keeps native keyboard operation.
 - **Verification:** The browser spec checks 320, 375, 768 and 1280px, ordered headings, responsive placement and page overflow. Manual 200% zoom, real-device readability and screen-reader checks remain release gates.
 - **Rollback:** Revert the architecture component along with this draft PR. No route, data or dependency changes.
+
+## Academy curriculum organization (2026-10-30, KRU-174)
+
+Proposed data-only reuse of the existing Academy navigation foundation. Source/destination: `components/ai-academy/academy.tsx` and `app/ai-academy/page.tsx` for path data. This section does not remove the Frontend lesson mount recorded above, and it does not remove the breadcrumb sections from main. Existing native path disclosure, responsive path cards, lesson selector, focused headings, prerequisite buttons and resource cards consume nine paths and corrected availability metadata. Owner: portfolio maintainer. No dependencies, new tokens, animation or external source imports.
+
+Phone retains stacked cards/select controls, tablet the existing two-column breakpoints and desktop the existing three-column chooser/sidebar. All path steps remain skippable. Reduced-motion behavior is inherited; no new loading, network or permission state. New browser coverage checks the recovery lesson and related Systems destination; prerequisite/coverage tests guard the data contract. The keyboard sequence test already on main stays. Manual keyboard, 200% zoom, screen reader and real-device checks were not run for this organization. Revert the path and recovery files to roll back; publication is not claimed.
+
+### Academy navigation components (2026-11-08, KRU-178 / PR #238)
+
+- **Task:** Reach a useful lesson, understand its place in the path, and move from reading into practice. This replaces the unbounded desktop catalog and resource-first page order. Side Quests remains the entry and all existing routes remain intact.
+- **Source / decision:** Adapt the existing native path disclosure, catalog selector and prerequisite/sequence controls. `LearningPathPicker` adds a direct recommended-path action. `LessonLibrary` adapts the directory search/empty-recovery pattern, with a bounded desktop list and a native mobile/tablet selector. `LessonOutline` adapts the in-page contents pattern to Read / Practice / Check. Installed Lucide outline icons are decorative and paired with text; no new package or token is introduced. These are Academy components, not new global page templates.
+- **Composition:** Recommended entry and optional path chooser → Academy sections → selected path or searchable catalog beside the lesson → supporting resources. The lesson has a short outline, preparation, explanation, practice, answer check, self-review, references and next lesson. Existing five subject tracks and nine goal paths are unchanged.
+- **Responsive / accessibility:** On phones and tablets, the library stacks above the lesson and uses a labeled native selector. Desktop has a sticky sidebar with bounded scrollable lesson/path lists; focused buttons remain scrollable into view. Search announces a result count, preserves the open lesson and answer, and offers a focus-restoring clear action. Lesson selection focuses the heading. Native section anchors focus their targets and offset the sticky header. Answers have 48px minimum rows. Path position is reading order, not completion. No animation added; existing reduced-motion behavior remains.
+- **States / boundaries:** Empty search, selected lesson, path switching, reviewed/unreviewed and correct/retry answer feedback. No network loading state, persisted progress, new curriculum, auth activation, or automatic completion. The review control remains independent of answers and practice.
+- **Verification:** `tests/site/academy-navigation.spec.ts` covers search, empty recovery, retained answers, refresh reset, keyboard section links, recommended-path progression, responsive selectors/targets/overflow and resource order. Existing Academy foundation, Frontend and editorial browser tests remain. Exact-head CI and observed preview results belong in the PR and KRU-178; this source note does not claim they passed. Real screen-reader, device and learner acceptance remain separate.
+- **Overlap / rollback:** Reconciled main through `4ff1167225ac12c75e13335b73b7815cbfef7aa8`. PR #267's separate IaC lab import/mount stays unmerged and must be rebased onto this Academy owner; no lab content was changed here. PR #234's learner-account work stays inactive. Revert this navigation slice to restore the prior Academy composition without changing lessons or paths. No brand-foundation change or Notion brand update is needed.
+
+## Page jobs (2026-11-07)
+
+- **Owner / destination:** portfolio maintainer. Home, Work, Field Notes, Side Quests, `/ai-academy`, and project pages at `/work/[slug]` plus `FieldAssetCase`.
+- **Task:** Each area does one job. Side Quests introduces independent projects and the way into Builder Academy. Project pages explain the problem, the contribution, and one example before status.
+- **Reuse:** Existing `PageMain`, bento tiles, collection links, `SampleRecordView`, and `CaseStudyContents`. `ProjectStoryLead` groups three existing fields. No new dependency, motion, or navigation item.
+- **Phone / tablet / desktop:** Sections stack in source order. The Academy link and contents links keep a 44px target and the existing underline focus style. Side Quests stays current in the header on `/ai-academy` and `/builder-academy`.
+- **States:** A project without a saved sample uses the existing field note or smallest-version sentence. Academy lessons stay on their current routes.
+- **Verification:** `lib/page-jobs.test.ts` and the Side Quests active-state assertions in `lib/site-nav.test.ts`. Browser checks belong with the pull request. Manual zoom, real devices, and screen readers remain separate.
+- **Rollback:** Remove the Academy section, restore the previous openers, and stop rendering `ProjectStoryLead`.
+
+## Game-like workflow prototypes (November 6, 2026)
+
+Local Design Lab only: reuse BentoGrid/Card/ProjectStatusPill and catalog data for exploration, installed React Flow 12.12.0 for an optional learning-path graph, and native controls for practice checks. New MissionWorkspace models four fictional self-reviewed deliverables; editing clears review. No package changes, public mounts or changed canonical lesson records. See [gameful-adoption.md](gameful-adoption.md) for source decisions, responsive/motion behavior, verification requirements and rollback. KRU-150 owns portfolio adoption; KRU-147 owns the GTM consumer. Status: implemented prototype, pending acceptance.
+
+## Purpose-led project cards (November 7, 2026)
+
+- **Source:** existing directory articles, `FeaturedSideQuestStrip`, native `details`, and `DisclosureSection`. No new dependency or motion.
+- **Destination:** `/side-quests`, `/projects`, and the shared case-study cards those pages link to. Design Lab cards stay on `ProjectStatusPill`.
+- **Decision:** Reuse the card and disclosure. Lead with the problem, intended value, and contribution. Keep the recorded stage inside “How it works.” One GTM Revenue OS group links the three existing revenue write-ups. One Builder Academy link reuses `/ai-academy`.
+- **Responsive and access:** One column on a phone, the revenue workflows sit three across from 768px. Actions keep a 44px target, visible focus, and keyboard activation. Reduced motion is unchanged. Empty search stays the existing directory message.
+- **Verification:** `lib/project-presentation.test.ts` and `tests/site/project-presentation.spec.ts`. Manual 200% zoom and screen-reader review remain separate from an automated zoom proxy.
+- **Rollback:** Revert this presentation slice. Routes stay the same.
+
+### Project story follow-up (November 8, 2026, PR #288)
+
+- Reuse `ProjectStoryLead`, `CaseStudyContents`, and `DisclosureSection` in the generic project route and `FieldAssetCase`. Keep problem, contribution, and example visible; render recorded stage once inside How it works. Remove the repeated field-asset hero contribution and the duplicate proposed-software paragraph from the disclosure. Field evidence and proposed-software context remain visible beside the example.
+- Preserve `#where-it-stands` as a nested section. The existing disclosure opens for direct links and refreshes at that fragment. Contents navigation offers one How it works destination instead of separate links to the same supporting context.
+- All widths retain source order and existing tokens. Native Enter/Space operation, visible focus, and reduced-motion behavior stay with the existing disclosure; no dependency, state store, API, or shared component behavior changes.
+- Verification lives in the updated page-jobs guard and the existing project-presentation browser suite: both templates at 375/768/1280, single contribution/status text, reading order, contents links, keyboard disclosure, legacy fragment and refresh. Results and manual review limits are recorded against the final PR head.
+- KRU-150 remains the existing reference; no new issue or competing implementation. This follow-up does not change brand fundamentals or require a Notion brand-summary update. Rollback restores the two template sections and their prior guard without changing routes or underlying project facts.
+
+
+## Frontend Academy enrichment, PR #238 (2026-11-08)
+
+Owner-requested pilot for the existing Frontend lesson only. Reuse `components/academy/mission-layout.tsx` in embedded mode; adopt local `ui/tabs` only through `components/ai-academy/frontend-example.tsx` and `ui/sheet` only through `components/ai-academy/frontend-glossary.tsx`. These exact imports are allowlisted in `lib/shadcn-setup.test.ts`; the public-adoption guard stays intact elsewhere. Existing Radix primitives and brand tokens provide behavior and appearance, with no new package or theme.
+
+The user moves through Understand / See / Try / Explain, switches one example between words, rendered card and code, and opens a glossary without losing lesson state. Tabs use the installed Radix `data-state` contract for selected styling. Code scroll is contained; modal definitions scroll independently; close and step controls are at least 44px. The drawer uses a single trigger for focus restoration, a visible title, focus containment and Escape. No added animation, autoplay or quiz gate. Current step and answer status do not claim mastery or review.
+
+See [Frontend pilot](../academy/FRONTEND-PILOT.md) for ownership, responsive behavior, verification requirements and rollback. Browser evidence belongs to the exact PR head; manual screen-reader, physical-device and learner acceptance remain explicit owner-review work. This scoped adoption is not approval for every Academy lesson or any Design Lab engine.
+
+## Project discovery comparison (November 8, 2026)
+
+- **Source:** `lib/component-options.ts` families `summaries`, `context`, and `process-illustrations`; existing lessons in `lib/component-lessons.ts`; `FeaturedSideQuestStrip`; `ProjectsDirectory`; `ProjectsSystems`; `ProjectEvidence`. No new registry family or dependency.
+- **Lab destination:** `components/design-lab/project-discovery-comparison.tsx`, mounted on `/design-lab` and in the component-lesson explorer. Status: lab prototype.
+- **Public destination:** Home keeps one Side Quest and adds the existing problem, contribution, and intended value. Side Quests keeps the sage scroll-snap strip, now with those facts, lifecycle text, an approved sample when one exists, category filters, and previous/next. `/projects` keeps the searchable directory and shows stage, technologies, and an approved sample on the card. Work stays on `WorkExplorer`.
+- **Decision:** Reuse the public records. Do not invent screenshots. The Embla carousel stays a lab lesson so Side Quests does not copy the Work carousel.
+- **Phone / tablet / desktop:** Strip cards are one across on a phone, two from 640px, three from 1024px. Directory cards stack, then two columns, then three. Controls stay at least 44px. The lab width select caps the example at 375 and 768px.
+- **Keyboard and motion:** Pressed filters, labeled previous/next, disabled ends, no autoplay. The sheet uses the installed dialog focus trap. Reduced motion uses an instant scroll and a zero-duration carousel. Empty filters explain how to reset or open the directory.
+- **Verification:** `lib/component-lessons.test.ts`, `lib/featured-work.test.ts`, `tests/visual/project-discovery.spec.ts`, and `tests/site/project-presentation.spec.ts`. Viewport, zoom, and screen-reader results belong in the PR. Lab availability is not approval to replace the directory.
+- **Rollback:** Remove the comparison section and the seven lessons, and restore the previous strip and directory card markup. Routes stay the same.
+
+## Case-study evidence storytelling comparison (November 9, 2026)
+
+- **Status:** Design Lab teaching specimen, not adopted on public case-study routes. Roadmap #322.
+- **Source:** existing `ProjectEvidence`, `ProjectPreview`, `directoryProjects`, `getProject`, canonical case-study pages, and current brand tokens. No new package, registry family, images, or invented claims.
+- **Implementation:** `components/design-lab/case-study-evidence-comparison.tsx`, Storybook specimen and bounded visual/browser test. Compare story-first vs evidence-first layouts with two existing examples: Detector Coverage Atlas and Account Intelligence.
+- **Boundary:** Atlas shows a fixed illustrative table, not live scanning or proof of vendor gaps. Account Intelligence uses a fictional browser walkthrough with no live sources or outbound sending. Do not conflate this portfolio example with a separately deployed Account Signal Engine.
+- **Responsive / accessibility:** Normal document reading order, native pressed buttons, visible titles and sample captions, no autoplay, no added animation. Verify focus, 375/768/1280 widths, 200% zoom, reduced-motion settings, and real screen-reader use before adoption.
+- **Decision gate:** After evidence and UX approval, pilot only one case study at a time. Keep the existing public contents links and source attributions; prefer existing approved figures over synthetic product screenshots. Rollback by removing the single Lab mount and specimen.
+
+## Atlas evidence reading guide (November 9, 2026)
+
+- **Scope and source:** First public case-study pilot from the evidence-storytelling Design Lab comparison (#327). Reuse the existing `AtlasCase`, `CoverageExplorer`, `CaseStudyContents`, source attribution anchors, and brand tokens. No new dependency or screenshot assets.
+- **Reader task:** Before using the table, distinguish what the fixed sample actually contains from what it cannot prove. The compact guide identifies three sources and five credential types, explicitly excludes live detection, complete coverage, vendor gaps and monitoring, and links to the pre-existing cell definitions and attribution.
+- **Behavior:** Native links and document reading order, no autoplay or motion. Guide stacks on narrow screens and uses a three-column definition list at wider widths; no page-wide overflow expected.
+- **Acceptance:** Production build, lint, tests and site Playwright, 375/768/1280/200% zoom and keyboard/real screen reader review. No approval is implied by CI alone.
+- **Rollback:** Revert the guide-only change inside `components/atlas-case.tsx`; existing table, route, source links and contents remain unchanged.
+
+## Account Intelligence reading guide (November 9, 2026)
+
+- **Scope:** Companion public case-study pilot to the Detector Coverage Atlas evidence guide, using existing Account Intelligence page content. No new screenshots, metrics, libraries, registry entries or external connections.
+- **Reader task:** Separate the fictional on-page walkthrough from proposed production architecture and unmeasured business outcomes before a visitor explores the page.
+- **Adoption:** A native three-part definition list below the introductory project example, with existing fragment links to the workflow, architecture and success-measures sections. No additional motion or application state; reuse ivory/sage/copper tokens and the existing contents navigation.
+- **Evidence boundaries:** Demo is browser-only and fictional; source integrations, database, CRM and sequencer are planned, not connected; usage and pipeline outcomes are proposed measures, not results.
+- **Acceptance:** Verify lint, tests, production build, site Playwright, 375/768/1280 and 200% zoom, keyboard focus and real screen-reader behavior. Public adoption is limited to this case-study reading guide; future interactive galleries require their own approval.
+- **Rollback:** Remove the guide markup without affecting the original workflow, architecture, metrics, case-study anchors, or links.
