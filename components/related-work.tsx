@@ -12,6 +12,7 @@ const relatedBySlug: Record<string, string[]> = {
   "detector-coverage-atlas": ["truffle-camp", "competitive-intelligence-engine", "account-intelligence"],
   "competitive-intelligence-engine": ["detector-coverage-atlas", "product-release-intelligence", "account-intelligence"],
   "truffle-camp": ["detector-coverage-atlas", "competitive-intelligence-engine"],
+  "a-keys-day": ["truffle-camp", "competitive-intelligence-engine"],
   "partner-gtm-engine": ["account-intelligence", "customer-feedback-intelligence"],
   "product-release-intelligence": ["customer-feedback-intelligence", "truffle-camp"],
   "security-signal-intelligence": ["account-intelligence", "competitive-intelligence-engine"],

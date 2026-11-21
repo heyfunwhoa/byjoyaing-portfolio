@@ -687,6 +687,100 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "a-keys-day",
+    title: "A Key's Day",
+    phase: "Enable",
+    careerSignal: "Sales Enablement, Technical Storytelling, Buyer Education",
+    status: "prototype",
+    problem: {
+      summary:
+        "Sales and business teams hear terminal, Git, pipeline, verification, and rotation without seeing how those words connect.",
+      why: "A rep who cannot separate finding a secret from checking whether it still works, or a notification from a fix, overstates or undersells in front of a security buyer.",
+      without:
+        "The workflow gets explained with slides and jargon. Non-coders memorize terms without the day behind them.",
+    },
+    users: {
+      primary:
+        "Enterprise sales and enablement teams, and business readers who need to explain a development workflow accurately",
+      secondary:
+        "New engineers, and security practitioners explaining the workflow to other teams",
+      job: "Follow one key through a workday and explain where its copies land and what a team does after one is found.",
+    },
+    evidence:
+      "A five-part interactive series, live and public: Code (18 steps), then People, Systems, Agents, and Coverage (12 steps each). One made-up key moves through an ordinary day, and every part ends with the old key shut off. Independent lesson. The key is invented, nothing is scanned, and progress is not saved.",
+    goals: [
+      "Explain what a secret is and how one secret ends up with several copies.",
+      "Name places outside source code where a copy can remain.",
+      "Separate detection, verification, analysis, notification, and rotation.",
+      "Show why rotation is the step that removes access, and why it is hard.",
+    ],
+    nonGoals: [
+      "Scanning real code or handling real credentials.",
+      "Replacing official product documentation.",
+      "A course platform: no accounts, scores, or saved progress.",
+    ],
+    mvp: {
+      version:
+        "Part 1 (Code): one story from workstation to rotation, then four more parts on the same engine.",
+      question:
+        "Can a non-coder follow one key through a day and tell detection, verification, notification, and rotation apart?",
+    },
+    workflow: [
+      "Workstation",
+      "Editor",
+      "Pre-commit",
+      "Repository",
+      "Pipeline",
+      "History",
+      "Detect",
+      "Verify",
+      "Analyze",
+      "Notify",
+      "Rotate",
+    ],
+    systemPlain: [
+      "One story engine shared by five parts",
+      "A made-up key and a named cast",
+      "Optional detail with cited sources",
+      "A jump-to-topic index",
+    ],
+    systemTechnical: [
+      "Static HTML, CSS, and JavaScript",
+      "One shared lesson engine",
+      "Lint, format, content, and test checks on every change",
+      "Static hosting on Vercel",
+    ],
+    dataModel: ["Part", "Step", "Copy of the key", "Cast member", "Source"],
+    metrics: {
+      operational: ["Lesson checks pass on every change"],
+      behavioral: [
+        "A reader explains detection versus verification in their own words",
+      ],
+      business: [
+        "Hypothesis: a rep explains a leaked key to a security buyer without overclaiming.",
+      ],
+    },
+    hypothesis:
+      "If a non-coder watches one key move through a real workday, the vocabulary sticks because each word arrives at the moment it matters.",
+    tradeoffs: [
+      "One made-up key and one story vs. a broad reference.",
+      "A static site with no saved progress vs. a course platform.",
+      "Optional detail folded away vs. everything on screen.",
+    ],
+    prototype:
+      "Live, public lesson series. An independent project, not employer training. Source repository is private.",
+    next: [
+      "A walkthrough with a non-coder reader.",
+      "Recheck tool details against official sources.",
+      "One practice exercise: which security control would help here?",
+    ],
+    businessValue: [
+      "Clearer technical conversations",
+      "Faster ramp on security vocabulary",
+      "Fewer overstated claims",
+    ],
+  },
+  {
     slug: "competitive-intelligence-engine",
     title: "Competitive Intelligence Engine",
     phase: "Discover",

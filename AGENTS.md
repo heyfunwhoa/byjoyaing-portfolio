@@ -96,3 +96,10 @@ For preview, merge and deployment work, read [RELEASE.md](RELEASE.md). Batch rel
 ## Source verification for public claims, lessons and tool recommendations
 
 For new or materially revised portfolio claims, case studies, learning materials, research, project/tool references, framework explanations and outward-facing recommendations, follow the [canonical claim/source verification standard](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/standards/source-verification-v1.md) (draft [Technical Docs PR #75](https://github.com/heyfunwhoa/technical-docs-platform/pull/75)). Record primary publisher/source, exact supported claim, actual verification date or null, confidence, limits, rights/licensing status and a review trigger. If content is synthetic, hypothetical or derived advice, label it clearly. A linked citation does not prove the claim was inspected; a public web page does not automatically grant reproduction rights. Avoid private workspace/customer content and do not claim audit, deployment or licensing approval without evidence. The record belongs with its owning content/repository, not a second source database.
+
+## Working rules for AI coding assistants
+
+- **Open pull requests as drafts** while you're still working. CI skips drafts; mark the PR ready for review when the work is done and the local checks pass. Don't push a stream of small commits to a ready PR — each push to a ready PR bills CI minutes.
+- **Let the git hooks run.** Never use `--no-verify` (or `-n`) on `git commit` or `git push`. If a hook fails, fix the cause. If the secret scan blocks a commit, remove the secret; don't work around the scan.
+- **Never put a secret in the repo, a commit, a chat message, a ticket, a log, or agent settings** (such as `.mcp.json` or `.env` files that get committed). Read keys from the secret manager or environment variables. If a real key was ever written somewhere it shouldn't be, say so — it has to be rotated, not just deleted.
+- **Run the repo's local checks before pushing**, since draft PRs get no CI run.

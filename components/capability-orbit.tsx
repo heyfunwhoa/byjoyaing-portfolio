@@ -132,7 +132,7 @@ export function CapabilityOrbit({ artwork = true }: { artwork?: boolean }) {
           </div>
         </div>
         <p className="relative mt-6 text-sm leading-6 text-[#F3EFE6]">
-          {orbitCenter.summary} Select the center or a pillar to see the evidence around it.
+          Select the center or a pillar to see the evidence around it.
         </p>
       </div>
 

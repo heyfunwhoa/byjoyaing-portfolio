@@ -12,7 +12,7 @@ export const metadata: Metadata = completePageMetadata(
     openGraph: { url: "/field-notes/build-the-motion" },
     title: "How I'd Build a Motion at Your Stage",
     description:
-      "A gated, sell-first plan for building an early sales motion: prove the deal, make it repeatable, then scale what is proven.",
+      "A sell-first plan for building an early sales motion and the team behind it: prove the deal, make it repeatable, then scale what is proven.",
   },
   "/field-notes/build-the-motion",
 );
@@ -27,6 +27,7 @@ const phases = [
       "Pressure-test the ICP against real conversations, not the pitch deck.",
     ],
     gate: "First closed deals, plus a repeatable first-meeting-to-opportunity rate.",
+    team: "Me, the founder on strategic deals, one SE shared with product.",
   },
   {
     id: "repeat",
@@ -37,6 +38,7 @@ const phases = [
       "Tighten the loop with product and marketing on what buyers actually ask for.",
     ],
     gate: "A second person (rep, SE or founder) can run the playbook and get similar results.",
+    team: "Add the first hire where the motion is constrained: an AE if I have more qualified pipeline than I can work, an SE if evaluations are queuing.",
   },
   {
     id: "scale",
@@ -44,9 +46,10 @@ const phases = [
     title: "Scale what is proven",
     work: [
       "Hire or onboard against the playbook, with a ramp plan built from my own first 90 days.",
-      "Set pipeline coverage and forecast rhythm before adding headcount.",
+      "Run a weekly pipeline and forecast rhythm the whole team uses.",
     ],
     gate: "Predictable pipeline and a ramp time the team can plan around.",
+    team: "A small pod (AEs, an SE, outbound support) on one playbook, with me still carrying a number and owning the forecast.",
   },
 ] as const;
 
@@ -59,12 +62,12 @@ export default function BuildTheMotionPage() {
           Field practice · Illustrative model · Short read
         </p>
         <h1 className="mt-3 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">
-          Sell first. Build from what closes.
+          Sell first. Build the team from what closes.
         </h1>
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted">
-          Each phase has a gate, and nothing scales until that gate is passed.
-          I keep carrying a number throughout, so the playbook stays honest
-          because I&apos;m still using it.
+          Each phase ends with a gate and a clear next build: who joins, why,
+          and what they inherit. I keep carrying a number throughout, so the
+          playbook stays honest because I&apos;m still using it.
         </p>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           For a founder, that means the first seller is also building the
@@ -73,7 +76,7 @@ export default function BuildTheMotionPage() {
         </p>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           <strong>Use this when:</strong> an early team needs its first
-          repeatable sales motion and has to decide when to add headcount.
+          repeatable sales motion and a plan for the team that will run it.
         </p>
       </header>
       <section
@@ -100,9 +103,41 @@ export default function BuildTheMotionPage() {
               <p className="mt-4 border-t border-border pt-4 text-sm leading-6">
                 <strong>Gate:</strong> {phase.gate}
               </p>
+              <p className="mt-3 text-sm leading-6">
+                <strong>Team:</strong> {phase.team}
+              </p>
             </li>
           ))}
         </ol>
+      </section>
+      <section
+        id="first-hire"
+        className="scroll-mt-24 border-t border-border py-10"
+        aria-labelledby="first-hire-title"
+      >
+        <h2 id="first-hire-title" className="font-display text-2xl">
+          When I&apos;d make the first hire
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
+          One trigger matters most: I&apos;m turning away qualified pipeline.
+          In practice that means three to five outbound closes with the same
+          buyer and use case, and more qualified opportunities than one seller
+          can work. The bottleneck decides the role.
+        </p>
+        <ul className="mt-5 grid max-w-3xl gap-3 text-sm leading-6 sm:grid-cols-3">
+          <li className="rounded-xl border border-border bg-card p-4">
+            <strong>Pipeline outgrows me:</strong> hire an AE onto the written
+            playbook.
+          </li>
+          <li className="rounded-xl border border-border bg-card p-4">
+            <strong>Evaluations queue up:</strong> add SE capacity before
+            another seller.
+          </li>
+          <li className="rounded-xl border border-border bg-card p-4">
+            <strong>Meetings are the constraint:</strong> add outbound support
+            against the accounts that already convert.
+          </li>
+        </ul>
       </section>
       <section id="conversation" className="scroll-mt-24 border-t border-border py-10">
         <h2 className="font-display text-2xl">Talk through your stage</h2>
@@ -120,7 +155,7 @@ export default function BuildTheMotionPage() {
       </section>
       <SourceAndEvidencePanel
         status="illustrative"
-        limitations="This is a proposed operating approach, not a record of results at a specific company. Timelines are illustrative and depend on stage, market and existing pipeline. Verified selling outcomes are in Work."
+        limitations="A proposed operating approach; timelines flex with stage, market and existing pipeline. Verified selling outcomes are in Work."
       />
       <RelatedWork
         items={[

@@ -49,6 +49,27 @@ export function AtlasCase() {
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
           Covered, Observed, and Not evaluated are different claims. The scroll on a narrow screen is the table, not the page.
         </p>
+        <aside aria-labelledby="atlas-evidence-guide" className="mt-7 rounded-xl border border-border bg-surface-sage p-4 sm:p-5">
+          <h3 id="atlas-evidence-guide" className="text-base font-semibold">What this comparison can tell you</h3>
+          <dl className="mt-4 grid gap-4 md:grid-cols-3">
+            <div>
+              <dt className="text-sm font-semibold">What you can inspect</dt>
+              <dd className="mt-1 text-sm leading-6 text-muted">A fixed example of three sources and five credential types, with distinct review states.</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold">What it does not establish</dt>
+              <dd className="mt-1 text-sm leading-6 text-muted">Live detection, complete coverage, verified product gaps, or continuous monitoring.</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-semibold">How to interpret it</dt>
+              <dd className="mt-1 text-sm leading-6 text-muted">Filter a credential type, then read the cell definitions and source attribution before drawing conclusions.</dd>
+            </div>
+          </dl>
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <a href="#read-the-cell" className="inline-flex min-h-11 items-center text-accent underline">Read the evidence states</a>
+            <a href="#attribution" className="inline-flex min-h-11 items-center text-accent underline">Inspect source attribution</a>
+          </div>
+        </aside>
         <div className="mt-8">
           <CoverageExplorer />
         </div>
@@ -90,14 +111,18 @@ export function AtlasCase() {
       <section id="not-in-repository" className="scroll-mt-24 py-16">
         <p className="text-sm font-medium text-muted">05 / How it works</p>
         <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-5xl">A static sample you can filter.</h2>
-        <ul className="mt-4 max-w-2xl list-disc space-y-2 pl-5 text-base leading-7 text-muted">
-          <li>Three sources and five credential types, typed into this page.</li>
-          <li>A browser filter.</li>
-          <li>Notes elsewhere mention 910 parsed TruffleHog records and 14 enriched. Those rows are not in this table.</li>
-        </ul>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-          Filter the example catalog and inspect the source notes. Unreviewed cells stay gray. The table reflects a fixed set of reviewed examples, maintained independently from Truffle Security.
-        </p>
+        <details className="mt-5 max-w-2xl rounded-xl border border-border bg-card p-4">
+          <summary className="flex min-h-11 cursor-pointer items-center py-2 font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            How the sample is built
+          </summary>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-7 text-muted">
+            <li>Three sources and five credential types, typed into this page.</li>
+            <li>A browser filter. Unreviewed cells stay gray.</li>
+          </ul>
+          <p className="mt-3 text-base leading-7 text-muted">
+            The table reflects a fixed set of reviewed examples, maintained independently from Truffle Security.
+          </p>
+        </details>
         <RelatedWork slug="detector-coverage-atlas" />
       </section>
     </PageMain>

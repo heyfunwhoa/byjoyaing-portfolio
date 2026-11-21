@@ -51,6 +51,10 @@ test("side quests offers one academy entry, one revenue system, and no status pi
   await expect(page.getByRole("link", { name: /Explore the project\s*:\s*Coverage and capacity$/ })).toHaveAttribute("href", "/work/gtm-operating-plan");
   await expect(page.getByRole("link", { name: /Explore the project\s*:\s*Pipeline review$/ })).toHaveAttribute("href", "/work/revenue-intelligence");
   await expect(page.getByRole("link", { name: "Request a walkthrough" })).toHaveAttribute("href", "/contact");
+  await expect(page.getByRole("heading", { name: "Account Intelligence" })).toBeVisible();
+  await expect(page.getByText("Problem:").first()).toBeVisible();
+  await expect(page.getByText("Intended value:").first()).toBeVisible();
+  await expect(page.getByRole("link", { name: "Browse all independent projects" })).toHaveAttribute("href", "/projects#directory");
   await expect(page.getByText("Prototype", { exact: true })).toHaveCount(0);
   await expect(page.locator("a[href*='gtm-revenue-os'], a[href*='vercel.app']")).toHaveCount(0);
 
@@ -76,12 +80,12 @@ test("side quests offers one academy entry, one revenue system, and no status pi
   const card = page.locator("#directory article").filter({
     has: page.getByRole("heading", { name: "Revenue Planning Simulator", exact: true }),
   });
-  await expect(card.getByText("Intended value:")).toBeVisible();
-  await expect(card.getByText("Contribution:")).toBeVisible();
   const details = card.locator("details");
   await details.locator("summary").focus();
   await page.keyboard.press("Enter");
   await expect(details).toHaveAttribute("open", "");
+  await expect(card.getByText("Intended value:")).toBeVisible();
+  await expect(card.getByText("Contribution:")).toBeVisible();
   await expect(card.getByText(/Recorded stage:/)).toBeVisible();
   await expect(card.getByText(/does not save a scenario/)).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);

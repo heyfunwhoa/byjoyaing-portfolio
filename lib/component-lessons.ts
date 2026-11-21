@@ -690,6 +690,307 @@ const components: ComponentLesson[] = [
     related: ["checkbox", "search"],
   },
   {
+    id: "editorialProjectCard",
+    title: "Compact editorial project card",
+    family: "Discovery",
+    kind: "component",
+    level: "foundational",
+    definition:
+      "A compact project card names the work, the focus, and one destination. A problem line can appear when the reader must choose from the card.",
+    why: "Directories hold many projects. A short card lets someone scan before opening a case study.",
+    useCases: [
+      "A filterable project directory",
+      "A secondary list under a featured set",
+      "A card that stays readable at 375px",
+    ],
+    when: "Many similar projects need to stay visible, with one next step.",
+    avoid:
+      "Do not hide the problem when the card is the only place a reader decides. Do not add a decorative status badge when a word already says the stage.",
+    alternatives: [
+      {
+        name: "Screenshot-led card",
+        tradeoff: "Easier to recognize when an approved figure exists. Taller, and empty when no figure exists.",
+      },
+      {
+        name: "Large featured case study",
+        tradeoff: "Room for problem, contribution, and value. Too heavy for a long directory.",
+      },
+    ],
+    variants:
+      "Choose a public featured project, then show or hide the problem line. The stage stays a sentence.",
+    accessibility:
+      "The title is one link. The problem toggle is a labeled checkbox. Category and stage are text. Keep the action at least 44px and the card inside the viewport width.",
+    projects: [
+      {
+        name: "Portfolio",
+        application: "The project directory can stay compact and still name the stage.",
+      },
+    ],
+    prompt: "Can someone tell what the project is and where it goes without opening it?",
+    exercise: "Show the problem line and decide whether the summary was already enough.",
+    source: "https://ui.shadcn.com/docs/components/card",
+    related: ["card", "screenshotProjectCard", "featuredCaseStudy"],
+    catalogId: "summaries",
+  },
+  {
+    id: "screenshotProjectCard",
+    title: "Screenshot-led project card",
+    family: "Discovery",
+    kind: "component",
+    level: "foundational",
+    definition:
+      "A screenshot-led card puts an approved figure first, with a caption, then the title and summary.",
+    why: "A real sample helps someone recognize the work. A missing figure has to say so instead of pretending.",
+    useCases: [
+      "An on-site sample table",
+      "A fictional scenario that is labeled as a sample",
+      "A written project with no screenshot on file",
+    ],
+    when: "An approved figure exists and recognition matters more than fitting many cards on screen.",
+    avoid:
+      "Do not invent a product screenshot, a result, or a production interface. Do not make the figure the only link text.",
+    alternatives: [
+      {
+        name: "Compact editorial card",
+        tradeoff: "Fits more projects and does not depend on an image.",
+      },
+      {
+        name: "Captioned gallery",
+        tradeoff: "Better when one project has several figures.",
+      },
+    ],
+    variants:
+      "Switch between the Detector Coverage Atlas sample and a project that has no screenshot.",
+    accessibility:
+      "Use a figure and caption. Let a wide sample scroll inside the card. The project title remains a text link with a visible focus style.",
+    projects: [
+      {
+        name: "Portfolio",
+        application: "Show ProjectEvidence only for previews that already exist.",
+      },
+    ],
+    prompt: "Is the figure a real sample, and does the caption say what it is not?",
+    exercise: "Open the empty state and read the caption before the title.",
+    source: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure",
+    related: ["editorialProjectCard", "captionGallery"],
+    catalogId: "summaries",
+  },
+  {
+    id: "featuredCaseStudy",
+    title: "Large featured case study",
+    family: "Discovery",
+    kind: "component",
+    level: "foundational",
+    definition:
+      "A large featured card gives one project enough room for the problem, the contribution, the intended value, and the case-study link.",
+    why: "A cover can introduce one project well. The same size for every project makes the page a wall of equal panels.",
+    useCases: [
+      "The one Side Quest on the homepage",
+      "A selected independent build",
+      "A professional story that needs more than a title",
+    ],
+    when: "One project should lead, and the reader should see the problem before the implementation.",
+    avoid:
+      "Do not feature every directory record this way. Do not mix employer Work into an independent Side Quest card.",
+    alternatives: [
+      {
+        name: "Filtered carousel",
+        tradeoff: "Shows a few featured projects, with less room for each story.",
+      },
+      {
+        name: "Compact editorial card",
+        tradeoff: "Better once the reader is browsing the full set.",
+      },
+    ],
+    variants:
+      "Choose among the public featured projects. The facts come from those records.",
+    accessibility:
+      "Use one heading, readable ivory text on charcoal, and a case-study link that includes the project name. Do not rely on the dark surface alone.",
+    projects: [
+      {
+        name: "Portfolio",
+        application: "Home keeps one Side Quest. It does not become a carousel.",
+      },
+    ],
+    prompt: "Can a new visitor say the problem and the next step without scrolling through a directory?",
+    exercise: "Change the featured project and check that the contribution changes with it.",
+    source: "https://ui.shadcn.com/docs/components/card",
+    related: ["editorialProjectCard", "projectCarousel"],
+    catalogId: "summaries",
+  },
+  {
+    id: "projectCarousel",
+    title: "Filtered project carousel",
+    family: "Discovery",
+    kind: "component",
+    level: "foundational",
+    definition:
+      "A project carousel is a short horizontal set of featured work. Filters narrow it, and a preview explains a project before the case study.",
+    why: "A featured set can introduce work without replacing the directory. Filters help when that set has more than one focus.",
+    useCases: [
+      "Browse a few featured Side Quests",
+      "Filter that short set by an existing directory category",
+      "Recover when a category has no featured project",
+    ],
+    when: "The featured set is short, controls are visible, and the full directory remains linked.",
+    avoid:
+      "Do not autoplay, hide the rest of the projects, or use a carousel to compare many equivalent records. Keep Work and Side Quests distinct.",
+    alternatives: [
+      {
+        name: "Static card grid",
+        tradeoff: "Easier to compare everything at once. Long grids weaken a curated introduction.",
+      },
+      {
+        name: "Searchable directory",
+        tradeoff: "The right place for every project and for combined filters.",
+      },
+    ],
+    variants:
+      "Filter the public featured projects, including a category with no featured match. Open and close one preview.",
+    accessibility:
+      "Label Previous and Next, disable the ends, announce the count, and avoid autoplay. Honor reduced motion. The directory link stays available.",
+    projects: [
+      {
+        name: "Portfolio",
+        application: "Teach the carousel here. Side Quests keeps a scroll-snap strip so Work and Side Quests do not share one control.",
+      },
+    ],
+    prompt: "Can someone reach every featured project by keyboard and still find the full directory?",
+    exercise: "Choose Revenue Strategy & Operations, reset, then preview a project.",
+    source: "https://ui.shadcn.com/docs/components/carousel",
+    related: ["featuredCaseStudy", "search", "card"],
+    catalogId: "summaries",
+  },
+  {
+    id: "projectDetailChoice",
+    title: "Inline preview, sheet, or case study",
+    family: "Discovery",
+    kind: "component",
+    level: "foundational",
+    definition:
+      "The same project facts can open inline, in a side sheet, or on the case-study page.",
+    why: "A preview answers whether the write-up is worth opening. The case study remains the full story.",
+    useCases: [
+      "A short preview beside a card",
+      "A sheet when the preview is longer than the card",
+      "A direct case-study link when the reader is ready",
+    ],
+    when: "The reader may need a little more context, and the full write-up already has a URL.",
+    avoid:
+      "Do not trap the only copy of the problem in a sheet. Do not invent a destination for a fictional project.",
+    alternatives: [
+      {
+        name: "Always-visible facts",
+        tradeoff: "Best when the facts are short enough to sit on the card.",
+      },
+      {
+        name: "Accordion",
+        tradeoff: "Useful for optional notes, not for leaving the page.",
+      },
+    ],
+    variants:
+      "The example uses Detector Coverage Atlas. Switch inline, sheet, and the real case-study link.",
+    accessibility:
+      "Inline sets aria-expanded. The sheet has a title, closes with Escape, and returns focus. The case study is a link, not a button that only looks like navigation.",
+    projects: [
+      {
+        name: "Portfolio",
+        application: "Directory cards keep a disclosure for how it works and a link to the case study.",
+      },
+    ],
+    prompt: "Can someone preview the project and still open the canonical case study?",
+    exercise: "Open the sheet, close it with Escape, and then use the case-study link.",
+    source: "https://ui.shadcn.com/docs/components/sheet",
+    related: ["projectCarousel", "accordion", "card"],
+    catalogId: "context",
+  },
+  {
+    id: "captionGallery",
+    title: "Screenshot gallery with captions",
+    family: "Discovery",
+    kind: "component",
+    level: "foundational",
+    definition:
+      "A gallery shows one approved figure at a time, with a caption that says what the figure is and what it is not.",
+    why: "Several samples are easier to inspect one by one than stacked inside every card.",
+    useCases: [
+      "Move between an on-site sample and a labeled scenario",
+      "Include an honest empty frame when no screenshot exists",
+      "Read the caption without opening the case study",
+    ],
+    when: "More than one approved figure needs a caption and a keyboard path.",
+    avoid:
+      "Do not autoplay the frames or use a gallery in place of the problem and contribution.",
+    alternatives: [
+      {
+        name: "Screenshot-led card",
+        tradeoff: "Enough for a single figure on a project card.",
+      },
+      {
+        name: "Case study",
+        tradeoff: "The right place for a long sequence of evidence.",
+      },
+    ],
+    variants:
+      "Choose a frame or use Previous and Next. One frame is the no-screenshot state.",
+    accessibility:
+      "Each frame is a figure with a caption. Frame buttons use pressed state. Previous and Next disable at the ends. A status names the frame number.",
+    projects: [
+      {
+        name: "Portfolio",
+        application: "Reuse ProjectEvidence. Do not add image files that were not approved.",
+      },
+    ],
+    prompt: "Does every frame explain itself without the picture?",
+    exercise: "Move to the no-screenshot frame and read the caption aloud.",
+    source: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure",
+    related: ["screenshotProjectCard", "projectMap"],
+    catalogId: "summaries",
+  },
+  {
+    id: "projectMap",
+    title: "Project relationship map",
+    family: "Discovery",
+    kind: "component",
+    level: "foundational",
+    definition:
+      "A relationship map shows which projects sit in the same motion, with a text list that says the same thing.",
+    why: "A diagram helps someone see neighbors. A list is easier when they need to read and open each project.",
+    useCases: [
+      "Explain that market intelligence, execution, and enablement are related",
+      "Select one project and read its inputs",
+      "Offer the same links without the diagram",
+    ],
+    when: "A handful of real projects have a relationship worth seeing, and each one still links to its case study.",
+    avoid:
+      "Do not draw a line that means a live integration. Do not size nodes by an invented score.",
+    alternatives: [
+      {
+        name: "Text list",
+        tradeoff: "Clearer for comparison and for narrow screens. Less sense of the overall motion.",
+      },
+      {
+        name: "Directory filters",
+        tradeoff: "Better for finding every project in a category.",
+      },
+    ],
+    variants:
+      "Switch between the public systems diagram and a text list of the same projects.",
+    accessibility:
+      "Diagram controls are buttons with pressed state. The list repeats the relationships in reading order. Both modes link to the case studies. The diagram does not move on its own.",
+    projects: [
+      {
+        name: "Portfolio",
+        application: "The projects page already has this map inside a disclosure.",
+      },
+    ],
+    prompt: "Can someone name the relationship without interpreting a line color?",
+    exercise: "Switch to the text list and confirm the same projects are linked.",
+    source: "https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch/Getting_started",
+    related: ["captionGallery", "card", "table"],
+    catalogId: "process-illustrations",
+  },
+  {
     id: "table",
     title: "Data table",
     family: "Data",
