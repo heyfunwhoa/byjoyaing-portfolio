@@ -136,14 +136,14 @@ export function ConnectionCard({
             </p>
             <Image
               src={qrPath}
-              alt={`QR code linking to byjoyaing.com${path}`}
+              alt={`QR code linking to kristenaing.com${path}`}
               width={740}
               height={740}
               unoptimized
               className="h-auto w-full max-w-72 bg-white"
             />
             <p className="text-sm break-all text-muted">
-              {`byjoyaing.com${path}`}
+              {`kristenaing.com${path}`}
             </p>
             <a
               href={qrPath}

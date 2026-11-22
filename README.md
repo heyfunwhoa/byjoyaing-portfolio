@@ -1,4 +1,4 @@
-# byjoyaing.com
+# kristenaing.com
 
 Personal portfolio for Kristen Aing. The public site is a Next.js app. This repository is the place where the site, its content, and its quality checks live.
 

@@ -61,7 +61,7 @@ for (const path of routes) {
       .getAttribute("href");
     expect(canonical).toBeTruthy();
     const canonicalUrl = new URL(canonical!);
-    expect(canonicalUrl.origin).toBe("https://www.byjoyaing.com");
+    expect(canonicalUrl.origin).toBe("https://www.kristenaing.com");
     expect(canonicalUrl.pathname).toBe(path);
     expect(canonicalUrl.search).toBe("");
     expect(canonicalUrl.hash).toBe("");

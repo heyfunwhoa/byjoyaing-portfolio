@@ -81,3 +81,23 @@ These are recommended replacements only where the live string contradicts an acc
 - Employment revenue, quota, or unapproved customer names.
 - A CI-to-Slack operations case study before redacted live evidence exists.
 - Private repository contents inferred from a 404.
+
+## November 22, 2026 editorial notes from Josh Lowry’s Substack
+
+Lowry writes about how he assesses technical sellers and revenue teams. These are editorial recommendations for Kristen’s portfolio. The articles support the hiring lens. Kristen’s own career record supports the claims about her work.
+
+| Priority and page | What Lowry looks for | Portfolio edit and reader check |
+| --- | --- | --- |
+| 1. Work, then Experience | In his June recruiting essay, Lowry describes looking for evidence of security expertise, the customer segment a seller served, and the ability to engage executives. | Put one verifiable contribution on each collapsed Work card. Use the Forcepoint web-security sales, Truffle discovery guides and Rapid7 playbooks already recorded in Experience. Can a hiring manager describe what Kristen sold, who used something she built, and one question to ask her? |
+| 2. Enterprise Deal Anatomy | In his January technical-selling essay, Lowry argues that a seller’s recommendation should change with the buyer’s role and operating problem. | Use one fictional secrets-detection evaluation. Give the engineering lead a question about who can act on a finding. Give the CISO a question about the evidence needed to expand the pilot. Ask what result would change the recommendation. Keep the example visibly fictional. |
+| 3. Account Intelligence | In his May AI hiring essay, Lowry asks candidates to explain workflow inputs, outputs and what they did when an output was wrong. | Walk one synthetic signal through the current demo. Show the original evidence, the draft inference, and the point where a seller can reject it. If a source only shows a hiring announcement, avoid presenting budget as confirmed. A reviewer should be able to identify the unsupported claim and explain what to check next. |
+
+The first two edits are included in this change. The third is a candidate for a follow-up walkthrough. Test it with a reader before expanding the site. Keep employer material, customer names and personal sales figures private.
+
+**Sources inspected November 22, 2026**
+
+- Josh Lowry, *Stop Waiting for Recruiting, Use AI Instead*, June 14, 2026. See the opening description of the candidate profile and the discussion of screening evidence. [Substack](https://joshlowrygtm.substack.com/p/stop-waiting-for-recruiting-use-ai)
+- Josh Lowry, *New Technical Bar for Revenue Teams*, January 28, 2026. See the passages on deployment context and adapting a recommendation to the buyer’s level and role. [Substack](https://joshlowrygtm.substack.com/p/new-technical-bar-for-revenue-teams)
+- Josh Lowry, *Hiring for AI Fluency*, May 8, 2026. See the examples for practitioners, integrators and builders. [Substack](https://joshlowrygtm.substack.com/p/hiring-for-ai-fluency)
+
+These are first-person accounts of Lowry’s approach. They do not establish a company-wide hiring policy or predict hiring outcomes. The articles are attributed and paraphrased. The example questions and page edits are original. Recheck these references when revising the corresponding case study or if an article changes.
