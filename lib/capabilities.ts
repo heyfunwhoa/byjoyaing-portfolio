@@ -46,7 +46,7 @@ export const capabilityViews = [
       "Turn recurring sales and research friction into workflows people can inspect, review and reuse.",
     professionalHref: "/work#gtm-strategy",
     professionalLabel: "Competitive positioning and field guidance",
-    boundary: "The coverage table is a working portfolio sample. The other linked workflows carry their own prototype or design labels.",
+    boundary: "Explore the coverage table, related workflow designs and supporting source material.",
     slugs: ["detector-coverage-atlas", "account-intelligence", "competitive-intelligence-engine"],
   },
   {

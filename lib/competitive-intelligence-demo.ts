@@ -139,7 +139,7 @@ export type Observation = {
   observation: string;
   evidence: string;
   update: string;
-  status: "Needs review" | "Approved for this demo";
+  status: "Needs review" | "Approved for this exercise";
 };
 
 export const starterObservation: Observation = {

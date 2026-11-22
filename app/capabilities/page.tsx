@@ -1,4 +1,5 @@
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
+import { riseIndex } from "@/lib/motion";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { PageMain } from "@/components/page-main";
 import { capabilityViews } from "@/lib/capabilities";
@@ -25,9 +26,9 @@ export default function CapabilitiesPage() {
         </p>
       </section>
       <ul className="grid gap-4 py-12 md:grid-cols-2">
-        {capabilityViews.map((view) => (
-          <li key={view.slug}>
-            <Link href={`/capabilities/${view.slug}`} className="flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-5 hover:border-accent">
+        {capabilityViews.map((view, index) => (
+          <li key={view.slug} style={riseIndex(index)} className="rise-in">
+            <Link href={`/capabilities/${view.slug}`} className="card-lift flex h-full flex-col gap-3 rounded-2xl border border-border bg-card p-5 hover:border-accent">
               <h2 className="text-xl font-semibold tracking-tight">{view.title}</h2>
               <p className="text-sm leading-6 text-muted">{view.summary}</p>
               <span className="mt-auto text-sm font-medium text-accent">Explore the evidence →</span>

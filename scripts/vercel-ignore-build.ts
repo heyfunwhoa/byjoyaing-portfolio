@@ -1,5 +1,6 @@
 import { execFileSync } from "node:child_process";
 import { shouldSkipVercelBuild } from "../lib/release/reliability.ts";
+import { draftPreviewSkip } from "../.release/preview-draft.mjs";
 
 function finish(code: 0 | 1, message: string): never {
   console.log(message);
@@ -8,11 +9,26 @@ function finish(code: 0 | 1, message: string): never {
 
 if (process.env.RELEASE_FORCE_BUILD === "1") finish(1, "build: explicit override");
 
-const previous = process.env.VERCEL_GIT_PREVIOUS_SHA?.trim() ?? "";
-const current = process.env.VERCEL_GIT_COMMIT_SHA?.trim() ?? "";
+const draft = await draftPreviewSkip();
+if (draft) finish(0, draft.reason);
 
-if (!/^[0-9a-f]{40}$/i.test(previous) || !/^[0-9a-f]{40}$/i.test(current)) {
-  finish(1, "build: git SHAs unavailable; fail open");
+// HEAD is the authoritative checkout. Vercel's last-successful deployment SHA
+// is the only safe baseline for incremental builds across multiple commits.
+// A missing baseline must build, including on new preview branches.
+let current = "";
+const previous = process.env.VERCEL_GIT_PREVIOUS_SHA?.trim() ?? "";
+try {
+  current = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+  const providedCurrent = process.env.VERCEL_GIT_COMMIT_SHA?.trim() ?? "";
+  if (!/^[0-9a-f]{40}$/i.test(current) ||
+      (providedCurrent && providedCurrent.toLowerCase() !== current.toLowerCase())) {
+    finish(1, "build: invalid or mismatched checkout SHA; fail open");
+  }
+  if (!/^[0-9a-f]{40}$/i.test(previous)) {
+    finish(1, "build: previous successful deployment SHA unavailable; fail open");
+  }
+} catch {
+  finish(1, "build: required git history unavailable; fail open");
 }
 
 let output = "";
