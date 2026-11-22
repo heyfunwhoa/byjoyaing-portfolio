@@ -523,6 +523,21 @@ See [Frontend pilot](../academy/FRONTEND-PILOT.md) for ownership, responsive beh
 - **Acceptance:** Verify lint, tests, production build, site Playwright, 375/768/1280 and 200% zoom, keyboard focus and real screen-reader behavior. Public adoption is limited to this case-study reading guide; future interactive galleries require their own approval.
 - **Rollback:** Remove the guide markup without affecting the original workflow, architecture, metrics, case-study anchors, or links.
 
+## Competitive Intelligence Engine case-study UX follow-up (2026-11-03)
+
+**Source:** `components/competitive-intelligence-case.tsx`, `components/competitive-intelligence-workflow.tsx`, and the existing reusable `PortfolioExample` disclosure. **Destination:** `/work/competitive-intelligence-engine`. Reuses the established disclosure, responsive tabs/select, session-only state and summary-card patterns, with no additional dependencies.
+
+**Reader task:** Understand a source-backed competitive conversation without mistaking fictional approval controls for real product functionality.
+
+- Put the primary five-step workflow ahead of the optional four-step learning exercise. The optional exercise now clearly explains that it is instructional and independent of the five-step workflow.
+- Add a non-persistent session takeaway under the five-step panel that shows the selected provider, current local review flags, a suggested discovery question, outstanding verification gaps, and the count of notes approved within this demo only.
+- Name the active workflow and brief tab panels independently of desktop-only hidden tab labels so assistive technology can identify them at narrow widths.
+- Use minimum 44px controls for category filters, review/history, submission and local approval actions. Retain keyboard Arrow/Home/End operation on desktop and native select operation on phones/tablets.
+- Privacy: all user entry remains in React in-memory state, no backend, localStorage, analytics payload, or persistence. Submission, review and approval do not produce real field guidance. Refresh resets session state.
+- Responsive behavior: preserves existing 320/375/640/768px selector and 1280px desktop tabs. Summary follows active content in both layouts. Reduced motion unchanged. No new animations.
+- Verify in `tests/site/competitive-workflow-mobile.spec.ts`: reader order, stage/brief accessible names, 44px review control, local review transitions, provider switching, reset on reload, and page-level overflow. Manual screen-reader and 200% zoom remain required before merge.
+- Rollback: revert the focused PR, no migrations or external data.
+
 ## Feedback overview and theme comparison · 2026-10-29
 
 Owner: portfolio maintainer. Status: draft implementation, not merged or deployed.
