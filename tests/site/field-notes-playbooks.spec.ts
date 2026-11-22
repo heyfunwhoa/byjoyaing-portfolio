@@ -35,7 +35,7 @@ for (const width of [375, 768, 1280]) {
 
     for (const [id, linkName, count] of [
       ["sales-playbooks", "Sales playbooks", 5],
-      ["marketing-playbooks", "Marketing playbooks", 5],
+      ["marketing-playbooks", "Marketing playbooks", 3],
     ] as const) {
       await nav.getByRole("link", { name: linkName, exact: true }).click();
       await expect(page).toHaveURL(new RegExp("#" + id + "$"));
@@ -102,10 +102,11 @@ for (const width of [375, 768, 1280]) {
         if (index < count - 1) await page.keyboard.press("Tab");
       }
     }
-    expect(new Set(names).size).toBe(10);
+    expect(new Set(names).size).toBe(8);
     const compact = page.locator("#sales-playbooks [data-compact-playbooks] > ul > li");
     await expect(compact).toHaveCount(5);
-    await expect(page.locator("#sales-playbooks [data-compact-playbooks] details")).toHaveCount(0);
+    await expect(page.locator("#marketing-playbooks [data-compact-playbooks] > ul > li")).toHaveCount(2);
+    await expect(page.locator("[data-compact-playbooks] details")).toHaveCount(0);
     for (const item of await compact.all()) {
       const link = item.getByRole("link").first();
       await expect(link).toBeVisible();
