@@ -4,6 +4,8 @@
 
 ## Where to browse candidates
 
+See the [license reference](#license-reference) to look up an upstream license and record how you used a project.
+
 The authoritative cross-category tool registry is in Technical Docs Platform. **Start with the [browseable 60-tool use-case index](https://github.com/heyfunwhoa/technical-docs-platform/blob/785789969464b788d247deb0333563faca2c89bc/software-catalog/open-source-browse.md)**, generated from the [canonical opportunity register](https://github.com/heyfunwhoa/technical-docs-platform/blob/785789969464b788d247deb0333563faca2c89bc/software-catalog/open-source-opportunities.json) with the [selection and pilot guide](https://github.com/heyfunwhoa/technical-docs-platform/blob/785789969464b788d247deb0333563faca2c89bc/software-catalog/open-source-intake.md), merged through [PR #66](https://github.com/heyfunwhoa/technical-docs-platform/pull/66). The links are pinned to the merged commit to preserve the reviewed catalog baseline.
 
 This **is not another registry**. This portfolio retains the existing curated [component-options catalog](../../lib/component-options.ts), [Design Lab](design-lab.md), [source audit](component-source-audit.md), [adoption contract](component-adoption.md) and Storybook demos. Do not copy the entire cross-category JSON file into this app or add all candidates to the Design Lab UI.
@@ -94,6 +96,35 @@ Documentation reviewed November 22, 2026. The sources describe product behavior.
 Search for the component and repository together. One project can supply several distinct patterns. Add a row under the relevant design topic with the repo, demo, one documented interaction, the reader task it could help, a decision, and the upstream code license (or “unverified”). Date the source check. Use **Saved** to keep an idea, **Try in sketch** to name an experiment, or **Parked** with a reason to revisit.
 
 After a trial, link a screenshot of your sketch in the decision cell. Add one sentence describing what you kept, changed, or dropped and which observation led to that choice. An example format is “Kept [interaction] on [screen] because the reader [observed behavior].” If a team decides to evaluate a dependency, use the shared intake linked above.
+
+### License reference
+
+Start with what you did. Linking to a train-map demo, running its editor, copying its renderer into an app, and hosting a modified editor are four different uses. An [open-source license](https://opensource.org/osd) allows commercial use. Its conditions depend on the material, the license text, and how you use or share it.
+
+| License | What to know when reusing code | Examples and upstream terms |
+| --- | --- | --- |
+| [MIT](https://opensource.org/license/mit) | Keep the copyright and permission notices with copies or substantial portions. You can ship your own changes in a proprietary product. | [DuckDB](https://github.com/duckdb/duckdb/blob/main/LICENSE), [Excalidraw](https://github.com/excalidraw/excalidraw/blob/master/LICENSE), [Slidev](https://github.com/slidevjs/slidev/blob/main/LICENSE), [Bruno open-source client](https://github.com/usebruno/bruno/blob/main/license.md), [Presidio](https://github.com/data-privacy-stack/presidio/blob/main/LICENSE) |
+| [BSD 2-Clause](https://opensource.org/license/bsd-2-clause) | Keep the copyright notice, conditions, and disclaimer in source redistributions. For binaries, reproduce them in the documentation or accompanying materials. | [OpenLayers](https://github.com/openlayers/openlayers/blob/main/LICENSE.md) |
+| [BSD 3-Clause](https://opensource.org/license/bsd-3-clause) | Follow the same notice rules as BSD 2-Clause. Using the rights holder's or contributors' names to imply endorsement requires prior written permission. | [OpenRefine](https://github.com/OpenRefine/OpenRefine/blob/master/LICENSE.txt) |
+| [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) | When redistributing, include the license, retain applicable notices, mark changed files, and carry forward relevant attribution from any upstream NOTICE. Section 3 grants rights to certain contributor patents. | [changedetection.io](https://github.com/dgtlmoon/changedetection.io/blob/master/LICENSE) |
+| [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/FAQ/) | When distributing software, make the source of MPL-covered files, including your edits, available to recipients under the MPL. Separate files containing only your own code can use another license. | Mozilla's FAQ explains the file boundary in questions 11 and 12. |
+| [GPLv3](https://opensource.org/license/gpl-3.0) | You can run or modify a program privately. When distributing a covered program, recipients retain GPL rights. Shipping a binary also requires a way to obtain corresponding source under section 6. A combined work may be covered as a whole. | [Rail Map Painter](https://github.com/railmapgen/rmp/blob/main/LICENCE). Drawing your own map in the editor and shipping its renderer are different uses. |
+| [AGPLv3](https://opensource.org/license/agpl-3.0) | Adds a network-use condition to the GPL. If users interact remotely with your modified program, offer them its corresponding source under section 13. Using the original tool to write your own notes leaves those notes yours. | [Zotero's licensing statement](https://www.zotero.org/support/licensing) |
+
+**Other labels you may encounter**
+
+| Upstream label | How to read it |
+| --- | --- |
+| MIT **or** Apache 2.0 | When upstream offers a choice, record which license you use and follow its conditions. [lychee's license choice](https://github.com/lycheeverse/lychee#license) |
+| Public domain or CC0 | Check which files the dedication covers. USWDS identifies its government work and lists third-party exceptions. Check the entry for the asset you plan to copy. [USWDS license and exceptions](https://github.com/uswds/uswds/blob/develop/LICENSE.md) |
+| Source-available | Read the project's own terms. n8n's Sustainable Use License permits internal business and specified noncommercial use. Selling access to a hosted instance requires separate permission. Its enterprise files and third-party components have separate terms. [n8n license](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) |
+| No license found | Record **unverified** and link the demo as a reference. Public visibility and GitHub's fork feature alone grant no general permission to copy code or assets into another project. [GitHub licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) |
+
+**What to record in a reference entry.** Note the use (linked for inspiration, ran locally, copied code, distributed, or hosted a modified version), the upstream license and its link. For reuse, add the file and revision, any notices or source-sharing obligations, and separate terms for icons, fonts, screenshots, map data, or demo assets.
+
+*Example entry:* “Rail Map Painter · linked for inspiration · GPLv3 [code terms](https://github.com/railmapgen/rmp/blob/main/LICENCE) · diagram and labels drawn from scratch.” If you later copy its renderer or a station icon, update the entry for that specific material before publishing.
+
+**Source review, November 22, 2026.** The linked license texts and publisher guidance support the summaries for the stated scope. The Design Lab maintainer should recheck the selected revision, edition, and asset terms when the intended use changes from study to reuse or distribution.
 
 ## Payload CMS: higher-interest exploration
 
