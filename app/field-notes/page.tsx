@@ -4,7 +4,11 @@ import { OrbitStudyIllustration } from "@/components/orbit-study-illustration";
 import { PageMain } from "@/components/page-main";
 import { marketingPlaybooks } from "@/lib/field-notes/marketing-playbooks";
 import { salesPlaybooks } from "@/lib/field-notes/sales-playbooks";
-import { PlaybookOutlines } from "@/components/field-notes/playbook-outlines";
+
+const featuredSalesIds = new Set(["territory-planning", "discovery-qualification", "champion-development", "stalled-deal-recovery", "deal-inspection-forecasting"]);
+const featuredSales = salesPlaybooks.filter((playbook) => featuredSalesIds.has(playbook.id));
+const moreSales = salesPlaybooks.filter((playbook) => !featuredSalesIds.has(playbook.id));
+import { CompactPlaybooks, PlaybookOutlines } from "@/components/field-notes/playbook-outlines";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -97,14 +101,16 @@ export default function FieldNotesPage() {
         <h2 id="sales-playbooks-heading" className="mt-3 font-display text-3xl tracking-tight">Sales, from account choice to buyer progress</h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Practical starting points for account planning, conversations, deal
-          decisions and coaching. Each includes the evidence to move forward,
-          when to pause and a connection to the work behind it.
+          decisions and coaching. The five outlined below include the evidence
+          to move forward and when to pause. The rest are listed more briefly,
+          each with a connection to the work behind it.
         </p>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
           Connected work links to public project stories or source material.
           The connections show how the ideas support each other.
         </p>
-        <PlaybookOutlines playbooks={salesPlaybooks} />
+        <PlaybookOutlines playbooks={featuredSales} />
+        <CompactPlaybooks title="More sales playbooks" playbooks={moreSales} />
         <p className="mt-6 max-w-2xl text-sm leading-6 text-muted">
           For business cases, technical evaluations, mutual action plans,
           procurement, negotiation and handoffs, start with the{' '}
