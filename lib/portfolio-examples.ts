@@ -1,4 +1,4 @@
-import { demoSignals } from "./account-intelligence-demo.ts";
+import { limaCharlieRecord } from "./account-intelligence-records.ts";
 import {
   demoChange,
   hypothesis,
@@ -8,7 +8,7 @@ import { feedbackRecords, themes } from "./customer-feedback-demo.ts";
 
 export type PortfolioExample = {
   title: string;
-  label: "Public-source sample" | "Synthetic walkthrough";
+  label: "Public-source sample" | "Synthetic walkthrough" | "Published research brief";
   limitation: string;
   steps: readonly {
     title: string;
@@ -23,7 +23,6 @@ export type PortfolioExample = {
   };
 };
 
-const hiringSignal = demoSignals.find((item) => item.id === "acme-hiring")!;
 const feedback = feedbackRecords.find((item) => item.id === "harbor-sales")!;
 const theme = themes.find((item) => item.id === "identity")!;
 
@@ -86,27 +85,14 @@ export const portfolioExamples: Record<string, PortfolioExample> = {
     ],
   },
   "account-intelligence": {
-    title: "Would you send this to Acme?",
-    label: "Synthetic walkthrough",
-    limitation:
-      "A fictional hiring signal and two sample outreach lines. Here’s the feedback I’d give a rep before they send.",
+    title: "How I read LimaCharlie’s product overview",
+    label: "Published research brief",
+    limitation: "This independent research is based on the public product overview saved on October 10, 2026.",
     steps: [
-      {
-        title: "Read the job postings",
-        body: `${hiringSignal.observed} ${hiringSignal.sourceLabel}`,
-      },
-      {
-        title: "Review the draft",
-        body: "The draft opens with “I saw you’re increasing your security budget.” Which part of that claim could the rep point to in the job postings?",
-      },
-      {
-        title: "See my coaching note",
-        body: "I’d cut the budget claim. Those roles could be backfills. We know Acme is hiring, and we still need to learn what the team wants those people to do.",
-      },
-      {
-        title: "Ask a better question",
-        body: `I’d keep the opening tied to the postings and ask, “${hiringSignal.nextStep}”`,
-      },
+      { title: "Start with the source", body: limaCharlieRecord.context, source: limaCharlieRecord.source },
+      { title: "Record the capabilities", body: "The overview describes how teams can bring telemetry together, write detection rules and automate responses. I recorded those as LimaCharlie’s description of its product." },
+      { title: "Label the interpretation", body: "My reading was that a team with its own detection workflows might use the platform to assemble its security operations. The brief labels that as my interpretation." },
+      { title: "Leave the open questions", body: "That page identifies neither a specific buyer nor a purchase. I left customer adoption, funding and headcount open in the brief so the next reader could see where the evidence ends." },
     ],
   },
   "customer-feedback-intelligence": {

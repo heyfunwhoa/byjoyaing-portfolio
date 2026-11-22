@@ -1,59 +1,63 @@
 import { expect, test } from "@playwright/test";
 
-test("Account Intelligence reading guide separates demo, planned infrastructure and outcomes", async ({ page }) => {
-  await page.goto("/work/account-intelligence");
-  const guide = page.getByRole("complementary", { name: "How to read this example" });
-  await expect(guide).toBeVisible();
-  await expect(guide.getByText(/Fictional account changes/)).toBeVisible();
-  await expect(guide.getByText(/Live research sources, account assignment sync/)).toBeVisible();
-  await expect(guide.getByText(/Rep adoption, time saved/)).toBeVisible();
-  await expect(guide.getByRole("link", { name: "Explore the fictional workflow" })).toHaveAttribute("href", "#workflow");
-  await expect(guide.getByRole("link", { name: "Review planned architecture" })).toHaveAttribute("href", "#architecture");
-  await expect(guide.getByRole("link", { name: "See proposed measures" })).toHaveAttribute("href", "#outcomes-title");
-  await guide.getByRole("link", { name: "See proposed measures" }).focus();
-  await page.keyboard.press("Enter");
-  await expect(page).toHaveURL(/#outcomes-title$/);
-  await expect(page.getByRole("heading", { name: "Measuring what matters." })).toBeVisible();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
-});
-
-test("outreach follows the selected signal and keeps edits with the right account", async ({ page }) => {
+test("readers can inspect field work, independent research and the supporting sources", async ({
+  page,
+}) => {
   await page.goto("/work/account-intelligence#workflow");
   const workflow = page.locator("#workflow");
-  const feed = workflow.getByRole("tab", { name: /Intelligence feed/ });
-  const panel = workflow.getByRole("tabpanel");
-  const cases = [
-    { title: "New VP of Application Security appointed", account: "Acme", subject: /AppSec|Application security/i, opening: /VP of Application Security/ },
-    { title: "Several platform security roles opened", account: "Acme", subject: /platform security|new roles/i, opening: /platform security/ },
-    { title: "Series C announced", account: "Northstar", subject: /Northstar/, opening: /Series C/ },
-    { title: "Public note about moving CI to a new platform", account: "Meridian", subject: /Meridian/, opening: /pipeline/i },
-  ];
+  await expect(
+    workflow.getByRole("link", { name: /acquisition announcement/ }),
+  ).toHaveAttribute(
+    "href",
+    "https://www.rapid7.com/about/press-releases/rapid7-acquires-intsights/",
+  );
+  await expect(
+    workflow
+      .getByRole("article")
+      .getByText(/portfolio team used the playbooks/),
+  ).toBeVisible();
+  await workflow.getByRole("button", { name: "Truffle Security" }).click();
+  await expect(
+    workflow.getByRole("article").getByText(/sales team adopted the materials/),
+  ).toBeVisible();
+  await expect(
+    workflow.getByRole("link", { name: "My enablement work" }),
+  ).toHaveAttribute("href", "/work#people-leadership");
+  await workflow.getByRole("button", { name: "LimaCharlie" }).focus();
+  await page.keyboard.press("Enter");
+  await expect(
+    workflow.getByText("Independent research", { exact: true }),
+  ).toBeVisible();
+  await workflow
+    .getByRole("link", { name: "Read the saved research brief" })
+    .click();
+  await expect(page).toHaveURL(/\/account-signal$/);
+  await expect(
+    page.getByRole("heading", { name: "Verified from the source" }),
+  ).toBeVisible();
+});
 
-  for (const item of cases) {
-    await feed.click();
-    const card = panel.getByRole("listitem").filter({ hasText: item.title });
-    await card.getByRole("button", { name: "View detail" }).click();
-    await panel.getByRole("button", { name: "Draft outreach from this signal" }).click();
-    const body = panel.locator("#draft-body");
-    await expect(panel).toContainText(item.subject);
-    await expect(body).toContainText(item.opening);
-    await expect(body).toContainText(item.account);
-    const first = await body.innerText();
-    await panel.getByRole("button", { name: "Try another draft" }).click();
-    await expect(body).not.toHaveText(first);
-    await expect(body).toContainText(item.account);
-    await expect(body).toContainText(item.opening);
-  }
-
-  await panel.getByRole("button", { name: "Edit draft" }).click();
-  await panel.getByLabel("Body", { exact: true }).fill("A question just for Meridian");
-  await panel.getByRole("button", { name: "Done editing" }).click();
-  await feed.click();
-  const hiring = panel.getByRole("listitem").filter({ hasText: "Several platform security roles opened" });
-  await hiring.getByRole("button", { name: "Draft outreach" }).click();
-  await expect(panel.locator("#draft-body")).toContainText("Acme");
-  await workflow.getByRole("tab", { name: /Assigned accounts/ }).click();
-  await panel.getByRole("row", { name: /Meridian/ }).getByRole("button", { name: "View signals" }).click();
-  await workflow.getByRole("tab", { name: /Outreach draft/ }).click();
-  await expect(panel.locator("#draft-body")).toHaveText("A question just for Meridian");
+test("personal notes stay with their source and the career account stays intact", async ({
+  page,
+}) => {
+  await page.goto("/work/account-intelligence#workflow");
+  const workflow = page.locator("#workflow");
+  const edit = workflow.getByText("Edit or copy a reading note");
+  await edit.click();
+  const rapid7 = workflow.getByLabel("Your note for Rapid7");
+  await expect(rapid7).toHaveValue(/playbooks/);
+  await rapid7.fill("My question for the author");
+  await workflow.getByRole("button", { name: "LimaCharlie" }).click();
+  await edit.click();
+  await expect(workflow.getByLabel("Your note for LimaCharlie")).toHaveValue(
+    /LimaCharlie/,
+  );
+  await workflow.getByRole("button", { name: "Rapid7" }).click();
+  await edit.click();
+  await expect(rapid7).toHaveValue("My question for the author");
+  await expect(
+    workflow
+      .getByRole("article")
+      .getByText(/portfolio team used the playbooks/),
+  ).toBeVisible();
 });

@@ -101,3 +101,9 @@ The first two edits are included in this change. The third is a candidate for a 
 - Josh Lowry, *Hiring for AI Fluency*, May 8, 2026. See the examples for practitioners, integrators and builders. [Substack](https://joshlowrygtm.substack.com/p/hiring-for-ai-fluency)
 
 These are first-person accounts of Lowry’s approach. They do not establish a company-wide hiring policy or predict hiring outcomes. The articles are attributed and paraphrased. The example questions and page edits are original. Recheck these references when revising the corresponding case study or if an article changes.
+
+### Owner correction on public examples, November 22, 2026
+
+Kristen wants the public portfolio to show work she actually did. This supersedes the proposed synthetic Account Intelligence coaching example above. Lead with the contribution and the observable result. Attribute employer examples to the public career account. A publisher's product page supports product context only. Independent research should link to the original source and to the artifact a reader can inspect.
+
+The revised case uses Rapid7 playbooks the portfolio team used, Truffle Security discovery and evaluation guides the sales team adopted, and the previously published LimaCharlie research brief. Keep a customer-specific trigger, conversation or outcome out until Kristen confirms what happened and what can be shared. Keep customer identities and deal amounts private.
