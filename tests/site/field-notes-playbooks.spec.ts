@@ -34,7 +34,7 @@ for (const width of [375, 768, 1280]) {
     const names: string[] = [];
 
     for (const [id, linkName, count] of [
-      ["sales-playbooks", "Sales playbooks", 10],
+      ["sales-playbooks", "Sales playbooks", 5],
       ["marketing-playbooks", "Marketing playbooks", 5],
     ] as const) {
       await nav.getByRole("link", { name: linkName, exact: true }).click();
@@ -102,7 +102,16 @@ for (const width of [375, 768, 1280]) {
         if (index < count - 1) await page.keyboard.press("Tab");
       }
     }
-    expect(new Set(names).size).toBe(15);
+    expect(new Set(names).size).toBe(10);
+    const compact = page.locator("#sales-playbooks [data-compact-playbooks] > ul > li");
+    await expect(compact).toHaveCount(5);
+    await expect(page.locator("#sales-playbooks [data-compact-playbooks] details")).toHaveCount(0);
+    for (const item of await compact.all()) {
+      const link = item.getByRole("link").first();
+      await expect(link).toBeVisible();
+      expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+    }
+    await expectReflow(page);
     expect(errors).toEqual([]);
   });
 }
@@ -111,7 +120,7 @@ test("connected work and existing guides support a browser round trip", async ({
   test.setTimeout(60_000);
   await page.goto("/field-notes");
   const sections = page.locator("#sales-playbooks, #marketing-playbooks");
-  const connections = sections.locator("article > div a");
+  const connections = sections.locator("article > div a, [data-compact-playbooks] a");
   const hrefs = [...new Set(await connections.evaluateAll((links) =>
     links.map((link) => link.getAttribute("href")!),
   ))];
@@ -129,7 +138,7 @@ test("connected work and existing guides support a browser round trip", async ({
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await page.goBack();
     await expect(page).toHaveURL(/\/field-notes$/);
-    await expect(page.locator("#sales-playbooks article")).toHaveCount(10);
+    await expect(page.locator("#sales-playbooks article")).toHaveCount(5);
   }
 
   for (const href of ["/field-notes/enterprise-deal", "/field-notes/multithreading"]) {

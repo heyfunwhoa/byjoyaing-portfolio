@@ -55,3 +55,32 @@ export function PlaybookOutlines({ playbooks }: { playbooks: readonly PlaybookOu
     </div>
   );
 }
+
+/** Shorter listing for supporting playbooks: purpose and connected work, no outline. */
+export function CompactPlaybooks({ title, playbooks }: { title: string; playbooks: readonly PlaybookOutline[] }) {
+  const headingId = `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-heading`;
+  return (
+    <div className="mt-8" data-compact-playbooks>
+      <h3 id={headingId} className="font-display text-xl tracking-tight">{title}</h3>
+      <ul aria-labelledby={headingId} className="mt-3 divide-y divide-border rounded-2xl border border-border bg-card">
+        {playbooks.map((playbook) => (
+          <li key={playbook.id} id={`playbook-${playbook.id}`} className="min-w-0 px-5 py-4 sm:flex sm:items-start sm:justify-between sm:gap-6">
+            <div className="min-w-0">
+              <p className="font-medium">{playbook.title}</p>
+              <p className="mt-1 text-sm leading-6 text-muted">{playbook.purpose}</p>
+            </div>
+            <ul className="mt-1 shrink-0 sm:mt-0 sm:text-right">
+              {resolvePlaybookConnections(playbook).map((connection) => (
+                <li key={connection.href}>
+                  <Link href={connection.href} className="inline-flex min-h-11 items-center text-sm text-accent underline underline-offset-4">
+                    {connection.label} →
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
