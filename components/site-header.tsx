@@ -86,15 +86,30 @@ export function SiteHeader() {
       setUnderline(null);
       return;
     }
-    const listBox = list.getBoundingClientRect();
-    const box = target.getBoundingClientRect();
-    setUnderline({ left: box.left - listBox.left + 12, width: Math.max(box.width - 24, 0) });
+    // Layout offsets, not screen rectangles: they stay correct under page zoom and
+    // follow the link's own padding, which changes between the lg and xl layouts.
+    const style = window.getComputedStyle(target);
+    const padLeft = parseFloat(style.paddingLeft) || 0;
+    const padRight = parseFloat(style.paddingRight) || 0;
+    let left = 0;
+    for (let node: HTMLElement | null = target; node && node !== list; node = node.offsetParent as HTMLElement | null) {
+      left += node.offsetLeft;
+    }
+    setUnderline({ left: left + padLeft, width: Math.max(target.offsetWidth - padLeft - padRight, 0) });
   }, [underlineIndex]);
 
   useLayoutEffect(() => {
     measureUnderline();
+    const list = listRef.current;
+    // Re-measure when the list itself changes size (wrapping, late font loads),
+    // not only on window resize.
+    const observer = list ? new ResizeObserver(() => measureUnderline()) : null;
+    if (list && observer) observer.observe(list);
     window.addEventListener("resize", measureUnderline);
-    return () => window.removeEventListener("resize", measureUnderline);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", measureUnderline);
+    };
   }, [measureUnderline, pathname]);
 
   useEffect(() => {
@@ -225,7 +240,7 @@ export function SiteHeader() {
                       onFocus={() => setHoverIndex(index)}
                       onBlur={() => setHoverIndex(null)}
                       aria-current={current}
-                      className={`nav-interactive relative flex min-h-12 items-center rounded-md px-3 py-2 transition-colors duration-200 lg:inline-flex lg:min-h-11 ${current ? "bg-accent/10 font-semibold text-accent lg:bg-transparent" : "text-muted hover:bg-background hover:text-foreground lg:hover:bg-transparent"}`}
+                      className={`nav-interactive relative flex min-h-12 items-center rounded-md px-3 py-2 lg:px-2 xl:px-3 transition-colors duration-200 lg:inline-flex lg:min-h-11 ${current ? "bg-accent/10 font-semibold text-accent lg:bg-transparent" : "text-muted hover:bg-background hover:text-foreground lg:hover:bg-transparent"}`}
                     >
                       {link.label}
                     </Link>
