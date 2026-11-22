@@ -20,6 +20,31 @@ This **is not another registry**. This portfolio retains the existing curated [c
 
 Candidate status means **possible future use**, not approved adoption, free cost, verified integration, compliance or production readiness. Source-available candidates must remain visually distinct from OSI open-source packages in any future catalog UI. The canonical registry has explicit license statuses.
 
+## Train-map UI references
+
+Start with Rail Map Painter to sketch a network and Mini Tokyo 3D to study what happens when someone selects one item on a crowded map.
+
+| Project and demo | Documented interaction | What to try in the Security Market Map | Decision | Code license |
+| --- | --- | --- | --- | --- |
+| [Rail Map Painter](https://github.com/railmapgen/rmp) · [Editor](https://railmapgen.org/?app=rmp) · [Gallery](https://railmapgen.org/?app=rmp-gallery) | Drag stations onto a canvas, connect lines, and adjust paths and labels. | Sketch two categories with one shared vendor. Can a reader follow either line through the transfer? | Try in sketch | [GPL-3.0](https://github.com/railmapgen/rmp/blob/main/LICENCE) |
+| [d3-tube-map](https://github.com/johnwalley/d3-tube-map) · [Observable demo](https://observablehq.com/@johnwalley/d3-tube-map) | Each route has a sequence of nodes. Station coordinates and label directions control the schematic. | Try placing a long vendor name beside an interchange. Use this as a layout reference if labels collide. | Saved | [BSD-3-Clause](https://github.com/johnwalley/d3-tube-map/blob/master/LICENSE) |
+| [Subway Now](https://github.com/sunny-ng/subwaynow-web) · [NYC map](https://www.subwaynow.app/) | The app uses live service data to redraw subway routes when service changes. | Revisit if readers need to see how vendor coverage changed between two dated sources. | Parked | [MIT](https://github.com/sunny-ng/subwaynow-web/blob/master/LICENSE) |
+| [Mini Tokyo 3D](https://github.com/nagix/mini-tokyo-3d) · [Tokyo map](https://minitokyo3d.com/) | Select a train to follow it. Its timetable opens at the bottom and can be collapsed. [Interaction guide](https://minitokyo3d.com/docs/master/user-guide/screen-and-operations.html) | Select a vendor to open its evidence. Close the panel and return focus to the same station with both lines still in view. | Try in sketch | [MIT](https://github.com/nagix/mini-tokyo-3d/blob/master/LICENSE) |
+
+**Source review, 2026-11-22.** Codex checked the upstream project documentation and code license files linked above. The interactions are documented by their publishers. The market-map ideas are proposals for a first sketch. Demo usability, package compatibility, and rights to third-party maps, icons, or transit feeds need their own review if used.
+
+### First sketch
+
+**Buyer question.** Who can help me find credentials my company has exposed publicly?
+
+Draw two labeled lines, *Secrets Detection* and *Public Exposure Monitoring*, with five or six vendors drawn from the market map's existing evidence. Use a transfer only where a source supports each category placement. Selecting a vendor should show the exact capability, its source link, and what the source leaves unknown. Give the list view the same evidence links so readers can complete the task with a keyboard or on a phone.
+
+**Try it with a reader.** Give them one minute to find two vendors, name a meaningful difference, and open the evidence for it. Record where they hesitated before expanding the map.
+
+### Adding another design reference
+
+Find the upstream repository in this radar first. Add a row under the relevant design topic with the repo, demo, one documented interaction, the reader task it could help, a decision, and the upstream code license (or “unverified”). Date the source check. Use **Saved** to keep an idea, **Try in sketch** to name an experiment, or **Parked** with a reason to revisit. After a trial, add the result and link to the sketch or PR in the decision cell. If a team decides to evaluate a dependency, use the shared intake linked above.
+
 ## Payload CMS: higher-interest exploration
 
 The Payload admin UI is worth studying as a design and editorial reference:
