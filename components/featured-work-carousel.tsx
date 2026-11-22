@@ -153,7 +153,7 @@ function FeaturedWorkCard({
   count: number;
 }) {
   return (
-    <article className="editorial-panel group relative flex h-full min-w-0 flex-col bg-card p-5 transition-[border-color,background-color] hover:border-accent sm:p-6">
+    <article className="card-lift editorial-panel group relative flex h-full min-w-0 flex-col bg-card p-5 transition-[border-color,background-color] hover:border-accent sm:p-6">
       <p className="editorial-eyebrow text-accent">{slide.area}</p>
       <p
         className={`mt-3 inline-flex w-fit rounded-full px-2.5 py-0.5 text-xs font-medium ${

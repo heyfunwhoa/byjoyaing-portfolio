@@ -12,7 +12,7 @@ export const constellationNotes = [
   {
     from: "competitive-intelligence-engine",
     to: "detector-coverage-atlas",
-    text: "Competitive Intelligence Engine and Detector Coverage Atlas both answer a coverage question. The atlas is a prototype sample. It does not feed the field briefs.",
+    text: "Competitive Intelligence Engine and Detector Coverage Atlas both answer a coverage question. The atlas provides a separate coverage example alongside the field briefs.",
   },
   {
     from: "detector-coverage-atlas",

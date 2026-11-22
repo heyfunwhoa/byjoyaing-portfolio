@@ -2,7 +2,6 @@
 
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { ProjectEvidence } from "@/components/project-evidence";
-import { ProjectStatusPill } from "@/components/project-status-pill";
 import {
   filterDirectoryProjects,
   categorySlugs,
@@ -12,6 +11,8 @@ import {
   lifecycleStages,
   type DirectoryCategory,
 } from "@/lib/project-directory";
+import { projectActions } from "@/lib/project-presentation";
+import { salesFor } from "@/lib/sales";
 import type { LifecyclePhase } from "@/lib/portfolio";
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -34,6 +35,8 @@ export function ProjectsDirectory({
     ? lifecycleStages.find((value) => value === searchParams.get("stage")) ?? "All"
     : initialStage;
   const urlQuery = searchParams ? searchParams.get("q") ?? "" : initialQuery;
+  const sortParam = searchParams?.get("sort");
+  const sort = sortParam === "title" || sortParam === "stage" ? sortParam : "featured";
   const [query, setQuery] = useState(urlQuery);
   const [previousUrlQuery, setPreviousUrlQuery] = useState(urlQuery);
   // Text entry must update synchronously; Next's history notification is a transition.
@@ -43,10 +46,14 @@ export function ProjectsDirectory({
     setQuery(urlQuery);
   }
   const hasFilters = category !== "All work" || stage !== "All" || query.length > 0;
-  const projects = useMemo(
-    () => filterDirectoryProjects(category, stage, query),
-    [category, stage, query],
-  );
+  const projects = useMemo(() => {
+    const matching = filterDirectoryProjects(category, stage, query);
+    if (sort === "featured") return matching;
+    const sorted = [...matching];
+    if (sort === "title") sorted.sort((a, b) => a.title.localeCompare(b.title));
+    else sorted.sort((a, b) => a.phase.localeCompare(b.phase) || a.title.localeCompare(b.title));
+    return sorted;
+  }, [category, stage, query, sort]);
 
   // Carry only directory controls, not unrelated URL parameters or arbitrary return URLs.
   const directoryContext = new URLSearchParams({ from: "projects" });
@@ -54,6 +61,7 @@ export function ProjectsDirectory({
   if (categorySlug) directoryContext.set("category", categorySlug);
   if (stage !== "All") directoryContext.set("stage", stage);
   if (query) directoryContext.set("q", query);
+  if (sort !== "featured") directoryContext.set("sort", sort);
   const caseStudyHref = (href: string) => `${href}?${directoryContext.toString()}`;
 
   function updateFilters(
@@ -73,6 +81,13 @@ export function ProjectsDirectory({
     if (nextQuery) params.set("q", nextQuery);
     // Next syncs useSearchParams with native history without a route transition.
     // Preserve the current fragment, focus, scroll and mounted card disclosures.
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+  }
+  function updateSort(next: "featured" | "title" | "stage") {
+    const url = new URL(window.location.href);
+    if (next === "featured") url.searchParams.delete("sort");
+    else url.searchParams.set("sort", next);
+    // Preserve search/filter state, focus, scroll, and mounted disclosures.
     window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
   }
   return (
@@ -182,6 +197,20 @@ export function ProjectsDirectory({
       >
         Clear filters
       </button>
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+        <label className="flex items-center gap-2 text-sm font-medium">
+          Sort projects
+          <select
+            value={sort}
+            onChange={(event) => updateSort(event.target.value as "featured" | "title" | "stage")}
+            className="min-h-11 rounded-lg border border-border bg-card px-3 text-sm font-normal"
+          >
+            <option value="featured">Featured first</option>
+            <option value="title">Project name (A–Z)</option>
+            <option value="stage">Lifecycle stage (A–Z)</option>
+          </select>
+        </label>
+      </div>
       <p role="status" aria-live="polite" className="mt-5 text-sm text-muted">
         {projects.length} matching{" "}
         {projects.length === 1 ? "project" : "projects"}
@@ -191,20 +220,34 @@ export function ProjectsDirectory({
           No projects match these filters. Try a different search or clear the filters to see all projects.
         </p>
       ) : (
-        <ul className="mt-8 grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project) => (
+        <ul className="mt-8 grid min-w-0 grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {projects.map((project) => {
+            const action = projectActions[project.slug];
+            const href = caseStudyHref(action.href);
+            const value = salesFor(project.slug).decision;
+            return (
             <li key={project.slug} className="flex min-w-0">
-              <article className="flex w-full min-w-0 flex-col gap-4 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-accent focus-within:border-accent motion-reduce:transition-none sm:p-5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <ProjectStatusPill status={project.status} />
-                  <span className="text-xs text-muted">
-                    {project.categories[0]}
-                  </span>
-                </div>
+              <article className="card-lift flex w-full min-w-0 max-w-full flex-col gap-4 overflow-hidden rounded-2xl border border-border bg-card p-4 transition-colors hover:border-accent focus-within:border-accent motion-reduce:transition-none sm:p-5">
+                <p className="text-xs font-medium text-muted">
+                  {project.featuredOrder !== null ? "Featured · " : ""}
+                  {project.categories[0]}
+                </p>
+                <p className="text-xs text-muted">
+                  {project.phase} · {directoryStatus(project.status).label}
+                </p>
+                {project.preview === "note" ? null : (
+                  // The sample table is long on phones; show it from tablet width up.
+                  <div className="hidden sm:block">
+                    <ProjectEvidence kind={project.preview} compact />
+                    {project.sampleNote ? (
+                      <p className="mt-2 text-xs leading-5 text-muted">{project.sampleNote}</p>
+                    ) : null}
+                  </div>
+                )}
                 <div className="flex flex-1 flex-col gap-2">
                   <h3 className="text-lg font-semibold tracking-tight">
                     <Link
-                      href={caseStudyHref(project.caseStudyUrl)}
+                      href={href}
                       className="link-rule hover:text-accent"
                     >
                       {project.title}
@@ -213,14 +256,23 @@ export function ProjectsDirectory({
                   <p className="text-sm leading-6 text-muted">
                     {project.summary}
                   </p>
-                  <p className="text-sm leading-6"><span className="font-medium">My role: </span>{project.role}</p>
                 </div>
                 <details className="rounded-xl border border-border bg-background p-3">
                   <summary className="min-h-11 cursor-pointer content-center rounded-sm py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-                    Preview and tools
+                    How it works
                   </summary>
-                  <div className="mt-3">
-                    <ProjectEvidence kind={project.preview} compact />
+                  <div className="mt-3 space-y-3 text-sm leading-6 text-muted">
+                    <p className="text-foreground"><span className="font-medium">Intended value: </span>{value}</p>
+                    <p className="text-foreground"><span className="font-medium">Contribution: </span>{project.role}</p>
+                    <p>{project.technologies}</p>
+                    {project.sampleNote && project.preview === "note" ? (
+                      <p className="text-xs leading-5">{project.sampleNote}</p>
+                    ) : null}
+                    <p>Recorded stage: {directoryStatus(project.status).label}. Lifecycle: {project.phase}.</p>
+                    <p>{project.scope}</p>
+                    {project.preview === "note" ? (
+                      <ProjectEvidence kind={project.preview} compact />
+                    ) : null}
                     <ProjectTechnologyStack
                       slug={project.slug}
                       className="mt-3"
@@ -229,15 +281,16 @@ export function ProjectsDirectory({
                   </div>
                 </details>
                 <Link
-                  href={caseStudyHref(project.caseStudyUrl)}
+                  href={href}
                   className="inline-flex min-h-11 items-center justify-between gap-3 rounded-lg border border-border bg-background px-3 py-2 text-sm font-medium text-accent hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
-                  <span>Read case study<span className="sr-only">: {project.title}</span></span>
+                  <span>{action.label}<span className="sr-only">: {project.title}</span></span>
                   <span aria-hidden="true">→</span>
                 </Link>
               </article>
             </li>
-          ))}
+            );
+          })}
         </ul>
       )}
     </div>

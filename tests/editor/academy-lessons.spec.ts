@@ -33,10 +33,11 @@ test("edit and save the reading-code lesson, render it, then roll back through t
     await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
       .getByRole("button", {
-        name: "Start this path: Build and release safely",
+        name: "Start this path: Start here: Build software from idea to release",
         exact: true,
       })
       .click();
+    await reader.getByRole("navigation", { name: "Selected learning path" }).getByRole("button", { name: "Reading code, files, JSON and YAML", exact: true }).click();
     const lessonPanel = reader.getByRole("tabpanel", {
       name: /Reading code, files, JSON and YAML/,
     });
@@ -60,10 +61,11 @@ test("edit and save the reading-code lesson, render it, then roll back through t
     await reader.getByText(/^Explore learning paths \(\d+\)$/).click();
     await reader
       .getByRole("button", {
-        name: "Start this path: Build and release safely",
+        name: "Start this path: Start here: Build software from idea to release",
         exact: true,
       })
       .click();
+    await reader.getByRole("navigation", { name: "Selected learning path" }).getByRole("button", { name: "Reading code, files, JSON and YAML", exact: true }).click();
     await expect(
       reader.getByRole("tabpanel", {
         name: /Reading code, files, JSON and YAML/,

@@ -1,0 +1,5 @@
+{
+  "ignoreFiles": [
+    "scripts/vercel-ignore-build.ts"
+  ]
+}

@@ -1,0 +1,40 @@
+/* This is a local Design Lab visual affordance. Native buttons own interaction. */
+.challenge { min-width: 0; }
+.territories {
+  display: grid;
+  grid-template-columns: repeat(3, 5rem);
+  justify-content: center;
+  gap: .5rem;
+  max-width: 100%;
+}
+@media (min-width: 48rem) {
+  .territories { grid-template-columns: repeat(6, 5rem); }
+}
+.territoryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: .75rem;
+  cursor: pointer;
+}
+.territoryButton:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 1px;
+}
+.territoryShape {
+  display: inline-grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  background: var(--card);
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+.selected .territoryShape {
+  background: var(--surface-sage, #e4e8df);
+  box-shadow: inset 0 0 0 3px var(--accent);
+}
+.challenge button:disabled { opacity: .6; cursor: not-allowed; }

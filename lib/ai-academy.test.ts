@@ -33,9 +33,26 @@ test("lesson slugs are unique and knowledge checks point at a real choice", () =
     assert.equal(Number.isInteger(lesson.check.answer), true);
     assert.ok(lesson.check.answer >= 0 && lesson.check.answer < lesson.check.choices.length);
     assert.ok(lesson.check.explanation.length > 10);
+    if (lesson.check.feedbackByChoice) {
+      assert.equal(lesson.check.feedbackByChoice.length, lesson.check.choices.length);
+      assert.ok(lesson.check.feedbackByChoice.every((feedback) => feedback.length > 20));
+    }
     assert.ok(lesson.sources.length >= 1);
     assert.ok(lesson.sources.every((source) => source.url.startsWith("https://")));
   }
+});
+
+test("recovery lesson provides answer-specific feedback without overstating mastery", () => {
+  const lesson = lessons.find((item) => item.slug === "background-job-recovery");
+  assert.ok(lesson);
+  const feedback = lesson.check.feedbackByChoice;
+  assert.ok(feedback);
+  assert.equal(feedback.length, 3);
+  assert.equal(new Set(feedback).size, 3);
+  assert.match(feedback[0], /acknowledgement.*does not prove/i);
+  assert.match(feedback[1], /operation key and saved result/i);
+  assert.match(feedback[2], /Deleting failed jobs hides the evidence/i);
+  assert.match(lesson.exercise, /written self-review/);
 });
 
 test("cursor workflows is a Builder lesson without private personal data", () => {
@@ -43,7 +60,12 @@ test("cursor workflows is a Builder lesson without private personal data", () =>
   const verified = lessons.find((lesson) => lesson.slug === "idea-to-verified-release");
   assert.ok(cursor);
   assert.ok(verified);
-  assert.equal(lessons.indexOf(cursor), lessons.indexOf(verified) + 1);
+  const delivery = learningPaths.find((path) => path.id === "delivery");
+  assert.ok(delivery);
+  const verifiedPosition = delivery.slugs.indexOf("idea-to-verified-release");
+  const cursorPosition = delivery.slugs.indexOf("cursor-workflows");
+  assert.ok(verifiedPosition >= 0);
+  assert.ok(cursorPosition > verifiedPosition);
   assert.equal(cursor.track, "Builder");
   assert.equal(cursor.level, "Beginner");
   assert.equal(cursor.minutes, 30);
@@ -116,11 +138,20 @@ test("progressive API and MCP companion stays on the existing lesson id", () => 
   assert.equal(new Set(slugs).size, slugs.length);
   assert.equal(slugs.includes("api-mcp-progressive-lab"), false);
   assert.equal(slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
+  const systems = learningPaths.find((path) => path.id === "systems");
+  const security = learningPaths.find((path) => path.id === "security");
   const delivery = learningPaths.find((path) => path.id === "delivery");
+  assert.ok(systems);
+  assert.ok(security);
   assert.ok(delivery);
-  assert.equal(delivery.slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
+  assert.equal(systems.slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
+  assert.equal(security.slugs.filter((slug) => slug === "mcp-vs-rest-api").length, 1);
   const deliverySlugs: readonly string[] = delivery.slugs;
-  assert.equal(deliverySlugs.includes("api-mcp-progressive-lab"), false);
+  assert.equal(deliverySlugs.includes("mcp-vs-rest-api"), false);
+  for (const path of [systems, security, delivery]) {
+    const pathSlugs: readonly string[] = path.slugs;
+    assert.equal(pathSlugs.includes("api-mcp-progressive-lab"), false);
+  }
 
   const parent = readFileSync(new URL("../docs/builder-academy/mcp-vs-rest-api.md", import.meta.url), "utf8");
   const lab = readFileSync(new URL("../docs/builder-academy/api-mcp-progressive-lab.md", import.meta.url), "utf8");

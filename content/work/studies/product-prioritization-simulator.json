@@ -1,5 +1,5 @@
 {
-  "summary": "A scoring sheet for a short list of bets. Not designed past this note, and not software.",
+  "summary": "A scoring sheet for a short list of bets, so impact, confidence, and effort are written down before build time.",
   "owner": "Kristen Aing",
   "reviewer": "Pending human review of the CMS move",
   "contentVersion": 1,

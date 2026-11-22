@@ -8,7 +8,7 @@ const config: StorybookConfig = {
   viteFinal(config) {
     // Next's Storybook SWC plugin emits obsolete `assert` syntax for `with`.
     // Vite already turns JSON into JS modules, so strip the Node-only attribute
-    // from both lesson adapters before SWC runs. Keep the source import for Node tests.
+    // from the lesson and case-summary adapters before SWC runs. Keep the source import for Node tests.
     config.plugins = [
       {
         name: "academy-editorial-json-import",
@@ -16,7 +16,8 @@ const config: StorybookConfig = {
         transform(code, id) {
           if (
             !id.endsWith("/lib/academy/verification-editorial.ts") &&
-            !id.endsWith("/lib/academy/lesson-editorial.ts")
+            !id.endsWith("/lib/academy/lesson-editorial.ts") &&
+            !id.endsWith("/lib/case-studies/summaries.ts")
           )
             return;
           return {

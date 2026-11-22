@@ -6,6 +6,7 @@ import { IdentityJourneyLab } from "@/components/identity-journey-lab";
 import { PageMain } from "@/components/page-main";
 
 export const metadata: Metadata = completePageMetadata({
+  robots: { index: true, follow: true },
   title: "Identity Journey Lab",
   description: "Learn how humans, service accounts, deployment pipelines and AI agents authenticate and receive permissions.",
 }, "/builder-academy/identity-journey");
@@ -29,7 +30,7 @@ export default function IdentityJourneyPage() {
           <Link className="text-accent underline underline-offset-4" href="/about">About the Curious Builder</Link>
         </div>
         <p className="mt-6 max-w-2xl text-xs leading-5 text-muted">
-          Educational simulation only. Better Auth, SSO, SCIM and machine identity examples describe concepts, not live portfolio integrations.
+          Learn identity and access concepts through Better Auth, SSO, SCIM and machine identity examples.
         </p>
       </section>
     </PageMain>

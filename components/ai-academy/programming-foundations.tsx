@@ -52,7 +52,7 @@ export function ProgrammingFoundations(){
           <p className="mt-3 leading-7">{selected.summary}</p>
           <h4 className="mt-5 font-semibold">Why it matters</h4><p className="mt-2 text-sm leading-6 text-muted">{selected.why}</p>
           <h4 className="mt-4 font-semibold">Where you might use it</h4><p className="mt-2 text-sm leading-6 text-muted">{selected.usage}</p>
-          <div className="mt-5 rounded-lg border border-border bg-background p-4"><p className="mb-2 text-xs text-muted">{selected.filename} · illustrative example, not a live code runner</p><pre className="overflow-x-auto text-sm leading-6"><code>{selected.example}</code></pre></div>
+          <div className="mt-5 rounded-lg border border-border bg-background p-4"><p className="mb-2 text-xs text-muted">{selected.filename} · code example</p><pre className="overflow-x-auto text-sm leading-6"><code>{selected.example}</code></pre></div>
           <p className="mt-4 text-xs text-muted">Related: {selected.related.map(id=>findTechnology(id)?.name??id).join(" · ")||"None"}</p>
           <a className="mt-4 inline-block text-sm font-medium text-accent underline underline-offset-4" href={selected.source} target="_blank" rel="noopener noreferrer">Read official documentation ↗</a>
         </article>
@@ -64,6 +64,5 @@ export function ProgrammingFoundations(){
       <div className="mt-6 space-y-7">{questions.map((q,i)=><fieldset key={q.q}><legend className="font-semibold">{i+1}. {q.q}</legend><div className="mt-3 space-y-2">{q.choices.map((choice,j)=><label key={choice} className="flex cursor-pointer items-start gap-3 text-sm"><input type="radio" className="mt-1 accent-accent" name={`programming-question-${i}`} checked={answers[i]===j} onChange={()=>setAnswers(x=>({...x,[i]:j}))}/>{choice}</label>)}</div>{answers[i]!==undefined&&<p className="mt-3 text-sm leading-6 text-muted" role="status"><strong>{answers[i]===q.answer?"Correct. ":"Review: "}</strong>{q.why}</p>}</fieldset>)}</div>
       <p role="status" className="mt-6 border-t border-border pt-4 text-sm font-semibold">{Object.keys(answers).length} of 3 answered · {score} correct</p>
     </section>
-    <p className="mt-8 text-xs text-muted">Educational prototype. Examples are static and do not execute code. No user accounts, saved quiz results or database writes.</p>
   </main>;
 }

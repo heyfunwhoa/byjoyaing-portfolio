@@ -24,6 +24,16 @@ Before editing branding, copy, layout, navigation, portfolio examples or public 
 - Every portfolio design PR must complete [.github/pull_request_template.md](.github/pull_request_template.md), documenting brand alignment, evidence, impact, tests, and exceptions.
 - Change brand fundamentals only through an explicit reviewed update to the canonical guide; do not create competing brand guidelines in other files.
 
+### Conditional brand-reference check
+
+For each PR, state whether it changes positioning, purpose, values, voice, or the visual shorthand summarized in the internal brand reference.
+
+- If yes, update `docs/brand/brand-guidelines.md` in the same reviewed PR. Name the person responsible for reconciling the internal **joy. | Brand & Values at a Glance** page after merge.
+- After the approved change merges, that person updates only the affected summary in Notion and records the reviewed merged commit SHA and reconciliation date. If Notion is unavailable, record the pending handoff in the PR; do not claim synchronization is complete.
+- Routine navigation, spacing, bug fixes and new project entries require no Notion update unless they change those brand foundations. Mark the check not applicable with a short reason.
+- GitHub remains authoritative for brand decisions. Notion is a concise, manually maintained reference; the website is the public implementation. Track deployment separately from brand reconciliation.
+- Keep private workspace links and reflections out of public repository files. Do not add scheduled audits, automatic synchronization or another brand definition for this check.
+
 These portfolio-specific rules supplement the Next.js agent block above. Other repositories may share engineering standards without adopting this site's branding.
 
 ## Shared engineering and agent operating standards (cross-repository pointer)
@@ -66,6 +76,13 @@ Before UI, layout, component or animation work, read [the workbench reuse contra
 
 For new UI journeys and material interface changes, consult the [proposed responsive app standard v1.0](https://github.com/heyfunwhoa/technical-docs-platform/blob/c7ae9a18b8045bdad5f729322722343022b13970/engineering/responsive-apps-v1.md) and its review status in [Technical Docs PR #26](https://github.com/heyfunwhoa/technical-docs-platform/pull/26). This is a pinned cross-repository reference; local brand, privacy and permissions remain authoritative. Define phone/tablet/desktop composition and the primary task before implementation. Test the built app, keyboard/focus, reduced motion and content/error states; record manual zoom/reflow and real-device checks separately. A passing viewport test does not prove WCAG conformance or review of every page. Do not add dependencies or rewrite tables/maps by default.
 
+## Cursor Cloud specific instructions
+
+- Install with `npm ci`. CI uses Node.js 22. Check the app with `npm run lint`, `npm test`, and `npm run build`.
+- Start the site with `npm run dev`. It listens on port 3000.
+- Open `http://localhost:3000` or `http://127.0.0.1:3000`. `allowedDevOrigins` includes `127.0.0.1`, so client components hydrate on both origins.
+- Public pages do not need secrets. The contact form reports that email is not configured until `RESEND_API_KEY` and `CONTACT_INBOX` are set. PostHog, Better Auth, hosted Keystatic, and Infisical stay off unless those integrations are the thing under test.
+
 ## Focused agent sessions
 
 For scoped agent work, use the proposed [focused-session procedure](https://github.com/heyfunwhoa/technical-docs-platform/blob/c749cc5c859472e2d8bdb982f0d6f346a5ad4c25/ai/agent-harness/focused-sessions.md) ([review status: PR #38](https://github.com/heyfunwhoa/technical-docs-platform/pull/38)). Start from the issue and latest checkpoint, verify current revisions, inspect relevant changes, and expand discovery for concrete dependencies. Record evidence and next action at handoff; preserve required checks and local privacy/release rules. This is a pinned proposed reference, not automatic synchronization or token/spend enforcement.
@@ -74,3 +91,15 @@ For scoped agent work, use the proposed [focused-session procedure](https://gith
 ## Release handoff
 
 For preview, merge and deployment work, read [RELEASE.md](RELEASE.md). Batch related changes into review checkpoints, preserve required tests and private/local-only boundaries, and hand off the exact PR head and evidence to the designated release operator. Do not introduce a second deploy pipeline or treat a successful preflight as merge authorization.
+
+
+## Source verification for public claims, lessons and tool recommendations
+
+For new or materially revised portfolio claims, case studies, learning materials, research, project/tool references, framework explanations and outward-facing recommendations, follow the [canonical claim/source verification standard](https://github.com/heyfunwhoa/technical-docs-platform/blob/main/standards/source-verification-v1.md) (draft [Technical Docs PR #75](https://github.com/heyfunwhoa/technical-docs-platform/pull/75)). Record primary publisher/source, exact supported claim, actual verification date or null, confidence, limits, rights/licensing status and a review trigger. If content is synthetic, hypothetical or derived advice, label it clearly. A linked citation does not prove the claim was inspected; a public web page does not automatically grant reproduction rights. Avoid private workspace/customer content and do not claim audit, deployment or licensing approval without evidence. The record belongs with its owning content/repository, not a second source database.
+
+## Working rules for AI coding assistants
+
+- **Open pull requests as drafts** while you're still working. CI skips drafts; mark the PR ready for review when the work is done and the local checks pass. Don't push a stream of small commits to a ready PR — each push to a ready PR bills CI minutes.
+- **Let the git hooks run.** Never use `--no-verify` (or `-n`) on `git commit` or `git push`. If a hook fails, fix the cause. If the secret scan blocks a commit, remove the secret; don't work around the scan.
+- **Never put a secret in the repo, a commit, a chat message, a ticket, a log, or agent settings** (such as `.mcp.json` or `.env` files that get committed). Read keys from the secret manager or environment variables. If a real key was ever written somewhere it shouldn't be, say so — it has to be rotated, not just deleted.
+- **Run the repo's local checks before pushing**, since draft PRs get no CI run.

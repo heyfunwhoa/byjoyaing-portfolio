@@ -8,15 +8,15 @@ const evidence: Record<DirectoryPreview, { label: string; caption: string }> = {
   },
   competitive: {
     label: "Illustrative field brief",
-    caption: "A sample research brief explaining source-review practices. It is not a live competitive monitoring service.",
+    caption: "A sample research brief explaining source-review practices.",
   },
   account: {
     label: "Fictional account scenario",
     caption: "An example account signal and outreach hypothesis; no customer data, external feeds, or outbound sending.",
   },
   note: {
-    label: "Written concept or design",
-    caption: "No application screenshot is available here. The linked case study describes the concept and its actual stage.",
+    label: "Case study · Preview unavailable",
+    caption: "No application screenshot is available here. Open the linked case study for the project’s current stage, contribution and available evidence.",
   },
 };
 
