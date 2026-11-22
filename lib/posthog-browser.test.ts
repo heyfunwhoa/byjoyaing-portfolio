@@ -52,7 +52,7 @@ test("monitoring and analytics have independent explicit gates", () => {
 test("pageviews retain only reviewed routes and discard nested and person data", () => {
   const result = sanitizePageview({
     ...event("$pageview", {
-      $current_url: "https://www.byjoyaing.com/work?token=secret#private",
+      $current_url: "https://www.kristenaing.com/work?token=secret#private",
       email: "secret",
       nested: { private: "secret" },
       $referrer: "secret",
@@ -60,14 +60,14 @@ test("pageviews retain only reviewed routes and discard nested and person data",
     $set: { name: "secret" },
   });
   assert.deepEqual(result?.properties, {
-    $current_url: "https://www.byjoyaing.com/work",
+    $current_url: "https://www.kristenaing.com/work",
     $pathname: "/work",
     $process_person_profile: false,
   });
   assert.equal(JSON.stringify(result).includes("secret"), false);
   for (const url of [
-    "https://www.byjoyaing.com/work/private-client",
-    "https://www.byjoyaing.com/design-lab",
+    "https://www.kristenaing.com/work/private-client",
+    "https://www.kristenaing.com/design-lab",
     "https://preview.vercel.app/work",
     "invalid",
   ]) {
@@ -104,7 +104,7 @@ test("all capability combinations preserve exception privacy and reject unapprov
       assert.equal(
         Boolean(
           filter(
-            event("$pageview", { $current_url: "https://byjoyaing.com/about" }),
+            event("$pageview", { $current_url: "https://kristenaing.com/about" }),
           ),
         ),
         analytics,
@@ -126,7 +126,7 @@ test("all capability combinations preserve exception privacy and reject unapprov
 test("connection page rejects pageviews and all browser events", () => {
   assert.equal(
     sanitizePageview(
-      event("$pageview", { $current_url: "https://www.byjoyaing.com/connect" }),
+      event("$pageview", { $current_url: "https://www.kristenaing.com/connect" }),
     ),
     null,
   );

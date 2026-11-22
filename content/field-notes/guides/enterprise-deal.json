@@ -31,7 +31,7 @@
       "key": "learning",
       "kicker": "",
       "heading": "Give the buyer a clear next step",
-      "body": "Before the next evaluation, agree on what the evidence needs to establish and who will use it. Include the work of adoption: permissions, integrations, response ownership and changes to daily workflows. At the readout, make clear what worked, what remains uncertain, what adoption would require and who owns the next decision. Proceeding, stopping or resolving a specific gap can each be a useful outcome. For coaching, ask which evidence changed the team's understanding and which conversation would resolve the most important unknown.",
+      "body": "In a fictional secrets-detection pilot, I’d ask the engineering lead, “When a finding comes in, who can identify the owner and rotate the credential?” I’d ask the CISO, “What evidence would justify expanding this pilot to another team?” At the readout, trace one sample finding from discovery to a named owner. If nobody can act on it, resolve that gap before expanding the scan.",
       "note": ""
     }
   ],
@@ -64,7 +64,7 @@
   ],
   "owner": "Kristen Aing",
   "reviewer": "Pending human review of reconciled brand and fictional walkthrough copy",
-  "contentVersion": 3,
+  "contentVersion": 4,
   "reviewDue": "2026-11-15",
   "classification": "public",
   "publicationStatus": "review"

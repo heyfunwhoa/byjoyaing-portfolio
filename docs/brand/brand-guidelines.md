@@ -2,7 +2,7 @@
 
 > **Status:** Canonical working brand reference (October 2026). Brand foundations are established; homepage layout, information architecture implementation, imagery, and case studies are still under review.
 >
-> **Scope:** Personal portfolio at https://www.byjoyaing.com/ — not a separate product/company called Joy. The private Joy Index is not part of the public site.
+> **Scope:** Personal portfolio at https://www.kristenaing.com/ — not a separate product/company called Joy. The private Joy Index is not part of the public site.
 
 ## 1. Brand fundamentals
 

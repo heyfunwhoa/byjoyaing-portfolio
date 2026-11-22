@@ -18,7 +18,7 @@ const categories = [
     title: "Enterprise Sales",
     eyebrow: "01 / Revenue execution",
     description:
-      "Connect the technical evaluation, business case and buying group.",
+      "I closed enterprise web-security deals at Forcepoint and led threat-intelligence opportunities at Rapid7.",
     tags: ["Discovery", "Alignment", "Execution"],
     Icon: Crosshair,
   },
@@ -26,7 +26,7 @@ const categories = [
     id: "people-leadership",
     title: "People & Leadership",
     eyebrow: "02 / People",
-    description: "Help teammates ramp, build confidence and share expertise.",
+    description: "I coached newer sellers at Truffle Security and built discovery guides the sales team adopted.",
     tags: ["Coaching", "Onboarding"],
     Icon: Users,
   },
@@ -34,7 +34,7 @@ const categories = [
     id: "gtm-strategy",
     title: "GTM Strategy",
     eyebrow: "03 / Systems",
-    description: "Turn competitive evidence into useful field guidance.",
+    description: "I wrote the threat-intelligence playbooks Rapid7’s portfolio team used in the field.",
     tags: ["Research", "Positioning"],
     Icon: Layers,
   },
@@ -111,7 +111,7 @@ export function WorkExplorer({ stories }: { stories: ReactNode[] }) {
                     ))}
                   </span>
                   <span className="mt-auto flex min-h-11 w-full items-center justify-between gap-3 pt-6 text-sm font-semibold">
-                    {active === id ? "Collapse story" : "Explore the evidence"}
+                    {active === id ? "Close story" : "Read story"}
                     <ChevronDown
                       aria-hidden="true"
                       className={`${styles.chevron} size-5 ${active === id ? "rotate-180" : ""}`}

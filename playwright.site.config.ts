@@ -1,8 +1,9 @@
+import { publicSiteOrigin } from "./lib/site-origin";
 import { defineConfig, devices } from "@playwright/test";
 
 // Remote runs are read-only browser journeys. No provider keys or bypass headers.
 const remote = process.env.SMOKE_BASE_URL;
-if (remote && !["https://www.byjoyaing.com", "https://byjoyaing.com"].includes(remote)) {
+if (remote && ![publicSiteOrigin, "https://kristenaing.com"].includes(remote)) {
   throw new Error("SMOKE_BASE_URL must be a public portfolio production origin.");
 }
 

@@ -11,7 +11,7 @@ parser.add_argument("--variant", choices=["personal", "truffle"], default="perso
 args = parser.parse_args()
 sales = args.variant == "truffle"
 route = "/connect/truffle" if sales else "/connect"
-url = f"https://www.byjoyaing.com{route}"
+url = f"https://www.kristenaing.com{route}"
 qr = QRCode(None, QRErrorCorrectLevel.M)
 qr.addData(url)
 qr.make()
@@ -35,7 +35,7 @@ img.save(out / "qr.png")
 card = Image.new("RGB", (1080, 1600), "#F3EFE6")
 d = ImageDraw.Draw(card)
 fontpath = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-for text, y, fontsize in [("Truffle Security" if sales else "joy.", 115, 60 if sales else 78), ("Kristen Aing", 235, 50), ("Let’s connect", 340, 40), (f"byjoyaing.com{route}", 1320, 32 if sales else 40), ("Scan, then choose LinkedIn.", 1400, 30)]:
+for text, y, fontsize in [("Truffle Security" if sales else "joy.", 115, 60 if sales else 78), ("Kristen Aing", 235, 50), ("Let’s connect", 340, 40), (f"kristenaing.com{route}", 1320, 32 if sales else 40), ("Scan, then choose LinkedIn.", 1400, 30)]:
     font = ImageFont.truetype(fontpath, fontsize)
     d.text((540, y), text, font=font, fill="#1B211D", anchor="mt")
 card.paste(img, ((1080-size)//2, 460))

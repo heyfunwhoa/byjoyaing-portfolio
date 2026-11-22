@@ -7,7 +7,7 @@ Owner: Kristen Aing. Scope: byjoyaing-portfolio. Updated: 2026-10-13.
 - CI's `Production build + TypeScript` job now starts the actual production build and runs `npm run test:site` in phone/tablet/desktop Chromium. No email provider keys are required.
 - Site tests cover Home, About, Work, Contact and Academy rendering, uncaught browser exceptions, horizontal overflow, keyboard navigation, empty/invalid-email contact validation, request-mode disclosure, the legacy About redirect and unknown-route 404.
 - Browser tests abort contact/resume API requests. Invalid form cases must issue no request. They do not prove real email delivery. Remote mode is limited to the two public portfolio origins, disables trace/screenshots/video and uses no bypass credentials.
-- `Production smoke` is an on-demand post-release browser check against `https://www.byjoyaing.com`. Run from main only. It observes the live domain; it does not prove that its deployed SHA matches the workflow SHA, hold a release, monitor continuously or automatically roll back.
+- `Production smoke` is an on-demand post-release browser check against `https://www.kristenaing.com`. Run from main only. It observes the live domain; it does not prove that its deployed SHA matches the workflow SHA, hold a release, monitor continuously or automatically roll back.
 - Visual QA now triggers for changes to app, components, lib and public, plus its existing configuration/dependency paths. Existing Storybook screenshot comparisons stay; site tests check real page layout/interaction, without asserting full-page visual baselines.
 - Direct action references are pinned to upstream commit SHAs. TruffleHog's engine is pinned to 3.99.2 rather than latest. Upstream composite actions/tool downloads and mutable scanner databases/rule registries are not made fully immutable by this change.
 
@@ -18,7 +18,7 @@ npm ci
 npm run build
 npx playwright install --with-deps chromium
 npm run test:site
-SMOKE_BASE_URL=https://www.byjoyaing.com npm run test:site
+SMOKE_BASE_URL=https://www.kristenaing.com npm run test:site
 ```
 
 The local suite refuses to reuse an existing server, to avoid testing a stale build. The build remains the typecheck; no redundant typecheck script is added.

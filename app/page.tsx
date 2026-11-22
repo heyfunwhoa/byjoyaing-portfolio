@@ -40,9 +40,9 @@ export default function Home() {
   const roleProofs = [
     {
       role: current,
-      label: "Current role",
+      label: "Developer security",
       detail:
-        "Built shared discovery, ICP, competitive, and POC resources the sales team adopted.",
+        "Built discovery and proof-of-concept guides the sales team adopted.",
       href: "/work#people-leadership",
       action: "Coaching and enablement",
     },
