@@ -257,7 +257,8 @@ export const roles = [
     points: [
       "Full-cycle enterprise sales for developer-first secrets detection, across security, engineering, and executive buyers.",
       "Created product training for new hires. Coached newer sellers and helped onboard teammates across sales, solutions architecture, and customer success.",
-      "Built shared discovery, ICP, competitive, and POC resources the sales team adopted, and carried field feedback into product and marketing.",
+      "Created discovery templates and co-wrote setup guides with solution architects.",
+      "The sales team adopted my discovery, ICP, competitive and POC resources. I brought field feedback to Product and Marketing.",
     ],
   },
   {
@@ -268,6 +269,7 @@ export const roles = [
     points: [
       "Greenfield territory, and a coach for newer sellers on discovery, competitive positioning, and value-based selling.",
       "Created product training for new hires. Built industry training and onboarding resources that shortened new-rep ramp.",
+      "Created discovery templates for sellers and wrote setup guides with solution architects.",
     ],
   },
   {
@@ -288,6 +290,7 @@ export const roles = [
     points: [
       "Mid-Atlantic and Southeast enterprise: new logo, expansion, and a field lead for discovery and account strategy.",
       "Closed strategic web-security opportunities and supported broader field execution.",
+      "Co-created discovery templates the team used and worked with solution architects to write setup guides.",
     ],
   },
   {
