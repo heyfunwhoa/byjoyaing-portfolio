@@ -18,7 +18,7 @@ test("readers can inspect field work, independent research and the supporting so
   ).toBeVisible();
   await workflow.getByRole("button", { name: "Truffle Security" }).click();
   await expect(
-    workflow.getByRole("article").getByText(/sales team adopted the materials/),
+    workflow.getByRole("article").getByText(/sales team adopted the discovery and evaluation materials/),
   ).toBeVisible();
   await expect(
     workflow.getByRole("link", { name: "My enablement work" }),

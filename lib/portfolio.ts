@@ -256,7 +256,7 @@ export const roles = [
     category: "Developer security, secrets, machine identity",
     points: [
       "Full-cycle enterprise sales for developer-first secrets detection, across security, engineering, and executive buyers.",
-      "Coach newer sellers and contribute to onboarding across sales, solutions architecture, and customer success.",
+      "Created product training for new hires. Coached newer sellers and helped onboard teammates across sales, solutions architecture, and customer success.",
       "Built shared discovery, ICP, competitive, and POC resources the sales team adopted, and carried field feedback into product and marketing.",
     ],
   },
@@ -267,7 +267,7 @@ export const roles = [
     category: "Threat intelligence and network / AI security",
     points: [
       "Greenfield territory, and a coach for newer sellers on discovery, competitive positioning, and value-based selling.",
-      "Built industry training and onboarding resources that shortened new-rep ramp.",
+      "Created product training for new hires. Built industry training and onboarding resources that shortened new-rep ramp.",
     ],
   },
   {

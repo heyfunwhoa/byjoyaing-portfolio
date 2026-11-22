@@ -46,9 +46,9 @@ export const accountRecords = [
     context:
       "Selling secrets detection put me in conversations with security, engineering and executive buyers. The same questions came up during discovery and technical evaluations.",
     action:
-      "I turned those questions into shared discovery guides and proof-of-concept resources. I also brought field feedback to Product and Marketing.",
+      "I turned those questions into shared discovery guides and proof-of-concept resources. I also created product training for new hires and brought field feedback to Product and Marketing.",
     outcome:
-      "The sales team adopted the materials. I helped onboard people across sales, solutions architecture and customer success.",
+      "The sales team adopted the discovery and evaluation materials. I helped onboard people across sales, solutions architecture and customer success.",
     source: {
       label: "TruffleHog product overview",
       href: "https://trufflesecurity.com/trufflehog",
