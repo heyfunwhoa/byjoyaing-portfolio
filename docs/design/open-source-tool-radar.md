@@ -41,7 +41,19 @@ Draw two labeled lines, *Secrets Detection* and *Public Exposure Monitoring*, wi
 
 **Try it with a reader.** Give them one minute to find two vendors, name a meaningful difference, and open the evidence for it. Record where they hesitated before expanding the map.
 
-### Adding another design reference
+## Design component references
+
+| Component and example | Documented behavior | Where to try it | Decision | Upstream code terms |
+| --- | --- | --- | --- | --- |
+| [PatternFly Drawer](https://github.com/patternfly/patternfly-react) · [Drawer examples](https://www.patternfly.org/components/drawer/) | A panel can slide over content or push it aside. | Security Market Map. Select a shared vendor and show its evidence beside the two lines. Check that closing the drawer returns focus to the same station. | Saved | [MIT](https://github.com/patternfly/patternfly-react/blob/main/LICENSE) |
+| [GOV.UK Summary List](https://github.com/alphagov/govuk-frontend) · [Summary list examples](https://design-system.service.gov.uk/components/summary-list/) | Labeled rows pair a key with a value. Summary cards group related lists. | Security Market Map and Detector Atlas. Show what the source confirms, what remains unknown, and the source link in three labeled rows. | Saved | [MIT for code](https://github.com/alphagov/govuk-frontend/blob/main/LICENSE.txt) |
+| [React Aria TagGroup](https://github.com/adobe/react-spectrum) · [TagGroup demo](https://react-aria.adobe.com/TagGroup) | Users can navigate tags by keyboard, select them, and remove them. | Detector catalog. Display active filters above the results so a reader can remove “Has rotation guide” while keeping the provider filter. | Saved | [Apache-2.0](https://github.com/adobe/react-spectrum/blob/main/LICENSE) |
+| [IBM Carbon expandable data table](https://github.com/carbon-design-system/carbon) · [Data table examples](https://www.carbondesignsystem.com/building-blocks/core/components/data-table/guidelines) | A row expands to reveal supplementary information within the table. | Security Market Map. Keep vendor capabilities in aligned columns and expand one vendor to inspect the source behind its coverage. | Saved | [Apache-2.0](https://github.com/carbon-design-system/carbon/blob/main/LICENSE) |
+| [USWDS Process List](https://github.com/uswds/uswds) · [Process list example](https://designsystem.digital.gov/components/process-list/) | A numbered list gives each stage in a sequence a heading and space for instructions. | Builder Academy and rotation guides. Show the provider's documented order of operations, linking each step to its instructions. | Saved | [Public domain for U.S. government work, with exceptions for third-party assets](https://github.com/uswds/uswds/blob/develop/LICENSE.md) |
+
+**Source review, 2026-11-22.** Codex checked each component's published examples and upstream licensing file. The suggested uses are sketch ideas. For the [first train-map sketch](#first-sketch), pair the drawer and summary list. A reader selects a shared vendor, sees one row per category, and can open the evidence for each placement.
+
+## Adding another design reference
 
 Find the upstream repository in this radar first. Add a row under the relevant design topic with the repo, demo, one documented interaction, the reader task it could help, a decision, and the upstream code license (or “unverified”). Date the source check. Use **Saved** to keep an idea, **Try in sketch** to name an experiment, or **Parked** with a reason to revisit. After a trial, add the result and link to the sketch or PR in the decision cell. If a team decides to evaluate a dependency, use the shared intake linked above.
 

@@ -173,7 +173,7 @@ This is the upstream reference appendix, not a new installed-component catalog. 
 
 ## Candidate planning across repositories
 
-Use the [open-source design radar](open-source-tool-radar.md#train-map-ui-references) to browse train-map demos, see which interactions are worth sketching, and add another GitHub reference.
+Browse [train-map demos](open-source-tool-radar.md#train-map-ui-references) and [design component examples](open-source-tool-radar.md#design-component-references) in the open-source design radar. Use its [reference guide](open-source-tool-radar.md#adding-another-design-reference) to save another GitHub project.
 
 Use the [component opportunity register](component-opportunity-register.md) for where to open Design Lab, the complete captured opportunity inventory, repository coverage and promotion gates. The in-page catalog supports project and availability filters; this remains local-development only.
 
