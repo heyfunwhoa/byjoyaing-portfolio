@@ -41,6 +41,22 @@ Draw two labeled lines, *Secrets Detection* and *Public Exposure Monitoring*, wi
 
 Label the shared station's panel **Why is this product on both lines?** For each line, show the precise capability, who reported it, when the source was checked, and a link to the passage. Leave open questions visible. For example, monitoring a public repository and checking whether a discovered key is active are separate claims. Give the list view the same evidence links so a reader can complete the task with a keyboard or on a phone.
 
+### Internal and external monitoring
+
+Secrets detection is the task. Describe the monitoring scope separately for each product or mode. **Internal monitoring** starts with sources a team connects. **External public monitoring** starts with supported public sources and uses evidence to associate a finding with the company. Keep three facts visible when comparing the two: who selected the source, whether it was public, and what linked the finding to the organization.
+
+Use GitGuardian's two named monitoring modes to test that distinction with the same kind of GitHub commit.
+
+| Example commit | Internal Monitoring | Public Monitoring |
+| --- | --- | --- |
+| In a connected, private company repository | The integration can scan the repository. | The private commit is outside the public feed. A separately published copy is a different occurrence. |
+| In a connected, public company repository | The integration can scan the repository even though people outside the company can see it. | The public commit can also generate a finding if the secret is detected and an attachment rule matches. |
+| In a contractor's public repository the company has never connected | This repository is outside the configured integration. | A matching public finding can be associated with the company, for example through a monitored developer or company-specific term. The receiving team still needs to establish who owns the credential. |
+
+GitGuardian documents the difference between a publicly visible integrated source and a linked public incident. Treat a linked incident as a possibility for a particular secret. [Internal source integration](https://docs.gitguardian.com/platform/getting-started/integrate) · [Public source coverage and attachment rules](https://docs.gitguardian.com/public-monitoring/sources/overview) · [Public exposure on an internal incident](https://docs.gitguardian.com/internal-monitoring/remediate/investigate-incidents#source-is-publicly-visible)
+
+Keep **Gitleaks** labeled as operator-directed scanning of supplied inputs and **Forager** as external monitoring of supported public sources, with edition-specific attribution. In the reader test, ask which modes could cover the connected public repository, then change only its visibility or integration status and ask what changed. Sources reviewed November 22, 2026.
+
 ### Company attribution and handoff
 
 The three-product example covers GitGuardian Public Monitoring, Forager, and Gitleaks. State the sample size beside the legend. Each line represents a placement supported by a reviewed source. A missing line leaves the other placement open.
