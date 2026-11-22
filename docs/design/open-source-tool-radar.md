@@ -41,7 +41,21 @@ Draw two labeled lines, *Secrets Detection* and *Public Exposure Monitoring*, wi
 
 Label the shared station's panel **Why is this product on both lines?** For each line, show the precise capability, who reported it, when the source was checked, and a link to the passage. Leave open questions visible. For example, monitoring a public repository and checking whether a discovered key is active are separate claims. Give the list view the same evidence links so a reader can complete the task with a keyboard or on a phone.
 
-**Try it with a reader.** Give them one minute to find two vendors, name a meaningful product difference, and open the evidence for it. Then ask what they think the order of the stops means. If they read it as a ranking, label the ordering or revise the layout. Record where they hesitated before expanding the map.
+### Company attribution and handoff
+
+The three-product example covers GitGuardian Public Monitoring, Forager, and Gitleaks. State the sample size beside the legend. Each line represents a placement supported by a reviewed source. A missing line leaves the other placement open.
+
+Keep **What links a finding to the company?** visible when a station is selected. Show the documented attribution signal, the input or setup a customer supplies, and who still needs to confirm ownership. Include a source-review date beside the documentation. Record a key's last verification time only when a finding supplies it.
+
+| Product | What the source establishes | What the responder still needs |
+| --- | --- | --- |
+| GitGuardian Public Monitoring | Company names, email domains, and company GitHub organizations help define the monitored perimeter. Depending on the source, GitGuardian can attach findings through a developer, organization, or company-specific term. [Company perimeter](https://docs.gitguardian.com/public-monitoring/perimeter/overview) · [Attachment reasons by source](https://docs.gitguardian.com/public-monitoring/sources/overview) | Check which rule matched this finding, which account issued the credential, and who can rotate it. |
+| Forager | Truffle Security describes a company view of verified keys grouped by associated email domain. [Forager guide](https://trufflesecurity.com/docs/user-enablement-guide#:~:text=Forager%20diligently%20monitors) · [How domain access works](https://trufflesecurity.com/blog/introducing-forager) | Confirm which account the key belongs to, who can act on it, and when its status was last checked. |
+| Gitleaks | The operator supplies a repository, directory, or input stream to scan. Company attribution remains unestablished by this source. [Gitleaks README](https://github.com/gitleaks/gitleaks#readme) | Trace the finding to its issuing account and an authorized owner. |
+
+Documentation reviewed November 22, 2026. The sources describe product behavior. The responder questions are design prompts. A station's **Suggest a correction** link should open an editable draft with the product, reviewed placements and source URLs.
+
+**Try it with a reader.** Give them one minute to find two vendors, name a meaningful product difference, and open the evidence for it. Then give them this fictional case. A contractor commits a key from a personal account. The key belongs to a customer's cloud account. Your team receives the alert. Ask **“What would you still need to verify before you sent this finding to someone to fix?”** Listen for the difference between the person who published it, the account that owns it, and the person authorized to revoke it. Ask what they think the order of the stops means. If they read it as a ranking, label the ordering or revise the layout. Record their answer and where they hesitated.
 
 ## Design component references
 
