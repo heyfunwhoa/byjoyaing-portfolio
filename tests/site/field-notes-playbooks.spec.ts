@@ -35,7 +35,7 @@ for (const width of [375, 768, 1280]) {
 
     for (const [id, linkName, count] of [
       ["sales-playbooks", "Sales playbooks", 10],
-      ["marketing-playbooks", "Marketing playbooks", 8],
+      ["marketing-playbooks", "Marketing playbooks", 5],
     ] as const) {
       await nav.getByRole("link", { name: linkName, exact: true }).click();
       await expect(page).toHaveURL(new RegExp("#" + id + "$"));
@@ -102,7 +102,7 @@ for (const width of [375, 768, 1280]) {
         if (index < count - 1) await page.keyboard.press("Tab");
       }
     }
-    expect(new Set(names).size).toBe(18);
+    expect(new Set(names).size).toBe(15);
     expect(errors).toEqual([]);
   });
 }

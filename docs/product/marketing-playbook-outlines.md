@@ -1,6 +1,6 @@
 # Sales and marketing playbook outlines
 
-Owner: portfolio maintainer. Editorial scope: ten sales and eight marketing outlines for Field Notes, prepared November 7, 2026. Status: proposed content for review; no completed campaign, customer outcome or downloadable kit is asserted.
+Owner: portfolio maintainer. Editorial scope: ten sales and five marketing outlines for Field Notes, prepared November 7, 2026. Status: proposed content for review; no completed campaign, customer outcome or downloadable kit is asserted.
 
 ## Reader task and placement
 
@@ -26,12 +26,9 @@ Every outline has at least one visible connection explaining how the existing wo
 | Account expansion | GTM Revenue OS | GTM Operating Plan: customer-intelligence reference | Account review and expansion hypothesis |
 | Deal inspection and forecasting | GTM Revenue OS | Revenue Intelligence: pipeline and forecast evidence | Deal review worksheet |
 | Sales coaching and onboarding | GTM Revenue OS + Truffle Camp | Sales-process criteria and a security-training practice example | Coaching session and skill rubric |
-| Event marketing | GTM Revenue OS | GTM Campaign Lab: preparation, follow-up and learning | Event brief and readout |
 | Partner campaigns | Channel Territory Mapping | Partner GTM Engine: campaign cohort and handoffs | Joint campaign brief |
 | Account-based campaigns | Account Signal Engine | Account Intelligence: researched account selection | Cohort brief and controlled message test |
 | Product launches | GTM Revenue OS | GTM Campaign Lab: content-to-sales foundation | Launch brief and field-readiness checklist |
-| Content and distribution | GTM Revenue OS | GTM Campaign Lab: narrative, assets and feedback | Core asset and distribution plan |
-| Lifecycle and nurture | GTM Revenue OS | GTM Campaign Lab: lifecycle and response routes | Entry/exit map and sequence |
 | Customer advocacy and proof | GTM Revenue OS | GTM Operating Plan: customer-intelligence reference | Fictional story brief and proof card |
 | Campaign-to-sales activation | GTM Revenue OS | GTM Campaign Lab: rep kit and accepted follow-up | Rep kickoff kit |
 
@@ -117,8 +114,8 @@ Use the existing Field Notes authoring/publication boundaries. The two-guide Key
 
 ## Acceptance and verification
 
-- AC-01: Field Notes contains ten sales and eight marketing outlines after existing published guides, each with purpose, use case, before/during/after, artifacts, measures and next build. Every sales outline also includes advance evidence and pause conditions.
-- AC-04: All 18 outlines have a visible contribution and verified public destination resolved from existing registries. Private repos have no exposed source URLs; invalid source/project references fail validation. Existing published guides are linked rather than duplicated.
+- AC-01: Field Notes contains ten sales and five marketing outlines after existing published guides, each with purpose, use case, before/during/after, artifacts, measures and next build. Every sales outline also includes advance evidence and pause conditions.
+- AC-04: All 15 outlines have a visible contribution and verified public destination resolved from existing registries. Private repos have no exposed source URLs; invalid source/project references fail validation. Existing published guides are linked rather than duplicated.
 - AC-02: A reader can reach the section and operate every native disclosure by keyboard; closed and expanded content reflows at 375, 768 and 1280px, with reduced motion and a 200% reflow check.
 - AC-03: Existing guide destinations and the Keystatic two-guide contract remain intact; superseded topic-only placeholders are removed while complementary strategic account planning and ICP/segmentation framework topics remain. No fabricated outcomes, new dependencies, CMS schema, integrations or private records.
 
@@ -126,16 +123,20 @@ Check results and limitations are recorded in the owning PR. An automated viewpo
 
 ### Focused browser coverage and owner review
 
-`tests/site/field-notes-playbooks.spec.ts` adds five scenarios to the existing production-build browser suite. It checks all 18 disclosures at 375, 768 and 1280px with reduced motion, natural Tab order between connected links and summaries, visible keyboard outlines, Enter/Space activation, control target sizes and closed/expanded horizontal reflow. It also follows each distinct internal project destination and both linked guides, returns to Field Notes, and checks native disclosure use with JavaScript disabled. The external Security Market Map URL is checked without navigating to it.
+`tests/site/field-notes-playbooks.spec.ts` adds five scenarios to the existing production-build browser suite. It checks all 15 disclosures at 375, 768 and 1280px with reduced motion, natural Tab order between connected links and summaries, visible keyboard outlines, Enter/Space activation, control target sizes and closed/expanded horizontal reflow. It also follows each distinct internal project destination and both linked guides, returns to Field Notes, and checks native disclosure use with JavaScript disabled. The external Security Market Map URL is checked without navigating to it.
 
 The suite uses the existing CI/browser configuration. It adds no workflow, dependency, credential, preview bypass or recording. Results belong to the exact PR head and are recorded in PR #289. This is automated behavior evidence, not manual visual, contrast, screen-reader or 200% browser-zoom approval.
 
 For the remaining owner review, open the preview from PR #289 while signed into Vercel:
 
 1. Scan the closed cards on phone and desktop. Confirm the purpose, connected work and outline action are easy to find.
-2. Open Territory planning and Event marketing. Decide whether the level of detail represents the intended public portfolio voice.
+2. Open Territory planning and Partner campaigns. Decide whether the level of detail represents the intended public portfolio voice.
 3. At 200% browser zoom, expand a card and follow its project link. Check readability, clipping and the return journey. Narrow-viewport automation is not a substitute for this check.
 4. Review the focus indicator, text contrast and disclosure announcements with the intended browser and assistive technology.
 5. Record the reviewed commit, observed issues and content approval in the existing PR. A successful automated run alone does not record owner acceptance.
 
 If these checks reveal a defect, fix it within this PR and rerun the relevant checks. Expansion into worked examples begins with the already named territory, outreach, discovery and event artifacts; the remaining outlines can stay as useful starting points.
+
+## Scope change, November 21, 2026
+
+The owner kept the outlines most relevant to GTM leadership: all ten sales playbooks, plus partner campaigns, account-based campaigns, product launches, customer advocacy and proof, and campaign-to-sales activation. Event marketing, content and distribution, and lifecycle and nurture were removed from the page as core marketing-channel work. Their method still lives in GTM Revenue OS (event playbooks #150, SaaS marketing foundations #115).
