@@ -8,6 +8,9 @@ import { salesPlaybooks } from "@/lib/field-notes/sales-playbooks";
 const featuredSalesIds = new Set(["territory-planning", "discovery-qualification", "champion-development", "stalled-deal-recovery", "deal-inspection-forecasting"]);
 const featuredSales = salesPlaybooks.filter((playbook) => featuredSalesIds.has(playbook.id));
 const moreSales = salesPlaybooks.filter((playbook) => !featuredSalesIds.has(playbook.id));
+const featuredMarketingIds = new Set(["partner-campaigns", "account-based-campaigns", "sales-activation"]);
+const featuredMarketing = marketingPlaybooks.filter((playbook) => featuredMarketingIds.has(playbook.id));
+const moreMarketing = marketingPlaybooks.filter((playbook) => !featuredMarketingIds.has(playbook.id));
 import { CompactPlaybooks, PlaybookOutlines } from "@/components/field-notes/playbook-outlines";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -130,7 +133,8 @@ export default function FieldNotesPage() {
           the measures before launch, including the source, time window,
           denominator and what is still unknown.
         </p>
-        <PlaybookOutlines playbooks={marketingPlaybooks} />
+        <PlaybookOutlines playbooks={featuredMarketing} />
+        <CompactPlaybooks title="More marketing playbooks" playbooks={moreMarketing} />
       </section>
       <section id="coming-later" className="scroll-mt-24 border-b border-border py-12">
         <h2 className="font-display text-3xl tracking-tight">Notes still in outline</h2>
