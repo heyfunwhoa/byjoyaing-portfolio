@@ -8,7 +8,7 @@ import { learningPaths } from "./academy/learning-paths.ts";
 import { lessons } from "./ai-academy.ts";
 
 test("guided examples retain fixture provenance and do not invent real observations", () => {
-  const signal = demoSignals.find((item) => item.id === "acme-leader")!;
+  const signal = demoSignals.find((item) => item.id === "acme-hiring")!;
   assert.ok(
     portfolioExamples["account-intelligence"].steps[0].body.includes(
       signal.sourceLabel,
@@ -44,6 +44,16 @@ test("guided examples retain fixture provenance and do not invent real observati
       ),
     );
   }
+});
+
+test("the Acme coaching example ends with the question in the hiring draft", () => {
+  const hiring = demoSignals.find((item) => item.id === "acme-hiring")!;
+  const { steps } = portfolioExamples["account-intelligence"];
+  assert.match(steps[1].body, /increasing your security budget/);
+  assert.match(steps[2].body, /backfills/);
+  assert.ok(steps[3].body.includes(hiring.nextStep));
+  assert.ok(hiring.drafts[0].body.includes(hiring.nextStep));
+  assert.ok(hiring.drafts.every((draft) => !draft.body.includes("increasing your security budget")));
 });
 
 test("Camp feedback distinguishes a finding from validity and impact", () => {

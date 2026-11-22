@@ -14,6 +14,11 @@ export type DemoAccount = {
   industry: string;
 };
 
+export type OutreachDraft = {
+  subject: string;
+  body: string;
+};
+
 export type DemoSignal = {
   id: string;
   accountId: string;
@@ -25,6 +30,7 @@ export type DemoSignal = {
   date: string;
   nextStep: string;
   angle: string;
+  drafts: [OutreachDraft, OutreachDraft];
 };
 
 export const demoAccounts: DemoAccount[] = [
@@ -32,6 +38,8 @@ export const demoAccounts: DemoAccount[] = [
   { id: "northstar", name: "Northstar", industry: "Software" },
   { id: "meridian", name: "Meridian", industry: "Healthcare" },
 ];
+
+const hiringQuestion = "What will the people joining your platform security team own first?";
 
 export const demoSignals: DemoSignal[] = [
   {
@@ -47,6 +55,16 @@ export const demoSignals: DemoSignal[] = [
     nextStep: "Read the announcement, then ask what the leader has said publicly about priorities.",
     angle:
       "A new AppSec leader may be evaluating how the organization finds and remediates exposed credentials.",
+    drafts: [
+      {
+        subject: "Application security priorities at Acme",
+        body: "Hi [First Name],\n\nI saw the announcement about the new VP of Application Security at Acme. I am not assuming that means a tool review.\n\nIf you are mapping how the team finds exposed credentials versus what is still not evaluated, I can share the questions we use in that conversation.\n\nWorth a short look?",
+      },
+      {
+        subject: "One question after the AppSec announcement",
+        body: "Hi [First Name],\n\nThe Acme announcement names a new VP of Application Security. The only fact I am using is that appointment.\n\nAre you the right person to ask how the team separates a detected credential from one that has been verified?\n\nHappy to send the question set either way.",
+      },
+    ],
   },
   {
     id: "acme-hiring",
@@ -58,8 +76,18 @@ export const demoSignals: DemoSignal[] = [
       "Hiring can mean a new program. It can also mean backfill. Do not treat the job posts as a budget.",
     sourceLabel: "Illustrative job-board snapshot. Not a real citation.",
     date: "August 2026",
-    nextStep: "Ask who owns the pipeline where long-lived credentials enter CI.",
-    angle: "New platform-security seats often inherit a backlog of secrets already in CI.",
+    nextStep: hiringQuestion,
+    angle: "The postings give a rep a reason to ask what work the incoming team members will own.",
+    drafts: [
+      {
+        subject: "The platform security openings at Acme",
+        body: `Hi [First Name],\n\nI saw Acme posted several platform security roles this month. ${hiringQuestion}`,
+      },
+      {
+        subject: "A question about the new roles at Acme",
+        body: "Hi [First Name],\n\nI noticed the platform security openings at Acme. Are those hires taking on new responsibilities or adding capacity for work the team already owns?",
+      },
+    ],
   },
   {
     id: "northstar-funding",
@@ -73,6 +101,16 @@ export const demoSignals: DemoSignal[] = [
     date: "July 2026",
     nextStep: "Confirm whether security engineering is one of the teams they said they will hire.",
     angle: "A funding announcement is context for timing, not proof of a project.",
+    drafts: [
+      {
+        subject: "Engineering priorities after Northstar’s Series C",
+        body: "Hi [First Name],\n\nI saw Northstar’s Series C announcement. Which engineering priorities, if any, will change for your team after the round?",
+      },
+      {
+        subject: "What comes next for Northstar’s engineering team?",
+        body: "Hi [First Name],\n\nCongratulations on Northstar’s Series C. Has the team shared which parts of engineering it plans to grow first?",
+      },
+    ],
   },
   {
     id: "meridian-tech",
@@ -86,19 +124,18 @@ export const demoSignals: DemoSignal[] = [
     date: "June 2026",
     nextStep: "Ask which credential types they verify today and which are still not evaluated.",
     angle: "A CI migration is a concrete moment to talk about secrets that move with the pipeline.",
+    drafts: [
+      {
+        subject: "Credential ownership during Meridian’s CI migration",
+        body: "Hi [First Name],\n\nI read Meridian’s engineering post about moving build pipelines. As you move them, how are you deciding which credentials to rotate and who owns that work?",
+      },
+      {
+        subject: "Moving build pipelines at Meridian",
+        body: "Hi [First Name],\n\nMeridian’s engineering post mentioned the CI migration. When a team moves a pipeline, how does it decide which old credentials it can retire?",
+      },
+    ],
   },
 ];
-
-export const draftVariants = [
-  {
-    subject: "Application security priorities at Acme",
-    body: "Hi [First Name],\n\nI saw the announcement about the new VP of Application Security at Acme. I am not assuming that means a tool review.\n\nIf you are mapping how the team finds exposed credentials versus what is still not evaluated, I can share the questions we use in that conversation.\n\nWorth a short look?",
-  },
-  {
-    subject: "One question after the AppSec announcement",
-    body: "Hi [First Name],\n\nThe Acme announcement names a new VP of Application Security. The only fact I am using is that appointment.\n\nAre you the right person to ask how the team separates a detected credential from one that has been verified?\n\nHappy to send the question set either way.",
-  },
-] as const;
 
 export function signalsForAccount(accountId: string) {
   return demoSignals.filter((signal) => signal.accountId === accountId);
