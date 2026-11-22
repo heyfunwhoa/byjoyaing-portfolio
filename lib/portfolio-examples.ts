@@ -1,4 +1,4 @@
-import { demoAccounts, demoSignals } from "./account-intelligence-demo.ts";
+import { demoSignals } from "./account-intelligence-demo.ts";
 import {
   demoChange,
   hypothesis,
@@ -23,8 +23,7 @@ export type PortfolioExample = {
   };
 };
 
-const account = demoAccounts.find((item) => item.id === "acme")!;
-const signal = demoSignals.find((item) => item.id === "acme-leader")!;
+const hiringSignal = demoSignals.find((item) => item.id === "acme-hiring")!;
 const feedback = feedbackRecords.find((item) => item.id === "harbor-sales")!;
 const theme = themes.find((item) => item.id === "identity")!;
 
@@ -87,25 +86,26 @@ export const portfolioExamples: Record<string, PortfolioExample> = {
     ],
   },
   "account-intelligence": {
-    title: `${account.name}: a signal and a next conversation`,
+    title: "Would you send this to Acme?",
     label: "Synthetic walkthrough",
     limitation:
-      "Fictional account and announcement. No real citation, account upload, research feed, model call or outreach send is represented.",
+      "A fictional hiring signal and two sample outreach lines. Here’s the feedback I’d give a rep before they send.",
     steps: [
       {
-        title: "Observe",
-        body: `${signal.observed} ${signal.sourceLabel} Example date: ${signal.date}.`,
-      },
-      { title: "Interpret cautiously", body: signal.hypothesis },
-      {
-        title: "Check relevance",
-        body: `${signal.angle} Confirm the organization’s priorities before assuming a project or budget.`,
+        title: "Read the job postings",
+        body: `${hiringSignal.observed} ${hiringSignal.sourceLabel}`,
       },
       {
-        title: "Choose a next action",
-        body:
-          signal.nextStep +
-          " The portfolio stops at a sample recommendation; actual research belongs in a private workspace.",
+        title: "Review the draft",
+        body: "The draft opens with “I saw you’re increasing your security budget.” Which part of that claim could the rep point to in the job postings?",
+      },
+      {
+        title: "See my coaching note",
+        body: "I’d cut the budget claim. Those roles could be backfills. We know Acme is hiring, and we still need to learn what the team wants those people to do.",
+      },
+      {
+        title: "Ask a better question",
+        body: `I’d keep the opening tied to the postings and ask, “${hiringSignal.nextStep}”`,
       },
     ],
   },
