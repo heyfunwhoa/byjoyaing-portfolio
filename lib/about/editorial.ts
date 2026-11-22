@@ -225,4 +225,20 @@ export function readAboutEditorial(input: unknown): AboutPage {
   };
 }
 
+/** Put each sentence on its own line. Keep initials such as B.S. with the words that follow. */
+export function educationCaptionLines(item: string): string[] {
+  const parts = item.split(". ");
+  if (parts.length < 2) return [item];
+  const lines: string[] = [];
+  for (let index = 0; index < parts.length; index += 1) {
+    let part = parts[index].trim();
+    while (index < parts.length - 1 && /^([A-Z]\.)*[A-Z]$/.test(part)) {
+      index += 1;
+      part = `${part}. ${parts[index].trim()}`;
+    }
+    lines.push(part.endsWith(".") ? part : `${part}.`);
+  }
+  return lines;
+}
+
 export const aboutPage = readAboutEditorial(record);

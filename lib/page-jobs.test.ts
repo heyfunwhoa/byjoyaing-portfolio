@@ -20,7 +20,7 @@ test("primary navigation stays six items and Academy is reached through Side Que
   const academy = source("components/ai-academy/academy.tsx");
   assert.match(academy, /deeper learning experience/);
   assert.match(academy, /Side Quests is the way in/);
-  assert.match(academy, /"href":"\/side-quests"/);
+  assert.match(academy, /href:\s*"\/side-quests"/);
 });
 
 test("project pages lead with the problem, the contribution, and one example", () => {
@@ -32,9 +32,13 @@ test("project pages lead with the problem, the contribution, and one example", (
   for (const file of ["app/work/[slug]/page.tsx", "components/field-asset-case.tsx"]) {
     const page = source(file);
     const leadUse = page.indexOf("<ProjectStoryLead");
+    const details = page.indexOf('<DisclosureSection');
     const status = page.indexOf('id="where-it-stands"');
-    assert.ok(leadUse > 0 && leadUse < status, file);
+    assert.ok(leadUse > 0 && leadUse < details && details < status, file);
+    assert.equal(page.match(/\{(?:project\.)?sales\.maturityDetail\}/g)?.length, 1, `${file}: one recorded stage`);
+    assert.doesNotMatch(page, /label: "Current status"/, `${file}: no duplicate status destination`);
   }
+  assert.equal(source("components/field-asset-case.tsx").match(/project\.sales\.myRole/g)?.length, 1);
 });
 
 test("collection openers state their jobs", () => {

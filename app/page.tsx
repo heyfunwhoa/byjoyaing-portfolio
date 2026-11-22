@@ -8,9 +8,11 @@ import { PageMain } from "@/components/page-main";
 import { ProjectTechnologyStack } from "@/components/portfolio/technology-stack";
 import { homePage } from "@/lib/home/editorial";
 import { directoryProjects } from "@/lib/project-directory";
-import { roles, statusCopy, statusHelp } from "@/lib/portfolio";
+import { getProject, roles, statusCopy, statusHelp } from "@/lib/portfolio";
+import { salesFor } from "@/lib/sales";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PUBLIC_BOOKING_URL } from "@/lib/portfolio/public-contact";
 
 export const metadata: Metadata = completePageMetadata(
   {
@@ -62,6 +64,10 @@ export default function Home() {
   const sideQuest = directoryProjects.find((project) => project.slug === "detector-coverage-atlas",
   );
   if (!sideQuest) {
+    throw new Error("Missing detector-coverage-atlas");
+  }
+  const sideQuestRecord = getProject(sideQuest.slug);
+  if (!sideQuestRecord) {
     throw new Error("Missing detector-coverage-atlas");
   }
 
@@ -160,6 +166,18 @@ export default function Home() {
           </div>
           <div className="min-w-0">
             <p className="max-w-xl text-base leading-7">{sideQuest.summary}</p>
+            <p className="mt-3 max-w-xl text-sm leading-6">
+              <span className="font-medium">Problem: </span>
+              {sideQuestRecord.problem.summary}
+            </p>
+            <p className="mt-2 max-w-xl text-sm leading-6">
+              <span className="font-medium">Contribution: </span>
+              {sideQuest.role}
+            </p>
+            <p className="mt-2 max-w-xl text-sm leading-6">
+              <span className="font-medium">Intended value: </span>
+              {salesFor(sideQuest.slug).decision}
+            </p>
             <p className="mt-3 max-w-xl text-sm leading-6 text-muted">{statusHelp[sideQuest.status]}</p>
             <ProjectTechnologyStack slug={sideQuest.slug} presentation="compact" className="mt-4" />
             <div className="mt-5 flex flex-col gap-1">
@@ -198,6 +216,15 @@ export default function Home() {
             Get in touch {" "}
             <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
           </Link>
+          <a
+            href={PUBLIC_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Book a time with Kristen Aing (opens Cal.com in a new tab)"
+            className="inline-flex min-h-11 items-center px-1 text-sm font-semibold text-accent underline underline-offset-4"
+          >
+            Book a time
+          </a>
           <Link
             href="/about"
             className="inline-flex min-h-11 items-center px-1 text-sm font-semibold text-accent underline underline-offset-4"

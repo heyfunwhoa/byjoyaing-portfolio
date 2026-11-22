@@ -6,6 +6,17 @@ import { GamefulWorkbench } from "@/components/design-lab/gameful-workbench";
 import { MotionWorkbench } from "@/components/design-lab/motion-workbench";
 import { LearningChecksPreview } from "@/components/design-lab/learning-checks-preview";
 import { ComponentOptions } from "@/components/design-lab/component-options";
+import { ComponentLearning } from "@/components/design-lab/component-learning";
+import { GuidedPracticeExplorer } from "@/components/design-lab/guided-practice-explorer";
+import { DetailPatternComparison } from "@/components/design-lab/detail-pattern-comparison";
+import { FeedbackPatternComparison } from "@/components/design-lab/feedback-pattern-comparison";
+import { AccountWorkflowWorkbench } from "@/components/design-lab/account-workflow-workbench";
+import { FormPatternComparison } from "@/components/design-lab/form-pattern-comparison";
+import { DataDisplayComparison } from "@/components/design-lab/data-display-comparison";
+import { DashboardCompositionComparison } from "@/components/design-lab/dashboard-composition-comparison";
+import { NavigationPatternComparison } from "@/components/design-lab/navigation-pattern-comparison";
+import { ProjectDiscoveryComparison } from "@/components/design-lab/project-discovery-comparison";
+import { CaseStudyEvidenceComparison } from "@/components/design-lab/case-study-evidence-comparison";
 import { BrandAvatar } from "@/components/brand-avatar";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { CollectionBreadcrumb } from "@/components/collection-breadcrumb";
@@ -78,6 +89,10 @@ export default function DesignLabPage() {
             For example, try a branching conversation here, then adapt it for seller practice in GTM Revenue OS.
           </p>
           <nav aria-label="Start exploring Design Lab" className="mt-5 flex flex-wrap gap-3">
+            <a href="#guided-practice" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Start guided practice</a>
+            <a href="#component-learning" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Explore component lessons</a>
+            <a href="#project-discovery" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Compare project discovery</a>
+            <a href="#application-workbench" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">Try the account workflow</a>
             <a href="#ideation-title" className="inline-flex min-h-11 items-center rounded-lg border border-border px-4 py-2 font-semibold underline">
               Use an ideation template
             </a>
@@ -153,6 +168,26 @@ export default function DesignLabPage() {
         </section>
 
         <CreativeRecipes />
+
+        <GuidedPracticeExplorer />
+        <ComponentLearning />
+        <ProjectDiscoveryComparison />
+        <CaseStudyEvidenceComparison />
+        <div id="guided-form-controls" className="scroll-mt-24">
+          <FormPatternComparison />
+        </div>
+        <div id="guided-data-display" className="scroll-mt-24">
+          <DataDisplayComparison />
+        </div>
+        <div id="guided-dashboard" className="scroll-mt-24">
+          <DashboardCompositionComparison />
+        </div>
+        <NavigationPatternComparison />
+        <AccountWorkflowWorkbench />
+        <div id="guided-detail-patterns" className="scroll-mt-24">
+          <DetailPatternComparison />
+        </div>
+        <FeedbackPatternComparison />
 
         <div id="component-ideas" tabIndex={-1} className="scroll-mt-24">
           <ComponentOptions />

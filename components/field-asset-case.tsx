@@ -6,10 +6,12 @@ import { RelatedWork } from "@/components/related-work";
 import { SampleRecordView } from "@/components/sample-record";
 import { WorkCaseBreadcrumb } from "@/components/work-case-breadcrumb";
 import { CaseStudyContents } from "@/components/case-study-contents";
+import { DisclosureSection } from "@/components/disclosure-section";
 import { ProjectStoryLead } from "@/components/project-story-lead";
 import { ProjectKindLabel } from "@/components/project-kind-label";
-import { StatusBadge } from "@/components/status-badge";
+import { walkthroughAction } from "@/lib/project-presentation";
 import { salesProject, sampleFor } from "@/lib/sales";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export function FieldAssetCase({
@@ -25,15 +27,28 @@ export function FieldAssetCase({
     <PageMain>
       <section className="border-b border-border py-16">
         <WorkCaseBreadcrumb slug={slug} />
-        <div className="mt-4 flex flex-wrap items-center gap-3">
+        <div className="mt-4">
           <ProjectKindLabel slug={slug} />
-          <StatusBadge status={project.status} />
-          <p className="text-sm text-muted">{project.phase}</p>
         </div>
         <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
           {project.title}
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-muted">{project.sales.salesQuestion}</p>
+        <dl className="mt-6 max-w-2xl text-sm">
+          <div>
+            <dt className="font-medium">Intended value</dt>
+            <dd className="mt-1 leading-6 text-muted">{project.sales.decision}</dd>
+          </div>
+        </dl>
+        {slug === "truffle-camp" ? (
+          <a href="#guided-example" className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">
+            Try the example
+          </a>
+        ) : (
+          <Link href={walkthroughAction.href} className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">
+            {walkthroughAction.label}
+          </Link>
+        )}
       </section>
       <CaseStudyContents
         sections={[
@@ -41,7 +56,7 @@ export function FieldAssetCase({
           { id: "contribution", label: "My contribution" },
           { id: "example", label: "One example" },
           { id: "used-in-field", label: "Field evidence" },
-          { id: "where-it-stands", label: "Current status" },
+          { id: "how-it-works", label: "How it works" },
           { id: "outcome", label: "Outcome" },
         ]}
       />
@@ -83,11 +98,16 @@ export function FieldAssetCase({
         </article>
       </section>
 
-      <section id="where-it-stands" className="scroll-mt-24 border-b border-border py-12">
-        <h2 className="text-lg font-semibold">Where it stands</h2>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-muted">{project.sales.maturityDetail}</p>
-        <p className="mt-4 max-w-2xl text-sm leading-6 text-muted">{project.sales.workingToday}</p>
-      </section>
+      <DisclosureSection id="how-it-works" title="How it works" className="my-6">
+        <div className="max-w-2xl space-y-3 text-sm leading-6 text-muted">
+          <section id="where-it-stands" className="scroll-mt-24 space-y-3">
+            <h2 className="font-semibold text-foreground">Recorded stage</h2>
+            <p>{project.sales.maturityDetail}</p>
+            <p>{project.sales.workingToday}</p>
+          </section>
+          <p>{project.sales.implementedTech}</p>
+        </div>
+      </DisclosureSection>
 
       <section id="outcome" className="scroll-mt-24 py-12">
         <p className="max-w-2xl text-sm leading-6 text-muted">{project.sales.result.text}</p>

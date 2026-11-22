@@ -66,7 +66,7 @@ export default async function CapabilityPage({ params }: PageProps) {
         ))}
       </ul></section>
       <p className="pb-12 text-sm">
-        <Link href="/projects" className="font-medium text-accent">Back to all projects</Link>
+        <Link href="/projects" className="inline-flex min-h-11 items-center font-medium text-accent">Back to all projects</Link>
       </p>
     </PageMain>
   );

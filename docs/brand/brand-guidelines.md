@@ -168,7 +168,7 @@ Context → specific problem → your role and collaborators → decision/approa
 ### Side Quests
 
 For relevant repository introductions, use: **Who it helps → What gets in their way → How it helps → What works today → Evidence and limitations**. Adapt the language to each project's users. Link to this canonical guide when brand context is useful; do not copy a competing brand policy into each repo. Future project descriptions should identify the intended benefit and its evidence without inventing capabilities or measured savings.
-Motivation → intended user → problem → design and architecture decisions → current implementation → real demonstration/source → known limitations → lessons and next iteration. Label **idea / prototype / in progress / live** based on observable evidence. Clearly distinguish synthetic/demo data from real customer data.
+Motivation → intended user → problem → design and architecture decisions → current implementation → real demonstration/source → known limitations → lessons and next iteration. Use descriptive public labels such as **Software project**, **Workflow design**, **Idea** and **Used professionally**. Avoid blanket prototype, demo-only or unfinished-product disclaimers in public headings, badges and footers. Describe what visitors can inspect or do, and keep specific data, storage and action behavior beside the relevant control. Clearly distinguish fictional examples from real customer evidence. Internal implementation stages and release records remain accurate; public copy does not promote planned capabilities to shipped features.
 
 Show what a tool genuinely does **today**, not simply its planned architecture. Distinguish hypotheses from sourced facts and link research sources or footnotes where appropriate.
 
