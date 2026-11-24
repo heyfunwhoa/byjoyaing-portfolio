@@ -1,6 +1,6 @@
 # Homepage simplification
 
-**Status:** Implementation reference. Home and About copy, wayfinding, and page-flow review guidance were merged in [PR #219](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/219).  
+**Status:** Implementation reference, with the hiring-evidence refinement proposed in draft PR #359 / KRU-364. Home and About copy, wayfinding, and page-flow review guidance were merged in [PR #219](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/219).  
 **Updated:** 2026-11-07  
 **Source:** `app/page.tsx`, `content/home/page.json`, and `components/editorial-bento.tsx`.  
 **Brand:** [canonical brand guidelines](../brand/brand-guidelines.md).
@@ -29,10 +29,10 @@ Visuals support these roles: Home uses the dark editorial hero and approved port
 ## 2. Current Home sequence
 
 1. **Hero:** name, professional positioning, one philosophy line, a short description, portrait and caption. Explore Work is the primary action; About Me is secondary.
-2. **Professional credibility:** three responsive role cards for Truffle Security, Rapid7, and Forcepoint, each with a short supported contribution and an evidence or timeline link.
+2. **Professional credibility:** three responsive role cards for Truffle Security, Rapid7, and Forcepoint, each with a short supported contribution and an evidence or timeline link. The proposed refinement adds adopted playbook/setup-guide detail, a compact reference to Quantcast and Das Keyboard early GTM work, and a clearly labeled link to the existing illustrative sales-motion plan.
 3. **Destination bento:** Work, Field Notes, and Side Quests, in that reading order. Work is visually dominant.
 4. **One Side Quest:** Detector Coverage Atlas, its observed status, a concise summary, scope information and a link to the sample. Independent ownership stays explicit.
-5. **Contact close:** a short invitation, Get in touch, and About Me.
+5. **Contact close:** a specific invitation to discuss owning complex enterprise deals and helping build the sales motion, with Get in touch, booking and About Me.
 
 There is no separate competitive field-practice section on Home. That professional evidence belongs in Work. The full career history belongs on Experience, and practical guide detail belongs in Field Notes.
 
