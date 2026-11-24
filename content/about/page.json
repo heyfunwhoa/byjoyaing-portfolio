@@ -1,10 +1,12 @@
 {
   "id": "about",
-  "metaDescription": "Meet Kristen Aing, a revenue and GTM leader connecting enterprise cybersecurity, customer insight, clear messaging, and practical learning resources.",
+  "metaDescription": "Meet Kristen Aing: Enterprise Account Executive in cybersecurity, GTM playbook builder and coach to fellow sellers.",
   "eyebrow": "About · Leader",
   "headline": "Strategist. Leader. Builder.",
   "lead": [
-    "I'm Kristen Aing, a revenue and GTM leader in enterprise cybersecurity. I sell complex security deals, shape the strategy around them, and coach the sellers I work with. My background in advertising shows up in how I think about audiences and stories, and I build practical resources and tools so teams can move with confidence."
+    "I'm Kristen Aing, a revenue and GTM leader grounded in enterprise cybersecurity sales. As an Enterprise Account Executive, I own complex opportunities, connect technical evaluation to the business decision, and coach the sellers I work with.",
+    "I also help turn field experience into a repeatable approach. At Rapid7, I wrote threat-intelligence playbooks the portfolio team used. As an early member of Quantcast's Austin sales team, I co-created a playbook for agency targeting and outreach. My advertising background shapes how I think about audiences, positioning and the story a buyer needs to hear.",
+    "I'm drawn to roles where I can keep selling while taking broader ownership of the go-to-market motion and the team behind it. I want to help build a sales organization that wins key customers, develops its people and learns from the field."
   ],
   "philosophyLabel": "My guiding philosophy",
   "philosophyHeading": "People first. Problem-driven. Systems-minded.",
@@ -22,10 +24,10 @@
       "body": "I turn useful knowledge into resources and workflows that others can find, apply, and improve."
     }
   ],
-  "leadershipApproach": "I pair clear expectations with thoughtful feedback and room for people to develop their own strengths.",
+  "leadershipApproach": "I lead through the work: sharing account strategy, coaching teammates and making useful knowledge easier to apply. I pair clear expectations with thoughtful feedback and room for people to develop their own strengths.",
   "approachEyebrow": "The approach behind the work",
   "approachHeading": "How I work",
-  "approachIntro": "Enterprise selling sits at the center. I turn buyer questions and field insight into clear messaging, playbooks and learning resources, and bring that feedback to product and marketing.",
+  "approachIntro": "Enterprise selling is the starting point. I use buyer questions and field experience to shape messaging, playbooks and learning resources, then share that context with product and marketing. The aim is to help the team approach the next opportunity with better questions and a clearer plan.",
   "careerHeading": "Career progression",
   "careerIntro": "The roles and experiences that shaped how I sell, lead, and build.",
   "educationHeading": "Education and continued learning",
@@ -78,9 +80,9 @@
   ],
   "contactHeading": "Let's build something useful.",
   "owner": "Kristen Aing",
-  "reviewer": "Pending human review of purpose, search, and About content copy",
-  "contentVersion": 6,
-  "reviewDue": "2026-11-14",
+  "reviewer": "Pending Kristen Aing review of enterprise sales, GTM ownership and leadership copy",
+  "contentVersion": 7,
+  "reviewDue": "2026-12-07",
   "classification": "public",
   "publicationStatus": "review"
 }
