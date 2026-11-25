@@ -284,7 +284,7 @@ test("professional requests retain context without granting private access", asy
 }) => {
   await page.goto("/work#people-leadership");
   const story = page.getByRole("article", {
-    name: "Helping teams ramp and share expertise",
+    name: "Turning field knowledge into resources teammates use",
     exact: true,
   });
   await expect(
@@ -292,7 +292,7 @@ test("professional requests retain context without granting private access", asy
   ).toBeVisible();
   await expect(
     story.getByText(
-      "Coaching and onboarding alongside an enterprise-selling role.",
+      "Peer coaching, onboarding and resource creation alongside enterprise selling.",
       { exact: true },
     ),
   ).toBeVisible();

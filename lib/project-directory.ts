@@ -88,8 +88,8 @@ const sources: DirectorySource[] = [
   {
     slug: "account-intelligence",
     categories: ["Account & Market Intelligence"],
-    role: "I designed the personal feed and the path from an account change to a draft.",
-    scope: "Copy stays in the browser. Planned research sources are named on the case study and are not called from this page.",
+    role: "I wrote field playbooks and published a source-linked company research brief.",
+    scope: "Rapid7 and Truffle Security field work, plus independent research on LimaCharlie.",
     sampleNote: null,
     technologies: "Next.js walkthrough on this page.",
     featuredOrder: 1,

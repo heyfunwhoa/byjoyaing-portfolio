@@ -11,8 +11,8 @@ const evidence: Record<DirectoryPreview, { label: string; caption: string }> = {
     caption: "A sample research brief explaining source-review practices.",
   },
   account: {
-    label: "Fictional account scenario",
-    caption: "An example account signal and outreach hypothesis; no customer data, external feeds, or outbound sending.",
+    label: "Published account research",
+    caption: "A dated LimaCharlie product brief with a saved source and a labeled interpretation.",
   },
   note: {
     label: "Case study · Preview unavailable",
