@@ -27,13 +27,10 @@ test("source guard: Work case studies keep the five fields in order, with no inv
   assert.match(read("app/work/page.tsx"), /<ProfessionalCaseStudy/);
 });
 
-test("source guard: core contribution and limitations are visible, with native disclosure for depth", () => {
+test("source guard: one Work expansion exposes the complete story and related evidence", () => {
   const band = read("components/editorial/case-band-steps.tsx");
-  assert.match(
-    band,
-    /\["Context", "My contribution", "Evidence and limitations"\]/,
-  );
-  assert.match(band, /<details/);
-  assert.match(band, /Read the full story/);
+  assert.match(band, /steps\.map/);
+  assert.match(band, /\{connections\}/);
+  assert.doesNotMatch(band, /<details|<summary|Read the full story|steps\.filter/);
   assert.doesNotMatch(band, /line-clamp|grid-cols-5|aria-hidden|animate-/);
 });

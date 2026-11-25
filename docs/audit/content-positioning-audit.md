@@ -107,3 +107,10 @@ These are first-person accounts of Lowry’s approach. They do not establish a c
 Kristen wants the public portfolio to show work she actually did. This supersedes the proposed synthetic Account Intelligence coaching example above. Lead with the contribution and the observable result. Attribute employer examples to the public career account. A publisher's product page supports product context only. Independent research should link to the original source and to the artifact a reader can inspect.
 
 The revised case uses Rapid7 playbooks the portfolio team used, Truffle Security discovery and evaluation guides the sales team adopted, and the previously published LimaCharlie research brief. Keep a customer-specific trigger, conversation or outcome out until Kristen confirms what happened and what can be shared. Keep customer identities and deal amounts private.
+
+
+## People & Leadership evidence refinement — 2026-11-25
+
+PR #357 now names the supported qualitative outcome: Truffle Security sales-team adoption of discovery, ICP, competitive and POC resources. The existing story separates Kristen’s product training and peer coaching from discovery-template authorship and setup-guide co-authorship with solution architects. No buyer decision, management title, revenue effect or measured ramp improvement is added.
+
+Claim/source record: owner Kristen Aing; primary owner-supplied career record at lib/portfolio.ts, PR #357 source bf567a761811835bc2f0353c0fbf2636f6920e1c, Truffle/Darktrace/Forcepoint entries. Inspected 2026-11-25 UTC. Supports the named work products, collaboration and Truffle team adoption; does not establish a quantified impact or independent employer attestation. Confidence moderate; original paraphrase of previously public career statements, with no proprietary document reproduction. Review trigger: owner factual acceptance before publication or a changed career/source statement. Adoption here means use of the resources, not measured sales effectiveness.

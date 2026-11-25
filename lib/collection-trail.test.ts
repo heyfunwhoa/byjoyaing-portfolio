@@ -59,7 +59,7 @@ test("homepage does not retell the Work field practice; Field Notes does not fak
   assert.match(home, /EditorialBento/);
   assert.match(home, /A side quest/);
   const notes = readFileSync(new URL("../app/field-notes/page.tsx", import.meta.url), "utf8");
-  assert.match(notes, /The published notes/);
+  assert.match(notes, /id="featured"/);
   assert.match(notes, /Exploring · Playbook outlines/);
   assert.doesNotMatch(notes, /Browse the collections/);
   assert.doesNotMatch(notes, /publicStories/);

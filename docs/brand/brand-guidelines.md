@@ -48,6 +48,8 @@ Empowerment is the aspiration; clarity, learning, coaching and useful systems ar
 
 These paths are **design hypotheses**, not measured visitor behavior. Verify through usability sessions.
 
+**Audience positioning:** Lead with an experienced enterprise cybersecurity seller who helps build the GTM motion and develops the sellers around her. The same professional evidence should support enterprise AE, founding AE / GTM lead, and potential Head of Sales conversations. Show personal deal execution first, then adopted field playbooks and coaching. Founding AE and Head of Sales are audience roles, not titles previously held. Communicate ambition as well as experience: state the broader sales and team ownership Kristen wants next, supported by professional examples. Public copy should feel forward-looking and confident without calling her an aspiring leader or presenting future responsibilities as past accomplishments. Keep independent builds as supporting evidence of judgment and initiative; do not imply formal management or ownership of an entire sales organization.
+
 ## 3. Voice and messaging
 
 Sound confident but not corporate, curious but grounded, warm but concise, credible rather than grandiose. Use plain language and active verbs. Favor concrete decisions and evidence over buzzwords. The professional story comes first; playful touches can follow.

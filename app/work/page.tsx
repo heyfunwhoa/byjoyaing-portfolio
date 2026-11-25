@@ -36,8 +36,9 @@ export default function WorkPage() {
           People. Strategy. Systems.
         </h1>
         <p className="mt-4 max-w-2xl leading-7 text-muted">
-          Professional contributions in selling, coaching, and GTM.
-          Independent projects and learning experiences live under Side Quests.
+          Professional contributions in selling, coaching, and GTM. Explore how I
+          own enterprise opportunities, develop field playbooks and help teammates
+          build their skills.
         </p>
       </section>
       <section

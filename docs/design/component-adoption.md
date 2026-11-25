@@ -565,3 +565,14 @@ Destination: existing `CustomerFeedbackWorkflow` inside `CustomerFeedbackCase` a
 - No overlap with open PR #218's workflow source; that PR also appends to this adoption document, so reconcile append-only documentation changes before merge. Rollback: revert the workflow, browser test and this entry.
 
 Follow-up: theme bars now act as 44px review buttons opening the existing decision view. The selected theme and its supporting feedback stay linked through the existing openTheme function. Both theme review and inbox record selection request focus on the destination panel; arrow-key tab navigation retains its existing focus behavior. The common bar maximum is computed once. Three isolated tests now pass, including invoking the real theme handler with mocked DOM focus to verify destination and selected theme; this is not browser focus verification. Strict isolated TypeScript and component build pass. The browser test now covers drill-down focus; execution remains pending.
+
+## Hiring evidence reading path (PR #359, KRU-364; proposed)
+
+- Audience/task: a hiring reader evaluating enterprise selling, early GTM ownership and leadership direction should reach the contribution, decisions and evidence with one Work-card expansion.
+- Reuse/adapt: retain `WorkExplorer` and its existing Radix disclosure, hashes, close/focus-return logic and shared `ProfessionalCaseStudy`. Adapt `editorial/case-band-steps.tsx` to render all five fields and connections without its nested native disclosure. Keep evidence labels, field order and privacy boundaries.
+- Composition: phone uses one story column; tablet/desktop use two columns from the existing `sm` breakpoint, with evidence spanning both. No new motion, dependency, global navigation or state. Essential prose does not require a second activation. Outer close/switch/focus behavior stays with the existing component.
+- Home reuses the current three role-proof cards, an ordinary career link and a labeled Field Notes aside. The latter is an illustrative sales-motion approach, not employer execution evidence. Quantcast and Das Keyboard wording comes from the public career record.
+- Field Notes reuses its existing card grid and Link components: Build the Motion, Enterprise Deal and Multithreading first; remaining published reading follows under a separate heading; all existing playbook sections and anchors remain.
+- Contact reuses the existing form, calendar and email actions. No submission or delivery behavior changes.
+- Verification: updated existing source guards and browser expectations; record actual executed checks in PR #359. Full current-checkout build, responsive browser, keyboard, zoom and reduced-motion checks remain pending until executed. This entry describes proposed code, not a shipped adoption.
+- Rollback: revert the focused refinement commit. Owner review precedes merge and production release.
