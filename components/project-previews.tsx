@@ -55,10 +55,10 @@ export function ProjectPreview({ kind, compact = false }: { kind: DirectoryPrevi
   if (kind === "account") {
     return (
       <div className="rounded-xl border border-border bg-card p-4">
-        <p className="text-[11px] font-medium text-muted">Example data</p>
-        <p className="mt-2 text-sm font-medium">Acme Corp · leadership change</p>
-        <p className="mt-2 text-sm leading-6 text-muted">New VP of Application Security appointed. The reason to call is a hypothesis, not a fact.</p>
-        {!compact ? <p className="mt-3 text-xs text-muted">No live feed. The draft does not send.</p> : null}
+        <p className="text-sm font-medium text-muted">Independent research</p>
+        <p className="mt-2 text-sm font-medium">LimaCharlie product overview</p>
+        <p className="mt-2 text-sm leading-6 text-muted">A saved October 2026 source shows which product capabilities the vendor describes and where the researcher’s interpretation begins.</p>
+        {!compact ? <p className="mt-3 text-sm text-muted">The published brief includes the source, capture date and content hash.</p> : null}
       </div>
     );
   }

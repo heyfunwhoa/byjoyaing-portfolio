@@ -7,6 +7,8 @@
 
 **Reconciliation note (2026-11-09):** [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) merged into `main` on 2026-11-08 (`3a64a4387392be3daa5686cd23f7eec81cc8c1f0`). Sentences below that still call #238 an open integration branch were accurate on 2026-11-06 and are historical. The nine-path navigation and background-job recovery lesson are registered on current `main`. This crosswalk and its companions remain written source material: they are not new catalog IDs and were not observed as a deployed Academy UI. The sentence that a separate local capstone practices the same form is intentionally unchanged so stacked [PR #278](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/278) can keep its one-line link to the executable fixture. That fixture is not in this change, and this note does not retarget #278. [PR #233](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/233) stays open and conflicted.
 
+**Capstone link (2026-11-25):** The route below now links the [local alert handoff capstone](../../examples/academy/alert-handoff/README.md). It runs on loopback with an in-memory database. It is not a registered lesson or a published Academy page. [PR #278](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/278) remains the earlier stacked draft.
+
 ## Start here
 
 This is the learner route for **software delivery literacy and beginner practice**. Use the fictional alert handoff form throughout. The existing orientation also includes a discovery note example you can use to test whether the same ideas transfer.
@@ -29,7 +31,7 @@ This is the learner route for **software delivery literacy and beginner practice
 | How infrastructure changes are reviewed | [IaC plan and drift review](../builder-academy/infrastructure-as-code-plan-review.md) | Identify a destructive change and explain who must review it. |
 | Why a team might need orchestration | [Kubernetes and platform engineering](../builder-academy/kubernetes-platform-engineering.md) | Diagnose a missing service endpoint and justify a hosting choice. |
 
-The route uses existing lessons and written draft companions. A separate local capstone provides execution practice with the same form. The learner review below measures reasoning independently. Deep programming fluency, professional UX research, production cloud administration, security certification, and live on-call ownership are separate learning paths.
+The route uses existing lessons and written draft companions. The [local alert handoff capstone](../../examples/academy/alert-handoff/README.md) provides execution practice with the same form. The learner review below measures reasoning independently. Deep programming fluency, professional UX research, production cloud administration, security certification, and live on-call ownership are separate learning paths.
 
 **Important sequencing boundary:** Academy [PR #238](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/238) merged on 2026-11-08. Its SDLC-first lesson navigation is on current `main`. Do not create a second SDLC entry path from this crosswalk. KRU-77 owns future resume/progress work. The first truly interactive IaC exercise, if justified after actual learner review, is a **separate, small implementation** in the existing Academy component family, not another documentation expansion or external cloud deployment. Merge of #238 is not proof this written route is published in the Academy UI.
 

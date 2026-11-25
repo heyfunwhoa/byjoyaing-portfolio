@@ -16,8 +16,8 @@ const caseStudies = [
   {
     slug: "account-intelligence",
     evidence: "account" as const,
-    limitation: "The walkthrough uses fictional accounts. There is no live feed, source retrieval, or sent outreach.",
-    next: "Review the example signal, decision path, and human approval boundary.",
+    limitation: "The company source supports the product description. The research brief records the author’s interpretation.",
+    next: "Inspect the dated source and the published brief.",
     link: "/work/account-intelligence",
   },
 ] as const;

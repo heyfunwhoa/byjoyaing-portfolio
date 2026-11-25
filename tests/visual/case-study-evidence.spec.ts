@@ -12,8 +12,8 @@ test("evidence-first comparison preserves project facts and authentic sample cap
   await expect(section.getByText(/Not shown:/)).toBeVisible();
 
   await section.getByRole("button", { name: "Account Intelligence" }).click();
-  await expect(section.getByText("Fictional account scenario")).toBeVisible();
-  await expect(section.getByText(/no live feed, source retrieval, or sent outreach/i)).toBeVisible();
+  await expect(section.getByText("Published account research")).toBeVisible();
+  await expect(section.getByText(/company source supports the product description/i)).toBeVisible();
   await expect(section.getByRole("link", { name: /Open the current case study/ })).toHaveAttribute("href", "/work/account-intelligence");
 });
 

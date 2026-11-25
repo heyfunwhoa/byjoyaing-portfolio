@@ -26,7 +26,7 @@ const categories = [
     id: "people-leadership",
     title: "People & Leadership",
     eyebrow: "02 / People",
-    description: "I coached newer sellers at Truffle Security and built discovery guides the sales team adopted.",
+    description: "I created product training for new hires at Darktrace and Truffle Security. At Truffle, I also coached newer sellers and built discovery guides the sales team adopted.",
     tags: ["Coaching", "Onboarding"],
     Icon: Users,
   },

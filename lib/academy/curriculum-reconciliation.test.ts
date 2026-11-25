@@ -69,7 +69,7 @@ test("reconciliation keeps the registered nine-path catalog and recovery disclai
   const recovery = readFileSync("docs/builder-academy/background-job-recovery.md", "utf8");
   assert.match(recovery, /does not save or grade a submission/);
   assert.match(recovery, /not independent proof that you can operate a production queue/);
-  assert.equal(existsSync("examples/academy/alert-handoff/server.mjs"), false);
+  assert.equal(existsSync("examples/academy/alert-handoff/server.mjs"), true);
   assert.equal(existsSync("docs/academy/DATA-ARCHITECTURE-INTEGRATION-MAP.md"), false);
 });
 
@@ -96,7 +96,8 @@ test("reconciled curriculum links resolve and both delivery exercises stay disti
   const crosswalk = readFileSync("docs/academy/SDLC-ENABLEMENT-CROSSWALK.md", "utf8");
   assert.match(crosswalk, /Not a live Academy track/);
   assert.match(crosswalk, /PR #278/);
-  assert.match(crosswalk, /A separate local capstone provides execution practice/);
+  assert.match(crosswalk, /local alert handoff capstone/);
+  assert.match(crosswalk, /not a registered lesson or a published Academy page/);
 
   const foundations = readFileSync("docs/academy/DATA-FOUNDATIONS-PATH.md", "utf8");
   assert.match(foundations, /No new app, lesson registration/);
