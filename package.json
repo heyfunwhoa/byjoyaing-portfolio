@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.65.1",
+    "@storybook/addon-a11y": "^10.6.8",
     "@storybook/nextjs-vite": "^10.6.7",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
