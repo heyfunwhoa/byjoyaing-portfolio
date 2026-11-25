@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alert handoff practice</title>
+  <style>
+    body { font: 1rem/1.6 system-ui, sans-serif; margin: 2rem auto; max-width: 38rem; padding: 0 1rem; color: #182230; background: #fff; }
+    label, textarea, button { display: block; }
+    textarea { box-sizing: border-box; font: inherit; width: 100%; }
+    button { min-height: 44px; padding: .5rem 1rem; font: inherit; }
+    .option { display: flex; gap: .6rem; align-items: center; min-height: 44px; }
+    :focus-visible { outline: 3px solid #184c96; outline-offset: 3px; }
+    #status { min-height: 3.2em; }
+  </style>
+  <script type="module" src="/client.mjs"></script>
+</head>
+<body>
+  <main>
+    <h1>Request an alert handoff review</h1>
+    <p>Use fictional details. This practice app stores reviews in memory until you stop it.</p>
+    <form>
+      <label for="summary">Review summary</label>
+      <textarea id="summary" required maxlength="240" rows="4"></textarea>
+      <label class="option"><input id="lose-response" type="checkbox"> Lose the first confirmation after saving</label>
+      <button type="submit">Submit review</button>
+    </form>
+    <p id="status" role="status"></p>
+    <p><a href="/api/review-requests">Inspect saved reviews</a> · <a href="/version">Inspect the running version</a></p>
+  </main>
+</body>
+</html>
