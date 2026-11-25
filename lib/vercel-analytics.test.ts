@@ -5,19 +5,19 @@ import { filterVercelPageview } from "./vercel-analytics.ts";
 test("vercel pageviews keep reviewed routes and strip queries and hashes", () => {
   const result = filterVercelPageview({
     type: "pageview",
-    url: "https://www.byjoyaing.com/work?token=secret#private",
+    url: "https://www.kristenaing.com/work?token=secret#private",
   });
   assert.deepEqual(result, {
     type: "pageview",
-    url: "https://www.byjoyaing.com/work",
+    url: "https://www.kristenaing.com/work",
   });
   assert.equal(JSON.stringify(result).includes("secret"), false);
   for (const url of [
-    "https://www.byjoyaing.com/work/private-client",
-    "https://www.byjoyaing.com/design-lab",
-    "https://www.byjoyaing.com/connect",
+    "https://www.kristenaing.com/work/private-client",
+    "https://www.kristenaing.com/design-lab",
+    "https://www.kristenaing.com/connect",
     "https://preview.vercel.app/work",
-    "http://www.byjoyaing.com/work",
+    "http://www.kristenaing.com/work",
     "invalid",
   ]) {
     assert.equal(filterVercelPageview({ type: "pageview", url }), null);
@@ -25,7 +25,7 @@ test("vercel pageviews keep reviewed routes and strip queries and hashes", () =>
   assert.equal(
     filterVercelPageview({
       type: "event",
-      url: "https://www.byjoyaing.com/contact",
+      url: "https://www.kristenaing.com/contact",
     }),
     null,
   );

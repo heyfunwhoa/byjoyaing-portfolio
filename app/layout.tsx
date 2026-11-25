@@ -1,3 +1,4 @@
+import { publicSiteOrigin } from "@/lib/site-origin";
 import { Mark } from "@/components/mark";
 import { VercelAnalytics } from "@/components/vercel-analytics";
 import { EmailLink } from "@/components/email-link";
@@ -21,7 +22,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.byjoyaing.com"),
+  metadataBase: new URL(publicSiteOrigin),
   title: {
     default: "Kristen Aing | Cybersecurity Sales & GTM Leadership",
     template: "%s — Kristen Aing",
@@ -45,7 +46,7 @@ const publicIdentity = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Kristen Aing",
-  url: "https://www.byjoyaing.com/",
+  url: `${publicSiteOrigin}/`,
   description:
     "Enterprise cybersecurity seller, revenue and GTM leader, and independent builder.",
   knowsAbout: [
@@ -89,7 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <div className="flex flex-col gap-3 sm:items-end">
               <nav
                 aria-label="Footer"
-                className="grid grid-cols-2 gap-x-5 gap-y-1 min-[480px]:grid-cols-3 sm:flex sm:max-w-sm sm:flex-wrap sm:justify-end sm:gap-x-4"
+                className="grid grid-cols-2 gap-x-5 gap-y-1 min-[480px]:grid-cols-3 sm:flex sm:max-w-sm sm:flex-wrap sm:justify-end sm:gap-x-4 lg:max-w-lg lg:gap-x-3"
               >
                 {[
                   ["/about", "About"],

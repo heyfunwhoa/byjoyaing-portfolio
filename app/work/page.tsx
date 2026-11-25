@@ -36,22 +36,18 @@ export default function WorkPage() {
           People. Strategy. Systems.
         </h1>
         <p className="mt-4 max-w-2xl leading-7 text-muted">
-          Professional contributions in selling, coaching, and GTM.
-          Independent projects and learning experiences live under Side Quests.
+          Professional contributions in selling, coaching, and GTM. Explore how I
+          own enterprise opportunities, develop field playbooks and help teammates
+          build their skills.
         </p>
       </section>
       <section
         aria-labelledby="featured-work-heading"
         className="border-b border-border py-12 sm:py-16"
       >
-        <p className="orbital-section-label editorial-eyebrow text-accent">Selected work / Explore</p>
         <h2 id="featured-work-heading" className="mt-2 font-display text-3xl">
-          Explore professional evidence
+          Selected work
         </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
-          Three ways into the work. Open a card to explore the story,
-          contribution and evidence—or collapse it to keep browsing.
-        </p>
         <WorkExplorer
           stories={publicStories.map((story) => (
             <ProfessionalCaseStudy

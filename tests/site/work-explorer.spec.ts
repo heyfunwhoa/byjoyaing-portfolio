@@ -7,7 +7,11 @@ test("Work cards open, switch and close evidence with focus return", async ({ pa
   await expect(sales).toHaveAttribute("aria-expanded", "false");
   await sales.focus();
   await page.keyboard.press("Enter");
-  await expect(page.getByRole("region", { name: "Enterprise Sales evidence", exact: true })).toBeVisible();
+  const salesStory = page.getByRole("region", { name: "Enterprise Sales evidence", exact: true });
+  await expect(salesStory).toBeVisible();
+  await expect(salesStory.getByText("Execution and decisions", { exact: true })).toBeVisible();
+  await expect(salesStory.getByText("What I learned", { exact: true })).toBeVisible();
+  await expect(salesStory.locator("details, summary")).toHaveCount(0);
   await people.click();
   await expect(sales).toHaveAttribute("aria-expanded", "false");
   await expect(page.getByRole("region", { name: "People & Leadership evidence", exact: true })).toBeVisible();
@@ -21,7 +25,12 @@ for (const width of [375, 768, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/work#gtm-strategy");
     await expect(page.locator("#gtm-strategy button")).toHaveAttribute("aria-expanded", "true");
-    await expect(page.getByRole("region", { name: "GTM Strategy evidence", exact: true })).toBeVisible();
+    const story = page.getByRole("region", { name: "GTM Strategy evidence", exact: true });
+    await expect(story).toBeVisible();
+    for (const heading of ["Context", "My contribution", "Execution and decisions", "Evidence and limitations", "What I learned"]) {
+      await expect(story.getByText(heading, { exact: true })).toBeVisible();
+    }
+    await expect(story.locator("details, summary")).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   });
 }

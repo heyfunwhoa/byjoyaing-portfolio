@@ -4,10 +4,10 @@ import {
   accountById,
   demoAccounts,
   demoSignals,
-  draftVariants,
   signalCategories,
   signalsForAccount,
   type DemoSignal,
+  type OutreachDraft,
   type SignalCategory,
 } from "@/lib/account-intelligence-demo";
 import { useMemo, useState, type ReactNode } from "react";
@@ -52,14 +52,14 @@ export function AccountIntelligenceWorkflow() {
   const [accountFilter, setAccountFilter] = useState<string | "all">("all");
   const [category, setCategory] = useState<SignalCategory | "All">("All");
   const [signalId, setSignalId] = useState(demoSignals[0].id);
-  const [draftIndex, setDraftIndex] = useState(0);
+  const [workingDrafts, setWorkingDrafts] = useState<Record<string, OutreachDraft & { index: number }>>({});
   const [editing, setEditing] = useState(false);
-  const [draftBody, setDraftBody] = useState<string>(draftVariants[0].body);
-  const [draftSubject, setDraftSubject] = useState<string>(draftVariants[0].subject);
-  const [copied, setCopied] = useState(false);
+  const [copiedText, setCopiedText] = useState<string | null>(null);
 
   const signal = demoSignals.find((item) => item.id === signalId) ?? demoSignals[0];
   const account = accountById(signal.accountId);
+  const draft = workingDrafts[signal.id] ?? { ...signal.drafts[0], index: 0 };
+  const clipboardText = `Subject: ${draft.subject}\n\n${draft.body}`;
 
   const feed = useMemo(() => {
     return demoSignals.filter((item) => {
@@ -73,25 +73,26 @@ export function AccountIntelligenceWorkflow() {
     setSignalId(next.id);
     setStage(nextStage);
     setEditing(false);
-    setCopied(false);
+    setCopiedText(null);
   }
 
-  function showDraft(index: number) {
-    const next = draftVariants[index % draftVariants.length];
-    setDraftIndex(index % draftVariants.length);
-    setDraftSubject(next.subject);
-    setDraftBody(next.body);
+  function updateDraft(next: typeof draft) {
+    setWorkingDrafts((current) => ({ ...current, [signal.id]: next }));
+    setCopiedText(null);
+  }
+
+  function useNextDraft() {
+    const index = (draft.index + 1) % signal.drafts.length;
+    updateDraft({ ...signal.drafts[index], index });
     setEditing(false);
-    setCopied(false);
   }
 
   async function copyDraft() {
-    const text = `Subject: ${draftSubject}\n\n${draftBody}`;
     try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
+      await navigator.clipboard.writeText(clipboardText);
+      setCopiedText(clipboardText);
     } catch {
-      setCopied(false);
+      setCopiedText(null);
     }
   }
 
@@ -172,7 +173,8 @@ export function AccountIntelligenceWorkflow() {
                           onClick={() => {
                             setAccountFilter(item.id);
                             setCategory("All");
-                            setStage("feed");
+                            const first = signalsForAccount(item.id)[0];
+                            openSignal(item.id === signal.accountId || !first ? signal : first, "feed");
                           }}
                         >
                           View signals
@@ -309,8 +311,8 @@ export function AccountIntelligenceWorkflow() {
               {account.name} · {signal.category}
             </p>
             <p className="mt-3 text-sm leading-6">
-              <span className="font-medium">Outreach angle. </span>
-              {signal.angle}
+              <span className="font-medium">Observed event. </span>
+              {signal.observed}
             </p>
             <div className="mt-4 rounded-xl border border-border bg-card p-4">
               <label className="block text-xs font-medium text-muted" htmlFor="draft-subject">
@@ -319,12 +321,12 @@ export function AccountIntelligenceWorkflow() {
               {editing ? (
                 <input
                   id="draft-subject"
-                  value={draftSubject}
-                  onChange={(event) => setDraftSubject(event.target.value)}
+                  value={draft.subject}
+                  onChange={(event) => updateDraft({ ...draft, subject: event.target.value })}
                   className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1.5 text-sm"
                 />
               ) : (
-                <p className="mt-1 text-sm font-medium">{draftSubject}</p>
+                <p className="mt-1 text-sm font-medium">{draft.subject}</p>
               )}
               <label className="mt-3 block text-xs font-medium text-muted" htmlFor="draft-body">
                 Body
@@ -332,14 +334,14 @@ export function AccountIntelligenceWorkflow() {
               {editing ? (
                 <textarea
                   id="draft-body"
-                  value={draftBody}
-                  onChange={(event) => setDraftBody(event.target.value)}
+                  value={draft.body}
+                  onChange={(event) => updateDraft({ ...draft, body: event.target.value })}
                   rows={8}
                   className="mt-1 w-full rounded-md border border-border bg-background px-2 py-1.5 text-sm leading-6"
                 />
               ) : (
                 <p id="draft-body" className="mt-1 whitespace-pre-wrap text-sm leading-6 text-muted">
-                  {draftBody}
+                  {draft.body}
                 </p>
               )}
             </div>
@@ -347,9 +349,9 @@ export function AccountIntelligenceWorkflow() {
               <button
                 type="button"
                 className="rounded-md border border-border px-3 py-2 text-xs font-medium"
-                onClick={() => showDraft(draftIndex + 1)}
+                onClick={useNextDraft}
               >
-                Regenerate
+                Try another draft
               </button>
               <button
                 type="button"
@@ -363,11 +365,11 @@ export function AccountIntelligenceWorkflow() {
                 className="rounded-md bg-accent px-3 py-2 text-xs font-medium text-accent-foreground"
                 onClick={() => void copyDraft()}
               >
-                {copied ? "Copied" : "Copy draft"}
+                {copiedText === clipboardText ? "Copied" : "Copy draft"}
               </button>
             </div>
             <p className="mt-3 text-xs leading-5 text-muted">
-              This draft stays in the browser. Regenerate swaps the sample text. Copy does not send it. Review it before anyone would send it.
+              Each signal has two sample drafts. Edits stay in this browser tab. Copy puts the current draft on your clipboard.
             </p>
           </DemoFrame>
         ) : null}

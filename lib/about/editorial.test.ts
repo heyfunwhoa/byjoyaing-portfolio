@@ -33,7 +33,7 @@ test("the About page renders one validated record and keeps interaction in code"
   );
 });
 
-test("education captions break the credential and its detail onto two lines", () => {
+test("education captions preserve credential details and in-progress status", () => {
   const page = readAboutEditorial(record);
   assert.deepEqual(
     page.education.map(educationCaptionLines),
@@ -43,7 +43,7 @@ test("education captions break the credential and its detail onto two lines", ()
         "Business Foundations.",
         "The University of Texas at Austin.",
       ],
-      ["MBA, IT Management.", "Western Governors University, 2025."],
+      ["MBA, IT Management.", "Western Governors University.", "In progress."],
       ["AWS Certified Cloud Practitioner.", "Foundational."],
       ["AWS Certified AI Practitioner.", "Foundational."],
     ],

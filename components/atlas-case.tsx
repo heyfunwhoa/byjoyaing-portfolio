@@ -73,6 +73,20 @@ export function AtlasCase() {
         <div className="mt-8">
           <CoverageExplorer />
         </div>
+        <div className="mt-8 max-w-2xl">
+          <h3 id="what-covered-means" className="scroll-mt-24 font-display text-2xl tracking-tight">
+            What does “covered” mean in a secret-scanning evaluation?
+          </h3>
+          <p className="mt-3 leading-7 text-muted">
+            In this table, “Covered” means I reviewed the evidence for that credential type.
+            I marked Slack “Observed” because I found a detector folder in the public TruffleHog source.
+            I’d still want to check which Slack token types it recognizes and whether it can verify that a match is active.
+          </p>
+          <p className="mt-3 leading-7 text-muted">
+            If a buyer asked, “Would you catch our Slack tokens?” I’d say, “Which kind of token are you worried about?
+            I’ll check detection and verification with our solutions engineer so you know what your team would actually see in an alert.”
+          </p>
+        </div>
       </section>
 
       <section id="read-the-cell" className="scroll-mt-24 border-b border-border py-16">

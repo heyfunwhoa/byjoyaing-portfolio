@@ -4,25 +4,26 @@ Status: **manual verification pending**. Domain ownership in third-party webmast
 
 ## Google Search Console
 
-1. Open https://search.google.com/search-console and add a **Domain** property: `byjoyaing.com` (without `https://` or `www`).
+1. Open https://search.google.com/search-console and add a **Domain** property: `kristenaing.com` (without `https://` or `www`).
 2. Add the verification record provided by Search Console at the DNS provider. Use the TXT or CNAME type and values it provides; do not generate your own value. Do not commit the verification token into the repository.
-3. After verification, inspect the exact deployed URLs `https://www.byjoyaing.com/`, `https://www.byjoyaing.com/work`, and `https://www.byjoyaing.com/ai-academy`.
-4. Submit `https://www.byjoyaing.com/sitemap.xml` in **Sitemaps**.
-5. Record the indexed/not-indexed results and investigate canonical, crawl or noindex warnings. Submission is not a guarantee of indexing.
+3. After verification, inspect the exact deployed URLs `https://www.kristenaing.com/`, `https://www.kristenaing.com/work`, and `https://www.kristenaing.com/ai-academy`.
+4. Once redirects from `byjoyaing.com` and `www.byjoyaing.com` preserve the path to `www.kristenaing.com`, use Change of Address in the verified old property.
+5. Submit `https://www.kristenaing.com/sitemap.xml` in **Sitemaps**.
+6. Record the indexed/not-indexed results and investigate canonical, crawl or noindex warnings. Submission is not a guarantee of indexing.
 
 ## Bing Webmaster Tools
 
-1. Open https://www.bing.com/webmasters and use the Google Search Console import if available; otherwise add and verify `byjoyaing.com` by its supported method.
-2. Submit `https://www.byjoyaing.com/sitemap.xml`.
+1. Open https://www.bing.com/webmasters and use the Google Search Console import if available; otherwise add and verify `kristenaing.com` by its supported method.
+2. Submit `https://www.kristenaing.com/sitemap.xml`.
 3. Check URL Inspection and coverage after Bing has processed the site.
 
 ## Public deployment checks
 
-- `https://www.byjoyaing.com/robots.txt` should be reachable, allow crawlers for published pages, and point to the sitemap.
-- `https://www.byjoyaing.com/sitemap.xml` should be reachable and contain only indexable, canonical production URLs.
+- `https://www.kristenaing.com/robots.txt` should be reachable, allow crawlers for published pages, and point to the sitemap.
+- `https://www.kristenaing.com/sitemap.xml` should be reachable and contain only indexable, canonical production URLs.
 - A published page should return HTTP 200, a useful title and description, and a canonical URL.
 - Private work, unselected practice labs and intentionally unpublished lessons should not appear in the sitemap, and should have effective noindex controls or return 404 as appropriate. **Noindex is not access control:** protected content also requires server-side authorization.
-- Check both `byjoyaing.com` and `www.byjoyaing.com` for a single canonical host and consistent redirects.
+- Check both `kristenaing.com` and `www.kristenaing.com` for a single canonical host and consistent redirects.
 
 ## Existing automated checks
 

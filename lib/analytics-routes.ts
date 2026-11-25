@@ -1,7 +1,9 @@
+import { publicSiteOrigin } from "./site-origin.ts";
+
 /** Reviewed public landing pages. Extend only after route review. */
 export const reviewedPublicOrigins = new Set([
-  "https://byjoyaing.com",
-  "https://www.byjoyaing.com",
+  publicSiteOrigin,
+  "https://kristenaing.com",
 ]);
 
 export const reviewedPublicPaths = new Set([

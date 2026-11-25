@@ -40,23 +40,23 @@ export default function Home() {
   const roleProofs = [
     {
       role: current,
-      label: "Current role",
+      label: "Developer security",
       detail:
-        "Built shared discovery, ICP, competitive, and POC resources the sales team adopted.",
+        "Created discovery templates and co-wrote setup guides with solution architects.",
       href: "/work#people-leadership",
       action: "Coaching and enablement",
     },
     {
       role: earlier[0],
       label: "Strategic enterprise",
-      detail: null,
+      detail: "Wrote threat-intelligence playbooks the portfolio team used.",
       href: "/work#enterprise-sales",
       action: "Enterprise deal execution",
     },
     {
       role: earlier[1],
       label: "Security sales",
-      detail: null,
+      detail: "Closed strategic web-security opportunities and supported broader field execution.",
       href: "/experience#career-details",
       action: "Full career timeline",
     },
@@ -150,6 +150,25 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <p className="mt-6 max-w-3xl text-sm leading-7 text-muted">
+          Earlier, I co-created an agency-targeting and outreach playbook as an early
+          member of Quantcast’s Austin sales team, and helped stand up a global
+          channel program with executive leadership at Das Keyboard.
+          {" "}<Link href="/experience#career-details" className="inline-flex min-h-11 items-center font-semibold text-accent underline underline-offset-4">
+            Explore the early GTM work →
+          </Link>
+        </p>
+        <aside aria-label="Sales leadership approach" className="mt-6 rounded-xl border border-border bg-card p-5 sm:p-6">
+          <p className="editorial-eyebrow text-muted">Field Notes · Illustrative model</p>
+          <h3 className="mt-2 font-display text-xl">How I’d build a motion at your stage</h3>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
+            My approach to winning the first customers, developing the sales motion
+            and deciding when to grow the team, while continuing to sell.
+          </p>
+          <Link href="/field-notes/build-the-motion" className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4">
+            Read the sales-motion plan →
+          </Link>
+        </aside>
       </section>
 
       <EditorialBento />
@@ -206,7 +225,7 @@ export default function Home() {
           The useful next step is a conversation.
         </h2>
         <p className="mt-5 max-w-xl text-base leading-7 text-muted">
-          I like the hard enterprise problem, the teammate getting better at it, and the system that makes the next one easier. If that is the work you are in, I would like to hear about it.
+          Looking for someone to own complex enterprise deals and help build the sales motion? Let’s talk about the customers, team and stage you’re building for.
         </p>
         <div className="mt-7 flex flex-col gap-3 min-[420px]:flex-row min-[420px]:items-center">
           <Link

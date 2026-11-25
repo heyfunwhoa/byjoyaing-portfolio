@@ -180,3 +180,17 @@ test("outlines remain useful with JavaScript disabled", async ({ browser, baseUR
     await context.close();
   }
 });
+
+test("the three selected guides lead to sales leadership, execution and coaching", async ({ page }) => {
+  await page.goto("/field-notes");
+  const guides = page.locator("#featured");
+  const links = guides.locator("a");
+  await expect(links).toHaveCount(5);
+  const expected = ["/field-notes/build-the-motion", "/field-notes/enterprise-deal", "/field-notes/multithreading"];
+  for (let index = 0; index < expected.length; index++) {
+    await expect(links.nth(index)).toHaveAttribute("href", expected[index]);
+  }
+  await expect(guides.getByRole("heading", { name: "More published reading" })).toBeVisible();
+  await expect(page.locator("#sales-playbooks")).toBeAttached();
+  await expect(page.locator("#marketing-playbooks")).toBeAttached();
+});
