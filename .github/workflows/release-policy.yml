@@ -1,9 +1,9 @@
 name: Release policy tests
 on:
   pull_request:
+    # CI's Unit tests job covers PRs targeting main and pushes to main.
+    branches-ignore: [main]
     types: [opened, synchronize, reopened, ready_for_review]
-  push:
-    branches: [main]
 permissions:
   contents: read
 concurrency:

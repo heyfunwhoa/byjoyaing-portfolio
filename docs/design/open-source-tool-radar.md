@@ -4,6 +4,8 @@
 
 ## Where to browse candidates
 
+See the [license reference](#license-reference) to look up an upstream license and record how you used a project.
+
 The authoritative cross-category tool registry is in Technical Docs Platform. **Start with the [browseable 60-tool use-case index](https://github.com/heyfunwhoa/technical-docs-platform/blob/785789969464b788d247deb0333563faca2c89bc/software-catalog/open-source-browse.md)**, generated from the [canonical opportunity register](https://github.com/heyfunwhoa/technical-docs-platform/blob/785789969464b788d247deb0333563faca2c89bc/software-catalog/open-source-opportunities.json) with the [selection and pilot guide](https://github.com/heyfunwhoa/technical-docs-platform/blob/785789969464b788d247deb0333563faca2c89bc/software-catalog/open-source-intake.md), merged through [PR #66](https://github.com/heyfunwhoa/technical-docs-platform/pull/66). The links are pinned to the merged commit to preserve the reviewed catalog baseline.
 
 This **is not another registry**. This portfolio retains the existing curated [component-options catalog](../../lib/component-options.ts), [Design Lab](design-lab.md), [source audit](component-source-audit.md), [adoption contract](component-adoption.md) and Storybook demos. Do not copy the entire cross-category JSON file into this app or add all candidates to the Design Lab UI.
@@ -19,6 +21,110 @@ This **is not another registry**. This portfolio retains the existing curated [c
 | Research, AI and delivery | Crawl4AI, Promptfoo, Langfuse, OpenSSF Scorecard, Syft, Trivy | Link to owning program and evidence, not demo every backend dependency in Design Lab | Existing Research Hub, Vitest, GitHub Actions |
 
 Candidate status means **possible future use**, not approved adoption, free cost, verified integration, compliance or production readiness. Source-available candidates must remain visually distinct from OSI open-source packages in any future catalog UI. The canonical registry has explicit license statuses.
+
+## Train-map UI references
+
+Start with Rail Map Painter to sketch a network and Mini Tokyo 3D to study what happens when someone selects one item on a crowded map.
+
+| Project and demo | Documented interaction | What to try in the Security Market Map | Decision | Code license |
+| --- | --- | --- | --- | --- |
+| [Rail Map Painter](https://github.com/railmapgen/rmp) · [Editor](https://railmapgen.org/?app=rmp) · [Gallery](https://railmapgen.org/?app=rmp-gallery) | Drag stations onto a canvas, connect lines, and adjust paths and labels. | Sketch two categories with one shared product. Can a reader follow either line through the transfer? | Try in sketch | [GPL-3.0](https://github.com/railmapgen/rmp/blob/main/LICENCE) |
+| [d3-tube-map](https://github.com/johnwalley/d3-tube-map) · [Observable demo](https://observablehq.com/@johnwalley/d3-tube-map) | Each route has a sequence of nodes. Station coordinates and label directions control the schematic. | Try placing a long vendor name beside an interchange. Use this as a layout reference if labels collide. | Saved | [BSD-3-Clause](https://github.com/johnwalley/d3-tube-map/blob/master/LICENSE) |
+| [Subway Now](https://github.com/sunny-ng/subwaynow-web) · [NYC map](https://www.subwaynow.app/) | The app uses live service data to redraw subway routes when service changes. | Revisit if readers need to see how vendor coverage changed between two dated sources. | Parked | [MIT](https://github.com/sunny-ng/subwaynow-web/blob/master/LICENSE) |
+| [Mini Tokyo 3D](https://github.com/nagix/mini-tokyo-3d) · [Tokyo map](https://minitokyo3d.com/) | Select a train to follow it. Its timetable opens at the bottom and can be collapsed. [Interaction guide](https://minitokyo3d.com/docs/master/user-guide/screen-and-operations.html) | Select a product to open its evidence. Close the panel and return focus to the same station with both lines still in view. | Try in sketch | [MIT](https://github.com/nagix/mini-tokyo-3d/blob/master/LICENSE) |
+
+**Source review, 2026-11-22.** Codex checked the upstream project documentation and code license files linked above. The interactions are documented by their publishers. The market-map ideas are proposals for a first sketch. Demo usability, package compatibility, and rights to third-party maps, icons, or transit feeds need their own review if used.
+
+### First sketch
+
+**Buyer question.** Who can help me find credentials my company has exposed publicly?
+
+Draw two labeled lines, *Secrets Detection* and *Public Exposure Monitoring*, with products from five or six vendors if the evidence supports that many. Label each station with the product and identify its vendor in the detail panel. A shared station needs evidence for the same product on both lines. When a vendor sells two separate products, give them separate stops. The [Market Map graph model](https://github.com/heyfunwhoa/security-market-map/blob/main/docs/product/evidence-graph-rollout-and-guardrails.md) distinguishes products, vendors, claims, and sources.
+
+Label the shared station's panel **Why is this product on both lines?** For each line, show the precise capability, who reported it, when the source was checked, and a link to the passage. Leave open questions visible. For example, monitoring a public repository and checking whether a discovered key is active are separate claims. Give the list view the same evidence links so a reader can complete the task with a keyboard or on a phone.
+
+### Internal and external monitoring
+
+Secrets detection is the task. Describe the monitoring scope separately for each product or mode. **Internal monitoring** starts with sources a team connects. **External public monitoring** starts with supported public sources and uses evidence to associate a finding with the company. Keep three facts visible when comparing the two: who selected the source, whether it was public, and what linked the finding to the organization.
+
+Use GitGuardian's two named monitoring modes to test that distinction with the same kind of GitHub commit.
+
+| Example commit | Internal Monitoring | Public Monitoring |
+| --- | --- | --- |
+| In a connected, private company repository | The integration can scan the repository. | The private commit is outside the public feed. A separately published copy is a different occurrence. |
+| In a connected, public company repository | The integration can scan the repository even though people outside the company can see it. | The public commit can also generate a finding if the secret is detected and an attachment rule matches. |
+| In a contractor's public repository the company has never connected | This repository is outside the configured integration. | A matching public finding can be associated with the company, for example through a monitored developer or company-specific term. The receiving team still needs to establish who owns the credential. |
+
+GitGuardian documents the difference between a publicly visible integrated source and a linked public incident. Treat a linked incident as a possibility for a particular secret. [Internal source integration](https://docs.gitguardian.com/platform/getting-started/integrate) · [Public source coverage and attachment rules](https://docs.gitguardian.com/public-monitoring/sources/overview) · [Public exposure on an internal incident](https://docs.gitguardian.com/internal-monitoring/remediate/investigate-incidents#source-is-publicly-visible)
+
+Keep **Gitleaks** labeled as operator-directed scanning of supplied inputs and **Forager** as external monitoring of supported public sources, with edition-specific attribution. In the reader test, ask which modes could cover the connected public repository, then change only its visibility or integration status and ask what changed. Sources reviewed November 22, 2026.
+
+### Company attribution and handoff
+
+The three-product example covers GitGuardian Public Monitoring, Forager, and Gitleaks. State the sample size beside the legend. Each line represents a placement supported by a reviewed source. A missing line leaves the other placement open.
+
+Keep **What links a finding to the company?** visible when a station is selected. Show the documented attribution signal, the input or setup a customer supplies, and who still needs to confirm ownership. Include a source-review date beside the documentation. Record a key's last verification time only when a finding supplies it.
+
+| Product | What the source establishes | What the responder still needs |
+| --- | --- | --- |
+| GitGuardian Public Monitoring | The attachment rules vary by public source. For GitHub commits they include a monitored developer, organization, or company-specific term. GitGuardian explicitly says a developer match can involve a personal credential. [Attachment reasons by source](https://docs.gitguardian.com/public-monitoring/sources/overview) · [Investigate a public incident](https://docs.gitguardian.com/public-monitoring/remediate/understand-incident-properties#attachment-reasons) | Check which rule matched this finding, which account issued the credential, and who can rotate it. |
+| TruffleHog Forager | The domain view groups verified keys by associated email domain. Truffle Security's listing also describes cloud account IDs and organization membership as attribution signals for the Enterprise add-on. [Forager guide](https://trufflesecurity.com/docs/user-enablement-guide#:~:text=Forager%20diligently%20monitors) · [Publisher's edition comparison](https://aws.amazon.com/marketplace/pp/prodview-3wvp2fwzcn6gm) | Identify the edition and the matching signal. The launch article describes verification at scan time. Confirm the issuing account, current status and revocation owner for the individual finding. [Verification timing](https://trufflesecurity.com/blog/introducing-forager#:~:text=at%20the%20time%20of%20scan) |
+| Gitleaks | The operator supplies a repository, directory, or input stream to scan. Company attribution remains unestablished by this source. [Gitleaks README](https://github.com/gitleaks/gitleaks#readme) | Trace the finding to its issuing account and an authorized owner. |
+
+Documentation reviewed November 22, 2026. The sources describe product behavior. The responder questions are design prompts. A station's **Suggest a correction** link should open an editable draft with the product, reviewed placements and source URLs.
+
+**Try it with a reader.** Give them one minute to find two vendors, name a meaningful product difference, and open the evidence for it. Then give them this fictional case. A contractor commits a key from a personal account. The key belongs to a customer's cloud account. Your team receives the alert. Ask **“What would you still need to verify before you sent this finding to someone to fix?”** Listen for the difference between the person who published it, the account that owns it, and the person authorized to revoke it. Ask what they think the order of the stops means. If they read it as a ranking, label the ordering or revise the layout. Record their answer and where they hesitated.
+
+## Design component references
+
+| Component and example | Documented behavior | Where to try it | Decision | Upstream code terms |
+| --- | --- | --- | --- | --- |
+| [PatternFly Drawer](https://github.com/patternfly/patternfly-react) · [Drawer examples](https://www.patternfly.org/components/drawer/) | A panel can slide over content or push it aside. | Security Market Map. Select a shared product and show its evidence beside the two lines. Check that closing the drawer returns focus to the same station. | Saved | [MIT](https://github.com/patternfly/patternfly-react/blob/main/LICENSE) |
+| [GOV.UK Summary List](https://github.com/alphagov/govuk-frontend) · [Summary list examples](https://design-system.service.gov.uk/components/summary-list/) | Labeled rows pair a key with a value. Summary cards group related lists. | Security Market Map and Detector Atlas. Show what the source confirms, what remains unknown, and the source link in three labeled rows. | Saved | [MIT for code](https://github.com/alphagov/govuk-frontend/blob/main/LICENSE.txt) |
+| [React Aria TagGroup](https://github.com/adobe/react-spectrum) · [TagGroup demo](https://react-aria.adobe.com/TagGroup) | Users can navigate tags by keyboard, select them, and remove them. | Detector catalog. Display active filters above the results so a reader can remove “Has rotation guide” while keeping the provider filter. | Saved | [Apache-2.0](https://github.com/adobe/react-spectrum/blob/main/LICENSE) |
+| [IBM Carbon expandable data table](https://github.com/carbon-design-system/carbon) · [Data table examples](https://www.carbondesignsystem.com/building-blocks/core/components/data-table/guidelines) | A row expands to reveal supplementary information within the table. | Security Market Map. Keep vendor capabilities in aligned columns and expand one vendor to inspect the source behind its coverage. | Saved | [Apache-2.0](https://github.com/carbon-design-system/carbon/blob/main/LICENSE) |
+| [USWDS Process List](https://github.com/uswds/uswds) · [Process list example](https://designsystem.digital.gov/components/process-list/) | A numbered list gives each stage in a sequence a heading and space for instructions. | Builder Academy and rotation guides. Show the provider's documented order of operations, linking each step to its instructions. | Saved | [Public domain for U.S. government work, with exceptions for third-party assets](https://github.com/uswds/uswds/blob/develop/LICENSE.md) |
+| [GOV.UK Details](https://github.com/alphagov/govuk-frontend) · [Disclosure example](https://design-system.service.gov.uk/components/details/) | A reader opens a labeled disclosure for additional help. | Detector Atlas. Open “What does Base64 mean here?” beside the column heading, show one example, and link to the full guide. | Saved | [MIT for code](https://github.com/alphagov/govuk-frontend/blob/main/LICENSE.txt) |
+| [OpenLayers permalink](https://github.com/openlayers/openlayers) · [Shareable map example](https://openlayers.org/en/latest/examples/permalink.html) | The URL records the map's center, zoom, and rotation so someone can reopen that view. | Security Market Map. Use product and category IDs in a link so a colleague can reopen the same evidence panel. Revisit the link after renaming a product. | Saved | [BSD-2-Clause](https://github.com/openlayers/openlayers/blob/main/LICENSE.md) |
+| [GitHub Primer Blankslate](https://github.com/primer/react) · [Empty state examples](https://primer.style/product/components/blankslate/) | An empty view explains why content is absent and can offer an action. | Security Market Map. Offer “Clear filters” when a search has no matches. Offer “Sources reviewed” when research leaves a capability unknown. | Saved | [MIT](https://github.com/primer/react/blob/main/LICENSE) |
+| [USWDS in-page navigation](https://github.com/uswds/uswds) · [Section navigation example](https://designsystem.digital.gov/components/in-page-navigation/) | Links take a reader to individual sections on a long page. | Detector Atlas. Jump directly to “How it works,” “What the result confirms,” or “Source code” on a detector or analyzer page. | Saved | [Public domain for U.S. government work, with exceptions for third-party assets](https://github.com/uswds/uswds/blob/develop/LICENSE.md) |
+
+**Source review, 2026-11-22.** Codex checked each component's published examples and upstream licensing file. The suggested uses are sketch ideas. For the [first train-map sketch](#first-sketch), pair the drawer and summary list. A reader selects a shared product, sees one row per category, and can open the evidence for each placement.
+
+## Adding another design reference
+
+Search for the component and repository together. One project can supply several distinct patterns. Add a row under the relevant design topic with the repo, demo, one documented interaction, the reader task it could help, a decision, and the upstream code license (or “unverified”). Date the source check. Use **Saved** to keep an idea, **Try in sketch** to name an experiment, or **Parked** with a reason to revisit.
+
+After a trial, link a screenshot of your sketch in the decision cell. Add one sentence describing what you kept, changed, or dropped and which observation led to that choice. An example format is “Kept [interaction] on [screen] because the reader [observed behavior].” If a team decides to evaluate a dependency, use the shared intake linked above.
+
+### License reference
+
+Start with what you did. Linking to a train-map demo, running its editor, copying its renderer into an app, and hosting a modified editor are four different uses. An [open-source license](https://opensource.org/osd) allows commercial use. Its conditions depend on the material, the license text, and how you use or share it.
+
+| License | What to know when reusing code | Examples and upstream terms |
+| --- | --- | --- |
+| [MIT](https://opensource.org/license/mit) | Keep the copyright and permission notices with copies or substantial portions. You can ship your own changes in a proprietary product. | [DuckDB](https://github.com/duckdb/duckdb/blob/main/LICENSE), [Excalidraw](https://github.com/excalidraw/excalidraw/blob/master/LICENSE), [Slidev](https://github.com/slidevjs/slidev/blob/main/LICENSE), [Bruno open-source client](https://github.com/usebruno/bruno/blob/main/license.md), [Presidio](https://github.com/data-privacy-stack/presidio/blob/main/LICENSE) |
+| [BSD 2-Clause](https://opensource.org/license/bsd-2-clause) | Keep the copyright notice, conditions, and disclaimer in source redistributions. For binaries, reproduce them in the documentation or accompanying materials. | [OpenLayers](https://github.com/openlayers/openlayers/blob/main/LICENSE.md) |
+| [BSD 3-Clause](https://opensource.org/license/bsd-3-clause) | Follow the same notice rules as BSD 2-Clause. Using the rights holder's or contributors' names to imply endorsement requires prior written permission. | [OpenRefine](https://github.com/OpenRefine/OpenRefine/blob/master/LICENSE.txt) |
+| [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) | When redistributing, include the license, retain applicable notices, mark changed files, and carry forward relevant attribution from any upstream NOTICE. Section 3 grants rights to certain contributor patents. | [changedetection.io](https://github.com/dgtlmoon/changedetection.io/blob/master/LICENSE) |
+| [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/FAQ/) | When distributing software, make the source of MPL-covered files, including your edits, available to recipients under the MPL. Separate files containing only your own code can use another license. | Mozilla's FAQ explains the file boundary in questions 11 and 12. |
+| [GPLv3](https://opensource.org/license/gpl-3.0) | You can run or modify a program privately. When distributing a covered program, recipients retain GPL rights. Shipping a binary also requires a way to obtain corresponding source under section 6. A combined work may be covered as a whole. | [Rail Map Painter](https://github.com/railmapgen/rmp/blob/main/LICENCE). Drawing your own map in the editor and shipping its renderer are different uses. |
+| [AGPLv3](https://opensource.org/license/agpl-3.0) | Adds a network-use condition to the GPL. If users interact remotely with your modified program, offer them its corresponding source under section 13. Using the original tool to write your own notes leaves those notes yours. | [Zotero's licensing statement](https://www.zotero.org/support/licensing) |
+
+**Other labels you may encounter**
+
+| Upstream label | How to read it |
+| --- | --- |
+| MIT **or** Apache 2.0 | When upstream offers a choice, record which license you use and follow its conditions. [lychee's license choice](https://github.com/lycheeverse/lychee#license) |
+| Public domain or CC0 | Check which files the dedication covers. USWDS identifies its government work and lists third-party exceptions. Check the entry for the asset you plan to copy. [USWDS license and exceptions](https://github.com/uswds/uswds/blob/develop/LICENSE.md) |
+| Source-available | Read the project's own terms. n8n's Sustainable Use License permits internal business and specified noncommercial use. Selling access to a hosted instance requires separate permission. Its enterprise files and third-party components have separate terms. [n8n license](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) |
+| No license found | Record **unverified** and link the demo as a reference. Public visibility and GitHub's fork feature alone grant no general permission to copy code or assets into another project. [GitHub licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) |
+
+**What to record in a reference entry.** Note the use (linked for inspiration, ran locally, copied code, distributed, or hosted a modified version), the upstream license and its link. For reuse, add the file and revision, any notices or source-sharing obligations, and separate terms for icons, fonts, screenshots, map data, or demo assets.
+
+*Example entry:* “Rail Map Painter · linked for inspiration · GPLv3 [code terms](https://github.com/railmapgen/rmp/blob/main/LICENCE) · diagram and labels drawn from scratch.” If you later copy its renderer or a station icon, update the entry for that specific material before publishing.
+
+**Source review, November 22, 2026.** The linked license texts and publisher guidance support the summaries for the stated scope. The Design Lab maintainer should recheck the selected revision, edition, and asset terms when the intended use changes from study to reuse or distribution.
 
 ## Payload CMS: higher-interest exploration
 
