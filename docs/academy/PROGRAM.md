@@ -114,7 +114,7 @@ These links reuse the existing delivery lesson. They do not add catalog IDs, rou
 - [SDLC enablement crosswalk](SDLC-ENABLEMENT-CROSSWALK.md) is the proposed written route and subject map preserved from [PR #260](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/260) at `645581dca10327ffd331e4ae720defb31ec570e8`. It is not a live track.
 - [Data Foundations pathway](DATA-FOUNDATIONS-PATH.md) is the proposed beginner sequence preserved from [PR #282](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/282) at `fe7cb676087a20854615248cda1c9f6f4493a6c8`. It is not registered and does not gate other paths.
 - The data-architecture crosswalk and membership-registry pilot stay on [PR #283](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/283). They are not copied here.
-- The executable alert-handoff capstone stays stacked on [PR #278](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/278) (`3ce637e0abd6cd9454202bfddc934fcf7e022a51`, base `docs/sdlc-enablement-crosswalk-20261106`). This change does not retarget that branch.
+- The executable alert-handoff capstone is the [local practice app](../../examples/academy/alert-handoff/README.md), copied from [PR #278](https://github.com/heyfunwhoa/byjoyaing-portfolio/pull/278) at `3ce637e0abd6cd9454202bfddc934fcf7e022a51`. It is not a registered lesson. That pull request remains the earlier stacked draft.
 
 **Delivery boundary:** [KRU-239](https://linear.app/krusty/issue/KRU-239) tracks this reconciliation. Content written in Git, reviewed, merged, shown in the Academy UI, and accepted by a learner are separate states. None of the new Markdown companions is a published Academy card.
 

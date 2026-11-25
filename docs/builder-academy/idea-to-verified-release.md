@@ -36,7 +36,7 @@ This is one parent lesson with three core stops, followed by optional companions
 - **Deployment companion:** practice configuring hosting after the core terminology is familiar.
 - **Security companion:** keep the ten-minute control decision, and use the longer section when the task needs security at each lifecycle stage.
 - **Agent companion:** apply the same decisions to a bounded worker task after completing the core. Agents do not replace the product decision or reviewer.
-- **Written route map:** the [SDLC enablement crosswalk](../academy/SDLC-ENABLEMENT-CROSSWALK.md) sequences these companions. It is a proposed source map, not another catalog path. The executable alert-handoff capstone remains on stacked PR #278 and is not included here.
+- **Written route map:** the [SDLC enablement crosswalk](../academy/SDLC-ENABLEMENT-CROSSWALK.md) sequences these companions. It is a proposed source map, not another catalog path. The executable practice app is the [local alert handoff capstone](../../examples/academy/alert-handoff/README.md). It is not a catalog lesson.
 
 These companion files are sections of this learning path, not new tracked Academy lessons. Preserve the existing parent lesson ID, prerequisites, assessment and progress behavior. Wiring source text into the public renderer is a separate verified publication step.
 
