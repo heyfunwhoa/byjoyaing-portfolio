@@ -502,7 +502,7 @@ export function ProjectDetailRoutes() {
 
 const galleryFrames = [
   { slug: "detector-coverage-atlas" as const, label: "Coverage sample" },
-  { slug: "account-intelligence" as const, label: "Account scenario" },
+  { slug: "account-intelligence" as const, label: "Account research" },
   { slug: "gtm-campaign-lab" as const, label: "No screenshot" },
 ];
 

@@ -234,27 +234,17 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
   {
     slug: "account-intelligence",
     useCase: "account",
-    salesQuestion:
-      "What changed at this account, who is likely in the room, and what should I do next — without refreshing the same feeds by hand?",
-    userMoment:
-      "One AE or SDR starting the week on assigned accounts, before writing outreach.",
-    intake:
-      "An assigned account list, plus public company and industry signals: funding, leadership, hiring, stack, and news.",
-    produces:
-      "An account brief: context, a dated event, likely stakeholders, a hypothesis marked as a hypothesis, discovery questions, and one next action.",
-    decision: "Who to contact, what to ask, and what not to treat as fact.",
-    myRole:
-      "I designed a personal signal feed that stays separate from the partner app, so either one can operate independently.",
-    maturityDetail:
-      "Workflow design with a fictional research brief to explore.",
-    fieldAsset: null,
-    proposedSoftware:
-      "Assignment sync, classified signals, and a draft that cites the event. Designed, not running.",
-    links: [],
-    result: {
-      kind: "to-test",
-      text: "Metric to test: the outreach names the source and date of the event, and the rep can point to which sentence is a hypothesis.",
-    },
+    salesQuestion: "How have I used threat intelligence, buyer questions and public research in my work?",
+    userMoment: "A sales leader looking for a field example or a research brief they can inspect.",
+    intake: "My public career record and a dated copy of LimaCharlie’s product documentation.",
+    produces: "Field examples from Rapid7 and Truffle Security and a published independent company brief.",
+    decision: "Which claims are supported by a publisher, and which depend on first-hand experience?",
+    myRole: "I wrote playbooks at Rapid7, built discovery and evaluation resources at Truffle Security, and published a separate research brief about LimaCharlie.",
+    maturityDetail: "The portfolio team used the Rapid7 playbooks. The Truffle sales team adopted the resources. The independent brief is available to read.",
+    fieldAsset: "Threat-intelligence playbooks and discovery and evaluation guides.",
+    proposedSoftware: "The original product design includes a personal signal feed and assignment sync.",
+    links: [{ label: "Read the published research brief", href: "/account-signal" }],
+    result: { kind: "measured", text: "Team use is documented in my career account. The LimaCharlie brief can be inspected on this site." },
     related: [
       "security-signal-intelligence",
       "gtm-campaign-lab",
@@ -470,14 +460,10 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
 
 const capabilityFacts: Record<string, CapabilityFacts> = {
   "account-intelligence": {
-    pipeline:
-      "Sample assigned accounts → a classified event, with the hypothesis marked as a hypothesis → a draft the reader can edit and copy.",
-    workingToday:
-      "A browser walkthrough on the case study. Sample companies only. No live feed, enrichment API, or model call.",
-    plannedNext:
-      "A personal list of real assignments and a dated public event, with Supabase, Exa, Sumble, and Claude still outside this repo.",
-    implementedTech:
-      "Next.js walkthrough in this portfolio. Supabase, Exa, Sumble, and Claude are planned, not dependencies here.",
+    pipeline: "Dated public source, recorded product claims, labeled interpretation and open questions.",
+    workingToday: "The LimaCharlie research brief can be inspected alongside the source and capture date.",
+    plannedNext: "Live account assignment and event monitoring belong to the original product design.",
+    implementedTech: "Next.js renders the published research brief from a saved source.",
   },
   "revenue-planning-simulator": {
     pipeline:

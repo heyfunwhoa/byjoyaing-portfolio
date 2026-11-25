@@ -1,23 +1,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { portfolioExamples } from "./portfolio-examples.ts";
-import { demoSignals } from "./account-intelligence-demo.ts";
+import { accountRecords, limaCharlieRecord } from "./account-intelligence-records.ts";
 import { demoChange } from "./competitive-intelligence-demo.ts";
 import { feedbackRecords } from "./customer-feedback-demo.ts";
 import { learningPaths } from "./academy/learning-paths.ts";
 import { lessons } from "./ai-academy.ts";
 
 test("guided examples retain fixture provenance and do not invent real observations", () => {
-  const signal = demoSignals.find((item) => item.id === "acme-hiring")!;
-  assert.ok(
-    portfolioExamples["account-intelligence"].steps[0].body.includes(
-      signal.sourceLabel,
-    ),
-  );
-  assert.equal(
-    portfolioExamples["account-intelligence"].label,
-    "Synthetic walkthrough",
-  );
+  const research = portfolioExamples["account-intelligence"];
+  assert.equal(research.steps[0].body, limaCharlieRecord.context);
+  assert.equal(research.steps[0].source?.href, limaCharlieRecord.source.href);
+  assert.equal(research.label, "Published research brief");
   assert.ok(
     portfolioExamples["competitive-intelligence-engine"].limitation.includes(
       demoChange.detected,
@@ -46,14 +40,13 @@ test("guided examples retain fixture provenance and do not invent real observati
   }
 });
 
-test("the Acme coaching example ends with the question in the hiring draft", () => {
-  const hiring = demoSignals.find((item) => item.id === "acme-hiring")!;
-  const { steps } = portfolioExamples["account-intelligence"];
-  assert.match(steps[1].body, /increasing your security budget/);
-  assert.match(steps[2].body, /backfills/);
-  assert.ok(steps[3].body.includes(hiring.nextStep));
-  assert.ok(hiring.drafts[0].body.includes(hiring.nextStep));
-  assert.ok(hiring.drafts.every((draft) => !draft.body.includes("increasing your security budget")));
+test("the account examples distinguish employer work from independent research and link both kinds of evidence", () => {
+  assert.deepEqual(accountRecords.map((item) => item.kind), ["Field work", "Field work", "Independent research"]);
+  for (const record of accountRecords) {
+    assert.match(record.source.href, /^https:/);
+    assert.match(record.artifact.href, /^\//);
+  }
+  assert.equal(limaCharlieRecord.artifact.href, "/account-signal");
 });
 
 test("Camp feedback distinguishes a finding from validity and impact", () => {
