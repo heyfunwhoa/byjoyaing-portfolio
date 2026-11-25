@@ -153,7 +153,8 @@ test("About education marks load beside visible credentials at phone and desktop
       )).toBe(true);
       await expect(education.getByText(new RegExp(credential))).toBeVisible();
     }
-    await expect(education).toContainText("Western Governors University, 2025");
+    await expect(education).toContainText("Western Governors University.");
+    await expect(education.getByText("In progress.", { exact: true })).toBeVisible();
     const stacked = await education.locator("li p").evaluateAll((paragraphs) =>
       paragraphs.map((paragraph) => {
         const lines = [...paragraph.querySelectorAll("span")];
