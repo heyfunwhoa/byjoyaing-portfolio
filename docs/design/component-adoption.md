@@ -576,3 +576,13 @@ Follow-up: theme bars now act as 44px review buttons opening the existing decisi
 - Contact reuses the existing form, calendar and email actions. No submission or delivery behavior changes.
 - Verification: updated existing source guards and browser expectations; record actual executed checks in PR #359. Full current-checkout build, responsive browser, keyboard, zoom and reduced-motion checks remain pending until executed. This entry describes proposed code, not a shipped adoption.
 - Rollback: revert the focused refinement commit. Owner review precedes merge and production release.
+
+
+## Storybook accessibility pilot (KRU-367; under review)
+
+- Task: inspect accessibility results for existing shared interactions and fail the existing visual job when a named pilot state reports a violation.
+- Reuse: actual SiteHeader, InquiryForm and WorkExplorer mounted by components/accessibility.stories.tsx; existing Storybook, framework navigation stubs, Playwright projects and Visual QA job. No new public component family or test framework.
+- Dependencies: version-matched @storybook/addon-a11y 10.6.8 for the panel; @axe-core/playwright 4.14.1 for explicit CI assertions. Source and rights review: storybook-accessibility.md.
+- Behavior: fullscreen story wrappers exercise actual phone/desktop media queries. Phone menu checks keyboard opening, Escape and focus return; each Work disclosure checks expansion and focus return. Form error feedback is simulated with a local intercepted response.
+- State: proposed, not shipped. No new production route, telemetry, email delivery or claim of WCAG conformance. Actual commands/results and unresolved manual review belong in the PR.
+- Rollback: revert the scoped addon configuration, development dependencies, story/test and guide changes. Existing application interactions and the prior visual suite remain independently owned.
