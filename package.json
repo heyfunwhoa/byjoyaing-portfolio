@@ -41,7 +41,9 @@
     "resend": "^6.38.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.1",
     "@playwright/test": "^1.65.1",
+    "@storybook/addon-a11y": "10.6.7",
     "@storybook/nextjs-vite": "^10.6.7",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
