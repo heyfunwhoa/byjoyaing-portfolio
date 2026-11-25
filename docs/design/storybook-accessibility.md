@@ -46,7 +46,7 @@ Inspected 2026-11-25 UTC by the implementation session; repository owner remains
 
 | Source | Specific support | Limits / rights |
 | --- | --- | --- |
-| [Storybook accessibility documentation](https://storybook.js.org/docs/writing-tests/accessibility-testing) | addon-a11y exposes axe results and distinguishes Violations, Passes and Incomplete; runner integration is separate from panel installation. | Official capability guidance, not evidence that this repository passes. Addon 10.6.7 metadata declares MIT; retain the installed license. |
+| [Storybook accessibility documentation](https://storybook.js.org/docs/writing-tests/accessibility-testing) | addon-a11y exposes axe results and distinguishes Violations, Passes and Incomplete; runner integration is separate from panel installation. | Official capability guidance, not evidence that this repository passes. Addon 10.6.8 metadata declares MIT; retain the installed license. |
 | [Storybook Next.js Vite documentation](https://storybook.js.org/docs/get-started/frameworks/nextjs-vite) | App Router navigation can be stubbed in stories through the framework parameters. | A story router is not the production application router. |
 | [axe Playwright package](https://www.npmjs.com/package/@axe-core/playwright) and installed README | AxeBuilder analyzes a rendered Playwright page and accepts rule tags. Version 4.14.1 selected from current package metadata. | Metadata declares MPL-2.0. Use as a dependency; no third-party source is copied into this repository. |
 
