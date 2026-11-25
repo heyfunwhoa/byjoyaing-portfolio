@@ -31,7 +31,8 @@ test("the three commercial stories stay qualitative", () => {
   assert.equal(blob.includes("281"), false);
   const enterprise = publicStories.find((story) => story.id === "enterprise-selling");
   assert.ok(enterprise);
-  assert.match(enterprise.evidence, /intentionally withheld/);
+  assert.match(enterprise.evidence, /public career timeline/i);
+  assert.doesNotMatch(blob, /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
 });
 
 test("independent curricula are labeled Side Quests, not employer deployments", () => {
