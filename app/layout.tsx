@@ -90,7 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <div className="flex flex-col gap-3 sm:items-end">
               <nav
                 aria-label="Footer"
-                className="grid grid-cols-2 gap-x-5 gap-y-1 min-[480px]:grid-cols-3 sm:flex sm:max-w-sm sm:flex-wrap sm:justify-end sm:gap-x-4"
+                className="grid grid-cols-2 gap-x-5 gap-y-1 min-[480px]:grid-cols-3 sm:flex sm:max-w-sm sm:flex-wrap sm:justify-end sm:gap-x-4 lg:max-w-lg lg:gap-x-3"
               >
                 {[
                   ["/about", "About"],

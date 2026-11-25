@@ -29,7 +29,7 @@ export default async function ContactPage({
           <h1 className="max-w-xl font-display text-4xl leading-[1.08] tracking-tight sm:text-5xl">
             Let&apos;s talk about the work.
           </h1>
-          <p className="max-w-xl text-base leading-7 text-muted">For hiring conversations, collaboration or a closer look at an example, send a message or book a time on my calendar.</p>
+          <p className="max-w-xl text-base leading-7 text-muted">Looking for someone to own complex enterprise deals and help build the sales motion? Send a message or book a time to discuss the role, the team or a closer look at my work.</p>
           <p className="text-sm font-medium text-muted">US-based, open to remote</p>
 
           <div
