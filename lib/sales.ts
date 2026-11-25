@@ -182,13 +182,13 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     intake:
       "One made-up key, a named cast, and an ordinary developer's day. No real secrets and nothing scanned.",
     produces:
-      "A five-part walkthrough: Code, People, Systems, Agents, and Coverage. Each part ends with the old key shut off and confirmed.",
+      "An eight-part walkthrough: Code, People, Systems, Agents, Coverage, Public, Response, and Published. It ends with the old key shut off and confirmed.",
     decision:
       "Whether the reader can separate finding a copy, checking that it still works, telling the owner, and replacing it.",
     myRole:
       "I designed the story, the cast, and the lesson structure for sales and enablement readers, and built the site with an AI coding assistant. It is independent work, not employer training. Truffle Camp is the separate hands-on curriculum design; this is the story series a reader can open today.",
     maturityDetail:
-      "Live and public, with five parts merged. A walkthrough with a non-coder reader is still open.",
+      "Live and public, with eight parts merged. A walkthrough with a non-coder reader is still open.",
     fieldAsset: null,
     proposedSoftware: null,
     links: [
@@ -537,7 +537,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
     pipeline:
       "A made-up key → one developer's day, step by step → the copies it leaves → the old key shut off and confirmed.",
     workingToday:
-      "Five public parts with 66 steps in total, a named cast, and a jump-to-topic index. The key is invented and progress is not saved.",
+      "Eight public parts, a named cast, routes by role, and a jump-to-topic index. The key is invented and progress is not saved.",
     plannedNext:
       "A walkthrough with a non-coder reader, then one practice exercise on which control would help.",
     implementedTech:
