@@ -58,7 +58,7 @@ export default function BuildTheMotionPage() {
     <PageMain>
       <header className="border-b border-border py-14">
         <FieldNoteBreadcrumb title="How I'd Build a Motion at Your Stage" />
-        <p className="mt-8 text-xs font-medium tracking-wider text-muted uppercase">
+        <p className="editorial-eyebrow mt-8 text-muted">
           Field practice · Illustrative model · Short read
         </p>
         <h1 className="mt-3 max-w-3xl font-display text-4xl leading-tight sm:text-5xl">

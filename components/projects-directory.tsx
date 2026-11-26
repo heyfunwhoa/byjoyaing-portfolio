@@ -18,6 +18,12 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
+
+// "Work" means professional evidence in the site nav, so the empty filter
+// reads "All projects" here while its value (and URL) stays "All work".
+const categoryLabel = (item: DirectoryCategory) =>
+  item === "All work" ? "All projects" : item;
+
 export function ProjectsDirectory({
   initialCategory = "All work",
   initialStage = "All",
@@ -114,7 +120,9 @@ export function ProjectsDirectory({
               className="min-h-12 w-full rounded-lg border border-border bg-card px-3 text-base"
             >
               {directoryCategories.map((item) => (
-                <option key={item}>{item}</option>
+                <option key={item} value={item}>
+                  {categoryLabel(item)}
+                </option>
               ))}
             </select>
           </label>
@@ -157,7 +165,7 @@ export function ProjectsDirectory({
                     : "min-h-11 shrink-0 rounded-md border border-border bg-card px-3 py-2 text-sm font-medium hover:border-accent"
                 }
               >
-                {item}
+                {categoryLabel(item)}
               </button>
             );
           })}
@@ -257,7 +265,7 @@ export function ProjectsDirectory({
                     {project.summary}
                   </p>
                 </div>
-                <details className="rounded-xl border border-border bg-background p-3">
+                <details className="rounded-xl border border-border bg-background px-3 py-0.5">
                   <summary className="min-h-11 cursor-pointer content-center rounded-sm py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
                     How it works
                   </summary>
