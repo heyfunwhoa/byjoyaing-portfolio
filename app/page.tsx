@@ -1,4 +1,5 @@
 import { completePageMetadata } from "@/lib/page-metadata";
+import { KeepPhrases } from "@/components/keep-phrases";
 import { BrandAvatar, homeBrandAvatarPortrait } from "@/components/brand-avatar";
 import { ArrowUpRight } from "@/components/icons/arrow-up-right";
 import { ArrowRight } from "@/components/icons/arrow-right";
@@ -85,7 +86,7 @@ export default function Home() {
             <span className="mt-2 block italic text-[#E6B59A]">{homePage.headlineAccent}</span>
           </h1>
           <p className="mt-5 max-w-[38rem] text-base font-medium leading-7 sm:text-lg sm:leading-8">
-            {homePage.philosophy}
+            <KeepPhrases text={homePage.philosophy} />
           </p>
           <p className="editorial-subtle mt-3 max-w-[38rem] text-base leading-7">
             {homePage.body}

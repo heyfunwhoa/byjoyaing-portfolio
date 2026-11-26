@@ -1,4 +1,5 @@
 import { completePageMetadata } from "@/lib/page-metadata";
+import { KeepPhrases } from "@/components/keep-phrases";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { OrbitArtwork } from "@/components/orbit-artwork";
 import { CareerRail } from "@/components/career-rail";
@@ -110,7 +111,7 @@ export default function AboutPage() {
           {aboutPage.philosophyLabel}
         </p>
         <h2 className="mt-3 font-display text-3xl">
-          {aboutPage.philosophyHeading}
+          <KeepPhrases text={aboutPage.philosophyHeading} />
         </h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {aboutPage.principles.map((principle) => (

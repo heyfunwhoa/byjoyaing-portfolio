@@ -40,11 +40,6 @@ const focusLinks = [
     detail: "Detection and developer-focused experiments",
     href: "/projects?category=technical",
   },
-  {
-    label: "All projects",
-    detail: "Browse by the problem each project answers",
-    href: "/projects",
-  },
 ] as const;
 
 export default function SideQuestsPage() {
@@ -98,7 +93,7 @@ export default function SideQuestsPage() {
         </Link>
       </section>
 
-      <nav aria-label="Explore independent projects by focus" className="grid gap-3 border-b border-border py-8 sm:grid-cols-2 lg:grid-cols-4">
+      <nav aria-label="Explore independent projects by focus" className="grid gap-3 border-b border-border py-8 md:grid-cols-3">
         {focusLinks.map((item, index) => (
           <Link key={item.label} href={item.href} style={riseIndex(index)} className="card-lift rise-in rounded-xl border border-border bg-card p-4 hover:border-accent">
             <span className="block font-display text-xl">{item.label}</span>
@@ -109,7 +104,7 @@ export default function SideQuestsPage() {
       </nav>
 
       <section className="border-b border-border py-8">
-        <details className="rounded-xl border border-border bg-surface-mist p-4 sm:p-5">
+        <details className="rounded-xl border border-border bg-card p-4 sm:p-5">
           <summary className="min-h-11 cursor-pointer py-2 font-display text-2xl">
             Other explorations ({more.length})
           </summary>
@@ -159,7 +154,7 @@ export default function SideQuestsPage() {
           </div>
         </details>
       </section>
-      <section id="look-closer" className="scroll-mt-24 border-b border-border py-8"
+      <section id="look-closer" className="scroll-mt-24 py-8"
       >
         <h2 className="font-display text-2xl">Look closer</h2>
         <p className="mt-3 text-sm leading-6 text-muted">
