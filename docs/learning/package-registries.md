@@ -52,6 +52,30 @@ Controls for a small portfolio repository:
 - Prefer pinned reviewed action versions; review third-party GitHub Actions as part of the supply chain.
 - A scan's existence is not the same as enforcement. For example, Trivy with `exit-code: 0` reports without failing a build.
 
+## Installing command-line tools: Homebrew and other ways
+
+npm installs packages *into a project*. Command-line tools such as TruffleHog are installed *onto your machine*, so your shell, editor and git hooks can run them. TruffleHog's README lists five ways to do that; the right one depends on who has to find the tool afterwards.
+
+| Way | Command or step | Upkeep | Can a git hook find `trufflehog`? |
+| --- | --- | --- | --- |
+| Homebrew (macOS, Linux) | `brew install trufflehog` | `brew upgrade` updates installed tools | Yes, once Homebrew is set up in your shell |
+| Install script | `curl -sSfL …/scripts/install.sh \| sh -s -- -b /usr/local/bin` | Re-run by hand to update | Yes, if the target folder is on your `PATH` |
+| Release download | Download and unpack from GitHub Releases | Manual | Yes, after you move it onto your `PATH` |
+| Docker | `docker run … trufflesecurity/trufflehog:latest …` | Pull a newer image | **No.** It runs in a container, so `command -v trufflehog` finds nothing |
+| Build from source | `git clone …` then `go install` | Rebuild to update | Yes, but needs the Go toolchain; mostly for contributors |
+
+**Supply-chain note:** piping an install script into `sh` runs code from the internet with your permissions. Read the script first. TruffleHog also documents a variant that verifies a signed checksum; it requires `cosign`. A package manager like Homebrew narrows, but does not remove, the need to trust what you install.
+
+**Portfolio case:** `scripts/secret-scan.sh` runs before each commit. If `command -v trufflehog` finds nothing, it prints a warning and lets the commit through *unscanned*. GitHub Actions still scans each PR, but the local check only protects you if the command is installed on your machine.
+
+Mini lab (your own Mac; no secrets needed):
+```bash
+command -v trufflehog       # prints a path if installed
+brew install trufflehog     # if nothing printed
+trufflehog --version
+```
+Then open `scripts/secret-scan.sh` and explain, in one sentence, why a Docker-only install would still show the "not installed" warning.
+
 ## Guided lab — portfolio case
 
 **Scenario:** The portfolio dependency audit detected advisories affecting `next`, `sharp` and `source-map-js`. A dedicated security PR updates the direct Next.js dependency and regenerates the lockfile for transitive fixes.
@@ -82,3 +106,5 @@ npm run build
 - [npm ci](https://docs.npmjs.com/cli/v11/commands/npm-ci/)
 - [npm audit](https://docs.npmjs.com/cli/v11/commands/npm-audit/)
 - [OpenSSF best practices](https://openssf.org/)
+- [TruffleHog README: Installation](https://github.com/trufflesecurity/trufflehog#floppy_disk-installation) (install methods checked against the README on 2026-11-26)
+- [Homebrew: Installation](https://docs.brew.sh/Installation) and [Homebrew FAQ: updating packages](https://docs.brew.sh/FAQ#how-do-i-update-my-local-packages) (checked 2026-11-26)

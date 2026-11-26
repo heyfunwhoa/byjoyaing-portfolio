@@ -621,6 +621,7 @@ export const lessons: Lesson[] = [
       "Version ranges and lockfiles are different: package.json states acceptable versions, while package-lock.json captures the resolved dependency tree and integrity metadata.",
       "A registry is a supply-chain trust boundary. Audit advisories, check package ownership and provenance, review install scripts, and never publish secrets.",
       "Security scans are complementary: npm audit checks known dependency advisories; TruffleHog checks for secrets; Trivy can check vulnerabilities and configuration. Review whether each tool blocks a merge.",
+      "Command-line tools such as TruffleHog install onto your machine, not into the project. On a Mac, brew install trufflehog is the low-upkeep route; install scripts, release downloads and source builds also work, but a Docker-only install leaves a git hook that checks for the trufflehog command with nothing to run.",
     ],
     exercise: "Open your portfolio's package.json and package-lock.json. Find Next.js, sharp and source-map-js; classify each as direct or transitive, inspect pinned versions, then read the results of npm audit --omit=dev --audit-level=high. Explain why updating package.json alone does not update the locked dependency tree. Do not run npm audit fix --force without reviewing the changes.",
     check: {
@@ -638,7 +639,13 @@ export const lessons: Lesson[] = [
       { label: "npm docs: package-lock.json", url: "https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json/" },
       { label: "npm docs: npm ci", url: "https://docs.npmjs.com/cli/v11/commands/npm-ci/" },
       { label: "npm docs: npm audit", url: "https://docs.npmjs.com/cli/v11/commands/npm-audit/" },
+      { label: "TruffleHog README: Installation", url: "https://github.com/trufflesecurity/trufflehog#floppy_disk-installation" },
+      { label: "Homebrew docs: Installation", url: "https://docs.brew.sh/Installation" },
     ],
+    companion: {
+      label: "Read the package registry guide, including tool install options",
+      url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/docs/learning/package-registries.md",
+    },
   },
 
   {
