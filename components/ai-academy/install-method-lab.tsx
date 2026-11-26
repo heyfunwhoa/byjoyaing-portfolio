@@ -7,6 +7,7 @@ import {
   installSituations,
   installGlossary,
   installSources,
+  otherOptions,
   verifyCommands,
   verifyExpected,
   verifyIfNothing,
@@ -101,9 +102,14 @@ function MethodFields({ method }: { method: InstallMethod }) {
   );
 }
 
-function MethodDetail({ method }: { method: InstallMethod }) {
+function MethodDetail({ method, showPlain = true }: { method: InstallMethod; showPlain?: boolean }) {
   return (
     <>
+      {showPlain ? (
+        <p className="mt-2 text-sm leading-6">
+          <strong>In plain words:</strong> {method.plain}
+        </p>
+      ) : null}
       {method.beginnerNote ? (
         <p className="mt-2 rounded-lg border border-border bg-background p-3 text-sm leading-6">
           <strong>Read first:</strong>{" "}
@@ -238,8 +244,11 @@ export function InstallMethodLab() {
         <p className="text-sm leading-6 text-muted">{situation.question}</p>
         <p className="mt-3 text-lg font-semibold">Start with: {method.name}</p>
         <p className="mt-1 text-sm leading-6">{situation.why}</p>
+        <p className="mt-3 text-sm leading-6">
+          <strong>In plain words:</strong> {method.plain}
+        </p>
         <p className="mt-4 text-sm font-semibold">Step 2 · Run it</p>
-        <MethodDetail method={method} />
+        <MethodDetail method={method} showPlain={false} />
       </div>
 
       <div className="mt-5">
@@ -257,6 +266,40 @@ export function InstallMethodLab() {
             ))}
         </div>
       </div>
+
+      <details className="mt-5 rounded-lg border border-border bg-card px-4 py-1">
+        <summary className="min-h-11 cursor-pointer content-center text-sm font-semibold">
+          Other options to note
+        </summary>
+        <ul className="mb-3 mt-1 grid gap-4">
+          {otherOptions.map((option) => (
+            <li key={option.title} className="min-w-0">
+              <p className="text-sm font-semibold">{option.title}</p>
+              <p className="mt-1 text-sm leading-6 text-muted">{option.text}</p>
+              {option.command ? (
+                <div className="mt-2">
+                  <CommandBlock command={option.command} label="command" />
+                </div>
+              ) : null}
+              <p className="mt-1 text-xs leading-5">
+                {option.sources.map((id, i) => (
+                  <span key={id}>
+                    {i > 0 ? " · " : null}
+                    <a
+                      href={installSources[id].url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent underline underline-offset-2"
+                    >
+                      {installSources[id].label} ↗
+                    </a>
+                  </span>
+                ))}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </details>
 
       <details className="mt-5 rounded-lg border border-border bg-card px-4 py-1">
         <summary className="min-h-11 cursor-pointer content-center text-sm font-semibold">

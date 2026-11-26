@@ -8,6 +8,10 @@ export type InstallSourceId =
   | "homebrew-install"
   | "homebrew-faq"
   | "homebrew-post-install"
+  | "trufflehog-verify"
+  | "trufflehog-action"
+  | "trufflehog-precommit"
+  | "portfolio-ci"
   | "secret-scan-hook";
 
 export type InstallSource = { id: InstallSourceId; label: string; url: string };
@@ -33,6 +37,26 @@ export const installSources: Record<InstallSourceId, InstallSource> = {
     label: "Homebrew docs: post-installation steps",
     url: "https://docs.brew.sh/Installation#post-installation-steps",
   },
+  "trufflehog-verify": {
+    id: "trufflehog-verify",
+    label: "TruffleHog README: Verifying the artifacts",
+    url: "https://github.com/trufflesecurity/trufflehog#closed_lock_with_key-verifying-the-artifacts",
+  },
+  "trufflehog-action": {
+    id: "trufflehog-action",
+    label: "TruffleHog README: GitHub Action",
+    url: "https://github.com/trufflesecurity/trufflehog#octocat-trufflehog-github-action",
+  },
+  "trufflehog-precommit": {
+    id: "trufflehog-precommit",
+    label: "TruffleHog pre-commit hook guide",
+    url: "https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md",
+  },
+  "portfolio-ci": {
+    id: "portfolio-ci",
+    label: "Portfolio CI: .github/workflows/security-scans.yml",
+    url: "https://github.com/heyfunwhoa/byjoyaing-portfolio/blob/main/.github/workflows/security-scans.yml",
+  },
   "secret-scan-hook": {
     id: "secret-scan-hook",
     label: "Portfolio pre-commit hook: scripts/secret-scan.sh",
@@ -52,6 +76,8 @@ export type InstallMethod = {
   updates: string;
   hookFinds: { answer: "Yes" | "No"; detail: string };
   trust: string;
+  /** What this option is, in everyday words. */
+  plain: string;
   /** Plain-language help shown under the panel for first-time Terminal users. */
   beginnerNote?: string;
   /** Each part of the command (or each manual step) in plain words, in order. */
@@ -65,6 +91,7 @@ export const installMethods: readonly InstallMethod[] = [
   {
     id: "homebrew",
     name: "Homebrew",
+    plain: "Homebrew is like an app store you use from Terminal. One command downloads the tool and puts it where Terminal can find it, and brew upgrade updates it later. If you don't have Homebrew yet, you install it once.",
     command: "brew install trufflehog",
     updates: "brew upgrade updates the tools you installed with Homebrew.",
     hookFinds: { answer: "Yes", detail: "once Homebrew is set up in your shell." },
@@ -80,6 +107,7 @@ export const installMethods: readonly InstallMethod[] = [
   {
     id: "script",
     name: "Install script",
+    plain: "TruffleHog provides a small script that downloads and installs the tool for you. One command fetches it and runs it straight away. Quick, but you're running code from the internet, so read it first. Handy on computers without Homebrew, like a Linux server.",
     command:
       "curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin",
     updates: "Run the script again to get a newer version.",
@@ -98,6 +126,7 @@ export const installMethods: readonly InstallMethod[] = [
   {
     id: "release",
     name: "Release download",
+    plain: "You do it by hand: download the program from TruffleHog's Releases page on GitHub, unpack it, and move it into a folder Terminal searches. No installer, and updates are by hand too.",
     command: null,
     manualStep: "Download and unpack the file for your system from github.com/trufflesecurity/trufflehog/releases.",
     updates: "Download the newer release by hand.",
@@ -115,12 +144,13 @@ export const installMethods: readonly InstallMethod[] = [
   {
     id: "docker",
     name: "Docker",
+    plain: "Docker runs programs inside a sealed box called a container. TruffleHog runs in the box, does its scan, and the box is deleted. Nothing stays on your computer, which suits automated checks on a server.",
     command:
       'docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys',
     updates: "The :latest tag pulls a newer image when one is published.",
-    hookFinds: { answer: "No", detail: "it runs inside a container, so command -v trufflehog finds nothing on your machine." },
+    hookFinds: { answer: "No", detail: "not a hook like this portfolio's, which looks for the trufflehog command on your computer. (TruffleHog's pre-commit guide also shows a hook written to run Docker instead.)" },
     trust: "Docker's copy of TruffleHog's official image. Nothing is installed on your machine, and Docker must already be running.",
-    beginnerNote: "This command is TruffleHog's own example. It scans their public test repository to show the tool working. It does not install anything on your computer, which is why a git hook still can't find it.",
+    beginnerNote: "This command is TruffleHog's own example. It scans their public test repository to show the tool working. It does not install anything on your computer, which is why this portfolio's hook still can't find it.",
     walkthrough: [
       { code: "docker run", text: "Start a container: a sealed box that runs a program." },
       { code: "--rm", text: "Delete the container when it finishes, so nothing is left behind." },
@@ -135,6 +165,7 @@ export const installMethods: readonly InstallMethod[] = [
   {
     id: "source",
     name: "Build from source",
+    plain: "You download TruffleHog's actual code and build the program yourself with Go, the language it's written in. Only worth it if you want to change TruffleHog or test something unreleased.",
     command: "git clone https://github.com/trufflesecurity/trufflehog.git\ncd trufflehog; go install",
     updates: "Pull the latest code and build again.",
     hookFinds: { answer: "Yes", detail: "if Go's install folder is on your PATH." },
@@ -173,7 +204,7 @@ export const installSituations: readonly InstallSituation[] = [
     label: "A CI job",
     question: "A pipeline should scan without installing anything permanently.",
     method: "docker",
-    why: "A container runs the scan and leaves nothing behind. That is a strength in CI and the reason it will not satisfy a local hook.",
+    why: "A container runs the scan and leaves nothing behind. That is a strength in CI and the reason it will not satisfy a local hook. On GitHub, TruffleHog's own GitHub Action is simpler still; see Other options to note.",
   },
   {
     id: "server",
@@ -226,3 +257,42 @@ export function findInstallMethod(id: InstallMethodId): InstallMethod {
   if (!method) throw new Error(`Unknown install method: ${id}`);
   return method;
 }
+
+export type OtherOption = { title: string; text: string; command?: string; sources: readonly InstallSourceId[] };
+
+/** Documented variations worth knowing, beyond the five main methods. */
+export const otherOptions: readonly OtherOption[] = [
+  {
+    title: "Check the download is genuine",
+    text: "Add -v to the install script and it verifies TruffleHog's signed checksum before installing. You need cosign installed first. For a release download, the README walks through the same check by hand.",
+    command: "curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -v -b /usr/local/bin",
+    sources: ["trufflehog-verify"],
+  },
+  {
+    title: "Install a specific version",
+    text: "Put a release tag at the end of the install script command to get that exact version instead of the newest. Useful when a team wants everyone on the same version.",
+    command: "curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin v3.56.0",
+    sources: ["trufflehog-readme"],
+  },
+  {
+    title: "GitHub Actions: use TruffleHog's own action",
+    text: "On GitHub, a workflow can use TruffleHog's official action instead of installing anything. This portfolio's CI does this, pinned to a specific commit so it doesn't change unexpectedly.",
+    command: "uses: trufflesecurity/trufflehog@main",
+    sources: ["trufflehog-action", "portfolio-ci"],
+  },
+  {
+    title: "GitLab CI",
+    text: "TruffleHog's GitLab example runs the install script inside the job, then runs the scan.",
+    sources: ["trufflehog-readme"],
+  },
+  {
+    title: "Docker on an Apple-chip Mac or on Windows",
+    text: "The README lists slightly different Docker commands for Apple-chip Macs (add --platform linux/arm64) and for Windows Command Prompt and PowerShell.",
+    sources: ["trufflehog-readme"],
+  },
+  {
+    title: "Ready-made pre-commit hooks",
+    text: "TruffleHog's pre-commit guide shows three ways to scan before every commit: Git's built-in hooksPath, the pre-commit framework, and Husky for JavaScript projects. It includes a version that runs through Docker.",
+    sources: ["trufflehog-precommit"],
+  },
+];

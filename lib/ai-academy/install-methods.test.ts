@@ -7,6 +7,7 @@ import {
   installSituations,
   installSources,
   installGlossary,
+  otherOptions,
   verifyCommands,
   verifyIfNothing,
 } from "./install-methods.ts";
@@ -58,6 +59,7 @@ test("beginner support: glossary covers the lab's jargon and failure steps are a
   }
   assert.ok(findInstallMethod("homebrew").beginnerNote?.includes("brew.sh"));
   assert.match(findInstallMethod("docker").beginnerNote ?? "", /does not install anything/);
+  for (const method of installMethods) assert.ok(method.plain.length > 60, `${method.id} needs a plain summary`);
 });
 
 test("every method explains how to run it in plain words", () => {
@@ -70,4 +72,14 @@ test("every method explains how to run it in plain words", () => {
   for (const part of ["curl -sSfL", "| sh", "-s --", "-b /usr/local/bin"]) assert.ok(script.includes(part), part);
   const docker = findInstallMethod("docker").walkthrough.map((step) => step.code ?? "").join(" ");
   for (const part of ["--rm", "-it", "-v", "trufflesecurity/trufflehog:latest"]) assert.ok(docker.includes(part), part);
+});
+
+test("other options are documented variations with real sources", () => {
+  assert.ok(otherOptions.length >= 5);
+  for (const option of otherOptions) {
+    assert.ok(option.sources.length >= 1);
+    for (const id of option.sources) assert.ok(installSources[id]?.url.startsWith("https://"));
+  }
+  const verified = otherOptions.find((o) => o.title.includes("genuine"));
+  assert.match(verified?.command ?? "", /sh -s -- -v -b \/usr\/local\/bin$/);
 });
