@@ -5,8 +5,11 @@ import {
   findInstallMethod,
   installMethods,
   installSituations,
+  installGlossary,
   installSources,
   verifyCommands,
+  verifyExpected,
+  verifyIfNothing,
   type InstallMethod,
   type InstallSituationId,
 } from "@/lib/ai-academy/install-methods";
@@ -104,16 +107,37 @@ export function InstallMethodLab() {
     >
       <p className="editorial-eyebrow text-accent">Practice lab · Your own machine</p>
       <h3 id="install-lab-title" className="mt-2 text-xl font-semibold">
-        Pick an install method
+        Install a tool and check it worked
       </h3>
-      <p className="mt-2 text-sm leading-6 text-muted">
-        Start with where the tool needs to run. Each answer uses the same four fields so you can compare them. Example
-        tool: TruffleHog.
+      <div className="mt-3 rounded-lg border border-border bg-card p-4">
+        <p className="text-sm font-semibold">Why this matters</p>
+        <p className="mt-1 text-sm leading-6">
+          A secret scanner only protects you if your computer can find it. This portfolio runs a check before every
+          commit. When it can&apos;t find TruffleHog, it lets the commit through without scanning and only prints a
+          warning.
+        </p>
+      </div>
+      <p className="mt-4 text-sm leading-6 text-muted">
+        <strong className="text-foreground">Before you start:</strong> you&apos;ll type commands into Terminal. On a
+        Mac, press Command and Space, type Terminal, and press Return. Paste a command, press Return, and wait until it
+        finishes.
       </p>
+      <details className="mt-4 rounded-lg border border-border bg-card px-4 py-1">
+        <summary className="min-h-11 cursor-pointer content-center text-sm font-semibold">Words you&apos;ll see</summary>
+        <dl className="mb-3 mt-1 grid gap-3">
+          {installGlossary.map((item) => (
+            <div key={item.term}>
+              <dt className="text-sm font-semibold">{item.term}</dt>
+              <dd className="mt-0.5 text-sm leading-6 text-muted">{item.meaning}</dd>
+            </div>
+          ))}
+        </dl>
+      </details>
 
-      <div className="mt-5 lg:hidden">
-        <label htmlFor="install-situation" className="mb-2 block text-sm font-semibold">
-          Where does it need to run? ({index + 1} of {installSituations.length})
+      <p className="mt-6 text-sm font-semibold">Step 1 · Where does the tool need to run?</p>
+      <div className="mt-2 lg:hidden">
+        <label htmlFor="install-situation" className="mb-2 block text-sm text-muted">
+          Choose one ({index + 1} of {installSituations.length})
         </label>
         <select
           id="install-situation"
@@ -132,7 +156,7 @@ export function InstallMethodLab() {
         role="tablist"
         aria-label="Where does it need to run?"
         onKeyDown={onTabKeyDown}
-        className="mt-5 hidden flex-wrap gap-2 lg:flex"
+        className="mt-2 hidden flex-wrap gap-2 lg:flex"
       >
         {installSituations.map((item) => {
           const selected = item.id === situationId;
@@ -165,6 +189,27 @@ export function InstallMethodLab() {
         <p className="text-sm leading-6 text-muted">{situation.question}</p>
         <p className="mt-3 text-lg font-semibold">Start with: {method.name}</p>
         <p className="mt-1 text-sm leading-6">{situation.why}</p>
+        <p className="mt-4 text-sm font-semibold">Step 2 · Run it</p>
+        {method.beginnerNote ? (
+          <p className="mt-2 rounded-lg border border-border bg-background p-3 text-sm leading-6">
+            <strong>Read first:</strong>{" "}
+            {method.beginnerNote.split("brew.sh").map((part, i, parts) => (
+              <span key={i}>
+                {part}
+                {i < parts.length - 1 ? (
+                  <a
+                    href="https://brew.sh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent underline underline-offset-2"
+                  >
+                    brew.sh ↗
+                  </a>
+                ) : null}
+              </span>
+            ))}
+          </p>
+        ) : null}
         <MethodFields method={method} />
       </div>
 
@@ -205,14 +250,35 @@ export function InstallMethodLab() {
       </details>
 
       <div className="mt-5 border-t border-border pt-4">
-        <p className="text-sm font-semibold">You are done when this prints a version</p>
+        <p className="text-sm font-semibold">Step 3 · Check it worked</p>
         <div className="mt-2">
           <CommandBlock command={verifyCommands.join("\n")} label="check" />
         </div>
-        <p className="mt-2 text-sm leading-6 text-muted">
-          If the first line prints nothing, your shell cannot find the command yet. This lab does not check your
-          machine or save progress.
+        <p className="mt-2 text-sm leading-6">
+          <strong>Done when:</strong> {verifyExpected}
         </p>
+        <p className="mt-3 text-sm font-semibold">If nothing prints, try these in order</p>
+        <ol className="mt-1 list-decimal space-y-1 pl-5 text-sm leading-6 text-muted">
+          {verifyIfNothing.map((step) => (
+            <li key={step.text}>
+              {step.text}
+              {step.link ? (
+                <>
+                  {" "}
+                  <a
+                    href={installSources[step.link.source].url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent underline underline-offset-2"
+                  >
+                    {step.link.text} ↗
+                  </a>
+                </>
+              ) : null}
+            </li>
+          ))}
+        </ol>
+        <p className="mt-3 text-xs leading-5 text-muted">This lab doesn&apos;t check your computer or save progress.</p>
       </div>
 
       <p className="mt-5 text-xs leading-5 text-muted">

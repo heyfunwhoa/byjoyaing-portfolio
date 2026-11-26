@@ -6,7 +6,9 @@ import {
   installMethods,
   installSituations,
   installSources,
+  installGlossary,
   verifyCommands,
+  verifyIfNothing,
 } from "./install-methods.ts";
 
 test("every situation points at a real method and each method is complete", () => {
@@ -43,4 +45,17 @@ test("commands match the documented sources and every source is https", () => {
 test("the chooser lives in the existing package-registries lesson; catalog size is unchanged", () => {
   assert.ok(lessons.some((lesson) => lesson.slug === "package-registries"));
   assert.equal(lessons.length, 39);
+});
+
+test("beginner support: glossary covers the lab's jargon and failure steps are actionable", () => {
+  const terms = installGlossary.map((item) => item.term).join(" ");
+  for (const word of ["PATH", "shell", "Git hook", "CI", "Container", "cosign"]) {
+    assert.match(terms, new RegExp(word));
+  }
+  assert.equal(verifyIfNothing.length, 3);
+  for (const step of verifyIfNothing) {
+    if (step.link) assert.ok(installSources[step.link.source]);
+  }
+  assert.ok(findInstallMethod("homebrew").beginnerNote?.includes("brew.sh"));
+  assert.match(findInstallMethod("docker").beginnerNote ?? "", /does not install anything/);
 });

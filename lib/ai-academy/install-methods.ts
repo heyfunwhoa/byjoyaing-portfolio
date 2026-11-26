@@ -3,7 +3,12 @@
 // The chooser recommends a starting point for a situation; it does not detect the
 // learner's machine, run commands, or record progress.
 
-export type InstallSourceId = "trufflehog-readme" | "homebrew-install" | "homebrew-faq" | "secret-scan-hook";
+export type InstallSourceId =
+  | "trufflehog-readme"
+  | "homebrew-install"
+  | "homebrew-faq"
+  | "homebrew-post-install"
+  | "secret-scan-hook";
 
 export type InstallSource = { id: InstallSourceId; label: string; url: string };
 
@@ -22,6 +27,11 @@ export const installSources: Record<InstallSourceId, InstallSource> = {
     id: "homebrew-faq",
     label: "Homebrew FAQ: updating packages",
     url: "https://docs.brew.sh/FAQ#how-do-i-update-my-local-packages",
+  },
+  "homebrew-post-install": {
+    id: "homebrew-post-install",
+    label: "Homebrew docs: post-installation steps",
+    url: "https://docs.brew.sh/Installation#post-installation-steps",
   },
   "secret-scan-hook": {
     id: "secret-scan-hook",
@@ -42,6 +52,8 @@ export type InstallMethod = {
   updates: string;
   hookFinds: { answer: "Yes" | "No"; detail: string };
   trust: string;
+  /** Plain-language help shown under the panel for first-time Terminal users. */
+  beginnerNote?: string;
   sources: readonly InstallSourceId[];
 };
 
@@ -52,8 +64,9 @@ export const installMethods: readonly InstallMethod[] = [
     command: "brew install trufflehog",
     updates: "brew upgrade updates the tools you installed with Homebrew.",
     hookFinds: { answer: "Yes", detail: "once Homebrew is set up in your shell." },
-    trust: "You trust Homebrew's package for the tool. Lower upkeep than copying files around by hand.",
-    sources: ["trufflehog-readme", "homebrew-install", "homebrew-faq"],
+    trust: "Homebrew's package of the tool, built from the tool's own release. The easiest route to keep updated.",
+    beginnerNote: "No brew? If Terminal says brew isn't found, install Homebrew first from brew.sh. When it finishes, it prints a few setup lines; run those too, or brew still won't be found. Then come back and run the command below.",
+    sources: ["trufflehog-readme", "homebrew-install", "homebrew-faq", "homebrew-post-install"],
   },
   {
     id: "script",
@@ -82,7 +95,8 @@ export const installMethods: readonly InstallMethod[] = [
       'docker run --rm -it -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/trufflesecurity/test_keys',
     updates: "The :latest tag pulls a newer image when one is published.",
     hookFinds: { answer: "No", detail: "it runs inside a container, so command -v trufflehog finds nothing on your machine." },
-    trust: "Nothing is installed on your machine. Docker must be running. This README example scans TruffleHog's public test repository.",
+    trust: "Docker's copy of TruffleHog's official image. Nothing is installed on your machine, and Docker must already be running.",
+    beginnerNote: "This command is TruffleHog's own example. It scans their public test repository to show the tool working. It does not install anything on your computer, which is why a git hook still can't find it.",
     sources: ["trufflehog-readme", "secret-scan-hook"],
   },
   {
@@ -138,6 +152,34 @@ export const installSituations: readonly InstallSituation[] = [
 ];
 
 export const verifyCommands = ["command -v trufflehog", "trufflehog --version"] as const;
+
+/** What a working result looks like, in plain words. */
+export const verifyExpected =
+  "The first line prints where the program lives, such as /opt/homebrew/bin/trufflehog on a Mac with an Apple chip. The second prints a version number.";
+
+/** Next steps when the check prints nothing, in the order to try them. */
+export const verifyIfNothing: readonly { text: string; link?: { source: InstallSourceId; text: string } }[] = [
+  { text: "Close Terminal, open a new window and run the check again. A new window reloads the list of folders your shell searches." },
+  {
+    text: "If brew itself isn't found, Homebrew's setup step was skipped. Follow the one line Homebrew asks you to add.",
+    link: { source: "homebrew-post-install", text: "Homebrew's post-installation steps" },
+  },
+  { text: "If you used Docker, nothing printing is expected: the tool runs in a container, not on your computer." },
+];
+
+export type GlossaryTerm = { term: string; meaning: string };
+
+/** Plain definitions for words the lab uses. */
+export const installGlossary: readonly GlossaryTerm[] = [
+  { term: "Terminal and shell", meaning: "Terminal is the Mac app where you type commands. The shell is the program inside it that runs them; recent Macs use one called zsh." },
+  { term: "Command", meaning: "A program you run by typing its name, such as trufflehog or brew." },
+  { term: "PATH", meaning: "The list of folders your shell searches when you type a command. If a program isn't in one of them, the shell says it can't find it." },
+  { term: "Package manager", meaning: "A tool that downloads programs, puts them where your shell can find them, and updates them. Homebrew is one for Mac and Linux." },
+  { term: "Git hook", meaning: "A small script Git runs by itself at a set moment, such as right before each commit." },
+  { term: "CI", meaning: "Continuous integration: checks that run on a server, here GitHub Actions, every time code is pushed." },
+  { term: "Container (Docker)", meaning: "A sealed box that runs a program without installing it on your computer." },
+  { term: "Checksum and cosign", meaning: "A checksum is a fingerprint of a download. cosign checks that the fingerprint was signed by the project, so you know the file wasn't swapped." },
+];
 
 export function findInstallMethod(id: InstallMethodId): InstallMethod {
   const method = installMethods.find((item) => item.id === id);
