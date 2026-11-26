@@ -59,3 +59,15 @@ test("beginner support: glossary covers the lab's jargon and failure steps are a
   assert.ok(findInstallMethod("homebrew").beginnerNote?.includes("brew.sh"));
   assert.match(findInstallMethod("docker").beginnerNote ?? "", /does not install anything/);
 });
+
+test("every method explains how to run it in plain words", () => {
+  for (const method of installMethods) {
+    assert.ok(method.walkthrough.length >= 2, `${method.id} needs a walkthrough`);
+    assert.ok(method.walkthrough.every((step) => step.text.length > 15));
+    assert.ok(method.youllSee.length > 20);
+  }
+  const script = findInstallMethod("script").walkthrough.map((step) => step.code ?? "").join(" ");
+  for (const part of ["curl -sSfL", "| sh", "-s --", "-b /usr/local/bin"]) assert.ok(script.includes(part), part);
+  const docker = findInstallMethod("docker").walkthrough.map((step) => step.code ?? "").join(" ");
+  for (const part of ["--rm", "-it", "-v", "trufflesecurity/trufflehog:latest"]) assert.ok(docker.includes(part), part);
+});

@@ -54,6 +54,10 @@ export type InstallMethod = {
   trust: string;
   /** Plain-language help shown under the panel for first-time Terminal users. */
   beginnerNote?: string;
+  /** Each part of the command (or each manual step) in plain words, in order. */
+  walkthrough: readonly { code?: string; text: string }[];
+  /** What the learner should expect to see while it runs. */
+  youllSee: string;
   sources: readonly InstallSourceId[];
 };
 
@@ -66,6 +70,11 @@ export const installMethods: readonly InstallMethod[] = [
     hookFinds: { answer: "Yes", detail: "once Homebrew is set up in your shell." },
     trust: "Homebrew's package of the tool, built from the tool's own release. The easiest route to keep updated.",
     beginnerNote: "No brew? If Terminal says brew isn't found, install Homebrew first from brew.sh. When it finishes, it prints a few setup lines; run those too, or brew still won't be found. Then come back and run the command below.",
+    walkthrough: [
+      { code: "brew", text: "Homebrew, the program that does the installing." },
+      { code: "install trufflehog", text: "Download TruffleHog and put it in Homebrew's folder, which your shell already searches." },
+    ],
+    youllSee: "Some progress lines while it downloads, then your prompt comes back. The first install can take a minute.",
     sources: ["trufflehog-readme", "homebrew-install", "homebrew-faq", "homebrew-post-install"],
   },
   {
@@ -76,6 +85,14 @@ export const installMethods: readonly InstallMethod[] = [
     updates: "Run the script again to get a newer version.",
     hookFinds: { answer: "Yes", detail: "if the folder after -b is on your PATH." },
     trust: "Piping into sh runs code from the internet on your machine. Read the script first. TruffleHog also documents a variant that verifies a signed checksum; it needs cosign.",
+    walkthrough: [
+      { text: "Optional but wise: open the script's web address in a browser and read it before you run it." },
+      { code: "curl -sSfL <address>", text: "curl downloads a file. The letters mean: s = quiet, S = still show errors, f = stop if the download fails, L = follow redirects." },
+      { code: "| sh", text: "The pipe | hands the downloaded script straight to sh, which runs it. This is the moment you trust the script." },
+      { code: "-s --", text: "Tells sh to run the script it was handed, and that everything after -- is for the script, not for sh." },
+      { code: "-b /usr/local/bin", text: "The script's own option: install the program into /usr/local/bin, a folder most Macs already search." },
+    ],
+    youllSee: "A few download messages, then your prompt comes back. If you see \"Permission denied\", that folder needs admin rights; pick a folder you own that's on your PATH instead.",
     sources: ["trufflehog-readme"],
   },
   {
@@ -86,6 +103,13 @@ export const installMethods: readonly InstallMethod[] = [
     updates: "Download the newer release by hand.",
     hookFinds: { answer: "Yes", detail: "after you move it into a folder on your PATH." },
     trust: "You get the program straight from the project's releases page. Check you are on the real repository.",
+    walkthrough: [
+      { text: "Open github.com/trufflesecurity/trufflehog/releases and pick the newest release." },
+      { text: "Download the file for your computer. darwin means macOS, arm64 means an Apple chip, and amd64 means an Intel chip." },
+      { text: "Double-click the download to unpack it. Inside is the trufflehog program." },
+      { text: "Move trufflehog into a folder on your PATH, then run the check in Step 3." },
+    ],
+    youllSee: "Nothing runs in Terminal until the last step. The check in Step 3 tells you whether the move worked.",
     sources: ["trufflehog-readme"],
   },
   {
@@ -97,6 +121,15 @@ export const installMethods: readonly InstallMethod[] = [
     hookFinds: { answer: "No", detail: "it runs inside a container, so command -v trufflehog finds nothing on your machine." },
     trust: "Docker's copy of TruffleHog's official image. Nothing is installed on your machine, and Docker must already be running.",
     beginnerNote: "This command is TruffleHog's own example. It scans their public test repository to show the tool working. It does not install anything on your computer, which is why a git hook still can't find it.",
+    walkthrough: [
+      { code: "docker run", text: "Start a container: a sealed box that runs a program." },
+      { code: "--rm", text: "Delete the container when it finishes, so nothing is left behind." },
+      { code: "-it", text: "Connect it to your Terminal so you can see the output and stop it with Control-C." },
+      { code: "-v \"$PWD:/pwd\"", text: "Share the folder you're in ($PWD) with the container, where it appears as /pwd. This example doesn't use it; you'd need it to scan your own files." },
+      { code: "trufflesecurity/trufflehog:latest", text: "Which program to run: TruffleHog's official image, newest version." },
+      { code: "github --repo <address>", text: "What TruffleHog should do: scan this public GitHub repository." },
+    ],
+    youllSee: "The first time, Docker downloads the image. Then TruffleHog prints what it finds in the test repository, and the container disappears.",
     sources: ["trufflehog-readme", "secret-scan-hook"],
   },
   {
@@ -106,6 +139,13 @@ export const installMethods: readonly InstallMethod[] = [
     updates: "Pull the latest code and build again.",
     hookFinds: { answer: "Yes", detail: "if Go's install folder is on your PATH." },
     trust: "Needs the Go toolchain. Best when you are changing TruffleHog itself.",
+    walkthrough: [
+      { text: "You need Go installed first (a recent version; TruffleHog currently asks for Go 1.26)." },
+      { code: "git clone <address>", text: "Copy TruffleHog's code onto your computer, into a new folder named trufflehog." },
+      { code: "cd trufflehog", text: "Move into that folder." },
+      { code: "go install", text: "Build the program and put it in Go's bin folder, usually ~/go/bin. That folder must be on your PATH for the check to work." },
+    ],
+    youllSee: "Very little output while it builds, which can take a few minutes. Your prompt comes back when it's done.",
     sources: ["trufflehog-readme"],
   },
 ];

@@ -63,6 +63,27 @@ function MethodFields({ method }: { method: InstallMethod }) {
         </dd>
       </div>
       <div>
+        <dt className="text-sm font-semibold">What each part does</dt>
+        <dd className="mt-2">
+          <ol className="list-decimal space-y-2 pl-5 text-sm leading-6">
+            {method.walkthrough.map((step) => (
+              <li key={step.code ?? step.text}>
+                {step.code ? (
+                  <code className="mb-0.5 block w-fit max-w-full break-all rounded bg-background px-1.5 py-0.5 font-mono text-[0.8125rem]">
+                    {step.code}
+                  </code>
+                ) : null}
+                {step.text}
+              </li>
+            ))}
+          </ol>
+        </dd>
+      </div>
+      <div>
+        <dt className="text-sm font-semibold">What you&apos;ll see</dt>
+        <dd className="mt-1 text-sm leading-6 text-muted">{method.youllSee}</dd>
+      </div>
+      <div>
         <dt className="text-sm font-semibold">How it updates</dt>
         <dd className="mt-1 text-sm leading-6 text-muted">{method.updates}</dd>
       </div>
@@ -77,6 +98,34 @@ function MethodFields({ method }: { method: InstallMethod }) {
         <dd className="mt-1 text-sm leading-6 text-muted">{method.trust}</dd>
       </div>
     </dl>
+  );
+}
+
+function MethodDetail({ method }: { method: InstallMethod }) {
+  return (
+    <>
+      {method.beginnerNote ? (
+        <p className="mt-2 rounded-lg border border-border bg-background p-3 text-sm leading-6">
+          <strong>Read first:</strong>{" "}
+          {method.beginnerNote.split("brew.sh").map((part, i, parts) => (
+            <span key={i}>
+              {part}
+              {i < parts.length - 1 ? (
+                <a
+                  href="https://brew.sh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent underline underline-offset-2"
+                >
+                  brew.sh ↗
+                </a>
+              ) : null}
+            </span>
+          ))}
+        </p>
+      ) : null}
+      <MethodFields method={method} />
+    </>
   );
 }
 
@@ -190,27 +239,23 @@ export function InstallMethodLab() {
         <p className="mt-3 text-lg font-semibold">Start with: {method.name}</p>
         <p className="mt-1 text-sm leading-6">{situation.why}</p>
         <p className="mt-4 text-sm font-semibold">Step 2 · Run it</p>
-        {method.beginnerNote ? (
-          <p className="mt-2 rounded-lg border border-border bg-background p-3 text-sm leading-6">
-            <strong>Read first:</strong>{" "}
-            {method.beginnerNote.split("brew.sh").map((part, i, parts) => (
-              <span key={i}>
-                {part}
-                {i < parts.length - 1 ? (
-                  <a
-                    href="https://brew.sh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent underline underline-offset-2"
-                  >
-                    brew.sh ↗
-                  </a>
-                ) : null}
-              </span>
+        <MethodDetail method={method} />
+      </div>
+
+      <div className="mt-5">
+        <p className="text-sm font-semibold">Other ways to run it, explained</p>
+        <div className="mt-2 grid gap-2">
+          {installMethods
+            .filter((item) => item.id !== method.id)
+            .map((item) => (
+              <details key={item.id} className="min-w-0 rounded-lg border border-border bg-card px-4 py-1">
+                <summary className="min-h-11 cursor-pointer content-center text-sm font-semibold">{item.name}</summary>
+                <div className="mb-3 min-w-0">
+                  <MethodDetail method={item} />
+                </div>
+              </details>
             ))}
-          </p>
-        ) : null}
-        <MethodFields method={method} />
+        </div>
       </div>
 
       <details className="mt-5 rounded-lg border border-border bg-card px-4 py-1">
