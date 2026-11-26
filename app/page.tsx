@@ -1,5 +1,7 @@
 import { completePageMetadata } from "@/lib/page-metadata";
+import { KeepPhrases } from "@/components/keep-phrases";
 import { BrandAvatar, homeBrandAvatarPortrait } from "@/components/brand-avatar";
+import { ArrowUpRight } from "@/components/icons/arrow-up-right";
 import { ArrowRight } from "@/components/icons/arrow-right";
 import { CelestialFrame } from "@/components/celestial-frame";
 import { EditorialBento } from "@/components/editorial-bento";
@@ -84,7 +86,7 @@ export default function Home() {
             <span className="mt-2 block italic text-[#E6B59A]">{homePage.headlineAccent}</span>
           </h1>
           <p className="mt-5 max-w-[38rem] text-base font-medium leading-7 sm:text-lg sm:leading-8">
-            {homePage.philosophy}
+            <KeepPhrases text={homePage.philosophy} />
           </p>
           <p className="editorial-subtle mt-3 max-w-[38rem] text-base leading-7">
             {homePage.body}
@@ -198,8 +200,8 @@ export default function Home() {
               {salesFor(sideQuest.slug).decision}
             </p>
             <p className="mt-3 max-w-xl text-sm leading-6 text-muted">{statusHelp[sideQuest.status]}</p>
-            <ProjectTechnologyStack slug={sideQuest.slug} presentation="compact" className="mt-4" />
-            <div className="mt-5 flex flex-col gap-1">
+            <ProjectTechnologyStack slug={sideQuest.slug} presentation="compact" labels className="mt-4" />
+            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-1">
               <Link
                 href={sideQuest.caseStudyUrl}
                 className="editorial-link inline-flex min-h-11 items-center text-sm font-semibold text-accent underline"
@@ -240,13 +242,14 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Book a time with Kristen Aing (opens Cal.com in a new tab)"
-            className="inline-flex min-h-11 items-center px-1 text-sm font-semibold text-accent underline underline-offset-4"
+            className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4 min-[420px]:px-1"
           >
             Book a time
+            <ArrowUpRight size={16} className="ml-1.5 inline-block size-4 shrink-0" />
           </a>
           <Link
             href="/about"
-            className="inline-flex min-h-11 items-center px-1 text-sm font-semibold text-accent underline underline-offset-4"
+            className="inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4 min-[420px]:px-1"
           >
             About Me
           </Link>

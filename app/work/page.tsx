@@ -86,7 +86,7 @@ export default function WorkPage() {
               key={item.slug}
               className="rounded-xl border border-border bg-card p-6"
             >
-              <p className="text-xs font-semibold tracking-widest text-accent uppercase">
+              <p className="editorial-eyebrow text-accent">
                 Professional practice
               </p>
               <h3 className="mt-2 text-xl font-semibold">{item.title}</h3>
@@ -101,20 +101,23 @@ export default function WorkPage() {
               </Link>
             </article>
           ))}
-        </div>
-        <div className="mt-8 rounded-xl border border-border p-6">
-          <h3 className="font-semibold">Career and leadership experience</h3>
-          <p className="mt-2 text-sm leading-6 text-muted">
-            Work extends beyond any one project: complex enterprise deals,
-            coaching, onboarding, technical discovery, and cross-functional GTM
-            improvements.
-          </p>
-          <Link
-            href="/experience"
-            className="mt-3 inline-flex min-h-11 items-center text-sm text-accent underline underline-offset-4"
-          >
-            View professional timeline →
-          </Link>
+          <article className="rounded-xl border border-border p-6">
+            <p className="editorial-eyebrow text-muted">Career context</p>
+            <h3 className="mt-2 text-xl font-semibold">
+              Career and leadership experience
+            </h3>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              Work extends beyond any one project: complex enterprise deals,
+              coaching, onboarding, technical discovery, and cross-functional
+              GTM improvements.
+            </p>
+            <Link
+              href="/experience"
+              className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-accent underline underline-offset-4"
+            >
+              View professional timeline →
+            </Link>
+          </article>
         </div>
       </section>
       <section className="py-12 sm:py-16" aria-labelledby="side-quest-demonstrations-heading">

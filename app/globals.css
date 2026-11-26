@@ -405,3 +405,25 @@ body:has([data-connect-page]) [data-site-chrome] {
 /* Anchor jumps on pages with a sticky section menu land below the header and the menu. */
 html:has([data-on-this-page]) section[id],
 html:has([data-on-this-page]) :target { scroll-margin-top: calc(var(--site-header-offset, 4rem) + 3.75rem); }
+
+/* Native disclosures share one decorative, static open/closed cue (no
+   transition; disclosures stay motion-free). Summaries that already draw their
+   own icon (an svg or aria-hidden glyph) keep it. Display is left to each
+   summary's utilities so flex layouts stay intact. */
+summary { list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary:not(:has(svg, [aria-hidden="true"]))::after {
+  content: "";
+  display: inline-block;
+  flex: none;
+  width: .45em;
+  height: .45em;
+  margin-inline-start: .65em;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  vertical-align: middle;
+  transform: translateY(-.2em) rotate(45deg);
+}
+details[open] > summary:not(:has(svg, [aria-hidden="true"]))::after {
+  transform: translateY(.1em) rotate(-135deg);
+}
