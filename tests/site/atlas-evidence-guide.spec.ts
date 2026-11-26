@@ -2,6 +2,10 @@ import { expect, test } from "@playwright/test";
 
 test("Atlas evidence guide separates demonstrated sample from unverified product claims", async ({ page }) => {
   await page.goto("/work/detector-coverage-atlas");
+  const catalog = page.getByRole("link", { name: /^Open the live catalog/ });
+  await expect(catalog).toBeVisible();
+  await expect(catalog).toHaveAttribute("href", "https://detector-coverage-atlas.vercel.app/");
+  await expect(page.locator('a[href="https://github.com/heyfunwhoa/detector-coverage-atlas"]')).toHaveCount(0);
   const guide = page.getByRole("complementary", { name: "What this comparison can tell you" });
   await expect(guide).toBeVisible();
   await expect(guide.getByText(/fixed example of three sources and five credential types/i)).toBeVisible();

@@ -520,13 +520,13 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "detector-coverage-atlas": {
     pipeline:
-      "Three hardcoded rows → a browser filter → Covered, Observed, or Not evaluated.",
+      "Pinned public TruffleHog source → validated snapshot → source-linked detector and analyzer facts → review queue. The portfolio comparison is a separate fixed example.",
     workingToday:
-      "The comparison on this site. TruffleHog has Covered or Observed values. Betterleaks and Kingfisher are Not evaluated. There is no parser, database, or refresh job.",
+      "The live Atlas catalog has source links, a review queue, and ingestion health. This site also has a fixed comparison of three sources and five credential types, with unreviewed cells kept gray.",
     plannedNext:
-      "Read public detector files at a pinned commit and keep unreviewed cells gray. That code is not in this repo.",
+      "Review representative coverage questions against the catalog and its pinned source before expanding to other scanners.",
     implementedTech:
-      "Next.js, React, and TypeScript. Rows are in lib/portfolio.ts. The filter is components/coverage-explorer.tsx. Tailwind for layout.",
+      "The separate catalog documents GitHub Actions ingestion, an incremental parser, validated JSON snapshots and optional Neon persistence. This portfolio comparison uses Next.js, React and TypeScript.",
   },
   "product-release-intelligence": {
     pipeline:
@@ -549,23 +549,23 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "truffle-camp": {
     pipeline:
-      "A written scenario → the reader separates detection from verification → a manager could score the explanation. On this site you can read the module and try one synthetic knowledge check. Progress is not saved.",
+      "A synthetic cache → evidence review → a decision with feedback → browser-local progress in the separate training app. This page offers a sample knowledge check.",
     workingToday:
-      "The First Expedition write-up and one synthetic knowledge check on the case study. Teams have used discovery frameworks, playbooks, and Darktrace industry training. Those are not a course app.",
+      "The separate app implements the camp map, Trailhead and one synthetic Dig Site mission. This page includes the First Expedition write-up and a knowledge check. Historical team training is separate evidence.",
     plannedNext:
-      "A fuller playable mission after testing the synthetic knowledge check.",
+      "Review the first mission with a learner, then develop the later camp days and a curated Atlas export.",
     implementedTech:
-      "A static module and session-only knowledge check in this Next.js page. No course platform, saved progress, or model.",
+      "The separate Next.js app documents schema-validated content and browser-local progress. The knowledge check on this portfolio stays in the page session.",
   },
   "partner-gtm-engine": {
     pipeline:
-      "A partner row with no website → I refuse to treat a similar name as a match → a human review state before anyone co-sells.",
+      "Workbook upload → staged source rows → company matching and human review. Salesforce is checked only when an account export is attached.",
     workingToday:
-      "One fictional match on the case study. No spreadsheet upload, domain search, or CRM sync. Metadot's channel program is historical context, not a result of this design.",
+      "The separate partner-book implementation stages workbooks for row review without writing Salesforce or the account store. The fictional match on this page illustrates the decision rule.",
     plannedNext:
-      "Upload a sheet, match on domain, and leave uncertain rows for a person.",
+      "Review representative partner workbooks and keep uncertain company matches open for a person.",
     implementedTech:
-      "A documented workflow presented on this page.",
+      "A separate workbook-review build; the portfolio presents a documented workflow and fictional match.",
   },
   "customer-feedback-intelligence": {
     pipeline:
