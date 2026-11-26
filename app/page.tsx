@@ -121,22 +121,23 @@ export default function Home() {
         <h2 id="credibility-title" className="editorial-section-title mt-3 max-w-[24ch]">
           Enterprise sales, team development, and practical systems.
         </h2>
-        <div className="mt-7 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid min-w-0 gap-3 sm:mt-7 sm:grid-cols-2 lg:grid-cols-3">
           {roleProofs.map(({ role, label, detail, href, action }, index) => (
             <article
               key={role.company}
-              className={`flex min-w-0 flex-col rounded-2xl border border-border bg-card p-5 sm:p-6 ${
+              className={`flex min-w-0 flex-col rounded-2xl border border-border bg-card p-4 sm:p-6 ${
                 index === 2
                   ? "sm:col-span-2 sm:w-1/2 sm:justify-self-center lg:col-span-1 lg:w-full"
                   : ""
               }`}
             >
               <p className="editorial-eyebrow text-accent">{label}</p>
-              <h3 className="mt-3 font-display text-2xl leading-tight tracking-tight">
+              <h3 className="mt-2 font-display text-xl leading-tight tracking-tight sm:mt-3 sm:text-2xl">
                 {role.company}
               </h3>
               <p className="mt-1 text-sm font-medium leading-6">{role.title}</p>
-              <p className="mt-4 text-sm leading-6 text-muted">
+              {/* Phones show the evidence line only; the role summary returns from sm. */}
+              <p className="mt-4 hidden text-sm leading-6 text-muted sm:block">
                 {role.points[0]}
               </p>
               {detail ? (
@@ -144,7 +145,7 @@ export default function Home() {
               ) : null}
               <Link
                 href={href}
-                className="editorial-link mt-auto inline-flex min-h-11 items-center pt-4 text-sm font-semibold text-accent underline"
+                className="editorial-link mt-auto inline-flex min-h-11 items-center pt-2 text-sm font-semibold text-accent underline sm:pt-4"
               >
                 {action}
                 <ArrowRight size={16} className="ml-2 inline-block size-4 shrink-0" />
@@ -177,30 +178,34 @@ export default function Home() {
 
       <section aria-labelledby="build-title" className="section-enter border-b border-border py-12 sm:py-16">
         <p className="editorial-eyebrow text-accent">03 / A side quest</p>
-        <div className="mt-4 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-14">
+        <div className="mt-4 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-14">
           <div className="min-w-0">
             <p className="editorial-eyebrow text-muted">{statusCopy[sideQuest.status]}</p>
             <h2 id="build-title" className="editorial-section-title mt-3 max-w-[16ch]">
               {sideQuest.title}
             </h2>
+            <p className="mt-4 max-w-xl text-base leading-7">{sideQuest.summary}</p>
             <Marginalia>An independent project. See the walkthrough for its scope and limitations.</Marginalia>
           </div>
           <div className="min-w-0">
-            <p className="max-w-xl text-base leading-7">{sideQuest.summary}</p>
-            <p className="mt-3 max-w-xl text-sm leading-6">
-              <span className="font-medium">Problem: </span>
-              {sideQuestRecord.problem.summary}
+            <dl className="grid max-w-xl gap-4 border-l-2 border-border pl-5">
+              <div>
+                <dt className="editorial-eyebrow text-accent">Problem</dt>
+                <dd className="mt-1 text-sm leading-6">{sideQuestRecord.problem.summary}</dd>
+              </div>
+              <div>
+                <dt className="editorial-eyebrow text-accent">Contribution</dt>
+                <dd className="mt-1 text-sm leading-6">{sideQuest.role}</dd>
+              </div>
+              <div>
+                <dt className="editorial-eyebrow text-accent">Intended value</dt>
+                <dd className="mt-1 text-sm leading-6">{salesFor(sideQuest.slug).decision}</dd>
+              </div>
+            </dl>
+            <p className="mt-5 text-xs leading-5 text-muted">
+              {statusHelp[sideQuest.status]} Built with:
             </p>
-            <p className="mt-2 max-w-xl text-sm leading-6">
-              <span className="font-medium">Contribution: </span>
-              {sideQuest.role}
-            </p>
-            <p className="mt-2 max-w-xl text-sm leading-6">
-              <span className="font-medium">Intended value: </span>
-              {salesFor(sideQuest.slug).decision}
-            </p>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-muted">{statusHelp[sideQuest.status]}</p>
-            <ProjectTechnologyStack slug={sideQuest.slug} presentation="compact" labels className="mt-4" />
+            <ProjectTechnologyStack slug={sideQuest.slug} presentation="compact" labels className="mt-2" />
             <div className="mt-5 flex flex-wrap gap-x-6 gap-y-1">
               <Link
                 href={sideQuest.caseStudyUrl}

@@ -1,5 +1,6 @@
 import { completePageMetadata } from "@/lib/page-metadata";
 import { KeepPhrases } from "@/components/keep-phrases";
+import { ArrowUpRight } from "@/components/icons/arrow-up-right";
 import { CapabilityOrbit } from "@/components/capability-orbit";
 import { OrbitArtwork } from "@/components/orbit-artwork";
 import { CareerRail } from "@/components/career-rail";
@@ -218,9 +219,19 @@ export default function AboutPage() {
                     </div>
                   ) : null}
                   <p>
+                    {/* First line is the credential; the rest (school, level,
+                        status) are supporting detail. Sentence periods from the
+                        editable source are dropped for display only. */}
                     {lines.map((line, index) => (
-                      <span key={line} className="block">
-                        {line}
+                      <span
+                        key={line}
+                        className={
+                          index === 0
+                            ? "block font-medium text-foreground"
+                            : "block text-sm leading-6 text-muted"
+                        }
+                      >
+                        {line.replace(/\.$/, "")}
                         {index < lines.length - 1 ? " " : ""}
                       </span>
                     ))}
@@ -379,14 +390,17 @@ export default function AboutPage() {
             aria-label="Book a time with Kristen Aing (opens Cal.com in a new tab)"
           >
             Book a time
+            <ArrowUpRight size={16} className="ml-1 inline-block size-4 shrink-0" />
           </a>
           <a
             href="https://www.linkedin.com/in/kristenaing"
             className="inline-flex min-h-11 items-center text-accent underline underline-offset-4"
             target="_blank"
             rel="noreferrer"
+            aria-label="LinkedIn (opens in a new tab)"
           >
             LinkedIn
+            <ArrowUpRight size={16} className="ml-1 inline-block size-4 shrink-0" />
           </a>
         </div>
       </section>

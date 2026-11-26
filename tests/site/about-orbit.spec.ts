@@ -153,8 +153,8 @@ test("About education marks load beside visible credentials at phone and desktop
       )).toBe(true);
       await expect(education.getByText(new RegExp(credential))).toBeVisible();
     }
-    await expect(education).toContainText("Western Governors University.");
-    await expect(education.getByText("In progress.", { exact: true })).toBeVisible();
+    await expect(education).toContainText("Western Governors University");
+    await expect(education.getByText("In progress", { exact: true })).toBeVisible();
     const stacked = await education.locator("li p").evaluateAll((paragraphs) =>
       paragraphs.map((paragraph) => {
         const lines = [...paragraph.querySelectorAll("span")];
@@ -165,7 +165,7 @@ test("About education marks load beside visible credentials at phone and desktop
       }),
     );
     expect(stacked).toEqual([true, true, true, true]);
-    await expect(education.getByText("Bachelor of Science in Advertising.", { exact: true })).toBeVisible();
+    await expect(education.getByText("Bachelor of Science in Advertising", { exact: true })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
 });
