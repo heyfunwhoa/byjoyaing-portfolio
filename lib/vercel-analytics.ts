@@ -17,12 +17,18 @@ function browserStorage(): OptOutStorage | undefined {
 
 /** Applies the opt-out link if present, then reports whether this browser is opted out. */
 export function isOptedOut(url: URL, storage = browserStorage()): boolean {
-  if (!storage) return false;
+  const value = url.searchParams.get(OPT_OUT_PARAM);
+  if (value === "1" || value === "0") {
+    try {
+      if (value === "1") storage?.setItem(OPT_OUT_KEY, "1");
+      else storage?.removeItem(OPT_OUT_KEY);
+    } catch {
+      // Persistence is best effort; honor the explicit choice for this pageview.
+    }
+    return value === "1";
+  }
   try {
-    const value = url.searchParams.get(OPT_OUT_PARAM);
-    if (value === "1") storage.setItem(OPT_OUT_KEY, "1");
-    if (value === "0") storage.removeItem(OPT_OUT_KEY);
-    return storage.getItem(OPT_OUT_KEY) === "1";
+    return storage?.getItem(OPT_OUT_KEY) === "1";
   } catch {
     return false;
   }

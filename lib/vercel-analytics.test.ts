@@ -88,3 +88,41 @@ test("counting continues when storage is unavailable or throws", () => {
   };
   assert.notEqual(filterVercelPageview(page, broken), null);
 });
+
+test("explicit opt-out applies even when browser storage is unavailable or blocked", () => {
+  for (const storage of [
+    undefined,
+    {
+      getItem: () => {
+        throw new Error("blocked");
+      },
+      setItem: () => {
+        throw new Error("blocked");
+      },
+      removeItem: () => {
+        throw new Error("blocked");
+      },
+    },
+  ]) {
+    assert.equal(
+      filterVercelPageview(
+        {
+          type: "pageview",
+          url: "https://www.kristenaing.com/work?dontcountme=1",
+        },
+        storage,
+      ),
+      null,
+    );
+    assert.deepEqual(
+      filterVercelPageview(
+        {
+          type: "pageview",
+          url: "https://www.kristenaing.com/work?dontcountme=0#private",
+        },
+        storage,
+      ),
+      { type: "pageview", url: "https://www.kristenaing.com/work" },
+    );
+  }
+});
