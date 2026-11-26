@@ -113,30 +113,34 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     userMoment:
       "An SA or AE in a technical evaluation, when a buyer asks for a coverage comparison and the answer is usually tribal.",
     intake:
-      "Three rows I typed into this site: TruffleHog, Betterleaks, and Kingfisher.",
+      "Public TruffleHog OSS source at a pinned commit. This portfolio also includes a small comparison example.",
     produces:
-      "A filtered table: Covered, Observed, or Not evaluated. Unreviewed cells stay Not evaluated.",
+      "A source-linked detector and analyzer catalog with explicit uncertainty, plus a three-source comparison example on this page.",
     decision: "What I can claim in discovery, and what I have to leave gray.",
     myRole:
-      "I built this sample and the rule that gray is not a gap. A larger parser is described in my notes and is not in this repository. This is independent research, not an official Truffle Security product.",
+      "I built the independent catalog and the comparison example, with the rule that an unreviewed cell stays gray. The catalog runs as a separate app; it is not an official Truffle Security product.",
     maturityDetail:
-      "What runs is the sample table: 3 sources and 5 credential types. AWS keys and GitHub PATs are Covered for TruffleHog. Slack, GitLab, and GCP are Observed because a public detector folder exists, not because verification was fully reviewed. Notes mention 910 parsed records and 14 enriched. Those rows are not in this repository.",
+      "The public catalog has searchable detector and analyzer facts, source links, a review queue, and ingestion health. The small example here compares three sources across five credential types; it is separate from the catalog.",
     fieldAsset: null,
     proposedSoftware:
-      "Proposed catalog ingestion from public detector files at pinned commits, maintained as an independent research project.",
+      "The next step is to review representative coverage questions against the catalog and its pinned evidence.",
     links: [
       {
-        label: "Live sample",
+        label: "Open the live catalog",
+        href: "https://detector-coverage-atlas.vercel.app/",
+      },
+      {
+        label: "Comparison example",
         href: "/#atlas",
       },
       {
-        label: "GitHub repository",
+        label: "Portfolio example source",
         href: "https://github.com/heyfunwhoa/byjoyaing-portfolio",
       },
     ],
     result: {
       kind: "measured",
-      text: "The page you can use has 3 sources and 5 credential types. Betterleaks and Kingfisher are Not evaluated. The 910 and 14 counts are notes, not rows in the interface, and there is no revenue claim.",
+      text: "The catalog is publicly accessible and exposes snapshot freshness. The comparison example keeps unreviewed cells Not evaluated. No buyer outcome or revenue result has been measured.",
     },
     related: ["competitive-intelligence-engine", "truffle-camp"],
   },
@@ -156,15 +160,15 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "I have already done the field version of this work: discovery frameworks and a self-serve onboarding resource at Truffle, industry training at Darktrace, discovery templates at Forcepoint, threat-intelligence playbooks at Rapid7, and ramp resources at Websense. Truffle Camp is the product I designed on top of that pattern. It is not those assets.",
     maturityDetail:
-      "Designed, with a sample module on this page. The Darktrace ramp result belongs to the training I created there, not to Camp.",
+      "A separate training app implements the camp map, Trailhead, one synthetic Dig Site mission, decision feedback, and browser-local progress. This page includes a sample module. The Darktrace ramp result belongs to the training I created there.",
     fieldAsset:
       "Discovery frameworks, onboarding material, industry training, and playbooks that teams used.",
     proposedSoftware:
-      "Truffle Camp: Trailhead, one Dig Site mission, Verification Lab, Risk Room, Handoff Desk, and a Field Brief. Curriculum designed. No public repository.",
+      "Verification Lab, Risk Room, Handoff Desk, and Field Brief are later camp days. Atlas integration is planned; source repository is private.",
     links: [],
     result: {
       kind: "measured",
-      text: "The Darktrace training and the Truffle onboarding resource are field work. Truffle Camp is the later design. Camp has no learner data.",
+      text: "The Darktrace training and the Truffle onboarding resource are field work. Camp is independent software built from that pattern; no learner outcome study has been completed.",
     },
     related: [
       "detector-coverage-atlas",

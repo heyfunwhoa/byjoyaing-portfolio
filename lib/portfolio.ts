@@ -372,7 +372,7 @@ export const projects: Project[] = [
       job: "Answer a detector-coverage question with provenance, confidence, and a path to the source.",
     },
     evidence:
-      "Independent research against public TruffleHog: a source parser observed 910 detector records (Sept 2026), with 14 fully enriched and ready to render. Nested folders (github/v1, aws/access_keys) were being dropped until that bug was fixed. Validity-check detection is heuristic — GitHub and GitLab verification delegated to helpers are known false negatives. This is a public research catalog, not an official Truffle Security product.",
+      "Independent research built from public TruffleHog OSS source. The live catalog links detector and analyzer facts to a pinned commit and exposes an ingestion-health record. Uncertainty remains visible in a review queue. This is an unofficial project, with no live credential checks.",
     goals: [
       "Preserve source names and pin every import to a commit SHA.",
       "Normalize to canonical secret types without deleting source terminology.",
@@ -388,7 +388,7 @@ export const projects: Project[] = [
     ],
     mvp: {
       version:
-        "Catalog foundation: schema, TruffleHog ingestion, 14 reviewed starter detectors, searchable comparison with explicit uncertainty.",
+        "Searchable detector and analyzer catalog, SHA-pinned snapshot ingestion, source evidence, review queue, and ingestion health.",
       question:
         "Can fragmented public detector information become a reliable, evidence-backed product before we add more sources or automation?",
     },
@@ -409,12 +409,10 @@ export const projects: Project[] = [
       "Human review queue",
     ],
     systemTechnical: [
-      "Octokit (commit-pinned reads)",
-      "Provider-specific parsers",
-      "Postgres + Drizzle (next)",
-      "Vercel Cron snapshots (next)",
-      "shadcn data table",
-      "Comparison matrix",
+      "Daily GitHub Actions ingestion at a pinned TruffleHog SHA",
+      "Incremental source parser with optional Go AST helper",
+      "Validated JSON snapshots and optional Neon persistence",
+      "Next.js catalog with source-linked facts and review overlays",
     ],
     dataModel: [
       "DetectorRecord",
@@ -428,7 +426,7 @@ export const projects: Project[] = [
     ],
     metrics: {
       operational: [
-        "910 TruffleHog records parsed; 14 enriched",
+        "Published snapshot freshness and ingestion health",
         "Normalization rate and evidence completeness",
         "Stale-record and parser false-negative rate",
       ],
@@ -449,9 +447,9 @@ export const projects: Project[] = [
       "Computed comparison views vs. stored matrix rows.",
     ],
     prototype:
-      "Live, unofficial catalog of TruffleHog OSS detectors and analyzers. A daily run ingests a pinned TruffleHog commit; facts link to source, and open questions go to a review queue. No live credential checks. Separate from Truffle Camp. Source repository is private.",
+      "Live, unofficial catalog of TruffleHog OSS detectors and analyzers. Scheduled ingestion pins a TruffleHog commit; facts link to source, and open questions go to a review queue. No live credential checks. Source repository is private.",
     next: [
-      "Detector detail with verification profiles and conditional risk language.",
+      "Review representative detector and analyzer answers against their pinned source.",
       "Betterleaks and Kingfisher only after rule-file review; GitGuardian and GitHub Secret Scanning stay manual-doc.",
       "Five to ten representative questions against the UI to pick the next phase — not every planned screen.",
     ],
@@ -583,7 +581,7 @@ export const projects: Project[] = [
     title: "Truffle Camp",
     phase: "Enable",
     careerSignal: "Product Adoption, Technical Enablement, Product GTM",
-    status: "designed",
+    status: "prototype",
     problem: {
       summary:
         "Secrets education is fragmented across docs, detector references, sales enablement, and tribal knowledge.",
@@ -673,9 +671,9 @@ export const projects: Project[] = [
       "Local fixtures so Camp stays playable if Notion is down.",
     ],
     prototype:
-      "Paused for now. PRD complete. No public repository. Independent training curriculum using fictional examples. Atlas integration would be a curated export, not a merge.",
+      "Independent training app with a camp map, Trailhead, one synthetic Dig Site mission, decision feedback, and browser-local progress. Later camp days remain planned. Source repository is private.",
     next: [
-      "One Dig Site mission end to end, then Verification Lab and Handoff Desk.",
+      "Review the first Dig Site mission with a learner, then extend Verification Lab and Handoff Desk.",
       "Import one curated Atlas detector record via schema.",
       "Six initial missions (accidental commit through executive brief).",
       "Notion export pipeline and Campfire only after local fixtures work.",
