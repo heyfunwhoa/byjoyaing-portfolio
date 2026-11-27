@@ -113,30 +113,34 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     userMoment:
       "An SA or AE in a technical evaluation, when a buyer asks for a coverage comparison and the answer is usually tribal.",
     intake:
-      "Three rows I typed into this site: TruffleHog, Betterleaks, and Kingfisher.",
+      "Public TruffleHog OSS source at a pinned commit. This portfolio also includes a small comparison example.",
     produces:
-      "A filtered table: Covered, Observed, or Not evaluated. Unreviewed cells stay Not evaluated.",
+      "A source-linked detector and analyzer catalog with explicit uncertainty, plus a three-source comparison example on this page.",
     decision: "What I can claim in discovery, and what I have to leave gray.",
     myRole:
-      "I built this sample and the rule that gray is not a gap. A larger parser is described in my notes and is not in this repository. This is independent research, not an official Truffle Security product.",
+      "I built the independent catalog and the comparison example, with the rule that an unreviewed cell stays gray. The catalog runs as a separate app; it is not an official Truffle Security product.",
     maturityDetail:
-      "What runs is the sample table: 3 sources and 5 credential types. AWS keys and GitHub PATs are Covered for TruffleHog. Slack, GitLab, and GCP are Observed because a public detector folder exists, not because verification was fully reviewed. Notes mention 910 parsed records and 14 enriched. Those rows are not in this repository.",
+      "The public catalog has searchable detector and analyzer facts, source links, a review queue, and ingestion health. The small example here compares three sources across five credential types; it is separate from the catalog.",
     fieldAsset: null,
     proposedSoftware:
-      "Proposed catalog ingestion from public detector files at pinned commits, maintained as an independent research project.",
+      "The next step is to review representative coverage questions against the catalog and its pinned evidence.",
     links: [
       {
-        label: "Live sample",
+        label: "Open the live catalog",
+        href: "https://detector-coverage-atlas.vercel.app/",
+      },
+      {
+        label: "Comparison example",
         href: "/#atlas",
       },
       {
-        label: "GitHub repository",
+        label: "Portfolio example source",
         href: "https://github.com/heyfunwhoa/byjoyaing-portfolio",
       },
     ],
     result: {
       kind: "measured",
-      text: "The page you can use has 3 sources and 5 credential types. Betterleaks and Kingfisher are Not evaluated. The 910 and 14 counts are notes, not rows in the interface, and there is no revenue claim.",
+      text: "The catalog is publicly accessible and exposes snapshot freshness. The comparison example keeps unreviewed cells Not evaluated. No buyer outcome or revenue result has been measured.",
     },
     related: ["competitive-intelligence-engine", "truffle-camp"],
   },
@@ -156,15 +160,15 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     myRole:
       "I have already done the field version of this work: discovery frameworks and a self-serve onboarding resource at Truffle, industry training at Darktrace, discovery templates at Forcepoint, threat-intelligence playbooks at Rapid7, and ramp resources at Websense. Truffle Camp is the product I designed on top of that pattern. It is not those assets.",
     maturityDetail:
-      "Designed, with a sample module on this page. The Darktrace ramp result belongs to the training I created there, not to Camp.",
+      "A separate training app implements the camp map, Trailhead, one synthetic Dig Site mission, decision feedback, and browser-local progress. This page includes a sample module. The Darktrace ramp result belongs to the training I created there.",
     fieldAsset:
       "Discovery frameworks, onboarding material, industry training, and playbooks that teams used.",
     proposedSoftware:
-      "Truffle Camp: Trailhead, one Dig Site mission, Verification Lab, Risk Room, Handoff Desk, and a Field Brief. Curriculum designed. No public repository.",
+      "Verification Lab, Risk Room, Handoff Desk, and Field Brief are later camp days. Atlas integration is planned; source repository is private.",
     links: [],
     result: {
       kind: "measured",
-      text: "The Darktrace training and the Truffle onboarding resource are field work. Truffle Camp is the later design. Camp has no learner data.",
+      text: "The Darktrace training and the Truffle onboarding resource are field work. Camp is independent software built from that pattern; no learner outcome study has been completed.",
     },
     related: [
       "detector-coverage-atlas",
@@ -182,13 +186,13 @@ const salesProfiles: Array<Omit<SalesProfile, keyof CapabilityFacts>> = [
     intake:
       "One made-up key, a named cast, and an ordinary developer's day. No real secrets and nothing scanned.",
     produces:
-      "A five-part walkthrough: Code, People, Systems, Agents, and Coverage. Each part ends with the old key shut off and confirmed.",
+      "An eight-part walkthrough: Code, People, Systems, Agents, Coverage, Public, Response, and Published. It ends with the old key shut off and confirmed.",
     decision:
       "Whether the reader can separate finding a copy, checking that it still works, telling the owner, and replacing it.",
     myRole:
       "I designed the story, the cast, and the lesson structure for sales and enablement readers, and built the site with an AI coding assistant. It is independent work, not employer training. Truffle Camp is the separate hands-on curriculum design; this is the story series a reader can open today.",
     maturityDetail:
-      "Live and public, with five parts merged. A walkthrough with a non-coder reader is still open.",
+      "Live and public, with eight parts merged. A walkthrough with a non-coder reader is still open.",
     fieldAsset: null,
     proposedSoftware: null,
     links: [
@@ -516,13 +520,13 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "detector-coverage-atlas": {
     pipeline:
-      "Three hardcoded rows → a browser filter → Covered, Observed, or Not evaluated.",
+      "Pinned public TruffleHog source → validated snapshot → source-linked detector and analyzer facts → review queue. The portfolio comparison is a separate fixed example.",
     workingToday:
-      "The comparison on this site. TruffleHog has Covered or Observed values. Betterleaks and Kingfisher are Not evaluated. There is no parser, database, or refresh job.",
+      "The live Atlas catalog has source links, a review queue, and ingestion health. This site also has a fixed comparison of three sources and five credential types, with unreviewed cells kept gray.",
     plannedNext:
-      "Read public detector files at a pinned commit and keep unreviewed cells gray. That code is not in this repo.",
+      "Review representative coverage questions against the catalog and its pinned source before expanding to other scanners.",
     implementedTech:
-      "Next.js, React, and TypeScript. Rows are in lib/portfolio.ts. The filter is components/coverage-explorer.tsx. Tailwind for layout.",
+      "The separate catalog documents GitHub Actions ingestion, an incremental parser, validated JSON snapshots and optional Neon persistence. This portfolio comparison uses Next.js, React and TypeScript.",
   },
   "product-release-intelligence": {
     pipeline:
@@ -537,7 +541,7 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
     pipeline:
       "A made-up key → one developer's day, step by step → the copies it leaves → the old key shut off and confirmed.",
     workingToday:
-      "Five public parts with 66 steps in total, a named cast, and a jump-to-topic index. The key is invented and progress is not saved.",
+      "Eight public parts, a named cast, routes by role, and a jump-to-topic index. The key is invented and progress is not saved.",
     plannedNext:
       "A walkthrough with a non-coder reader, then one practice exercise on which control would help.",
     implementedTech:
@@ -545,23 +549,23 @@ const capabilityFacts: Record<string, CapabilityFacts> = {
   },
   "truffle-camp": {
     pipeline:
-      "A written scenario → the reader separates detection from verification → a manager could score the explanation. On this site you can read the module and try one synthetic knowledge check. Progress is not saved.",
+      "A synthetic cache → evidence review → a decision with feedback → browser-local progress in the separate training app. This page offers a sample knowledge check.",
     workingToday:
-      "The First Expedition write-up and one synthetic knowledge check on the case study. Teams have used discovery frameworks, playbooks, and Darktrace industry training. Those are not a course app.",
+      "The separate app implements the camp map, Trailhead and one synthetic Dig Site mission. This page includes the First Expedition write-up and a knowledge check. Historical team training is separate evidence.",
     plannedNext:
-      "A fuller playable mission after testing the synthetic knowledge check.",
+      "Review the first mission with a learner, then develop the later camp days and a curated Atlas export.",
     implementedTech:
-      "A static module and session-only knowledge check in this Next.js page. No course platform, saved progress, or model.",
+      "The separate Next.js app documents schema-validated content and browser-local progress. The knowledge check on this portfolio stays in the page session.",
   },
   "partner-gtm-engine": {
     pipeline:
-      "A partner row with no website → I refuse to treat a similar name as a match → a human review state before anyone co-sells.",
+      "Workbook upload → staged source rows → company matching and human review. Salesforce is checked only when an account export is attached.",
     workingToday:
-      "One fictional match on the case study. No spreadsheet upload, domain search, or CRM sync. Metadot's channel program is historical context, not a result of this design.",
+      "The separate partner-book implementation stages workbooks for row review without writing Salesforce or the account store. The fictional match on this page illustrates the decision rule.",
     plannedNext:
-      "Upload a sheet, match on domain, and leave uncertain rows for a person.",
+      "Review representative partner workbooks and keep uncertain company matches open for a person.",
     implementedTech:
-      "A documented workflow presented on this page.",
+      "A separate workbook-review build; the portfolio presents a documented workflow and fictional match.",
   },
   "customer-feedback-intelligence": {
     pipeline:

@@ -372,7 +372,7 @@ export const projects: Project[] = [
       job: "Answer a detector-coverage question with provenance, confidence, and a path to the source.",
     },
     evidence:
-      "Independent research against public TruffleHog: a source parser observed 910 detector records (Sept 2026), with 14 fully enriched and ready to render. Nested folders (github/v1, aws/access_keys) were being dropped until that bug was fixed. Validity-check detection is heuristic — GitHub and GitLab verification delegated to helpers are known false negatives. This is a public research catalog, not an official Truffle Security product.",
+      "Independent research built from public TruffleHog OSS source. The live catalog links detector and analyzer facts to a pinned commit and exposes an ingestion-health record. Uncertainty remains visible in a review queue. This is an unofficial project, with no live credential checks.",
     goals: [
       "Preserve source names and pin every import to a commit SHA.",
       "Normalize to canonical secret types without deleting source terminology.",
@@ -388,7 +388,7 @@ export const projects: Project[] = [
     ],
     mvp: {
       version:
-        "Catalog foundation: schema, TruffleHog ingestion, 14 reviewed starter detectors, searchable comparison with explicit uncertainty.",
+        "Searchable detector and analyzer catalog, SHA-pinned snapshot ingestion, source evidence, review queue, and ingestion health.",
       question:
         "Can fragmented public detector information become a reliable, evidence-backed product before we add more sources or automation?",
     },
@@ -409,12 +409,10 @@ export const projects: Project[] = [
       "Human review queue",
     ],
     systemTechnical: [
-      "Octokit (commit-pinned reads)",
-      "Provider-specific parsers",
-      "Postgres + Drizzle (next)",
-      "Vercel Cron snapshots (next)",
-      "shadcn data table",
-      "Comparison matrix",
+      "Daily GitHub Actions ingestion at a pinned TruffleHog SHA",
+      "Incremental source parser with optional Go AST helper",
+      "Validated JSON snapshots and optional Neon persistence",
+      "Next.js catalog with source-linked facts and review overlays",
     ],
     dataModel: [
       "DetectorRecord",
@@ -428,7 +426,7 @@ export const projects: Project[] = [
     ],
     metrics: {
       operational: [
-        "910 TruffleHog records parsed; 14 enriched",
+        "Published snapshot freshness and ingestion health",
         "Normalization rate and evidence completeness",
         "Stale-record and parser false-negative rate",
       ],
@@ -449,11 +447,10 @@ export const projects: Project[] = [
       "Computed comparison views vs. stored matrix rows.",
     ],
     prototype:
-      "Parser tested on the public TruffleHog repository; 14 enriched detectors prepared for the Next.js table. Independent/unofficial. Separate from Truffle Camp and from any company-owned Atlas. The parser is not in this repository.",
+      "Live, unofficial catalog of TruffleHog OSS detectors and analyzers. Scheduled ingestion pins a TruffleHog commit; facts link to source, and open questions go to a review queue. No live credential checks. Source repository is private.",
     next: [
-      "Detector detail with verification profiles and conditional risk language.",
+      "Review representative detector and analyzer answers against their pinned source.",
       "Betterleaks and Kingfisher only after rule-file review; GitGuardian and GitHub Secret Scanning stay manual-doc.",
-      "Commit snapshots, diffs, and a review queue.",
       "Five to ten representative questions against the UI to pick the next phase — not every planned screen.",
     ],
     businessValue: [
@@ -584,7 +581,7 @@ export const projects: Project[] = [
     title: "Truffle Camp",
     phase: "Enable",
     careerSignal: "Product Adoption, Technical Enablement, Product GTM",
-    status: "designed",
+    status: "prototype",
     problem: {
       summary:
         "Secrets education is fragmented across docs, detector references, sales enablement, and tribal knowledge.",
@@ -674,9 +671,9 @@ export const projects: Project[] = [
       "Local fixtures so Camp stays playable if Notion is down.",
     ],
     prototype:
-      "PRD complete. No public repository. Independent training curriculum using fictional examples. Atlas integration would be a curated export, not a merge.",
+      "Independent training app with a camp map, Trailhead, one synthetic Dig Site mission, decision feedback, and browser-local progress. Later camp days remain planned. Source repository is private.",
     next: [
-      "One Dig Site mission end to end, then Verification Lab and Handoff Desk.",
+      "Review the first Dig Site mission with a learner, then extend Verification Lab and Handoff Desk.",
       "Import one curated Atlas detector record via schema.",
       "Six initial missions (accidental commit through executive brief).",
       "Notion export pipeline and Campfire only after local fixtures work.",
@@ -710,7 +707,7 @@ export const projects: Project[] = [
       job: "Follow one key through a workday and explain where its copies land and what a team does after one is found.",
     },
     evidence:
-      "A five-part interactive series, live and public: Code (18 steps), then People, Systems, Agents, and Coverage (12 steps each). One made-up key moves through an ordinary day, and every part ends with the old key shut off. Independent lesson. The key is invented, nothing is scanned, and progress is not saved.",
+      "An eight-part interactive series, live and public: Code, People, Systems, Agents, Coverage, Public, Response, and Published. One made-up key moves through an ordinary day until the old key is shut off. Independent lesson. The key is invented, nothing is scanned, and progress is not saved.",
     goals: [
       "Explain what a secret is and how one secret ends up with several copies.",
       "Name places outside source code where a copy can remain.",
@@ -724,7 +721,7 @@ export const projects: Project[] = [
     ],
     mvp: {
       version:
-        "Part 1 (Code): one story from workstation to rotation, then four more parts on the same engine.",
+        "Part 1 (Code): one story from workstation to rotation, then seven more parts on the same engine.",
       question:
         "Can a non-coder follow one key through a day and tell detection, verification, notification, and rotation apart?",
     },
@@ -742,7 +739,7 @@ export const projects: Project[] = [
       "Rotate",
     ],
     systemPlain: [
-      "One story engine shared by five parts",
+      "One story engine shared by eight parts",
       "A made-up key and a named cast",
       "Optional detail with cited sources",
       "A jump-to-topic index",
@@ -1111,7 +1108,7 @@ export const projects: Project[] = [
       "Search-backed domain deduction vs. model recall.",
     ],
     prototype:
-      "PRD for Channel Territory Mapping. Companion: Account Intelligence, independently deployable — no shared database. Neither has a public repository.",
+      "Working build of Channel Territory Mapping: upload a partner workbook, review matches row by row, nothing written to the CRM. Includes a reseller guide for secrets conversations. Companion: Account Intelligence, no shared database. Neither has a public repository.",
     next: [
       "Partner-auth’d enablement packs (battlecards + per-account messaging) in v2.",
       "Keep Clay out of this build.",

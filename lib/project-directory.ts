@@ -64,13 +64,15 @@ const sources: DirectorySource[] = [
   {
     slug: "detector-coverage-atlas",
     categories: ["Technical Systems & AI"],
-    role: "I built the sample comparing three sources across five credential types and the rule that an unreviewed cell stays gray.",
-    scope: "The comparison is the table on the case study. A later parser is described there and is not part of this page.",
+    role: "I built a source-linked TruffleHog catalog and the small comparison example on this site.",
+    scope:
+      "The live catalog is a separate app. This page includes a three-source, five-credential comparison example.",
     sampleNote: null,
-    technologies: "Next.js, React, and TypeScript. The rows live in this repository.",
+    technologies:
+      "The portfolio comparison uses Next.js, React, and TypeScript.",
     featuredOrder: 3,
     preview: "atlas",
-    demoUrl: "/projects#featured",
+    demoUrl: "https://detector-coverage-atlas.vercel.app/",
     githubUrl: "https://github.com/heyfunwhoa/byjoyaing-portfolio",
   },
   {
@@ -125,9 +127,11 @@ const sources: DirectorySource[] = [
     slug: "truffle-camp",
     categories: ["Sales Enablement & Productivity"],
     role: "I designed the curriculum on top of enablement I have already done with teams.",
-    scope: "The knowledge check stays in this page session.",
+    scope:
+      "The separate app implements one synthetic mission and browser-local progress. This page includes a sample knowledge check.",
     sampleNote: null,
-    technologies: "A written module and one practice question on this page.",
+    technologies:
+      "A Next.js training app; a written module and practice question on this page.",
     featuredOrder: null,
     preview: "note",
     demoUrl: null,

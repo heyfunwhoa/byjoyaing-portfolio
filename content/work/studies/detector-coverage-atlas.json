@@ -1,8 +1,8 @@
 {
-  "summary": "Help security practitioners and technical sellers inspect secret-detection coverage and identify what needs review. Explore a small source-backed comparison sample.",
+  "summary": "Inspect TruffleHog detector and analyzer coverage, with each fact linked to source and open questions flagged for review.",
   "owner": "Kristen Aing",
   "reviewer": "Pending human review of the CMS move",
-  "contentVersion": 2,
+  "contentVersion": 3,
   "reviewDue": "2026-11-15",
   "classification": "public",
   "publicationStatus": "review"
