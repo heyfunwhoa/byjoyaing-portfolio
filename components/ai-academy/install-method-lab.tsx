@@ -2,6 +2,7 @@
 
 import { useState, type KeyboardEvent } from "react";
 import {
+  atlasInstallGuide,
   findInstallMethod,
   installMethods,
   installSituations,
@@ -369,7 +370,19 @@ export function InstallMethodLab() {
         <p className="mt-3 text-xs leading-5 text-muted">This lab doesn&apos;t check your computer or save progress.</p>
       </div>
 
-      <p className="mt-5 text-xs leading-5 text-muted">
+      <p className="mt-5 text-sm leading-6">
+        {atlasInstallGuide.text}{" "}
+        <a
+          href={atlasInstallGuide.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-accent underline underline-offset-2"
+        >
+          {atlasInstallGuide.label} ↗
+        </a>
+      </p>
+
+      <p className="mt-3 text-xs leading-5 text-muted">
         Sources, checked 26 Nov 2026:{" "}
         {Object.values(installSources).map((source, i, all) => (
           <span key={source.id}>

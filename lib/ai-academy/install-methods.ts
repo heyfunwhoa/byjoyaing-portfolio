@@ -252,6 +252,15 @@ export const installGlossary: readonly GlossaryTerm[] = [
   { term: "Checksum and cosign", meaning: "A checksum is a fingerprint of a download. cosign checks that the fingerprint was signed by the project, so you know the file wasn't swapped." },
 ];
 
+// Kristen's Detector Atlas keeps an evidence-tagged version of this guide. Its
+// commands are copied from TruffleHog's README at the commit Atlas tracks, so
+// it is the copy to trust if TruffleHog changes how it installs.
+export const atlasInstallGuide = {
+  url: "https://detector-coverage-atlas.vercel.app/how-it-works#install",
+  label: "Detector Atlas install guide",
+  text: "Want every step linked to TruffleHog's own code? The Detector Atlas keeps an evidence-tagged version, with commands copied from TruffleHog's README.",
+} as const;
+
 export function findInstallMethod(id: InstallMethodId): InstallMethod {
   const method = installMethods.find((item) => item.id === id);
   if (!method) throw new Error(`Unknown install method: ${id}`);

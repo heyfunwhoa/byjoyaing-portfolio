@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { lessons } from "../ai-academy.ts";
 import {
+  atlasInstallGuide,
   findInstallMethod,
   installMethods,
   installSituations,
@@ -82,4 +83,12 @@ test("other options are documented variations with real sources", () => {
   }
   const verified = otherOptions.find((o) => o.title.includes("genuine"));
   assert.match(verified?.command ?? "", /sh -s -- -v -b \/usr\/local\/bin$/);
+});
+
+test("the lab points to the Atlas install guide over https", () => {
+  const url = new URL(atlasInstallGuide.url);
+  assert.equal(url.protocol, "https:");
+  assert.equal(url.hostname, "detector-coverage-atlas.vercel.app");
+  assert.equal(url.pathname, "/how-it-works");
+  assert.equal(url.hash, "#install");
 });
