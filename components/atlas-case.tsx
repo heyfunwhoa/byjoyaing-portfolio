@@ -23,10 +23,14 @@ export function AtlasCase() {
           <p className="max-w-xl text-base leading-7 text-muted">
             For security practitioners and technical sellers comparing secret-detection coverage, this sample makes the evidence easier to inspect. Compare three sources across five credential types, distinguish reviewed coverage from observations, and see what still needs investigation. My aim is to help people ask better security questions without turning missing evidence into a product claim.
           </p>
-          <p className="text-sm leading-6 text-muted">I built this table and the rule that gray is not a gap.</p>
+          <p className="text-sm leading-6 text-muted">I built the live catalog and this comparison example, with the rule that gray is not a gap.</p>
           <a href="#comparison" className="inline-flex h-11 w-fit items-center justify-center rounded-md bg-accent px-5 text-sm font-medium text-accent-foreground">
             Try the example
           </a>
+          <a href="https://detector-coverage-atlas.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 w-fit items-center text-sm font-semibold text-accent underline underline-offset-4">
+            Open the live catalog<span aria-hidden="true"> ↗</span><span className="sr-only"> (opens in a new tab)</span>
+          </a>
+          <p className="text-sm leading-6 text-muted">The live catalog links detector and analyzer facts to pinned source. The comparison below is a fixed teaching example.</p>
         </div>
       </section>
 
@@ -118,7 +122,7 @@ export function AtlasCase() {
         <div className="mt-5 flex flex-wrap gap-5 text-sm">
           <a href="https://github.com/trufflesecurity/trufflehog" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-accent underline">Original TruffleHog project ↗</a>
           <a href="https://github.com/trufflesecurity/trufflehog/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-accent underline">Upstream license ↗</a>
-          <a href="https://github.com/heyfunwhoa/detector-coverage-atlas" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-accent underline">Independent Atlas repository ↗</a>
+          <a href="https://detector-coverage-atlas.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-accent underline">Live Atlas catalog ↗</a>
         </div>
       </section>
 
