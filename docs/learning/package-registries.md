@@ -61,8 +61,16 @@ npm installs packages *into a project*. Command-line tools such as TruffleHog ar
 | Homebrew (macOS, Linux) | `brew install trufflehog` | `brew upgrade` updates installed tools | Yes, once Homebrew is set up in your shell |
 | Install script | `curl -sSfL …/scripts/install.sh \| sh -s -- -b /usr/local/bin` | Re-run by hand to update | Yes, if the target folder is on your `PATH` |
 | Release download | Download and unpack from GitHub Releases | Manual | Yes, after you move it onto your `PATH` |
-| Docker | `docker run … trufflesecurity/trufflehog:latest …` | Pull a newer image | **No.** It runs in a container, so `command -v trufflehog` finds nothing |
+| Docker | `docker run … trufflesecurity/trufflehog:latest …` | Pull a newer image | **Not this portfolio's hook.** It runs in a container, so `command -v trufflehog` finds nothing. (TruffleHog's pre-commit guide shows a hook written to run Docker instead.) |
 | Build from source | `git clone …` then `go install` | Rebuild to update | Yes, but needs the Go toolchain; mostly for contributors |
+
+**Other options worth knowing** (all from TruffleHog's README and pre-commit guide):
+- **Verify the download:** add `-v` to the install script to check TruffleHog's signed checksum (needs `cosign`); release downloads can be checked by hand.
+- **Pin a version:** put a release tag at the end of the install script command, for example `v3.56.0`.
+- **GitHub Actions:** use TruffleHog's own action (`uses: trufflesecurity/trufflehog@…`). This portfolio's `security-scans.yml` does, pinned to a commit.
+- **GitLab CI:** the README example runs the install script inside the job.
+- **Docker on Apple-chip Macs or Windows:** the README lists adjusted commands (`--platform linux/arm64`, and Command Prompt and PowerShell versions).
+- **Ready-made pre-commit hooks:** Git's `hooksPath`, the pre-commit framework, or Husky, including a Docker-based hook.
 
 **Supply-chain note:** piping an install script into `sh` runs code from the internet with your permissions. Read the script first. TruffleHog also documents a variant that verifies a signed checksum; it requires `cosign`. A package manager like Homebrew narrows, but does not remove, the need to trust what you install.
 
@@ -107,4 +115,5 @@ npm run build
 - [npm audit](https://docs.npmjs.com/cli/v11/commands/npm-audit/)
 - [OpenSSF best practices](https://openssf.org/)
 - [TruffleHog README: Installation](https://github.com/trufflesecurity/trufflehog#floppy_disk-installation) (install methods checked against the README on 2026-11-26)
+- [TruffleHog pre-commit hook guide](https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md) (checked 2026-11-26)
 - [Homebrew: Installation](https://docs.brew.sh/Installation) and [Homebrew FAQ: updating packages](https://docs.brew.sh/FAQ#how-do-i-update-my-local-packages) (checked 2026-11-26)

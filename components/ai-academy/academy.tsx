@@ -12,6 +12,7 @@ import { PortfolioOsCaseStudy } from "@/components/ai-academy/portfolio-os-case-
 import { ProductRequestLab } from "@/components/ai-academy/product-request-lab";
 import { SecurityReviewLab } from "@/components/ai-academy/security-review-lab";
 import { CmsLab } from "@/components/ai-academy/cms-lab";
+import { InstallMethodLab } from "@/components/ai-academy/install-method-lab";
 import { FrontendLesson } from "@/components/ai-academy/frontend-lesson";
 import { learningPaths } from "@/lib/academy/learning-paths";
 import { LearningPathPicker } from "@/components/ai-academy/learning-path-picker";
@@ -367,6 +368,7 @@ export function Academy({ resources }: { resources?: ReactNode }) {
               <SecurityReviewLab />
             )}
             {lesson.slug === "cms-fundamentals" && <CmsLab />}
+            {lesson.slug === "package-registries" && <InstallMethodLab />}
             {lesson.slug === "frontend-building-blocks" && (
               <FrontendLesson
                 onSelectLesson={(slug, keepPath) =>
