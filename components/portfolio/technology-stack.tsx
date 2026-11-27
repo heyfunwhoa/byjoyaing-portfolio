@@ -31,7 +31,7 @@ export function TechnologyStack({
   return (
     <ul
       aria-label="Technologies used"
-      className={`flex flex-wrap items-center ${compact ? "gap-1" : "gap-x-3 gap-y-2"} ${className}`}
+      className={`flex flex-wrap items-center ${compact && !showLabels ? "gap-1" : "gap-x-3 gap-y-2"} ${className}`}
     >
       {visible.map((id) => {
         const technology = technologies[id];
@@ -42,22 +42,22 @@ export function TechnologyStack({
                 role="img"
                 aria-label={technology.name}
                 title={technology.name}
-                className={`group/tech inline-flex items-center rounded-md text-foreground transition-colors duration-200 hover:text-accent ${compact ? "size-6 justify-center gap-0" : "min-h-11 gap-2"}`}
+                className={`group/tech inline-flex items-center rounded-md text-foreground transition-colors duration-200 hover:text-accent ${showLabels ? "min-h-6 gap-1.5 pr-1" : "size-6 justify-center gap-0"}`}
               >
-                <span
-                  className={`inline-flex shrink-0 items-center justify-center rounded-sm border border-border bg-white transition-colors duration-200 group-hover/tech:border-accent ${compact ? "size-4 p-0.5" : "size-6 p-1"}`}
-                >
+                <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-sm border border-border bg-white p-0.5 transition-colors duration-200 group-hover/tech:border-accent">
                   <Image
                     src={technology.logo}
                     alt=""
-                    width={compact ? 10 : 12}
-                    height={compact ? 10 : 12}
+                    width={10}
+                    height={10}
                     unoptimized
                     className="size-full object-contain"
                   />
                 </span>
                 {showLabels ? (
-                  <span className="text-sm">{technology.name}</span>
+                  <span aria-hidden="true" className="text-xs text-muted">
+                    {technology.name}
+                  </span>
                 ) : null}
               </span>
             ) : (
@@ -97,16 +97,19 @@ export function ProjectTechnologyStack({
   slug,
   presentation = "detail",
   className = "",
+  labels = false,
 }: {
   slug: string;
   presentation?: "detail" | "compact";
   className?: string;
+  /** Compact only: show each name beside its logo instead of relying on a hover title. */
+  labels?: boolean;
 }) {
   if (presentation === "compact") {
     return (
       <TechnologyStack
         ids={compactTechnologyIds(slug)}
-        showLabels={false}
+        showLabels={labels}
         size="compact"
         className={className}
       />

@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "@/components/icons/arrow-up-right";
 import { completePageMetadata } from "@/lib/page-metadata";
 import { resolvePlaybookRequest } from "@/lib/playbook-request";
 import { InquiryForm } from "@/app/inquiry-form";
@@ -45,6 +46,7 @@ export default async function ContactPage({
               className="inline-flex min-h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-accent-foreground transition-transform duration-200 hover:-translate-y-0.5"
             >
               Book a time
+              <ArrowUpRight size={16} className="ml-1.5 inline-block size-4 shrink-0" />
             </a>
             <EmailLink placement="contact" />
             <SocialLinks placement="contact" />

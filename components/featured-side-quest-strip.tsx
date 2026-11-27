@@ -66,6 +66,7 @@ export function FeaturedSideQuestStrip({
   const [filter, setFilter] = useState("All featured");
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const [overflows, setOverflows] = useState(false);
   const visible =
     filter === "All featured"
       ? cards
@@ -73,10 +74,14 @@ export function FeaturedSideQuestStrip({
 
   useEffect(() => {
     const el = scroller.current;
-    if (!el) return;
+    if (!el) {
+      setOverflows(false);
+      return;
+    }
     const sync = () => {
       setAtStart(el.scrollLeft <= 1);
       setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 1);
+      setOverflows(el.scrollWidth > el.clientWidth + 1);
     };
     el.scrollLeft = 0;
     sync();
@@ -131,7 +136,7 @@ export function FeaturedSideQuestStrip({
         <ul
           ref={scroller}
           aria-label="Featured independent builds"
-          tabIndex={0}
+          tabIndex={overflows ? 0 : undefined}
           className="mt-4 flex w-full min-w-0 max-w-full snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-2 focus-visible:outline-2 focus-visible:outline-ring motion-reduce:scroll-auto"
         >
           {visible.map((card) => {
@@ -186,26 +191,29 @@ export function FeaturedSideQuestStrip({
           })}
         </ul>
       )}
-      <div className="mt-3 flex min-w-0 max-w-full flex-wrap items-center gap-2">
-        <button
-          type="button"
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-semibold disabled:opacity-40"
-          disabled={atStart || visible.length < 2}
-          onClick={() => scrollByCard(-1)}
-        >
-          <ArrowLeft size={16} className="size-4" />
-          Previous featured build
-        </button>
-        <button
-          type="button"
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-semibold disabled:opacity-40"
-          disabled={atEnd || visible.length < 2}
-          onClick={() => scrollByCard(1)}
-        >
-          Next featured build
-          <ArrowRight size={16} className="size-4" />
-        </button>
-      </div>
+      {/* Scroll controls only when cards extend past the visible strip. */}
+      {overflows ? (
+        <div className="mt-3 flex min-w-0 max-w-full flex-wrap items-center gap-2">
+          <button
+            type="button"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-semibold disabled:opacity-40"
+            disabled={atStart || visible.length < 2}
+            onClick={() => scrollByCard(-1)}
+          >
+            <ArrowLeft size={16} className="size-4" />
+            Previous featured build
+          </button>
+          <button
+            type="button"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-semibold disabled:opacity-40"
+            disabled={atEnd || visible.length < 2}
+            onClick={() => scrollByCard(1)}
+          >
+            Next featured build
+            <ArrowRight size={16} className="size-4" />
+          </button>
+        </div>
+      ) : null}
       <Link
         href="/projects#directory"
         className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-accent underline underline-offset-4"

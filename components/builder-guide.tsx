@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { KeepPhrases } from "@/components/keep-phrases";
 import { useState } from "react";
 
 const journeys = [
@@ -55,7 +56,7 @@ export function BuilderGuide() {
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-xs font-medium uppercase tracking-wider text-muted">The Builder Guide / Phase 1</p>
-          <h2 className="mt-2 font-display text-2xl sm:text-3xl">People first. Problem-driven. Systems-minded.</h2>
+          <h2 className="mt-2 font-display text-2xl sm:text-3xl"><KeepPhrases text="People first. Problem-driven. Systems-minded." /></h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">Choose what matters to you. Each answer points to an existing public page rather than inventing a new claim.</p>
         </div>
         <span aria-hidden="true" className="rounded-full border border-border bg-background px-3 py-2 text-sm text-accent">joy. ✳</span>

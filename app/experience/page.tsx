@@ -46,7 +46,7 @@ export default function ExperiencePage() {
       <section className="grid items-center gap-8 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_12rem]">
         <div className="min-w-0">
           <CollectionBreadcrumb items={[{"href":"/","label":"Home"},{"href":"/work","label":"Work"},{"label":"Experience"}]} />
-          <p className="editorial-eyebrow text-accent">Work · Revenue & GTM</p>
+          <p className="editorial-eyebrow text-accent">Experience</p>
           <h1 className="editorial-title mt-3 max-w-[16ch]">
             Selling technical security, and teaching the story.
           </h1>
@@ -56,7 +56,7 @@ export default function ExperiencePage() {
         </div>
         <div className="mx-auto w-full max-w-[12rem]">
           <OrbitStudyIllustration variant="experience" />
-          <p className="editorial-eyebrow mt-3 text-center text-muted">Leader / Work</p>
+          <p className="editorial-eyebrow mt-3 text-center text-muted">Leader / Experience</p>
         </div>
       </section>
       <ExperienceTimeline related={related} />

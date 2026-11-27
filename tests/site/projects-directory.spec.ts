@@ -11,7 +11,7 @@ test("filters preserve focus, scroll and an open matching preview without route 
   const mobile = page.getByRole("combobox", { name: "Project focus", exact: true });
   const control = await mobile.isVisible()
     ? mobile
-    : page.getByRole("button", { name: "All work", exact: true });
+    : page.getByRole("button", { name: "All projects", exact: true });
   await control.focus();
   await control.scrollIntoViewIfNeeded();
   const before = await page.evaluate(() => window.scrollY);

@@ -1,5 +1,4 @@
 import { ArrowRight } from "@/components/icons/arrow-right";
-import { ArrowUpRight } from "@/components/icons/arrow-up-right";
 import { GeometricMotif } from "@/components/geometric-motif";
 import Link from "next/link";
 
@@ -31,7 +30,7 @@ export function EditorialBento() {
             Professional contributions in selling, coaching, and GTM.
           </p>
           <span className="editorial-link mt-auto inline-flex min-h-11 items-center pt-8 text-sm font-semibold underline">
-            Explore Work <ArrowUpRight size={16} className="nudge-link ml-2 inline-block size-4" />
+            Explore Work <ArrowRight size={16} className="nudge-link ml-2 inline-block size-4" />
           </span>
           <GeometricMotif />
         </Link>

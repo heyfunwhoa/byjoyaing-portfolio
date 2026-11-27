@@ -23,8 +23,9 @@ export function PlaybookOutlines({ playbooks }: { playbooks: readonly PlaybookOu
             </ul>
           </div>
           <details className="mt-3">
-            <summary aria-label={`View ${playbook.title.toLowerCase()} outline`} className="min-h-11 cursor-pointer content-center rounded-sm py-3 text-sm font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
+            <summary className="min-h-11 cursor-pointer content-center rounded-sm py-3 text-sm font-medium text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
               View outline
+              <span className="sr-only"> for {playbook.title}</span>
             </summary>
             <dl className="mt-3 space-y-4 text-sm leading-6">
               {[

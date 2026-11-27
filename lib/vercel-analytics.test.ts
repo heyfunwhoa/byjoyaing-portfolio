@@ -30,3 +30,99 @@ test("vercel pageviews keep reviewed routes and strip queries and hashes", () =>
     null,
   );
 });
+
+function memoryStorage() {
+  const data = new Map<string, string>();
+  return {
+    getItem: (key: string) => data.get(key) ?? null,
+    setItem: (key: string, value: string) => void data.set(key, value),
+    removeItem: (key: string) => void data.delete(key),
+  };
+}
+
+test("the dontcountme link stops and restarts counting for this browser", () => {
+  const storage = memoryStorage();
+  const page = {
+    type: "pageview" as const,
+    url: "https://www.kristenaing.com/work",
+  };
+  assert.notEqual(filterVercelPageview(page, storage), null);
+  assert.equal(
+    filterVercelPageview(
+      {
+        type: "pageview",
+        url: "https://www.kristenaing.com/work?dontcountme=1",
+      },
+      storage,
+    ),
+    null,
+  );
+  assert.equal(filterVercelPageview(page, storage), null);
+  assert.notEqual(
+    filterVercelPageview(
+      {
+        type: "pageview",
+        url: "https://www.kristenaing.com/work?dontcountme=0",
+      },
+      storage,
+    ),
+    null,
+  );
+  assert.notEqual(filterVercelPageview(page, storage), null);
+});
+
+test("counting continues when storage is unavailable or throws", () => {
+  const page = {
+    type: "pageview" as const,
+    url: "https://www.kristenaing.com/work",
+  };
+  assert.notEqual(filterVercelPageview(page, undefined), null);
+  const broken = {
+    getItem: () => {
+      throw new Error("blocked");
+    },
+    setItem: () => {
+      throw new Error("blocked");
+    },
+    removeItem: () => {},
+  };
+  assert.notEqual(filterVercelPageview(page, broken), null);
+});
+
+test("explicit opt-out applies even when browser storage is unavailable or blocked", () => {
+  for (const storage of [
+    undefined,
+    {
+      getItem: () => {
+        throw new Error("blocked");
+      },
+      setItem: () => {
+        throw new Error("blocked");
+      },
+      removeItem: () => {
+        throw new Error("blocked");
+      },
+    },
+  ]) {
+    assert.equal(
+      filterVercelPageview(
+        {
+          type: "pageview",
+          url: "https://www.kristenaing.com/work?dontcountme=1",
+        },
+        storage,
+      ),
+      null,
+    );
+    assert.deepEqual(
+      filterVercelPageview(
+        {
+          type: "pageview",
+          url: "https://www.kristenaing.com/work?dontcountme=0#private",
+        },
+        storage,
+      ),
+      { type: "pageview", url: "https://www.kristenaing.com/work" },
+    );
+  }
+});

@@ -73,9 +73,11 @@ for (const width of [375, 768, 1280]) {
 
         const summary = card.locator("summary");
         const details = card.locator("details");
-        const name = await summary.getAttribute("aria-label");
-        expect(name).toMatch(/^View .+ outline$/);
-        names.push(name!);
+        // Visible "View outline" leads the accessible name (WCAG 2.5.3); the
+        // playbook title follows in screen-reader text to keep names distinct.
+        await expect(summary).toHaveAccessibleName(/^View outline\s+for .+$/);
+        const name = (await summary.textContent())!.replace(/\s+/g, " ").trim();
+        names.push(name);
         await expect(summary).toBeFocused();
         await expect(summary).toBeInViewport();
         expect((await summary.boundingBox())!.height).toBeGreaterThanOrEqual(44);

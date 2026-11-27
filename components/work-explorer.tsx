@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Collapsible } from "radix-ui";
 import {
-  ArrowUpRight,
   ChevronDown,
   Crosshair,
   Users,
@@ -60,7 +59,7 @@ export function WorkExplorer({ stories }: { stories: ReactNode[] }) {
   }
 
   return (
-    <BentoGrid className="mt-7 auto-rows-auto items-start md:auto-rows-auto md:grid-cols-2 lg:grid-cols-4">
+    <BentoGrid className="mt-7 auto-rows-auto items-start md:auto-rows-auto md:grid-cols-2 lg:grid-cols-3">
       {categories.map(
         ({ id, title, eyebrow, description, tags, Icon }, index) => (
           <Collapsible.Root
@@ -71,7 +70,7 @@ export function WorkExplorer({ stories }: { stories: ReactNode[] }) {
           >
             <div
               id={id}
-              className={`min-w-0 scroll-mt-24 self-stretch ${index === 0 ? "md:col-span-2" : ""}`}
+              className={`min-w-0 scroll-mt-24 self-stretch ${index === 0 ? "md:col-span-2 lg:col-span-1" : ""}`}
             >
               <Collapsible.Trigger asChild>
                 <button
@@ -84,7 +83,6 @@ export function WorkExplorer({ stories }: { stories: ReactNode[] }) {
                 >
                   <span className="flex w-full items-center justify-between gap-3 text-xs font-semibold tracking-wide">
                     <span>{eyebrow}</span>
-                    <ArrowUpRight aria-hidden="true" className="size-5" />
                   </span>
                   <span
                     aria-hidden="true"
